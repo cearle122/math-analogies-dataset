@@ -1,0 +1,41 @@
+{
+  "id": "cohomology_from_chain_complex_dual",
+  "field": [
+    "topology",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {\\map {C_\\bullet} X, \\partial}$ be the [[Definition:Chain Complex|chain complex]] of a space $X$ and $R$ a [[Definition:Commutative Ring with Unity|ring]].\nThen the [[Definition:Cohomology Group|cohomology]] of $X$ is:\n:$\\map {H^n} {X; R} = \\map {H^n} {\\map {\\operatorname {Hom} } {\\map {C_\\bullet} X, R} }$\nwhere the [[Definition:Coboundary Operator|coboundary]] $\\delta$ raises degree, and a [[Definition:Continuous Mapping (Topology)|map]] $f: X \\to Y$ induces $f^*: \\map {H^n} Y \\to \\map {H^n} X$."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {C_\\bullet, \\partial}$ be a [[Definition:Chain Complex|chain complex]].\nIts [[Definition:Dual Complex|dual complex]] is $\\map {\\operatorname {Hom} } {C_n, R}$ with differential the [[Definition:Transpose of Linear Transformation|transpose]] $\\partial^*$ of each $\\partial$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a chain in a given degree": "a functional on chains of that degree",
+        "the boundary map lowering degree": "the transposed coboundary raising degree",
+        "a map induced covariantly on chains": "the map induced contravariantly on cochains"
+      },
+      "derived": {
+        "cycles and boundaries": "cocycles and coboundaries, defined by the transposed differential",
+        "the homology of the dual complex": "the cohomology groups"
+      },
+      "reformulation": "Dualize the chain complex degreewise, transposing the differentials so degree is raised rather than lowered."
+    },
+    "validity_conditions": [
+      "Transposing reverses the arrows of the complex, so the differential raises rather than lowers degree, and the composite still vanishes since transposition is functorial.",
+      "Induced maps become contravariant because precomposition reverses direction, which is why cohomology has a ring structure that homology lacks.",
+      "Cohomology is not simply the dual of homology over a general ring: the universal coefficient theorem includes an extension term that vanishes only over a field."
+    ],
+    "proof_plan": [
+      "Replace each [[Definition:Chain Group|chain group]] $C_n$ by $C^n = \\map {\\operatorname {Hom} } {C_n, R}$.",
+      "Define $\\delta = \\partial^*: C^n \\to C^{n + 1}$ by:\n:$\\map {\\delta \\phi} c = \\map \\phi {\\partial c}$\nThus $\\delta$ raises degree.",
+      "{{begin-eqn}}\n{{eqn | l = \\map {\\delta \\delta \\phi} c\n| r = \\map \\phi {\\partial \\partial c}\n}}\n{{eqn | r = 0\n| c = as $\\partial \\circ \\partial = 0$\n}}\n{{end-eqn}}\nHence $\\struct {C^\\bullet, \\delta}$ is a [[Definition:Cochain Complex|cochain complex]].",
+      "Define $\\map {H^n} {X; R} = \\map \\ker \\delta / \\Img \\delta$ in degree $n$.\nA map $f: X \\to Y$ induces $f_\\#: \\map {C_\\bullet} X \\to \\map {C_\\bullet} Y$, and transposing gives $f^\\#: C^\\bullet \\paren Y \\to C^\\bullet \\paren X$.\nHence the induced maps $f^*$ reverse direction.\n{{qed}}"
+    ]
+  }
+}

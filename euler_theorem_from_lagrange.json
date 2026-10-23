@@ -1,0 +1,40 @@
+{
+  "id": "euler_theorem_from_lagrange",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $a, n \\in \\Z$ with $n > 0$ and $a \\perp n$.\nThen:\n:$a^{\\map \\phi n} \\equiv 1 \\pmod n$"
+  },
+  "B_source": {
+    "statement": "Let $G$ be a [[Definition:Finite Group|finite group]] of [[Definition:Order of Structure|order]] $m$.\nThen:\n:$\\forall g \\in G: g^m = e$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "finite group G": "the unit group (Z/nZ)^*",
+        "group order m": "phi(n)",
+        "element g": "residue a mod n"
+      },
+      "derived": {
+        "g^m = e": "a^{phi(n)} = 1 mod n",
+        "|G| = m": "|(Z/nZ)^*| = phi(n)"
+      }
+    },
+    "validity_conditions": [
+      "The residues coprime to n form a group (Z/nZ)^* under multiplication, of order phi(n).",
+      "Every element g of a finite group satisfies g^{|G|} = e (order divides group order).",
+      "Instantiate with G = (Z/nZ)^*, g = a to get a^{phi(n)} = 1 mod n."
+    ],
+    "proof_plan": [
+      "The [[Definition:Multiplicative Group of Reduced Residues|group of reduced residues]] $\\paren {\\Z / n \\Z}^\\times$ is a [[Definition:Finite Group|finite group]] of order $\\map \\phi n$.",
+      "By [[Element to Power of Group Order is Identity]], which follows from [[Lagrange's Theorem (Group Theory)|Lagrange's Theorem]]:\n:$\\forall g \\in \\paren {\\Z / n \\Z}^\\times: g^{\\map \\phi n} = \\eqclass 1 n$",
+      "As $a \\perp n$, $\\eqclass a n \\in \\paren {\\Z / n \\Z}^\\times$.",
+      "Hence:\n:$a^{\\map \\phi n} \\equiv 1 \\pmod n$\n{{qed}}"
+    ]
+  }
+}

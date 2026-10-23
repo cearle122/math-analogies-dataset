@@ -1,0 +1,36 @@
+{
+  "id": "mergesort_running_time_from_master_theorem",
+  "field": [
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "[[Definition:Merge Sort|Merge sort]] sorts $n$ keys using $\\map \\Theta {n \\log n}$ comparisons in the worst case."
+  },
+  "B_source": {
+    "statement": "Let $\\map T n = a \\map T {n / b} + \\map \\Theta {n^d}$ with $a \\ge 1$, $b > 1$, $d \\ge 0$.\nThen $\\map T n = \\map \\Theta {n^d \\log n}$ if $d = \\log_b a$, $\\map \\Theta {n^d}$ if $d > \\log_b a$, and $\\map \\Theta {n^{\\log_b a} }$ if $d < \\log_b a$.\nThis is the [[Master Theorem]]."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "a, b, d": "2, 2, 1"
+      },
+      "derived": {
+        "the balanced case d = log_b a": "the n log n bound"
+      },
+      "reformulation": "Read off the recurrence of merge sort and specialize the master theorem in its balanced case."
+    },
+    "validity_conditions": [
+      "Floors and ceilings in the recurrence do not change the asymptotic solution.",
+      "Merging two sorted lists of total length n uses at most n - 1 comparisons."
+    ],
+    "proof_plan": [
+      "Merge sort splits the input into halves, sorts each recursively, and merges the results using at most $n - 1$ comparisons.",
+      "Hence $\\map T n = 2 \\map T {n / 2} + \\map \\Theta n$.",
+      "Here $a = 2$, $b = 2$ and $d = 1 = \\log_2 2$, the balanced case of the source result.",
+      "Hence $\\map T n = \\map \\Theta {n \\log n}$, matching the [[Comparison Sort Lower Bound|comparison sorting lower bound]], so merge sort is asymptotically optimal.\n{{qed}}"
+    ]
+  }
+}

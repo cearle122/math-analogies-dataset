@@ -1,0 +1,38 @@
+{
+  "id": "fermat_little_from_necklace_rotation",
+  "field": [
+    "number_theory",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a [[Definition:Prime Number|prime]] and $a \\in \\Z_{>0}$.\nThen:\n:$a^p \\equiv a \\pmod p$"
+  },
+  "B_source": {
+    "statement": "Let a group of prime order $p$ act on a finite set $X$.\nThen each orbit has $1$ or $p$ elements, so $\\card X$ and the number of fixed points of the action are congruent modulo $p$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the set X": "words of length p over an alphabet of a letters",
+        "the action": "cyclic rotation of the letters"
+      },
+      "derived": {
+        "fixed points": "constant words, of which there are a"
+      },
+      "reformulation": "Encode a^p as a count of words and a as the count of rotation-fixed words."
+    },
+    "validity_conditions": [
+      "p must be prime, so that a non-constant word has an orbit of size exactly p.",
+      "The count of fixed points equals the size of the alphabet."
+    ],
+    "proof_plan": [
+      "Let $X$ be the set of words of length $p$ over an alphabet of $a$ letters, so $\\card X = a^p$.",
+      "The cyclic group $\\Z / p \\Z$ acts on $X$ by rotating the letters.",
+      "A word fixed by a non-trivial rotation, which generates the group as $p$ is prime, has all letters equal.\nSo the fixed points are the $a$ constant words.",
+      "By the source result, $a^p \\equiv a \\pmod p$, which is [[Fermat's Little Theorem]].\n{{qed}}"
+    ]
+  }
+}

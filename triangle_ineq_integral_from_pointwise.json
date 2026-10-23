@@ -1,0 +1,38 @@
+{
+  "id": "triangle_ineq_integral_from_pointwise",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Riemann Integrable Function|integrable]] on $\\closedint a b$.\nThen:\n:$\\displaystyle \\size {\\int_a^b \\map f x \\rd x} \\le \\int_a^b \\size {\\map f x} \\rd x$"
+  },
+  "B_source": {
+    "statement": "Let $g, h$ be [[Definition:Riemann Integrable Function|integrable]] on $\\closedint a b$ with $g \\le h$ pointwise.\nThen:\n:$\\displaystyle \\int_a^b g \\le \\int_a^b h$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "g": "-|f| and then f",
+        "h": "f and then |f|"
+      },
+      "derived": {
+        "-|f| <= f <= |f| pointwise": "-integral|f| <= integral f <= integral|f|",
+        "the two-sided integral bound": "|integral f| <= integral |f|"
+      }
+    },
+    "validity_conditions": [
+      "The pointwise inequalities -|f(x)| <= f(x) <= |f(x)| hold everywhere.",
+      "Monotonicity applied to each side gives -integral|f| <= integral f <= integral|f|.",
+      "A two-sided bound -c <= y <= c is equivalent to |y| <= c."
+    ],
+    "proof_plan": [
+      "Pointwise:\n:$-\\size f \\le f \\le \\size f$",
+      "Apply [[Integral is Monotone|monotonicity of the integral]] to both inequalities.",
+      "This gives:\n:$\\displaystyle -\\int_a^b \\size f \\le \\int_a^b f \\le \\int_a^b \\size f$",
+      "Hence:\n:$\\displaystyle \\size {\\int_a^b f} \\le \\int_a^b \\size f$\n{{qed}}"
+    ]
+  }
+}

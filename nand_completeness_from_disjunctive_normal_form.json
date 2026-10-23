@@ -1,0 +1,36 @@
+{
+  "id": "nand_completeness_from_disjunctive_normal_form",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Every [[Definition:Boolean Function|Boolean function]] $f: \\set {0, 1}^n \\to \\set {0, 1}$ with $n \\ge 1$ is expressed by a formula using only the [[Definition:Logical NAND|NAND]] connective $\\uparrow$."
+  },
+  "B_source": {
+    "statement": "Every Boolean function is expressed by a formula in [[Definition:Disjunctive Normal Form|disjunctive normal form]], using only $\\land$, $\\lor$ and $\\neg$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "each of not, and, or": "a NAND formula"
+      },
+      "derived": {
+        "recursive substitution": "a NAND-only formula for f"
+      },
+      "reformulation": "Express the three connectives of disjunctive normal form by NAND and substitute."
+    },
+    "validity_conditions": [
+      "The substitution is recursive, so it applies to arbitrarily nested formulas.",
+      "The constant functions are expressible since p NAND (p NAND p) is a tautology."
+    ],
+    "proof_plan": [
+      "$\\neg p \\equiv p \\uparrow p$.",
+      "$p \\land q \\equiv \\neg \\paren {p \\uparrow q} \\equiv \\paren {p \\uparrow q} \\uparrow \\paren {p \\uparrow q}$.",
+      "By [[De Morgan's Laws (Logic)|De Morgan's laws]], $p \\lor q \\equiv \\neg p \\uparrow \\neg q \\equiv \\paren {p \\uparrow p} \\uparrow \\paren {q \\uparrow q}$.",
+      "By the source result, $f$ is expressed by a formula in $\\land$, $\\lor$, $\\neg$; substituting these equivalents recursively gives a NAND-only formula.\nHence $\\set \\uparrow$ is [[Definition:Functionally Complete|functionally complete]].\n{{qed}}"
+    ]
+  }
+}

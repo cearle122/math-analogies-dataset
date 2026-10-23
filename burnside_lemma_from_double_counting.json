@@ -1,0 +1,38 @@
+{
+  "id": "burnside_lemma_from_double_counting",
+  "field": [
+    "algebra",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let a finite group $G$ [[Definition:Group Action|act]] on a finite set $X$.\nThen the number of [[Definition:Orbit (Group Theory)|orbits]] is:\n:$\\displaystyle \\frac 1 {\\order G} \\sum_{g \\mathop \\in G} \\card {\\map {\\operatorname {Fix} } g}$"
+  },
+  "B_source": {
+    "statement": "Let $R \\subseteq S \\times T$ be a relation between finite sets.\nThen counting the pairs of $R$ by first coordinate and by second coordinate gives the same total:\n:$\\displaystyle \\sum_{s \\mathop \\in S} \\card {\\set {t: s \\mathrel R t} } = \\sum_{t \\mathop \\in T} \\card {\\set {s: s \\mathrel R t} }$"
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the relation R": "the pairs (g, x) with g * x = x",
+        "S and T": "G and X"
+      },
+      "derived": {
+        "the two counts": "the sum of fixed-point counts and the sum of stabilizer orders"
+      },
+      "reformulation": "Double count the fixed pairs (g, x), then convert stabilizer sizes to orbit sizes."
+    },
+    "validity_conditions": [
+      "The orbit-stabilizer theorem is needed to rewrite stabilizer orders.",
+      "Finiteness of G and X makes all counts finite."
+    ],
+    "proof_plan": [
+      "Let $F = \\set {\\tuple {g, x} \\in G \\times X: g * x = x}$.",
+      "By the source result:\n:$\\displaystyle \\sum_{g \\mathop \\in G} \\card {\\map {\\operatorname {Fix} } g} = \\card F = \\sum_{x \\mathop \\in X} \\order {\\Stab x}$",
+      "By the [[Orbit-Stabilizer Theorem]], $\\order {\\Stab x} = \\dfrac {\\order G} {\\card {\\Orb x} }$.",
+      "Each orbit $O$ contributes $\\displaystyle \\sum_{x \\mathop \\in O} \\frac 1 {\\card O} = 1$ to $\\displaystyle \\sum_x \\frac 1 {\\card {\\Orb x} }$.\nHence $\\card F = \\order G$ times the number of orbits, which is [[Burnside's Lemma]].\n{{qed}}"
+    ]
+  }
+}

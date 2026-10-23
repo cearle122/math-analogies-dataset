@@ -1,0 +1,41 @@
+{
+  "id": "ballot_problem_from_reflection",
+  "field": [
+    "combinatorics",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Suppose in an election candidate $A$ receives $a$ votes and candidate $B$ receives $b$ votes, where $a > b$.\nThen the [[Definition:Probability|probability]] that $A$ is strictly ahead of $B$ throughout the count is:\n:$\\dfrac {a - b} {a + b}$"
+  },
+  "B_source": {
+    "statement": "Let $h, k > 0$.\nThen the number of [[Definition:Lattice Path|lattice paths]] from $\\tuple {0, h}$ to $\\tuple {n, k}$ which touch or cross the [[Definition:Axis|$x$-axis]] equals the number of lattice paths from $\\tuple {0, -h}$ to $\\tuple {n, k}$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the lattice path": "the running vote difference as ballots are counted",
+        "the forbidden level": "a tie, where the lead is lost",
+        "the reflected starting point": "the path started from the opposite initial vote"
+      },
+      "derived": {
+        "the bijection between bad paths and reflected paths": "bad counting orders correspond to orders starting with the other candidate",
+        "subtracting the bad count": "the closed-form probability"
+      },
+      "reformulation": "Encode the count as a lattice path so that the losing scenarios become paths meeting a barrier."
+    },
+    "validity_conditions": [
+      "Reflecting a path across the barrier up to its first touch is an involution, so it is a bijection between the two families of paths.",
+      "Every path that ties at some point has a well-defined first touch, which is what makes the reflection well defined.",
+      "The counting requires all orderings of the ballots to be equally likely, which is the probabilistic hypothesis behind the combinatorial identity."
+    ],
+    "proof_plan": [
+      "Encode the count as a [[Definition:Lattice Path|lattice path]] with steps $+1$ for a vote for $A$ and $-1$ for a vote for $B$.\nThe path runs from $\\tuple {0, 0}$ to $\\tuple {a + b, a - b}$.",
+      "$A$ is always ahead {{iff}} the path, after its first step, never returns to the level $0$.\nSuch a path must begin with a step to $\\tuple {1, 1}$.",
+      "The bad paths from $\\tuple {1, 1}$ are those touching level $0$.\nBy the [[Reflection Principle]], reflecting the part of such a path before its first touch gives a [[Definition:Bijection|bijection]] with all paths from $\\tuple {1, -1}$.",
+      "Counting:\n{{begin-eqn}}\n{{eqn | l = N\n| r = \\binom {a + b - 1} {a - 1} - \\binom {a + b - 1} a\n}}\n{{eqn | r = \\frac {a - b} {a + b} \\binom {a + b} a\n}}\n{{end-eqn}}\nDividing by the total $\\dbinom {a + b} a$ gives the result.\n{{qed}}"
+    ]
+  }
+}

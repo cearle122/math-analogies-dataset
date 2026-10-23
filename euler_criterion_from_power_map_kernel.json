@@ -1,0 +1,38 @@
+{
+  "id": "euler_criterion_from_power_map_kernel",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be an [[Definition:Odd Prime|odd prime]] and $a \\perp p$.\nThen:\n:$a^{\\frac {p - 1} 2} \\equiv \\paren {\\dfrac a p} \\pmod p$\nand there are exactly $\\dfrac {p - 1} 2$ [[Definition:Quadratic Residue|quadratic residues]] modulo $p$."
+  },
+  "B_source": {
+    "statement": "Let $\\phi: G \\to H$ be a [[Definition:Group Homomorphism|group homomorphism]].\nThen:\n:$G / \\map \\ker \\phi \\cong \\Img \\phi$"
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the homomorphism phi": "squaring, and then the power map x -> x^((p-1)/2)",
+        "the group G": "the non-zero residues modulo p"
+      },
+      "derived": {
+        "the kernel of the power map": "the subgroup of squares"
+      },
+      "reformulation": "Identify the quadratic residues as the image of squaring and as the kernel of the half-order power map."
+    },
+    "validity_conditions": [
+      "Z/pZ is a field, so x^2 = 1 only for x = 1 or -1, and x^((p-1)/2) = 1 has at most (p - 1)/2 roots.",
+      "p must be odd so that 1 and -1 are distinct."
+    ],
+    "proof_plan": [
+      "Let $G = \\paren {\\Z / p \\Z}^\\times$, of order $p - 1$, and $\\map s x = x^2$.\nIn the field $\\Z / p \\Z$, $x^2 = 1$ {{iff}} $x = \\pm 1$, so $\\map \\ker s = \\set {\\pm 1}$.",
+      "By the source result, the group $Q = \\Img s$ of quadratic residues has $\\dfrac {p - 1} 2$ elements.",
+      "Let $\\map h x = x^{\\frac {p - 1} 2}$.\nThen $\\map h x^2 = x^{p - 1} = 1$, so $\\map h x = \\pm 1$, and $\\map h {y^2} = y^{p - 1} = 1$, so $Q \\subseteq \\map \\ker h$.\nAs $x^{\\frac {p - 1} 2} - 1$ has at most $\\dfrac {p - 1} 2$ roots, $\\map \\ker h = Q$.",
+      "Hence $a^{\\frac {p - 1} 2} \\equiv 1$ if $a$ is a quadratic residue, and $\\equiv -1$ otherwise.\nThis is [[Euler's Criterion]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "field_from_maximal_ideal_quotient",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Commutative Ring with Unity|commutative ring with unity]].\nLet $M$ be a [[Definition:Maximal Ideal of Ring|maximal ideal]] of $R$.\nThen the [[Definition:Quotient Ring|quotient ring]] $R / M$ is a [[Definition:Field (Abstract Algebra)|field]]."
+  },
+  "B_source": {
+    "statement": "Let $R$ be a [[Definition:Ring (Abstract Algebra)|ring]] and $I$ an [[Definition:Ideal of Ring|ideal]] of $R$.\nThen the ideals of $R / I$ are in one-to-one correspondence with the ideals $J$ of $R$ such that $I \\subseteq J$, via $J \\mapsto J / I$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ideal I": "the maximal ideal M",
+        "the ideals of R containing I": "just M and R itself",
+        "the corresponding ideals of R/I": "just the zero ideal and the whole ring"
+      },
+      "derived": {
+        "having exactly two ideals": "being a field"
+      },
+      "reformulation": "Being a field must first be reformulated as a statement about the ideal lattice rather than about inverses, so the correspondence theorem applies directly."
+    },
+    "validity_conditions": [
+      "R must be commutative with identity for the two-ideal characterization of a field to hold",
+      "M must be proper so the quotient is not the zero ring",
+      "maximality is used precisely as 'no ideals strictly between M and R'"
+    ],
+    "proof_plan": [
+      "By the [[Correspondence Theorem for Quotient Rings]], ideals of $R / M$ correspond to ideals $J$ of $R$ with $M \\subseteq J$.",
+      "As $M$ is [[Definition:Maximal Ideal of Ring|maximal]], the only such ideals are $J = M$ and $J = R$.",
+      "Hence the only ideals of $R / M$ are $\\set {0_{R / M} }$ and $R / M$ itself.",
+      "Let $x \\in R / M$ with $x \\ne 0$.\nThe [[Definition:Principal Ideal of Ring|principal ideal]] $\\ideal x$ is non-zero, so $\\ideal x = R / M$.",
+      "Hence $1 = x y$ for some $y \\in R / M$, so every non-zero class is [[Definition:Unit of Ring|invertible]].\nAs $M \\ne R$, $R / M$ is non-zero, and so is a [[Definition:Field (Abstract Algebra)|field]].\n{{qed}}"
+    ]
+  }
+}

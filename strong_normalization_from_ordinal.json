@@ -1,0 +1,42 @@
+{
+  "id": "strong_normalization_from_ordinal",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $t$ be a well-typed term of the [[Definition:Simply Typed Lambda Calculus|simply typed $\\lambda$-calculus]].\nThen every [[Definition:Beta Reduction|reduction]] sequence starting from $t$ is finite."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {W, <}$ be a [[Definition:Well-Ordered Set|well-ordered set]].\nThen there is no infinite strictly decreasing sequence $w_0 > w_1 > w_2 > \\cdots$ in $W$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "fixed_point_encoding"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "each term / reduction state": "an ordinal (or element of a well-founded order) measuring it",
+        "one reduction step": "a strict decrease in the assigned measure"
+      },
+      "derived": {
+        "no infinite decreasing sequence in the well-order": "no infinite reduction sequence",
+        "termination of the measure descent": "strong normalization"
+      },
+      "reformulation": "Assign each term a measure in a well-founded order (via a reducibility/logical-relations argument) so that every reduction step strictly decreases it."
+    },
+    "validity_conditions": [
+      "One must exhibit a measure on terms landing in a well-founded order such that every reduction step strictly decreases it (the hard part, typically via reducibility candidates).",
+      "Given such a measure, an infinite reduction would yield an infinite strictly-decreasing sequence in a well-order, which is impossible.",
+      "Hence reductions terminate."
+    ],
+    "proof_plan": [
+      "Define a measure $\\map \\mu t$ assigning each well-typed term an element of a [[Definition:Well-Founded Relation|well-founded]] order, such as an [[Definition:Ordinal|ordinal]] or a multiset of type degrees of redexes.",
+      "Show that each reduction step $t \\to t'$ satisfies $\\map \\mu {t'} < \\map \\mu t$.\nFor the multiset measure, contracting a redex of maximal degree creates only redexes of strictly smaller degree.",
+      "An infinite reduction sequence would give an infinite strictly decreasing sequence in the well-order, a contradiction.",
+      "Hence every reduction sequence terminates.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "compactness_logic_from_topology",
+  "field": [
+    "logic",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\Sigma$ be a set of [[Definition:Sentence|sentences]] of [[Definition:First-Order Logic|first-order logic]].\nThen $\\Sigma$ is [[Definition:Satisfiable|satisfiable]] {{iff}} every [[Definition:Finite Set|finite]] [[Definition:Subset|subset]] of $\\Sigma$ is satisfiable."
+  },
+  "B_source": {
+    "statement": "Let $T = \\struct {S, \\tau}$ be a [[Definition:Topological Space|topological space]].\nThen $T$ is [[Definition:Compact Space|compact]] {{iff}} every family of [[Definition:Closed Set (Topology)|closed sets]] of $T$ with the [[Definition:Finite Intersection Property|finite intersection property]] has non-empty [[Definition:Set Intersection|intersection]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "topological space": "Stone space of complete theories / the space of truth assignments {0,1}^sentences",
+        "closed set for sentence phi": "the set of models satisfying phi",
+        "finite intersection property": "every finite subset of Sigma is satisfiable"
+      },
+      "derived": {
+        "nonempty total intersection": "a model of all of Sigma",
+        "topological compactness of the space": "the compactness theorem of logic"
+      },
+      "reformulation": "Encode each sentence as the (closed) set of assignments satisfying it inside the compact product space {0,1}^sentences; satisfiability becomes nonempty intersection."
+    },
+    "validity_conditions": [
+      "The space of truth assignments {0,1}^S (S = sentences) is compact by Tychonoff, and each sentence's model-set is closed.",
+      "'Every finite subset satisfiable' is exactly the finite intersection property for these closed sets.",
+      "Topological compactness then yields a point (assignment/model) in the total intersection, i.e. a model of Sigma."
+    ],
+    "proof_plan": [
+      "Let $\\PP$ be the set of [[Definition:Propositional Variable|propositional variables]].\nRepresent [[Definition:Boolean Interpretation|truth assignments]] as points of $\\set {0, 1}^\\PP$ with the [[Definition:Product Topology|product topology]], which is [[Definition:Compact Space|compact]] by [[Tychonoff's Theorem]].",
+      "For each $\\phi \\in \\Sigma$, let:\n:$C_\\phi = \\set {v \\in \\set {0, 1}^\\PP: v \\models \\phi}$\n$C_\\phi$ depends on finitely many coordinates, so is [[Definition:Clopen Set|clopen]], in particular [[Definition:Closed Set (Topology)|closed]].",
+      "Every finite subset of $\\Sigma$ is satisfiable {{iff}} $\\set {C_\\phi: \\phi \\in \\Sigma}$ has the [[Definition:Finite Intersection Property|finite intersection property]].",
+      "By compactness, there exists $v \\in \\displaystyle \\bigcap_{\\phi \\mathop \\in \\Sigma} C_\\phi$.\nThen $v$ is a [[Definition:Model (Logic)|model]] of $\\Sigma$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "karatsuba_from_master_theorem",
+  "field": [
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Two $n$-digit integers can be multiplied using $\\map \\Theta {n^{\\log_2 3} }$ digit operations, where $\\log_2 3 \\approx 1.585$."
+  },
+  "B_source": {
+    "statement": "Let $\\map T n = a \\map T {n / b} + \\map \\Theta {n^d}$.\nIf $d < \\log_b a$, then $\\map T n = \\map \\Theta {n^{\\log_b a} }$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "a, b, d": "3, 2, 1"
+      },
+      "derived": {
+        "three half-size products": "the exponent log_2 3"
+      },
+      "reformulation": "Save one of the four half-size products by Karatsuba's identity, then apply the master theorem."
+    },
+    "validity_conditions": [
+      "The additions and shifts cost Theta(n), so d = 1.",
+      "Schoolbook splitting, with a = 4, gives only Theta(n^2)."
+    ],
+    "proof_plan": [
+      "Write $x = x_1 B^m + x_0$ and $y = y_1 B^m + y_0$ with $m = \\dfrac n 2$.",
+      "Then $x y = z_2 B^{2 m} + z_1 B^m + z_0$, where $z_2 = x_1 y_1$, $z_0 = x_0 y_0$ and:\n:$z_1 = \\paren {x_1 + x_0} \\paren {y_1 + y_0} - z_2 - z_0$\nSo three products of half size suffice.",
+      "The remaining additions and shifts cost $\\map \\Theta n$, so $\\map T n = 3 \\map T {n / 2} + \\map \\Theta n$.",
+      "As $1 < \\log_2 3$, the source result gives $\\map T n = \\map \\Theta {n^{\\log_2 3} }$, which is the [[Karatsuba Algorithm|Karatsuba bound]].\n{{qed}}"
+    ]
+  }
+}

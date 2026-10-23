@@ -1,0 +1,39 @@
+{
+  "id": "euler_line_from_centroid_homothety",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Triangle (Geometry)|triangle]] with [[Definition:Orthocenter|orthocenter]] $H$, [[Definition:Centroid of Triangle|centroid]] $G$ and [[Definition:Circumcenter|circumcenter]] $O$.\nThen $H$, $G$, $O$ are [[Definition:Collinear Points|collinear]], and:\n:$HG = 2 \\, GO$"
+  },
+  "B_source": {
+    "statement": "Let $\\triangle ABC$ have [[Definition:Centroid of Triangle|centroid]] $G$.\nThen the [[Definition:Homothety|homothety]] $h$ with center $G$ and ratio $-\\dfrac 1 2$ maps $A$, $B$, $C$ to the [[Definition:Midpoint|midpoints]] of $BC$, $CA$, $AB$ respectively."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the homothety centred at the centroid": "the specific map with ratio minus one half",
+        "the image of the triangle": "the medial triangle formed by the midpoints",
+        "the image of a distinguished centre": "the corresponding centre of the medial triangle"
+      },
+      "derived": {
+        "the image of the orthocentre": "the circumcentre, since the medial triangle's orthocentre is the original circumcentre",
+        "collinearity of a point with its image and the homothety centre": "collinearity of the orthocentre, centroid, and circumcentre"
+      }
+    },
+    "validity_conditions": [
+      "A homothety maps every point to a point collinear with it and the centre, which immediately gives collinearity of the three centres.",
+      "The homothety with ratio minus one half at the centroid sends each vertex to the midpoint of the opposite side, hence the triangle to its medial triangle.",
+      "The orthocentre of the medial triangle is the circumcentre of the original, which is the identification that makes the image of the orthocentre the circumcentre; the ratio of the homothety then gives the two to one division."
+    ],
+    "proof_plan": [
+      "Apply the [[Definition:Homothety|homothety]] $h$ with center $G$ and ratio $-\\dfrac 1 2$ to $\\triangle ABC$.",
+      "From the source result, $\\map h {\\triangle ABC}$ is the [[Definition:Medial Triangle|medial triangle]] $\\triangle A'B'C'$.",
+      "$h$ preserves directions of lines, so maps [[Definition:Altitude of Triangle|altitudes]] of $\\triangle ABC$ to lines through $A'$, $B'$, $C'$ perpendicular to the opposite sides.\nThese are the [[Definition:Perpendicular Bisector|perpendicular bisectors]] of the sides of $\\triangle ABC$.\nHence $\\map h H$ is the orthocenter of $\\triangle A'B'C'$, which is $O$.",
+      "As $\\map h H = O$, the points $H$, $G$, $O$ are [[Definition:Collinear Points|collinear]], with:\n:$\\vec {GO} = -\\dfrac 1 2 \\vec {GH}$\nHence $HG = 2 \\, GO$.\n{{qed}}"
+    ]
+  }
+}

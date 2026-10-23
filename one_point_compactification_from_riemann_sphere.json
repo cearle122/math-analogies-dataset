@@ -1,0 +1,37 @@
+{
+  "id": "one_point_compactification_from_riemann_sphere",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Locally Compact Space|locally compact]] [[Definition:Hausdorff Space|Hausdorff space]], and $X^* = X \\cup \\set \\infty$, with open sets the open sets of $X$ together with the sets $X^* \\setminus K$ for [[Definition:Compact Subspace|compact]] $K \\subseteq X$.\nThen $X^*$ is a [[Definition:Compact Hausdorff Space|compact Hausdorff space]] containing $X$ as an open subspace."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Riemann Sphere|Riemann sphere]] $\\C \\cup \\set \\infty$, with neighbourhoods of $\\infty$ the sets $\\set {\\size z > R} \\cup \\set \\infty$, is compact, and is homeomorphic to $\\Bbb S^2$ by [[Definition:Stereographic Projection|stereographic projection]]."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the complement of a closed disk": "the complement of a compact set",
+        "C": "an arbitrary locally compact Hausdorff space"
+      },
+      "derived": {
+        "compactness of the sphere": "compactness of X*"
+      },
+      "reformulation": "Replace complements of closed disks by complements of arbitrary compact sets."
+    },
+    "validity_conditions": [
+      "Hausdorffness of X makes compact sets closed, so the new open sets meet X in open sets.",
+      "Local compactness is exactly what separates points of X from infinity."
+    ],
+    "proof_plan": [
+      "Unions and finite intersections of the given sets are again of this form, as finite unions of compact sets are compact and $U \\setminus K$ is open in $X$ for $K$ closed.\nSo $X^*$ is a [[Definition:Topological Space|topological space]] with $X$ an open subspace.",
+      "Given an open cover of $X^*$, some member $X^* \\setminus K$ contains $\\infty$, and finitely many members cover the compact set $K$.\nHence $X^*$ is compact.",
+      "Points of $X$ are separated within $X$.\nFor $x \\in X$, local compactness gives a compact neighbourhood $K$ of $x$, and $K^\\circ$ and $X^* \\setminus K$ separate $x$ from $\\infty$.",
+      "Hence $X^*$ is Hausdorff.\nFor $X = \\C$ this recovers the Riemann sphere, and for $X = \\R^n$ it gives $\\Bbb S^n$.\n{{qed}}"
+    ]
+  }
+}

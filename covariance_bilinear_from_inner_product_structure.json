@@ -1,0 +1,39 @@
+{
+  "id": "covariance_bilinear_from_inner_product_structure",
+  "field": [
+    "probability",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "For [[Definition:Square-Integrable Random Variable|square-integrable]] random variables, [[Definition:Covariance|covariance]] is symmetric and bilinear, and:\n:$\\var {a X + b Y} = a^2 \\var X + 2 a b \\cov {X, Y} + b^2 \\var Y$\n:$\\displaystyle \\var {\\sum_i X_i} = \\sum_{i, j} \\cov {X_i, X_j}$\nMoreover $\\var X = 0$ {{iff}} $X$ is [[Definition:Almost Surely|almost surely]] constant."
+  },
+  "B_source": {
+    "statement": "$\\innerprod U V = \\expect {U V}$ is an [[Definition:Inner Product|inner product]] on $\\map {L^2} \\Pr$, and:\n:$\\norm {u + v}^2 = \\norm u^2 + 2 \\innerprod u v + \\norm v^2$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "vectors": "centred random variables X - E[X]",
+        "inner product": "covariance",
+        "squared norm": "variance"
+      },
+      "derived": {
+        "the polarization expansion": "the variance of a linear combination"
+      },
+      "reformulation": "Transport the inner product along the linear centring map, so that covariance becomes an inner product on random variables modulo constants."
+    },
+    "validity_conditions": [
+      "Centring X -> X - E[X] is linear, so the pulled-back form is bilinear.",
+      "Its kernel consists of the almost surely constant variables, so covariance is an inner product only modulo constants."
+    ],
+    "proof_plan": [
+      "Let $\\map c X = X - \\expect X$, a linear map on $\\map {L^2} \\Pr$.\nThen $\\cov {X, Y} = \\innerprod {\\map c X} {\\map c Y}$ and $\\var X = \\norm {\\map c X}^2$.",
+      "The pullback of a symmetric bilinear form along a linear map is symmetric bilinear, so covariance is symmetric and bilinear.",
+      "Applying the source expansion to $\\map c {a X + b Y} = a \\map c X + b \\map c Y$ gives the variance formula; induction gives the formula for sums.",
+      "$\\var X = 0$ {{iff}} $\\map c X = 0$ in $\\map {L^2} \\Pr$, that is, $X = \\expect X$ almost surely.\n{{qed}}"
+    ]
+  }
+}

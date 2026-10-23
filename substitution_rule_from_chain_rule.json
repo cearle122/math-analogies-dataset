@@ -1,0 +1,40 @@
+{
+  "id": "substitution_rule_from_chain_rule",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $g$ be [[Definition:Continuously Differentiable|continuously differentiable]] on $\\closedint a b$ and $f$ [[Definition:Continuous Real Function|continuous]] on $\\map g {\\closedint a b}$.\nThen:\n:$\\displaystyle \\int_a^b \\map f {\\map g x} \\map {g'} x \\rd x = \\int_{\\map g a}^{\\map g b} \\map f u \\rd u$"
+  },
+  "B_source": {
+    "statement": "Let $F$ and $g$ be [[Definition:Differentiable Real Function|differentiable]].\nThen:\n:$\\map {\\paren {F \\circ g}'} x = \\map {F'} {\\map g x} \\map {g'} x$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the composite being differentiated": "an antiderivative of the outer function composed with the inner one",
+        "the two factors produced by the chain rule": "the integrand appearing in the substitution formula",
+        "the endpoints of the interval": "their images under the inner function"
+      },
+      "derived": {
+        "integrating the chain rule identity": "the antiderivative evaluated at the transformed endpoints",
+        "recognizing the boundary values": "the integral of the outer function over the image interval"
+      },
+      "reformulation": "Recognize the integrand as the derivative produced by the chain rule, so integration undoes the composition."
+    },
+    "validity_conditions": [
+      "The outer function must be continuous so that an antiderivative exists, and the inner function continuously differentiable so the chain rule applies.",
+      "The integral over the image interval is taken between the images of the endpoints, with orientation preserved; if the inner function is not monotone the image is still traversed with correct signed multiplicity.",
+      "Rewriting the boundary values as an integral over the image interval uses the fundamental theorem of calculus again, now applied to the outer function."
+    ],
+    "proof_plan": [
+      "Let $F$ be a [[Definition:Primitive (Calculus)|primitive]] of $f$.\nBy the [[Chain Rule for Derivatives]]:\n:$\\map {\\paren {F \\circ g}'} x = \\map f {\\map g x} \\map {g'} x$",
+      "The right hand side is the integrand of the substitution formula.",
+      "Integrating over $\\closedint a b$ and applying the [[Fundamental Theorem of Calculus]]:\n:$\\displaystyle \\int_a^b \\map f {\\map g x} \\map {g'} x \\rd x = \\map F {\\map g b} - \\map F {\\map g a}$",
+      "Again by the Fundamental Theorem of Calculus:\n:$\\map F {\\map g b} - \\map F {\\map g a} = \\displaystyle \\int_{\\map g a}^{\\map g b} \\map f u \\rd u$\nwhich is [[Integration by Substitution]].\n{{qed}}"
+    ]
+  }
+}

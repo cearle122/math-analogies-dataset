@@ -1,0 +1,36 @@
+{
+  "id": "hyperbolic_angle_sum_from_gauss_bonnet",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $T$ be a [[Definition:Hyperbolic Triangle|triangle]] in the [[Definition:Hyperbolic Plane|hyperbolic plane]] of curvature $-1$ with angles $\\alpha$, $\\beta$, $\\gamma$.\nThen:\n:$\\map {\\operatorname {Area} } T = \\pi - \\paren {\\alpha + \\beta + \\gamma}$\nso the angle sum is less than $\\pi$ and every triangle has area less than $\\pi$."
+  },
+  "B_source": {
+    "statement": "Let $T$ be a [[Definition:Geodesic Triangle|geodesic triangle]] with angles $\\alpha$, $\\beta$, $\\gamma$ on a surface with [[Definition:Gaussian Curvature|Gaussian curvature]] $K$.\nThen:\n:$\\displaystyle \\alpha + \\beta + \\gamma - \\pi = \\int_T K \\rd A$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the curvature K": "the constant -1"
+      },
+      "derived": {
+        "the curvature integral": "minus the area of T"
+      },
+      "reformulation": "Specialize the local Gauss-Bonnet formula to constant negative curvature."
+    },
+    "validity_conditions": [
+      "Hyperbolic lines are geodesics, so hyperbolic triangles are geodesic triangles.",
+      "With constant curvature +1 the same specialization gives Girard's spherical excess formula."
+    ],
+    "proof_plan": [
+      "In the hyperbolic plane $K \\equiv -1$.",
+      "Hence $\\displaystyle \\int_T K \\rd A = -\\map {\\operatorname {Area} } T$.",
+      "By the [[Gauss-Bonnet Theorem|local Gauss-Bonnet formula]]:\n:$\\alpha + \\beta + \\gamma - \\pi = -\\map {\\operatorname {Area} } T$",
+      "Hence $\\map {\\operatorname {Area} } T = \\pi - \\paren {\\alpha + \\beta + \\gamma}$.\nAs the area is positive and the angles are positive, $\\alpha + \\beta + \\gamma < \\pi$ and $\\map {\\operatorname {Area} } T < \\pi$.\n{{qed}}"
+    ]
+  }
+}

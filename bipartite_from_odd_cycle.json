@@ -1,0 +1,38 @@
+{
+  "id": "bipartite_from_odd_cycle",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Graph (Graph Theory)|graph]].\nThen $G$ is [[Definition:Bipartite Graph|bipartite]] {{iff}} $G$ contains no [[Definition:Cycle (Graph Theory)|cycle]] of [[Definition:Odd Integer|odd]] length."
+  },
+  "B_source": {
+    "statement": "A [[Definition:Graph (Graph Theory)|graph]] $G$ is [[Definition:K-Colorable Graph|$2$-colorable]] {{iff}} there exists a [[Definition:Proper Vertex Coloring|proper vertex coloring]] of $G$ with $2$ colors."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the two parts L,R of a bipartition": "the two color classes",
+        "edge crosses the partition": "endpoints receive different colors"
+      },
+      "derived": {
+        "bipartite": "2-colorable",
+        "no odd cycle": "no obstruction to a consistent 2-coloring"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "Bipartite and 2-colorable are literally the same property: a bipartition IS a proper 2-coloring, with parts as color classes.",
+      "The odd-cycle characterization then follows because a 2-coloring propagated along a path forces the parity of any returning cycle to be even."
+    ],
+    "proof_plan": [
+      "A [[Definition:Bipartition|bipartition]] $\\tuple {L, R}$ of $G$ is the same as a proper $2$-coloring: color the [[Definition:Vertex of Graph|vertices]] of $L$ with one color and those of $R$ with the other.",
+      "In each [[Definition:Connected Graph|component]], fix a root and color vertices by the parity of their distance from it, as in [[Definition:Breadth-First Search|breadth-first search]].\nA proper $2$-coloring exists {{iff}} this propagation never assigns the same color to both ends of an [[Definition:Edge of Graph|edge]].",
+      "A conflict on an edge $u v$ with $\\map d u \\equiv \\map d v \\pmod 2$ closes a cycle of length $\\map d u + \\map d v + 1$, which is [[Definition:Odd Integer|odd]].\nConversely, an odd cycle cannot be properly $2$-colored, since colors must alternate around it.",
+      "Hence $G$ is [[Definition:Bipartite Graph|bipartite]] {{iff}} $G$ has no [[Definition:Odd Integer|odd]] [[Definition:Cycle (Graph Theory)|cycle]].\n{{qed}}"
+    ]
+  }
+}

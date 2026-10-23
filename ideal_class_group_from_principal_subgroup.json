@@ -1,0 +1,41 @@
+{
+  "id": "ideal_class_group_from_principal_subgroup",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Dedekind Domain|Dedekind domain]].\nThe [[Definition:Ideal Class Group|ideal class group]] of $R$ is:\n:$\\map {\\operatorname {Cl} } R = \\map {\\mathcal I} R / \\map {\\mathcal P} R$\nand $\\map {\\operatorname {Cl} } R$ is [[Definition:Trivial Group|trivial]] {{iff}} $R$ is a [[Definition:Principal Ideal Domain|principal ideal domain]]."
+  },
+  "B_source": {
+    "statement": "Let $A$ be an [[Definition:Abelian Group|abelian group]] and $B$ a [[Definition:Subgroup|subgroup]].\nThen the [[Definition:Quotient Group|quotient group]] $A / B$ is trivial {{iff}} $B = A$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ambient abelian group": "the group of nonzero fractional ideals under multiplication",
+        "the subgroup collapsed": "the principal fractional ideals",
+        "the quotient group": "the ideal class group"
+      },
+      "derived": {
+        "triviality of the quotient": "every fractional ideal is principal, so the ring is a principal ideal domain",
+        "the size of the quotient": "the class number, measuring failure of unique factorization"
+      },
+      "reformulation": "Measure failure of a property by collapsing the objects having it, so that triviality of the quotient is the property itself."
+    },
+    "validity_conditions": [
+      "The nonzero fractional ideals of a Dedekind domain form an abelian group under multiplication, which is what makes the quotient available.",
+      "The principal fractional ideals form a subgroup, since products and inverses of principal ideals are principal.",
+      "The Dedekind hypothesis is essential: in a general integral domain the fractional ideals need not be invertible and no group structure is present."
+    ],
+    "proof_plan": [
+      "The non-zero [[Definition:Fractional Ideal|fractional ideals]] of $R$ form an [[Definition:Abelian Group|abelian group]] $\\map {\\mathcal I} R$ under multiplication, as $R$ is a [[Definition:Dedekind Domain|Dedekind domain]].",
+      "The principal fractional ideals $\\map {\\mathcal P} R = \\set {x R: x \\in \\map {\\operatorname {Frac} } R^\\times}$ form a [[Definition:Subgroup|subgroup]], as $x R \\cdot y R = x y R$ and $\\paren {x R}^{-1} = x^{-1} R$.",
+      "Form the [[Definition:Quotient Group|quotient]]:\n:$\\map {\\operatorname {Cl} } R = \\map {\\mathcal I} R / \\map {\\mathcal P} R$",
+      "By the source result, $\\map {\\operatorname {Cl} } R$ is trivial {{iff}} every fractional ideal is principal.\nThis holds {{iff}} every ideal of $R$ is principal, that is, $R$ is a [[Definition:Principal Ideal Domain|PID]].\nAs a Dedekind domain is a [[Definition:Unique Factorization Domain|UFD]] {{iff}} it is a PID, $\\map {\\operatorname {Cl} } R$ measures the failure of unique factorization.\n{{qed}}"
+    ]
+  }
+}

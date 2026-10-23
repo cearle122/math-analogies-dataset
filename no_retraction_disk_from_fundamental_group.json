@@ -1,0 +1,37 @@
+{
+  "id": "no_retraction_disk_from_fundamental_group",
+  "field": [
+    "topology",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "There is no [[Definition:Retraction (Topology)|retraction]] $r: \\Bbb D^2 \\to \\Bbb S^1$ of the closed disk onto its boundary circle."
+  },
+  "B_source": {
+    "statement": "$\\map {\\pi_1} {\\Bbb S^1} \\cong \\Z$, $\\map {\\pi_1} {\\Bbb D^2}$ is [[Definition:Trivial Group|trivial]], and $\\pi_1$ is a [[Definition:Functor|functor]]: $\\paren {g \\circ f}_* = g_* \\circ f_*$ and $\\paren {\\operatorname {id} }_* = \\operatorname {id}$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the composite r composed with the inclusion": "the identity of the circle"
+      },
+      "derived": {
+        "the induced homomorphisms": "a factorization of the identity of Z through the trivial group"
+      },
+      "reformulation": "Apply the fundamental group functor to the equation r composed with inclusion equals identity."
+    },
+    "validity_conditions": [
+      "Functoriality is what turns the topological identity into an algebraic one.",
+      "The same argument with higher homology groups gives the statement in all dimensions."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $r$ is a retraction, so $r \\circ i = \\operatorname {id}_{\\Bbb S^1}$, where $i: \\Bbb S^1 \\to \\Bbb D^2$ is the inclusion.",
+      "By functoriality, $r_* \\circ i_* = \\operatorname {id}$ on $\\map {\\pi_1} {\\Bbb S^1} \\cong \\Z$.",
+      "But $i_*$ maps into the trivial group $\\map {\\pi_1} {\\Bbb D^2}$, so $r_* \\circ i_* = 0$, while $\\operatorname {id}_\\Z \\ne 0$.",
+      "This contradiction shows that no retraction exists.\nThe [[Brouwer Fixed Point Theorem]] for $\\Bbb D^2$ follows by the ray construction.\n{{qed}}"
+    ]
+  }
+}

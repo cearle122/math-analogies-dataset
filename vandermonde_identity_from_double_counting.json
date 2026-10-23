@@ -1,0 +1,37 @@
+{
+  "id": "vandermonde_identity_from_double_counting",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $m, n, r \\in \\Z_{\\ge 0}$.\nThen:\n:$\\displaystyle \\sum_{k \\mathop = 0}^r \\binom m k \\binom n {r - k} = \\binom {m + n} r$"
+  },
+  "B_source": {
+    "statement": "To prove an identity between two expressions, exhibit one finite set and count it in two ways, once directly and once by partitioning it into classes and summing their sizes."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the finite set": "the r-element subsets of a disjoint union of an m-set and an n-set",
+        "the classes": "subsets with exactly k elements from the m-set"
+      },
+      "derived": {
+        "the two counts": "the two sides of the identity"
+      },
+      "reformulation": "Count r-element committees chosen from two groups, directly and by the number chosen from the first group."
+    },
+    "validity_conditions": [
+      "The two groups must be disjoint for the product rule to apply within each class.",
+      "Equivalently, compare coefficients of x^r in (1 + x)^m (1 + x)^n = (1 + x)^(m + n)."
+    ],
+    "proof_plan": [
+      "Let $S = M \\cup N$ with $M \\cap N = \\O$, $\\card M = m$ and $\\card N = n$.\nDirectly, $S$ has $\\dbinom {m + n} r$ subsets of size $r$.",
+      "Partition these subsets $T$ according to $k = \\card {T \\cap M}$, for $0 \\le k \\le r$.",
+      "For fixed $k$, choose $T \\cap M$ in $\\dbinom m k$ ways and $T \\cap N$ in $\\dbinom n {r - k}$ ways, independently.",
+      "Summing over $k$ gives the left hand side, which is [[Vandermonde's Identity]].\n{{qed}}"
+    ]
+  }
+}

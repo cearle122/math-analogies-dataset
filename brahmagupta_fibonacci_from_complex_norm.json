@@ -1,0 +1,38 @@
+{
+  "id": "brahmagupta_fibonacci_from_complex_norm",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $a, b, c, d \\in \\Z$.\nThen:\n:$\\paren {a^2 + b^2} \\paren {c^2 + d^2} = \\paren {a c - b d}^2 + \\paren {a d + b c}^2$\nso a product of sums of two squares is a sum of two squares."
+  },
+  "B_source": {
+    "statement": "Let $z, w \\in \\C$.\nThen:\n:$\\size {z w}^2 = \\size z^2 \\size w^2$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "z": "a + b i",
+        "w": "c + d i"
+      },
+      "derived": {
+        "the modulus identity": "the two-squares identity"
+      },
+      "reformulation": "Read a sum of two squares as the squared modulus of a Gaussian integer."
+    },
+    "validity_conditions": [
+      "The product of Gaussian integers is a Gaussian integer, so the new squares are integers.",
+      "This is the two-dimensional case of Euler's four-square identity."
+    ],
+    "proof_plan": [
+      "Let $z = a + b i$ and $w = c + d i$, so $\\size z^2 = a^2 + b^2$ and $\\size w^2 = c^2 + d^2$.",
+      "Then $z w = \\paren {a c - b d} + \\paren {a d + b c} i$.",
+      "By the source result, $\\size {z w}^2 = \\size z^2 \\size w^2$.",
+      "Writing out $\\size {z w}^2$ gives the [[Brahmagupta-Fibonacci Identity]], with integer squares as $a c - b d, a d + b c \\in \\Z$.\n{{qed}}"
+    ]
+  }
+}

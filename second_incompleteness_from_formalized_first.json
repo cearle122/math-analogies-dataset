@@ -1,0 +1,40 @@
+{
+  "id": "second_incompleteness_from_formalized_first",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $T$ be a [[Definition:Consistent|consistent]] [[Definition:Recursively Axiomatized Theory|recursively axiomatized]] theory extending [[Definition:Peano Arithmetic|Peano arithmetic]].\nThen:\n:$T \\nvdash \\map {\\operatorname {Con} } T$"
+  },
+  "B_source": {
+    "statement": "Let $\\map {\\operatorname {Prov}_T} x$ be a [[Definition:Provability Predicate|provability predicate]] for $T$ satisfying the [[Definition:Hilbert-Bernays Derivability Conditions|derivability conditions]].\nThen an informal proof of \"$P$ implies $Q$\" about $T$ formalizes to a proof in $T$ of the arithmetized statement."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the metatheoretic argument being formalized": "the proof that consistency implies the undecidable sentence is unprovable",
+        "the statements about the theory": "their arithmetized forms, expressed by a provability predicate",
+        "the conclusion drawn outside the theory": "the same implication, now itself a theorem of the theory"
+      },
+      "derived": {
+        "the formalized implication": "the theory proves that consistency implies the undecidable sentence",
+        "combining with the first theorem": "proving consistency would prove the undecidable sentence, which is impossible"
+      },
+      "reformulation": "Move the metatheoretic argument inside the theory, converting a statement about provability into a theorem."
+    },
+    "validity_conditions": [
+      "The provability predicate must satisfy the derivability conditions, so that the theory can reason about its own proofs; without them the formalization step fails.",
+      "The theory must be strong enough to formalize its own syntax and proof relation, which is why the theorem requires a sufficiently strong arithmetic.",
+      "Combining the formalized implication with the first incompleteness theorem gives the result, so the argument depends on that theorem rather than replacing it."
+    ],
+    "proof_plan": [
+      "Let $G$ be the [[Gödel's First Incompleteness Theorem|Gödel sentence]] with $T \\vdash G \\leftrightarrow \\neg \\map {\\operatorname {Prov}_T} {\\ulcorner G \\urcorner}$.\nThe informal argument of the first theorem shows: if $T$ is consistent, then $T \\nvdash G$.",
+      "Arithmetize this as:\n:$\\map {\\operatorname {Con} } T \\to \\neg \\map {\\operatorname {Prov}_T} {\\ulcorner G \\urcorner}$\nwhere $\\map {\\operatorname {Con} } T = \\neg \\map {\\operatorname {Prov}_T} {\\ulcorner 0 = 1 \\urcorner}$.",
+      "Using the derivability conditions, the informal argument formalizes step by step:\n:$T \\vdash \\map {\\operatorname {Con} } T \\to \\neg \\map {\\operatorname {Prov}_T} {\\ulcorner G \\urcorner}$\nso $T \\vdash \\map {\\operatorname {Con} } T \\to G$.",
+      "If $T \\vdash \\map {\\operatorname {Con} } T$, then $T \\vdash G$, contradicting the first incompleteness theorem.\nHence $T \\nvdash \\map {\\operatorname {Con} } T$, which is [[Gödel's Second Incompleteness Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "continuous_time_markov_from_discrete_chain",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {X_t}_{t \\mathop \\ge 0}$ be a [[Definition:Continuous-Time Markov Chain|continuous-time Markov chain]] on a [[Definition:Finite Set|finite]] state space with [[Definition:Transition Rate Matrix|rate matrix]] $Q$.\nThen its transition matrices are:\n:$\\map P t = e^{t Q}$\nwhere $Q$ has non-negative off-diagonal entries and zero row sums."
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {X_n}$ be a [[Definition:Markov Chain|discrete-time Markov chain]] with [[Definition:Stochastic Matrix|stochastic]] [[Definition:Transition Matrix|transition matrix]] $P$ and initial distribution $\\pi$.\nThen the distribution of $X_n$ is:\n:$\\pi P^n$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "one discrete step": "a time interval of length h",
+        "the stochastic matrix P": "the matrix I + hQ",
+        "the n-step power P^n": "the limit of (I + tQ/n)^n"
+      },
+      "derived": {
+        "the limiting matrix power": "the exponential exp(tQ)"
+      },
+      "reformulation": "The rate matrix Q must be introduced as the derivative of the transition matrix at time zero, which has no discrete-time counterpart until the step size is made explicit."
+    },
+    "validity_conditions": [
+      "h must be small enough that I + hQ has nonnegative entries, i.e. h <= 1/max|q_ii|",
+      "Q must have zero row sums for the approximants to remain stochastic",
+      "the state space is taken finite so the matrix exponential converges without further conditions"
+    ],
+    "proof_plan": [
+      "Fix $t > 0$ and split $\\closedint 0 t$ into $n$ steps of size $h = \\dfrac t n$.",
+      "Approximate the one-step transition matrix over time $h$ by:\n:$\\map P h \\approx \\mathbf I + h Q$",
+      "For $h$ small, $\\mathbf I + h Q$ has non-negative entries, and its rows sum to $1$ as $Q$ has zero row sums.\nHence it is [[Definition:Stochastic Matrix|stochastic]], and the discrete chain is well-defined.",
+      "The $n$-step matrix is $\\paren {\\mathbf I + \\dfrac {t Q} n}^n$.\nBy the [[Definition:Matrix Exponential|matrix exponential]] limit formula:\n:$\\displaystyle \\lim_{n \\mathop \\to \\infty} \\paren {\\mathbf I + \\frac {t Q} n}^n = e^{t Q}$",
+      "From $P^{m + n} = P^m P^n$ in the discrete chain, the limit inherits:\n:$\\map P {s + t} = \\map P s \\map P t$\nconsistent with $e^{\\paren {s + t} Q} = e^{s Q} e^{t Q}$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "qr_decomposition_from_gram_schmidt",
+  "field": [
+    "algebra",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a real $m \\times n$ matrix with [[Definition:Linearly Independent Set|linearly independent]] columns.\nThen $\\mathbf A = \\mathbf Q \\mathbf R$, with $\\mathbf Q$ having [[Definition:Orthonormal Subset|orthonormal]] columns and $\\mathbf R$ [[Definition:Upper Triangular Matrix|upper triangular]] with positive diagonal."
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf a_1, \\ldots, \\mathbf a_n$ be linearly independent in an inner product space.\nThen [[Gram-Schmidt Orthogonalization]] produces orthonormal $\\mathbf q_1, \\ldots, \\mathbf q_n$ with $\\map {\\operatorname {span} } {\\mathbf q_1, \\ldots, \\mathbf q_k} = \\map {\\operatorname {span} } {\\mathbf a_1, \\ldots, \\mathbf a_k}$ for each $k$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the vectors a_k": "the columns of A",
+        "the flag of spans": "triangularity of R"
+      },
+      "derived": {
+        "the Gram-Schmidt coefficients": "the entries of R"
+      },
+      "reformulation": "Rewrite the Gram-Schmidt recursion in matrix form: each column is a combination of the first k orthonormal vectors."
+    },
+    "validity_conditions": [
+      "Linear independence ensures that no residual vanishes, so the diagonal of R is positive.",
+      "Numerically, Householder reflections compute the same factorization more stably."
+    ],
+    "proof_plan": [
+      "Apply the source result to the columns $\\mathbf a_1, \\ldots, \\mathbf a_n$ of $\\mathbf A$.",
+      "As $\\mathbf a_k \\in \\map {\\operatorname {span} } {\\mathbf q_1, \\ldots, \\mathbf q_k}$:\n:$\\displaystyle \\mathbf a_k = \\sum_{j \\mathop \\le k} r_{j k} \\mathbf q_j, \\quad r_{j k} = \\innerprod {\\mathbf a_k} {\\mathbf q_j}$",
+      "$r_{k k}$ is the length of the residual of $\\mathbf a_k$ after projecting onto the earlier span, which is positive by linear independence.",
+      "Collecting the columns, $\\mathbf A = \\mathbf Q \\mathbf R$ with $\\mathbf R = \\paren {r_{j k} }$ upper triangular.\nThis is the [[QR Decomposition]], the matrix form of Gram-Schmidt.\n{{qed}}"
+    ]
+  }
+}

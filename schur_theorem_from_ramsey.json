@@ -1,0 +1,37 @@
+{
+  "id": "schur_theorem_from_ramsey",
+  "field": [
+    "combinatorics",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $k \\in \\Z_{>0}$.\nThen there is $N$ such that for every colouring of $\\set {1, \\ldots, N}$ with $k$ colours there are $x, y, z$ of the same colour with $x + y = z$."
+  },
+  "B_source": {
+    "statement": "Let $k \\in \\Z_{>0}$.\nThen there is $R$ such that every colouring of the edges of the [[Definition:Complete Graph|complete graph]] $K_R$ with $k$ colours contains a [[Definition:Monochromatic|monochromatic]] triangle."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the edge colouring": "colour the edge {i, j} by the colour of |i - j|"
+      },
+      "derived": {
+        "a monochromatic triangle": "a monochromatic solution of x + y = z"
+      },
+      "reformulation": "Colour edges by the colour of the difference of their endpoints; triangles then encode solutions of x + y = z."
+    },
+    "validity_conditions": [
+      "Differences of distinct vertices in {1, ..., R} lie in {1, ..., R - 1}.",
+      "For i < j < l the three differences satisfy (j - i) + (l - j) = l - i."
+    ],
+    "proof_plan": [
+      "Let $R$ be as in the source result and $N = R - 1$.\nGiven a colouring $c$ of $\\set {1, \\ldots, N}$, colour the edge $\\set {i, j}$ of $K_R$ on $\\set {1, \\ldots, R}$ by $\\map c {\\size {i - j} }$.",
+      "By the source result, there is a monochromatic triangle $i < j < l$.",
+      "Let $x = j - i$, $y = l - j$ and $z = l - i$, all in $\\set {1, \\ldots, N}$ and of the same colour.",
+      "Then $x + y = z$, which is [[Schur's Theorem]].\n{{qed}}"
+    ]
+  }
+}

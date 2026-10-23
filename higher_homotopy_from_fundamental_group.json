@@ -1,0 +1,40 @@
+{
+  "id": "higher_homotopy_from_fundamental_group",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Topological Space|topological space]] and $x \\in X$.\nThen the [[Definition:Homotopy Group|homotopy group]] $\\map {\\pi_n} {X, x}$ is a [[Definition:Group|group]] for $n \\ge 1$, [[Definition:Abelian Group|abelian]] for $n \\ge 2$, and [[Definition:Functor|functorial]] in based maps."
+  },
+  "B_source": {
+    "statement": "Let $X$ be a [[Definition:Topological Space|topological space]] and $x \\in X$.\nThe [[Definition:Fundamental Group|fundamental group]] $\\map {\\pi_1} {X, x}$ is the set of [[Definition:Homotopy Class|homotopy classes]] of loops at $x$ under concatenation, and is in general not abelian."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the loop, a map from the circle": "a map from the n-sphere, or from the n-cube with boundary collapsed",
+        "concatenation in the single available direction": "concatenation in any one of n independent directions",
+        "the fundamental group": "the n-th homotopy group"
+      },
+      "derived": {
+        "the group structure from concatenation": "the same, using any one coordinate direction",
+        "commutativity for degree at least two": "the Eckmann-Hilton argument, using two independent directions"
+      },
+      "reformulation": "Raise the dimension of the parametrizing cube, which supplies additional independent concatenation directions."
+    },
+    "validity_conditions": [
+      "The case of degree one is the fundamental group, so the generalization specializes correctly.",
+      "For degree at least two there are two independent concatenation directions that commute with each other, and the Eckmann-Hilton argument forces the operation to be abelian.",
+      "This is why degree one is genuinely exceptional: with only one direction available the argument cannot run, and the fundamental group can be nonabelian."
+    ],
+    "proof_plan": [
+      "Replace loops by maps $f: \\closedint 0 1^n \\to X$ sending the boundary $\\partial \\closedint 0 1^n$ to $x$.",
+      "Define the group operation by concatenation in the $i$th coordinate:\n:$\\map {\\paren {f +_i g} } {t_1, \\ldots, t_n} = \\begin {cases} \\map f {t_1, \\ldots, 2 t_i, \\ldots, t_n} & : t_i \\le \\frac 1 2 \\\\ \\map g {t_1, \\ldots, 2 t_i - 1, \\ldots, t_n} & : t_i \\ge \\frac 1 2 \\end {cases}$",
+      "The operations $+_i$ and $+_j$ satisfy the interchange law:\n:$\\paren {f +_i g} +_j \\paren {h +_i k} = \\paren {f +_j h} +_i \\paren {g +_j k}$\nand share the constant map as identity.",
+      "For $n \\ge 2$ choose $i \\ne j$.\nBy the [[Eckmann-Hilton Argument]], $+_i = +_j$ on homotopy classes and both are [[Definition:Commutative Operation|commutative]].\nHence $\\map {\\pi_n} {X, x}$ is [[Definition:Abelian Group|abelian]] for $n \\ge 2$.\n{{qed}}"
+    ]
+  }
+}

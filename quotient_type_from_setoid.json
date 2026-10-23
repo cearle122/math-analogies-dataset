@@ -1,0 +1,40 @@
+{
+  "id": "quotient_type_from_setoid",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "Let $A$ be a [[Definition:Type|type]] and $R$ an [[Definition:Equivalence Relation|equivalence relation]] on $A$.\nThen the [[Definition:Quotient Type|quotient type]] $A / R$ satisfies: for every $f: A \\to B$ respecting $R$ there is a [[Definition:Unique|unique]] $f': A / R \\to B$ with:\n:$f' \\circ \\eqclass \\cdot {} = f$"
+  },
+  "B_source": {
+    "statement": "A [[Definition:Setoid|setoid]] is a pair $\\struct {A, R}$ of a type and an equivalence relation.\nA setoid map $f: \\struct {A, R} \\to \\struct {B, S}$ is a function with $a \\mathrel R a' \\implies \\map f a \\mathrel S \\map f {a'}$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the type paired with an equivalence relation": "the setoid on which the quotient is formed",
+        "functions respecting the relation": "setoid maps out of that setoid",
+        "the quotient type": "the type whose elements are the classes, with a canonical inclusion"
+      },
+      "derived": {
+        "the canonical map into the quotient": "the constructor sending an element to its class",
+        "the induced map on the quotient": "the unique factorization of a respectful function"
+      },
+      "reformulation": "Impose the equivalence as an identification inside the type rather than carrying it alongside as extra data."
+    },
+    "validity_conditions": [
+      "The quotient's eliminator requires a proof that the given function respects the relation, which is exactly the setoid map condition.",
+      "The computation rule states that the induced function applied to a class agrees with the original applied to a representative, so the factorization commutes definitionally.",
+      "Effectiveness, meaning that equal classes imply related elements, is an additional axiom and does not follow from the eliminator alone."
+    ],
+    "proof_plan": [
+      "Form the [[Definition:Setoid|setoid]] $\\struct {A, R}$.",
+      "Introduce $A / R$ with the class constructor $\\eqclass \\cdot {}: A \\to A / R$ and the rule:\n:$a \\mathrel R a' \\implies \\eqclass a {} = \\eqclass {a'} {}$",
+      "State the eliminator: given $f: A \\to B$ and a proof that $a \\mathrel R a' \\implies \\map f a = \\map f {a'}$, obtain $f': A / R \\to B$.",
+      "The computation rule is:\n:$\\map {f'} {\\eqclass a {} } = \\map f a$\nUniqueness follows as every element of $A / R$ is a class.\n{{qed}}"
+    ]
+  }
+}

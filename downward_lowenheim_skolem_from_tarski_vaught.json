@@ -1,0 +1,37 @@
+{
+  "id": "downward_lowenheim_skolem_from_tarski_vaught",
+  "field": [
+    "logic",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\LL$ be a [[Definition:Countable Set|countable]] first-order language, $\\MM$ an $\\LL$-[[Definition:Structure (Model Theory)|structure]] and $X \\subseteq M$ countable.\nThen $\\MM$ has a countable [[Definition:Elementary Substructure|elementary substructure]] $\\NN$ with $X \\subseteq N$."
+  },
+  "B_source": {
+    "statement": "Let $N \\subseteq M$.\nThen $N$ is the universe of an elementary substructure of $\\MM$ {{iff}} for every formula $\\map \\phi {x, \\bar y}$ and $\\bar b \\in N$, if $\\MM \\models \\exists x \\, \\map \\phi {x, \\bar b}$ then $\\MM \\models \\map \\phi {a, \\bar b}$ for some $a \\in N$.\nThis is the [[Tarski-Vaught Test]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the witnessing elements": "values of Skolem functions"
+      },
+      "derived": {
+        "closure under Skolem functions": "the Tarski-Vaught condition"
+      },
+      "reformulation": "Close X under countably many Skolem functions in countably many stages, so that the Tarski-Vaught condition holds by construction."
+    },
+    "validity_conditions": [
+      "The Axiom of Choice is used to choose the Skolem functions.",
+      "Countability of the language bounds the number of formulas, keeping every stage countable."
+    ],
+    "proof_plan": [
+      "For each formula $\\exists x \\, \\map \\phi {x, \\bar y}$, choose a [[Definition:Skolem Function|Skolem function]] $f_\\phi$ with $\\MM \\models \\map \\phi {\\map {f_\\phi} {\\bar b}, \\bar b}$ whenever $\\MM \\models \\exists x \\, \\map \\phi {x, \\bar b}$.",
+      "Let $N_0 = X$ together with the interpretations of the constants, plus one point if this is empty.\nLet $N_{k + 1}$ add to $N_k$ all values $\\map {f_\\phi} {\\bar b}$ and all values of function symbols at tuples from $N_k$, and let $N = \\bigcup_k N_k$.",
+      "There are countably many formulas and finite tuples from a countable set, so each $N_k$ is countable, and so is $N$.",
+      "$N$ is closed under the function symbols and satisfies the condition of the [[Tarski-Vaught Test]] by construction.\nHence it is a countable elementary substructure containing $X$, which is the [[Downward Löwenheim-Skolem Theorem]].\n{{qed}}"
+    ]
+  }
+}

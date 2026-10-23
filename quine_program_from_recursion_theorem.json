@@ -1,0 +1,41 @@
+{
+  "id": "quine_program_from_recursion_theorem",
+  "field": [
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In any [[Definition:Acceptable Programming System|acceptable programming language]], there exists a program $p$ whose output is its own source code:\n:$\\map {\\operatorname {output} } p = \\ulcorner p \\urcorner$"
+  },
+  "B_source": {
+    "statement": "Let $f$ be a [[Definition:Total Recursive Function|total computable function]] on program indices.\nThen there exists $e$ such that $\\phi_e = \\phi_{\\map f e}$.\nThis is [[Kleene's Recursion Theorem]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the computable transformation of programs": "the transformation sending a program to one that prints that program's source",
+        "the program left unchanged by the transformation": "the self-printing program",
+        "the fixed point guaranteed by the theorem": "the quine"
+      },
+      "derived": {
+        "the fixed point equation on programs": "a program whose behaviour is to output its own text",
+        "the effectiveness of the construction": "the quine can actually be written down, not merely shown to exist"
+      },
+      "reformulation": "Express self-printing as invariance under the print-my-argument transformation, making the quine a fixed point."
+    },
+    "validity_conditions": [
+      "The transformation sending a source text to a program printing that text is total and computable, which is the hypothesis the recursion theorem requires.",
+      "The theorem gives a program computing the same function as its transform, which here means outputting its own source.",
+      "The proof is constructive, so the fixed point can be exhibited explicitly; this is why quines can be written in practice rather than only shown to exist."
+    ],
+    "proof_plan": [
+      "Let $f$ be the map sending an index $e$ to the index of a program which ignores its input and prints $\\ulcorner e \\urcorner$.",
+      "$f$ is total and computable, so [[Kleene's Recursion Theorem]] applies.",
+      "There exists $e$ with $\\phi_e = \\phi_{\\map f e}$.",
+      "Program $\\map f e$ prints $\\ulcorner e \\urcorner$, so program $e$ also prints its own source code.\nUnwinding the proof of the recursion theorem gives an explicit such program, a [[Definition:Quine|quine]].\n{{qed}}"
+    ]
+  }
+}

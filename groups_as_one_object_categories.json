@@ -1,0 +1,39 @@
+{
+  "id": "groups_as_one_object_categories",
+  "field": [
+    "category_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Regard a [[Definition:Group|group]] $G$ as a category $\\mathbf B G$ with one object $\\ast$ and $\\map {\\operatorname {Hom} } {\\ast, \\ast} = G$.\nThen [[Definition:Functor|functors]] $\\mathbf B G \\to \\mathbf B H$ are exactly the [[Definition:Group Homomorphism|homomorphisms]] $G \\to H$, and natural transformations $\\phi \\Rightarrow \\psi$ are exactly the elements $h \\in H$ with $\\map \\psi g = h \\map \\phi g h^{-1}$ for all $g$."
+  },
+  "B_source": {
+    "statement": "A [[Definition:Metacategory|category]] consists of objects and morphisms with an associative composition and identity morphisms; a functor preserves composition and identities, and a natural transformation is a family of morphisms commuting with the images of all morphisms."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "group elements": "morphisms of a one-object category",
+        "the group product": "composition",
+        "homomorphisms": "functors"
+      },
+      "derived": {
+        "naturality squares": "conjugacy of homomorphisms"
+      },
+      "reformulation": "Transport group theory into category theory by viewing a group as a category with one object in which every morphism is invertible."
+    },
+    "validity_conditions": [
+      "The group axioms are exactly the category axioms with one object, plus invertibility of every morphism.",
+      "Functors from BG to Set are G-sets, and to vector spaces are linear representations."
+    ],
+    "proof_plan": [
+      "Associativity and the identity of $G$ are the category axioms of $\\mathbf B G$, and every morphism is invertible.\nConversely, such a one-object category is a group.",
+      "A functor $\\mathbf B G \\to \\mathbf B H$ sends $\\ast$ to $\\ast$ and satisfies $\\map F {g g'} = \\map F g \\map F {g'}$ and $\\map F e = e$, so it is a homomorphism, and conversely.",
+      "A natural transformation $\\phi \\Rightarrow \\psi$ has a single component $h \\in H$, and the naturality square says $h \\map \\phi g = \\map \\psi g h$ for all $g$.",
+      "Hence natural transformations between homomorphisms are conjugating elements, and functors $\\mathbf B G \\to \\mathbf {Set}$ are [[Definition:Group Action|$G$-sets]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "terminal_from_initial",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf C$ be a [[Definition:Metacategory|category]].\nAn object $T$ is [[Definition:Terminal Object|terminal]] {{iff}} for every object $X$ there is exactly one morphism $X \\to T$."
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf C$ be a [[Definition:Metacategory|category]].\nAn object $I$ is [[Definition:Initial Object|initial]] {{iff}} for every object $X$ there is exactly one morphism $I \\to X$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "initial in C": "terminal in C",
+        "C": "C^op"
+      },
+      "derived": {
+        "morphism I -> X": "morphism X -> T"
+      },
+      "reformulation": "Pass to the opposite category C^op (reverse every morphism)."
+    },
+    "validity_conditions": [
+      "C^op is a well-defined category (always true).",
+      "Op is an involution: (C^op)^op = C, so the dual of the dual returns the original."
+    ],
+    "proof_plan": [
+      "Form $\\mathbf C^{\\text {op} }$ by reversing all morphisms.",
+      "An initial object of $\\mathbf C^{\\text {op} }$ has exactly one morphism to every object of $\\mathbf C^{\\text {op} }$.",
+      "Reversing back, this is an object with exactly one morphism from every object of $\\mathbf C$.",
+      "Hence $T$ is terminal in $\\mathbf C$ {{iff}} $T$ is initial in $\\mathbf C^{\\text {op} }$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "tarski_undefinability_from_diagonal_lemma",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "There is no [[Definition:Well-Formed Formula|formula]] $\\map {\\operatorname {True} } x$ in the language of arithmetic such that, for every sentence $\\phi$:\n:$\\N \\models \\map {\\operatorname {True} } {\\ulcorner \\phi \\urcorner} \\leftrightarrow \\phi$"
+  },
+  "B_source": {
+    "statement": "Let $\\map B x$ be a formula with one free variable.\nThen there is a sentence $G$ such that [[Definition:Robinson Arithmetic|Robinson arithmetic]] proves:\n:$G \\leftrightarrow \\map B {\\ulcorner G \\urcorner}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the formula B": "the negation of the putative truth predicate"
+      },
+      "derived": {
+        "the diagonal sentence": "a formalized liar sentence"
+      },
+      "reformulation": "Diagonalize against the negated truth predicate to produce a sentence asserting its own falsity."
+    },
+    "validity_conditions": [
+      "Robinson arithmetic is true in N, so what it proves holds in N.",
+      "The theorem concerns definability of truth, not provability, so no consistency hypothesis is needed."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $\\operatorname {True}$ is such a formula.",
+      "By the [[Diagonal Lemma]] with $\\map B x = \\neg \\map {\\operatorname {True} } x$, there is $G$ with:\n:$\\mathsf Q \\vdash G \\leftrightarrow \\neg \\map {\\operatorname {True} } {\\ulcorner G \\urcorner}$",
+      "As $\\mathsf Q$ is true in $\\N$:\n:$\\N \\models G \\leftrightarrow \\neg \\map {\\operatorname {True} } {\\ulcorner G \\urcorner}$",
+      "But by assumption $\\N \\models \\map {\\operatorname {True} } {\\ulcorner G \\urcorner} \\leftrightarrow G$, so $\\N \\models G \\leftrightarrow \\neg G$, a contradiction.\nThis is [[Tarski's Undefinability Theorem]].\n{{qed}}"
+    ]
+  }
+}

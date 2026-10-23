@@ -1,0 +1,37 @@
+{
+  "id": "open_mapping_from_baire",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $X$ and $Y$ be [[Definition:Banach Space|Banach spaces]] and $T: X \\to Y$ a [[Definition:Surjection|surjective]] [[Definition:Bounded Linear Transformation|bounded linear transformation]].\nThen $T$ is an [[Definition:Open Mapping|open mapping]]."
+  },
+  "B_source": {
+    "statement": "A [[Definition:Complete Metric Space|complete metric space]] is not a [[Definition:Countable Union|countable union]] of [[Definition:Nowhere Dense|nowhere dense]] sets."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the complete metric space": "the Banach space Y",
+        "the countable union": "the closures of the images of the balls of radius n"
+      },
+      "derived": {
+        "a set with non-empty interior": "a ball around 0 inside the closure of T(B_1)"
+      },
+      "reformulation": "Reduce openness to showing that the image of the unit ball contains a ball, first up to closure via Baire, then exactly via successive approximation."
+    },
+    "validity_conditions": [
+      "Surjectivity is needed for the images of the balls to cover Y.",
+      "Completeness of Y is used in the Baire step, and completeness of X to sum the approximating series."
+    ],
+    "proof_plan": [
+      "Let $B_r$ denote the open ball of radius $r$ about $0$ in $X$.\nAs $T$ is surjective, $Y = \\displaystyle \\bigcup_n \\overline {\\map T {B_n} }$.\nBy the [[Baire Category Theorem]], some $\\overline {\\map T {B_n} }$ has non-empty interior.\nBy linearity and symmetry, $\\overline {\\map T {B_1} }$ contains a ball $\\map {B_Y} {0, r}$.",
+      "Let $\\norm y < r$.\nChoose $x_1 \\in B_1$ with $\\norm {y - T x_1} < \\dfrac r 2$, then $x_2 \\in B_{1 / 2}$ with $\\norm {y - T x_1 - T x_2} < \\dfrac r 4$, and so on.",
+      "As $\\displaystyle \\sum_k \\norm {x_k} < 2$ and $X$ is complete, $x = \\displaystyle \\sum_k x_k$ exists with $\\norm x < 2$ and $T x = y$.\nHence $\\map T {B_2} \\supseteq \\map {B_Y} {0, r}$.",
+      "By linearity, the image of every ball about any point contains a ball about its image point.\nHence $T$ maps open sets to open sets, which is the [[Open Mapping Theorem]].\n{{qed}}"
+    ]
+  }
+}

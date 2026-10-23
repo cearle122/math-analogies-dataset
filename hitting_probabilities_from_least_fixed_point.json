@@ -1,0 +1,37 @@
+{
+  "id": "hitting_probabilities_from_least_fixed_point",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {X_n}$ be a [[Definition:Markov Chain|Markov chain]] on a countable set $S$ with transition probabilities $p_{i j}$, and $A \\subseteq S$.\nLet $h_i$ be the probability, starting from $i$, of ever hitting $A$.\nThen $h$ is the minimal non-negative solution of:\n:$h_i = 1$ for $i \\in A$, $\\quad \\displaystyle h_i = \\sum_j p_{i j} h_j$ for $i \\notin A$"
+  },
+  "B_source": {
+    "statement": "Let $L$ be a [[Definition:Complete Lattice|complete lattice]] and $\\Phi: L \\to L$ [[Definition:Increasing Mapping|increasing]] and preserving suprema of increasing sequences.\nThen the iterates $\\map {\\Phi^n} \\bot$ increase to the [[Definition:Least Fixed Point|least fixed point]] of $\\Phi$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the lattice": "functions S -> [0, 1] ordered pointwise",
+        "the operator Phi": "one step of first-step analysis"
+      },
+      "derived": {
+        "the iterates from 0": "probabilities of hitting A within n steps"
+      },
+      "reformulation": "Encode the hitting probabilities as the least fixed point of the first-step operator, reached by iterating from 0."
+    },
+    "validity_conditions": [
+      "Phi preserves increasing limits by the monotone convergence theorem.",
+      "Minimality among all non-negative solutions follows from monotonicity, even for solutions exceeding 1."
+    ],
+    "proof_plan": [
+      "Define $\\map \\Phi g_i = 1$ for $i \\in A$ and $\\map \\Phi g_i = \\displaystyle \\sum_j p_{i j} g_j$ for $i \\notin A$.\n$\\Phi$ is increasing and preserves increasing limits.",
+      "By the [[Markov Property|first-step analysis]] and induction, $\\map {\\Phi^{n + 1} } 0_i$ is the probability of hitting $A$ by time $n$, starting from $i$.",
+      "These events increase with union the event of ever hitting $A$, so $\\map {\\Phi^n} 0 \\uparrow h$.\nBy the source result, $h$ is the least fixed point of $\\Phi$.",
+      "If $g \\ge 0$ solves the equations, then $g = \\map {\\Phi^n} g \\ge \\map {\\Phi^n} 0$ for all $n$, so $g \\ge h$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "product_connected_from_common_point_union",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ and $Y$ be [[Definition:Connected Topological Space|connected]] spaces.\nThen $X \\times Y$ is connected in the [[Definition:Product Topology|product topology]]."
+  },
+  "B_source": {
+    "statement": "Let $\\family {C_i}_{i \\mathop \\in I}$ be connected subsets of a space, all containing a common point.\nThen $\\displaystyle \\bigcup_i C_i$ is connected."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the family C_i": "the crosses T_x formed by a vertical and a horizontal slice"
+      },
+      "derived": {
+        "connected crosses with a common point": "connectedness of the product"
+      },
+      "reformulation": "Write the product as a union of connected crosses through a common point."
+    },
+    "validity_conditions": [
+      "Each slice is homeomorphic to X or to Y, hence connected.",
+      "Finite products follow by induction; arbitrary products need a closure argument as well."
+    ],
+    "proof_plan": [
+      "Fix $\\tuple {x_0, y_0} \\in X \\times Y$.\nFor $x \\in X$ let $T_x = \\paren {\\set x \\times Y} \\cup \\paren {X \\times \\set {y_0} }$.",
+      "$\\set x \\times Y \\cong Y$ and $X \\times \\set {y_0} \\cong X$ are connected and meet at $\\tuple {x, y_0}$.\nBy the source result, $T_x$ is connected.",
+      "Every $T_x$ contains $\\tuple {x_0, y_0}$, and $\\displaystyle \\bigcup_{x \\mathop \\in X} T_x = X \\times Y$.",
+      "By the source result again, $X \\times Y$ is connected.\n{{qed}}"
+    ]
+  }
+}

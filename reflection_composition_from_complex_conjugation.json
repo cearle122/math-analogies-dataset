@@ -1,0 +1,38 @@
+{
+  "id": "reflection_composition_from_complex_conjugation",
+  "field": [
+    "geometry",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\ell_1$ and $\\ell_2$ be lines through a point $O$ of the plane, with $\\ell_2$ obtained from $\\ell_1$ by rotating through $\\theta$.\nThen the [[Definition:Reflection (Geometry)|reflection]] in $\\ell_1$ followed by the reflection in $\\ell_2$ is the [[Definition:Rotation (Geometry)|rotation]] about $O$ by $2 \\theta$."
+  },
+  "B_source": {
+    "statement": "Identify the plane with $\\C$ and $O$ with $0$.\nThen reflection in the line through $0$ at angle $\\alpha$ is $z \\mapsto e^{2 i \\alpha} \\overline z$, and rotation by $\\phi$ is $z \\mapsto e^{i \\phi} z$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "reflections": "maps z -> e^(2 i alpha) conj(z)",
+        "composition of motions": "composition of complex maps"
+      },
+      "derived": {
+        "cancellation of conjugations": "a rotation"
+      },
+      "reformulation": "Transport the plane motions to complex arithmetic, where composing two conjugations removes the conjugation."
+    },
+    "validity_conditions": [
+      "The lines must meet; reflections in parallel lines compose to a translation instead.",
+      "The order matters: reversing it gives the rotation by -2 theta."
+    ],
+    "proof_plan": [
+      "Let $\\ell_1$ and $\\ell_2$ make angles $\\alpha$ and $\\alpha + \\theta$ with the real axis.",
+      "By the source result, $\\map {\\sigma_1} z = e^{2 i \\alpha} \\overline z$ and $\\map {\\sigma_2} z = e^{2 i \\paren {\\alpha + \\theta} } \\overline z$.",
+      "Then:\n:$\\map {\\sigma_2} {\\map {\\sigma_1} z} = e^{2 i \\paren {\\alpha + \\theta} } \\overline {e^{2 i \\alpha} \\overline z} = e^{2 i \\paren {\\alpha + \\theta} } e^{-2 i \\alpha} z = e^{2 i \\theta} z$",
+      "This is the rotation about $O$ by $2 \\theta$.\n{{qed}}"
+    ]
+  }
+}

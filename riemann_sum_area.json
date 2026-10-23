@@ -1,0 +1,41 @@
+{
+  "id": "riemann_sum_area",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\closedint a b \\to \\R_{\\ge 0}$ be [[Definition:Continuous Real Function|continuous]].\nThen the [[Definition:Area|area]] under the graph of $f$ is:\n:$\\displaystyle \\lim_{\\norm P \\mathop \\to 0} \\sum_{i \\mathop = 1}^n \\map f {x_i^*} \\Delta x_i = \\int_a^b \\map f x \\rd x$"
+  },
+  "B_source": {
+    "statement": "The total area of finitely many non-overlapping [[Definition:Rectangle|rectangles]] of widths $w_i$ and heights $h_i$ is:\n:$\\displaystyle \\sum_i w_i h_i$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "generalization"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "finite set of rectangles": "partition of [a,b] into thin strips",
+        "rectangle width w_i": "subinterval width dx_i",
+        "rectangle height h_i": "sample value f(x_i*)"
+      },
+      "derived": {
+        "finite sum of rectangle areas": "Riemann sum",
+        "limit as strips shrink": "the definite integral"
+      },
+      "reformulation": "Approximate the region under the curve by thin rectangles, then take the mesh to zero."
+    },
+    "validity_conditions": [
+      "f continuous on [a,b], hence Riemann integrable, so the limit of Riemann sums exists and is independent of the sample points.",
+      "The finite rectangle-area formula is exact at each mesh; only the passage to the limit introduces the continuous object."
+    ],
+    "proof_plan": [
+      "Let $P = \\set {a = x_0 < x_1 < \\cdots < x_n = b}$ and build rectangles of width $\\Delta x_i = x_i - x_{i - 1}$ and height $\\map f {x_i^*}$ with $x_i^* \\in \\closedint {x_{i - 1} } {x_i}$.",
+      "Their total area is the [[Definition:Riemann Sum|Riemann sum]]:\n:$\\displaystyle \\sum_{i \\mathop = 1}^n \\map f {x_i^*} \\Delta x_i$",
+      "By [[Continuous Real Function is Riemann Integrable]], these sums converge as $\\norm P \\to 0$.",
+      "The limit is $\\displaystyle \\int_a^b f$, which lies between the lower and upper sums bounding the region, and so equals the area under the curve.\n{{qed}}"
+    ]
+  }
+}

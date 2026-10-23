@@ -1,0 +1,35 @@
+{
+  "id": "pythagorean_from_law_of_cosines",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Right Triangle|right triangle]] with $\\angle C$ a [[Definition:Right Angle|right angle]].\nThen:\n:$c^2 = a^2 + b^2$"
+  },
+  "B_source": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Triangle (Geometry)|triangle]].\nThen:\n:$c^2 = a^2 + b^2 - 2 a b \\cos C$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the general angle C": "the right angle C = 90 degrees"
+      },
+      "derived": {
+        "the term -2ab cos C": "0, since cos 90 = 0",
+        "c^2 = a^2 + b^2 - 2ab cos C": "c^2 = a^2 + b^2"
+      }
+    },
+    "validity_conditions": [
+      "cos(90 degrees) = 0, so the cross term vanishes.",
+      "No other hypothesis changes; this is the law of cosines instantiated at a right angle."
+    ],
+    "proof_plan": [
+      "From the [[Law of Cosines]]:\n:$c^2 = a^2 + b^2 - 2 a b \\cos C$",
+      "As $C$ is a right angle, $\\cos C = \\cos 90 \\degrees = 0$.",
+      "The cross term vanishes, leaving:\n:$c^2 = a^2 + b^2$\nwhich is [[Pythagoras's Theorem]].\n{{qed}}"
+    ]
+  }
+}

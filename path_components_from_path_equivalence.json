@@ -1,0 +1,39 @@
+{
+  "id": "path_components_from_path_equivalence",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Topological Space|topological space]].\nThen the set of [[Definition:Path Component|path components]] is:\n:$\\map {\\pi_0} X = X / \\sim$\nwhere $x \\sim y$ {{iff}} there is a [[Definition:Path (Topology)|path]] from $x$ to $y$, and a mapping out of $\\map {\\pi_0} X$ is well-defined {{iff}} it is constant along paths."
+  },
+  "B_source": {
+    "statement": "Let $\\sim$ be an [[Definition:Equivalence Relation|equivalence relation]] on a set $X$.\nThen mappings $X / \\sim \\to Y$ correspond to mappings $X \\to Y$ constant on each [[Definition:Equivalence Class|equivalence class]]."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the equivalence relation": "the relation of being joined by a path",
+        "the classes of the relation": "the path components of the space",
+        "the quotient set": "the set of path components"
+      },
+      "derived": {
+        "maps constant on classes": "maps constant along every path",
+        "the induced map on the quotient": "the well-defined map on path components"
+      }
+    },
+    "validity_conditions": [
+      "Being joined by a path is an equivalence relation: constant paths give reflexivity, reversal gives symmetry, and concatenation gives transitivity.",
+      "A map is constant on classes exactly when it is constant along every path, which is the descent condition.",
+      "For a continuous map into a discrete space this is automatic on each path component, which is why path components detect exactly the locally constant functions."
+    ],
+    "proof_plan": [
+      "Define $x \\sim y$ {{iff}} there is a path $\\gamma: \\closedint 0 1 \\to X$ with $\\map \\gamma 0 = x$ and $\\map \\gamma 1 = y$.\nConstant paths, reversed paths and concatenated paths show $\\sim$ is an [[Definition:Equivalence Relation|equivalence relation]].",
+      "Collapse $X$ by $\\sim$, obtaining $\\map {\\pi_0} X$.",
+      "By the source result, mappings out of $\\map {\\pi_0} X$ correspond to mappings on $X$ constant along paths.",
+      "If $f: X \\to D$ is continuous with $D$ [[Definition:Discrete Space|discrete]], then $f \\circ \\gamma$ is continuous on the [[Definition:Connected Space|connected]] set $\\closedint 0 1$, hence constant.\nSo such $f$ factor through $\\map {\\pi_0} X$ automatically.\n{{qed}}"
+    ]
+  }
+}

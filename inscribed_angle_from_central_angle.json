@@ -1,0 +1,40 @@
+{
+  "id": "inscribed_angle_from_central_angle",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $C$ be a [[Definition:Circle|circle]] with center $O$.\nLet $\\angle APB$ be an [[Definition:Inscribed Angle|inscribed angle]] subtending the arc $AB$.\nThen:\n:$\\angle APB = \\dfrac 1 2 \\angle AOB$"
+  },
+  "B_source": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Triangle (Geometry)|triangle]].\nThen an [[Definition:Exterior Angle of Polygon|exterior angle]] of $\\triangle ABC$ equals the sum of the two [[Definition:Opposite (in Triangle)|non-adjacent]] interior angles."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the isosceles triangle": "the triangle formed by two radii and a chord to the inscribed vertex",
+        "equal base angles": "the two equal radius-triangle angles",
+        "exterior angle": "the central angle"
+      },
+      "derived": {
+        "exterior angle = 2 * base angle": "central angle = 2 * inscribed angle",
+        "base angle": "the inscribed angle (for the simple case)"
+      },
+      "reformulation": "Draw the radius to the inscribed vertex, splitting the configuration into isosceles triangles, then apply the exterior-angle relation."
+    },
+    "validity_conditions": [
+      "Radii to the arc endpoints and to the inscribed vertex form isosceles triangles (two sides are radii, hence equal).",
+      "The exterior-angle theorem gives each central sub-angle as twice the corresponding inscribed sub-angle.",
+      "Summing (or differencing) the sub-cases covers all positions of the inscribed vertex relative to the center."
+    ],
+    "proof_plan": [
+      "Join $O$ to $P$ and extend $PO$ to meet the circle at $Q$.\n$OA = OP = OB$ are [[Definition:Radius of Circle|radii]], so $\\triangle OAP$ and $\\triangle OBP$ are [[Definition:Isosceles Triangle|isosceles]].",
+      "In $\\triangle OAP$ the base angles are equal: $\\angle OAP = \\angle OPA$.\nBy the source result, the exterior angle $\\angle AOQ = \\angle OAP + \\angle OPA = 2 \\angle OPA$.\nSimilarly $\\angle BOQ = 2 \\angle OPB$.",
+      "The base angles $\\angle OPA$ and $\\angle OPB$ are the parts of the inscribed angle $\\angle APB$ on either side of $PQ$.",
+      "Adding (or subtracting, when $O$ lies outside $\\angle APB$):\n:$\\angle AOB = 2 \\angle APB$\n{{qed}}"
+    ]
+  }
+}

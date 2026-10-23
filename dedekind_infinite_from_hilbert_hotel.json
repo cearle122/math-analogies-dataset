@@ -1,0 +1,37 @@
+{
+  "id": "dedekind_infinite_from_hilbert_hotel",
+  "field": [
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a set with an [[Definition:Injection|injection]] $\\iota: \\N \\to X$.\nThen $X$ is [[Definition:Equinumerous|equinumerous]] with the proper subset $X \\setminus \\set {\\map \\iota 0}$; that is, $X$ is [[Definition:Dedekind-Infinite Set|Dedekind-infinite]]."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Successor Mapping|successor mapping]] $n \\mapsto n + 1$ is a [[Definition:Bijection|bijection]] $\\N \\to \\N \\setminus \\set 0$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "N": "any set containing a copy of N",
+        "the successor map": "the shift along the copy, extended by the identity"
+      },
+      "derived": {
+        "the shifted copy": "a bijection onto a proper subset"
+      },
+      "reformulation": "Shift along an embedded copy of N and fix everything else."
+    },
+    "validity_conditions": [
+      "Injectivity of iota makes the shift well-defined on its image.",
+      "With countable choice, every infinite set contains a copy of N, so infinite and Dedekind-infinite coincide."
+    ],
+    "proof_plan": [
+      "Let $C = \\map \\iota \\N$.",
+      "Define $h: X \\to X \\setminus \\set {\\map \\iota 0}$ by $\\map h {\\map \\iota n} = \\map \\iota {n + 1}$ and $\\map h x = x$ for $x \\notin C$.",
+      "On $C$, $h$ is the source bijection transported along $\\iota$, so it is a bijection $C \\to C \\setminus \\set {\\map \\iota 0}$; off $C$ it is the identity.",
+      "Hence $h$ is a bijection onto a proper subset, so $X$ is Dedekind-infinite.\nThis is the general form of [[Definition:Hilbert's Hotel|Hilbert's hotel]].\n{{qed}}"
+    ]
+  }
+}

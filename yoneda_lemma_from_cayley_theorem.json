@@ -1,0 +1,39 @@
+{
+  "id": "yoneda_lemma_from_cayley_theorem",
+  "field": [
+    "category_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf C$ be a [[Definition:Locally Small Category|locally small category]], $F: \\mathbf C^{\\text {op} } \\to \\mathbf {Set}$ a [[Definition:Functor|functor]] and $A$ an object.\nThen [[Definition:Natural Transformation|natural transformations]] $\\map {\\operatorname {Hom} } {-, A} \\Rightarrow F$ correspond bijectively to elements of $\\map F A$, via $\\alpha \\mapsto \\map {\\alpha_A} {\\operatorname {id}_A}$.\nIn particular the [[Definition:Yoneda Embedding|Yoneda embedding]] is [[Definition:Fully Faithful Functor|fully faithful]]."
+  },
+  "B_source": {
+    "statement": "Let $G$ be a [[Definition:Group|group]].\nThen $g \\mapsto \\paren {x \\mapsto g x}$ embeds $G$ in the group of permutations of $G$, and the permutations commuting with all right multiplications are exactly the left multiplications."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the group G": "a category C",
+        "G acting on itself": "the representable functor Hom(-, A)",
+        "permutations of G": "presheaves on C"
+      },
+      "derived": {
+        "commuting permutations are left multiplications": "natural transformations are determined by one element"
+      },
+      "reformulation": "Generalize the regular representation from a one-object category to an arbitrary category: an equivariant map out of a representable is determined by the image of the identity."
+    },
+    "validity_conditions": [
+      "Local smallness makes Hom(-, A) a functor into Set.",
+      "For a one-object category, the lemma recovers Cayley's theorem."
+    ],
+    "proof_plan": [
+      "Let $\\alpha: \\map {\\operatorname {Hom} } {-, A} \\Rightarrow F$ and $u = \\map {\\alpha_A} {\\operatorname {id}_A}$.\nFor $f: B \\to A$, naturality gives:\n:$\\map {\\alpha_B} f = \\map {\\alpha_B} {\\operatorname {id}_A \\circ f} = \\map {\\map F f} {\\map {\\alpha_A} {\\operatorname {id}_A} } = \\map {\\map F f} u$\nso $\\alpha$ is determined by $u$.",
+      "Conversely, for $u \\in \\map F A$, $\\map {\\alpha^u_B} f = \\map {\\map F f} u$ is natural by functoriality of $F$, and $\\map {\\alpha^u_A} {\\operatorname {id}_A} = u$.\nHence the correspondence is bijective.",
+      "Taking $F = \\map {\\operatorname {Hom} } {-, A'}$ gives $\\map {\\operatorname {Nat} } {\\map {\\operatorname {Hom} } {-, A}, \\map {\\operatorname {Hom} } {-, A'} } \\cong \\map {\\operatorname {Hom} } {A, A'}$, so the Yoneda embedding is fully faithful.",
+      "For a group regarded as a one-object category, natural self-maps of $G$ acting on itself are left multiplications, and the embedding is [[Cayley's Theorem (Group Theory)|Cayley's theorem]].\n{{qed}}"
+    ]
+  }
+}

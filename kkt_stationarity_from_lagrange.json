@@ -1,0 +1,39 @@
+{
+  "id": "kkt_stationarity_from_lagrange",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\R^n \\to \\R$ be [[Definition:Differentiable Mapping|differentiable]] with a [[Definition:Local Minimum|local minimum]] at $x^*$.\nThen:\n:$\\nabla \\map f {x^*} = \\mathbf 0$"
+  },
+  "B_source": {
+    "statement": "Let $g: \\R \\to \\R$ be [[Definition:Differentiable Real Function|differentiable]] with an [[Definition:Local Extremum|extremum]] at an interior point $t^*$.\nThen:\n:$\\map {g'} {t^*} = 0$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the derivative f'(x*)": "each partial derivative / the gradient grad f(x*)",
+        "one-variable perturbation x* + h": "perturbation along each coordinate direction e_i"
+      },
+      "derived": {
+        "f'(x*) = 0": "partial f / partial x_i (x*) = 0 for every i",
+        "single stationarity condition": "grad f(x*) = 0 (vector of stationarity conditions)"
+      },
+      "reformulation": "Apply the one-variable stationarity condition along each coordinate direction; the collection of conditions is the vanishing gradient."
+    },
+    "validity_conditions": [
+      "Restricting f to the line x* + t e_i gives a one-variable function with an interior extremum at t=0.",
+      "One-variable Fermat gives d/dt f(x* + t e_i)|_0 = partial f/partial x_i (x*) = 0.",
+      "Holding for every i means grad f(x*) = 0; extending from 1 to n variables is genuine generalization."
+    ],
+    "proof_plan": [
+      "Fix a coordinate direction $e_i$ and let $\\map g t = \\map f {x^* + t e_i}$.",
+      "$g$ has an interior extremum at $t = 0$.\nBy [[Derivative at Maximum or Minimum]]:\n:$\\map {g'} 0 = 0$",
+      "By the [[Chain Rule for Derivatives|chain rule]]:\n:$\\map {g'} 0 = \\dfrac {\\partial f} {\\partial x_i} \\paren {x^*}$",
+      "As $i$ was arbitrary, all [[Definition:Partial Derivative|partial derivatives]] vanish:\n:$\\nabla \\map f {x^*} = \\mathbf 0$\n{{qed}}"
+    ]
+  }
+}

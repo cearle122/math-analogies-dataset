@@ -1,0 +1,38 @@
+{
+  "id": "shortest_path_potentials_from_lp_duality",
+  "field": [
+    "algorithms",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Directed Graph|directed graph]] with edge weights $w$, no negative cycles, and vertices $s$, $t$ with $t$ reachable from $s$.\nThen:\n:$\\map \\delta {s, t} = \\max \\set {\\map \\pi t - \\map \\pi s: \\map \\pi v - \\map \\pi u \\le \\map w {u, v} \\text { for every edge } \\tuple {u, v} }$"
+  },
+  "B_source": {
+    "statement": "If a [[Definition:Linear Program|linear program]] $\\min \\set {\\mathbf c^\\intercal \\mathbf x: \\mathbf A \\mathbf x = \\mathbf b, \\mathbf x \\ge \\mathbf 0}$ and its dual $\\max \\set {\\mathbf b^\\intercal \\mathbf y: \\mathbf A^\\intercal \\mathbf y \\le \\mathbf c}$ are both feasible, then their optimal values are equal."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "primal variables": "flow on edges sending one unit from s to t",
+        "dual variables": "vertex potentials pi"
+      },
+      "derived": {
+        "the dual program": "maximization of the potential difference"
+      },
+      "reformulation": "Write shortest path as a min-cost unit flow; its dual assigns potentials to vertices, constrained by the edge weights."
+    },
+    "validity_conditions": [
+      "The incidence matrix is totally unimodular, so the primal optimum is attained by a path.",
+      "No negative cycles is what makes the distance function itself a feasible potential."
+    ],
+    "proof_plan": [
+      "The primal program minimizes $\\sum_e \\map w e x_e$ subject to flow conservation sending one unit from $s$ to $t$, with $\\mathbf x \\ge \\mathbf 0$.\nIts constraint matrix is the vertex-edge incidence matrix.",
+      "The dual has one variable $\\map \\pi v$ per vertex and maximizes $\\map \\pi t - \\map \\pi s$ subject to $\\map \\pi v - \\map \\pi u \\le \\map w {u, v}$.",
+      "The primal is feasible as $t$ is reachable, and $\\pi = \\map \\delta {s, \\cdot}$ is dual feasible by the triangle inequality, as there are no negative cycles.\nBy the source result, the optima agree.",
+      "By total unimodularity the primal optimum is attained at a path, so it equals $\\map \\delta {s, t}$.\nFeasible potentials certify optimality, and reweighting by them gives the non-negative weights used in [[Johnson's Algorithm]].\n{{qed}}"
+    ]
+  }
+}

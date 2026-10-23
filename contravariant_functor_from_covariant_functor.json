@@ -1,0 +1,42 @@
+{
+  "id": "contravariant_functor_from_covariant_functor",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf C$ and $\\mathbf D$ be [[Definition:Metacategory|categories]].\nA [[Definition:Contravariant Functor|contravariant functor]] $F: \\mathbf C \\to \\mathbf D$ satisfies:\n:$\\map F {g \\circ f} = \\map F f \\circ \\map F g$\n:$\\map F {\\operatorname {id}_C} = \\operatorname {id}_{\\map F C}$\nwith $\\map F f: \\map F B \\to \\map F A$ for $f: A \\to B$."
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf C$ and $\\mathbf D$ be [[Definition:Metacategory|categories]].\nA [[Definition:Covariant Functor|covariant functor]] $F: \\mathbf C \\to \\mathbf D$ satisfies:\n:$\\map F {g \\circ f} = \\map F g \\circ \\map F f$\n:$\\map F {\\operatorname {id}_C} = \\operatorname {id}_{\\map F C}$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the source category C": "its opposite category C^op",
+        "the direction of each morphism": "the reversed direction",
+        "the composition order": "the reversed order"
+      },
+      "derived": {
+        "a contravariant functor on C": "a covariant functor on C^op"
+      },
+      "reformulation": "The contravariance must be absorbed into the source category rather than the functor, which is the reformulation that makes the two notions the same."
+    },
+    "validity_conditions": [
+      "the opposite category must be a genuine category, which holds since reversing all arrows preserves associativity and identities",
+      "objects are unchanged by the duality; only morphism direction reverses",
+      "the identification is a definition rather than a theorem, so nothing is proved by it beyond transporting results"
+    ],
+    "proof_plan": [
+      "Form the [[Definition:Dual Category|opposite category]] $\\mathbf C^{\\text {op} }$ by keeping the objects of $\\mathbf C$ and reversing every [[Definition:Morphism|morphism]], with $f \\circ^{\\text {op} } g = g \\circ f$.",
+      "[[Definition:Associative Operation|Associativity]] and the identity laws in $\\mathbf C^{\\text {op} }$ follow directly from those in $\\mathbf C$.",
+      "A contravariant assignment $F$ on $\\mathbf C$ is exactly a [[Definition:Covariant Functor|covariant functor]] $\\mathbf C^{\\text {op} } \\to \\mathbf D$:\n:$\\map F {f \\circ^{\\text {op} } g} = \\map F {g \\circ f} = \\map F f \\circ \\map F g$",
+      "Hence any theorem about covariant functors yields its dual statement for contravariant functors by substituting $\\mathbf C^{\\text {op} }$ for $\\mathbf C$.",
+      "Moreover:\n:$\\paren {\\mathbf C^{\\text {op} } }^{\\text {op} } = \\mathbf C$\n{{qed}}"
+    ]
+  }
+}

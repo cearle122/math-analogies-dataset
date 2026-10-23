@@ -1,0 +1,38 @@
+{
+  "id": "chebyshev_lower_bound_from_central_binomial",
+  "field": [
+    "number_theory",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\map \\pi x$ be the number of primes at most $x$.\nThen for every even $x \\ge 6$:\n:$\\map \\pi x \\ge \\dfrac {\\ln 2} 2 \\dfrac x {\\ln x}$"
+  },
+  "B_source": {
+    "statement": "Let $p$ be prime.\nBy [[De Polignac's Formula|Legendre's formula]], the exponent of $p$ in $\\dbinom {2 n} n$ is:\n:$\\displaystyle \\sum_{k \\mathop \\ge 1} \\paren {\\floor {\\frac {2 n} {p^k} } - 2 \\floor {\\frac n {p^k} } }$\nEach term is $0$ or $1$, so the prime power of $p$ dividing $\\dbinom {2 n} n$ is at most $2 n$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the primorial": "the central binomial coefficient as a proxy",
+        "exact prime counting": "bounding a product of prime powers"
+      },
+      "derived": {
+        "size estimates for C(2n, n)": "a lower bound for pi(2n)"
+      },
+      "reformulation": "Replace the product of primes up to 2n by the central binomial coefficient, whose size is easy to estimate and whose prime powers are small."
+    },
+    "validity_conditions": [
+      "Only primes at most 2n divide C(2n, n).",
+      "The final simplification n ln 4 - ln(2n + 1) >= n ln 2 needs n >= 3."
+    ],
+    "proof_plan": [
+      "Let $x = 2 n$.\n$\\dbinom {2 n} n$ is the largest of the $2 n + 1$ binomial coefficients summing to $4^n$, so $\\dbinom {2 n} n \\ge \\dfrac {4^n} {2 n + 1}$.",
+      "Only primes $p \\le 2 n$ divide $\\dbinom {2 n} n$, and by the source result each contributes a factor at most $2 n$.\nHence:\n:$\\dbinom {2 n} n \\le \\paren {2 n}^{\\map \\pi {2 n} }$",
+      "Taking logarithms:\n:$\\map \\pi {2 n} \\ln \\paren {2 n} \\ge n \\ln 4 - \\map \\ln {2 n + 1}$",
+      "For $n \\ge 3$, $n \\ln 2 \\ge \\map \\ln {2 n + 1}$, so the right hand side is at least $n \\ln 2$.\nHence $\\map \\pi x \\ge \\dfrac {\\ln 2} 2 \\dfrac x {\\ln x}$, which is a [[Chebyshev's Bounds|Chebyshev bound]].\n{{qed}}"
+    ]
+  }
+}

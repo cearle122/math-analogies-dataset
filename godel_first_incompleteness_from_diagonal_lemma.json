@@ -1,0 +1,36 @@
+{
+  "id": "godel_first_incompleteness_from_diagonal_lemma",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $T$ be a [[Definition:Consistent|consistent]], [[Definition:Recursively Axiomatized Theory|recursively axiomatized]] extension of [[Definition:Robinson Arithmetic|Robinson arithmetic]].\nThen there is a sentence $G$ with $T \\nvdash G$; and if $T$ proves only true $\\Sigma_1$ sentences, then also $T \\nvdash \\neg G$."
+  },
+  "B_source": {
+    "statement": "Let $\\map B x$ be a formula with one free variable and $T$ extend Robinson arithmetic.\nThen there is a sentence $G$ with $T \\vdash G \\leftrightarrow \\map B {\\ulcorner G \\urcorner}$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the formula B": "the negation of the provability predicate of T"
+      },
+      "derived": {
+        "the diagonal sentence": "a sentence asserting its own unprovability"
+      },
+      "reformulation": "Diagonalize against provability rather than truth; the liar becomes a true but unprovable sentence."
+    },
+    "validity_conditions": [
+      "Recursive axiomatization makes provability expressible by a Sigma_1 formula.",
+      "Robinson arithmetic proves every true Sigma_1 sentence, which is used in the first half."
+    ],
+    "proof_plan": [
+      "Let $\\map {\\operatorname {Prov}_T} x$ be a $\\Sigma_1$ formula expressing provability in $T$.\nBy the [[Diagonal Lemma]], there is $G$ with $T \\vdash G \\leftrightarrow \\neg \\map {\\operatorname {Prov}_T} {\\ulcorner G \\urcorner}$.",
+      "If $T \\vdash G$, then $\\map {\\operatorname {Prov}_T} {\\ulcorner G \\urcorner}$ is a true $\\Sigma_1$ sentence, hence provable in $T$, so $T \\vdash \\neg G$ and $T$ is inconsistent.\nHence $T \\nvdash G$.",
+      "If $T \\vdash \\neg G$, then $T \\vdash \\map {\\operatorname {Prov}_T} {\\ulcorner G \\urcorner}$, which is then true by $\\Sigma_1$-soundness, so $T \\vdash G$ and $T$ is inconsistent.\nHence $T \\nvdash \\neg G$.",
+      "So $G$ is independent of $T$, and, as $T \\nvdash G$, $G$ is true in $\\N$.\nThis is [[Gödel's First Incompleteness Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "central_limit_from_de_moivre_laplace",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X_1, X_2, \\ldots$ be [[Definition:Independent Identically Distributed|i.i.d.]] [[Definition:Random Variable|random variables]] with [[Definition:Expectation|mean]] $\\mu$ and [[Definition:Variance|variance]] $\\sigma^2 \\in \\openint 0 \\infty$.\nLet $S_n = X_1 + \\cdots + X_n$.\nThen:\n:$\\dfrac {S_n - n \\mu} {\\sigma \\sqrt n} \\xrightarrow d \\map N {0, 1}$"
+  },
+  "B_source": {
+    "statement": "Let $S_n \\sim \\Binomial n p$ with $0 < p < 1$.\nThen:\n:$\\dfrac {S_n - n p} {\\sqrt {n p \\paren {1 - p} } } \\xrightarrow d \\map N {0, 1}$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the binomial count": "a sum of independent identically distributed summands",
+        "the Bernoulli summands": "arbitrary summands with finite variance",
+        "the explicit normalization by the binomial mean and standard deviation": "normalization by the general mean and standard deviation"
+      },
+      "derived": {
+        "convergence to the normal law": "the same conclusion for arbitrary finite-variance summands",
+        "the Stirling computation for binomial coefficients": "replaced by a characteristic function expansion, which needs no explicit density"
+      },
+      "reformulation": "Abstract from Bernoulli summands to arbitrary finite-variance summands, replacing coefficient estimates by a transform expansion."
+    },
+    "validity_conditions": [
+      "The binomial case is the instance in which the summands are Bernoulli, so the general statement specializes back to it.",
+      "The original proof estimates binomial coefficients directly and does not transfer, since arbitrary summands have no such formula; the characteristic function expansion replaces it.",
+      "Finite variance is essential: for heavy-tailed summands the normalized sums converge to other stable laws instead."
+    ],
+    "proof_plan": [
+      "Replace the [[Definition:Bernoulli Distribution|Bernoulli]] summands of $\\Binomial n p$ by arbitrary i.i.d. $X_i$ with finite variance.",
+      "Normalize by $\\mu$ and $\\sigma$ in place of $p$ and $\\sqrt {p \\paren {1 - p} }$.\nLet $Y_i = \\dfrac {X_i - \\mu} \\sigma$, so $\\expect {Y_i} = 0$ and $\\var {Y_i} = 1$.",
+      "Let $\\phi$ be the [[Definition:Characteristic Function of Random Variable|characteristic function]] of $Y_i$.\nBy [[Taylor's Theorem]]:\n:$\\map \\phi s = 1 - \\dfrac {s^2} 2 + \\map o {s^2}$\nso:\n:$\\map {\\phi_n} s = \\map \\phi {\\dfrac s {\\sqrt n} }^n = \\paren {1 - \\dfrac {s^2} {2 n} + \\map o {\\dfrac 1 n} }^n$",
+      "Hence:\n:$\\map {\\phi_n} s \\to e^{-s^2 / 2}$\nwhich is the characteristic function of $\\map N {0, 1}$.\nBy [[Lévy's Continuity Theorem]], the result follows.\n{{qed}}"
+    ]
+  }
+}

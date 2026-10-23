@@ -1,0 +1,44 @@
+{
+  "id": "curry_howard_prop_as_types",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Under the [[Definition:Curry-Howard Correspondence|Curry-Howard correspondence]], a [[Definition:Type|type]] $A$ is [[Definition:Inhabited Type|inhabited]] {{iff}} the corresponding [[Definition:Proposition|proposition]] $A$ is [[Definition:Provable Statement|provable]] in [[Definition:Intuitionistic Logic|intuitionistic]] [[Definition:Natural Deduction|natural deduction]]:\n:$\\exists t: \\vdash t : A \\iff \\vdash A$"
+  },
+  "B_source": {
+    "statement": "A [[Definition:Proposition|proposition]] $A$ is [[Definition:Provable Statement|provable]] {{iff}} there exists a [[Definition:Natural Deduction|natural deduction]] derivation of $A$ from the axioms using the inference rules."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "proposition A": "type A",
+        "proof of A": "term (program) of type A",
+        "implication A -> B": "function type A -> B",
+        "conjunction A and B": "product type A x B",
+        "modus ponens": "function application"
+      },
+      "derived": {
+        "a derivation of A": "a well-typed term of type A",
+        "proof composition": "term/program composition",
+        "provability of A": "inhabitation of type A"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "Each logical connective corresponds to a type former (implication/function, conjunction/product, disjunction/sum), and each inference rule to a typing rule.",
+      "Under this correspondence, a natural-deduction derivation IS a typing derivation, so proofs and programs are the same objects.",
+      "Hence provability of A transports exactly to inhabitation of the type A."
+    ],
+    "proof_plan": [
+      "Match connectives to [[Definition:Type Constructor|type constructors]]:\n:$A \\implies B$ to the [[Definition:Function Type|function type]] $A \\to B$\n:$A \\land B$ to the [[Definition:Product Type|product type]] $A \\times B$\n:$A \\lor B$ to the [[Definition:Sum Type|sum type]] $A + B$",
+      "Match introduction and elimination rules to the typing rules for constructors and destructors: $\\implies$-introduction to $\\lambda$-abstraction, $\\implies$-elimination to application.",
+      "By [[Principle of Structural Induction|induction]] on derivations and on typing judgements, a derivation of $A$ reads as a term $t : A$, and conversely.",
+      "Hence $A$ is provable {{iff}} $A$ is inhabited.\n{{qed}}"
+    ]
+  }
+}

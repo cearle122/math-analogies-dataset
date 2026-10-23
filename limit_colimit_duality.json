@@ -1,0 +1,40 @@
+{
+  "id": "limit_colimit_duality",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $D: \\mathbf J \\to \\mathbf C$ be a [[Definition:Diagram (Category Theory)|diagram]].\nA [[Definition:Colimit|colimit]] of $D$ is an [[Definition:Initial Object|initial object]] in the [[Definition:Category of Cocones|category of cocones]] under $D$."
+  },
+  "B_source": {
+    "statement": "Let $D: \\mathbf J \\to \\mathbf C$ be a [[Definition:Diagram (Category Theory)|diagram]].\nA [[Definition:Limit (Category Theory)|limit]] of $D$ is a [[Definition:Terminal Object|terminal object]] in the [[Definition:Category of Cones|category of cones]] over $D$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "C": "C^op",
+        "cone (maps into the diagram)": "cocone (maps out of the diagram)",
+        "terminal": "initial"
+      },
+      "derived": {
+        "limit in C": "colimit in C^op",
+        "universal cone": "universal cocone"
+      },
+      "reformulation": "Pass to C^op; the diagram dualizes, cones become cocones, terminal becomes initial."
+    },
+    "validity_conditions": [
+      "Limits and colimits are defined by universal properties stated entirely in terms of arrows.",
+      "Reversing all arrows (C -> C^op) sends the limit universal property to the colimit one.",
+      "Op is involutive, so colimit in C = limit in C^op."
+    ],
+    "proof_plan": [
+      "Express the [[Definition:Limit (Category Theory)|limit]] as a terminal cone, using only morphisms and commuting triangles.",
+      "Pass to $\\mathbf C^{\\text {op} }$, reversing all morphisms.\nCones over $D$ become cocones under $D^{\\text {op} }$, and terminal becomes initial.",
+      "The dual statement is the definition of the [[Definition:Colimit|colimit]].",
+      "Hence a colimit of $D$ in $\\mathbf C$ is a limit of $D^{\\text {op} }$ in $\\mathbf C^{\\text {op} }$, and limits and colimits are [[Definition:Dual Statement (Category Theory)|dual]].\n{{qed}}"
+    ]
+  }
+}

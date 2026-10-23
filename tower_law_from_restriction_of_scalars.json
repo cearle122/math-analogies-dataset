@@ -1,0 +1,37 @@
+{
+  "id": "tower_law_from_restriction_of_scalars",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $F \\subseteq E \\subseteq K$ be [[Definition:Field (Abstract Algebra)|fields]] with $\\index E F$ and $\\index K E$ finite.\nThen:\n:$\\index K F = \\index K E \\index E F$\nwhere $\\index L M$ is the [[Definition:Degree of Field Extension|degree]] of $L$ over $M$."
+  },
+  "B_source": {
+    "statement": "Let $V$ be a [[Definition:Vector Space|vector space]] over a field $E$ and $F \\subseteq E$ a subfield.\nThen $V$ is a vector space over $F$ by restricting the scalar multiplication to $F$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the vector space V": "K regarded over E",
+        "the subfield F": "the base field of E"
+      },
+      "derived": {
+        "products alpha_i beta_j": "a basis of K over F"
+      },
+      "reformulation": "View K as an F-vector space by restricting scalars, and build an F-basis from an E-basis of K and an F-basis of E."
+    },
+    "validity_conditions": [
+      "The degrees must be finite for the counting argument, though the product basis works in general.",
+      "Independence over F uses independence over E twice."
+    ],
+    "proof_plan": [
+      "Let $\\alpha_1, \\ldots, \\alpha_m$ be a basis of $E$ over $F$ and $\\beta_1, \\ldots, \\beta_n$ a basis of $K$ over $E$.\nBy the source result, $K$ is an $F$-vector space.",
+      "For $x \\in K$, write $x = \\displaystyle \\sum_j e_j \\beta_j$ with $e_j \\in E$, and each $e_j = \\displaystyle \\sum_i f_{i j} \\alpha_i$ with $f_{i j} \\in F$.\nHence the $\\alpha_i \\beta_j$ span $K$ over $F$.",
+      "If $\\displaystyle \\sum_{i, j} f_{i j} \\alpha_i \\beta_j = 0$, then $\\displaystyle \\sum_j \\paren {\\sum_i f_{i j} \\alpha_i} \\beta_j = 0$, so each inner sum is $0$ by independence over $E$.\nBy independence of the $\\alpha_i$ over $F$, every $f_{i j} = 0$.",
+      "Hence the $m n$ products form a basis, and $\\index K F = m n$.\nThis is the [[Tower Law]].\n{{qed}}"
+    ]
+  }
+}

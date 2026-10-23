@@ -1,0 +1,37 @@
+{
+  "id": "platonic_solids_from_euler_formula",
+  "field": [
+    "geometry",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "There are exactly five combinatorial types of [[Definition:Platonic Solid|regular convex polyhedra]], with face and vertex types $\\set {p, q}$ equal to $\\set {3, 3}$, $\\set {3, 4}$, $\\set {4, 3}$, $\\set {3, 5}$ and $\\set {5, 3}$."
+  },
+  "B_source": {
+    "statement": "Let $P$ be a [[Definition:Convex Polyhedron|convex polyhedron]] with $V$ vertices, $E$ edges and $F$ faces.\nThen:\n:$V - E + F = 2$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "V, E, F": "expressions in E, p and q"
+      },
+      "derived": {
+        "Euler's formula": "the inequality 1/p + 1/q > 1/2"
+      },
+      "reformulation": "Count incidences to express V and F through E, and substitute into Euler's formula."
+    },
+    "validity_conditions": [
+      "Every face has p sides and every vertex has degree q, with p, q >= 3.",
+      "Euler's formula only constrains the combinatorics; existence of the five solids is shown by construction."
+    ],
+    "proof_plan": [
+      "Counting edge-face and edge-vertex incidences:\n:$p F = 2 E = q V$",
+      "Substituting into $V - E + F = 2$:\n:$\\dfrac {2 E} q - E + \\dfrac {2 E} p = 2$, that is, $\\dfrac 1 p + \\dfrac 1 q = \\dfrac 1 2 + \\dfrac 1 E > \\dfrac 1 2$",
+      "This is equivalent to $\\paren {p - 2} \\paren {q - 2} < 4$.\nWith $p, q \\ge 3$ the only solutions are $\\tuple {3, 3}$, $\\tuple {3, 4}$, $\\tuple {4, 3}$, $\\tuple {3, 5}$, $\\tuple {5, 3}$.",
+      "These give $E = 6, 12, 12, 30, 30$, realized by the tetrahedron, octahedron, cube, icosahedron and dodecahedron.\n{{qed}}"
+    ]
+  }
+}

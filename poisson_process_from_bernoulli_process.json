@@ -1,0 +1,40 @@
+{
+  "id": "poisson_process_from_bernoulli_process",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {\\map N t}_{t \\mathop \\ge 0}$ be a [[Definition:Poisson Process|Poisson process]] of rate $\\lambda$.\nThen $\\map N t \\sim \\map {\\operatorname {Poisson} } {\\lambda t}$, increments over disjoint intervals are [[Definition:Independent Random Variables|independent]], and the gaps between arrivals are [[Definition:Exponential Distribution|exponential]] with parameter $\\lambda$."
+  },
+  "B_source": {
+    "statement": "In a [[Definition:Bernoulli Process|Bernoulli process]] with success probability $p$, trials are [[Definition:Independent Events|independent]], the number of successes in $n$ trials is $\\Binomial n p$, and waiting times between successes are [[Definition:Geometric Distribution|geometric]]."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the discrete time steps": "a continuum of time, obtained as the step size tends to zero",
+        "the per-trial success probability": "a rate times the step size",
+        "the geometric waiting time": "the exponential waiting time"
+      },
+      "derived": {
+        "the binomial count over an interval": "the Poisson count, as the limit of binomial with small success probability",
+        "independence across disjoint blocks of trials": "independence of increments over disjoint intervals"
+      },
+      "reformulation": "Refine the discrete trial times into a continuum, scaling the success probability with the step size."
+    },
+    "validity_conditions": [
+      "Taking the step size to zero with the success probability proportional to it keeps the expected count per unit time fixed, which is what makes the limit nondegenerate.",
+      "The binomial count converges to the Poisson under this scaling, and the geometric waiting time converges to the exponential, both by direct computation.",
+      "Independence across disjoint blocks passes to the limit, giving independent increments; the memorylessness of the geometric becomes memorylessness of the exponential."
+    ],
+    "proof_plan": [
+      "Model trials at times $h, 2 h, 3 h, \\ldots$ with success probability $p = \\lambda h$.",
+      "The count over $\\closedint 0 t$ is $\\Binomial {t / h} {\\lambda h}$.\nLet $h \\to 0$.",
+      "By the [[Poisson Limit Theorem]]:\n:$\\map \\Pr {\\map N t = k} \\to e^{-\\lambda t} \\dfrac {\\paren {\\lambda t}^k} {k!}$\nThe gap satisfies $\\map \\Pr {\\text {gap} > s} = \\paren {1 - \\lambda h}^{s / h} \\to e^{-\\lambda s}$, which is [[Definition:Exponential Distribution|exponential]].",
+      "Counts over disjoint blocks of trials are independent for each $h$.\nIndependence is preserved under [[Definition:Convergence in Distribution|convergence in distribution]] of the joint laws, so it survives the limit.\n{{qed}}"
+    ]
+  }
+}

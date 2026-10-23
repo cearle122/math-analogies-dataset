@@ -1,0 +1,37 @@
+{
+  "id": "similarity_center_from_affine_fixed_point",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be a direct [[Definition:Similarity Mapping|similarity]] of the plane which is not a [[Definition:Translation Mapping|translation]].\nThen $f$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]] $c$, and $f$ is a rotation about $c$ composed with a dilation centered at $c$."
+  },
+  "B_source": {
+    "statement": "Let $a, b \\in \\C$ with $a \\ne 1$.\nThen the equation $z = a z + b$ has the unique solution $z = \\dfrac b {1 - a}$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the similarity": "the complex affine map z -> a z + b",
+        "not a translation": "a is not 1"
+      },
+      "derived": {
+        "the solution of z = a z + b": "the center of the similarity"
+      },
+      "reformulation": "Write the similarity as a complex affine map and solve its fixed point equation."
+    },
+    "validity_conditions": [
+      "Every direct similarity of the plane has the form z -> a z + b with a non-zero.",
+      "If |a| < 1 the map is a contraction, and iterating it from any point converges to the center."
+    ],
+    "proof_plan": [
+      "Identify the plane with $\\C$.\nA direct similarity has the form $\\map f z = a z + b$ with $a \\ne 0$, where $\\size a$ is the ratio and $\\arg a$ the angle.",
+      "$f$ is a translation {{iff}} $a = 1$, so $a \\ne 1$.",
+      "By the source result, $c = \\dfrac b {1 - a}$ is the unique fixed point.",
+      "Then $\\map f z - c = a \\paren {z - c}$, so $f$ rotates by $\\arg a$ and scales by $\\size a$ about $c$.\n{{qed}}"
+    ]
+  }
+}

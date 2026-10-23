@@ -1,0 +1,38 @@
+{
+  "id": "dataflow_analysis_from_kleene_iteration",
+  "field": [
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In a [[Definition:Dataflow Analysis|dataflow analysis]] over a lattice $L$ of finite height, with [[Definition:Increasing Mapping|monotone]] transfer functions, the iterative algorithm, which starts from $\\bot$ at every program point and re-applies the equations until nothing changes, terminates and returns the least solution of the dataflow equations."
+  },
+  "B_source": {
+    "statement": "Let $D$ be a [[Definition:Complete Partial Order|complete partial order]] with bottom and $F: D \\to D$ [[Definition:Scott-Continuous Mapping|Scott-continuous]].\nThen $\\displaystyle \\bigsqcup_n \\map {F^n} \\bot$ is the least fixed point of $F$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the CPO": "the product lattice L^N over the N program points",
+        "the map F": "simultaneous application of all dataflow equations"
+      },
+      "derived": {
+        "the Kleene chain": "the successive rounds of the iterative algorithm"
+      },
+      "reformulation": "Encode the dataflow equations as one monotone map on a product lattice and iterate it from the bottom element."
+    },
+    "validity_conditions": [
+      "Finite height makes every increasing chain stabilize, so monotone maps are continuous and the iteration terminates.",
+      "Worklist orders reach the same least fixed point, as long as every equation is eventually re-evaluated."
+    ],
+    "proof_plan": [
+      "With program points $1, \\ldots, N$, the equations $x_i = \\map {f_i} {\\bigsqcup_{j \\in \\map {\\operatorname {pred} } i} x_j}$ define a monotone map $F$ on $L^N$.",
+      "$L^N$ has finite height $N h$, where $h$ is the height of $L$.\nHence every increasing chain stabilizes, and a monotone $F$ is Scott-continuous.",
+      "The chain $\\map {F^n} \\bot$ is increasing, so it stabilizes after at most $N h$ rounds, at a fixed point.",
+      "By the source result, this fixed point is the least solution of the equations, which is what the iterative algorithm returns.\n{{qed}}"
+    ]
+  }
+}

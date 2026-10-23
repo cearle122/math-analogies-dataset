@@ -1,0 +1,41 @@
+{
+  "id": "de_bruijn_indices_from_named_variables",
+  "field": [
+    "type_theory",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "In the [[Definition:Untyped Lambda Calculus|$\\lambda$-calculus]] with [[Definition:De Bruijn Index|de Bruijn indices]], [[Definition:Alpha Equivalence|$\\alpha$-equivalent]] terms are syntactically identical, and substitution requires no renaming."
+  },
+  "B_source": {
+    "statement": "In the [[Definition:Untyped Lambda Calculus|$\\lambda$-calculus]] with named variables, [[Definition:Alpha Equivalence|$\\alpha$-equivalence]] and [[Definition:Capture-Avoiding Substitution|capture-avoiding substitution]] are defined by explicit renaming of [[Definition:Bound Variable|bound variables]]."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "a bound variable name": "the number of binders between the variable and its own binder",
+        "alpha-equivalence of named terms": "syntactic equality of indexed terms",
+        "capture-avoiding renaming": "index shifting when a term moves under a binder"
+      },
+      "derived": {
+        "substitution defined with renaming": "substitution defined with shifting, requiring no fresh-name generation",
+        "reasoning up to alpha-equivalence": "reasoning about concrete syntax trees, since the quotient is already taken"
+      },
+      "reformulation": "Encode binding by position rather than by name, so that alpha-equivalence becomes literal equality."
+    },
+    "validity_conditions": [
+      "The translation is a bijection between alpha-equivalence classes of named terms and indexed terms, so nothing is lost and the quotient is built into the representation.",
+      "Reduction and typing rules transfer with renaming replaced by shifting, and the correspondence commutes with reduction.",
+      "The trade is legibility for mechanizability: indexed terms are far harder to read, and off-by-one shifting errors replace the capture errors that were eliminated."
+    ],
+    "proof_plan": [
+      "Replace each occurrence of a [[Definition:Bound Variable|bound variable]] by the number of binders crossed between it and its binder.\nFor example, $\\lambda x. \\lambda y. x$ becomes $\\lambda. \\lambda. 1$.",
+      "Define the shift $\\map {\\uparrow^d_c} t$, adding $d$ to every index $\\ge c$ in $t$, to adjust indices when a term passes under a binder.",
+      "Restate substitution:\n:$\\paren {\\lambda. t} \\sqbrk {j := s} = \\lambda. \\paren {t \\sqbrk {j + 1 := \\map {\\uparrow^1_0} s} }$\nusing shifting in place of capture-avoiding renaming.",
+      "By [[Principle of Structural Induction|induction]] on terms, the translation is a [[Definition:Bijection|bijection]] from [[Definition:Alpha Equivalence|$\\alpha$-equivalence classes]] of named terms to indexed terms, and it commutes with [[Definition:Beta Reduction|$\\beta$-reduction]].\n{{qed}}"
+    ]
+  }
+}

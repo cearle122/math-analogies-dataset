@@ -1,0 +1,42 @@
+{
+  "id": "sperner_to_brouwer",
+  "field": [
+    "combinatorics",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\Delta$ be a [[Definition:Simplex|simplex]] and $g: \\Delta \\to \\Delta$ [[Definition:Continuous Mapping (Topology)|continuous]].\nThen there exists $x \\in \\Delta$ with $\\map g x = x$."
+  },
+  "B_source": {
+    "statement": "Let $T$ be a [[Definition:Triangulation|triangulation]] of an $n$-simplex with a [[Definition:Sperner Coloring|Sperner coloring]].\nThen some cell of $T$ has vertices of all $n + 1$ colors."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "fixed_point_encoding"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "triangulation of the simplex": "successively finer triangulations (mesh -> 0)",
+        "Sperner coloring": "coloring induced by which barycentric coordinate the map g decreases"
+      },
+      "derived": {
+        "rainbow sub-simplex": "point where g moves no coordinate up, i.e. an approximate fixed point",
+        "limit of rainbow simplices": "exact fixed point of g"
+      },
+      "reformulation": "Color each vertex by a coordinate that g does not increase; a rainbow simplex is then an approximate fixed point, and a limit over finer meshes yields an exact one."
+    },
+    "validity_conditions": [
+      "The coloring rule (color by a non-increasing coordinate) satisfies Sperner's boundary condition, so the lemma applies at every mesh.",
+      "The simplex is compact, so the sequence of shrinking rainbow simplices has a convergent subsequence.",
+      "g is continuous, so the limit of approximate fixed points is an exact fixed point."
+    ],
+    "proof_plan": [
+      "[[Definition:Triangulation|Triangulate]] $\\Delta$ with mesh $\\dfrac 1 k$, using barycentric coordinates $x_0, \\ldots, x_n$.\nColor each vertex $v$ by an index $i$ with $v_i > 0$ and $\\map g v_i \\le v_i$.",
+      "Such $i$ exists, as $\\displaystyle \\sum_i \\map g v_i = \\sum_i v_i = 1$.\nAs $i$ is chosen with $v_i > 0$, a vertex on a face receives a color of that face, so this is a valid [[Definition:Sperner Coloring|Sperner coloring]].\nBy [[Sperner's Lemma]], there is a rainbow cell $\\sigma_k$.",
+      "On $\\sigma_k$, for each $i$ some vertex $v$ has $\\map g v_i \\le v_i$.\nAs the mesh is small, $\\sigma_k$ is an approximate fixed point of $g$.",
+      "Let $k \\to \\infty$.\nBy [[Definition:Compact Space|compactness]], a subsequence of the $\\sigma_k$ converges to a point $x$.\nBy continuity, $\\map g x_i \\le x_i$ for all $i$; as both sum to $1$, $\\map g x = x$.\nThis proves the [[Brouwer Fixed Point Theorem]].\n{{qed}}"
+    ]
+  }
+}

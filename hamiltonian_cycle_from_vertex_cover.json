@@ -1,0 +1,41 @@
+{
+  "id": "hamiltonian_cycle_from_vertex_cover",
+  "field": [
+    "algorithms",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Hamiltonian Cycle Problem|Hamiltonian cycle problem]], of deciding whether a [[Definition:Graph (Graph Theory)|graph]] has a [[Definition:Hamiltonian Cycle|Hamiltonian cycle]], is [[Definition:NP-Hard|NP-hard]]."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Vertex Cover Problem|vertex cover problem]], of deciding whether a [[Definition:Graph (Graph Theory)|graph]] $G$ has a [[Definition:Vertex Cover|vertex cover]] of size at most $k$, is [[Definition:NP-Hard|NP-hard]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the vertex cover instance": "a graph together with a target cover size",
+        "the gadget replacing each edge": "a fixed subgraph traversable in exactly two ways",
+        "the selector vertices": "vertices whose number equals the target cover size"
+      },
+      "derived": {
+        "a cover of the given size": "a Hamiltonian cycle passing through the gadgets in the corresponding order",
+        "the equivalence of the two instances": "the constructed graph has a Hamiltonian cycle exactly when a cover of that size exists"
+      },
+      "reformulation": "Encode the covering choice as the traversal direction through a gadget, turning a selection problem into a routing problem."
+    },
+    "validity_conditions": [
+      "The construction must be computable in polynomial time, so the gadget size and their number must be bounded by a polynomial in the original instance.",
+      "Each edge gadget admits exactly two traversal patterns, corresponding to which endpoint is chosen in the cover, which is what makes the correspondence exact.",
+      "Both directions of the equivalence must be checked: a cover yields a cycle and a cycle yields a cover, since hardness requires the instances to be genuinely equivalent."
+    ],
+    "proof_plan": [
+      "Given an instance $\\tuple {G, k}$ of vertex cover, build a graph $H$ with one gadget of $12$ vertices for each [[Definition:Edge of Graph|edge]] of $G$, and $k$ selector vertices $s_1, \\ldots, s_k$.",
+      "For each vertex $u$ of $G$, chain the gadgets of the edges incident to $u$ into a path, and join both ends of the path to every selector.\nEach gadget can be traversed in exactly three ways, corresponding to which endpoint(s) of its edge cover it.",
+      "Let $C$ be a cover with $\\card C = k$.\nRoute the cycle from $s_i$ through the path of the $i$th vertex of $C$ to $s_{i + 1}$, visiting each gadget according to which endpoints lie in $C$.\nThis gives a [[Definition:Hamiltonian Cycle|Hamiltonian cycle]] in $H$.",
+      "Conversely, a Hamiltonian cycle in $H$ passes between consecutive selectors along exactly $k$ vertex paths.\nThe corresponding $k$ vertices cover every edge, as every gadget is visited.\nAs $H$ is built in polynomial time, the problem is [[Definition:NP-Hard|NP-hard]].\n{{qed}}"
+    ]
+  }
+}

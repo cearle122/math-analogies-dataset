@@ -1,0 +1,41 @@
+{
+  "id": "automaton_minimization_from_myhill_nerode",
+  "field": [
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $L$ be a [[Definition:Regular Language|regular language]].\nThen $L$ has a [[Definition:Unique|unique]] (up to [[Definition:Isomorphism|isomorphism]]) [[Definition:Minimal Deterministic Finite Automaton|minimal deterministic finite automaton]], given by:\n:$M_{\\min} = M / \\sim$\nwhere $M$ is any [[Definition:Deterministic Finite Automaton|DFA]] for $L$ with all states reachable and $\\sim$ is [[Definition:Indistinguishable States|indistinguishability]] of states."
+  },
+  "B_source": {
+    "statement": "Let $f: A \\to B$ be a [[Definition:Homomorphism (Abstract Algebra)|homomorphism]] of [[Definition:Algebraic Structure|algebraic structures]].\nThen:\n:$A / \\map \\ker f \\cong \\Img f$"
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the structure-preserving map": "the map sending a state to the set of suffixes it accepts",
+        "the kernel": "the indistinguishability relation on states",
+        "the quotient": "the minimal automaton"
+      },
+      "derived": {
+        "the image": "the set of residual languages of the language"
+      },
+      "reformulation": "State minimality must be reformulated as a statement about residual languages before the kernel-quotient pattern applies."
+    },
+    "validity_conditions": [
+      "all states must be reachable, or unreachable states must be removed first, since they are invisible to the map",
+      "the indistinguishability relation must be a congruence with respect to the transition function for the quotient to be an automaton",
+      "the automaton must be deterministic and complete for the residual-language map to be well defined"
+    ],
+    "proof_plan": [
+      "Delete all states of $M$ not reachable from the [[Definition:Initial State|initial state]].\nThis does not change the accepted [[Definition:Formal Language|language]].",
+      "Define $\\rho$ on states by:\n:$\\map \\rho q = \\set {w \\in \\Sigma^*: \\map {\\delta^*} {q, w} \\in F}$\nthe [[Definition:Residual Language|residual language]] accepted from $q$.",
+      "For each $a \\in \\Sigma$:\n:$\\map \\rho {\\map \\delta {q, a} } = a^{-1} \\map \\rho q$\nHence the [[Definition:Equivalence Relation|equivalence]] $q \\sim q' \\iff \\map \\rho q = \\map \\rho {q'}$ is a [[Definition:Congruence Relation|congruence]] for the transitions.",
+      "Form the [[Definition:Quotient Automaton|quotient automaton]] $M / \\sim$ by merging states with the same residual language.",
+      "By the pattern of the [[First Isomorphism Theorem]], $M / \\sim$ is isomorphic to the image of $\\rho$, the automaton of residual languages of $L$.\nBy the [[Myhill-Nerode Theorem]], this automaton has the minimum number of states and depends only on $L$.\nHence the minimal DFA is [[Definition:Unique|unique]] up to renaming of states.\n{{qed}}"
+    ]
+  }
+}

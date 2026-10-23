@@ -1,0 +1,40 @@
+{
+  "id": "compact_convex_brouwer_from_ball_retraction",
+  "field": [
+    "topology",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $K \\subseteq \\R^n$ be [[Definition:Non-Empty Set|non-empty]], [[Definition:Compact Space|compact]] and [[Definition:Convex Set (Vector Space)|convex]], and $f: K \\to K$ [[Definition:Continuous Mapping (Topology)|continuous]].\nThen $f$ has a [[Definition:Fixed Point|fixed point]]."
+  },
+  "B_source": {
+    "statement": "Every continuous mapping of the closed unit ball $\\Bbb D^n$ into itself has a fixed point."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ball": "a large closed ball D containing K",
+        "a self-map of the ball": "f composed with the nearest-point retraction onto K"
+      },
+      "derived": {
+        "a fixed point in the ball": "a fixed point of f in K"
+      },
+      "reformulation": "Extend f to a self-map of a ball by first retracting onto K; the fixed point property passes to retracts."
+    },
+    "validity_conditions": [
+      "For closed convex K the nearest-point map is well-defined and continuous (indeed 1-Lipschitz).",
+      "Any closed ball is homeomorphic to the unit ball, so the source result applies to it."
+    ],
+    "proof_plan": [
+      "Choose a closed ball $D \\supseteq K$.\nLet $r: D \\to K$ send $x$ to the [[Definition:Nearest Point|nearest point]] of $K$; as $K$ is closed and convex, $r$ is a continuous [[Definition:Retraction (Topology)|retraction]].",
+      "Let $g = f \\circ r: D \\to D$, which is continuous with image in $K$.",
+      "By the source result, $\\map g x = x$ for some $x \\in D$.\nThen $x = \\map f {\\map r x} \\in K$, so $\\map r x = x$.",
+      "Hence $\\map f x = x$.\nThis is the [[Brouwer Fixed Point Theorem]] for compact convex sets.\n{{qed}}"
+    ]
+  }
+}

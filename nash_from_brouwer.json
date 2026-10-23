@@ -1,0 +1,39 @@
+{
+  "id": "nash_from_brouwer",
+  "field": [
+    "analysis",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Every finite [[Definition:Normal-Form Game|normal-form game]] has a [[Definition:Nash Equilibrium|Nash equilibrium]] in [[Definition:Mixed Strategy|mixed strategies]]."
+  },
+  "B_source": {
+    "statement": "Let $K \\subseteq \\R^n$ be [[Definition:Compact Space|compact]] and [[Definition:Convex Set (Vector Space)|convex]], and $g: K \\to K$ [[Definition:Continuous Mapping|continuous]].\nThen there exists $x \\in K$ such that $\\map g x = x$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "compact convex set K": "product of players' mixed-strategy simplices",
+        "continuous map g": "Nash 'better-response' map adjusting strategies toward higher payoff"
+      },
+      "derived": {
+        "fixed point of g": "Nash equilibrium",
+        "x = g(x)": "no player can improve unilaterally"
+      }
+    },
+    "validity_conditions": [
+      "The strategy space (product of simplices) is compact and convex, satisfying Brouwer's hypotheses.",
+      "The better-response map must be continuous, which requires the specific Nash construction (gain functions are continuous in the mixed strategies).",
+      "Fixed points of this particular map coincide exactly with equilibria; a different self-map would not encode the target."
+    ],
+    "proof_plan": [
+      "The space of mixed-strategy profiles $\\Delta = \\displaystyle \\prod_i \\Delta_i$ is a product of [[Definition:Simplex|simplices]], hence compact and convex.",
+      "For a profile $\\sigma$, let $\\map {c_{i, a} } \\sigma = \\max \\set {0, \\map {u_i} {a, \\sigma_{-i} } - \\map {u_i} \\sigma}$.\nDefine Nash's map:\n:$\\map g \\sigma_{i, a} = \\dfrac {\\sigma_{i, a} + \\map {c_{i, a} } \\sigma} {1 + \\sum_b \\map {c_{i, b} } \\sigma}$\n$g$ is continuous as the $u_i$ are multilinear.",
+      "By the [[Brouwer Fixed Point Theorem]], $g$ has a fixed point $\\sigma^*$.",
+      "At $\\sigma^*$, some pure action $a$ used by player $i$ has $\\map {u_i} {a, \\sigma_{-i}^*} \\le \\map {u_i} {\\sigma^*}$, so $\\map {c_{i, a} } {\\sigma^*} = 0$, which forces $\\sum_b \\map {c_{i, b} } {\\sigma^*} = 0$.\nHence no player has a profitable deviation, and $\\sigma^*$ is a [[Definition:Nash Equilibrium|Nash equilibrium]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "e_irrational_from_integer_squeeze",
+  "field": [
+    "number_theory",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "[[Definition:Euler's Number|Euler's number]] $e$ is [[Definition:Irrational Number|irrational]]."
+  },
+  "B_source": {
+    "statement": "To show that a number is not of a given form, assume that it is and use the assumption to manufacture an [[Definition:Integer|integer]] $N$ with $0 < N < 1$, which is impossible."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the integer N": "b! times the tail of the series for e",
+        "the assumed form": "e = a/b"
+      },
+      "derived": {
+        "the strict bounds on N": "a contradiction with integrality"
+      },
+      "reformulation": "Apply the integer-squeeze pattern of the transcendence proof in its simplest form, using the tail of the exponential series."
+    },
+    "validity_conditions": [
+      "Multiplying by b! makes the partial sum and b! e integers simultaneously.",
+      "The tail is bounded by a geometric series with ratio 1/(b+1)."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $e = \\dfrac a b$ with $a, b \\in \\Z_{>0}$.",
+      "Let $N = b! \\paren {e - \\displaystyle \\sum_{k \\mathop = 0}^b \\frac 1 {k!} }$.\nAs $b! e = a \\paren {b - 1}!$ and each $\\dfrac {b!} {k!}$ with $k \\le b$ is an integer, $N$ is an integer.",
+      "Also:\n:$\\displaystyle N = \\sum_{k \\mathop > b} \\frac {b!} {k!} = \\frac 1 {b + 1} + \\frac 1 {\\paren {b + 1} \\paren {b + 2} } + \\cdots$\nso $N > 0$ and $\\displaystyle N < \\sum_{j \\mathop \\ge 1} \\frac 1 {\\paren {b + 1}^j} = \\frac 1 b \\le 1$.",
+      "An integer cannot lie strictly between $0$ and $1$, a contradiction.\nHence $e$ is irrational, which is [[Euler's Number is Irrational]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "lhopital_from_cauchy_mean_value",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f, g$ be [[Definition:Continuous Real Function|continuous]] on $\\hointr a b$ and [[Definition:Differentiable on Interval|differentiable]] on $\\openint a b$, with $\\map f a = \\map g a = 0$ and $\\map {g'} x \\ne 0$ on $\\openint a b$.\nSuppose:\n:$\\displaystyle \\lim_{x \\mathop \\to a^+} \\frac {\\map {f'} x} {\\map {g'} x} = L$\nThen:\n:$\\displaystyle \\lim_{x \\mathop \\to a^+} \\frac {\\map f x} {\\map g x} = L$"
+  },
+  "B_source": {
+    "statement": "Let $f, g$ be continuous on $\\closedint a x$ and differentiable on $\\openint a x$ with $g' \\ne 0$ there.\nThen there exists $\\xi \\in \\openint a x$ such that:\n:$\\paren {\\map f x - \\map f a} \\map {g'} \\xi = \\paren {\\map g x - \\map g a} \\map {f'} \\xi$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the interval [a, x]": "a shrinking interval with left endpoint a",
+        "the intermediate point xi": "a point squeezed between a and x"
+      },
+      "derived": {
+        "the quotient f(x)/g(x)": "a quotient of derivatives at xi"
+      },
+      "reformulation": "Rewrite the quotient of function values as a quotient of derivatives at an intermediate point, then let the interval shrink."
+    },
+    "validity_conditions": [
+      "g(x) must be non-zero on the open interval, which follows from g(a) = 0 and g' non-zero by Rolle's Theorem.",
+      "The intermediate point must tend to a as x does, which holds since a < xi < x."
+    ],
+    "proof_plan": [
+      "Fix $x \\in \\openint a b$.\nBy [[Cauchy Mean Value Theorem|the Cauchy Mean Value Theorem]] on $\\closedint a x$, there is $\\xi_x \\in \\openint a x$ with:\n:$\\map f x \\map {g'} {\\xi_x} = \\map g x \\map {f'} {\\xi_x}$",
+      "If $\\map g x = 0 = \\map g a$, then [[Rolle's Theorem]] would give a zero of $g'$ in $\\openint a x$.\nHence $\\map g x \\ne 0$, and:\n:$\\dfrac {\\map f x} {\\map g x} = \\dfrac {\\map {f'} {\\xi_x} } {\\map {g'} {\\xi_x} }$",
+      "As $a < \\xi_x < x$, we have $\\xi_x \\to a^+$ as $x \\to a^+$.",
+      "Hence:\n:$\\displaystyle \\lim_{x \\mathop \\to a^+} \\frac {\\map f x} {\\map g x} = \\lim_{x \\mathop \\to a^+} \\frac {\\map {f'} {\\xi_x} } {\\map {g'} {\\xi_x} } = L$\nwhich is [[L'Hôpital's Rule]].\n{{qed}}"
+    ]
+  }
+}

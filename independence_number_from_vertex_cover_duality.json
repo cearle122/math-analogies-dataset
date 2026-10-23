@@ -1,0 +1,37 @@
+{
+  "id": "independence_number_from_vertex_cover_duality",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G = \\struct {V, E}$ be a finite [[Definition:Graph (Graph Theory)|graph]] with [[Definition:Independence Number|independence number]] $\\map \\alpha G$ and minimum [[Definition:Vertex Cover|vertex cover]] size $\\map \\tau G$.\nThen:\n:$\\map \\alpha G + \\map \\tau G = \\card V$"
+  },
+  "B_source": {
+    "statement": "A set $S \\subseteq V$ is an [[Definition:Independent Set (Graph Theory)|independent set]] {{iff}} $V \\setminus S$ is a vertex cover."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "independent sets": "complements of vertex covers",
+        "maximum": "minimum"
+      },
+      "derived": {
+        "complementation": "the identity between the two optima"
+      },
+      "reformulation": "Complementation is an inclusion-reversing bijection taking independent sets to vertex covers, so maximization becomes minimization."
+    },
+    "validity_conditions": [
+      "An edge with both ends in S is exactly an edge missed by V minus S.",
+      "The identity makes the two optimization problems polynomially equivalent."
+    ],
+    "proof_plan": [
+      "$S \\mapsto V \\setminus S$ is an inclusion-reversing [[Definition:Bijection|bijection]] on the subsets of $V$.",
+      "By the source result, it maps the independent sets onto the vertex covers.",
+      "As $\\card {V \\setminus S} = \\card V - \\card S$, a maximum independent set corresponds to a minimum vertex cover.",
+      "Hence $\\map \\alpha G = \\card V - \\map \\tau G$.\n{{qed}}"
+    ]
+  }
+}

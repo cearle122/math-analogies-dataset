@@ -1,0 +1,41 @@
+{
+  "id": "manifold_from_surface",
+  "field": [
+    "geometry",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "A [[Definition:Topological Space|topological space]] $M$ is an [[Definition:Topological Manifold|$n$-manifold]] if every point has a [[Definition:Neighborhood (Topology)|neighborhood]] [[Definition:Homeomorphic|homeomorphic]] to an [[Definition:Open Set (Real Analysis)|open subset]] of $\\R^n$.\nSuch $M$ carries [[Definition:Chart|charts]], [[Definition:Transition Map|transition maps]] and a notion of [[Definition:Orientable Manifold|orientability]]."
+  },
+  "B_source": {
+    "statement": "A [[Definition:Topological Space|topological space]] $S$ is a [[Definition:Surface|surface]] if every point has a [[Definition:Neighborhood (Topology)|neighborhood]] [[Definition:Homeomorphic|homeomorphic]] to an [[Definition:Open Set (Real Analysis)|open subset]] of $\\R^2$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the plane as the local model": "n-dimensional Euclidean space as the local model",
+        "charts onto planar regions": "charts onto open subsets of R^n",
+        "transition maps between planar charts": "transition maps in n variables"
+      },
+      "derived": {
+        "the atlas and its transition maps": "the same notions in n dimensions",
+        "orientability via consistent chart orientations": "orientability via positive determinants of transition Jacobians"
+      },
+      "reformulation": "Raise the dimension of the local model, keeping the chart-and-atlas definition unchanged."
+    },
+    "validity_conditions": [
+      "Surfaces are the case n equal to two, so every n-dimensional notion specializes correctly and the generalization is faithful.",
+      "The local definition is dimension-agnostic, so charts, atlases, and transition maps transfer with no change beyond the number of coordinates.",
+      "Classification does not transfer: closed surfaces are classified completely, whereas in dimension four no such classification exists, so the generalization is of the definitions rather than the structure theory."
+    ],
+    "proof_plan": [
+      "Replace $\\R^2$ by $\\R^n$ as the local model.",
+      "Define a [[Definition:Chart|chart]] as a homeomorphism $\\phi: U \\to \\map \\phi U \\subseteq \\R^n$, an [[Definition:Atlas|atlas]] as a family of charts covering $M$, and [[Definition:Transition Map|transition maps]] $\\phi_\\beta \\circ \\phi_\\alpha^{-1}$ in $n$ coordinates.",
+      "$M$ is [[Definition:Smooth Manifold|smooth]] if all transition maps are smooth, and [[Definition:Orientable Manifold|orientable]] if there is an atlas whose transition [[Definition:Jacobian Determinant|Jacobians]] are everywhere positive.",
+      "Some two-dimensional theorems survive, such as existence of [[Definition:Triangulation|triangulations]] for $n \\le 3$.\nOthers fail, such as the [[Classification of Compact Surfaces|classification of compact surfaces]] by orientability and Euler characteristic, which has no analogue for $n \\ge 4$.\n{{qed}}"
+    ]
+  }
+}

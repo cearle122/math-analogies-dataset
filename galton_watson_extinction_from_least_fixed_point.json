@@ -1,0 +1,37 @@
+{
+  "id": "galton_watson_extinction_from_least_fixed_point",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {Z_n}$ be a [[Definition:Galton-Watson Process|Galton-Watson process]] with $Z_0 = 1$, offspring [[Definition:Probability Generating Function|generating function]] $G$ and mean $m$, with $\\map \\Pr {\\xi = 1} < 1$.\nThen the extinction probability $q$ is the smallest root of $\\map G s = s$ in $\\closedint 0 1$, and $q = 1$ {{iff}} $m \\le 1$."
+  },
+  "B_source": {
+    "statement": "Let $f: \\closedint 0 1 \\to \\closedint 0 1$ be [[Definition:Continuous Real Function|continuous]] and [[Definition:Increasing Real Function|increasing]].\nThen the iterates $\\map {f^n} 0$ increase to the least [[Definition:Fixed Point|fixed point]] of $f$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the map f": "the offspring generating function G",
+        "the iterates": "the probabilities of extinction by generation n"
+      },
+      "derived": {
+        "the least fixed point": "the extinction probability"
+      },
+      "reformulation": "Encode extinction by generation n as an iterate of the generating function started at 0."
+    },
+    "validity_conditions": [
+      "Conditioning on the first generation gives q_(n+1) = G(q_n).",
+      "Convexity of G with G'(1) = m decides whether G has a fixed point below 1."
+    ],
+    "proof_plan": [
+      "Let $q_n = \\map \\Pr {Z_n = 0}$.\nConditioning on the first generation, $q_{n + 1} = \\map G {q_n}$ with $q_0 = 0$, so $q_n = \\map {G^n} 0$.",
+      "$G$ is continuous and increasing on $\\closedint 0 1$ with $\\map G 1 = 1$.\nBy the source result, $q_n$ increases to the least fixed point $s^*$ of $G$.",
+      "The events $\\set {Z_n = 0}$ increase to the extinction event, so $q = \\lim q_n = s^*$.",
+      "$G$ is convex with $\\map {G'} 1 = m$.\nIf $m \\le 1$, then $\\map G s > s$ on $\\hointr 0 1$, so $q = 1$; if $m > 1$, $G$ has a fixed point in $\\hointr 0 1$, so $q < 1$.\n{{qed}}"
+    ]
+  }
+}

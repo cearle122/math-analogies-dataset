@@ -1,0 +1,37 @@
+{
+  "id": "no_fixed_point_combinator_from_strong_normalization",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In the [[Definition:Simply Typed Lambda Calculus|simply typed $\\lambda$-calculus]], there is no closed term $Y$ of type $\\paren {T \\to T} \\to T$ with $Y f =_\\beta f \\paren {Y f}$ for a variable $f : T \\to T$.\nIn particular there is no typable [[Definition:Fixed-Point Combinator|fixed-point combinator]]."
+  },
+  "B_source": {
+    "statement": "Every well-typed term of the simply typed $\\lambda$-calculus is [[Definition:Strongly Normalizing|strongly normalizing]], and $\\beta$-reduction is [[Definition:Confluent Relation|confluent]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "an arbitrary well-typed term": "Y f with f a free variable"
+      },
+      "derived": {
+        "normal forms": "a term equal to f applied to itself, which is impossible"
+      },
+      "reformulation": "Compare the normal forms of Y f and f (Y f): confluence forces them to coincide, but one is strictly larger."
+    },
+    "validity_conditions": [
+      "f must be a variable, so that applying f cannot create a redex.",
+      "Recursion therefore has to be added as a primitive, as in PCF."
+    ],
+    "proof_plan": [
+      "Let $f$ be a variable of type $T \\to T$, so $Y f$ is well-typed.\nBy the source result, $Y f$ has a normal form $N$.",
+      "As $f$ is a variable, $f \\paren {Y f}$ reduces to $f \\, N$, which is again normal.",
+      "If $Y f =_\\beta f \\paren {Y f}$, then by confluence the two terms have the same normal form, so $N \\equiv f \\, N$.",
+      "This is impossible, as $f \\, N$ is strictly larger than $N$.\nHence no fixed-point combinator is typable, and similarly $\\paren {\\lambda x. x \\, x} \\paren {\\lambda x. x \\, x}$, which has no normal form, is untypable.\n{{qed}}"
+    ]
+  }
+}

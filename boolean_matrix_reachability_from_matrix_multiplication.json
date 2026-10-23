@@ -1,0 +1,40 @@
+{
+  "id": "boolean_matrix_reachability_from_matrix_multiplication",
+  "field": [
+    "algorithms",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Directed Graph|directed graph]] with [[Definition:Adjacency Matrix|adjacency matrix]] $A$ over the [[Definition:Boolean Semiring|Boolean semiring]] $\\struct {\\set {0, 1}, \\lor, \\land}$.\nThen for all $k \\ge 1$:\n:$\\paren {A^k}_{i j} = 1 \\iff$ there is a [[Definition:Walk (Graph Theory)|walk]] of length $k$ from $i$ to $j$"
+  },
+  "B_source": {
+    "statement": "Let $A$ be the weighted [[Definition:Adjacency Matrix|adjacency matrix]] of a [[Definition:Directed Graph|directed graph]] over a [[Definition:Commutative Ring|commutative ring]].\nThen:\n:$\\displaystyle \\paren {A^k}_{i j} = \\sum_{i = v_0 \\to v_1 \\to \\cdots \\to v_k = j} \\prod_{t \\mathop = 1}^k A_{v_{t - 1} v_t}$\nthe sum over all [[Definition:Walk (Graph Theory)|walks]] of length $k$ from $i$ to $j$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "addition of real numbers": "Boolean disjunction",
+        "multiplication of real numbers": "Boolean conjunction",
+        "the additive and multiplicative identities": "false and true"
+      },
+      "derived": {
+        "the walk-counting identity": "the existence-of-path identity"
+      }
+    },
+    "validity_conditions": [
+      "the Boolean values with or and and must form a semiring, which they do, so associativity of matrix product is inherited",
+      "the semiring lacks additive inverses, so any argument using subtraction or determinants does not transfer",
+      "idempotence of disjunction is what turns counting into existence testing"
+    ],
+    "proof_plan": [
+      "Replace the coefficient ring by the [[Definition:Boolean Semiring|Boolean semiring]], with $\\lor$ as addition and $\\land$ as multiplication.",
+      "$\\struct {\\set {0, 1}, \\lor, \\land}$ satisfies the [[Definition:Semiring|semiring axioms]].\nThese are all that is used to prove [[Matrix Multiplication is Associative|associativity of matrix multiplication]].",
+      "The walk-counting proof by [[Principle of Mathematical Induction|induction]] on $k$ goes through verbatim:\n:$\\displaystyle \\paren {A^{k + 1} }_{i j} = \\bigvee_l \\paren {\\paren {A^k}_{i l} \\land A_{l j} }$\nwith sums of products becoming disjunctions of conjunctions.",
+      "Hence $\\paren {A^k}_{i j} = 1$ {{iff}} at least one walk of length $k$ from $i$ to $j$ exists.",
+      "Results relying on subtraction, such as those involving the [[Definition:Determinant of Matrix|determinant]], do not transfer, since the semiring has no [[Definition:Additive Inverse|additive inverses]].\n{{qed}}"
+    ]
+  }
+}

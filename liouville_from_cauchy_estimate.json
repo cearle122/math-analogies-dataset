@@ -1,0 +1,41 @@
+{
+  "id": "liouville_from_cauchy_estimate",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\C \\to \\C$ be an [[Definition:Entire Function|entire function]] which is [[Definition:Bounded Mapping|bounded]].\nThen $f$ is [[Definition:Constant Mapping|constant]]."
+  },
+  "B_source": {
+    "statement": "Let $f$ be [[Definition:Holomorphic Function|holomorphic]] on a neighborhood of $\\size {z - z_0} \\le R$, with $\\size {\\map f z} \\le \\map M R$ there.\nThen:\n:$\\size {\\map {f'} {z_0} } \\le \\dfrac {\\map M R} R$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "M(R) (bound on the disk)": "a single global bound M (since f is bounded everywhere)",
+        "the radius R": "arbitrarily large R -> infinity"
+      },
+      "derived": {
+        "|f'(z0)| <= M/R": "|f'(z0)| -> 0 as R -> infinity, so f'(z0) = 0",
+        "f' = 0 everywhere": "f constant"
+      },
+      "reformulation": "Apply the Cauchy estimate with the global bound M on disks of radius R, then let R grow without bound."
+    },
+    "validity_conditions": [
+      "f entire allows the Cauchy estimate on a disk of any radius R about any z0.",
+      "Boundedness gives a single M with |f| <= M on every disk, so |f'(z0)| <= M/R.",
+      "Letting R -> infinity forces f'(z0) = 0 for all z0, hence f is constant."
+    ],
+    "proof_plan": [
+      "Fix $z_0 \\in \\C$.\nBy [[Cauchy's Inequality]] on the disk of radius $R$:\n:$\\size {\\map {f'} {z_0} } \\le \\dfrac {\\map M R} R$",
+      "As $f$ is bounded, $\\map M R \\le M$ for all $R$.",
+      "Letting $R \\to \\infty$:\n:$\\size {\\map {f'} {z_0} } \\le \\displaystyle \\lim_{R \\mathop \\to \\infty} \\frac M R = 0$",
+      "As $z_0$ was arbitrary, $f' = 0$ on $\\C$.\nAs $\\C$ is [[Definition:Connected Set|connected]], $f$ is constant.\n{{qed}}"
+    ]
+  }
+}

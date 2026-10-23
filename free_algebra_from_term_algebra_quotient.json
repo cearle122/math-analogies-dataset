@@ -1,0 +1,38 @@
+{
+  "id": "free_algebra_from_term_algebra_quotient",
+  "field": [
+    "logic",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf V$ be the [[Definition:Variety (Universal Algebra)|variety]] defined by a set $E$ of identities, and $X$ a set.\nThen $\\map {F_{\\mathbf V} } X = \\map T X / \\approx_E$, where $s \\approx_E t$ {{iff}} $E \\models s = t$, is [[Definition:Free Algebra|free]] in $\\mathbf V$ on $X$."
+  },
+  "B_source": {
+    "statement": "Let $\\theta$ be a [[Definition:Congruence Relation|congruence]] on an algebra $A$ and $h: A \\to B$ a [[Definition:Homomorphism (Abstract Algebra)|homomorphism]] with $\\theta \\subseteq \\map \\ker h$.\nThen $h$ factors uniquely through $A / \\theta$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the algebra A": "the term algebra T(X)",
+        "the congruence theta": "equational consequence from E"
+      },
+      "derived": {
+        "the factorization": "the universal property of the free algebra"
+      },
+      "reformulation": "Collapse the absolutely free term algebra by everything the identities force, and check that every evaluation into V kills it."
+    },
+    "validity_conditions": [
+      "Equational consequence is a congruence closed under substitution, so the quotient again satisfies E.",
+      "Every algebra in V satisfies E, which puts the congruence inside the kernel of each evaluation."
+    ],
+    "proof_plan": [
+      "The term algebra $\\map T X$ is absolutely free: every map $X \\to A$ extends uniquely to a homomorphism $h: \\map T X \\to A$, by evaluation.",
+      "$\\approx_E$ is a congruence, and $\\map T X / \\approx_E$ satisfies every identity of $E$, so it lies in $\\mathbf V$.",
+      "If $A \\in \\mathbf V$ then $A$ satisfies $E$, so $s \\approx_E t$ implies $\\map h s = \\map h t$; that is, $\\approx_E \\subseteq \\map \\ker h$.",
+      "By the source result, $h$ factors uniquely through $\\map T X / \\approx_E$.\nHence it is the free algebra of $\\mathbf V$ on $X$; for example, free groups and polynomial rings arise this way.\n{{qed}}"
+    ]
+  }
+}

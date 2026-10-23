@@ -1,0 +1,38 @@
+{
+  "id": "rsa_correctness_from_euler_theorem",
+  "field": [
+    "algorithms",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $n = p q$ with $p \\ne q$ primes, and $e d \\equiv 1 \\pmod {\\map \\phi n}$.\nThen for every $m \\in \\Z$:\n:$\\paren {m^e}^d \\equiv m \\pmod n$\nso [[Definition:RSA Algorithm|RSA]] decryption inverts encryption."
+  },
+  "B_source": {
+    "statement": "Let $a \\perp N$.\nThen $a^{\\map \\phi N} \\equiv 1 \\pmod N$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the modulus N": "n = pq, and separately p and q",
+        "the base a": "the message m"
+      },
+      "derived": {
+        "m^(ed) = m": "correctness of RSA decryption"
+      },
+      "reformulation": "Specialize Euler's theorem to the RSA exponent, handling messages not coprime to n prime by prime."
+    },
+    "validity_conditions": [
+      "Messages divisible by p or q are not coprime to n, so the congruence is checked modulo p and q separately.",
+      "The two congruences combine by the Chinese Remainder Theorem since p and q are distinct."
+    ],
+    "proof_plan": [
+      "Write $e d = 1 + k \\map \\phi n = 1 + k \\paren {p - 1} \\paren {q - 1}$.",
+      "If $m \\perp n$, the source result gives $m^{e d} = m \\paren {m^{\\map \\phi n} }^k \\equiv m \\pmod n$.",
+      "In general, work modulo $p$: if $p \\divides m$ both sides are $0$; otherwise $m^{p - 1} \\equiv 1 \\pmod p$, so $m^{e d} = m \\paren {m^{p - 1} }^{k \\paren {q - 1} } \\equiv m \\pmod p$.\nThe same holds modulo $q$.",
+      "By the [[Chinese Remainder Theorem]], $m^{e d} \\equiv m \\pmod {p q}$.\n{{qed}}"
+    ]
+  }
+}

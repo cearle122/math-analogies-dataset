@@ -1,0 +1,41 @@
+{
+  "id": "y_combinator_from_self_application",
+  "field": [
+    "logic",
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "In the [[Definition:Untyped Lambda Calculus|untyped $\\lambda$-calculus]], for every term $f$ there is a term $X$ with:\n:$X =_\\beta f \\, X$\ngiven by $X = \\mathbf Y f$ where $\\mathbf Y = \\lambda f. \\, \\paren {\\lambda x. \\, f \\paren {x \\, x} } \\paren {\\lambda x. \\, f \\paren {x \\, x} }$."
+  },
+  "B_source": {
+    "statement": "To make a definition refer to its own result, form $\\lambda x. \\, \\map e {x \\, x}$ and apply it to itself."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the self-application pattern": "the term that abstracts x and applies x to x inside the body",
+        "the term whose fixed point is sought": "an arbitrary lambda term f",
+        "the result of self-application": "the fixed point Y f"
+      },
+      "derived": {
+        "the term reduces to its own body applied to itself": "Y f reduces to f applied to Y f",
+        "the recursion unfolds indefinitely": "the fixed point equation holds up to reduction, not syntactic equality"
+      },
+      "reformulation": "Encode recursion as self-application, so that the recursive equation becomes a fixed point equation."
+    },
+    "validity_conditions": [
+      "Self-application is well formed only because the calculus is untyped; in a simply typed calculus the term has no type and the construction fails.",
+      "The fixed point equation holds up to beta-reduction rather than syntactic identity, so equality here means convertibility.",
+      "Since every term has a fixed point, there is no term denoting a total halting test, which is why the untyped calculus is not strongly normalizing."
+    ],
+    "proof_plan": [
+      "Form the self-application pattern:\n:$W = \\lambda x. \\, f \\paren {x \\, x}$",
+      "Apply $W$ to itself and reduce one step:\n:$W \\, W \\to_\\beta f \\paren {W \\, W}$",
+      "The result is $f$ applied to the whole term $W \\, W$.",
+      "Hence $X = W \\, W$ satisfies $X =_\\beta f \\, X$, so $X$ is a [[Definition:Fixed Point|fixed point]] of $f$ up to $\\beta$-reduction.\nAs $\\mathbf Y f \\to_\\beta W \\, W$, $\\mathbf Y$ is a [[Definition:Fixed-Point Combinator|fixed-point combinator]].\n{{qed}}"
+    ]
+  }
+}

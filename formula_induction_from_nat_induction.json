@@ -1,0 +1,41 @@
+{
+  "id": "formula_induction_from_nat_induction",
+  "field": [
+    "logic",
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\map P \\phi$ be a [[Definition:Propositional Function|property]] of [[Definition:Well-Formed Formula|formulas]] of [[Definition:First-Order Logic|first-order logic]].\nSuppose $\\map P \\phi$ holds for [[Definition:Atomic Formula|atomic formulas]], and is preserved by $\\neg$, $\\land$ and $\\exists$.\nThen $\\map P \\phi$ holds for all formulas $\\phi$."
+  },
+  "B_source": {
+    "statement": "Let $\\map P n$ be a [[Definition:Propositional Function|propositional function]] on $\\N$.\nIf $\\map P 0$ holds and $\\map P n \\implies \\map P {n + 1}$, then $\\map P n$ holds for all $n \\in \\N$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the base case zero": "the atomic formulas",
+        "the successor step": "the formula-building operations",
+        "the induction hypothesis at n": "the hypothesis at all immediate subformulas"
+      },
+      "derived": {
+        "the well-ordering of the naturals": "the well-foundedness of the subformula relation"
+      },
+      "reformulation": "The induction must be reindexed by a complexity measure before the naturals-based skeleton applies, since formulas are not themselves numbers."
+    },
+    "validity_conditions": [
+      "formulas must be uniquely readable, so each formula has a well-defined set of immediate subformulas",
+      "the subformula relation must be well founded, which follows from finiteness of formulas",
+      "the step case must cover every formation rule, or the induction has a gap"
+    ],
+    "proof_plan": [
+      "Assign to each formula $\\phi$ its [[Definition:Complexity of Formula|complexity]] $\\map c \\phi$, the number of connectives and quantifiers in $\\phi$.",
+      "Immediate subformulas have strictly smaller complexity:\n:$\\map c \\psi < \\map c {\\neg \\psi}, \\map c {\\psi \\land \\chi}, \\map c {\\exists x \\, \\psi}$",
+      "Apply the [[Second Principle of Mathematical Induction|strong form of induction]] on $\\map c \\phi \\in \\N$.",
+      "Atomic formulas have complexity $0$, giving the base case.\nEach formation rule gives a step case, using the hypothesis for the immediate subformulas.",
+      "By [[Unique Readability Theorem|unique readability]], each non-atomic formula arises from exactly one formation rule.\nHence $\\map P \\phi$ holds for all formulas.\n{{qed}}"
+    ]
+  }
+}

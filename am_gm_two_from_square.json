@@ -1,0 +1,37 @@
+{
+  "id": "am_gm_two_from_square",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $a, b \\in \\R_{\\ge 0}$.\nThen:\n:$\\dfrac {a + b} 2 \\ge \\sqrt {a b}$"
+  },
+  "B_source": {
+    "statement": "Let $t \\in \\R$ be a [[Definition:Real Number|real number]].\nThen:\n:$t^2 \\ge 0$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "t": "sqrt(a) - sqrt(b)"
+      },
+      "derived": {
+        "t^2 >= 0": "(sqrt(a) - sqrt(b))^2 >= 0",
+        "expanded form": "a + b - 2 sqrt(ab) >= 0"
+      }
+    },
+    "validity_conditions": [
+      "For a,b >= 0 the real square roots exist, so t = sqrt(a) - sqrt(b) is real.",
+      "t^2 >= 0 expands to a - 2 sqrt(ab) + b >= 0.",
+      "Rearranging gives (a+b)/2 >= sqrt(ab)."
+    ],
+    "proof_plan": [
+      "Let $t = \\sqrt a - \\sqrt b$.\nAs $a, b \\ge 0$, the [[Definition:Square Root|square roots]] exist and $t \\in \\R$.",
+      "From [[Square of Real Number is Non-Negative]]:\n:$\\paren {\\sqrt a - \\sqrt b}^2 \\ge 0$",
+      "{{begin-eqn}}\n{{eqn | l = \\paren {\\sqrt a - \\sqrt b}^2\n| r = a - 2 \\sqrt {a b} + b\n| c = [[Square of Difference]]\n}}\n{{eqn | ll= \\leadsto\n| l = a + b - 2 \\sqrt {a b}\n| o = \\ge\n| r = 0\n| c =\n}}\n{{end-eqn}}",
+      "Rearranging:\n:$\\dfrac {a + b} 2 \\ge \\sqrt {a b}$\n{{qed}}"
+    ]
+  }
+}

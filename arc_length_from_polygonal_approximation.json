@@ -1,0 +1,41 @@
+{
+  "id": "arc_length_from_polygonal_approximation",
+  "field": [
+    "geometry",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\gamma: \\closedint a b \\to \\R^n$ be a [[Definition:Curve|curve]].\nThe [[Definition:Length of Curve|length]] of $\\gamma$ is:\n:$\\displaystyle \\map L \\gamma = \\sup_P \\sum_{i \\mathop = 1}^k \\norm {\\map \\gamma {t_i} - \\map \\gamma {t_{i - 1} } }$\nwhere the [[Definition:Supremum of Set|supremum]] is over all [[Definition:Finite Subdivision|subdivisions]] $P = \\set {a = t_0 < t_1 < \\cdots < t_k = b}$.\nIf $\\gamma$ is [[Definition:Continuously Differentiable|continuously differentiable]], then:\n:$\\displaystyle \\map L \\gamma = \\int_a^b \\norm {\\map {\\gamma'} t} \\rd t$"
+  },
+  "B_source": {
+    "statement": "Let $P$ be a [[Definition:Polygonal Path|polygonal path]] with [[Definition:Vertex of Polygon|vertices]] $p_0, p_1, \\ldots, p_k$.\nThen the [[Definition:Length of Curve|length]] of $P$ is:\n:$\\displaystyle \\sum_{i \\mathop = 1}^k \\norm {p_i - p_{i - 1} }$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the vertices of the polygon": "the sample points of a partition of the parameter interval",
+        "the finite sum of segment lengths": "the approximating sum for a given partition",
+        "refining the polygon": "refining the partition, with mesh tending to zero"
+      },
+      "derived": {
+        "the supremum over all inscribed polygons": "the length of the curve",
+        "the limit of the approximating sums for a smooth curve": "the integral of the speed"
+      },
+      "reformulation": "Replace the curve by an inscribed polygon, so a continuous length becomes a finite sum, then refine."
+    },
+    "validity_conditions": [
+      "Refining a partition can only increase the approximating sum, by the triangle inequality, so the supremum is also the limit as the mesh tends to zero.",
+      "The curve is rectifiable exactly when that supremum is finite, which is the definition rather than a theorem.",
+      "For a continuously differentiable curve the mean value theorem converts each chord into a speed times a subinterval length, so the sums become Riemann sums for the integral of the speed."
+    ],
+    "proof_plan": [
+      "Let $P = \\set {t_0, t_1, \\ldots, t_k}$ be a [[Definition:Finite Subdivision|subdivision]] of $\\closedint a b$.\nThe points $\\map \\gamma {t_i}$ are the vertices of an inscribed [[Definition:Polygonal Path|polygonal path]] of length $\\displaystyle \\sum_{i \\mathop = 1}^k \\norm {\\map \\gamma {t_i} - \\map \\gamma {t_{i - 1} } }$.",
+      "Let $Q$ be a [[Definition:Refinement of Subdivision|refinement]] of $P$ obtained by inserting $s \\in \\openint {t_{i - 1} } {t_i}$.\nFrom the [[Triangle Inequality]]:\n:$\\norm {\\map \\gamma {t_i} - \\map \\gamma {t_{i - 1} } } \\le \\norm {\\map \\gamma {t_i} - \\map \\gamma s} + \\norm {\\map \\gamma s - \\map \\gamma {t_{i - 1} } }$\nso refining does not decrease the polygonal length.",
+      "Define $\\map L \\gamma$ as the [[Definition:Supremum of Set|supremum]] of these lengths over all subdivisions.\n$\\gamma$ is [[Definition:Rectifiable Curve|rectifiable]] {{iff}} $\\map L \\gamma < \\infty$.",
+      "Let $\\gamma$ be [[Definition:Continuously Differentiable|continuously differentiable]].\nBy the [[Mean Value Theorem]] applied to each coordinate, each segment length is approximately $\\norm {\\map {\\gamma'} {\\xi_i} } \\paren {t_i - t_{i - 1} }$.\nThus the polygonal lengths are [[Definition:Riemann Sum|Riemann sums]] for $\\norm {\\gamma'}$, and:\n:$\\displaystyle \\map L \\gamma = \\int_a^b \\norm {\\map {\\gamma'} t} \\rd t$\n{{qed}}"
+    ]
+  }
+}

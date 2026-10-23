@@ -1,0 +1,39 @@
+{
+  "id": "gaussian_integers_euclidean_from_rounding",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Gaussian Integer|Gaussian integers]] $\\Z \\sqbrk i$ form a [[Definition:Euclidean Domain|Euclidean domain]] with $\\map N {a + b i} = a^2 + b^2$.\nThat is, for $\\alpha, \\beta \\in \\Z \\sqbrk i$ with $\\beta \\ne 0$ there exist $\\kappa, \\rho$ with $\\alpha = \\kappa \\beta + \\rho$ and $\\map N \\rho < \\map N \\beta$.\nHence $\\Z \\sqbrk i$ is a [[Definition:Unique Factorization Domain|unique factorization domain]]."
+  },
+  "B_source": {
+    "statement": "Let $a, b \\in \\Z$ with $b \\ne 0$.\nThen there exist $q, r \\in \\Z$ with $a = q b + r$ and $\\size r \\le \\dfrac {\\size b} 2$, by taking $q$ to be an integer nearest to $\\dfrac a b$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "Z": "Z[i]",
+        "absolute value": "the norm N",
+        "the nearest integer": "the nearest Gaussian integer, rounding each coordinate"
+      },
+      "derived": {
+        "the remainder bound": "N(rho) <= N(beta)/2"
+      },
+      "reformulation": "Divide in Q(i) and round each coordinate to the nearest integer, measuring the error with the multiplicative norm."
+    },
+    "validity_conditions": [
+      "The norm is multiplicative, so the remainder norm is N(beta) times the norm of the rounding error.",
+      "Rounding each coordinate gives error at most 1/2 in each, so the error norm is at most 1/2; the analogous argument fails for Z[sqrt(-5)]."
+    ],
+    "proof_plan": [
+      "Write $\\dfrac \\alpha \\beta = x + y i$ with $x, y \\in \\Q$.",
+      "Choose $m, n \\in \\Z$ with $\\size {x - m} \\le \\dfrac 1 2$ and $\\size {y - n} \\le \\dfrac 1 2$, and let $\\kappa = m + n i$.",
+      "Let $\\rho = \\alpha - \\kappa \\beta = \\beta \\paren {\\dfrac \\alpha \\beta - \\kappa}$.\nBy multiplicativity of $N$:\n:$\\map N \\rho = \\map N \\beta \\paren {\\paren {x - m}^2 + \\paren {y - n}^2} \\le \\dfrac {\\map N \\beta} 2 < \\map N \\beta$",
+      "Hence $\\Z \\sqbrk i$ is Euclidean.\nAs in $\\Z$, a Euclidean domain is a [[Definition:Principal Ideal Domain|principal ideal domain]], hence a unique factorization domain.\n{{qed}}"
+    ]
+  }
+}

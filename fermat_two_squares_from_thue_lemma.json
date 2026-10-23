@@ -1,0 +1,37 @@
+{
+  "id": "fermat_two_squares_from_thue_lemma",
+  "field": [
+    "number_theory",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a [[Definition:Prime Number|prime]] with $p \\equiv 1 \\pmod 4$.\nThen there exist $x, y \\in \\Z$ with $p = x^2 + y^2$."
+  },
+  "B_source": {
+    "statement": "Let $p$ be prime and $a \\perp p$.\nThen there exist $x, y \\in \\Z$ with $0 < \\size x, \\size y < \\sqrt p$ and:\n:$a x \\equiv y \\pmod p$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the multiplier a": "a square root of -1 modulo p"
+      },
+      "derived": {
+        "the small pair x, y": "a representation of p as a sum of two squares"
+      },
+      "reformulation": "Use a square root of -1 to turn a small solution of a x = y (mod p) into a multiple of p that is a sum of two small squares."
+    },
+    "validity_conditions": [
+      "p = 1 (mod 4) is exactly what makes -1 a quadratic residue.",
+      "The bound below the square root of p forces the multiple of p to be p itself."
+    ],
+    "proof_plan": [
+      "As $p \\equiv 1 \\pmod 4$, $\\paren {-1}^{\\frac {p - 1} 2} = 1$.\nBy [[Euler's Criterion]], choose $a$ with $a^2 \\equiv -1 \\pmod p$.",
+      "By [[Thue's Lemma]], choose $x, y$ with $0 < \\size x, \\size y < \\sqrt p$ and $a x \\equiv y \\pmod p$.",
+      "Then $y^2 \\equiv a^2 x^2 \\equiv -x^2 \\pmod p$, so $p \\divides x^2 + y^2$.",
+      "As $0 < x^2 + y^2 < 2 p$, we have $x^2 + y^2 = p$.\nThis is [[Fermat's Two Squares Theorem]].\n{{qed}}"
+    ]
+  }
+}

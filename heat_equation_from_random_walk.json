@@ -1,0 +1,41 @@
+{
+  "id": "heat_equation_from_random_walk",
+  "field": [
+    "probability",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\R \\to \\R$ be [[Definition:Bounded Mapping|bounded]] and [[Definition:Continuous Real Function|continuous]].\nLet $\\map u {t, x} = \\displaystyle \\lim_{h \\mathop \\to 0} \\expect {\\map f {x + h S_{\\floor {t / h^2} } } }$, where $\\sequence {S_n}$ is a [[Definition:Simple Random Walk|simple symmetric random walk]].\nThen $u$ satisfies the [[Definition:Heat Equation|heat equation]]:\n:$\\dfrac {\\partial u} {\\partial t} = \\dfrac 1 2 \\dfrac {\\partial^2 u} {\\partial x^2}$"
+  },
+  "B_source": {
+    "statement": "Let $\\map u {n, x}$ be the expected value of $f$ at a simple symmetric random walk on $h \\Z$ after $n$ steps from $x$.\nThen:\n:$\\map u {n + 1, x} = \\dfrac 1 2 \\paren {\\map u {n, x - h} + \\map u {n, x + h} }$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the lattice spacing and time step": "parameters h and h^2 tending to zero together",
+        "the averaging recursion over neighbours": "the discrete Laplacian applied to the current state",
+        "the walk's expected value at a site": "the approximating solution at that space-time point"
+      },
+      "derived": {
+        "the rearranged recursion": "a difference quotient in time equal to a second difference in space",
+        "the limit of the recursion": "the heat equation, with the factor one half"
+      },
+      "reformulation": "Replace continuous diffusion by a lattice walk, so the differential equation becomes an averaging recursion, then take the diffusive scaling limit."
+    },
+    "validity_conditions": [
+      "Rearranging the averaging recursion expresses the time difference quotient as a second-order space difference divided by h^2.",
+      "The time step must scale as the square of the space step; under any other scaling the limit is degenerate, which is why diffusive scaling is forced rather than chosen.",
+      "Convergence of the difference quotients to derivatives requires sufficient smoothness of the limit, supplied by smoothing properties of the heat kernel."
+    ],
+    "proof_plan": [
+      "On the lattice $h \\Z$ with time step $\\tau$, the one-step recursion is:\n:$\\map u {t + \\tau, x} = \\dfrac 1 2 \\paren {\\map u {t, x - h} + \\map u {t, x + h} }$",
+      "Rearranging:\n:$\\dfrac {\\map u {t + \\tau, x} - \\map u {t, x} } \\tau = \\dfrac {h^2} {2 \\tau} \\cdot \\dfrac {\\map u {t, x + h} - 2 \\map u {t, x} + \\map u {t, x - h} } {h^2}$",
+      "Let $h \\to 0$ with $\\tau = h^2$, so that $\\dfrac {h^2} {2 \\tau} = \\dfrac 1 2$.",
+      "The left hand side tends to $\\dfrac {\\partial u} {\\partial t}$, and the [[Definition:Second Difference|second difference quotient]] tends to $\\dfrac {\\partial^2 u} {\\partial x^2}$.\nHence:\n:$\\dfrac {\\partial u} {\\partial t} = \\dfrac 1 2 \\dfrac {\\partial^2 u} {\\partial x^2}$\n{{qed}}"
+    ]
+  }
+}

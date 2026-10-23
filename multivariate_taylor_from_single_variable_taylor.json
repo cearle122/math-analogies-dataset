@@ -1,0 +1,42 @@
+{
+  "id": "multivariate_taylor_from_single_variable_taylor",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\R^n \\to \\R$ be of class $C^{k + 1}$.\nThen:\n:$\\displaystyle \\map f {a + h} = \\sum_{\\size \\alpha \\mathop \\le k} \\frac {\\map {D^\\alpha f} a} {\\alpha!} h^\\alpha + \\map {R_k} h$\nwhere $\\map {R_k} h = \\displaystyle \\sum_{\\size \\alpha \\mathop = k + 1} \\frac {\\map {D^\\alpha f} {a + c h} } {\\alpha!} h^\\alpha$ for some $c \\in \\openint 0 1$."
+  },
+  "B_source": {
+    "statement": "Let $g$ be of class $C^{k + 1}$ on an interval containing $a$ and $a + h$.\nThen:\n:$\\displaystyle \\map g {a + h} = \\sum_{j \\mathop = 0}^k \\frac {\\map {g^{\\paren j} } a} {j!} h^j + \\frac {\\map {g^{\\paren {k + 1} } } c} {\\paren {k + 1}!} h^{k + 1}$\nfor some $c$ between $a$ and $a + h$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the single variable t": "the parameter along the segment from a to a+h",
+        "the derivative f^{(j)}": "the directional derivative of order j in the direction h",
+        "the remainder at an intermediate point c": "the remainder at a point on the segment"
+      },
+      "derived": {
+        "the multi-index expansion": "the regrouping of directional derivatives by the multinomial theorem"
+      },
+      "reformulation": "The multivariable problem must be reformulated as a one-variable problem along a segment before the source theorem applies at all."
+    },
+    "validity_conditions": [
+      "the segment from a to a+h must lie in the domain, so the domain should be convex or the step small",
+      "f must be k+1 times continuously differentiable on a neighbourhood of that segment",
+      "the regrouping into multi-index form uses equality of mixed partials, which requires continuity of the derivatives"
+    ],
+    "proof_plan": [
+      "Let $\\map g t = \\map f {a + t h}$ for $t \\in \\closedint 0 1$.",
+      "By [[Taylor's Theorem/One Variable|Taylor's Theorem]] for $g$ at $t = 0$ with $t = 1$:\n:$\\displaystyle \\map g 1 = \\sum_{j \\mathop = 0}^k \\frac {\\map {g^{\\paren j} } 0} {j!} + \\frac {\\map {g^{\\paren {k + 1} } } c} {\\paren {k + 1}!}$",
+      "By the [[Chain Rule for Real-Valued Functions|chain rule]], $\\map {g^{\\paren j} } t$ is the $j$th [[Definition:Directional Derivative|directional derivative]]:\n:$\\map {g^{\\paren j} } t = \\paren {h \\cdot \\nabla}^j \\map f {a + t h}$",
+      "By the [[Multinomial Theorem]]:\n:$\\displaystyle \\paren {h \\cdot \\nabla}^j = \\sum_{\\size \\alpha \\mathop = j} \\frac {j!} {\\alpha!} h^\\alpha D^\\alpha$",
+      "Substituting and cancelling $j!$ regroups the terms into multi-index notation, giving the stated expansion and remainder.\n{{qed}}"
+    ]
+  }
+}

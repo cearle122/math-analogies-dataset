@@ -1,0 +1,37 @@
+{
+  "id": "hoeffding_step_from_chernoff",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X_1, \\ldots, X_n$ be [[Definition:Independent Random Variables|independent random variables]] and $S_n = \\displaystyle \\sum_{i \\mathop = 1}^n X_i$.\nThen for all $s > 0$:\n:$\\displaystyle \\map \\Pr {S_n - \\expect {S_n} \\ge a} \\le e^{-s a} \\prod_{i \\mathop = 1}^n \\expect {e^{s \\paren {X_i - \\expect {X_i} } } }$"
+  },
+  "B_source": {
+    "statement": "Let $Z$ be a [[Definition:Random Variable|random variable]] and $s > 0$.\nThen:\n:$\\map \\Pr {Z \\ge a} \\le e^{-s a} \\expect {e^{s Z} }$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "Z": "S_n - E[S_n] = sum_i (X_i - E X_i)"
+      },
+      "derived": {
+        "E[e^{sZ}]": "prod_i E[e^{s(X_i - E X_i)}] (by independence)",
+        "the Chernoff bound": "the product form of the sum tail bound"
+      }
+    },
+    "validity_conditions": [
+      "Apply Chernoff to Z = S_n - E[S_n], giving P(Z >= a) <= e^{-sa} E[e^{sZ}].",
+      "By independence of the X_i, e^{sZ} = prod e^{s(X_i - E X_i)} factorizes: E[e^{sZ}] = prod_i E[e^{s(X_i - E X_i)}].",
+      "This is the standard first step of Hoeffding's inequality (before bounding each MGF factor)."
+    ],
+    "proof_plan": [
+      "Let $Z = S_n - \\expect {S_n}$ and apply the [[Chernoff Bound]].",
+      "This gives:\n:$\\map \\Pr {Z \\ge a} \\le e^{-s a} \\expect {e^{s Z} }$",
+      "As the $X_i$ are [[Definition:Independent Random Variables|independent]], so are the $e^{s \\paren {X_i - \\expect {X_i} } }$.\nBy [[Expectation of Product of Independent Random Variables]]:\n:$\\displaystyle \\expect {e^{s Z} } = \\prod_{i \\mathop = 1}^n \\expect {e^{s \\paren {X_i - \\expect {X_i} } } }$",
+      "Hence:\n:$\\displaystyle \\map \\Pr {S_n - \\expect {S_n} \\ge a} \\le e^{-s a} \\prod_{i \\mathop = 1}^n \\expect {e^{s \\paren {X_i - \\expect {X_i} } } }$\nwhich is the setup for [[Hoeffding's Inequality]].\n{{qed}}"
+    ]
+  }
+}

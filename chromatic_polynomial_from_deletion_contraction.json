@@ -1,0 +1,39 @@
+{
+  "id": "chromatic_polynomial_from_deletion_contraction",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Graph (Graph Theory)|graph]].\nLet $\\map P {G, k}$ be the number of [[Definition:Proper Vertex Coloring|proper vertex colorings]] of $G$ with $k$ colors.\nThen $\\map P {G, k}$ is a [[Definition:Polynomial over Ring|polynomial]] in $k$ with [[Definition:Integer|integer]] coefficients."
+  },
+  "B_source": {
+    "statement": "Let $I$ be a [[Definition:Graph Invariant|graph invariant]] and $e$ an [[Definition:Edge of Graph|edge]] of $G$.\nA [[Definition:Deletion-Contraction Recurrence|deletion-contraction recurrence]] has the form:\n:$\\map I G = \\map I {G - e} - \\map I {G / e}$\nwhere $G - e$ is $G$ with $e$ deleted and $G / e$ is $G$ with $e$ contracted."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the invariant satisfying the recursion": "the number of proper colourings with k colours",
+        "the two smaller graphs": "the graph with an edge deleted and with that edge contracted",
+        "the base case of the recursion": "the edgeless graph, whose colouring count is k to the number of vertices"
+      },
+      "derived": {
+        "the recursion applied repeatedly": "an expression as a signed sum of powers of k",
+        "polynomiality of the result": "each base case contributes a monomial, so the total is a polynomial"
+      }
+    },
+    "validity_conditions": [
+      "Colourings of the deleted graph split into those that give the endpoints different colours and those that agree, the latter matching colourings of the contracted graph.",
+      "Each application strictly reduces the edge count, so the recursion terminates at edgeless graphs.",
+      "The base case count is a monomial in k, and the recursion combines finitely many such by addition and subtraction, so the result is a polynomial with integer coefficients."
+    ],
+    "proof_plan": [
+      "Let $e = u v$ be an edge of $G$.\nSplit the proper colorings of $G - e$ according to whether $u$ and $v$ receive the same color.",
+      "Those with $u$ and $v$ colored differently are the proper colorings of $G$.\nThose with $u$ and $v$ colored the same correspond to proper colorings of $G / e$.\nHence:\n:$\\map P {G, k} = \\map P {G - e, k} - \\map P {G / e, k}$",
+      "Both $G - e$ and $G / e$ have fewer edges than $G$.\nApply the recurrence repeatedly, by [[Principle of Mathematical Induction|induction]] on the number of edges.",
+      "For the [[Definition:Edgeless Graph|edgeless graph]] $N_m$ on $m$ vertices:\n:$\\map P {N_m, k} = k^m$\nHence $\\map P {G, k}$ is an integer combination of powers of $k$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "cauchy_integral_formula_from_cauchy_theorem",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Holomorphic Function|holomorphic]] on an open set containing the closed disk $\\size {w - z_0} \\le r$.\nThen for $\\size {z - z_0} < r$:\n:$\\displaystyle \\map f z = \\frac 1 {2 \\pi i} \\oint_{\\size {w - z_0} \\mathop = r} \\frac {\\map f w} {w - z} \\rd w$"
+  },
+  "B_source": {
+    "statement": "Let $g$ be [[Definition:Continuous Complex Function|continuous]] on an open disk $D$ and holomorphic on $D$ except possibly at one point.\nThen $\\displaystyle \\oint_\\gamma g = 0$ for every closed contour $\\gamma$ in $D$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the function g": "the difference quotient of f based at z",
+        "the exceptional point": "the point z itself"
+      },
+      "derived": {
+        "vanishing of the integral of g": "the integral of f(w)/(w - z) equals 2 pi i f(z)"
+      },
+      "reformulation": "Subtract f(z) to make the integrand removable at z, so that Cauchy's theorem applies, and evaluate the remaining elementary integral."
+    },
+    "validity_conditions": [
+      "The difference quotient must extend continuously to z, which holds as f is differentiable there.",
+      "The circle has winding number 1 about z, giving the factor 2 pi i."
+    ],
+    "proof_plan": [
+      "Define:\n:$\\map g w = \\begin {cases} \\dfrac {\\map f w - \\map f z} {w - z} & : w \\ne z \\\\ \\map {f'} z & : w = z \\end {cases}$\n$g$ is continuous on a disk slightly larger than $\\size {w - z_0} \\le r$ and holomorphic away from $z$.",
+      "By the source result:\n:$\\displaystyle \\oint_{\\size {w - z_0} \\mathop = r} \\map g w \\rd w = 0$",
+      "As $z$ lies inside the circle:\n:$\\displaystyle \\oint_{\\size {w - z_0} \\mathop = r} \\frac {\\d w} {w - z} = 2 \\pi i$",
+      "Hence:\n:$\\displaystyle \\oint \\frac {\\map f w} {w - z} \\rd w = \\map f z \\oint \\frac {\\d w} {w - z} = 2 \\pi i \\map f z$\nwhich is [[Cauchy's Integral Formula]].\n{{qed}}"
+    ]
+  }
+}

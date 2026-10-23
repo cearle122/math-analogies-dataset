@@ -1,0 +1,40 @@
+{
+  "id": "torsion_free_quotient_from_torsion_subgroup",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $A$ be an [[Definition:Abelian Group|abelian group]] with [[Definition:Torsion Subgroup|torsion subgroup]] $\\map T A$.\nThen $A / \\map T A$ is [[Definition:Torsion-Free Group|torsion-free]]."
+  },
+  "B_source": {
+    "statement": "Let $X$ be the set of elements of an algebraic structure exhibiting a property.\nIf $X$ is closed under the relevant operations, collapsing $X$ can remove the property from the quotient."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the subobject of offending elements": "the torsion subgroup, the elements of finite order",
+        "the property being removed": "having finite order",
+        "the quotient": "the group modulo its torsion subgroup"
+      },
+      "derived": {
+        "an offending element of the quotient": "an element whose multiple lies in the torsion subgroup",
+        "lifting the offence back": "that element itself has finite order, so it was already collapsed"
+      },
+      "reformulation": "Collapse precisely the elements exhibiting the property, so that any surviving instance lifts back into what was already removed."
+    },
+    "validity_conditions": [
+      "The torsion elements form a subgroup because the group is abelian; for a nonabelian group the elements of finite order need not be closed under multiplication and the construction fails.",
+      "If a class has finite order then some multiple of a representative lies in the torsion subgroup, so a further multiple is trivial and the representative was already torsion.",
+      "Hence the only torsion class is the identity class, which is exactly torsion freeness of the quotient."
+    ],
+    "proof_plan": [
+      "If $m a = 0$ and $n b = 0$ then $m n \\paren {a - b} = n \\paren {m a} - m \\paren {n b} = 0$, using commutativity.\nHence $\\map T A$ is a [[Definition:Subgroup|subgroup]].",
+      "Form $A / \\map T A$.",
+      "Let $a + \\map T A$ have finite order $n$.\nThen $n a \\in \\map T A$, so $m \\paren {n a} = 0$ for some $m > 0$.",
+      "Then $\\paren {m n} a = 0$, so $a \\in \\map T A$ and $a + \\map T A$ is trivial.\nHence $A / \\map T A$ is torsion-free.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "invariant_measure_from_markov_kakutani",
+  "field": [
+    "probability",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Compact Metric Space|compact metric space]] and $T: X \\to X$ [[Definition:Continuous Mapping (Metric Spaces)|continuous]].\nThen there exists a [[Definition:Borel Measure|Borel]] [[Definition:Probability Measure|probability measure]] $\\mu$ on $X$ such that:\n:$T_* \\mu = \\mu$"
+  },
+  "B_source": {
+    "statement": "Let $K$ be a [[Definition:Non-Empty Set|non-empty]] [[Definition:Compact Space|compact]] [[Definition:Convex Set (Vector Space)|convex]] subset of a [[Definition:Topological Vector Space|topological vector space]].\nLet $\\FF$ be a commuting family of continuous [[Definition:Affine Transformation|affine]] maps $K \\to K$.\nThen the maps in $\\FF$ have a common [[Definition:Fixed Point|fixed point]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the compact convex set": "the Borel probability measures on the space, in the weak-star topology",
+        "the continuous affine self-map": "the pushforward operator induced by the map",
+        "a fixed point of the map": "a measure invariant under the map"
+      },
+      "derived": {
+        "the fixed point condition": "the pushforward of the measure equals the measure",
+        "the affineness of the operator": "the pushforward preserves convex combinations of measures"
+      },
+      "reformulation": "Lift the map to an operator on measures, so invariance becomes a fixed point of that operator."
+    },
+    "validity_conditions": [
+      "The probability measures on a compact metric space form a convex set that is compact in the weak-star topology, by the Banach-Alaoglu theorem together with the Riesz representation theorem.",
+      "The pushforward operator is affine, since it preserves convex combinations, and is weak-star continuous because the map is continuous.",
+      "A single map is a commuting family of one element, so the theorem applies directly; the general form additionally handles commuting families of maps."
+    ],
+    "proof_plan": [
+      "Let $\\map {\\mathcal M} X$ be the set of Borel probability measures on $X$ with the [[Definition:Weak-* Topology|weak-$*$ topology]].\nBy the [[Riesz Representation Theorem]] and the [[Banach-Alaoglu Theorem]], $\\map {\\mathcal M} X$ is compact, and it is clearly convex.",
+      "Define $\\map {T_*} \\mu = \\mu \\circ T^{-1}$.\n$T_*$ is [[Definition:Affine Transformation|affine]].\nFor $\\phi \\in \\map C X$, $\\displaystyle \\int \\phi \\rd \\paren {T_* \\mu} = \\int \\phi \\circ T \\rd \\mu$, so $T_*$ is weak-$*$ continuous.",
+      "By the [[Markov-Kakutani Theorem]] applied to $\\FF = \\set {T_*}$, there exists $\\mu$ with $T_* \\mu = \\mu$.",
+      "That is, $\\map \\mu {T^{-1} A} = \\map \\mu A$ for every Borel set $A$, so $\\mu$ is a $T$-[[Definition:Invariant Measure|invariant measure]].\nThis is the [[Krylov-Bogolyubov Theorem]].\n{{qed}}"
+    ]
+  }
+}

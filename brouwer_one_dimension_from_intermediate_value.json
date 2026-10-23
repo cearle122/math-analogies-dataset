@@ -1,0 +1,38 @@
+{
+  "id": "brouwer_one_dimension_from_intermediate_value",
+  "field": [
+    "analysis",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\closedint a b \\to \\closedint a b$ be [[Definition:Continuous Real Function|continuous]].\nThen there exists $c \\in \\closedint a b$ with $\\map f c = c$."
+  },
+  "B_source": {
+    "statement": "Let $g$ be continuous on $\\closedint a b$ and let $k$ lie between $\\map g a$ and $\\map g b$.\nThen there exists $c \\in \\closedint a b$ with $\\map g c = k$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the function g": "f(x) - x",
+        "the value k": "0"
+      },
+      "derived": {
+        "a zero of g": "a fixed point of f"
+      },
+      "reformulation": "Encode the fixed point equation f(x) = x as a root of the displacement f(x) - x."
+    },
+    "validity_conditions": [
+      "f must map the interval into itself, which gives the endpoint signs of the displacement.",
+      "The argument is special to dimension 1, where intervals are the only connected sets."
+    ],
+    "proof_plan": [
+      "Let $\\map g x = \\map f x - x$, which is continuous on $\\closedint a b$.",
+      "As $\\map f a \\ge a$ and $\\map f b \\le b$:\n:$\\map g a \\ge 0 \\ge \\map g b$",
+      "By the [[Intermediate Value Theorem]], there is $c$ with $\\map g c = 0$.",
+      "Then $\\map f c = c$.\nThis is the [[Brouwer Fixed Point Theorem]] in dimension $1$.\n{{qed}}"
+    ]
+  }
+}

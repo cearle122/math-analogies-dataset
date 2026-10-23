@@ -1,0 +1,40 @@
+{
+  "id": "zorn_lemma_from_transfinite_exhaustion",
+  "field": [
+    "set_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {P, \\le}$ be a [[Definition:Non-Empty Set|non-empty]] [[Definition:Ordered Set|partially ordered set]] in which every [[Definition:Chain (Order Theory)|chain]] has an [[Definition:Upper Bound of Set|upper bound]].\nThen $P$ has a [[Definition:Maximal Element|maximal element]]."
+  },
+  "B_source": {
+    "statement": "To exhaust a set, build an increasing sequence by [[Principle of Transfinite Recursion|transfinite recursion]], choosing a new element at each stage, until no choice remains."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the stage-by-stage construction": "an increasing chain indexed by the ordinals",
+        "the choice made at each stage": "a strict upper bound of the chain built so far",
+        "the point where the process halts": "the stage at which no strict upper bound exists"
+      },
+      "derived": {
+        "the process must terminate": "it cannot inject the ordinals into a set, so some stage admits no strict upper bound",
+        "the final object": "an element with no element strictly above it, that is, a maximal element"
+      }
+    },
+    "validity_conditions": [
+      "Choosing a strict upper bound at each stage requires the axiom of choice, which is why Zorn's lemma is equivalent to it rather than provable outright.",
+      "The chain hypothesis is what supplies an upper bound at limit stages, where there is no immediate predecessor to extend from.",
+      "Termination follows from replacement: an unbounded construction would inject a proper class of ordinals into a set, which is impossible."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $P$ has no maximal element.\nUsing a [[Definition:Choice Function|choice function]], build $\\family {p_\\alpha}$ by [[Principle of Transfinite Recursion|transfinite recursion]], choosing at each successor stage a strict upper bound of $p_\\alpha$.",
+      "At a limit stage $\\lambda$, $\\set {p_\\alpha: \\alpha < \\lambda}$ is a chain, so has an upper bound; choose a strict upper bound of it.",
+      "The construction gives an [[Definition:Injection|injection]] from the class of all [[Definition:Ordinal|ordinals]] into the set $P$.\nBy [[Hartogs' Lemma (Set Theory)|Hartogs' Lemma]], this is impossible.",
+      "Hence at some stage no strict upper bound exists, and the element reached is maximal.\nThis is [[Zorn's Lemma]].\n{{qed}}"
+    ]
+  }
+}

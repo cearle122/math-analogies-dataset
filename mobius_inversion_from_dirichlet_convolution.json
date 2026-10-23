@@ -1,0 +1,37 @@
+{
+  "id": "mobius_inversion_from_dirichlet_convolution",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $f, g: \\Z_{>0} \\to \\C$ with $\\displaystyle \\map g n = \\sum_{d \\mathop \\divides n} \\map f d$ for all $n$.\nThen:\n:$\\displaystyle \\map f n = \\sum_{d \\mathop \\divides n} \\map \\mu d \\map g {\\frac n d}$\nwhere $\\mu$ is the [[Definition:Möbius Function|Möbius function]]."
+  },
+  "B_source": {
+    "statement": "[[Definition:Dirichlet Convolution|Dirichlet convolution]] $\\displaystyle \\paren {f * g} \\paren n = \\sum_{d \\mathop \\divides n} \\map f d \\map g {n / d}$ is [[Definition:Associative Operation|associative]] and [[Definition:Commutative Operation|commutative]], with identity $\\varepsilon$, where $\\map \\varepsilon 1 = 1$ and $\\map \\varepsilon n = 0$ for $n > 1$.\nMoreover $\\mu * \\mathbf 1 = \\varepsilon$, where $\\map {\\mathbf 1} n = 1$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the divisor sum": "convolution with the constant function 1"
+      },
+      "derived": {
+        "mu as the convolution inverse of 1": "the inversion formula"
+      },
+      "reformulation": "Rewrite the hypothesis as g = f * 1 in the ring of arithmetic functions, and invert 1."
+    },
+    "validity_conditions": [
+      "Associativity and commutativity of convolution are what allow regrouping.",
+      "mu * 1 = epsilon holds since the sum of mu over the divisors of n > 1 vanishes."
+    ],
+    "proof_plan": [
+      "The hypothesis states that $g = f * \\mathbf 1$.",
+      "By associativity and commutativity:\n:$\\mu * g = \\mu * \\paren {f * \\mathbf 1} = f * \\paren {\\mu * \\mathbf 1}$",
+      "By the source result, $\\mu * \\mathbf 1 = \\varepsilon$, and $f * \\varepsilon = f$.",
+      "Hence $f = \\mu * g$, which is the [[Möbius Inversion Formula]].\n{{qed}}"
+    ]
+  }
+}

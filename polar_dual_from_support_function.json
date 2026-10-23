@@ -1,0 +1,40 @@
+{
+  "id": "polar_dual_from_support_function",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $P \\subseteq \\R^n$ be a [[Definition:Convex Polytope|polytope]] with $\\mathbf 0$ in its [[Definition:Interior (Topology)|interior]].\nLet:\n:$P^\\circ = \\set {y: \\forall x \\in P: \\innerprod x y \\le 1}$\nbe its [[Definition:Polar Set|polar]].\nThen the vertices of $P$ correspond to the facets of $P^\\circ$, and $P^{\\circ \\circ} = P$."
+  },
+  "B_source": {
+    "statement": "Each point $x \\ne \\mathbf 0$ corresponds to the [[Definition:Half-Space|half-space]]:\n:$H_x = \\set {y: \\innerprod x y \\le 1}$\ncontaining the origin."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a point x of the ambient space": "the half-space of all y with <x,y> at most 1",
+        "an intersection of half-spaces": "the convex hull of the corresponding points",
+        "containment of one body in another": "the reversed containment of the polars"
+      },
+      "derived": {
+        "the vertices of P": "the facets of the polar of P",
+        "applying the correspondence twice": "the polar of the polar returns P, so the correspondence is an involution"
+      },
+      "reformulation": "Trade each point for the half-space it defines, converting the facet description of a body into the vertex description of its polar."
+    },
+    "validity_conditions": [
+      "The defining condition is symmetric in x and y, so the correspondence is an involution on the ambient pairing.",
+      "The origin must lie in the interior of P for the polar to be bounded; otherwise the polar is unbounded and the vertex-facet count fails.",
+      "Polarity reverses inclusion, so it exchanges descriptions as intersections of half-spaces with descriptions as convex hulls, which is exactly the exchange of facets and vertices."
+    ],
+    "proof_plan": [
+      "By definition:\n:$\\displaystyle P^\\circ = \\bigcap_{x \\mathop \\in P} H_x$",
+      "If $x \\in P \\subseteq Q$ then $Q^\\circ \\subseteq P^\\circ$, so the correspondence reverses inclusion.",
+      "As $P = \\map {\\operatorname {conv} } {v_1, \\ldots, v_m}$, $\\innerprod x y \\le 1$ for all $x \\in P$ {{iff}} it holds at each vertex:\n:$\\displaystyle P^\\circ = \\bigcap_{i \\mathop = 1}^m H_{v_i}$\nSo each vertex $v_i$ gives a facet $\\set {y \\in P^\\circ: \\innerprod {v_i} y = 1}$ of $P^\\circ$.",
+      "Dually, each facet $\\set {x: \\innerprod a x = 1}$ of $P$ gives a vertex $a$ of $P^\\circ$.\nBy the [[Bipolar Theorem]], as $P$ is closed, convex and contains $\\mathbf 0$:\n:$P^{\\circ \\circ} = P$\n{{qed}}"
+    ]
+  }
+}

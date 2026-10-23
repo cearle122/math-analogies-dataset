@@ -1,0 +1,41 @@
+{
+  "id": "arrow_debreu_from_kakutani",
+  "field": [
+    "analysis",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\EE$ be an [[Definition:Exchange Economy|exchange economy]] with $\\ell$ goods whose agents have [[Definition:Continuous Mapping|continuous]], [[Definition:Convex Preference|convex]] preferences.\nLet $\\Delta = \\set {p \\in \\R^\\ell_{\\ge 0}: \\sum_j p_j = 1}$ be the [[Definition:Standard Simplex|price simplex]].\nThen there exists $p^* \\in \\Delta$ such that the [[Definition:Excess Demand|excess demand]] satisfies:\n:$\\map z {p^*} \\le 0$"
+  },
+  "B_source": {
+    "statement": "Let $K \\subseteq \\R^n$ be [[Definition:Non-Empty Set|non-empty]], [[Definition:Compact Space|compact]] and [[Definition:Convex Set (Vector Space)|convex]].\nLet $F: K \\to \\powerset K$ be an [[Definition:Upper Hemicontinuous|upper hemicontinuous]] [[Definition:Correspondence|correspondence]] with non-empty convex values.\nThen there exists $x \\in K$ such that:\n:$x \\in \\map F x$"
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the compact convex set K": "the price simplex",
+        "the correspondence F": "the map sending prices to the prices maximizing the value of excess demand",
+        "the fixed point": "the equilibrium price vector"
+      },
+      "derived": {
+        "the fixed-point condition": "the market-clearing condition via Walras' law"
+      },
+      "reformulation": "Demand is a set rather than a point when preferences are merely convex, so the single-valued fixed point theorem must be replaced by its correspondence version."
+    },
+    "validity_conditions": [
+      "preferences must be convex so individual demand correspondences have convex values",
+      "demand must be upper hemicontinuous, which requires continuity of preferences and compact budget sets",
+      "Walras' law, that the value of excess demand is zero at every price, is required to convert the fixed point into market clearing"
+    ],
+    "proof_plan": [
+      "Normalize prices so that $p \\in \\Delta$.\n$\\Delta$ is [[Definition:Compact Space|compact]] and [[Definition:Convex Set (Vector Space)|convex]].",
+      "Define the [[Definition:Correspondence|correspondence]] $F: \\Delta \\to \\powerset \\Delta$ by:\n:$\\displaystyle \\map F p = \\argmax_{q \\mathop \\in \\Delta} q \\cdot \\map z p$",
+      "From the assumptions on preferences, $z$ is [[Definition:Continuous Mapping|continuous]].\nHence $F$ is [[Definition:Upper Hemicontinuous|upper hemicontinuous]] by [[Berge's Maximum Theorem]], and each $\\map F p$ is a face of $\\Delta$, hence convex.",
+      "By [[Kakutani's Fixed Point Theorem]] there exists $p^* \\in \\map F {p^*}$.",
+      "By [[Walras's Law]], $p^* \\cdot \\map z {p^*} = 0$.\nAs $p^*$ maximizes $q \\cdot \\map z {p^*}$ over $\\Delta$:\n:$\\forall q \\in \\Delta: q \\cdot \\map z {p^*} \\le 0$\nTaking $q = e_j$ gives $\\map {z_j} {p^*} \\le 0$ for each good $j$.\n{{qed}}"
+    ]
+  }
+}

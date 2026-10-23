@@ -1,0 +1,39 @@
+{
+  "id": "fermat_quartic_from_infinite_descent",
+  "field": [
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Diophantine Equation|Diophantine equation]]:\n:$x^4 + y^4 = z^2$\nhas no solutions in [[Definition:Strictly Positive Integer|strictly positive integers]]."
+  },
+  "B_source": {
+    "statement": "Let $\\map P n$ be a [[Definition:Propositional Function|propositional function]] on $\\Z_{>0}$.\nSuppose that whenever $\\map P n$ holds, $\\map P m$ holds for some $m < n$.\nThen $\\map P n$ holds for no $n \\in \\Z_{>0}$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the descent step": "the construction of a smaller solution from the Pythagorean parametrization",
+        "the size measure": "the value of z",
+        "the well-ordering appeal": "the impossibility of an infinite strictly decreasing sequence of positive integers"
+      },
+      "derived": {
+        "the contradiction": "nonexistence of any solution"
+      }
+    },
+    "validity_conditions": [
+      "the solution must be taken primitive, with x and y coprime, or the descent does not strictly decrease",
+      "the Pythagorean parametrization requires the relevant triple to be primitive",
+      "the size measure must take positive integer values so that strict decrease cannot continue forever"
+    ],
+    "proof_plan": [
+      "{{AimForCont}} a solution exists.\nBy the [[Well-Ordering Principle]], choose a solution $\\tuple {x, y, z}$ with $z$ minimal.",
+      "If a prime $p$ divides both $x$ and $y$, then $p^4 \\divides z^2$, and $\\tuple {x / p, y / p, z / p^2}$ is a smaller solution.\nHence $x \\perp y$.",
+      "Then $\\tuple {x^2, y^2, z}$ is a [[Definition:Primitive Pythagorean Triple|primitive Pythagorean triple]].\nBy [[Solutions of Pythagorean Equation/Primitive|the parametrization of primitive Pythagorean triples]], with $y$ even:\n:$x^2 = m^2 - n^2, \\quad y^2 = 2 m n, \\quad z = m^2 + n^2$\nwith $m \\perp n$ of opposite parity.",
+      "From $x^2 + n^2 = m^2$, the triple $\\tuple {x, n, m}$ is again primitive, so $n = 2 r s$, $m = r^2 + s^2$.\nFrom $y^2 = 4 r s \\paren {r^2 + s^2}$ with pairwise coprime factors, each of $r$, $s$, $r^2 + s^2$ is a square: $r = u^2$, $s = v^2$, $r^2 + s^2 = w^2$.\nThen:\n:$u^4 + v^4 = w^2$\nwith $0 < w \\le m < z$.",
+      "This contradicts the minimality of $z$.\nHence no solution exists, by [[Method of Infinite Descent|infinite descent]].\n{{qed}}"
+    ]
+  }
+}

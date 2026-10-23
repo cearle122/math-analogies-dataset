@@ -1,0 +1,38 @@
+{
+  "id": "cauchy_group_theorem_from_rotation_fixed_points",
+  "field": [
+    "algebra",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Finite Group|finite group]] and $p$ a [[Definition:Prime Number|prime]] dividing $\\order G$.\nThen $G$ has an element of [[Definition:Order of Group Element|order]] $p$."
+  },
+  "B_source": {
+    "statement": "Let the [[Definition:Cyclic Group|cyclic group]] $\\Z / p \\Z$ act on a finite set $X$.\nThen every orbit has size $1$ or $p$, so:\n:$\\card X \\equiv \\card {\\map {\\operatorname {Fix} } X} \\pmod p$"
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the set X": "p-tuples in G with product e",
+        "the action": "cyclic rotation of the tuple"
+      },
+      "derived": {
+        "fixed tuples": "constant tuples (g, ..., g) with g^p = e"
+      },
+      "reformulation": "Encode elements with g^p = e as the fixed points of a rotation action, and count them modulo p."
+    },
+    "validity_conditions": [
+      "Rotation must preserve the product condition, which holds as cyclic shifts of a product equal to e are conjugate to it.",
+      "p must be prime, so that orbit sizes divide p and g^p = e with g non-identity forces order exactly p."
+    ],
+    "proof_plan": [
+      "Let $X = \\set {\\tuple {g_1, \\ldots, g_p} \\in G^p: g_1 g_2 \\cdots g_p = e}$.\nThe last entry is determined by the others, so $\\card X = \\order G^{p - 1} \\equiv 0 \\pmod p$.",
+      "If $g_1 g_2 \\cdots g_p = e$ then $g_2 \\cdots g_p g_1 = g_1^{-1} e g_1 = e$.\nHence cyclic rotation defines an action of $\\Z / p \\Z$ on $X$.",
+      "The fixed points are the constant tuples $\\tuple {g, \\ldots, g}$ with $g^p = e$.\nBy the source result, their number is $\\equiv \\card X \\equiv 0 \\pmod p$.",
+      "As $\\tuple {e, \\ldots, e}$ is fixed, there are at least $p \\ge 2$ fixed points, so some $g \\ne e$ has $g^p = e$.\nAs $p$ is prime, $g$ has order $p$, which is [[Cauchy's Theorem (Group Theory)|Cauchy's Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "combinatory_logic_from_hilbert_axioms",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In typed [[Definition:Combinatory Logic|combinatory logic]] with:\n:$\\mathsf K : A \\to B \\to A, \\quad \\mathsf S : \\paren {A \\to B \\to C} \\to \\paren {A \\to B} \\to A \\to C$\nand application, a type is inhabited by a closed combinator term {{iff}} it is a theorem of implicational intuitionistic logic."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Hilbert Proof System|Hilbert system]] with axiom schemes $A \\to \\paren {B \\to A}$ and $\\paren {A \\to \\paren {B \\to C} } \\to \\paren {\\paren {A \\to B} \\to \\paren {A \\to C} }$ and modus ponens proves exactly the implicational intuitionistic tautologies, and satisfies the [[Deduction Theorem]]."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "axiom instances": "the combinators K and S",
+        "modus ponens": "application",
+        "the deduction theorem": "bracket abstraction"
+      },
+      "derived": {
+        "Hilbert derivations": "combinator terms"
+      },
+      "reformulation": "Transport Hilbert-style proofs to combinator terms, as natural deduction transports to lambda terms."
+    },
+    "validity_conditions": [
+      "Bracket abstraction removes a variable from a combinator term exactly as the deduction theorem removes a hypothesis.",
+      "The identity combinator I = S K K corresponds to the derivation of A -> A."
+    ],
+    "proof_plan": [
+      "Assign to each instance of the two axiom schemes the combinators $\\mathsf K$ and $\\mathsf S$ of the same types, and to modus ponens the typing rule for application.",
+      "By induction on derivations, each Hilbert derivation of $\\phi$ yields a closed combinator term of type $\\phi$, and conversely each such term reads as a derivation.",
+      "The deduction theorem corresponds to bracket abstraction: $\\sqbrk x x = \\mathsf S \\mathsf K \\mathsf K$, $\\sqbrk x u = \\mathsf K \\, u$ if $x$ is not free in $u$, and $\\sqbrk x {u \\, v} = \\mathsf S \\paren {\\sqbrk x u} \\paren {\\sqbrk x v}$.",
+      "Hence inhabited types are exactly the theorems, which is the [[Definition:Curry-Howard Correspondence|Curry-Howard correspondence]] for Hilbert systems.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "frenet_serret_from_planar_frame",
+  "field": [
+    "geometry",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\gamma$ be a unit-speed [[Definition:Curve|curve]] in $\\R^3$ with [[Definition:Curvature|curvature]] $\\kappa > 0$.\nLet $T = \\gamma'$, $N = T' / \\kappa$ and $B = T \\times N$.\nThen there is a function $\\tau$, the [[Definition:Torsion of Curve|torsion]], with:\n:$T' = \\kappa N, \\quad N' = -\\kappa T + \\tau B, \\quad B' = -\\tau N$"
+  },
+  "B_source": {
+    "statement": "Let $\\gamma$ be a unit-speed plane curve with unit tangent $T$, unit normal $N$ and signed curvature $\\kappa$.\nThen:\n:$T' = \\kappa N, \\quad N' = -\\kappa T$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the orthonormal frame (T, N)": "the frame (T, N, B)",
+        "a 2 x 2 skew-symmetric matrix": "a 3 x 3 skew-symmetric matrix"
+      },
+      "derived": {
+        "the extra entry of the matrix": "the torsion tau"
+      },
+      "reformulation": "Express the derivative of a moving orthonormal frame by a skew-symmetric coefficient matrix; in three dimensions it has one new entry."
+    },
+    "validity_conditions": [
+      "kappa > 0 is needed to define N.",
+      "Differentiating the orthonormality relations forces the coefficient matrix to be skew-symmetric."
+    ],
+    "proof_plan": [
+      "In the plane, $\\tuple {T, N}$ is an orthonormal frame, and differentiating $\\innerprod {e_i} {e_j} = \\delta_{i j}$ shows that $e_i' = \\sum_j a_{i j} e_j$ with $\\paren {a_{i j} }$ skew-symmetric.\nThe only entry is $a_{12} = \\kappa$.",
+      "In $\\R^3$, $\\tuple {T, N, B}$ is a positively oriented orthonormal frame, and the same computation gives a $3 \\times 3$ skew-symmetric matrix.",
+      "Its entries are $\\innerprod {T'} N = \\kappa$, $\\innerprod {T'} B = 0$ as $T'$ is parallel to $N$, and $\\tau = \\innerprod {N'} B$.",
+      "Hence the [[Frenet-Serret Formulas]] hold.\n$\\tau \\equiv 0$ {{iff}} $B$ is constant, that is, $\\gamma$ lies in a plane, recovering the source result.\n{{qed}}"
+    ]
+  }
+}

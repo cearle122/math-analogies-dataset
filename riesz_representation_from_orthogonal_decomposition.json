@@ -1,0 +1,37 @@
+{
+  "id": "riesz_representation_from_orthogonal_decomposition",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $H$ be a [[Definition:Hilbert Space|Hilbert space]] and $\\phi$ a [[Definition:Bounded Linear Functional|bounded linear functional]] on $H$.\nThen there exists a [[Definition:Unique|unique]] $y \\in H$ such that:\n:$\\forall x \\in H: \\map \\phi x = \\innerprod x y$"
+  },
+  "B_source": {
+    "statement": "Let $M$ be a [[Definition:Closed Linear Subspace|closed linear subspace]] of a Hilbert space $H$.\nThen:\n:$H = M \\oplus M^\\perp$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the closed subspace M": "the kernel of phi",
+        "the orthogonal complement": "a one-dimensional space spanned by z"
+      },
+      "derived": {
+        "the representing vector y": "a rescaled normal vector to the kernel"
+      },
+      "reformulation": "Find the representing vector as a normal to the kernel of the functional."
+    },
+    "validity_conditions": [
+      "phi must be bounded so that its kernel is closed.",
+      "Completeness of H is needed for the orthogonal decomposition."
+    ],
+    "proof_plan": [
+      "If $\\phi = 0$, take $y = 0$.\nOtherwise $N = \\map \\ker \\phi$ is a closed proper subspace, as $\\phi$ is bounded.",
+      "By the source result, $H = N \\oplus N^\\perp$ with $N^\\perp \\ne \\set 0$.\nChoose $z \\in N^\\perp$ with $\\map \\phi z = 1$.",
+      "For $x \\in H$, $x - \\map \\phi x z \\in N$, so:\n:$\\innerprod {x - \\map \\phi x z} z = 0$\nthat is, $\\innerprod x z = \\map \\phi x \\norm z^2$.",
+      "Hence $y = \\dfrac z {\\norm z^2}$ represents $\\phi$.\nIf $y'$ also does, then $\\innerprod x {y - y'} = 0$ for all $x$, so $y = y'$.\nThis is the [[Riesz Representation Theorem (Hilbert Spaces)|Riesz Representation Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "spectrum_of_quotient_from_ideal_correspondence",
+  "field": [
+    "algebra",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Commutative Ring with Unity|commutative ring with unity]] and $I$ an [[Definition:Ideal of Ring|ideal]].\nThen:\n:$\\map {\\operatorname {Spec} } {R / I} \\cong \\set {\\mathfrak p \\in \\map {\\operatorname {Spec} } R: I \\subseteq \\mathfrak p}$"
+  },
+  "B_source": {
+    "statement": "Let $\\pi: R \\to S$ be a [[Definition:Surjection|surjective]] [[Definition:Ring Homomorphism|ring homomorphism]] with kernel $K$.\nThen the ideals of $S$ correspond bijectively to the ideals of $R$ containing $K$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the surjection": "the quotient map from the ring onto the ring modulo the ideal",
+        "the kernel": "the collapsed ideal",
+        "the subobjects being matched": "the ideals of each ring, restricted to the prime ones"
+      },
+      "derived": {
+        "the inclusion-preserving bijection on subobjects": "ideals of the quotient correspond to ideals containing the collapsed ideal",
+        "primeness on both sides": "the correspondence restricts to prime ideals, since the quotients agree"
+      }
+    },
+    "validity_conditions": [
+      "Taking preimages and images under a surjection gives mutually inverse maps between ideals of the quotient and ideals of the source containing the kernel.",
+      "Primeness is preserved in both directions because the corresponding quotient rings are isomorphic, so one is a domain exactly when the other is.",
+      "The correspondence preserves inclusion, so it is an isomorphism of the ordered sets of ideals and hence a homeomorphism of the associated spectra."
+    ],
+    "proof_plan": [
+      "Let $\\pi: R \\to R / I$ be the [[Definition:Quotient Ring Epimorphism|quotient map]].",
+      "Send an ideal $J$ of $R / I$ to $\\map {\\pi^{-1} } J$, which contains $I$.",
+      "Conversely send $\\mathfrak a \\supseteq I$ to $\\map \\pi {\\mathfrak a}$.\nAs $\\pi$ is surjective, $\\map \\pi {\\map {\\pi^{-1} } J} = J$, and $\\map {\\pi^{-1} } {\\map \\pi {\\mathfrak a} } = \\mathfrak a + I = \\mathfrak a$.\nBoth assignments preserve inclusion, by the [[Correspondence Theorem for Quotient Rings]].",
+      "By the [[Third Isomorphism Theorem for Rings]]:\n:$\\paren {R / I} / \\paren {\\mathfrak p / I} \\cong R / \\mathfrak p$\nso $\\mathfrak p / I$ is [[Definition:Prime Ideal of Ring|prime]] {{iff}} $\\mathfrak p$ is prime.\nRestricting to primes gives the result.\n{{qed}}"
+    ]
+  }
+}

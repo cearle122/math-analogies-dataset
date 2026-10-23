@@ -1,0 +1,39 @@
+{
+  "id": "brouwer_disk_from_no_retraction",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $g: \\Bbb D^n \\to \\Bbb D^n$ be a [[Definition:Continuous Mapping (Topology)|continuous mapping]], where $\\Bbb D^n$ is the [[Definition:Closed Unit Ball|closed unit ball]] of $\\R^n$.\nThen there exists $x \\in \\Bbb D^n$ such that:\n:$\\map g x = x$"
+  },
+  "B_source": {
+    "statement": "There is no [[Definition:Continuous Mapping (Topology)|continuous mapping]] $r: \\Bbb D^n \\to \\Bbb S^{n - 1}$ such that:\n:$\\forall x \\in \\Bbb S^{n - 1}: \\map r x = x$\nThat is, $\\Bbb S^{n - 1}$ is not a [[Definition:Retract (Topology)|retract]] of $\\Bbb D^n$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a hypothetical fixed-point-free map g": "the retraction r(x) = the boundary point on the ray from g(x) through x",
+        "the ray from g(x) through x": "the construction sending each x to a boundary point"
+      },
+      "derived": {
+        "existence of the retraction r": "contradiction with no-retraction",
+        "no such r exists": "no fixed-point-free g exists, i.e. g has a fixed point"
+      },
+      "reformulation": "Assume g has no fixed point; use the direction from g(x) to x to build a retraction onto the boundary, contradicting no-retraction."
+    },
+    "validity_conditions": [
+      "If g(x) != x for all x, the ray from g(x) through x meets the boundary in a well-defined point r(x), continuous in x.",
+      "r fixes the boundary (if x is already on the boundary, r(x)=x), so r is a retraction D^n -> S^{n-1}.",
+      "The no-retraction theorem forbids such r, so the assumption fails: g must have a fixed point."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $\\map g x \\ne x$ for all $x \\in \\Bbb D^n$.",
+      "For each $x$, let $\\map r x$ be the point where the [[Definition:Ray (Geometry)|ray]] from $\\map g x$ through $x$ meets $\\Bbb S^{n - 1}$.",
+      "$\\map r x$ is given by solving a quadratic equation whose coefficients depend continuously on $x$, so $r$ is [[Definition:Continuous Mapping (Topology)|continuous]].\nIf $x \\in \\Bbb S^{n - 1}$ then $\\map r x = x$.\nSo $r$ is a [[Definition:Retraction (Topology)|retraction]] of $\\Bbb D^n$ onto $\\Bbb S^{n - 1}$.",
+      "This contradicts the [[No Retraction Theorem]].\nHence $g$ has a [[Definition:Fixed Point|fixed point]].\n{{qed}}"
+    ]
+  }
+}

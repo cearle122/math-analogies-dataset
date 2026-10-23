@@ -1,0 +1,37 @@
+{
+  "id": "weak_law_large_numbers_from_chebyshev",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X_1, X_2, \\ldots$ be pairwise [[Definition:Uncorrelated Random Variables|uncorrelated]] [[Definition:Random Variable|random variables]] with common mean $\\mu$ and common finite [[Definition:Variance|variance]] $\\sigma^2$.\nLet $\\bar X_n = \\dfrac 1 n \\displaystyle \\sum_{i \\mathop = 1}^n X_i$.\nThen for every $\\epsilon > 0$:\n:$\\map \\Pr {\\size {\\bar X_n - \\mu} \\ge \\epsilon} \\to 0$"
+  },
+  "B_source": {
+    "statement": "Let $Y$ have finite variance and $a > 0$.\nThen:\n:$\\map \\Pr {\\size {Y - \\expect Y} \\ge a} \\le \\dfrac {\\var Y} {a^2}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the random variable Y": "the sample mean",
+        "a": "epsilon"
+      },
+      "derived": {
+        "the variance of the sample mean": "sigma^2 / n, which tends to 0"
+      },
+      "reformulation": "Apply Chebyshev's inequality to the sample mean, whose variance shrinks like 1/n."
+    },
+    "validity_conditions": [
+      "Pairwise uncorrelatedness suffices for the variance of the sum to be the sum of the variances.",
+      "Finite variance is needed for Chebyshev's inequality."
+    ],
+    "proof_plan": [
+      "By linearity, $\\expect {\\bar X_n} = \\mu$.",
+      "As the $X_i$ are uncorrelated, $\\var {\\bar X_n} = \\dfrac 1 {n^2} \\displaystyle \\sum_i \\var {X_i} = \\dfrac {\\sigma^2} n$.",
+      "By [[Chebyshev's Inequality]]:\n:$\\map \\Pr {\\size {\\bar X_n - \\mu} \\ge \\epsilon} \\le \\dfrac {\\sigma^2} {n \\epsilon^2}$",
+      "The right hand side tends to $0$, which is the [[Weak Law of Large Numbers]].\n{{qed}}"
+    ]
+  }
+}

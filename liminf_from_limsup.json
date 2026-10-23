@@ -1,0 +1,38 @@
+{
+  "id": "liminf_from_limsup",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {a_n}$ be a [[Definition:Bounded Real Sequence|bounded real sequence]].\nThen $\\displaystyle \\liminf_{n \\mathop \\to \\infty} a_n = \\sup_n \\inf_{k \\mathop \\ge n} a_k$ is the smallest [[Definition:Subsequential Limit|subsequential limit]] of $\\sequence {a_n}$."
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {b_n}$ be a bounded real sequence.\nThen $\\displaystyle \\limsup_{n \\mathop \\to \\infty} b_n = \\inf_n \\sup_{k \\mathop \\ge n} b_k$ is the largest subsequential limit of $\\sequence {b_n}$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "b_n": "-a_n",
+        "sup": "inf",
+        "largest": "smallest"
+      },
+      "derived": {
+        "limsup of -a_n": "minus the liminf of a_n"
+      },
+      "reformulation": "Negation reverses the order on R, exchanging suprema with infima and largest with smallest."
+    },
+    "validity_conditions": [
+      "Negation is an order-reversing bijection of R, which is all the argument uses.",
+      "Boundedness is needed for both quantities to be finite."
+    ],
+    "proof_plan": [
+      "Let $b_n = -a_n$.\nThen $\\displaystyle \\inf_{k \\mathop \\ge n} a_k = -\\sup_{k \\mathop \\ge n} b_k$.",
+      "Hence:\n:$\\displaystyle \\sup_n \\inf_{k \\mathop \\ge n} a_k = -\\inf_n \\sup_{k \\mathop \\ge n} b_k = -\\limsup_{n \\mathop \\to \\infty} b_n$",
+      "$l$ is a subsequential limit of $\\sequence {a_n}$ {{iff}} $-l$ is one of $\\sequence {b_n}$.\nAs negation reverses order, the largest subsequential limit of $\\sequence {b_n}$ corresponds to the smallest of $\\sequence {a_n}$.",
+      "By the source result, $\\displaystyle -\\limsup b_n$ is therefore the smallest subsequential limit of $\\sequence {a_n}$, and equals $\\displaystyle \\liminf a_n$.\n{{qed}}"
+    ]
+  }
+}

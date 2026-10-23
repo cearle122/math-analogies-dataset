@@ -1,0 +1,40 @@
+{
+  "id": "hilbert_space_from_euclidean_space",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $H$ be a [[Definition:Hilbert Space|Hilbert space]].\nThen every [[Definition:Non-Empty Set|non-empty]] [[Definition:Closed Set (Metric Space)|closed]] [[Definition:Convex Set (Vector Space)|convex]] set $C \\subseteq H$ has a [[Definition:Unique|unique]] nearest point to each $x \\in H$, and for every closed subspace $M$:\n:$H = M \\oplus M^\\perp$"
+  },
+  "B_source": {
+    "statement": "In $\\R^n$ with the [[Definition:Dot Product|dot product]], every subspace $M$ satisfies $\\R^n = M \\oplus M^\\perp$, and every vector has an expansion in an [[Definition:Orthonormal Basis|orthonormal basis]]."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the finite-dimensional space": "a possibly infinite-dimensional space with an inner product",
+        "the finite orthonormal basis": "a countable orthonormal system with convergent expansions",
+        "compactness of closed bounded sets": "completeness together with convexity"
+      },
+      "derived": {
+        "the orthogonal projection onto a subspace": "the projection onto a closed subspace",
+        "the finite expansion in a basis": "a convergent series, with Bessel's inequality controlling the coefficients"
+      },
+      "reformulation": "Drop the finiteness of dimension and replace compactness arguments by completeness ones."
+    },
+    "validity_conditions": [
+      "Euclidean space is the finite-dimensional case, so the generalization is faithful and every statement specializes correctly.",
+      "Completeness replaces compactness: the nearest point is obtained from a minimizing sequence shown to be Cauchy via the parallelogram law, not from compactness of a closed ball.",
+      "Closedness of the subspace is essential in infinite dimensions, since a non-closed subspace has no orthogonal complement decomposition; in finite dimensions every subspace is closed and the hypothesis is invisible."
+    ],
+    "proof_plan": [
+      "Replace $\\R^n$ by a [[Definition:Complete Metric Space|complete]] [[Definition:Inner Product Space|inner product space]] of arbitrary dimension.",
+      "Let $d = \\displaystyle \\inf_{y \\mathop \\in C} \\norm {x - y}$ and choose $y_n \\in C$ with $\\norm {x - y_n} \\to d$.\nBy the [[Parallelogram Law (Inner Product Space)|parallelogram law]] and convexity:\n:$\\norm {y_n - y_m}^2 \\le 2 \\norm {x - y_n}^2 + 2 \\norm {x - y_m}^2 - 4 d^2 \\to 0$\nSo $\\sequence {y_n}$ is [[Definition:Cauchy Sequence (Metric Space)|Cauchy]], and converges in $C$ to the nearest point.",
+      "For a closed subspace $M$, let $P x$ be the nearest point in $M$.\nThen $x - P x \\perp M$, giving:\n:$x = P x + \\paren {x - P x} \\in M \\oplus M^\\perp$",
+      "Replace finite basis expansions by series $\\displaystyle \\sum_i \\innerprod x {e_i} e_i$.\nThese converge by [[Bessel's Inequality]] $\\displaystyle \\sum_i \\size {\\innerprod x {e_i} }^2 \\le \\norm x^2$ and completeness.\n{{qed}}"
+    ]
+  }
+}

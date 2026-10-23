@@ -1,0 +1,40 @@
+{
+  "id": "simplex_volume_from_triangle_area",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf v_1, \\ldots, \\mathbf v_n \\in \\R^n$.\nThen the [[Definition:Volume|volume]] of the [[Definition:Simplex|simplex]] with vertices $\\mathbf 0, \\mathbf v_1, \\ldots, \\mathbf v_n$ is:\n:$\\dfrac {\\size {\\map \\det {\\mathbf v_1, \\ldots, \\mathbf v_n} } } {n!}$"
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf v_1, \\mathbf v_2 \\in \\R^2$.\nThen the [[Definition:Area|area]] of the [[Definition:Triangle (Geometry)|triangle]] with vertices $\\mathbf 0, \\mathbf v_1, \\mathbf v_2$ is:\n:$\\dfrac {\\size {\\map \\det {\\mathbf v_1, \\mathbf v_2} } } 2$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the two spanning vectors": "n spanning vectors",
+        "the divisor two": "the divisor n factorial",
+        "the triangle": "the n-dimensional simplex"
+      },
+      "derived": {
+        "the parallelogram cut in half by a diagonal": "the parallelepiped cut into n factorial congruent simplices",
+        "the area formula": "the volume formula, recovering the triangle case at n = 2"
+      },
+      "reformulation": "Replace the two-dimensional halving by the decomposition of a cube into n factorial ordered regions."
+    },
+    "validity_conditions": [
+      "The parallelepiped spanned by the vectors has volume the absolute determinant, which is the base case the argument builds on.",
+      "That parallelepiped decomposes into n factorial simplices, one for each ordering of the coordinates, all congruent by permutation of coordinates.",
+      "The vectors must be linearly independent for the simplex to be nondegenerate; otherwise both sides vanish and the statement is trivially true."
+    ],
+    "proof_plan": [
+      "The [[Definition:Parallelepiped|parallelepiped]] spanned by $\\mathbf v_1, \\ldots, \\mathbf v_n$ has volume $\\size {\\map \\det {\\mathbf v_1, \\ldots, \\mathbf v_n} }$.",
+      "Decompose the unit cube $\\closedint 0 1^n$ into the $n!$ regions:\n:$\\set {x: x_{\\map \\sigma 1} \\ge x_{\\map \\sigma 2} \\ge \\cdots \\ge x_{\\map \\sigma n} }$\nfor $\\sigma \\in S_n$, which overlap only on sets of measure zero.",
+      "These regions are congruent under permutation of coordinates.\nHence each has volume $\\dfrac 1 {n!}$; one of them is the standard simplex $\\set {1 \\ge x_1 \\ge \\cdots \\ge x_n \\ge 0}$, which is linearly equivalent to $\\map {\\operatorname {conv} } {\\mathbf 0, e_1, \\ldots, e_n}$ by a map of determinant $\\pm 1$.",
+      "The linear map $e_i \\mapsto \\mathbf v_i$ sends the standard simplex to the given one and scales volume by $\\size {\\det}$.\nHence the simplex has volume $\\dfrac {\\size {\\map \\det {\\mathbf v_1, \\ldots, \\mathbf v_n} } } {n!}$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "homology_functorial_from_quotient_descent",
+  "field": [
+    "topology",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $f: C_\\bullet \\to D_\\bullet$ be a [[Definition:Chain Map|chain map]].\nThen $f$ induces a well-defined [[Definition:Homomorphism (Abstract Algebra)|homomorphism]]:\n:$f_*: \\map {H_n} C \\to \\map {H_n} D, \\quad \\eqclass z {} \\mapsto \\eqclass {\\map f z} {}$"
+  },
+  "B_source": {
+    "statement": "Let $B \\subseteq Z$ and $B' \\subseteq Z'$ be [[Definition:Submodule|submodules]].\nLet $f: Z \\to Z'$ be a [[Definition:Module Homomorphism|homomorphism]] with $\\map f B \\subseteq B'$.\nThen $f$ induces a homomorphism $Z / B \\to Z' / B'$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ambient subobject": "the cycles, the kernel of the boundary map",
+        "the collapsed sub-subobject": "the boundaries, the image of the next boundary map",
+        "a map preserving both": "a chain map commuting with the differentials"
+      },
+      "derived": {
+        "the induced map on the quotient": "the homomorphism f_* on homology",
+        "independence of representative": "cycles differing by a boundary have images differing by a boundary"
+      }
+    },
+    "validity_conditions": [
+      "The identity d . d = 0 places the boundaries inside the cycles, so the quotient defining homology exists.",
+      "A chain map commutes with the differentials, hence carries cycles to cycles and boundaries to boundaries.",
+      "Preserving both subobjects is exactly the hypothesis needed for descent, so the induced map is well defined and independent of the chosen representative."
+    ],
+    "proof_plan": [
+      "As $\\partial \\circ \\partial = 0$, the [[Definition:Boundary (Homology)|boundaries]] $B_n = \\Img {\\partial_{n + 1} }$ are contained in the [[Definition:Cycle (Homology)|cycles]] $Z_n = \\map \\ker {\\partial_n}$.",
+      "As $f$ is a [[Definition:Chain Map|chain map]], $\\partial f = f \\partial$.\nIf $\\partial z = 0$ then $\\partial \\map f z = \\map f {\\partial z} = 0$, so $f$ sends cycles to cycles.\nIf $z = \\partial w$ then $\\map f z = \\partial \\map f w$, so $f$ sends boundaries to boundaries.",
+      "By the source result, $f$ descends to a homomorphism:\n:$Z_n \\paren C / B_n \\paren C \\to Z_n \\paren D / B_n \\paren D$",
+      "Hence $f_*: \\map {H_n} C \\to \\map {H_n} D$ is well defined on [[Definition:Homology Group|homology classes]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "hermitian_spectral_from_real_symmetric",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a complex [[Definition:Hermitian Matrix|Hermitian matrix]], $\\mathbf A = \\mathbf A^*$.\nThen $\\mathbf A = \\mathbf U \\mathbf D \\mathbf U^*$ with $\\mathbf U$ [[Definition:Unitary Matrix|unitary]] and $\\mathbf D$ real [[Definition:Diagonal Matrix|diagonal]]."
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf A$ be a real [[Definition:Symmetric Matrix|symmetric matrix]].\nThen $\\mathbf A = \\mathbf Q \\mathbf D \\mathbf Q^\\intercal$ with $\\mathbf Q$ orthogonal and $\\mathbf D$ real diagonal."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "transpose": "conjugate transpose",
+        "orthogonal": "unitary",
+        "the dot product": "the Hermitian inner product"
+      },
+      "derived": {
+        "real eigenvalues": "a consequence of self-adjointness rather than of real entries"
+      },
+      "reformulation": "Replace transposition by conjugate transposition throughout; the inductive proof via invariant orthogonal complements carries over."
+    },
+    "validity_conditions": [
+      "The Hermitian inner product is conjugate-symmetric, which is what makes eigenvalues real.",
+      "Over C an eigenvalue exists by the Fundamental Theorem of Algebra, with no need to show reality first."
+    ],
+    "proof_plan": [
+      "Use $\\innerprod {\\mathbf x} {\\mathbf y} = \\displaystyle \\sum_i x_i \\overline {y_i}$, for which $\\innerprod {\\mathbf A \\mathbf x} {\\mathbf y} = \\innerprod {\\mathbf x} {\\mathbf A \\mathbf y}$.",
+      "If $\\mathbf A \\mathbf v = \\lambda \\mathbf v$ with $\\mathbf v \\ne \\mathbf 0$, then $\\lambda \\innerprod {\\mathbf v} {\\mathbf v} = \\innerprod {\\mathbf A \\mathbf v} {\\mathbf v} = \\innerprod {\\mathbf v} {\\mathbf A \\mathbf v} = \\overline \\lambda \\innerprod {\\mathbf v} {\\mathbf v}$, so $\\lambda \\in \\R$.",
+      "By the [[Fundamental Theorem of Algebra]], choose a unit eigenvector $\\mathbf u_1$.\nFor $\\mathbf w \\perp \\mathbf u_1$, $\\innerprod {\\mathbf A \\mathbf w} {\\mathbf u_1} = \\innerprod {\\mathbf w} {\\lambda_1 \\mathbf u_1} = 0$, so $\\mathbf u_1^\\perp$ is invariant; induct on dimension.",
+      "Collecting the orthonormal eigenvectors into $\\mathbf U$ gives $\\mathbf A = \\mathbf U \\mathbf D \\mathbf U^*$.\nFor real symmetric $\\mathbf A$ the eigenvectors may be chosen real, recovering the source result.\n{{qed}}"
+    ]
+  }
+}

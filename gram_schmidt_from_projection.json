@@ -1,0 +1,43 @@
+{
+  "id": "gram_schmidt_from_projection",
+  "field": [
+    "algebra",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $V$ be an [[Definition:Inner Product Space|inner product space]] and $v_1, \\ldots, v_n$ [[Definition:Linearly Independent Set|linearly independent]].\nThen there exist [[Definition:Orthonormal Subset|orthonormal]] $q_1, \\ldots, q_n$ such that for each $k$:\n:$\\map {\\operatorname {span} } {q_1, \\ldots, q_k} = \\map {\\operatorname {span} } {v_1, \\ldots, v_k}$"
+  },
+  "B_source": {
+    "statement": "Let $U$ be a finite-dimensional [[Definition:Vector Subspace|subspace]] of an [[Definition:Inner Product Space|inner product space]] $V$.\nThen every $v \\in V$ decomposes as:\n:$v = \\map {\\operatorname {proj}_U} v + \\paren {v - \\map {\\operatorname {proj}_U} v}$\nwith $v - \\map {\\operatorname {proj}_U} v \\perp U$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the subspace U": "the span of already-processed vectors q_1,...,q_{k-1}",
+        "the orthogonal remainder v - proj_U(v)": "the new orthogonal direction before normalizing",
+        "single projection step": "one iteration of Gram-Schmidt"
+      },
+      "derived": {
+        "orthogonality of the remainder to U": "orthogonality of q_k to all earlier q_i",
+        "iterating the projection": "the full orthonormalization"
+      },
+      "reformulation": "Apply the single-step projection decomposition repeatedly, each time projecting onto the span of the vectors already orthonormalized."
+    },
+    "validity_conditions": [
+      "At step k, subtracting the projection onto span(q_1,...,q_{k-1}) leaves a vector orthogonal to all earlier q_i (the defining property of orthogonal projection).",
+      "The v_i are linearly independent, so each remainder is nonzero and can be normalized.",
+      "Iterating preserves the spanning flag: span(q_1..q_k) = span(v_1..v_k)."
+    ],
+    "proof_plan": [
+      "From the source result:\n:$v = \\map {\\operatorname {proj}_U} v + r$\nwith $r \\perp U$.",
+      "At step $k$, let $U_{k - 1} = \\map {\\operatorname {span} } {q_1, \\ldots, q_{k - 1} }$ and:\n:$\\displaystyle r_k = v_k - \\sum_{j \\mathop = 1}^{k - 1} \\innerprod {v_k} {q_j} q_j = v_k - \\map {\\operatorname {proj}_{U_{k - 1} } } {v_k}$",
+      "Then $r_k \\perp q_j$ for all $j < k$.\nAs $v_k \\notin U_{k - 1}$ by [[Definition:Linearly Independent Set|linear independence]], $r_k \\ne 0$.\nLet $q_k = \\dfrac {r_k} {\\norm {r_k} }$.",
+      "By [[Principle of Mathematical Induction|induction]] on $k$, $q_1, \\ldots, q_n$ are [[Definition:Orthonormal Subset|orthonormal]] and span the same flag as $v_1, \\ldots, v_n$.\nThis is the [[Gram-Schmidt Orthogonalization]].\n{{qed}}"
+    ]
+  }
+}

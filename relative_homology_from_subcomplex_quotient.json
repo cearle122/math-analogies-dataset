@@ -1,0 +1,39 @@
+{
+  "id": "relative_homology_from_subcomplex_quotient",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $A \\subseteq X$ be [[Definition:Topological Space|topological spaces]].\nThen the [[Definition:Relative Homology|relative homology]] of the pair is:\n:$\\map {H_n} {X, A} = \\map {H_n} {\\map {C_\\bullet} X / \\map {C_\\bullet} A}$"
+  },
+  "B_source": {
+    "statement": "Let $D_\\bullet$ be a [[Definition:Subcomplex|subcomplex]] of a [[Definition:Chain Complex|chain complex]] $C_\\bullet$.\nThen $C_\\bullet / D_\\bullet$ is a chain complex with the induced differential."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ambient chain complex": "the singular chains of the larger space",
+        "the subcomplex collapsed": "the singular chains supported in the subspace",
+        "the quotient complex": "the relative chain complex of the pair"
+      },
+      "derived": {
+        "the induced differential on the quotient": "relative cycles are chains whose boundary lies in the subspace",
+        "the homology of the quotient complex": "the relative homology groups of the pair"
+      }
+    },
+    "validity_conditions": [
+      "The chains of the subspace form a subcomplex, since the boundary of a chain supported in the subspace is again supported there.",
+      "The differential therefore descends to the quotient, and a relative cycle is a chain whose boundary lies in the subspace rather than vanishing.",
+      "The resulting long exact sequence of the pair comes from the short exact sequence of complexes, which is available precisely because the construction is a quotient by a subcomplex."
+    ],
+    "proof_plan": [
+      "Take the [[Definition:Singular Chain|singular chains]] $\\map {C_\\bullet} X$ and the chains $\\map {C_\\bullet} A$ of simplices lying in $A$.",
+      "The boundary of a simplex in $A$ lies in $A$, so $\\map \\partial {\\map {C_n} A} \\subseteq \\map {C_{n - 1} } A$.\nHence $\\map {C_\\bullet} A$ is a [[Definition:Subcomplex|subcomplex]].",
+      "By the source result, $\\map {C_\\bullet} X / \\map {C_\\bullet} A$ is a chain complex with:\n:$\\map {\\bar \\partial} {c + \\map {C_n} A} = \\partial c + \\map {C_{n - 1} } A$",
+      "Define $\\map {H_n} {X, A}$ as the homology of this quotient complex.\n{{qed}}"
+    ]
+  }
+}

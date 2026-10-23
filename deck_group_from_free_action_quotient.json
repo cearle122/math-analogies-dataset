@@ -1,0 +1,40 @@
+{
+  "id": "deck_group_from_free_action_quotient",
+  "field": [
+    "topology",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $p: Y \\to X$ be a [[Definition:Regular Covering|regular covering map]] with $Y$ [[Definition:Connected Space|connected]] and [[Definition:Locally Path-Connected Space|locally path-connected]].\nThen:\n:$X \\cong Y / \\map {\\operatorname {Deck} } p$\nwhere $\\map {\\operatorname {Deck} } p$ is the [[Definition:Deck Transformation|group of deck transformations]]."
+  },
+  "B_source": {
+    "statement": "Let a [[Definition:Group|group]] $G$ act [[Definition:Free Group Action|freely]] and [[Definition:Properly Discontinuous Group Action|properly discontinuously]] on a space $Y$.\nThen the [[Definition:Quotient Mapping|quotient map]] $Y \\to Y / G$ onto the [[Definition:Orbit Space|orbit space]] is a [[Definition:Covering Map|covering map]]."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the group acting on the space": "the deck transformation group of the covering",
+        "the orbits of the action": "the fibres of the covering map",
+        "the orbit space": "the base space of the covering"
+      },
+      "derived": {
+        "the quotient map onto the orbit space": "the covering projection",
+        "freeness of the action": "no nonidentity deck transformation fixes a point, which holds by uniqueness of lifts"
+      }
+    },
+    "validity_conditions": [
+      "The deck group acts freely because a deck transformation fixing a point agrees with the identity on a lift and hence everywhere, by uniqueness of lifts.",
+      "The action is properly discontinuous because evenly covered neighbourhoods separate the sheets, giving each point a neighbourhood moved off itself by every nonidentity element.",
+      "Regularity of the covering is what makes the deck group act transitively on each fibre, so that the orbits are exactly the fibres; for a nonregular covering the orbit space is a proper quotient of the base."
+    ],
+    "proof_plan": [
+      "Let $\\phi \\in \\map {\\operatorname {Deck} } p$ with $\\map \\phi y = y$ for some $y$.\nBy [[Uniqueness of Lifts]], $\\phi = \\operatorname {id}_Y$.\nHence the action is [[Definition:Free Group Action|free]].",
+      "Let $U \\subseteq X$ be [[Definition:Evenly Covered|evenly covered]], and $V$ a sheet over $U$.\nDistinct deck transformations permute the sheets, so $\\map \\phi V \\cap V = \\O$ for $\\phi \\ne \\operatorname {id}$.\nHence the action is [[Definition:Properly Discontinuous Group Action|properly discontinuous]].",
+      "As $p$ is [[Definition:Regular Covering|regular]], $\\map {\\operatorname {Deck} } p$ acts [[Definition:Transitive Group Action|transitively]] on each fibre $\\map {p^{-1} } x$.\nHence the orbits are exactly the fibres of $p$.",
+      "Thus $p$ induces a continuous bijection $Y / \\map {\\operatorname {Deck} } p \\to X$, which is a [[Definition:Homeomorphism|homeomorphism]] as both quotient maps are [[Definition:Open Mapping|open]].\n{{qed}}"
+    ]
+  }
+}

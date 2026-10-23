@@ -1,0 +1,42 @@
+{
+  "id": "power_set_from_char_functions",
+  "field": [
+    "set_theory",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $S$ be a [[Definition:Finite Set|finite set]] with $\\card S = n$.\nThen:\n:$\\card {\\powerset S} = 2^n$"
+  },
+  "B_source": {
+    "statement": "Let $S$ be a set with $\\card S = n$.\nThen:\n:$\\card {\\set {f: S \\to \\set {0, 1} } } = 2^n$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "subset A of S": "characteristic function chi_A: S -> {0,1}",
+        "element in A": "value 1",
+        "element not in A": "value 0"
+      },
+      "derived": {
+        "the power set of S": "the set of functions S -> {0,1}",
+        "counting subsets": "counting such functions"
+      },
+      "reformulation": "Encode each subset as its characteristic function, turning 'count subsets' into 'count functions into {0,1}'."
+    },
+    "validity_conditions": [
+      "A |-> chi_A is a bijection between subsets of S and functions S -> {0,1}, so the two counts are equal.",
+      "The function count is 2^n by the multiplication principle (2 independent choices at each of n elements)."
+    ],
+    "proof_plan": [
+      "Map each $A \\subseteq S$ to its [[Definition:Characteristic Function of Set|characteristic function]] $\\chi_A: S \\to \\set {0, 1}$.",
+      "$A = \\map {\\chi_A^{-1} } {\\set 1}$, and every $f: S \\to \\set {0, 1}$ equals $\\chi_A$ for $A = \\map {f^{-1} } {\\set 1}$.\nHence $A \\mapsto \\chi_A$ is a [[Definition:Bijection|bijection]] $\\powerset S \\to \\set {0, 1}^S$.",
+      "By the [[Product Rule for Counting]], each of the $n$ elements independently maps to one of $2$ values, giving $2^n$ functions.",
+      "Hence:\n:$\\card {\\powerset S} = 2^n$\n{{qed}}"
+    ]
+  }
+}

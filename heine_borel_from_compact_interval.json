@@ -1,0 +1,41 @@
+{
+  "id": "heine_borel_from_compact_interval",
+  "field": [
+    "analysis",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $K \\subseteq \\R^n$.\nThen $K$ is [[Definition:Compact Space|compact]] {{iff}} $K$ is [[Definition:Closed Set (Real Analysis)|closed]] and [[Definition:Bounded Subset of Real Euclidean Space|bounded]]."
+  },
+  "B_source": {
+    "statement": "Let $a, b \\in \\R$ with $a \\le b$.\nThen the [[Definition:Closed Real Interval|closed real interval]] $\\closedint a b$ is [[Definition:Compact Space|compact]]."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the closed interval of the real line": "a closed box in n-dimensional Euclidean space",
+        "the one-dimensional bounded set": "a bounded subset of R^n, enclosed in such a box",
+        "compactness of the interval": "compactness of the box, via finite products"
+      },
+      "derived": {
+        "compactness of a product of intervals": "compactness of the box, since a finite product of compact spaces is compact",
+        "a closed subset of a compact set being compact": "compactness of any closed bounded subset of R^n"
+      },
+      "reformulation": "Build the n-dimensional case as a finite product of the one-dimensional case, then pass to closed subsets."
+    },
+    "validity_conditions": [
+      "A bounded subset of R^n is contained in some closed box, which is a finite product of closed intervals.",
+      "A finite product of compact spaces is compact, so the box is compact; this is the step that carries the one-dimensional result into n dimensions.",
+      "A closed subset of a compact space is compact, giving the forward direction; the converse uses that compact subsets of a Hausdorff space are closed and that compactness forces boundedness."
+    ],
+    "proof_plan": [
+      "Let $K$ be closed and bounded.\nThen $K \\subseteq B = \\closedint {-M} M^n$ for some $M > 0$.",
+      "By the source result, $\\closedint {-M} M$ is compact.\nBy [[Tychonoff's Theorem]] for finite products, $B$ is compact.",
+      "By [[Closed Subspace of Compact Space is Compact]], $K$ is compact.",
+      "Conversely, let $K$ be compact.\nThe open balls $\\map {B_m} 0$ cover $K$, so a finite subcover exists and $K$ is bounded.\nBy [[Compact Subspace of Hausdorff Space is Closed]], $K$ is closed.\nHence the [[Heine-Borel Theorem]] holds in $\\R^n$.\n{{qed}}"
+    ]
+  }
+}

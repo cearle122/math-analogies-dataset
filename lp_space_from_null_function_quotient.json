@@ -1,0 +1,39 @@
+{
+  "id": "lp_space_from_null_function_quotient",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {X, \\Sigma, \\mu}$ be a [[Definition:Measure Space|measure space]] and $1 \\le p < \\infty$.\nThen $\\map {L^p} \\mu$ is a [[Definition:Normed Vector Space|normed vector space]], that is:\n:$\\norm f_p = 0 \\implies f = 0$ in $\\map {L^p} \\mu$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {V, \\norm \\cdot}$ be a [[Definition:Seminormed Vector Space|seminormed vector space]] and $N = \\set {v \\in V: \\norm v = 0}$.\nThen $V / N$ is a [[Definition:Normed Vector Space|normed vector space]] under $\\norm {v + N} = \\norm v$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the seminormed space": "the space of p-integrable functions with the L^p seminorm",
+        "the null subspace N": "the functions vanishing almost everywhere",
+        "the quotient V/N": "L^p(mu), whose elements are equivalence classes of functions"
+      },
+      "derived": {
+        "the induced norm on the quotient": "the L^p norm on almost-everywhere equivalence classes",
+        "the quotient separates points": "||f||_p = 0 holds exactly when f = 0 almost everywhere"
+      }
+    },
+    "validity_conditions": [
+      "The set of vectors of seminorm zero is a subspace, by homogeneity and the triangle inequality for the seminorm.",
+      "The seminorm is constant on cosets of N, so it descends to a well-defined function on the quotient.",
+      "The integral of |f|^p vanishes iff f = 0 almost everywhere, so the descended function is positive-definite and hence a genuine norm."
+    ],
+    "proof_plan": [
+      "Let $\\LL^p$ be the space of [[Definition:Measurable Function|measurable]] $f$ with $\\displaystyle \\int \\size f^p \\rd \\mu < \\infty$, with the [[Definition:Seminorm|seminorm]]:\n:$\\displaystyle \\norm f_p = \\paren {\\int \\size f^p \\rd \\mu}^{1 / p}$",
+      "The null subspace is:\n:$N = \\set {f: \\norm f_p = 0} = \\set {f: f = 0 \\text { } \\mu \\text {-a.e.} }$\nby [[Measurable Function Zero A.E. iff Absolute Value has Zero Integral]].",
+      "If $f - g \\in N$ then $\\size {\\norm f_p - \\norm g_p} \\le \\norm {f - g}_p = 0$ by [[Minkowski's Inequality for Integrals|Minkowski's inequality]].\nHence $\\norm \\cdot_p$ is constant on [[Definition:Coset|cosets]] and descends to $\\map {L^p} \\mu = \\LL^p / N$.",
+      "If $\\norm {f + N}_p = 0$ then $f \\in N$, so $f + N = 0$.\nHence the descended seminorm is a [[Definition:Norm on Vector Space|norm]].\n{{qed}}"
+    ]
+  }
+}

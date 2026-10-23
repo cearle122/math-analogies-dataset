@@ -1,0 +1,39 @@
+{
+  "id": "lindenbaum_algebra_from_provable_equivalence",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $T$ be a [[Definition:Consistent|consistent]] [[Definition:Theory (Logic)|theory]] of [[Definition:Propositional Logic|classical logic]].\nLet $\\mathrm {Form}$ be the set of [[Definition:Well-Formed Formula|formulas]] and $\\phi \\equiv_T \\psi \\iff T \\vdash \\phi \\leftrightarrow \\psi$.\nThen $\\mathrm {Form} / \\equiv_T$ is a [[Definition:Boolean Algebra|Boolean algebra]], the [[Definition:Lindenbaum-Tarski Algebra|Lindenbaum-Tarski algebra]] of $T$."
+  },
+  "B_source": {
+    "statement": "Let $\\theta$ be a [[Definition:Congruence Relation|congruence]] on an [[Definition:Algebraic Structure|algebraic structure]] $A$.\nThen $A / \\theta$ carries the operations of $A$, defined on representatives."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the structure being collapsed": "the set of formulas with conjunction, disjunction, and negation",
+        "the congruence": "provable equivalence in the theory",
+        "the quotient structure": "the Lindenbaum-Tarski algebra of the theory"
+      },
+      "derived": {
+        "the operations descend to the quotient": "the connectives are well defined on equivalence classes",
+        "the axioms are inherited": "the Boolean algebra laws hold because their instances are provable"
+      }
+    },
+    "validity_conditions": [
+      "Provable equivalence is an equivalence relation and is compatible with the connectives, since equivalent formulas may be substituted inside a conjunction, disjunction, or negation.",
+      "The Boolean algebra axioms hold in the quotient because each corresponding equivalence is provable in the theory.",
+      "Consistency is required for the algebra to be nondegenerate; in an inconsistent theory all formulas are provably equivalent and the algebra collapses to one element."
+    ],
+    "proof_plan": [
+      "Regard $\\mathrm {Form}$ as an algebra with operations $\\land$, $\\lor$, $\\neg$ and constants $\\top$, $\\bot$.",
+      "If $T \\vdash \\phi \\leftrightarrow \\phi'$ and $T \\vdash \\psi \\leftrightarrow \\psi'$, then:\n:$T \\vdash \\paren {\\phi \\land \\psi} \\leftrightarrow \\paren {\\phi' \\land \\psi'}$\nand similarly for $\\lor$ and $\\neg$.\nHence $\\equiv_T$ is a [[Definition:Congruence Relation|congruence]].",
+      "Collapse by $\\equiv_T$, so the connectives descend to the classes $\\eqclass \\phi {}$.",
+      "Each Boolean axiom, such as $\\eqclass {\\phi \\land \\paren {\\psi \\lor \\chi} } {} = \\eqclass {\\paren {\\phi \\land \\psi} \\lor \\paren {\\phi \\land \\chi} } {}$, holds because the corresponding biconditional is a [[Definition:Tautology|tautology]], hence a theorem of $T$.\nAs $T$ is consistent, $\\eqclass \\top {} \\ne \\eqclass \\bot {}$.\n{{qed}}"
+    ]
+  }
+}

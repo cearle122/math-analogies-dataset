@@ -1,0 +1,38 @@
+{
+  "id": "derivative_from_finite_difference",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\R \\to \\R$ be [[Definition:Twice Differentiable Real Function|twice differentiable]] with $\\size {f''} \\le M$.\nThen:\n:$\\map {f'} x = \\displaystyle \\lim_{h \\mathop \\to 0} \\frac {\\map f {x + h} - \\map f x} h$\nand:\n:$\\size {\\dfrac {\\map f {x + h} - \\map f x} h - \\map {f'} x} \\le \\dfrac {M h} 2$"
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {a_n}$ be a [[Definition:Real Sequence|real sequence]].\nThe [[Definition:Forward Difference|forward difference]] of $\\sequence {a_n}$ is:\n:$\\paren {\\Delta a}_n = a_{n + 1} - a_n$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the index step of the sequence": "a real step size h",
+        "the forward difference operator Delta": "the difference quotient operator",
+        "summation by parts": "integration by parts"
+      },
+      "derived": {
+        "the telescoping sum of differences": "the fundamental theorem of calculus"
+      }
+    },
+    "validity_conditions": [
+      "f must be twice differentiable for the error term to be O(h)",
+      "the step size must tend to zero for the discrete operator to converge to the continuous one"
+    ],
+    "proof_plan": [
+      "Sample $f$ on the grid $x + h \\Z$ and form the [[Definition:Forward Difference|forward differences]] $\\map f {x + h} - \\map f x$.",
+      "By [[Taylor's Theorem]] with [[Definition:Lagrange Form of Remainder|Lagrange remainder]]:\n:$\\map f {x + h} = \\map f x + h \\map {f'} x + \\dfrac {h^2} 2 \\map {f''} \\xi$\nfor some $\\xi$ between $x$ and $x + h$.",
+      "Dividing by $h$:\n:$\\dfrac {\\map f {x + h} - \\map f x} h - \\map {f'} x = \\dfrac h 2 \\map {f''} \\xi$\nwhose absolute value is at most $\\dfrac {M h} 2$.",
+      "Letting $h \\to 0$, the difference quotient converges to $\\map {f'} x$.",
+      "The discrete identity $\\displaystyle \\sum_{k \\mathop = 0}^{n - 1} \\paren {\\Delta a}_k = a_n - a_0$ becomes, in the limit, the [[Fundamental Theorem of Calculus]]:\n:$\\displaystyle \\int_a^b \\map {f'} t \\rd t = \\map f b - \\map f a$\n{{qed}}"
+    ]
+  }
+}

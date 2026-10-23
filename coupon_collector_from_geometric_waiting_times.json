@@ -1,0 +1,37 @@
+{
+  "id": "coupon_collector_from_geometric_waiting_times",
+  "field": [
+    "probability",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Each draw yields one of $n$ coupon types uniformly at random, independently.\nLet $T$ be the number of draws needed to collect all types.\nThen:\n:$\\expect T = n H_n = n \\displaystyle \\sum_{k \\mathop = 1}^n \\frac 1 k \\sim n \\ln n$"
+  },
+  "B_source": {
+    "statement": "Let $Y$ have the [[Definition:Geometric Distribution|geometric distribution]] on $\\set {1, 2, \\ldots}$ with success probability $p$.\nThen $\\expect Y = \\dfrac 1 p$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the single geometric waiting time": "the waiting time for each new coupon type"
+      },
+      "derived": {
+        "the sum of the means": "a harmonic sum"
+      },
+      "reformulation": "Split the collection into phases, each ending when a new type appears, and sum the geometric means."
+    },
+    "validity_conditions": [
+      "Within a phase the draws are independent trials with constant success probability.",
+      "Linearity of expectation handles the sum of the phases."
+    ],
+    "proof_plan": [
+      "Write $T = T_1 + \\cdots + T_n$, where $T_i$ is the number of draws taken while exactly $i - 1$ types have been seen.",
+      "During phase $i$, each draw is new with probability $p_i = \\dfrac {n - i + 1} n$, independently, so $T_i$ is geometric with parameter $p_i$.",
+      "By the source result, $\\expect {T_i} = \\dfrac n {n - i + 1}$.",
+      "By linearity, $\\expect T = \\displaystyle \\sum_{i \\mathop = 1}^n \\frac n {n - i + 1} = n H_n$, and $H_n \\sim \\ln n$.\n{{qed}}"
+    ]
+  }
+}

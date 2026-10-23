@@ -1,0 +1,40 @@
+{
+  "id": "sup_from_inf",
+  "field": [
+    "analysis",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $S \\subseteq \\R$ be [[Definition:Non-Empty Set|non-empty]] and [[Definition:Bounded Below Subset of Real Numbers|bounded below]].\nThen $S$ has an [[Definition:Infimum of Subset of Real Numbers|infimum]]."
+  },
+  "B_source": {
+    "statement": "Let $S \\subseteq \\R$ be [[Definition:Non-Empty Set|non-empty]] and [[Definition:Bounded Above Subset of Real Numbers|bounded above]].\nThen $S$ has a [[Definition:Supremum of Subset of Real Numbers|supremum]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "order <=": "reversed order >=",
+        "set S": "negation -S = {-x : x in S}",
+        "upper bound": "lower bound"
+      },
+      "derived": {
+        "sup(S)": "inf(-S) = -sup(-S)",
+        "bounded above": "bounded below"
+      },
+      "reformulation": "Reflect S through 0 (replace S by -S), which swaps upper and lower bounds and reverses the order."
+    },
+    "validity_conditions": [
+      "Negation x |-> -x is an order-reversing bijection of the reals, so bounds and their extremality swap exactly.",
+      "S bounded below iff -S bounded above, so the source hypothesis applies to -S."
+    ],
+    "proof_plan": [
+      "Let $-S = \\set {-x: x \\in S}$.",
+      "If $m \\le x$ for all $x \\in S$, then $-x \\le -m$ for all $x \\in S$.\nSo $-S$ is non-empty and bounded above.",
+      "By the [[Continuum Property|least upper bound property]], $\\map \\sup {-S}$ exists.",
+      "Let $\\ell = -\\map \\sup {-S}$.\nThen $\\ell \\le x$ for all $x \\in S$, and if $m$ is any lower bound then $-m$ is an upper bound of $-S$, so $\\map \\sup {-S} \\le -m$ and $m \\le \\ell$.\nHence $\\ell = \\inf S$.\n{{qed}}"
+    ]
+  }
+}

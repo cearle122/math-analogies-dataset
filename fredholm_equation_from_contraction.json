@@ -1,0 +1,37 @@
+{
+  "id": "fredholm_equation_from_contraction",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $K$ be [[Definition:Continuous Real Function|continuous]] on $\\closedint a b^2$ and $g$ continuous on $\\closedint a b$.\nLet $\\lambda \\in \\R$ with $\\size \\lambda \\paren {b - a} \\norm K_\\infty < 1$.\nThen the [[Definition:Fredholm Integral Equation|Fredholm integral equation]]:\n:$\\displaystyle \\map f x = \\map g x + \\lambda \\int_a^b \\map K {x, y} \\map f y \\rd y$\nhas a [[Definition:Unique|unique]] continuous solution $f$."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]] and $T: X \\to X$ with $\\map d {T x, T y} \\le q \\, \\map d {x, y}$ for some $q < 1$.\nThen $T$ has a unique [[Definition:Fixed Point|fixed point]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the complete metric space": "C([a, b]) with the supremum metric",
+        "the contraction T": "f maps to g + lambda times the integral operator applied to f"
+      },
+      "derived": {
+        "the fixed point": "the solution of the integral equation"
+      },
+      "reformulation": "Encode the integral equation as a fixed point equation for an affine integral operator."
+    },
+    "validity_conditions": [
+      "The smallness condition on lambda is what makes the operator a contraction.",
+      "C([a, b]) with the supremum norm is complete."
+    ],
+    "proof_plan": [
+      "Define $T$ on $\\map C {\\closedint a b}$ by:\n:$\\displaystyle \\map {\\paren {T f} } x = \\map g x + \\lambda \\int_a^b \\map K {x, y} \\map f y \\rd y$\n$T f$ is continuous by uniform continuity of $K$.",
+      "For $f, h$:\n:$\\norm {T f - T h}_\\infty \\le \\size \\lambda \\paren {b - a} \\norm K_\\infty \\norm {f - h}_\\infty = q \\norm {f - h}_\\infty$\nwith $q < 1$.",
+      "By the [[Banach Fixed-Point Theorem]], $T$ has a unique fixed point $f$, which is the unique continuous solution.",
+      "Iterating from $f_0 = g$ expresses the solution as the [[Definition:Neumann Series|Neumann series]] $\\displaystyle \\sum_n \\lambda^n \\mathcal K^n g$, where $\\mathcal K$ is the integral operator.\n{{qed}}"
+    ]
+  }
+}

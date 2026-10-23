@@ -1,0 +1,37 @@
+{
+  "id": "euler_characteristic_connected_sum_from_inclusion_exclusion",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $M$ and $N$ be closed [[Definition:Surface|surfaces]].\nThen the [[Definition:Connected Sum|connected sum]] satisfies:\n:$\\map \\chi {M \\# N} = \\map \\chi M + \\map \\chi N - 2$"
+  },
+  "B_source": {
+    "statement": "Let a finite [[Definition:CW Complex|CW complex]] $X$ be the union of subcomplexes $A$ and $B$.\nThen:\n:$\\map \\chi X = \\map \\chi A + \\map \\chi B - \\map \\chi {A \\cap B}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the subcomplexes A and B": "M and N with open disks removed",
+        "their intersection": "the gluing circle"
+      },
+      "derived": {
+        "chi(circle) = 0 and chi(disk) = 1": "the correction term -2"
+      },
+      "reformulation": "Apply inclusion-exclusion for the Euler characteristic twice: to remove a disk and to glue along a circle."
+    },
+    "validity_conditions": [
+      "The decompositions must be by subcomplexes, which can be arranged by choosing cell structures compatible with the disks.",
+      "chi(S^1) = 0 and chi(D^2) = 1."
+    ],
+    "proof_plan": [
+      "Let $M'$ and $N'$ be $M$ and $N$ with open disks removed, so $M \\# N = M' \\cup N'$ with $M' \\cap N' \\cong \\Bbb S^1$.",
+      "As $M = M' \\cup \\Bbb D^2$ with $M' \\cap \\Bbb D^2 = \\Bbb S^1$, the source result gives $\\map \\chi M = \\map \\chi {M'} + 1 - 0$, so $\\map \\chi {M'} = \\map \\chi M - 1$.\nLikewise $\\map \\chi {N'} = \\map \\chi N - 1$.",
+      "By the source result again:\n:$\\map \\chi {M \\# N} = \\map \\chi {M'} + \\map \\chi {N'} - \\map \\chi {\\Bbb S^1} = \\map \\chi M + \\map \\chi N - 2$",
+      "For example, a connected sum of $g$ tori has $\\chi = 2 - 2 g$.\n{{qed}}"
+    ]
+  }
+}

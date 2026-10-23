@@ -1,0 +1,41 @@
+{
+  "id": "monte_carlo_integration_from_empirical_average",
+  "field": [
+    "probability",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Square-Integrable Function|square-integrable]] with respect to a [[Definition:Probability Measure|probability measure]] $P$.\nLet $X_1, \\ldots, X_n$ be [[Definition:Independent Identically Distributed|i.i.d.]] with law $P$.\nThen:\n:$\\displaystyle \\frac 1 n \\sum_{i \\mathop = 1}^n \\map f {X_i} \\to \\int f \\rd P$\n[[Definition:Almost Surely|almost surely]], with root-mean-square error $\\dfrac {\\sigma_f} {\\sqrt n}$."
+  },
+  "B_source": {
+    "statement": "Let $Y_1, \\ldots, Y_n$ be [[Definition:Independent Identically Distributed|i.i.d.]] with finite mean.\nThen the [[Definition:Sample Mean|sample mean]] $\\displaystyle \\bar Y_n = \\frac 1 n \\sum_{i \\mathop = 1}^n Y_i$ estimates $\\expect Y$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the finitely many samples": "independent draws from the density being integrated against",
+        "the empirical average": "the Monte Carlo estimate of the integral",
+        "the underlying mean": "the value of the integral"
+      },
+      "derived": {
+        "unbiasedness of the empirical average": "the estimate has the integral as its expectation",
+        "the standard error of the average": "error decaying as one over the square root of the sample count"
+      },
+      "reformulation": "Replace the integral by an average over finitely many random samples, so a continuous quantity becomes a finite mean."
+    },
+    "validity_conditions": [
+      "The integral is by definition the expectation of the function under the density, so estimating the integral is estimating a mean.",
+      "The estimate is unbiased for any sample size, and consistency follows from the law of large numbers provided the function is integrable.",
+      "The one over root n rate requires finite variance and is independent of the dimension, which is the property that makes the method preferable to grid quadrature in high dimensions."
+    ],
+    "proof_plan": [
+      "Express the integral as an expectation:\n:$\\displaystyle \\int f \\rd P = \\expect {\\map f X}$\nwhere $X \\sim P$.",
+      "Draw i.i.d. samples $X_i \\sim P$ and form:\n:$\\displaystyle \\hat I_n = \\frac 1 n \\sum_{i \\mathop = 1}^n \\map f {X_i}$",
+      "By linearity, $\\expect {\\hat I_n} = \\displaystyle \\int f \\rd P$, so $\\hat I_n$ is [[Definition:Unbiased Estimator|unbiased]].\nBy the [[Strong Law of Large Numbers]], $\\hat I_n \\to \\displaystyle \\int f \\rd P$ almost surely.",
+      "By [[Variance of Sum of Independent Random Variables|independence]]:\n:$\\var {\\hat I_n} = \\dfrac {\\sigma_f^2} n$\nwhere $\\sigma_f^2 = \\var {\\map f X}$.\nHence the error is of order $n^{-1 / 2}$.\n{{qed}}"
+    ]
+  }
+}

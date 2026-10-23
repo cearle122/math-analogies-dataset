@@ -1,0 +1,38 @@
+{
+  "id": "chernoff_from_markov",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Random Variable|random variable]] and $a \\in \\R$.\nThen for all $s > 0$:\n:$\\map \\Pr {X \\ge a} \\le \\dfrac {\\expect {e^{s X} } } {e^{s a} }$"
+  },
+  "B_source": {
+    "statement": "Let $Y$ be a non-negative [[Definition:Random Variable|random variable]] and $t > 0$.\nThen:\n:$\\map \\Pr {Y \\ge t} \\le \\dfrac {\\expect Y} t$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "Y": "e^{sX}",
+        "t": "e^{sa}"
+      },
+      "derived": {
+        "E[Y]": "E[e^{sX}]",
+        "{Y >= t}": "{X >= a}"
+      }
+    },
+    "validity_conditions": [
+      "e^{sX} >= 0 always, so Markov's nonnegativity hypothesis holds.",
+      "For s > 0, the map x |-> e^{sx} is increasing, so {X >= a} = {e^{sX} >= e^{sa}}; the events coincide.",
+      "e^{sa} > 0, so dividing is valid."
+    ],
+    "proof_plan": [
+      "Let $Y = e^{s X}$.\nThen $Y \\ge 0$.",
+      "As $s > 0$ and $\\exp$ is [[Definition:Strictly Increasing Real Function|strictly increasing]]:\n:$\\set {X \\ge a} = \\set {e^{s X} \\ge e^{s a} }$",
+      "By [[Markov's Inequality]] with $t = e^{s a}$:\n:$\\map \\Pr {e^{s X} \\ge e^{s a} } \\le \\dfrac {\\expect Y} {e^{s a} }$",
+      "Substituting $\\expect Y = \\expect {e^{s X} }$:\n:$\\map \\Pr {X \\ge a} \\le \\dfrac {\\expect {e^{s X} } } {e^{s a} }$\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "injective_module_from_projective_module",
+  "field": [
+    "algebra",
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Ring with Unity|ring with unity]].\nAn $R$-[[Definition:Module|module]] $Q$ is [[Definition:Injective Module|injective]] {{iff}} for every [[Definition:Submodule|submodule]] $A \\subseteq B$ and [[Definition:Module Homomorphism|homomorphism]] $f: A \\to Q$, there exists $g: B \\to Q$ with $g \\restriction_A = f$."
+  },
+  "B_source": {
+    "statement": "An $R$-[[Definition:Module|module]] $P$ is [[Definition:Projective Module|projective]] {{iff}} for every [[Definition:Surjection|surjection]] $\\pi: B \\to C$ and homomorphism $f: P \\to C$, there exists $g: P \\to B$ with $\\pi \\circ g = f$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the surjection onto a quotient": "the inclusion of a submodule",
+        "lifting a map out of the module": "extending a map into the module",
+        "the projectivity of P": "the injectivity of Q"
+      },
+      "derived": {
+        "the lifting property against epimorphisms": "the extension property against monomorphisms",
+        "free modules being projective": "divisible abelian groups being injective"
+      },
+      "reformulation": "Reverse the arrows of the defining lifting diagram, turning surjections into injections and lifting into extension."
+    },
+    "validity_conditions": [
+      "The two definitions differ exactly by reversing every arrow in the defining diagram, which is what duality means in an abelian category.",
+      "Dualizing definitions is automatic, but dualizing theorems is not: each dual statement needs its own proof, since a category and its opposite need not both be module categories.",
+      "The asymmetry shows in the examples: free modules are always projective, whereas the injective analogue requires divisibility rather than freeness."
+    ],
+    "proof_plan": [
+      "Write projectivity as a lifting diagram: $f: P \\to C$ lifts along the surjection $\\pi: B \\to C$.",
+      "Reverse every arrow.\nThe surjection $\\pi: B \\to C$ becomes an injection $\\iota: A \\to B$.",
+      "The reversed diagram reads: every $f: A \\to Q$ extends along $\\iota$ to $g: B \\to Q$ with $g \\circ \\iota = f$.",
+      "This is [[Definition:Injective Module|injectivity]].\nTheorems proved purely diagrammatically dualize, such as [[Definition:Exact Functor|exactness]] of $\\map {\\operatorname {Hom} } {-, Q}$.\nThose using [[Definition:Free Module|free modules]], such as \"every module is a quotient of a projective\", need a separate argument, such as [[Baer's Criterion]].\n{{qed}}"
+    ]
+  }
+}

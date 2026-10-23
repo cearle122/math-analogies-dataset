@@ -1,0 +1,38 @@
+{
+  "id": "continuous_functions_quotient_from_restriction_kernel",
+  "field": [
+    "analysis",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Compact Hausdorff Space|compact Hausdorff space]] and $K \\subseteq X$ [[Definition:Closed Set (Topology)|closed]].\nLet $I_K = \\set {f \\in \\map C X: f \\restriction_K = 0}$.\nThen:\n:$\\map C X / I_K \\cong \\map C K$\nas [[Definition:Algebra over Ring|algebras]]."
+  },
+  "B_source": {
+    "statement": "Let $\\phi: R \\to S$ be a [[Definition:Ring Homomorphism|ring homomorphism]].\nThen:\n:$R / \\map \\ker \\phi \\cong \\Img \\phi$"
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the homomorphism phi": "restriction of functions to K",
+        "the image": "all of C(K)"
+      },
+      "derived": {
+        "the ideal I_K": "the kernel of restriction"
+      },
+      "reformulation": "Realize C(K) as the image of restriction, so that the kernel-quotient pattern identifies it with a quotient of C(X)."
+    },
+    "validity_conditions": [
+      "Surjectivity of restriction needs the Tietze extension theorem, hence normality of X.",
+      "K must be closed, so that it is a compact Hausdorff space and Tietze applies."
+    ],
+    "proof_plan": [
+      "Define $\\rho: \\map C X \\to \\map C K$ by $\\map \\rho f = f \\restriction_K$.\n$\\rho$ preserves sums, products and scalar multiples, so is an algebra homomorphism.",
+      "By definition, $\\map \\ker \\rho = I_K$.",
+      "A compact Hausdorff space is [[Definition:Normal Space|normal]].\nBy the [[Tietze Extension Theorem]], every $g \\in \\map C K$ extends to some $f \\in \\map C X$, so $\\rho$ is [[Definition:Surjection|surjective]].",
+      "By the [[First Isomorphism Theorem for Rings]]:\n:$\\map C X / I_K \\cong \\map C K$\n{{qed}}"
+    ]
+  }
+}

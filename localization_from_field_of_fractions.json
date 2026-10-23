@@ -1,0 +1,39 @@
+{
+  "id": "localization_from_field_of_fractions",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Commutative Ring with Unity|commutative ring with unity]] and $S \\subseteq R$ a [[Definition:Multiplicatively Closed Subset|multiplicative subset]] containing $1$.\nThen $S^{-1} R = \\paren {R \\times S} / \\sim$, where $\\tuple {r, s} \\sim \\tuple {r', s'}$ {{iff}} $\\map t {r s' - r' s} = 0$ for some $t \\in S$, is a ring, and $r \\mapsto r / 1$ is universal among homomorphisms sending $S$ to [[Definition:Unit of Ring|units]]."
+  },
+  "B_source": {
+    "statement": "Let $D$ be an [[Definition:Integral Domain|integral domain]].\nThen $\\map {\\operatorname {Frac} } D = \\paren {D \\times \\paren {D \\setminus \\set 0} } / \\sim$, with $\\tuple {a, b} \\sim \\tuple {c, d}$ {{iff}} $a d = b c$, is a [[Definition:Field (Abstract Algebra)|field]] containing $D$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the non-zero elements of D": "an arbitrary multiplicative subset S",
+        "cross-multiplication": "cross-multiplication up to a factor from S"
+      },
+      "derived": {
+        "the field of fractions": "the localization at S = D minus 0"
+      },
+      "reformulation": "Allow only the denominators in S, and weaken cross-multiplication by a factor from S to keep the relation transitive in the presence of zero divisors."
+    },
+    "validity_conditions": [
+      "Without the factor t, the relation fails to be transitive when R has zero divisors.",
+      "The map r -> r/1 is injective exactly when S contains no zero divisors."
+    ],
+    "proof_plan": [
+      "Replace $D \\setminus \\set 0$ by $S$, and keep the formal fractions $\\dfrac r s$.",
+      "For transitivity, suppose $\\map t {r s' - r' s} = 0$ and $\\map {t'} {r' s'' - r'' s'} = 0$.\nMultiplying by $t' s''$ and $t s$ respectively and adding gives $t t' s' \\paren {r s'' - r'' s} = 0$, with $t t' s' \\in S$.",
+      "Define $\\dfrac r s + \\dfrac {r'} {s'} = \\dfrac {r s' + r' s} {s s'}$ and $\\dfrac r s \\cdot \\dfrac {r'} {s'} = \\dfrac {r r'} {s s'}$.\nThese are well-defined on classes and make $S^{-1} R$ a commutative ring.",
+      "Each $s / 1$ has inverse $1 / s$.\nA homomorphism $\\phi: R \\to T$ inverting $S$ factors uniquely by $\\dfrac r s \\mapsto \\map \\phi r \\map \\phi s^{-1}$.\nFor $R = D$ and $S = D \\setminus \\set 0$ this recovers $\\map {\\operatorname {Frac} } D$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "pigeonhole_from_counting",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $n$ objects be placed in $k$ boxes with $n > k$.\nThen some box contains at least two objects."
+  },
+  "B_source": {
+    "statement": "Let $A, B$ be [[Definition:Finite Set|finite sets]] with $\\card A > \\card B$.\nThen there is no [[Definition:Injection|injection]] $A \\to B$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "duality"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the map A -> B": "the assignment items -> boxes",
+        "injectivity (no collisions)": "every box holds at most one item"
+      },
+      "derived": {
+        "no injection when |A|>|B|": "the assignment cannot be collision-free",
+        "a collision": "a box with two or more items"
+      }
+    },
+    "validity_conditions": [
+      "An assignment with every box holding at most one item is precisely an injection from items to boxes.",
+      "With n items and k < n boxes, |items| > |boxes|, so no injection exists.",
+      "Failure of injectivity means some two items share a box - the pigeonhole conclusion."
+    ],
+    "proof_plan": [
+      "View the placement as a [[Definition:Mapping|mapping]] $f$ from the set of $n$ objects to the set of $k$ boxes.",
+      "Every box holding at most one object means exactly that $f$ is [[Definition:Injection|injective]].",
+      "As $n > k$, by the source result there is no injection from objects to boxes.",
+      "Hence some box receives at least two objects, which is the [[Pigeonhole Principle]].\n{{qed}}"
+    ]
+  }
+}

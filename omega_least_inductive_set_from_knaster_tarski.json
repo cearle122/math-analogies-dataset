@@ -1,0 +1,38 @@
+{
+  "id": "omega_least_inductive_set_from_knaster_tarski",
+  "field": [
+    "set_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $\\Omega$ be an [[Definition:Inductive Set|inductive set]], as given by the [[Axiom of Infinity]], and $\\omega$ the intersection of all inductive subsets of $\\Omega$.\nThen $\\omega$ is the smallest inductive set, $\\omega = \\set \\O \\cup \\set {x \\cup \\set x: x \\in \\omega}$, and every inductive subset of $\\omega$ equals $\\omega$."
+  },
+  "B_source": {
+    "statement": "Let $\\Phi$ be an [[Definition:Increasing Mapping|increasing mapping]] on $\\powerset \\Omega$.\nThen $\\displaystyle \\map {\\operatorname {lfp} } \\Phi = \\bigcap \\set {X: \\map \\Phi X \\subseteq X}$ is the [[Definition:Least Fixed Point|least fixed point]] of $\\Phi$.\nThis is the [[Knaster-Tarski Theorem]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the operator Phi": "X -> {empty set} together with the successors of members of X",
+        "prefixed points": "inductive subsets of Omega"
+      },
+      "derived": {
+        "the least fixed point": "the natural numbers omega"
+      },
+      "reformulation": "Encode inductiveness as being a prefixed point of the zero-and-successor operator."
+    },
+    "validity_conditions": [
+      "Phi maps subsets of Omega into Omega because Omega is inductive.",
+      "The intersection does not depend on the choice of Omega, since any inductive set meets Omega in an inductive set."
+    ],
+    "proof_plan": [
+      "Let $\\map \\Phi X = \\set \\O \\cup \\set {x \\cup \\set x: x \\in X}$ for $X \\subseteq \\Omega$; as $\\Omega$ is inductive, $\\map \\Phi X \\subseteq \\Omega$, and $\\Phi$ is increasing.",
+      "$X \\subseteq \\Omega$ is inductive {{iff}} $\\map \\Phi X \\subseteq X$.",
+      "By the source result, $\\omega$ is the least fixed point of $\\Phi$, so $\\map \\Phi \\omega = \\omega$: each element of $\\omega$ is $\\O$ or a successor.",
+      "If $S \\subseteq \\omega$ is inductive, then $\\map \\Phi S \\subseteq S$, so $\\omega \\subseteq S$.\nThis is the [[Principle of Mathematical Induction]] for $\\omega$.\n{{qed}}"
+    ]
+  }
+}

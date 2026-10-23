@@ -1,0 +1,43 @@
+{
+  "id": "borsuk_ulam_from_tucker",
+  "field": [
+    "topology",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\Bbb S^n \\to \\R^n$ be a [[Definition:Continuous Mapping (Topology)|continuous mapping]].\nThen there exists $x \\in \\Bbb S^n$ such that:\n:$\\map f x = \\map f {-x}$"
+  },
+  "B_source": {
+    "statement": "Let $T$ be a [[Definition:Triangulation|triangulation]] of the [[Definition:Closed Ball|$n$-ball]] which is [[Definition:Antipodal Map|antipodally]] symmetric on its [[Definition:Boundary (Topology)|boundary]].\nLet $\\lambda: \\map V T \\to \\set {\\pm 1, \\ldots, \\pm n}$ be a labelling with $\\map \\lambda {-v} = -\\map \\lambda v$ for boundary [[Definition:Vertex of Graph|vertices]] $v$.\nThen there exists an [[Definition:Edge of Graph|edge]] $\\set {u, v}$ of $T$ such that:\n:$\\map \\lambda u = -\\map \\lambda v$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the simplicial triangulation": "a sequence of triangulations with mesh tending to zero",
+        "the antipodal labelling rule": "the sign pattern of the coordinates of f",
+        "the complementary edge": "a pair of nearby points with opposite-sign images"
+      },
+      "derived": {
+        "the limit of complementary edges": "an exact antipodal coincidence point"
+      },
+      "reformulation": "The continuous statement is first re-expressed as the vanishing of the odd map g(x) = f(x) - f(-x), which is what the sign labelling discretizes."
+    },
+    "validity_conditions": [
+      "f must be continuous so that sign patterns are locally stable under refinement",
+      "the triangulations must be antipodally symmetric at every mesh size",
+      "compactness of S^n is needed to extract a convergent subsequence of complementary edges"
+    ],
+    "proof_plan": [
+      "Fix a [[Definition:Triangulation|triangulation]] $T_k$ of $\\Bbb S^n$ of [[Definition:Mesh of Triangulation|mesh]] at most $\\dfrac 1 k$ which is symmetric under $x \\mapsto -x$.",
+      "{{AimForCont}} $\\map f x \\ne \\map f {-x}$ for all $x$.\nLet $\\map g x = \\map f x - \\map f {-x}$.\nLabel each vertex $v$ by $\\pm i$, where $i$ is an index maximizing $\\size {\\map {g_i} v}$ and the sign is that of $\\map {g_i} v$.",
+      "As $\\map g {-v} = -\\map g v$, the labelling is antipodal.\nThe closed upper hemisphere is an $n$-ball whose induced triangulation is antipodally symmetric on its boundary $\\Bbb S^{n - 1}$.\nBy [[Tucker's Lemma]] applied there, there is an edge $\\set {u_k, v_k}$ with complementary labels.",
+      "As $\\Bbb S^n$ is [[Definition:Compact Space|compact]], a [[Definition:Subsequence|subsequence]] of the edge midpoints converges to some $x \\in \\Bbb S^n$ as $k \\to \\infty$.",
+      "Passing to a further subsequence, $u_k$ carries the label $+i$ and $v_k$ the label $-i$ for a fixed $i$.\nBy [[Definition:Continuous Mapping (Topology)|continuity]], $\\map {g_i} x \\ge \\norm {\\map g x}_\\infty$ and $-\\map {g_i} x \\ge \\norm {\\map g x}_\\infty$.\nHence $\\map g x = 0$, that is, $\\map f x = \\map f {-x}$.\n{{qed}}"
+    ]
+  }
+}

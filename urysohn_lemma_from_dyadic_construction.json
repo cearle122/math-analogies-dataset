@@ -1,0 +1,36 @@
+{
+  "id": "urysohn_lemma_from_dyadic_construction",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Normal Space|normal space]] and $A$, $B$ disjoint [[Definition:Closed Set (Topology)|closed sets]].\nThen there is a [[Definition:Continuous Mapping (Topology)|continuous]] $f: X \\to \\closedint 0 1$ with $f = 0$ on $A$ and $f = 1$ on $B$."
+  },
+  "B_source": {
+    "statement": "A space $X$ is normal {{iff}} for every closed $C$ and open $U \\supseteq C$ there is an open $V$ with:\n:$C \\subseteq V \\subseteq \\overline V \\subseteq U$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a single interpolating open set": "a family U_r indexed by dyadic rationals r in [0, 1]"
+      },
+      "derived": {
+        "the nested family": "level sets of a continuous function"
+      },
+      "reformulation": "Build a dyadic family of nested open sets by repeated interpolation, and read off f as the first level containing x."
+    },
+    "validity_conditions": [
+      "The dyadic rationals are dense in [0, 1], which makes f continuous.",
+      "Each interpolation step uses the reformulation of normality."
+    ],
+    "proof_plan": [
+      "Let $U_1 = X \\setminus B$, an open set containing $A$.\nBy the source result, choose open $U_0$ with $A \\subseteq U_0 \\subseteq \\overline {U_0} \\subseteq U_1$.",
+      "By [[Principle of Mathematical Induction|induction]] on the denominator, for each dyadic rational $r \\in \\closedint 0 1$ choose open $U_r$ with $\\overline {U_r} \\subseteq U_s$ whenever $r < s$.\nEach new $U_{\\paren {2 k + 1} / 2^{n + 1} }$ is inserted between two existing levels by the source result.",
+      "Define $\\map f x = \\inf \\set {r: x \\in U_r}$, with $\\inf \\O = 1$.\nThen $f = 0$ on $A \\subseteq U_0$, and $f = 1$ on $B$, which meets no $U_r$.",
+      "For $\\alpha \\in \\R$, $\\map {f^{-1} } {\\hointr {-\\infty} \\alpha} = \\bigcup_{r < \\alpha} U_r$ and $\\map {f^{-1} } {\\hointl \\alpha \\infty} = \\bigcup_{s > \\alpha} \\paren {X \\setminus \\overline {U_s} }$ are open.\nHence $f$ is continuous, which is [[Urysohn's Lemma]].\n{{qed}}"
+    ]
+  }
+}

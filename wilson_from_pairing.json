@@ -1,0 +1,42 @@
+{
+  "id": "wilson_from_pairing",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a [[Definition:Prime Number|prime]].\nThen:\n:$\\paren {p - 1}! \\equiv -1 \\pmod p$"
+  },
+  "B_source": {
+    "statement": "Let $G$ be a finite [[Definition:Abelian Group|abelian group]].\nThen the product of all elements of $G$ equals the product of its [[Definition:Self-Inverse Element|self-inverse elements]], since the other elements cancel in inverse pairs."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "abelian group": "the multiplicative group (Z/pZ)^*",
+        "product of all group elements": "(p-1)! mod p",
+        "self-inverse elements": "solutions of x^2 = 1 mod p, namely 1 and -1"
+      },
+      "derived": {
+        "non-self-inverse elements cancel in pairs": "all factors of (p-1)! pair off except 1 and p-1",
+        "product of self-inverse elements": "1 * (p-1) = -1 mod p"
+      }
+    },
+    "validity_conditions": [
+      "(Z/pZ)^* is abelian of order p-1; each element pairs with its distinct inverse except those equal to their own inverse.",
+      "x^2 = 1 mod p has exactly two solutions, 1 and p-1 = -1, since p is prime (a field).",
+      "So the product (p-1)! collapses to 1 * (-1) = -1 mod p."
+    ],
+    "proof_plan": [
+      "Work in $\\paren {\\Z / p \\Z}^\\times = \\set {\\eqclass 1 p, \\ldots, \\eqclass {p - 1} p}$.\nThe product of all its elements is $\\paren {p - 1}! \\bmod p$.",
+      "Pair each element with its [[Definition:Multiplicative Inverse|multiplicative inverse]].\nPairs of distinct elements multiply to $\\eqclass 1 p$.",
+      "$x$ is self-inverse {{iff}} $x^2 = 1$, {{iff}} $\\paren {x - 1} \\paren {x + 1} = 0$.\nAs $\\Z / p \\Z$ is a [[Definition:Field (Abstract Algebra)|field]], the only solutions are $x = \\pm 1$.",
+      "Hence:\n:$\\paren {p - 1}! \\equiv 1 \\cdot \\paren {-1} = -1 \\pmod p$\nwhich is [[Wilson's Theorem]].\n{{qed}}"
+    ]
+  }
+}

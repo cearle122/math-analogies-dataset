@@ -1,0 +1,42 @@
+{
+  "id": "strong_induction_from_well_ordering",
+  "field": [
+    "logic",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\map P n$ be a [[Definition:Propositional Function|propositional function]] on $\\N$ such that:\n:$\\forall k \\in \\N: \\paren {\\forall j < k: \\map P j} \\implies \\map P k$\nThen $\\map P n$ holds for all $n \\in \\N$."
+  },
+  "B_source": {
+    "statement": "Every [[Definition:Non-Empty Set|non-empty]] subset of $\\N$ has a [[Definition:Smallest Element|smallest element]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "duality"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the set of counterexamples": "S = {n : P(n) is false}",
+        "least element of S": "minimal counterexample m"
+      },
+      "derived": {
+        "S nonempty (assume for contradiction)": "a least counterexample m exists",
+        "P(j) for all j<m": "the hypothesis then forces P(m), contradicting m in S"
+      },
+      "reformulation": "Recast 'prove P for all n' as 'the set of counterexamples is empty', then invoke well-ordering on that set (proof by minimal counterexample)."
+    },
+    "validity_conditions": [
+      "Let S be the set of n with P(n) false; suppose S nonempty.",
+      "Well-ordering gives a least m in S, so P(j) holds for all j < m.",
+      "The strong-induction hypothesis then yields P(m), contradicting m in S; hence S is empty."
+    ],
+    "proof_plan": [
+      "Assume the premise, and {{AimForCont}} that $\\map P n$ fails for some $n$.",
+      "Let $S = \\set {n \\in \\N: \\neg \\map P n}$, which is non-empty.",
+      "By the [[Well-Ordering Principle]], $S$ has a least element $m$.",
+      "For all $j < m$, $j \\notin S$, so $\\map P j$ holds.\nBy the premise $\\map P m$ holds, contradicting $m \\in S$.\nHence $\\map P n$ holds for all $n$, which is the [[Second Principle of Mathematical Induction]].\n{{qed}}"
+    ]
+  }
+}

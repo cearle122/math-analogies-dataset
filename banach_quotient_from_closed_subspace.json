@@ -1,0 +1,40 @@
+{
+  "id": "banach_quotient_from_closed_subspace",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Banach Space|Banach space]].\nLet $M$ be a [[Definition:Closed Linear Subspace|closed linear subspace]] of $X$.\nThen $X / M$ is a [[Definition:Banach Space|Banach space]] under the [[Definition:Quotient Norm|quotient norm]]:\n:$\\displaystyle \\norm {x + M} = \\inf_{m \\mathop \\in M} \\norm {x - m}$"
+  },
+  "B_source": {
+    "statement": "Let $T: X \\to Y$ be a [[Definition:Linear Transformation|linear transformation]] of [[Definition:Vector Space|vector spaces]].\nThen:\n:$X / \\map \\ker T \\cong \\Img T$"
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the linear map T": "a bounded linear map with kernel M",
+        "the kernel": "the closed subspace M",
+        "the quotient vector space": "the normed quotient X/M"
+      },
+      "derived": {
+        "the induced isomorphism": "an isometric isomorphism onto the image when T is a quotient map"
+      },
+      "reformulation": "The purely algebraic quotient must be equipped with a norm before the isomorphism theorem has analytic content; closedness of the subspace is exactly what makes that possible."
+    },
+    "validity_conditions": [
+      "M must be closed for the quotient norm to be a norm rather than a seminorm",
+      "completeness of X is needed for completeness of the quotient, proved via absolutely convergent series",
+      "the isomorphism is topological only when the map is open, which is guaranteed for the canonical projection"
+    ],
+    "proof_plan": [
+      "Define $\\norm {x + M} = \\map d {x, M}$, the [[Definition:Distance to Set|distance]] from any representative to $M$.\nThis does not depend on the representative.",
+      "[[Definition:Norm Axioms|Homogeneity]] and the [[Triangle Inequality]] follow from those of $\\norm \\cdot$.\nIf $\\norm {x + M} = 0$, then $x \\in \\overline M = M$ as $M$ is [[Definition:Closed Set (Metric Space)|closed]], so $x + M = 0$.",
+      "Let $\\displaystyle \\sum_n \\norm {x_n + M} < \\infty$.\nChoose $y_n \\in x_n + M$ with $\\norm {y_n} < \\norm {x_n + M} + 2^{-n}$.\nThen $\\sum_n y_n$ converges in $X$ as $X$ is [[Definition:Banach Space|Banach]], and its class is the sum of $\\sum_n \\paren {x_n + M}$.\nBy [[Absolutely Convergent Series in Normed Vector Space is Convergent iff Space is Banach]], $X / M$ is complete.",
+      "Let $\\pi: X \\to X / M$ be the [[Definition:Quotient Mapping|canonical map]].\nThen $\\map \\ker \\pi = M$, and by the algebraic isomorphism theorem $X / \\map \\ker \\pi \\cong \\Img \\pi = X / M$.",
+      "We have $\\norm {\\map \\pi x} \\le \\norm x$, so $\\norm \\pi \\le 1$.\nThe open unit ball of $X$ maps onto the open unit ball of $X / M$, so $\\pi$ is an [[Definition:Open Mapping|open mapping]].\n{{qed}}"
+    ]
+  }
+}

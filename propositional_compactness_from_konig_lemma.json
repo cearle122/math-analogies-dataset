@@ -1,0 +1,38 @@
+{
+  "id": "propositional_compactness_from_konig_lemma",
+  "field": [
+    "logic",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\Sigma$ be a set of propositional formulas in the variables $p_1, p_2, \\ldots$.\nIf every finite subset of $\\Sigma$ is [[Definition:Satisfiable|satisfiable]], then $\\Sigma$ is satisfiable."
+  },
+  "B_source": {
+    "statement": "Every infinite [[Definition:Rooted Tree|rooted tree]] in which every vertex has finitely many children has an infinite [[Definition:Path (Graph Theory)|path]] from the root."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the tree": "partial truth assignments to p_1, ..., p_n falsifying no formula over those variables",
+        "an infinite path": "a total truth assignment"
+      },
+      "derived": {
+        "the infinite branch": "a model of Sigma"
+      },
+      "reformulation": "Arrange the good partial assignments in a binary tree and extract an infinite branch."
+    },
+    "validity_conditions": [
+      "Formulas over p_1, ..., p_n express only finitely many truth functions, so finite satisfiability makes each level non-empty.",
+      "Restricting a good assignment to fewer variables keeps it good, so the nodes form a tree."
+    ],
+    "proof_plan": [
+      "Let the nodes at level $n$ be the assignments $v: \\set {p_1, \\ldots, p_n} \\to \\set {0, 1}$ falsifying no formula of $\\Sigma$ whose variables lie among $p_1, \\ldots, p_n$.\nRestriction to $\\set {p_1, \\ldots, p_{n - 1} }$ gives the parent, so this is a tree with at most two children per node.",
+      "The formulas of $\\Sigma$ in $p_1, \\ldots, p_n$ express finitely many truth functions, so a finite subset of them is equivalent to all of them.\nBy hypothesis that finite subset is satisfiable, so level $n$ is non-empty and the tree is infinite.",
+      "By [[König's Lemma]], there is an infinite branch, which defines a total assignment $v$.",
+      "Each $\\phi \\in \\Sigma$ involves only $p_1, \\ldots, p_n$ for some $n$, and $v \\restriction_{\\set {p_1, \\ldots, p_n} }$ is a node, so $v \\models \\phi$.\nHence $v$ satisfies $\\Sigma$, which is the [[Compactness Theorem]] for countable propositional logic.\n{{qed}}"
+    ]
+  }
+}

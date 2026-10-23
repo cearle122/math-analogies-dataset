@@ -1,0 +1,37 @@
+{
+  "id": "thales_from_inscribed_angle",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $A$, $B$, $C$ be points on a [[Definition:Circle|circle]] such that $AB$ is a [[Definition:Diameter of Circle|diameter]].\nThen $\\angle ACB$ is a [[Definition:Right Angle|right angle]]."
+  },
+  "B_source": {
+    "statement": "Let $\\angle APB$ be an [[Definition:Inscribed Angle|inscribed angle]] of a circle with center $O$.\nThen $\\angle APB = \\dfrac 1 2 \\angle AOB$, where $\\angle AOB$ is the central angle on the same arc."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the chord AB": "a diameter",
+        "the central angle": "a straight angle"
+      },
+      "derived": {
+        "half the central angle": "a right angle"
+      },
+      "reformulation": "Specialize the inscribed angle theorem to a chord through the center."
+    },
+    "validity_conditions": [
+      "The center O lies on AB, so the central angle on the arc not containing C is 180 degrees.",
+      "The converse also holds: a right angle at C places C on the circle with diameter AB."
+    ],
+    "proof_plan": [
+      "As $AB$ is a diameter, the center $O$ is the [[Definition:Midpoint|midpoint]] of $AB$, and $\\angle AOB$ is a straight angle of $180 \\degrees$.",
+      "$\\angle ACB$ is an inscribed angle subtending the arc $AB$ not containing $C$.",
+      "By the [[Inscribed Angle Theorem]]:\n:$\\angle ACB = \\dfrac 1 2 \\cdot 180 \\degrees = 90 \\degrees$",
+      "This is [[Thales' Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "variance_sum_from_orthogonality",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X_1, \\ldots, X_n$ be [[Definition:Square-Integrable Random Variable|square-integrable]] [[Definition:Random Variable|random variables]] with $\\cov {X_i, X_j} = 0$ for $i \\ne j$.\nThen:\n:$\\displaystyle \\var {\\sum_{i \\mathop = 1}^n X_i} = \\sum_{i \\mathop = 1}^n \\var {X_i}$"
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf v_1, \\ldots, \\mathbf v_n$ be pairwise [[Definition:Orthogonal (Inner Product Space)|orthogonal]] vectors in an [[Definition:Inner Product Space|inner product space]].\nThen:\n:$\\displaystyle \\norm {\\sum_{i \\mathop = 1}^n \\mathbf v_i}^2 = \\sum_{i \\mathop = 1}^n \\norm {\\mathbf v_i}^2$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "vector space of vectors": "space of mean-zero L^2 random variables",
+        "inner product <u,v>": "covariance Cov(X,Y) = E[XY] (for mean-zero)",
+        "norm squared ||v||^2": "variance Var(X)",
+        "orthogonal": "uncorrelated"
+      },
+      "derived": {
+        "||sum v_i||^2 = sum ||v_i||^2": "Var(sum X_i) = sum Var(X_i)",
+        "cross terms <v_i,v_j> vanish": "covariances Cov(X_i,X_j) vanish"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "Mean-zero L^2 random variables form a real inner product space with <X,Y> = Cov(X,Y); variance is the squared norm.",
+      "Uncorrelated = orthogonal in this space, so the Pythagorean cross-term cancellation transfers verbatim.",
+      "Centering (subtracting means) is WLOG since variance is translation-invariant."
+    ],
+    "proof_plan": [
+      "Model the centred variables $Y_i = X_i - \\expect {X_i}$ as vectors in $\\map {L^2} \\Pr$ with $\\innerprod {Y_i} {Y_j} = \\cov {X_i, X_j}$.",
+      "Expanding:\n:$\\displaystyle \\var {\\sum_i X_i} = \\norm {\\sum_i Y_i}^2 = \\sum_i \\var {X_i} + 2 \\sum_{i \\mathop < j} \\cov {X_i, X_j}$",
+      "As the variables are uncorrelated, the cross terms vanish; that is, the $Y_i$ are [[Definition:Orthogonal (Inner Product Space)|orthogonal]].",
+      "Hence:\n:$\\displaystyle \\var {\\sum_{i \\mathop = 1}^n X_i} = \\sum_{i \\mathop = 1}^n \\var {X_i}$\nwhich is [[Pythagoras's Theorem (Inner Product Space)|the Pythagorean identity]] in $\\map {L^2} \\Pr$.\n{{qed}}"
+    ]
+  }
+}

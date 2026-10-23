@@ -1,0 +1,41 @@
+{
+  "id": "newton_convergence_from_contraction",
+  "field": [
+    "analysis",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be of class $C^2$ near $r$ with $\\map f r = 0$ and $\\map {f'} r \\ne 0$.\nLet $x_{n + 1} = x_n - \\dfrac {\\map f {x_n} } {\\map {f'} {x_n} }$.\nThen for $x_0$ sufficiently close to $r$:\n:$\\size {x_{n + 1} - r} \\le C \\size {x_n - r}^2$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]] and $T: X \\to X$ with $\\map d {T x, T y} \\le q \\, \\map d {x, y}$, $q < 1$.\nThen $T$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]], and $x_{n + 1} = T x_n$ converges to it."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the contraction map T": "the Newton iteration map N(x) = x - f(x)/f'(x)",
+        "the fixed point of T": "the root r of f",
+        "the contraction constant q": "a bound on |N'| in a neighbourhood of r"
+      },
+      "derived": {
+        "the geometric convergence rate": "a quadratic rate, since N'(r) = 0"
+      },
+      "reformulation": "The root-finding problem must be reformulated as a fixed-point problem before any contraction argument applies; the choice of N over the naive x - f(x) is what produces the quadratic rate."
+    },
+    "validity_conditions": [
+      "f' must be nonzero at the root, so the iteration map is defined near r",
+      "f must be twice continuously differentiable for N' to vanish at r and give the quadratic rate",
+      "the starting point must lie in a neighbourhood on which N is a self-map, which is not guaranteed globally"
+    ],
+    "proof_plan": [
+      "Let $\\map N x = x - \\dfrac {\\map f x} {\\map {f'} x}$.\nThen $f$'s root-finding becomes the fixed-point equation $x = \\map N x$.",
+      "As $\\map {f'} r \\ne 0$, $\\map N r = r \\iff \\map f r = 0$.",
+      "{{begin-eqn}}\n{{eqn | l = \\map {N'} x\n| r = 1 - \\frac {\\map {f'} x^2 - \\map f x \\map {f''} x} {\\map {f'} x^2}\n}}\n{{eqn | r = \\frac {\\map f x \\map {f''} x} {\\map {f'} x^2}\n}}\n{{end-eqn}}\nso $\\map {N'} r = 0$.",
+      "By continuity, $\\size {N'} \\le \\dfrac 1 2$ on a small closed ball around $r$, so $N$ is a [[Definition:Contraction Mapping|contraction]] there.\nBy the [[Banach Fixed-Point Theorem]], the iteration converges to $r$.",
+      "By [[Taylor's Theorem]] for $f$ about $x_n$:\n:$0 = \\map f r = \\map f {x_n} + \\map {f'} {x_n} \\paren {r - x_n} + \\dfrac {\\map {f''} \\xi} 2 \\paren {r - x_n}^2$\nDividing by $\\map {f'} {x_n}$ and rearranging:\n:$x_{n + 1} - r = \\dfrac {\\map {f''} \\xi} {2 \\map {f'} {x_n} } \\paren {x_n - r}^2$\nAs $f'$ is bounded away from $0$ near $r$, the geometric convergence upgrades to [[Definition:Quadratic Convergence|quadratic convergence]].\n{{qed}}"
+    ]
+  }
+}

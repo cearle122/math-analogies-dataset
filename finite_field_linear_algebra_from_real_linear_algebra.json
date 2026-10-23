@@ -1,0 +1,39 @@
+{
+  "id": "finite_field_linear_algebra_from_real_linear_algebra",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\GF q$ be a [[Definition:Finite Field|finite field]].\nThen [[Definition:Vector Space|vector spaces]] over $\\GF q$ have [[Definition:Basis (Linear Algebra)|bases]], a well-defined [[Definition:Dimension of Vector Space|dimension]], the [[Rank-Nullity Theorem]] and [[Definition:Determinant of Matrix|determinants]], but no order or [[Definition:Inner Product|inner product]] geometry."
+  },
+  "B_source": {
+    "statement": "[[Definition:Vector Space|Vector spaces]] over $\\R$ have [[Definition:Basis (Linear Algebra)|bases]], [[Definition:Dimension of Vector Space|dimension]], the [[Rank-Nullity Theorem]], and [[Definition:Orthogonal (Linear Algebra)|orthogonality]] with respect to [[Definition:Inner Product|inner products]]."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the field of real scalars": "a finite field of scalars",
+        "the real vector space": "a vector space over the finite field",
+        "row reduction over the reals": "row reduction over the finite field"
+      },
+      "derived": {
+        "bases, dimension and rank-nullity": "unchanged, since their proofs use only the field axioms",
+        "orthogonality and positive definiteness": "lost, since no ordering or positivity is available"
+      }
+    },
+    "validity_conditions": [
+      "The proofs of basis existence, well-definedness of dimension, and rank-nullity use only the field axioms, so they transfer verbatim.",
+      "Inner product geometry does not transfer: without an ordering there is no positivity, and a nonzero vector can be orthogonal to itself under the standard bilinear form.",
+      "In characteristic p the trace of the identity vanishes when p divides the dimension, so trace arguments that assume it is nonzero fail and must be avoided."
+    ],
+    "proof_plan": [
+      "Replace $\\R$ by $\\GF q$.\nThe proofs of the basic results use only the [[Definition:Field Axioms|field axioms]].",
+      "Existence of bases, [[Invariance of Dimension of Vector Space|invariance of dimension]] and the [[Rank-Nullity Theorem]] transfer unchanged.",
+      "Results relying on ordering or positivity, such as $\\innerprod v v > 0$ for $v \\ne 0$, [[Definition:Positive Definite Matrix|positive definiteness]] and the [[Spectral Theorem]], are discarded.\nFor example, in $\\GF 2^2$ the vector $\\tuple {1, 1}$ satisfies $\\tuple {1, 1} \\cdot \\tuple {1, 1} = 0$.",
+      "Results depending on the [[Definition:Characteristic of Field|characteristic]] may fail.\nFor example, if $\\Char {\\GF q} \\divides n$ then $\\map {\\operatorname {tr} } {\\mathbf I_n} = 0$, so trace arguments dividing by $n$ break down.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "lucas_theorem_from_frobenius",
+  "field": [
+    "number_theory",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be prime and $m = \\displaystyle \\sum_i m_i p^i$, $n = \\displaystyle \\sum_i n_i p^i$ in base $p$.\nThen:\n:$\\displaystyle \\binom m n \\equiv \\prod_i \\binom {m_i} {n_i} \\pmod p$"
+  },
+  "B_source": {
+    "statement": "In $\\GF p \\sqbrk x$:\n:$\\paren {1 + x}^p = 1 + x^p$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the exponent p": "the powers p^i in the base-p expansion of m"
+      },
+      "derived": {
+        "the expanded product": "a generating function whose coefficients are products of digit binomials"
+      },
+      "reformulation": "Compute (1 + x)^m in GF(p)[x] digit by digit using the Frobenius identity, and compare coefficients."
+    },
+    "validity_conditions": [
+      "The base-p digits satisfy 0 <= m_i < p, so exponents of the expanded product are distinct.",
+      "C(m_i, n_i) = 0 when n_i > m_i, matching the vanishing of the coefficient."
+    ],
+    "proof_plan": [
+      "By the source result and induction, $\\paren {1 + x}^{p^i} = 1 + x^{p^i}$ in $\\GF p \\sqbrk x$.",
+      "Hence:\n:$\\displaystyle \\paren {1 + x}^m = \\prod_i \\paren {1 + x}^{m_i p^i} = \\prod_i \\paren {1 + x^{p^i} }^{m_i} = \\prod_i \\sum_{k_i \\mathop = 0}^{m_i} \\binom {m_i} {k_i} x^{k_i p^i}$",
+      "As $0 \\le k_i \\le m_i < p$, each exponent $\\sum_i k_i p^i$ arises from exactly one choice of digits.\nSo the coefficient of $x^n$ is $\\displaystyle \\prod_i \\binom {m_i} {n_i}$.",
+      "Comparing with the coefficient $\\dbinom m n$ of $x^n$ in $\\paren {1 + x}^m$ gives [[Lucas' Theorem]].\n{{qed}}"
+    ]
+  }
+}

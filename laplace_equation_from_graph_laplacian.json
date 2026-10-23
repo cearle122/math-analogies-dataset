@@ -1,0 +1,41 @@
+{
+  "id": "laplace_equation_from_graph_laplacian",
+  "field": [
+    "analysis",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\Omega \\subseteq \\R^n$ be a [[Definition:Bounded Subset of Real Euclidean Space|bounded]] [[Definition:Domain (Complex Analysis)|domain]] and $u$ [[Definition:Harmonic Function|harmonic]] on $\\Omega$, that is, $\\nabla^2 u = 0$.\nThen $u$ equals its average over every sphere contained in $\\Omega$, and $u$ is uniquely determined by its values on $\\partial \\Omega$."
+  },
+  "B_source": {
+    "statement": "Let $G = \\struct {V, E}$ be a [[Definition:Graph (Graph Theory)|graph]] with interior vertices $V^\\circ$.\nA function $u: V \\to \\R$ is [[Definition:Discrete Harmonic Function|discretely harmonic]] if for every $v \\in V^\\circ$:\n:$\\displaystyle \\map u v = \\frac 1 {\\map \\deg v} \\sum_{w \\mathop \\sim v} \\map u w$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the vertices of the graph": "the nodes of a lattice with spacing tending to zero",
+        "the averaging condition over neighbours": "the vanishing of the discrete Laplacian at each interior node",
+        "the boundary vertices": "the boundary of the region"
+      },
+      "derived": {
+        "the discrete maximum principle": "the continuous maximum principle in the limit",
+        "uniqueness of the discrete solution given boundary values": "uniqueness of the harmonic extension"
+      },
+      "reformulation": "Replace the differential operator by a neighbour-averaging condition on a lattice, then refine the lattice."
+    },
+    "validity_conditions": [
+      "The discrete Laplacian on a lattice of spacing h, divided by h squared, converges to the continuous Laplacian for twice continuously differentiable functions.",
+      "The maximum principle holds exactly at every lattice spacing, since a strict interior maximum would contradict the averaging condition, and it passes to the limit.",
+      "Uniqueness given boundary values follows from the maximum principle applied to the difference of two solutions, at both the discrete and continuous levels."
+    ],
+    "proof_plan": [
+      "Discretize $\\Omega$ as the lattice graph $\\Omega \\cap h \\Z^n$ with spacing $h$, and identify the interior and boundary nodes.",
+      "Impose at every interior node:\n:$\\displaystyle \\map u x = \\frac 1 {2 n} \\sum_{i \\mathop = 1}^n \\paren {\\map u {x + h e_i} + \\map u {x - h e_i} }$",
+      "If $u$ attains its maximum at an interior node, it equals that maximum at every neighbour, and hence on the whole component.\nThus $\\max u$ is attained on the boundary, which is the discrete [[Maximum Principle for Harmonic Functions|maximum principle]].\nApplying it to the difference of two solutions gives uniqueness from boundary values.",
+      "The rescaled discrete Laplacian satisfies:\n:$\\displaystyle \\frac 1 {h^2} \\sum_{i \\mathop = 1}^n \\paren {\\map u {x + h e_i} + \\map u {x - h e_i} - 2 \\map u x} \\to \\nabla^2 \\map u x$\nas $h \\to 0$ by [[Taylor's Theorem]].\nHence the discrete averaging property passes to the mean value property of the continuous harmonic function.\n{{qed}}"
+    ]
+  }
+}

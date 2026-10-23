@@ -1,0 +1,41 @@
+{
+  "id": "euler_characteristic_from_euler_formula",
+  "field": [
+    "geometry",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $S$ be a [[Definition:Surface|surface]] with a [[Definition:Cell Decomposition|cell decomposition]] having $V$ vertices, $E$ edges and $F$ faces.\nThen the [[Definition:Euler Characteristic|Euler characteristic]] $\\chi = V - E + F$ is a [[Definition:Topological Invariant|topological invariant]], and if $S$ is [[Definition:Homeomorphic|homeomorphic]] to the [[Definition:Sphere (Topology)|sphere]]:\n:$V - E + F = 2$"
+  },
+  "B_source": {
+    "statement": "Let $P$ be a [[Definition:Convex Polyhedron|convex polyhedron]] with $V$ vertices, $E$ edges and $F$ faces.\nThen:\n:$V - E + F = 2$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "convex polyhedron": "any cell decomposition of a sphere-like surface",
+        "vertices/edges/faces of the polyhedron": "0-, 1-, 2-cells of the decomposition",
+        "the fixed value 2": "the topological invariant chi"
+      },
+      "derived": {
+        "V - E + F = 2 for convex solids": "chi = 2 for all sphere-homeomorphic surfaces",
+        "rigid convex shape": "any triangulation, invariant under refinement"
+      },
+      "reformulation": "Reinterpret V,E,F as counts of cells in an arbitrary decomposition, and observe the alternating sum is invariant under subdivision and homeomorphism."
+    },
+    "validity_conditions": [
+      "Any convex polyhedron's surface is homeomorphic to a sphere, so Euler's formula is the sphere case.",
+      "V - E + F is unchanged by subdividing cells (each subdivision adds cells in canceling combinations), making it a homeomorphism invariant.",
+      "Generalizing from rigid convex solids to arbitrary decompositions is genuine new content (topological invariance), hence generalization."
+    ],
+    "proof_plan": [
+      "Read $V$, $E$, $F$ as the numbers of $0$-, $1$- and $2$-[[Definition:Cell (Topology)|cells]] in a decomposition of $S$.",
+      "Subdividing an edge adds one vertex and one edge; subdividing a face by an edge adds one edge and one face.\nIn each case $V - E + F$ is unchanged.\nAs any two decompositions have a common refinement, $\\chi$ is invariant.",
+      "A convex polyhedron is [[Definition:Homeomorphic|homeomorphic]] to the sphere by radial projection.\nBy [[Euler's Polyhedron Formula]], its value $2$ is therefore $\\map \\chi {\\Bbb S^2}$.",
+      "Hence $\\chi = 2$ for every surface homeomorphic to the sphere, generalizing [[Euler's Polyhedron Formula]].\n{{qed}}"
+    ]
+  }
+}

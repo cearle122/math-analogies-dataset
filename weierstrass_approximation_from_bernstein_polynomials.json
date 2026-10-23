@@ -1,0 +1,39 @@
+{
+  "id": "weierstrass_approximation_from_bernstein_polynomials",
+  "field": [
+    "analysis",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\closedint 0 1 \\to \\R$ be [[Definition:Continuous Real Function|continuous]] and $\\epsilon > 0$.\nThen there exists a [[Definition:Real Polynomial Function|polynomial]] $p$ such that:\n:$\\displaystyle \\sup_{x \\mathop \\in \\closedint 0 1} \\size {\\map f x - \\map p x} < \\epsilon$"
+  },
+  "B_source": {
+    "statement": "Let $S_n \\sim \\Binomial n x$.\nThen:\n:$\\var {\\dfrac {S_n} n} = \\dfrac {x \\paren {1 - x} } n$\nand $\\dfrac {S_n} n \\to x$ in [[Definition:Convergence in Probability|probability]]."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the independent Bernoulli trials": "the binomial weights in the Bernstein polynomial",
+        "the empirical mean S_n/n": "the sample point at which f is evaluated",
+        "the concentration bound": "the modulus of continuity estimate on f"
+      },
+      "derived": {
+        "the expectation E[f(S_n/n)]": "the Bernstein polynomial B_n(f)(x)"
+      }
+    },
+    "validity_conditions": [
+      "f must be continuous on a compact interval, hence uniformly continuous and bounded",
+      "the variance bound x(1-x)/n <= 1/(4n) must be uniform in x for the convergence to be uniform"
+    ],
+    "proof_plan": [
+      "Define the [[Definition:Bernstein Polynomial|Bernstein polynomial]]:\n:$\\displaystyle \\map {\\paren {B_n f} } x = \\expect {\\map f {\\frac {S_n} n} } = \\sum_{k \\mathop = 0}^n \\map f {\\frac k n} \\binom n k x^k \\paren {1 - x}^{n - k}$\nwhich is a polynomial in $x$.",
+      "Split:\n:$\\size {\\map {\\paren {B_n f} } x - \\map f x} \\le \\expect {\\size {\\map f {\\frac {S_n} n} - \\map f x} }$\nover the event $\\size {\\dfrac {S_n} n - x} < \\delta$ and its complement.",
+      "By [[Heine-Cantor Theorem|uniform continuity]], choose $\\delta$ with $\\size {\\map f y - \\map f x} < \\epsilon$ whenever $\\size {y - x} < \\delta$.\nThen the near event contributes less than $\\epsilon$.",
+      "By [[Chebyshev's Inequality]], the far event has probability at most $\\dfrac {x \\paren {1 - x} } {n \\delta^2} \\le \\dfrac 1 {4 n \\delta^2}$.\nWith $M = \\sup \\size f$, it contributes at most $\\dfrac {2 M} {4 n \\delta^2}$.",
+      "Choose $n$ with $\\dfrac M {2 n \\delta^2} < \\epsilon$.\nThen $\\size {B_n f - f} < 2 \\epsilon$ independently of $x$, which proves the [[Weierstrass Approximation Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "eigenvalue_from_char_poly",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a [[Definition:Square Matrix|square matrix]] of [[Definition:Order of Square Matrix|order]] $n$ over a [[Definition:Field (Abstract Algebra)|field]] $K$.\nThen $\\lambda \\in K$ is an [[Definition:Eigenvalue of Matrix|eigenvalue]] of $\\mathbf A$ {{iff}}:\n:$\\map \\det {\\mathbf A - \\lambda \\mathbf I} = 0$"
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf M$ be a [[Definition:Square Matrix|square matrix]] over a [[Definition:Field (Abstract Algebra)|field]].\nThen $\\mathbf M$ is [[Definition:Singular Matrix|singular]] {{iff}}:\n:$\\map \\det {\\mathbf M} = 0$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the matrix M": "A - lambda I",
+        "M singular (has nontrivial kernel)": "A - lambda I has a nonzero vector v with (A - lambda I)v = 0"
+      },
+      "derived": {
+        "det(M) = 0": "det(A - lambda I) = 0",
+        "nonzero kernel vector": "eigenvector for eigenvalue lambda"
+      }
+    },
+    "validity_conditions": [
+      "lambda is an eigenvalue iff (A - lambda I)v = 0 for some nonzero v, i.e. iff A - lambda I has nontrivial kernel, i.e. is singular.",
+      "The singular <=> det = 0 criterion applied to M = A - lambda I gives det(A - lambda I) = 0.",
+      "Reduces the eigenvalue condition to a known determinant criterion for singularity."
+    ],
+    "proof_plan": [
+      "By {{Defof|Eigenvalue of Matrix}}, $\\lambda$ is an eigenvalue {{iff}} $\\mathbf A \\mathbf v = \\lambda \\mathbf v$ for some $\\mathbf v \\ne \\mathbf 0$, that is, $\\paren {\\mathbf A - \\lambda \\mathbf I} \\mathbf v = \\mathbf 0$.",
+      "This holds {{iff}} $\\map \\ker {\\mathbf A - \\lambda \\mathbf I} \\ne \\set {\\mathbf 0}$, that is, $\\mathbf A - \\lambda \\mathbf I$ is [[Definition:Singular Matrix|singular]].",
+      "By [[Matrix is Invertible iff Determinant has Multiplicative Inverse]], applied to $\\mathbf M = \\mathbf A - \\lambda \\mathbf I$, this holds {{iff}} $\\map \\det {\\mathbf A - \\lambda \\mathbf I} = 0$.",
+      "Hence the eigenvalues of $\\mathbf A$ are the roots of the [[Definition:Characteristic Polynomial of Matrix|characteristic polynomial]] $\\map \\det {\\mathbf A - t \\mathbf I}$.\n{{qed}}"
+    ]
+  }
+}

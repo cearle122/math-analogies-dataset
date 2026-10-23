@@ -1,0 +1,37 @@
+{
+  "id": "uniform_limit_continuity_from_epsilon_thirds",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {f_n}$ be [[Definition:Continuous Real Function|continuous]] functions on $S \\subseteq \\R$ converging [[Definition:Uniform Convergence|uniformly]] to $f$.\nThen $f$ is continuous."
+  },
+  "B_source": {
+    "statement": "To prove $\\map d {a, c} < \\epsilon$, route through intermediate points $b_1, b_2$ with each of $\\map d {a, b_1}$, $\\map d {b_1, b_2}$, $\\map d {b_2, c}$ less than $\\dfrac \\epsilon 3$, and apply the [[Triangle Inequality]]."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the intermediate points": "f_N(x) and f_N(x_0)",
+        "the three small distances": "uniform closeness at x, continuity of f_N, uniform closeness at x_0"
+      },
+      "derived": {
+        "the chained estimate": "continuity of the limit f"
+      },
+      "reformulation": "Approximate f by a single continuous f_N and split the error into three thirds."
+    },
+    "validity_conditions": [
+      "Convergence must be uniform, so that one N works at both x and x_0.",
+      "Pointwise convergence alone does not suffice, as x^n on [0, 1] shows."
+    ],
+    "proof_plan": [
+      "Let $x_0 \\in S$ and $\\epsilon > 0$.\nBy uniform convergence, choose $N$ with $\\size {\\map {f_N} x - \\map f x} < \\dfrac \\epsilon 3$ for all $x \\in S$.",
+      "By continuity of $f_N$, choose $\\delta > 0$ with $\\size {x - x_0} < \\delta \\implies \\size {\\map {f_N} x - \\map {f_N} {x_0} } < \\dfrac \\epsilon 3$.",
+      "For $\\size {x - x_0} < \\delta$, by the [[Triangle Inequality]]:\n:$\\size {\\map f x - \\map f {x_0} } \\le \\size {\\map f x - \\map {f_N} x} + \\size {\\map {f_N} x - \\map {f_N} {x_0} } + \\size {\\map {f_N} {x_0} - \\map f {x_0} } < \\epsilon$",
+      "Hence $f$ is continuous at $x_0$, which is the [[Uniform Limit Theorem]].\n{{qed}}"
+    ]
+  }
+}

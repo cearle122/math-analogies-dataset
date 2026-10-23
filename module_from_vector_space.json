@@ -1,0 +1,40 @@
+{
+  "id": "module_from_vector_space",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Ring with Unity|ring with unity]].\nAn $R$-[[Definition:Module|module]] is an [[Definition:Abelian Group|abelian group]] $\\struct {M, +}$ with an action $R \\times M \\to M$ satisfying [[Definition:Distributive Operation|distributivity]], [[Definition:Associative Operation|associativity]] and unitality."
+  },
+  "B_source": {
+    "statement": "A [[Definition:Vector Space|vector space]] over a [[Definition:Field (Abstract Algebra)|field]] $F$ is an abelian group with an action of $F$ satisfying the same axioms."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the field of scalars F": "an arbitrary ring R",
+        "invertibility of nonzero scalars": "no invertibility assumption",
+        "the notion of dimension": "the notion of rank, which may fail to be well defined"
+      },
+      "derived": {
+        "linear independence and spanning": "the same definitions, but bases need not exist"
+      },
+      "reformulation": "Vector space proofs must be audited for hidden uses of division before they are reused, since the axioms alone do not flag where invertibility was assumed."
+    },
+    "validity_conditions": [
+      "the ring must have an identity for unitality to be stated, or the module is called non-unital",
+      "results depending on division by nonzero scalars do not transfer, so every vector space theorem must be re-examined rather than assumed",
+      "the existence of a basis fails in general, so dimension arguments must be replaced by rank or by finiteness hypotheses"
+    ],
+    "proof_plan": [
+      "Take the [[Definition:Vector Space Axioms|vector space axioms]] verbatim and replace the field $F$ by a ring $R$.",
+      "[[Definition:Submodule|Submodules]], [[Definition:Quotient Module|quotients]] and the [[First Isomorphism Theorem for Modules|isomorphism theorems]] use only the axioms, and survive.",
+      "Results using invertibility of scalars fail, such as existence of a [[Definition:Basis of Module|basis]] and the [[Rank-Nullity Theorem]].",
+      "Over $\\Z$, the module $\\Z / 2 \\Z$ has no basis, since $2 x = 0$ for all $x$.",
+      "Restrict to [[Definition:Free Module|free]] or [[Definition:Projective Module|projective]] modules to recover these conclusions when needed.\n{{qed}}"
+    ]
+  }
+}

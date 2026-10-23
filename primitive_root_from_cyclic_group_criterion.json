@@ -1,0 +1,38 @@
+{
+  "id": "primitive_root_from_cyclic_group_criterion",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a [[Definition:Prime Number|prime]].\nThen the [[Definition:Multiplicative Group of Reduced Residues|multiplicative group]] $\\paren {\\Z / p \\Z}^\\times$ is [[Definition:Cyclic Group|cyclic]]; that is, a [[Definition:Primitive Root|primitive root]] modulo $p$ exists."
+  },
+  "B_source": {
+    "statement": "Let $G$ be a [[Definition:Finite Group|finite group]] of order $n$ such that for each $d \\divides n$ the equation $x^d = e$ has at most $d$ solutions in $G$.\nThen $G$ is cyclic."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the group G": "the non-zero residues modulo p",
+        "solutions of x^d = e": "roots of x^d - 1 in the field Z/pZ"
+      },
+      "derived": {
+        "a generator": "a primitive root modulo p"
+      },
+      "reformulation": "Bound the solutions of x^d = 1 by counting roots of a polynomial over a field."
+    },
+    "validity_conditions": [
+      "Z/pZ is a field, so a polynomial of degree d has at most d roots.",
+      "The criterion is applied to an abelian group of order p - 1."
+    ],
+    "proof_plan": [
+      "As $p$ is prime, $\\Z / p \\Z$ is a [[Definition:Field (Abstract Algebra)|field]], and $\\paren {\\Z / p \\Z}^\\times$ has order $p - 1$.",
+      "For $d \\divides p - 1$, the solutions of $x^d = 1$ are roots of $x^d - 1$.\nBy [[Polynomial over Field has Finitely Many Roots|root counting over a field]], there are at most $d$ of them.",
+      "By the source result, $\\paren {\\Z / p \\Z}^\\times$ is cyclic.",
+      "A generator $g$ is a primitive root modulo $p$, and the primitive roots are $g^k$ with $k \\perp p - 1$, numbering $\\map \\phi {p - 1}$.\n{{qed}}"
+    ]
+  }
+}

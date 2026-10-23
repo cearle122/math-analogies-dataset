@@ -1,0 +1,37 @@
+{
+  "id": "right_adjoints_preserve_limits_from_hom_bijection",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $F: \\mathbf C \\to \\mathbf D$ be [[Definition:Left Adjoint|left adjoint]] to $G: \\mathbf D \\to \\mathbf C$.\nThen $G$ preserves all [[Definition:Limit (Category Theory)|limits]] which exist in $\\mathbf D$."
+  },
+  "B_source": {
+    "statement": "An [[Definition:Adjunction|adjunction]] $F \\dashv G$ is a bijection, natural in $X$ and $Y$:\n:$\\map {\\operatorname {Hom}_{\\mathbf D} } {F X, Y} \\cong \\map {\\operatorname {Hom}_{\\mathbf C} } {X, G Y}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "morphisms X -> G Y": "legs of a cone over G composed with the diagram",
+        "morphisms F X -> Y": "legs of the transposed cone"
+      },
+      "derived": {
+        "transposing cones": "the universal property of G applied to the limit"
+      },
+      "reformulation": "Transpose cones over the image diagram to cones in D, use the limit there, and transpose back."
+    },
+    "validity_conditions": [
+      "Naturality of the bijection is what makes transposed cones commute with the diagram morphisms.",
+      "For example, forgetful functors, being right adjoints, preserve products and equalizers."
+    ],
+    "proof_plan": [
+      "Let $\\tuple {L, \\lambda_j: L \\to D_j}$ be a limit of a diagram $D$ in $\\mathbf D$; show that $\\tuple {G L, G \\lambda_j}$ is a limit of $G \\circ D$.",
+      "A cone $\\tuple {X, c_j: X \\to G D_j}$ transposes to $c_j^\\flat: F X \\to D_j$, and by naturality these form a cone over $D$.",
+      "By the limit property there is a unique $m: F X \\to L$ with $\\lambda_j \\circ m = c_j^\\flat$.\nTransposing, $m^\\sharp: X \\to G L$ is the unique morphism with $G \\lambda_j \\circ m^\\sharp = c_j$.",
+      "Hence $G L$ is a limit of $G \\circ D$, which is the theorem that [[Right Adjoint Preserves Limits|right adjoints preserve limits]].\n{{qed}}"
+    ]
+  }
+}

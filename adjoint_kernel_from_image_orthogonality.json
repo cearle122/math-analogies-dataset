@@ -1,0 +1,38 @@
+{
+  "id": "adjoint_kernel_from_image_orthogonality",
+  "field": [
+    "algebra",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $T: V \\to W$ be a [[Definition:Linear Transformation|linear transformation]] between finite-dimensional [[Definition:Inner Product Space|inner product spaces]], with [[Definition:Adjoint Linear Transformation|adjoint]] $T^*$.\nThen:\n:$\\map \\ker {T^*} = \\paren {\\Img T}^\\perp, \\quad \\Img T^* = \\paren {\\map \\ker T}^\\perp$\nand $\\map \\rank {T^*} = \\map \\rank T$."
+  },
+  "B_source": {
+    "statement": "The adjoint is defined by $\\innerprod {T v} w = \\innerprod v {T^* w}$, and satisfies $T^{**} = T$.\nFor a subspace $U$ of a finite-dimensional inner product space, $U^{\\perp \\perp} = U$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "T": "T* in the second identity",
+        "the kernel": "the orthogonal complement of the image"
+      },
+      "derived": {
+        "applying perp to both sides": "the image of T* as the complement of ker T"
+      },
+      "reformulation": "Move T across the inner product to turn a statement about images into one about kernels."
+    },
+    "validity_conditions": [
+      "Finite dimension guarantees that the adjoint exists and that the double orthogonal complement returns the subspace.",
+      "Rank equality follows from rank-nullity applied to T."
+    ],
+    "proof_plan": [
+      "$w \\in \\map \\ker {T^*}$ {{iff}} $\\innerprod v {T^* w} = 0$ for all $v$ {{iff}} $\\innerprod {T v} w = 0$ for all $v$ {{iff}} $w \\in \\paren {\\Img T}^\\perp$.",
+      "Applying this to $T^*$, and using $T^{**} = T$, gives $\\map \\ker T = \\paren {\\Img T^*}^\\perp$.",
+      "Taking orthogonal complements, $\\Img T^* = \\paren {\\Img T^*}^{\\perp \\perp} = \\paren {\\map \\ker T}^\\perp$.",
+      "Hence $\\map \\rank {T^*} = \\dim V - \\map \\dim {\\map \\ker T} = \\map \\rank T$, by the [[Rank-Nullity Theorem]].\nFor real matrices, $T^*$ is the transpose, so row rank equals column rank.\n{{qed}}"
+    ]
+  }
+}

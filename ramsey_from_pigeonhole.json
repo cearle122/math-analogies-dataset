@@ -1,0 +1,40 @@
+{
+  "id": "ramsey_from_pigeonhole",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $r, s \\in \\Z_{\\ge 2}$.\nThen there exists $N$ such that every $2$-coloring of the [[Definition:Edge of Graph|edges]] of the [[Definition:Complete Graph|complete graph]] $K_N$ contains a red $K_r$ or a blue $K_s$."
+  },
+  "B_source": {
+    "statement": "Let $n$ objects be placed in $m$ boxes with $n > m$.\nThen some box contains at least two objects."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the objects being distributed": "the edges at a fixed vertex",
+        "the boxes": "the two available colours",
+        "the box receiving many objects": "the large monochromatic neighbourhood at that vertex"
+      },
+      "derived": {
+        "some box receives many objects": "some vertex has many edges of a single colour",
+        "the single application of pigeonhole": "a recursive application, producing nested monochromatic structure"
+      },
+      "reformulation": "Iterate the pigeonhole step inside the structure it produces, upgrading a monochromatic star to a monochromatic clique."
+    },
+    "validity_conditions": [
+      "Applying pigeonhole at one vertex gives a large neighbourhood joined to it by edges of a single colour, which is the base of the argument.",
+      "Ramsey is a genuine strengthening rather than a restatement: pigeonhole alone gives one large monochromatic star, and recursion on the induced subgraph is needed to upgrade this to a clique.",
+      "The recursion terminates because the target clique sizes decrease at each step, which is what yields a finite bound on N."
+    ],
+    "proof_plan": [
+      "Let $N = \\map R {r - 1, s} + \\map R {r, s - 1}$ and fix a vertex $v$ of $K_N$.\nSplit the $N - 1$ edges at $v$ by color.",
+      "By the [[Pigeonhole Principle]], either at least $\\map R {r - 1, s}$ vertices are joined to $v$ in red, or at least $\\map R {r, s - 1}$ in blue.",
+      "In the first case, recurse inside the red neighbourhood with parameters $\\tuple {r - 1, s}$; in the second, inside the blue neighbourhood with $\\tuple {r, s - 1}$.",
+      "A red $K_{r - 1}$ in the red neighbourhood together with $v$ is a red $K_r$; a blue $K_s$ found there suffices directly; similarly in the blue case.\nBy [[Principle of Mathematical Induction|induction]] on $r + s$:\n:$\\map R {r, s} \\le \\map R {r - 1, s} + \\map R {r, s - 1}$\nwhich is [[Ramsey's Theorem]].\n{{qed}}"
+    ]
+  }
+}

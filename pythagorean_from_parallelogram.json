@@ -1,0 +1,36 @@
+{
+  "id": "pythagorean_from_parallelogram",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $V$ be an [[Definition:Inner Product Space|inner product space]] and $\\mathbf u, \\mathbf v \\in V$ with $\\mathbf u \\perp \\mathbf v$.\nThen:\n:$\\norm {\\mathbf u + \\mathbf v}^2 = \\norm {\\mathbf u}^2 + \\norm {\\mathbf v}^2$"
+  },
+  "B_source": {
+    "statement": "Let $V$ be an [[Definition:Inner Product Space|inner product space]] and $\\mathbf u, \\mathbf v \\in V$.\nThen:\n:$\\norm {\\mathbf u + \\mathbf v}^2 + \\norm {\\mathbf u - \\mathbf v}^2 = 2 \\norm {\\mathbf u}^2 + 2 \\norm {\\mathbf v}^2$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "arbitrary vectors": "orthogonal vectors"
+      },
+      "derived": {
+        "||u-v||^2": "||u+v||^2"
+      },
+      "reformulation": "Under orthogonality, the two diagonals of the parallelogram have equal length."
+    },
+    "validity_conditions": [
+      "The inner product satisfies <u,v>=0.",
+      "Orthogonality implies ||u-v||=||u+v||."
+    ],
+    "proof_plan": [
+      "Let $\\innerprod {\\mathbf u} {\\mathbf v} = 0$.",
+      "Then:\n:$\\norm {\\mathbf u \\pm \\mathbf v}^2 = \\norm {\\mathbf u}^2 \\pm 2 \\innerprod {\\mathbf u} {\\mathbf v} + \\norm {\\mathbf v}^2 = \\norm {\\mathbf u}^2 + \\norm {\\mathbf v}^2$\nso $\\norm {\\mathbf u - \\mathbf v} = \\norm {\\mathbf u + \\mathbf v}$.",
+      "Substituting into the [[Parallelogram Law (Inner Product Space)|parallelogram law]]:\n:$2 \\norm {\\mathbf u + \\mathbf v}^2 = 2 \\norm {\\mathbf u}^2 + 2 \\norm {\\mathbf v}^2$",
+      "Dividing by $2$:\n:$\\norm {\\mathbf u + \\mathbf v}^2 = \\norm {\\mathbf u}^2 + \\norm {\\mathbf v}^2$\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "euler_product_from_unique_factorization",
+  "field": [
+    "number_theory",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $s \\in \\R$ with $s > 1$.\nThen:\n:$\\displaystyle \\sum_{n \\mathop = 1}^\\infty \\frac 1 {n^s} = \\prod_p \\frac 1 {1 - p^{-s} }$\nwhere the product is over all primes."
+  },
+  "B_source": {
+    "statement": "Every integer $n \\ge 1$ is a product of primes in exactly one way, up to order."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "unique factorization": "a bijection between integers and choices of prime exponents"
+      },
+      "derived": {
+        "finite partial products": "sums over integers with small prime factors"
+      },
+      "reformulation": "Approximate the infinite product by finite products, each of which expands to a sum over integers with restricted prime factors."
+    },
+    "validity_conditions": [
+      "s > 1 is needed for absolute convergence of each geometric series and of the zeta series.",
+      "Finite products of absolutely convergent series may be multiplied out term by term."
+    ],
+    "proof_plan": [
+      "For each prime $p$, as $p^{-s} < 1$:\n:$\\displaystyle \\frac 1 {1 - p^{-s} } = \\sum_{k \\mathop \\ge 0} p^{-k s}$",
+      "For $N \\ge 2$, multiplying finitely many absolutely convergent series:\n:$\\displaystyle \\prod_{p \\mathop \\le N} \\frac 1 {1 - p^{-s} } = \\sum_{n \\in S_N} \\frac 1 {n^s}$\nwhere $S_N$ is the set of $n$ whose prime factors are all at most $N$; by the source result each such $n$ appears exactly once.",
+      "As $S_N$ contains every $n \\le N$:\n:$\\displaystyle 0 \\le \\sum_{n \\mathop = 1}^\\infty \\frac 1 {n^s} - \\prod_{p \\mathop \\le N} \\frac 1 {1 - p^{-s} } \\le \\sum_{n \\mathop > N} \\frac 1 {n^s} \\to 0$",
+      "Letting $N \\to \\infty$ gives the [[Euler Product Formula|Euler product]].\n{{qed}}"
+    ]
+  }
+}

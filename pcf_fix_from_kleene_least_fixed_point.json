@@ -1,0 +1,38 @@
+{
+  "id": "pcf_fix_from_kleene_least_fixed_point",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In the Scott-domain semantics of [[Definition:PCF|PCF]], the constant $\\mathsf {fix}_\\sigma : \\paren {\\sigma \\to \\sigma} \\to \\sigma$ is interpreted by:\n:$\\displaystyle \\map {\\sqbrk {\\mathsf {fix} } } f = \\bigsqcup_{n \\mathop \\ge 0} \\map {f^n} \\bot$\nand the unfolding rule $\\mathsf {fix} \\, M \\to M \\paren {\\mathsf {fix} \\, M}$ is sound: $\\sqbrk {\\mathsf {fix} \\, M} = \\map {\\sqbrk M} {\\sqbrk {\\mathsf {fix} \\, M} }$."
+  },
+  "B_source": {
+    "statement": "Let $D$ be a [[Definition:Complete Partial Order|complete partial order]] with bottom and $F: D \\to D$ [[Definition:Scott-Continuous Mapping|Scott-continuous]].\nThen $\\displaystyle \\bigsqcup_n \\map {F^n} \\bot$ is the [[Definition:Least Fixed Point|least fixed point]] of $F$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the CPO D": "the domain interpreting the type sigma",
+        "the map F": "the denotation of M"
+      },
+      "derived": {
+        "the least fixed point": "the meaning of a recursive definition"
+      },
+      "reformulation": "Encode general recursion as taking least fixed points of continuous functions on domains."
+    },
+    "validity_conditions": [
+      "Every PCF term denotes a continuous function, which is what Kleene's theorem needs.",
+      "The map sending f to its least fixed point is itself continuous, so fix denotes an element of the function domain."
+    ],
+    "proof_plan": [
+      "Interpret each type $\\sigma$ as a pointed complete partial order $D_\\sigma$, with function types as continuous function spaces, and each term as a continuous function.",
+      "$\\sqbrk M : D_\\sigma \\to D_\\sigma$ is continuous, so by the source result $\\bigsqcup_n \\sqbrk M^n \\paren \\bot$ is its least fixed point.",
+      "Interpreting $\\mathsf {fix}$ in this way gives $\\sqbrk {\\mathsf {fix} \\, M} = \\map {\\sqbrk M} {\\sqbrk {\\mathsf {fix} \\, M} }$, so the unfolding rule is sound.",
+      "Non-termination denotes $\\bot$, and the least fixed point contains only what finitely many unfoldings determine.\nFor example, the factorial function is the least fixed point of $\\lambda g. \\lambda n. \\mathsf {if} \\, n = 0 \\, \\mathsf {then} \\, 1 \\, \\mathsf {else} \\, n \\times \\map g {n - 1}$.\n{{qed}}"
+    ]
+  }
+}

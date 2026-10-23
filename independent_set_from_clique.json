@@ -1,0 +1,41 @@
+{
+  "id": "independent_set_from_clique",
+  "field": [
+    "combinatorics",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Graph (Graph Theory)|graph]] and $k \\in \\Z_{>0}$.\nThen $G$ has an [[Definition:Independent Set (Graph Theory)|independent set]] of size $k$ {{iff}} the [[Definition:Complement of Graph|complement]] $\\overline G$ has a [[Definition:Clique (Graph Theory)|clique]] of size $k$."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Clique Problem|clique problem]] asks whether a graph $H$ contains $k$ mutually [[Definition:Adjacent Vertices|adjacent]] vertices."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "duality"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "graph H": "complement graph G-bar",
+        "edge present in H": "edge absent in G",
+        "clique in H": "independent set in G"
+      },
+      "derived": {
+        "k mutually adjacent vertices in H": "k mutually non-adjacent vertices in G"
+      },
+      "reformulation": "Complement the graph: replace G by G-bar, so non-edges become edges."
+    },
+    "validity_conditions": [
+      "A set is independent in G iff it is a clique in the complement G-bar, because adjacency is exactly inverted by complementation.",
+      "The complement is computable in polynomial time, so this is a valid (poly-time) reduction preserving the answer."
+    ],
+    "proof_plan": [
+      "Given $\\tuple {G, k}$, construct the [[Definition:Complement of Graph|complement graph]] $\\overline G$ on the same vertex set, with $u v$ an edge of $\\overline G$ {{iff}} $u v$ is not an edge of $G$.",
+      "A set $S$ is [[Definition:Independent Set (Graph Theory)|independent]] in $G$ {{iff}} no two vertices of $S$ are adjacent in $G$, {{iff}} every two are adjacent in $\\overline G$.",
+      "Query the clique problem for $\\tuple {\\overline G, k}$.",
+      "Return its answer for $\\tuple {G, k}$.\nAs $\\overline G$ is computed in polynomial time, this is a [[Definition:Polynomial-Time Reduction|polynomial-time reduction]].\n{{qed}}"
+    ]
+  }
+}

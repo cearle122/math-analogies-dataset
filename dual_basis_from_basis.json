@@ -1,0 +1,39 @@
+{
+  "id": "dual_basis_from_basis",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $V$ be a [[Definition:Vector Space|vector space]] of finite [[Definition:Dimension of Vector Space|dimension]] $n$ over a [[Definition:Field (Abstract Algebra)|field]] $K$, with [[Definition:Basis (Linear Algebra)|basis]] $\\tuple {e_1, \\ldots, e_n}$.\nThen the [[Definition:Linear Functional|linear functionals]] $e_i^*$ defined by:\n:$\\map {e_i^*} {e_j} = \\delta_{i j}$\nform a [[Definition:Basis (Linear Algebra)|basis]] of the [[Definition:Algebraic Dual|dual space]] $V^*$, and $\\dim V^* = n$."
+  },
+  "B_source": {
+    "statement": "Let $\\tuple {e_1, \\ldots, e_n}$ be a [[Definition:Basis (Linear Algebra)|basis]] of $V$.\nThen every $v \\in V$ can be written uniquely as:\n:$\\displaystyle v = \\sum_{i \\mathop = 1}^n \\lambda_i e_i$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a basis vector": "the functional extracting its coordinate",
+        "the coordinates of a vector": "the values of the dual basis functionals on it",
+        "the space of vectors": "the space of linear functionals"
+      },
+      "derived": {
+        "uniqueness of coordinates": "the functionals are well defined",
+        "spanning and independence of the basis": "spanning and independence of the dual basis"
+      }
+    },
+    "validity_conditions": [
+      "Uniqueness of coordinates is what makes each coordinate-extraction map well defined, and linearity of the coordinates makes it a functional.",
+      "The dual functionals are independent because applying a vanishing combination to a basis vector isolates one coefficient.",
+      "They span the dual only in finite dimension: for an infinite-dimensional space the analogous functionals do not span the full dual, so the dimension statement fails."
+    ],
+    "proof_plan": [
+      "For each $i$, define $e_i^*: V \\to K$ by $\\map {e_i^*} v = \\lambda_i$, the $i$th coordinate of $v$.",
+      "By uniqueness of coordinates, $e_i^*$ is [[Definition:Well-Defined Mapping|well-defined]].\nCoordinates of $\\alpha v + \\beta w$ are $\\alpha \\lambda_i + \\beta \\mu_i$, so $e_i^*$ is [[Definition:Linear Transformation|linear]].",
+      "Suppose $\\displaystyle \\sum_i c_i e_i^* = 0$.\nEvaluating at $e_j$ gives $c_j = 0$.\nHence the $e_i^*$ are [[Definition:Linearly Independent Set|linearly independent]].",
+      "For $f \\in V^*$:\n:$\\displaystyle f = \\sum_{i \\mathop = 1}^n \\map f {e_i} e_i^*$\nas both sides agree on each $e_j$.\nHence the $e_i^*$ span $V^*$, and $\\dim V^* = n$.\n{{qed}}"
+    ]
+  }
+}

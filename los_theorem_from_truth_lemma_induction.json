@@ -1,0 +1,38 @@
+{
+  "id": "los_theorem_from_truth_lemma_induction",
+  "field": [
+    "logic",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\family {\\MM_i}_{i \\mathop \\in I}$ be $\\LL$-structures and $\\UU$ an [[Definition:Ultrafilter on Set|ultrafilter]] on $I$.\nThen for every formula $\\phi$ and $f_1, \\ldots, f_n \\in \\prod_i M_i$:\n:$\\displaystyle \\prod_i \\MM_i / \\UU \\models \\map \\phi {\\sqbrk {f_1}, \\ldots, \\sqbrk {f_n} } \\iff \\set {i: \\MM_i \\models \\map \\phi {\\map {f_1} i, \\ldots, \\map {f_n} i} } \\in \\UU$"
+  },
+  "B_source": {
+    "statement": "In the [[Definition:Henkin Construction|Henkin construction]], the truth lemma $M \\models \\phi \\iff T^* \\vdash \\phi$ is proved by induction on formulas: maximal consistency handles $\\neg$ and $\\land$, and the Henkin witnesses handle $\\exists$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "maximal consistency": "the ultrafilter property",
+        "Henkin witnesses": "witnesses chosen coordinatewise"
+      },
+      "derived": {
+        "the inductive truth lemma": "Łoś's theorem"
+      },
+      "reformulation": "Reuse the truth-lemma induction, with sets in the ultrafilter in place of provable sentences."
+    },
+    "validity_conditions": [
+      "Exactly one of a set and its complement lies in an ultrafilter, which handles negation.",
+      "The Axiom of Choice is used to pick witnesses in each coordinate."
+    ],
+    "proof_plan": [
+      "Proceed by induction on $\\phi$.\nFor atomic $\\phi$ this is the definition of the relations and of equality in the [[Definition:Ultraproduct|ultraproduct]], which is well-defined as $\\UU$ is a filter.",
+      "For $\\phi \\land \\psi$, the set of good coordinates is the intersection of two sets, which lies in $\\UU$ {{iff}} both do.",
+      "For $\\neg \\phi$, the good set is the complement of that for $\\phi$; as $\\UU$ is an ultrafilter, exactly one of them lies in $\\UU$.",
+      "For $\\exists x \\, \\phi$, if the good set lies in $\\UU$, choose in each good coordinate a witness $\\map g i$; then $\\sqbrk g$ witnesses $\\phi$ in the ultraproduct, and the converse is immediate.\nThis is [[Łoś's Theorem]].\n{{qed}}"
+    ]
+  }
+}

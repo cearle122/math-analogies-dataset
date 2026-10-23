@@ -1,0 +1,37 @@
+{
+  "id": "second_moment_from_markov",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a non-negative integer-valued [[Definition:Random Variable|random variable]] with $\\expect X > 0$.\nThen:\n:$\\map \\Pr {X = 0} \\le \\dfrac {\\var X} {\\expect X^2}$"
+  },
+  "B_source": {
+    "statement": "Let $X$ be a [[Definition:Random Variable|random variable]] with finite variance and $a > 0$.\nThen:\n:$\\map \\Pr {\\size {X - \\expect X} \\ge a} \\le \\dfrac {\\var X} {a^2}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "threshold a": "E[X]"
+      },
+      "derived": {
+        "{|X - E[X]| >= E[X]}": "a superset of {X = 0}",
+        "Var(X)/a^2": "Var(X)/E[X]^2"
+      }
+    },
+    "validity_conditions": [
+      "X >= 0, so the event {X = 0} implies |X - E[X]| = E[X] >= E[X], placing {X=0} inside the Chebyshev event with a = E[X].",
+      "E[X] > 0 so the bound Var(X)/E[X]^2 is well-defined.",
+      "Monotonicity of probability then gives P(X=0) <= P(|X-E[X]| >= E[X])."
+    ],
+    "proof_plan": [
+      "By [[Chebyshev's Inequality]] with $a = \\expect X$:\n:$\\map \\Pr {\\size {X - \\expect X} \\ge \\expect X} \\le \\dfrac {\\var X} {\\expect X^2}$",
+      "If $X = 0$ then $\\size {X - \\expect X} = \\expect X$.\nHence:\n:$\\set {X = 0} \\subseteq \\set {\\size {X - \\expect X} \\ge \\expect X}$",
+      "By [[Probability Measure is Monotone|monotonicity]]:\n:$\\map \\Pr {X = 0} \\le \\map \\Pr {\\size {X - \\expect X} \\ge \\expect X}$",
+      "Chaining:\n:$\\map \\Pr {X = 0} \\le \\dfrac {\\var X} {\\expect X^2}$\nwhich is the [[Definition:Second Moment Method|second moment method]].\n{{qed}}"
+    ]
+  }
+}

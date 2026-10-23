@@ -1,0 +1,43 @@
+{
+  "id": "ifs_attractor_from_contraction",
+  "field": [
+    "geometry",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]].\nLet $f_1, \\ldots, f_m: X \\to X$ be [[Definition:Contraction Mapping|contractions]].\nThen there is a [[Definition:Unique|unique]] non-empty [[Definition:Compact Space|compact]] $K \\subseteq X$ such that:\n:$\\displaystyle K = \\bigcup_{i \\mathop = 1}^m \\map {f_i} K$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {Y, \\rho}$ be a [[Definition:Complete Metric Space|complete metric space]] and $T: Y \\to Y$ with $\\map \\rho {T x, T y} \\le q \\, \\map \\rho {x, y}$ for some $q < 1$.\nThen $T$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the complete metric space": "the space of nonempty compact sets with the Hausdorff metric",
+        "the contraction T": "the Hutchinson operator sending a set S to the union of f_i(S)",
+        "the fixed point": "the attractor K"
+      },
+      "derived": {
+        "the contraction constant": "the maximum of the individual contraction ratios"
+      },
+      "reformulation": "The fixed point is not a point of the ambient space but a set, so the whole problem must be lifted to the hyperspace of compact sets before the contraction principle applies."
+    },
+    "validity_conditions": [
+      "each f_i must be a contraction on the ambient space, so the Hutchinson operator contracts in Hausdorff distance",
+      "the space of nonempty compact subsets must be complete under the Hausdorff metric, which holds when the ambient space is complete",
+      "the index set must be finite for the union to remain compact"
+    ],
+    "proof_plan": [
+      "Let $\\map {\\mathcal K} X$ be the set of non-empty compact subsets of $X$, with the [[Definition:Hausdorff Distance|Hausdorff distance]] $d_H$.",
+      "As $X$ is complete, so is $\\struct {\\map {\\mathcal K} X, d_H}$.",
+      "Define the [[Definition:Hutchinson Operator|Hutchinson operator]]:\n:$\\displaystyle \\map {\\mathcal H} A = \\bigcup_{i \\mathop = 1}^m \\map {f_i} A$\nThen:\n:$\\map {d_H} {\\map {\\mathcal H} A, \\map {\\mathcal H} B} \\le \\paren {\\max_i q_i} \\map {d_H} {A, B}$\nwhere $q_i$ is the contraction ratio of $f_i$.",
+      "By the [[Banach Fixed-Point Theorem]], $\\mathcal H$ has a unique fixed point $K \\in \\map {\\mathcal K} X$.",
+      "$K$ is the [[Definition:Attractor|attractor]] of the system.\nFor every $A_0 \\in \\map {\\mathcal K} X$, $\\map {\\mathcal H^n} {A_0} \\to K$ in $d_H$.\n{{qed}}"
+    ]
+  }
+}

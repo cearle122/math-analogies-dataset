@@ -1,0 +1,37 @@
+{
+  "id": "three_sat_hardness_from_clause_splitting",
+  "field": [
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:3-Satisfiability Problem|3-SAT]] problem, of deciding satisfiability of [[Definition:Conjunctive Normal Form|CNF]] formulas with at most three literals per clause, is [[Definition:NP-Complete|NP-complete]]."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Boolean Satisfiability Problem|satisfiability problem]] for CNF formulas is NP-complete.\nThis is the [[Cook-Levin Theorem]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a long clause": "a chain of three-literal clauses linked by fresh variables"
+      },
+      "derived": {
+        "the equisatisfiable 3-CNF formula": "a polynomial-time reduction"
+      },
+      "reformulation": "Split each long clause into a chain of short clauses with fresh linking variables, preserving satisfiability."
+    },
+    "validity_conditions": [
+      "Fresh variables must be distinct for each split clause.",
+      "The transformation is linear in the size of the formula; 3-SAT is in NP since assignments can be checked quickly."
+    ],
+    "proof_plan": [
+      "Replace each clause $l_1 \\lor \\cdots \\lor l_k$ with $k > 3$ by:\n:$\\paren {l_1 \\lor l_2 \\lor y_1} \\land \\paren {\\neg y_1 \\lor l_3 \\lor y_2} \\land \\cdots \\land \\paren {\\neg y_{k - 3} \\lor l_{k - 1} \\lor l_k}$\nwith fresh variables $y_1, \\ldots, y_{k - 3}$.",
+      "If some $l_j$ is true, set $y_i$ true for $i < j - 1$ and false for $i \\ge j - 1$; every new clause is satisfied.",
+      "If every $l_j$ is false, the first clause forces $y_1$, then $y_2$, and so on, and the last clause fails.\nHence the new formula is satisfiable {{iff}} the old one is.",
+      "The transformation runs in linear time.\nWith the source result and membership in NP, 3-SAT is NP-complete.\n{{qed}}"
+    ]
+  }
+}

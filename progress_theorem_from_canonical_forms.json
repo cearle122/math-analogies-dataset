@@ -1,0 +1,39 @@
+{
+  "id": "progress_theorem_from_canonical_forms",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "Let $t$ be a closed term of the [[Definition:Simply Typed Lambda Calculus|simply typed $\\lambda$-calculus]] with $\\vdash t : T$.\nThen either $t$ is a [[Definition:Value (Type Theory)|value]] or there exists $t'$ with $t \\to t'$."
+  },
+  "B_source": {
+    "statement": "Let $v$ be a closed [[Definition:Value (Type Theory)|value]] with $\\vdash v : T$.\nThen $v$ has the shape dictated by $T$; for example, if $T = T_1 \\to T_2$ then $v = \\lambda x : T_1. \\, t$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the classification of closed values by type": "the case analysis at each typing rule",
+        "the shape guaranteed for a value of the relevant type": "the redex pattern required by the reduction rules",
+        "the induction on the typing derivation": "the case analysis over the last rule applied"
+      },
+      "derived": {
+        "a subterm that is a value has known shape": "the enclosing term forms a redex and can step",
+        "a subterm that is not a value": "it steps, so the enclosing term steps by a congruence rule"
+      }
+    },
+    "validity_conditions": [
+      "The induction is on the typing derivation, not the term, so each case corresponds to a typing rule and the induction hypothesis applies to the subterms.",
+      "Closedness is essential: an open term may be stuck at a free variable, which is neither a value nor reducible.",
+      "The canonical forms lemma is what converts a typing fact about a subterm into the syntactic shape needed to fire a reduction rule."
+    ],
+    "proof_plan": [
+      "Proceed by [[Principle of Structural Induction|induction]] on the derivation of $\\vdash t : T$.",
+      "In each case apply the induction hypothesis to the immediate subterms.\nVariables cannot occur, as the context is empty.",
+      "If a subterm can step, apply the corresponding congruence rule so that $t$ steps.\nFor example, if $t = t_1 \\, t_2$ and $t_1 \\to t_1'$, then $t_1 \\, t_2 \\to t_1' \\, t_2$.",
+      "If all relevant subterms are values, use the [[Canonical Forms Lemma|canonical forms lemma]] to fire the appropriate reduction.\nFor $t = v_1 \\, v_2$ with $\\vdash v_1 : T_1 \\to T_2$, we have $v_1 = \\lambda x. \\, s$, so $t \\to s \\sqbrk {x := v_2}$ by [[Definition:Beta Reduction|$\\beta$-reduction]].\n{{qed}}"
+    ]
+  }
+}

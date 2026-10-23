@@ -1,0 +1,41 @@
+{
+  "id": "inductive_datatype_from_initial_algebra",
+  "field": [
+    "type_theory",
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $F$ be a [[Definition:Polynomial Functor|polynomial functor]] given by the constructors of an [[Definition:Inductive Type|inductive datatype]] $\\mu F$.\nThen $\\mu F$ is the [[Definition:Initial Algebra|initial $F$-algebra]], and structural recursion out of $\\mu F$ is uniquely defined."
+  },
+  "B_source": {
+    "statement": "Let $I$ be an [[Definition:Initial Object|initial object]] of a [[Definition:Metacategory|category]] $\\mathbf C$.\nThen for every object $X$ of $\\mathbf C$ there is exactly one [[Definition:Morphism|morphism]] $I \\to X$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the objects of the category": "algebras for the signature functor, that is, types with constructor operations",
+        "the initial object": "the inductive datatype with its constructors",
+        "the unique map out of the initial object": "the function defined by structural recursion"
+      },
+      "derived": {
+        "uniqueness of the map out": "uniqueness of the recursively defined function",
+        "the initial algebra structure map being invertible": "the datatype is a fixed point of its signature functor"
+      },
+      "reformulation": "Package the constructors into one operation so that the datatype becomes an initial algebra, hence a fixed point of the signature."
+    },
+    "validity_conditions": [
+      "Algebras for the signature functor are exactly types equipped with operations matching the constructor arities, so initiality is a statement about recursion.",
+      "Existence of the unique map is the recursion principle and uniqueness is the uniqueness of recursively defined functions, which together give the induction principle.",
+      "Lambek's lemma shows the structure map of an initial algebra is invertible, so the datatype is genuinely a fixed point of the functor rather than merely mapping into one."
+    ],
+    "proof_plan": [
+      "Present the constructors as a single [[Definition:Functor|functor]]; for lists, $\\map F X = 1 + A \\times X$.",
+      "Consider [[Definition:F-Algebra|$F$-algebras]] $\\alpha: \\map F X \\to X$, that is, types carrying the constructor operations.",
+      "The datatype $\\mathsf {in}: \\map F {\\mu F} \\to \\mu F$ is the [[Definition:Initial Object|initial]] $F$-algebra.\nThe unique morphism to any algebra $\\alpha$ is the fold, which is the structurally recursive function defined by $\\alpha$.",
+      "By [[Lambek's Lemma]], $\\mathsf {in}$ is an [[Definition:Isomorphism (Category Theory)|isomorphism]].\nHence $\\mu F \\cong \\map F {\\mu F}$ is a [[Definition:Fixed Point|fixed point]] of $F$.\n{{qed}}"
+    ]
+  }
+}

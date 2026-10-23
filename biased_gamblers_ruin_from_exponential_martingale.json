@@ -1,0 +1,36 @@
+{
+  "id": "biased_gamblers_ruin_from_exponential_martingale",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let a random walk move $+1$ with probability $p$ and $-1$ with probability $q = 1 - p$, where $p \\ne \\dfrac 1 2$, starting at $k \\in \\set {0, \\ldots, N}$.\nThen the probability of reaching $N$ before $0$ is:\n:$\\dfrac {1 - \\paren {q / p}^k} {1 - \\paren {q / p}^N}$"
+  },
+  "B_source": {
+    "statement": "For the simple symmetric random walk started at $k$, applying the [[Optional Stopping Theorem]] to the martingale $S_n$ at the exit time from $\\set {1, \\ldots, N - 1}$ gives the probability $\\dfrac k N$ of reaching $N$ first."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the martingale S_n": "the exponential martingale (q/p)^(S_n)"
+      },
+      "derived": {
+        "the optional stopping equation": "a linear equation for the ruin probability"
+      },
+      "reformulation": "Replace the walk itself, no longer a martingale, by the exponential martingale (q/p)^(S_n)."
+    },
+    "validity_conditions": [
+      "The stopped martingale is bounded, as the walk stays between 0 and N.",
+      "The exit time is almost surely finite, as N consecutive steps in one direction end the game."
+    ],
+    "proof_plan": [
+      "When $p \\ne q$, $S_n$ is not a martingale.\nLet $M_n = \\paren {q / p}^{S_n}$.",
+      "Then:\n:$\\expect {M_{n + 1} \\mid \\FF_n} = M_n \\paren {p \\dfrac q p + q \\dfrac p q} = M_n \\paren {q + p} = M_n$",
+      "The stopped process is bounded and the exit time $\\tau$ is almost surely finite.\nBy the [[Optional Stopping Theorem]], $\\expect {M_\\tau} = \\paren {q / p}^k$.",
+      "With $P$ the probability of reaching $N$ first, $\\expect {M_\\tau} = P \\paren {q / p}^N + \\paren {1 - P}$.\nSolving gives the stated formula, which tends to $\\dfrac k N$ as $p \\to \\dfrac 1 2$.\n{{qed}}"
+    ]
+  }
+}

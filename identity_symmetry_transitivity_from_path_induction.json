@@ -1,0 +1,37 @@
+{
+  "id": "identity_symmetry_transitivity_from_path_induction",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In [[Definition:Martin-Löf Type Theory|Martin-Löf type theory]], for $a, b, c : A$ there are terms:\n:$\\mathsf {sym} : a = b \\to b = a, \\quad \\mathsf {trans} : a = b \\to b = c \\to a = c$\nwith $\\map {\\mathsf {sym} } {\\mathsf {refl}_a} \\equiv \\mathsf {refl}_a$ and $\\map {\\mathsf {trans} } {\\mathsf {refl}_a, q} \\equiv q$."
+  },
+  "B_source": {
+    "statement": "Let $\\map C {x, y, p}$ be a type family over $x, y : A$ and $p : x = y$, and $d : \\prod_{x : A} \\map C {x, x, \\mathsf {refl}_x}$.\nThen there is $J : \\prod_{x, y : A} \\prod_{p : x = y} \\map C {x, y, p}$ with $\\map J {x, x, \\mathsf {refl}_x} \\equiv \\map d x$.\nThis is [[Definition:Path Induction|path induction]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the family C": "y = x for symmetry, and the family of maps y = z -> x = z for transitivity"
+      },
+      "derived": {
+        "the reflexivity case d": "refl for symmetry, and the identity function for transitivity"
+      },
+      "reformulation": "Reduce each property to its reflexivity case using the identity eliminator."
+    },
+    "validity_conditions": [
+      "The family for transitivity must quantify over the endpoint z, so that J is applied to a statement about all z.",
+      "The computation rule of J gives the stated judgmental equalities."
+    ],
+    "proof_plan": [
+      "For symmetry take $\\map C {x, y, p} = \\paren {y = x}$ and $\\map d x = \\mathsf {refl}_x$.\nBy the source result, $J$ gives $\\mathsf {sym}$ with $\\map {\\mathsf {sym} } {\\mathsf {refl}_a} \\equiv \\mathsf {refl}_a$.",
+      "For transitivity take $\\map C {x, y, p} = \\prod_{z : A} \\paren {y = z \\to x = z}$ and $\\map d x = \\lambda z. \\lambda q. q$.",
+      "$J$ gives a term of this family, and $\\map {\\mathsf {trans} } {p, q}$ is obtained by applying it at $z = c$ to $q$.\nBy the computation rule, $\\map {\\mathsf {trans} } {\\mathsf {refl}_a, q} \\equiv q$.",
+      "Hence identity types carry the structure of an [[Definition:Equivalence Relation|equivalence relation]]; in homotopy type theory these are inversion and concatenation of paths.\n{{qed}}"
+    ]
+  }
+}

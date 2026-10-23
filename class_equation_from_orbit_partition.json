@@ -1,0 +1,38 @@
+{
+  "id": "class_equation_from_orbit_partition",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Finite Group|finite group]] with [[Definition:Center of Group|center]] $\\map Z G$.\nLet $x_1, \\ldots, x_k$ represent the [[Definition:Conjugacy Class|conjugacy classes]] of size greater than $1$.\nThen:\n:$\\displaystyle \\order G = \\order {\\map Z G} + \\sum_{i \\mathop = 1}^k \\index G {\\map {C_G} {x_i} }$\nwhere $\\map {C_G} x$ is the [[Definition:Centralizer|centralizer]] of $x$."
+  },
+  "B_source": {
+    "statement": "Let a finite group $G$ act on a finite set $X$.\nThen the [[Definition:Orbit (Group Theory)|orbits]] partition $X$, and:\n:$\\card {\\Orb x} = \\index G {\\Stab x}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the set X": "G itself",
+        "the action": "conjugation",
+        "Stab(x)": "the centralizer C_G(x)"
+      },
+      "derived": {
+        "singleton orbits": "central elements"
+      },
+      "reformulation": "Specialize the orbit decomposition to the conjugation action of G on itself."
+    },
+    "validity_conditions": [
+      "Conjugation is a group action of G on G.",
+      "An element has a one-point orbit exactly when it commutes with everything."
+    ],
+    "proof_plan": [
+      "Let $G$ act on itself by conjugation $g * x = g x g^{-1}$.\nThe orbits are the conjugacy classes, and $\\Stab x = \\map {C_G} x$.",
+      "The orbit of $x$ is $\\set x$ {{iff}} $g x g^{-1} = x$ for all $g$, that is, {{iff}} $x \\in \\map Z G$.",
+      "By the source result, $\\order G$ is the sum of the orbit sizes, so:\n:$\\displaystyle \\order G = \\order {\\map Z G} + \\sum_{i \\mathop = 1}^k \\card {\\Orb {x_i} }$",
+      "As $\\card {\\Orb {x_i} } = \\index G {\\map {C_G} {x_i} }$, this is the [[Class Equation]].\n{{qed}}"
+    ]
+  }
+}

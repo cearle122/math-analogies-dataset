@@ -1,0 +1,40 @@
+{
+  "id": "cantor_set_measure_from_finite_stage_lengths",
+  "field": [
+    "analysis",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\CC$ be the [[Definition:Cantor Set|Cantor set]].\nThen:\n:$\\map \\lambda \\CC = 0$\nwhere $\\lambda$ is [[Definition:Lebesgue Measure|Lebesgue measure]], and $\\CC$ is [[Definition:Uncountable Set|uncountable]] with:\n:$\\card \\CC = 2^{\\aleph_0}$"
+  },
+  "B_source": {
+    "statement": "Let $C_n$ be the set remaining at stage $n$ of the construction of the [[Definition:Cantor Set|Cantor set]].\nThen $C_n$ is the [[Definition:Disjoint Union|disjoint union]] of $2^n$ [[Definition:Closed Real Interval|closed intervals]], each of length $3^{-n}$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the stage-n union of intervals": "the nested sets whose intersection is C",
+        "the finite total length (2/3)^n": "an upper bound for the outer measure of C",
+        "the branching count 2^n": "the cardinality of the set of infinite binary addresses"
+      },
+      "derived": {
+        "the limit of the stage lengths": "the measure of the intersection"
+      }
+    },
+    "validity_conditions": [
+      "the stages must be nested and closed so continuity from above applies to Lebesgue measure",
+      "the first stage must have finite measure for continuity from above to be valid",
+      "the cardinality argument is independent of the measure argument and does not follow from it"
+    ],
+    "proof_plan": [
+      "We have:\n:$\\displaystyle \\CC = \\bigcap_{n \\mathop = 0}^\\infty C_n$\nwhere $C_0 \\supseteq C_1 \\supseteq C_2 \\supseteq \\cdots$",
+      "From the source result:\n:$\\map \\lambda {C_n} = 2^n \\cdot 3^{-n} = \\paren {\\dfrac 2 3}^n$",
+      "As $\\map \\lambda {C_0} = 1 < \\infty$, by [[Measure is Continuous from Above]]:\n:$\\displaystyle \\map \\lambda \\CC = \\lim_{n \\mathop \\to \\infty} \\map \\lambda {C_n}$",
+      "Hence:\n:$\\displaystyle \\map \\lambda \\CC = \\lim_{n \\mathop \\to \\infty} \\paren {\\frac 2 3}^n = 0$",
+      "Each $x \\in \\CC$ has a unique [[Definition:Ternary Notation|ternary expansion]] $x = \\displaystyle \\sum_{k \\mathop = 1}^\\infty \\frac {a_k} {3^k}$ with $a_k \\in \\set {0, 2}$.\nThe mapping $x \\mapsto \\sequence {a_k / 2}$ is a [[Definition:Bijection|bijection]] onto $\\set {0, 1}^\\N$.\nHence $\\card \\CC = 2^{\\aleph_0}$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "orthocenter_from_perpendicular_bisector_concurrency",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "The three [[Definition:Altitude of Triangle|altitudes]] of a [[Definition:Triangle (Geometry)|triangle]] are [[Definition:Concurrent Lines|concurrent]]."
+  },
+  "B_source": {
+    "statement": "The three [[Definition:Perpendicular Bisector|perpendicular bisectors]] of the sides of a triangle are concurrent, at its [[Definition:Circumcenter|circumcenter]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the triangle ABC": "the larger triangle A'B'C' formed by lines through each vertex parallel to the opposite side"
+      },
+      "derived": {
+        "the altitudes of ABC": "the perpendicular bisectors of A'B'C'"
+      },
+      "reformulation": "Enlarge the triangle so that its altitudes become perpendicular bisectors of a bigger triangle."
+    },
+    "validity_conditions": [
+      "The parallelograms formed make each original vertex the midpoint of a side of the enlarged triangle.",
+      "Perpendicularity to a side is preserved by passing to a parallel side."
+    ],
+    "proof_plan": [
+      "Through $A$, $B$, $C$ draw lines parallel to $BC$, $CA$, $AB$ respectively, forming $\\triangle A'B'C'$ with $A$ on $B'C'$, $B$ on $C'A'$ and $C$ on $A'B'$.",
+      "$ABCB'$ and $ACBC'$ are [[Definition:Parallelogram|parallelograms]], so $AB' = BC = AC'$.\nHence $A$ is the midpoint of $B'C'$, and similarly $B$, $C$ are the midpoints of $C'A'$, $A'B'$.",
+      "The altitude from $A$ is perpendicular to $BC$, hence to the parallel line $B'C'$, and passes through its midpoint $A$.\nSo it is the perpendicular bisector of $B'C'$, and likewise for the other altitudes.",
+      "By the source result, these three lines are concurrent.\nHence the altitudes of $\\triangle ABC$ meet at the [[Definition:Orthocenter|orthocenter]], the circumcenter of $\\triangle A'B'C'$.\n{{qed}}"
+    ]
+  }
+}

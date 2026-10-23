@@ -1,0 +1,37 @@
+{
+  "id": "discriminant_from_quadratic_formula",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $a x^2 + b x + c = 0$ be a [[Definition:Quadratic Equation|quadratic equation]] with $a, b, c \\in \\R$ and $a \\ne 0$.\nThen it has a [[Definition:Multiple Root|repeated]] real root {{iff}}:\n:$b^2 - 4 a c = 0$"
+  },
+  "B_source": {
+    "statement": "Let $a x^2 + b x + c = 0$ with $a \\ne 0$.\nThen:\n:$x = \\dfrac {-b \\pm \\sqrt {b^2 - 4 a c} } {2 a}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the discriminant b^2 - 4ac under the root": "0"
+      },
+      "derived": {
+        "sqrt(b^2-4ac)": "0",
+        "the +/- pair of roots": "a single root -b/(2a)"
+      }
+    },
+    "validity_conditions": [
+      "When b^2 - 4ac = 0 the square root term is 0, so the +/- collapses to one value.",
+      "The two roots coincide at x = -b/(2a), a repeated root.",
+      "Conversely a repeated root forces the square-root term, hence the discriminant, to vanish."
+    ],
+    "proof_plan": [
+      "From the [[Quadratic Formula]]:\n:$x = \\dfrac {-b \\pm \\sqrt {b^2 - 4 a c} } {2 a}$",
+      "Suppose the [[Definition:Discriminant of Quadratic Equation|discriminant]] $b^2 - 4 a c = 0$.",
+      "Then $\\sqrt {b^2 - 4 a c} = 0$, and both signs give:\n:$x = -\\dfrac b {2 a}$",
+      "Conversely, if the roots coincide then $\\sqrt {b^2 - 4 a c} = -\\sqrt {b^2 - 4 a c}$, so $b^2 - 4 a c = 0$.\nHence the root is repeated {{iff}} $b^2 - 4 a c = 0$.\n{{qed}}"
+    ]
+  }
+}

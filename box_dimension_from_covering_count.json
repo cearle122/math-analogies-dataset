@@ -1,0 +1,41 @@
+{
+  "id": "box_dimension_from_covering_count",
+  "field": [
+    "geometry",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $F \\subseteq \\R^n$ be a [[Definition:Bounded Subset of Real Euclidean Space|bounded]] [[Definition:Non-Empty Set|non-empty]] set.\nThe [[Definition:Box-Counting Dimension|box-counting dimension]] of $F$ is:\n:$\\displaystyle \\map {\\dim_B} F = \\lim_{\\epsilon \\mathop \\to 0} \\frac {\\log \\map {N_\\epsilon} F} {\\log \\paren {1 / \\epsilon} }$\nwhere $\\map {N_\\epsilon} F$ is the number of $\\epsilon$-mesh [[Definition:Cube|cubes]] meeting $F$, whenever the limit exists."
+  },
+  "B_source": {
+    "statement": "Let $F \\subseteq \\R^n$ be bounded and $\\epsilon > 0$.\nThen $\\map {N_\\epsilon} F$ denotes the number of [[Definition:Cube|cubes]] of the form $\\closedint {m_1 \\epsilon} {\\paren {m_1 + 1} \\epsilon} \\times \\cdots \\times \\closedint {m_n \\epsilon} {\\paren {m_n + 1} \\epsilon}$ which meet $F$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the finite count of boxes at a fixed scale": "the covering number at scale epsilon",
+        "the shrinking box side": "the scale parameter tending to zero",
+        "the growth rate of the count": "the dimension"
+      },
+      "derived": {
+        "the count for a smooth curve": "growth proportional to one over epsilon, giving dimension one",
+        "the count for a self-similar fractal": "growth given by the similarity ratio, giving a non-integer dimension"
+      },
+      "reformulation": "Replace a continuous notion of size by a count of covering boxes at each scale, then read off the growth rate."
+    },
+    "validity_conditions": [
+      "The count at each fixed scale is finite for a bounded set, so the definition involves only finite data at every stage.",
+      "The limit may fail to exist, in which case upper and lower box dimensions are defined separately using the limit superior and inferior.",
+      "Box dimension can differ from Hausdorff dimension, notably for countable dense sets where the box dimension is positive but the Hausdorff dimension is zero."
+    ],
+    "proof_plan": [
+      "Cover $F$ by the $\\epsilon$-mesh cubes of $\\R^n$ and let $\\map {N_\\epsilon} F$ be the number meeting $F$.",
+      "Form the ratio:\n:$\\dfrac {\\log \\map {N_\\epsilon} F} {\\log \\paren {1 / \\epsilon} }$",
+      "Let $\\epsilon \\to 0$.\nIf the limit does not exist, define the upper and lower box dimensions by $\\displaystyle \\limsup$ and $\\displaystyle \\liminf$ respectively.",
+      "For a smooth curve of length $L$, $\\map {N_\\epsilon} F \\approx L / \\epsilon$, so $\\map {\\dim_B} F = 1$.\nFor the [[Definition:Cantor Set|Cantor set]], $\\map {N_{3^{-k} } } F = 2^k$, so:\n:$\\map {\\dim_B} F = \\dfrac {\\log 2} {\\log 3}$\n{{qed}}"
+    ]
+  }
+}

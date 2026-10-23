@@ -1,0 +1,39 @@
+{
+  "id": "second_isomorphism_from_composite_surjection",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Group|group]], $H$ a [[Definition:Subgroup|subgroup]] and $N$ a [[Definition:Normal Subgroup|normal subgroup]] of $G$.\nThen:\n:$H N / N \\cong H / \\paren {H \\cap N}$"
+  },
+  "B_source": {
+    "statement": "Let $i: H \\to G$ be an [[Definition:Inclusion Mapping|inclusion]] and $q: G \\to G / N$ a [[Definition:Quotient Epimorphism|quotient map]].\nThen $q \\circ i$ is a [[Definition:Surjection|surjection]] onto its image, with [[Definition:Kernel of Group Homomorphism|kernel]] $\\map {i^{-1} } {\\map \\ker q}$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the composite map": "the inclusion of H into HN followed by the quotient by N",
+        "the image of the composite": "the whole of HN modulo N",
+        "the kernel of the composite": "the elements of H lying in N, that is, the intersection"
+      },
+      "derived": {
+        "the image as a collapsed source": "H modulo the intersection",
+        "surjectivity of the composite": "every class in HN modulo N has a representative in H"
+      }
+    },
+    "validity_conditions": [
+      "The product set HN is a subgroup because N is normal, so the second map is defined on it.",
+      "The composite is surjective since any element of HN is a product of an element of H with one of N, and the second factor dies in the quotient.",
+      "The kernel of the composite consists of elements of H that lie in N, which is exactly the intersection, and that intersection is normal in H."
+    ],
+    "proof_plan": [
+      "Let $\\phi = q \\circ i: H \\to G / N$, $\\map \\phi h = h N$.",
+      "For $h n \\in H N$, $h n N = h N = \\map \\phi h$.\nHence $\\phi$ is [[Definition:Surjection|surjective]] onto $H N / N$.",
+      "We have:\n:$\\map \\ker \\phi = \\set {h \\in H: h N = N} = H \\cap N$",
+      "By the [[First Isomorphism Theorem for Groups]]:\n:$H / \\paren {H \\cap N} \\cong H N / N$\nwhich is the [[Second Isomorphism Theorem for Groups]].\n{{qed}}"
+    ]
+  }
+}

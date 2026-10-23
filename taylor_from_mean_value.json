@@ -1,0 +1,39 @@
+{
+  "id": "taylor_from_mean_value",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be $n + 1$ times [[Definition:Differentiable Real Function|differentiable]] on an interval containing $a$ and $x$.\nThen there exists $c$ between $a$ and $x$ with:\n:$\\displaystyle \\map f x = \\sum_{k \\mathop = 0}^n \\frac {\\map {f^{\\paren k} } a} {k!} \\paren {x - a}^k + \\frac {\\map {f^{\\paren {n + 1} } } c} {\\paren {n + 1}!} \\paren {x - a}^{n + 1}$"
+  },
+  "B_source": {
+    "statement": "Let $f$ be [[Definition:Differentiable Real Function|differentiable]] on an interval containing $a$ and $x$.\nThen there exists $c$ between $a$ and $x$ with:\n:$\\map f x - \\map f a = \\map {f'} c \\paren {x - a}$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the first-order expansion f(a) + f'(c)(x-a)": "the degree-n expansion plus higher-order remainder",
+        "the single derivative f'(c)": "the (n+1)-th derivative f^{(n+1)}(c) in the remainder"
+      },
+      "derived": {
+        "MVT remainder f'(c)(x-a)": "Taylor remainder f^{(n+1)}(c)/(n+1)! (x-a)^{n+1}",
+        "n = 0 case": "exactly the mean value theorem"
+      },
+      "reformulation": "Iterate the mean-value idea to higher derivatives (e.g. via repeated integration by parts or Rolle applied to an auxiliary function), extending the 0th-order expansion to nth order."
+    },
+    "validity_conditions": [
+      "f is (n+1)-times differentiable on the interval, so all derivatives in the expansion exist.",
+      "The n = 0 case of Taylor's theorem is exactly the mean value theorem, which anchors the generalization.",
+      "The remainder is obtained by applying a Rolle/MVT argument to an auxiliary function, genuinely extending the first-order result."
+    ],
+    "proof_plan": [
+      "The [[Mean Value Theorem]] is the case $n = 0$ of the expansion with remainder.",
+      "Let $\\map {P_n} t$ be the degree-$n$ Taylor polynomial of $f$ at $a$, and define:\n:$\\map g t = \\map f t - \\map {P_n} t - K \\paren {t - a}^{n + 1}$\nwith $K$ chosen so that $\\map g x = 0$.",
+      "Then $\\map g a = \\map {g'} a = \\cdots = \\map {g^{\\paren n} } a = 0$ and $\\map g x = 0$.\nApplying [[Rolle's Theorem]] $n + 1$ times gives $c$ with $\\map {g^{\\paren {n + 1} } } c = 0$, that is:\n:$K = \\dfrac {\\map {f^{\\paren {n + 1} } } c} {\\paren {n + 1}!}$",
+      "Substituting $t = x$ gives the Taylor polynomial plus remainder, generalizing the Mean Value Theorem.\nThis is [[Taylor's Theorem]] with [[Definition:Lagrange Form of Remainder|Lagrange remainder]].\n{{qed}}"
+    ]
+  }
+}

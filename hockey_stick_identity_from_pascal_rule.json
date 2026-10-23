@@ -1,0 +1,36 @@
+{
+  "id": "hockey_stick_identity_from_pascal_rule",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $0 \\le r \\le n$.\nThen:\n:$\\displaystyle \\sum_{i \\mathop = r}^n \\binom i r = \\binom {n + 1} {r + 1}$"
+  },
+  "B_source": {
+    "statement": "For $1 \\le k \\le n$:\n:$\\dbinom {n + 1} k = \\dbinom n k + \\dbinom n {k - 1}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the single Pascal step": "one step of an induction on n"
+      },
+      "derived": {
+        "telescoping applications of Pascal's rule": "the column sum identity"
+      },
+      "reformulation": "Add one more term of the column and absorb it with Pascal's rule."
+    },
+    "validity_conditions": [
+      "The base case n = r holds since both sides equal 1.",
+      "Combinatorially, classify (r+1)-subsets of {1, ..., n+1} by their largest element."
+    ],
+    "proof_plan": [
+      "Proceed by [[Principle of Mathematical Induction|induction]] on $n$.\nFor $n = r$, both sides equal $1$.",
+      "Assume the identity for $n$.\nThen:\n:$\\displaystyle \\sum_{i \\mathop = r}^{n + 1} \\binom i r = \\binom {n + 1} {r + 1} + \\binom {n + 1} r$",
+      "By [[Pascal's Rule]], the right hand side is $\\dbinom {n + 2} {r + 1}$, completing the induction.",
+      "Combinatorially, the term $\\dbinom i r$ counts the $\\paren {r + 1}$-subsets of $\\set {1, \\ldots, n + 1}$ with largest element $i + 1$.\nThis is the [[Hockey Stick Identity]].\n{{qed}}"
+    ]
+  }
+}

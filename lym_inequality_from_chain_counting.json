@@ -1,0 +1,37 @@
+{
+  "id": "lym_inequality_from_chain_counting",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\FF$ be an [[Definition:Antichain|antichain]] in $\\powerset {\\set {1, \\ldots, n} }$.\nThen:\n:$\\displaystyle \\sum_{A \\mathop \\in \\FF} \\frac 1 {\\dbinom n {\\card A} } \\le 1$"
+  },
+  "B_source": {
+    "statement": "To bound the size of a family, consider a finite set of arrangements, bound how many members can be compatible with each arrangement, count how many arrangements each member is compatible with, and double count the compatible pairs."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the arrangements": "the n! maximal chains of subsets",
+        "compatibility": "membership of A in the chain"
+      },
+      "derived": {
+        "at most one member per chain": "the weighted count bound"
+      },
+      "reformulation": "Reuse the averaging plan of the cyclic proof of Erdős-Ko-Rado, with maximal chains in place of cyclic orders."
+    },
+    "validity_conditions": [
+      "A maximal chain meets an antichain in at most one set.",
+      "A set of size k lies on exactly k!(n - k)! maximal chains."
+    ],
+    "proof_plan": [
+      "The maximal chains $\\O \\subset \\set {\\map \\sigma 1} \\subset \\cdots \\subset \\set {1, \\ldots, n}$ correspond to permutations $\\sigma$, so there are $n!$ of them.",
+      "A set $A$ with $\\card A = k$ lies on exactly $k! \\paren {n - k}!$ maximal chains.",
+      "As $\\FF$ is an antichain, each maximal chain contains at most one member of $\\FF$.\nDouble counting the pairs $\\tuple {A, \\text {chain} }$:\n:$\\displaystyle \\sum_{A \\mathop \\in \\FF} \\card A! \\paren {n - \\card A}! \\le n!$",
+      "Dividing by $n!$ gives the [[LYM Inequality]].\n{{qed}}"
+    ]
+  }
+}

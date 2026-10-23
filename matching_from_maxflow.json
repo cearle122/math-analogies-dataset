@@ -1,0 +1,40 @@
+{
+  "id": "matching_from_maxflow",
+  "field": [
+    "combinatorics",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $G = \\struct {L, R, E}$ be a [[Definition:Bipartite Graph|bipartite graph]].\nThen a [[Definition:Maximum Matching|maximum matching]] of $G$ can be computed, and its size equals the value of a [[Definition:Maximum Flow|maximum flow]] in an associated network."
+  },
+  "B_source": {
+    "statement": "Let $N$ be a [[Definition:Flow Network|flow network]] with [[Definition:Integer|integer]] capacities.\nThen $N$ has an integral [[Definition:Maximum Flow|maximum $s$-$t$ flow]], computable by the [[Ford-Fulkerson Algorithm]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "left vertex u in L": "edge s -> u, capacity 1",
+        "right vertex v in R": "edge v -> t, capacity 1",
+        "edge (u,v) in E": "edge u -> v, capacity 1"
+      },
+      "derived": {
+        "matching M": "integral s-t flow",
+        "|M| (matching size)": "value of the flow"
+      },
+      "reformulation": "Encode G as a unit-capacity flow network with added source s and sink t."
+    },
+    "validity_conditions": [
+      "All capacities are 1, so an integral flow selects a set of edges with no shared endpoint (a matching). This is the load-bearing condition.",
+      "Integrality of the max flow (guaranteed for integer capacities) — a fractional flow would not correspond to a matching."
+    ],
+    "proof_plan": [
+      "Build the network $N$: an arc $s \\to u$ of capacity $1$ for each $u \\in L$, an arc $v \\to t$ of capacity $1$ for each $v \\in R$, and an arc $u \\to v$ of capacity $1$ for each $u v \\in E$.",
+      "By the [[Integral Flow Theorem]], compute an integral maximum flow $f$.",
+      "As all capacities are $1$, each $u \\in L$ sends flow along at most one arc and each $v \\in R$ receives along at most one.\nHence the saturated arcs $u \\to v$ form a [[Definition:Matching (Graph Theory)|matching]].\nConversely each matching gives a flow of the same value.",
+      "The flow value equals the number of saturated $L \\to R$ arcs.\nHence the maximum flow value equals the size of a maximum matching.\n{{qed}}"
+    ]
+  }
+}

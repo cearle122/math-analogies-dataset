@@ -1,0 +1,36 @@
+{
+  "id": "euclid_lemma_from_bezout",
+  "field": [
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a [[Definition:Prime Number|prime number]] and $a, b \\in \\Z$ with $p \\divides a b$.\nThen $p \\divides a$ or $p \\divides b$."
+  },
+  "B_source": {
+    "statement": "Let $a, b \\in \\Z$, not both zero.\nThen there exist $x, y \\in \\Z$ with:\n:$a x + b y = \\gcd \\set {a, b}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the pair a, b": "the prime p and the factor a it does not divide"
+      },
+      "derived": {
+        "the Bézout combination": "a decomposition of b into multiples of p"
+      },
+      "reformulation": "Turn coprimality into an explicit linear combination equal to 1, and multiply through by b."
+    },
+    "validity_conditions": [
+      "Primality is used only to conclude gcd(p, a) = 1 from p not dividing a.",
+      "The argument works in any principal ideal domain."
+    ],
+    "proof_plan": [
+      "Suppose $p \\nmid a$.\nAs the only positive divisors of $p$ are $1$ and $p$, $\\gcd \\set {p, a} = 1$.",
+      "By [[Bézout's Identity]], $p x + a y = 1$ for some $x, y \\in \\Z$.",
+      "Multiplying by $b$:\n:$p b x + a b y = b$",
+      "$p$ divides $p b x$ and, by hypothesis, $a b y$.\nHence $p \\divides b$, which is [[Euclid's Lemma for Prime Divisors]].\n{{qed}}"
+    ]
+  }
+}

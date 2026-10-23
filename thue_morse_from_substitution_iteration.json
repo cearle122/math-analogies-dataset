@@ -1,0 +1,41 @@
+{
+  "id": "thue_morse_from_substitution_iteration",
+  "field": [
+    "combinatorics",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $\\sigma$ be the [[Definition:Substitution (Combinatorics on Words)|substitution]] $0 \\mapsto 01$, $1 \\mapsto 10$.\nThen the [[Definition:Thue-Morse Sequence|Thue-Morse word]] $t$ is the [[Definition:Unique|unique]] infinite word beginning with $0$ such that:\n:$\\map \\sigma t = t$"
+  },
+  "B_source": {
+    "statement": "Let $\\sigma$ be a substitution [[Definition:Prolongable Substitution|prolongable]] at a letter $a$, that is, $\\map \\sigma a = a u$ with $u$ non-empty.\nThen the iterates $\\map {\\sigma^n} a$ converge in the [[Definition:Product Topology|product topology]] to an infinite word."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the prolongable substitution": "the map sending zero to zero-one and one to one-zero",
+        "the iterates from a single letter": "successive images of the letter zero, each extending the previous",
+        "the limit in the product topology": "the Thue-Morse word"
+      },
+      "derived": {
+        "the limit is unchanged by the substitution": "the word is a fixed point of the substitution",
+        "each iterate being a prefix of the next": "convergence letterwise, so the limit is well defined"
+      },
+      "reformulation": "Present the infinite word as what iterating the substitution converges to, making it a fixed point of that map."
+    },
+    "validity_conditions": [
+      "The substitution is prolongable at zero, meaning the image of zero begins with zero, so each iterate is a prefix of the next.",
+      "The iterates therefore agree on longer and longer prefixes, so they converge letterwise and the limit is a well-defined infinite word.",
+      "Continuity of the substitution on infinite words carries the fixed point property to the limit; uniqueness follows since the first letter determines the whole word by iteration."
+    ],
+    "proof_plan": [
+      "$\\map \\sigma 0 = 0 1$ begins with $0$, so $\\sigma$ is prolongable at $0$.",
+      "Iterating from $0$:\n:$0, \\, 01, \\, 0110, \\, 01101001, \\ldots$\nEach iterate is a prefix of the next, as $\\map {\\sigma^{n + 1} } 0 = \\map {\\sigma^n} {01} = \\map {\\sigma^n} 0 \\map {\\sigma^n} 1$.",
+      "The letterwise limit is an infinite word $t$ whose prefix of length $2^n$ is $\\map {\\sigma^n} 0$.",
+      "$\\sigma$ is continuous in the product topology.\nHence $\\map \\sigma t = \\lim \\map {\\sigma^{n + 1} } 0 = t$.\nAny fixed point beginning with $0$ has $\\map {\\sigma^n} 0$ as a prefix for all $n$, so equals $t$.\n{{qed}}"
+    ]
+  }
+}

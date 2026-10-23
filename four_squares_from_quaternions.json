@@ -1,0 +1,43 @@
+{
+  "id": "four_squares_from_quaternions",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $a_i, b_i$ be [[Definition:Integer|integers]] for $i = 1, 2, 3, 4$.\nThen there exist integers $c_1, c_2, c_3, c_4$ such that:\n:$\\paren {a_1^2 + a_2^2 + a_3^2 + a_4^2} \\paren {b_1^2 + b_2^2 + b_3^2 + b_4^2} = c_1^2 + c_2^2 + c_3^2 + c_4^2$"
+  },
+  "B_source": {
+    "statement": "Let $p, q \\in \\Bbb H$ be [[Definition:Quaternion|quaternions]].\nThen:\n:$\\map N {p q} = \\map N p \\map N q$\nwhere $\\map N q = q \\bar q$ is the [[Definition:Norm of Quaternion|quaternion norm]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a sum of four squares a^2+b^2+c^2+d^2": "the norm N(q) of a quaternion q = a + bi + cj + dk",
+        "product of two such sums": "norm of the product of two quaternions",
+        "the four resulting squares": "components of the quaternion product"
+      },
+      "derived": {
+        "N(pq) = N(p)N(q)": "the four-square identity",
+        "components of pq": "the explicit bilinear expressions in the identity"
+      },
+      "reformulation": "Encode each sum of four squares as a quaternion norm; the multiplicativity of the norm becomes the four-square identity when written out in coordinates."
+    },
+    "validity_conditions": [
+      "N(a+bi+cj+dk) = a^2+b^2+c^2+d^2, so sums of four squares are exactly quaternion norms.",
+      "The quaternion norm is multiplicative because quaternions form a composition algebra: N(pq)=N(p)N(q).",
+      "Expanding N(pq)=N(p)N(q) in components yields Euler's explicit four-square identity."
+    ],
+    "proof_plan": [
+      "Let $p = a_1 + a_2 i + a_3 j + a_4 k$.\nThen:\n:$\\map N p = a_1^2 + a_2^2 + a_3^2 + a_4^2$",
+      "Let $q = b_1 + b_2 i + b_3 j + b_4 k$ and form the product $p q = c_1 + c_2 i + c_3 j + c_4 k$.\nThe $c_i$ are integers, as the products of $i$, $j$, $k$ are $\\pm 1, \\pm i, \\pm j, \\pm k$.",
+      "By multiplicativity of the norm:\n:$\\map N {p q} = \\map N p \\map N q$",
+      "Writing $\\map N {p q}$ out in coordinates gives [[Euler's Four-Square Identity]]:\n:$\\paren {\\sum a_i^2} \\paren {\\sum b_i^2} = c_1^2 + c_2^2 + c_3^2 + c_4^2$\n{{qed}}"
+    ]
+  }
+}

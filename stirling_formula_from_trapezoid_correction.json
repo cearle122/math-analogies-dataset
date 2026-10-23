@@ -1,0 +1,41 @@
+{
+  "id": "stirling_formula_from_trapezoid_correction",
+  "field": [
+    "analysis",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "As $n \\to \\infty$:\n:$n! \\sim \\sqrt {2 \\pi n} \\paren {\\dfrac n e}^n$"
+  },
+  "B_source": {
+    "statement": "Let $f$ be [[Definition:Twice Differentiable Real Function|twice differentiable]] on $\\closedint a b$ with $a, b \\in \\Z$.\nThen:\n:$\\displaystyle \\sum_{k \\mathop = a}^b \\map f k = \\int_a^b \\map f x \\rd x + \\frac {\\map f a + \\map f b} 2 + E$\nwhere the error $E$ is controlled by $f''$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the sum of function values": "the sum of the logarithms of the integers up to n",
+        "the integral approximating the sum": "the integral of the logarithm, giving n log n minus n",
+        "the trapezoid endpoint correction": "the half logarithm of n, giving the square root factor"
+      },
+      "derived": {
+        "the leading terms of the approximation": "the power and exponential factors of the formula",
+        "the constant left undetermined": "the factor involving pi, obtained separately from a product formula"
+      },
+      "reformulation": "Take logarithms so the factorial becomes a sum, then compare that finite sum with an integral."
+    },
+    "validity_conditions": [
+      "Taking logarithms turns the factorial into a sum, which is what makes the sum-to-integral comparison applicable.",
+      "The trapezoid correction supplies the half logarithm term, and the remaining error converges, so it contributes a constant rather than a growing term.",
+      "The comparison determines the constant only up to an unknown factor; identifying it as the square root of two pi requires a separate argument such as the Wallis product."
+    ],
+    "proof_plan": [
+      "Take logarithms:\n:$\\displaystyle \\ln n! = \\sum_{k \\mathop = 1}^n \\ln k$",
+      "By the [[Trapezoidal Rule|trapezoid comparison]]:\n:$\\displaystyle \\sum_{k \\mathop = 1}^n \\ln k = \\int_1^n \\ln x \\rd x + \\frac {\\ln n} 2 + E_n = n \\ln n - n + 1 + \\frac 1 2 \\ln n + E_n$",
+      "The error on $\\closedint k {k + 1}$ is $\\map O {k^{-2} }$, as $\\map {\\paren \\ln} {''} x = -x^{-2}$.\nHence $E_n$ converges, and:\n:$n! \\sim C \\sqrt n \\paren {\\dfrac n e}^n$\nfor some constant $C > 0$.",
+      "By [[Wallis's Product]], $C = \\sqrt {2 \\pi}$.\n{{qed}}"
+    ]
+  }
+}

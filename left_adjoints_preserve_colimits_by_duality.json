@@ -1,0 +1,38 @@
+{
+  "id": "left_adjoints_preserve_colimits_by_duality",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $F: \\mathbf C \\to \\mathbf D$ be [[Definition:Left Adjoint|left adjoint]] to $G$.\nThen $F$ preserves all [[Definition:Colimit|colimits]] which exist in $\\mathbf C$."
+  },
+  "B_source": {
+    "statement": "A [[Definition:Right Adjoint|right adjoint]] preserves all limits which exist in its domain."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "limits": "colimits",
+        "right adjoint": "left adjoint",
+        "C, D": "their opposite categories"
+      },
+      "derived": {
+        "the opposite adjunction": "F^op as a right adjoint"
+      },
+      "reformulation": "Pass to opposite categories, where the left adjoint becomes a right adjoint and colimits become limits."
+    },
+    "validity_conditions": [
+      "Reversing arrows turns the hom-set bijection of F -| G into one exhibiting G^op -| F^op.",
+      "For example, the free group functor sends disjoint unions to free products, and tensoring with a module is right exact."
+    ],
+    "proof_plan": [
+      "The bijection $\\map {\\operatorname {Hom}_{\\mathbf D} } {F X, Y} \\cong \\map {\\operatorname {Hom}_{\\mathbf C} } {X, G Y}$ reads in the opposite categories as $\\map {\\operatorname {Hom}_{\\mathbf D^{\\text {op} } } } {Y, F X} \\cong \\map {\\operatorname {Hom}_{\\mathbf C^{\\text {op} } } } {G Y, X}$.",
+      "Hence $G^{\\text {op} } \\dashv F^{\\text {op} }$, so $F^{\\text {op} }$ is a right adjoint.",
+      "A colimit in $\\mathbf C$ is a limit in $\\mathbf C^{\\text {op} }$, which $F^{\\text {op} }$ preserves by the source result.",
+      "Hence $F$ preserves colimits.\n{{qed}}"
+    ]
+  }
+}

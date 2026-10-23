@@ -1,0 +1,38 @@
+{
+  "id": "rolle_from_extreme_value",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be a [[Definition:Real Function|real function]] which is [[Definition:Continuous on Closed Interval|continuous]] on $\\closedint a b$ and [[Definition:Differentiable on Interval|differentiable]] on $\\openint a b$, with $\\map f a = \\map f b$.\nThen:\n:$\\exists \\xi \\in \\openint a b: \\map {f'} \\xi = 0$"
+  },
+  "B_source": {
+    "statement": "Let $f$ be [[Definition:Continuous Real Function|continuous]] on $\\closedint a b$.\nThen $f$ attains a [[Definition:Maximum Value of Real Function|maximum]] and a [[Definition:Minimum Value of Real Function|minimum]] on $\\closedint a b$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a continuous function on a closed interval": "f with equal endpoint values",
+        "the attained extremes": "candidates for an interior critical point"
+      },
+      "derived": {
+        "an interior extremum": "a point xi with f'(xi) = 0"
+      },
+      "reformulation": "Turn the search for a zero of the derivative into the search for an interior extremum of f."
+    },
+    "validity_conditions": [
+      "f must be continuous on the closed interval so that the extremes are attained.",
+      "Equal endpoint values are needed to force an extremum into the open interval.",
+      "Differentiability on the open interval is needed to apply Fermat's criterion at that extremum."
+    ],
+    "proof_plan": [
+      "By the [[Extreme Value Theorem]], $f$ attains a maximum $M$ at some $x_1$ and a minimum $m$ at some $x_2$ in $\\closedint a b$.",
+      "If $M = m$, then $f$ is [[Definition:Constant Mapping|constant]] on $\\closedint a b$, so $\\map {f'} \\xi = 0$ for every $\\xi \\in \\openint a b$.",
+      "Otherwise $M > m$.\nAs $\\map f a = \\map f b$, the values $M$ and $m$ cannot both be attained only at the endpoints, so one of $x_1, x_2$ lies in $\\openint a b$; call it $\\xi$.",
+      "$f$ has a [[Definition:Local Extremum|local extremum]] at the interior point $\\xi$.\nBy [[Derivative at Maximum or Minimum]], $\\map {f'} \\xi = 0$, which is [[Rolle's Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "eigenvector_from_projective_fixed_point",
+  "field": [
+    "algebra",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $V$ be a [[Definition:Vector Space|vector space]] over $\\C$ with $1 \\le \\dim V < \\infty$.\nLet $T: V \\to V$ be a [[Definition:Linear Operator|linear operator]].\nThen there exist $\\mathbf v \\ne \\mathbf 0$ and $\\lambda \\in \\C$ such that:\n:$T \\mathbf v = \\lambda \\mathbf v$"
+  },
+  "B_source": {
+    "statement": "Let $T$ be an [[Definition:Invertible Linear Transformation|invertible]] linear operator on $V$.\nThen the induced [[Definition:Holomorphic Function|holomorphic]] map on the [[Definition:Projective Space|projective space]] $\\map {\\Bbb P} V$ has a [[Definition:Fixed Point|fixed point]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the vector space V": "its projectivization P(V)",
+        "the linear map T": "the induced map on lines through the origin",
+        "the fixed line": "the eigenvector direction"
+      },
+      "derived": {
+        "the scalar by which T acts on the fixed line": "the eigenvalue lambda"
+      },
+      "reformulation": "The eigenvector equation is only defined up to scaling, so it must be moved to the projective quotient where it becomes a genuine fixed-point statement."
+    },
+    "validity_conditions": [
+      "T must be invertible for the induced map on projective space to be everywhere defined; the singular case is handled separately since zero is then an eigenvalue",
+      "the field must be algebraically closed for the fixed point to exist, which is where complexity is used",
+      "the vector space must be finite-dimensional so projective space is compact"
+    ],
+    "proof_plan": [
+      "Pass from $V$ to the [[Definition:Projective Space|projective space]] $\\map {\\Bbb P} V$ of lines through $\\mathbf 0$.",
+      "A [[Definition:Linear Operator|linear operator]] sends lines to lines.\nIf $T$ is not invertible, any $\\mathbf v \\in \\map \\ker T \\setminus \\set {\\mathbf 0}$ is an eigenvector with $\\lambda = 0$.\nOtherwise $T$ induces a self-map $\\bar T$ of $\\map {\\Bbb P} V$.",
+      "A fixed point $\\sqbrk {\\mathbf v}$ of $\\bar T$ is precisely a $T$-[[Definition:Invariant Subspace|invariant]] one-dimensional subspace $\\C \\mathbf v$.",
+      "By the source result, over $\\C$, $\\bar T$ has a fixed point $\\sqbrk {\\mathbf v}$.",
+      "Then $T \\mathbf v \\in \\C \\mathbf v$, so $T \\mathbf v = \\lambda \\mathbf v$ for some $\\lambda \\in \\C$, which is the [[Definition:Eigenvalue of Linear Operator|eigenvalue]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "double_dual_from_dual_basis",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $V$ be a [[Definition:Finite Dimensional Vector Space|finite-dimensional]] [[Definition:Vector Space|vector space]] over $K$.\nThen the evaluation map $\\operatorname {ev}: V \\to V^{**}$, $\\map {\\map {\\operatorname {ev} } v} \\phi = \\map \\phi v$, is a [[Definition:Natural Isomorphism|natural]] [[Definition:Linear Isomorphism|isomorphism]]."
+  },
+  "B_source": {
+    "statement": "Let $V$ have basis $e_1, \\ldots, e_n$.\nThen the [[Definition:Dual Basis|dual functionals]] $e_i^*$ with $\\map {e_i^*} {e_j} = \\delta_{i j}$ form a basis of $V^*$, so $\\dim V^* = \\dim V$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "V": "V*",
+        "the dual basis": "a functional separating a given vector from 0"
+      },
+      "derived": {
+        "dim V** = dim V": "evaluation is an isomorphism"
+      },
+      "reformulation": "Apply the dual-space construction twice; evaluation pairs V with V* in the reverse direction and needs no choice of basis."
+    },
+    "validity_conditions": [
+      "Finite dimension is essential: for infinite dimension, evaluation is injective but not surjective.",
+      "Naturality holds because ev is defined without choosing a basis."
+    ],
+    "proof_plan": [
+      "$\\map {\\operatorname {ev} } v$ is linear in $\\phi$, and $\\operatorname {ev}$ is linear in $v$.",
+      "If $v \\ne 0$, extend $v$ to a basis $e_1 = v, e_2, \\ldots, e_n$.\nThen $\\map {e_1^*} v = 1$, so $\\map {\\operatorname {ev} } v \\ne 0$, and $\\operatorname {ev}$ is [[Definition:Injection|injective]].",
+      "Applying the source result twice, $\\dim V^{**} = \\dim V^* = \\dim V$.\nAn injective linear map between spaces of equal finite dimension is an isomorphism.",
+      "For linear $T: V \\to W$, $T^{**} \\circ \\operatorname {ev}_V = \\operatorname {ev}_W \\circ T$, so the isomorphism is natural.\n{{qed}}"
+    ]
+  }
+}

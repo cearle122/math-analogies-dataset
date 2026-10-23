@@ -1,0 +1,39 @@
+{
+  "id": "holder_from_young",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $p, q > 1$ with $\\dfrac 1 p + \\dfrac 1 q = 1$.\nThen:\n:$\\displaystyle \\sum_i \\size {a_i b_i} \\le \\paren {\\sum_i \\size {a_i}^p}^{1 / p} \\paren {\\sum_i \\size {b_i}^q}^{1 / q}$"
+  },
+  "B_source": {
+    "statement": "Let $p, q > 1$ with $\\dfrac 1 p + \\dfrac 1 q = 1$, and $x, y \\ge 0$.\nThen:\n:$x y \\le \\dfrac {x^p} p + \\dfrac {y^q} q$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the two scalars x,y": "normalized terms |a_i|/||a||_p and |b_i|/||b||_q",
+        "the pointwise bound xy <= x^p/p + y^q/q": "a term-by-term bound then summed"
+      },
+      "derived": {
+        "single-term Young bound": "each summand |a_i b_i|/(||a||_p ||b||_q)",
+        "sum of the right-hand sides": "1/p + 1/q = 1"
+      },
+      "reformulation": "Normalize the vectors to unit norm, apply Young's inequality to each coordinate pair, then sum."
+    },
+    "validity_conditions": [
+      "Assume ||a||_p, ||b||_q nonzero (else the inequality is trivial); normalize so both norms are 1.",
+      "Apply Young coordinatewise to x=|a_i|, y=|b_i|; summing the right sides gives (1/p)sum|a_i|^p + (1/q)sum|b_i|^q = 1/p + 1/q = 1.",
+      "Un-normalizing multiplies both sides by ||a||_p ||b||_q, yielding Holder."
+    ],
+    "proof_plan": [
+      "If either norm is zero the result is trivial.\nOtherwise, by homogeneity, reduce to the case $\\norm a_p = \\norm b_q = 1$.",
+      "By [[Young's Inequality for Products]]:\n:$\\size {a_i} \\size {b_i} \\le \\dfrac {\\size {a_i}^p} p + \\dfrac {\\size {b_i}^q} q$",
+      "Summing over $i$:\n:$\\displaystyle \\sum_i \\size {a_i b_i} \\le \\frac 1 p \\sum_i \\size {a_i}^p + \\frac 1 q \\sum_i \\size {b_i}^q = \\frac 1 p + \\frac 1 q = 1$",
+      "Rescaling by $\\norm a_p \\norm b_q$ gives [[Hölder's Inequality for Sums]]:\n:$\\displaystyle \\sum_i \\size {a_i b_i} \\le \\norm a_p \\norm b_q$\n{{qed}}"
+    ]
+  }
+}

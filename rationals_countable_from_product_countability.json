@@ -1,0 +1,38 @@
+{
+  "id": "rationals_countable_from_product_countability",
+  "field": [
+    "set_theory",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "The set $\\Q$ of [[Definition:Rational Number|rational numbers]] is [[Definition:Countably Infinite|countably infinite]]."
+  },
+  "B_source": {
+    "statement": "Let $A$ and $B$ be [[Definition:Countable Set|countable]].\nThen $A \\times B$ is countable, and the image of a countable set under any mapping is countable."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "A and B": "Z and the positive integers",
+        "the mapping": "(p, q) -> p / q"
+      },
+      "derived": {
+        "the countable image": "the rationals"
+      },
+      "reformulation": "Realize Q as the image of the countable set Z x Z_(>0)."
+    },
+    "validity_conditions": [
+      "Z is countable via the enumeration 0, 1, -1, 2, -2, ....",
+      "Density of Q in R does not affect countability."
+    ],
+    "proof_plan": [
+      "The mapping $\\Z \\times \\Z_{>0} \\to \\Q$, $\\tuple {p, q} \\mapsto \\dfrac p q$, is a surjection.",
+      "$\\Z$ is countable via $0, 1, -1, 2, -2, \\ldots$, and $\\Z_{>0}$ is countable.",
+      "By the source result, $\\Z \\times \\Z_{>0}$ is countable, and so is its image $\\Q$.",
+      "As $\\Q \\supseteq \\N$ is infinite, $\\Q$ is countably infinite.\n{{qed}}"
+    ]
+  }
+}

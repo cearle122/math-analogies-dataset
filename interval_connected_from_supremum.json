@@ -1,0 +1,37 @@
+{
+  "id": "interval_connected_from_supremum",
+  "field": [
+    "topology",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $a \\le b$ be real numbers.\nThen the [[Definition:Closed Real Interval|closed interval]] $\\closedint a b$ is [[Definition:Connected Topological Space|connected]]."
+  },
+  "B_source": {
+    "statement": "Every [[Definition:Non-Empty Set|non-empty]] subset of $\\R$ which is [[Definition:Bounded Above Subset of Real Numbers|bounded above]] has a [[Definition:Supremum of Subset of Real Numbers|supremum]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the bounded set": "the points x such that [a, x] lies in the part containing a"
+      },
+      "derived": {
+        "the supremum c": "a point that can lie in neither part of a separation"
+      },
+      "reformulation": "Push the part containing a as far right as possible and examine the supremum."
+    },
+    "validity_conditions": [
+      "The two parts must be open in [a, b], which gives the small intervals around c.",
+      "The least upper bound property is essential: the argument fails over Q."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $\\closedint a b = U \\cup V$ with $U$, $V$ disjoint, non-empty and open in $\\closedint a b$, and $a \\in U$.",
+      "Let $S = \\set {x \\in \\closedint a b: \\closedint a x \\subseteq U}$, which contains $a$ and is bounded by $b$.\nBy the source result, $c = \\sup S$ exists, and $\\hointr a c \\subseteq U$.",
+      "If $c \\in V$, then as $V$ is open some $\\hointl {c - \\delta} c \\subseteq V$, which meets $\\hointr a c \\subseteq U$, a contradiction.\nIf $c \\in U$ and $c < b$, then as $U$ is open some $\\closedint c {c + \\delta} \\subseteq U$, so $c + \\delta \\in S$, a contradiction.",
+      "Hence $c = b \\in U$ and $\\closedint a b \\subseteq U$, so $V = \\O$, a contradiction.\nSo $\\closedint a b$ is connected.\n{{qed}}"
+    ]
+  }
+}

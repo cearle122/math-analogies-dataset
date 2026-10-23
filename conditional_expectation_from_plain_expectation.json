@@ -1,0 +1,40 @@
+{
+  "id": "conditional_expectation_from_plain_expectation",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {\\Omega, \\Sigma, \\Pr}$ be a [[Definition:Probability Space|probability space]] and $\\GG \\subseteq \\Sigma$ a [[Definition:Sub-Sigma-Algebra|sub-$\\sigma$-algebra]].\nLet $X$ be an [[Definition:Integrable Function|integrable]] [[Definition:Random Variable|random variable]].\nThen there exists a $\\GG$-[[Definition:Measurable Function|measurable]] random variable $\\expect {X \\mid \\GG}$, [[Definition:Unique|unique]] [[Definition:Almost Surely|almost surely]], such that:\n:$\\forall G \\in \\GG: \\displaystyle \\int_G \\expect {X \\mid \\GG} \\rd \\Pr = \\int_G X \\rd \\Pr$"
+  },
+  "B_source": {
+    "statement": "Let $X$ be an [[Definition:Integrable Function|integrable]] [[Definition:Random Variable|random variable]].\nThen its [[Definition:Expectation|expectation]] is the real number:\n:$\\displaystyle \\expect X = \\int_\\Omega X \\rd \\Pr$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the trivial information": "an arbitrary sub-sigma-algebra G",
+        "the constant summarizing the variable": "a G-measurable random variable",
+        "the averaging identity over the whole space": "the averaging identity over every event in G"
+      },
+      "derived": {
+        "the defining averaging property": "matching integrals against every indicator of a G-event",
+        "the trivial sigma-algebra case": "recovers the ordinary expectation as a constant"
+      },
+      "reformulation": "Replace the single summarizing constant by a variable measurable with respect to the available information."
+    },
+    "validity_conditions": [
+      "Taking G to be the trivial sigma-algebra forces the conditional expectation to be constant and reduces the averaging identity to the definition of expectation, so the generalization is faithful.",
+      "Existence and almost-sure uniqueness follow from the Radon-Nikodym theorem applied to the measure obtained by integrating X over G-events.",
+      "The result is only determined up to sets of probability zero, an ambiguity absent in the unconditional case where the answer is a single number."
+    ],
+    "proof_plan": [
+      "Replace the [[Definition:Trivial Sigma-Algebra|trivial $\\sigma$-algebra]] $\\set {\\O, \\Omega}$ by an arbitrary [[Definition:Sub-Sigma-Algebra|sub-$\\sigma$-algebra]] $\\GG$.",
+      "A $\\set {\\O, \\Omega}$-measurable function is constant.\nRequire instead that the summary $Y$ be $\\GG$-[[Definition:Measurable Function|measurable]].",
+      "Impose:\n:$\\forall G \\in \\GG: \\displaystyle \\int_G Y \\rd \\Pr = \\int_G X \\rd \\Pr$\nFor $\\GG = \\set {\\O, \\Omega}$ this gives $Y = \\expect X$.",
+      "Let $\\map \\nu G = \\displaystyle \\int_G X \\rd \\Pr$ for $G \\in \\GG$.\nThen $\\nu \\ll \\Pr \\restriction_\\GG$.\nBy the [[Radon-Nikodym Theorem]], $Y = \\dfrac {\\d \\nu} {\\d \\Pr}$ exists and is unique [[Definition:Almost Surely|almost surely]].\n{{qed}}"
+    ]
+  }
+}

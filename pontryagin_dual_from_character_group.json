@@ -1,0 +1,40 @@
+{
+  "id": "pontryagin_dual_from_character_group",
+  "field": [
+    "algebra",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Locally Compact Space|locally compact]] [[Definition:Abelian Group|abelian]] [[Definition:Topological Group|topological group]] with [[Definition:Pontryagin Dual|dual]] $\\hat G$.\nThen the evaluation map:\n:$\\alpha: G \\to \\hat {\\hat G}, \\quad \\map {\\map \\alpha g} \\chi = \\map \\chi g$\nis an [[Definition:Isomorphism of Topological Groups|isomorphism of topological groups]]."
+  },
+  "B_source": {
+    "statement": "Let $G$ be a [[Definition:Topological Group|topological group]].\nThe [[Definition:Character (Group Theory)|characters]] of $G$, the continuous homomorphisms $G \\to \\Bbb T$, form a group under pointwise multiplication."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the group of characters": "the dual group",
+        "a homomorphism between groups": "the induced homomorphism between duals, in the reverse direction",
+        "evaluating a character at an element": "evaluating an element at a character, after the roles are exchanged"
+      },
+      "derived": {
+        "the natural map into the double dual": "sending an element to evaluation at it",
+        "the double dual being isomorphic to the original": "the evaluation map is an isomorphism of topological groups"
+      }
+    },
+    "validity_conditions": [
+      "The dual carries a topology of uniform convergence on compact sets, under which it is again locally compact abelian, so the construction can be iterated.",
+      "The evaluation map into the double dual is defined without any choices, which is what makes the isomorphism natural rather than merely an isomorphism of abstract groups.",
+      "Local compactness is essential: for general topological abelian groups the characters may fail to separate points and the evaluation map need not be injective."
+    ],
+    "proof_plan": [
+      "Form $\\hat G$, the group of continuous homomorphisms $G \\to \\Bbb T$, with the [[Definition:Compact-Open Topology|topology of uniform convergence on compact sets]].",
+      "$\\hat G$ is again locally compact abelian, so the construction iterates to give $\\hat {\\hat G}$.",
+      "Define $\\map {\\map \\alpha g} \\chi = \\map \\chi g$.\n$\\map \\alpha g$ is a continuous character of $\\hat G$, and $\\alpha$ is a continuous homomorphism.",
+      "[[Definition:Injection|Injectivity]] follows from the existence of enough characters to separate points, by the [[Gelfand-Raikov Theorem]].\nSurjectivity and openness follow from the [[Fourier Inversion Theorem|Fourier inversion]] and [[Plancherel Theorem|Plancherel]] theorems on $G$.\nThis is [[Pontryagin Duality Theorem|Pontryagin duality]].\n{{qed}}"
+    ]
+  }
+}

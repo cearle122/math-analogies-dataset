@@ -1,0 +1,43 @@
+{
+  "id": "spherical_law_from_hyperbolic_law",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Hyperbolic Triangle|triangle]] in the [[Definition:Hyperbolic Plane|hyperbolic plane]] of curvature $-1$.\nThen:\n:$\\cosh c = \\cosh a \\cosh b - \\sinh a \\sinh b \\cos C$"
+  },
+  "B_source": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Spherical Triangle|spherical triangle]] on the unit sphere.\nThen:\n:$\\cos c = \\cos a \\cos b + \\sin a \\sin b \\cos C$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [
+      "duality"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "sin": "sinh",
+        "cos": "cosh",
+        "curvature +1 (sphere)": "curvature -1 (hyperbolic plane)",
+        "sides a,b,c on the sphere": "sides on the hyperbolic plane"
+      },
+      "derived": {
+        "cos c = cos a cos b + sin a sin b cos C": "cosh c = cosh a cosh b - sinh a sinh b cos C",
+        "the sign of the sin-sin term": "flipped by the sinh substitution"
+      },
+      "reformulation": "Replace circular functions by hyperbolic ones (imaginary-radius substitution a -> ia), which sends the sphere's identities to the hyperbolic plane's."
+    },
+    "validity_conditions": [
+      "Substituting a -> ia, b -> ib, c -> ic uses cos(ix)=cosh x and sin(ix)=i sinh x, carrying the spherical identity to the hyperbolic one.",
+      "The factor i^2 = -1 in the sin-sin term flips its sign, giving the minus in the hyperbolic law.",
+      "This reflects passing from constant curvature +1 to constant curvature -1."
+    ],
+    "proof_plan": [
+      "Start from the [[Spherical Law of Cosines]]:\n:$\\cos c = \\cos a \\cos b + \\sin a \\sin b \\cos C$",
+      "Substitute $a \\mapsto i a$, $b \\mapsto i b$, $c \\mapsto i c$, corresponding to curvature $+1 \\mapsto -1$.",
+      "From [[Cosine of Imaginary Number]] and [[Sine of Imaginary Number]]:\n:$\\map \\cos {i x} = \\cosh x, \\quad \\map \\sin {i x} = i \\sinh x$",
+      "Hence:\n:$\\cosh c = \\cosh a \\cosh b + i^2 \\sinh a \\sinh b \\cos C = \\cosh a \\cosh b - \\sinh a \\sinh b \\cos C$\n{{qed}}"
+    ]
+  }
+}

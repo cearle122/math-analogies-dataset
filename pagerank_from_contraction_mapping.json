@@ -1,0 +1,38 @@
+{
+  "id": "pagerank_from_contraction_mapping",
+  "field": [
+    "algorithms",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf P$ be an $n \\times n$ column-[[Definition:Stochastic Matrix|stochastic]] matrix, $\\alpha \\in \\openint 0 1$, and $\\mathbf u$ the uniform probability vector.\nThen there is a unique probability vector $\\mathbf r$ with $\\mathbf r = \\alpha \\mathbf P \\mathbf r + \\paren {1 - \\alpha} \\mathbf u$, and the iteration $\\mathbf r_{k + 1} = \\alpha \\mathbf P \\mathbf r_k + \\paren {1 - \\alpha} \\mathbf u$ converges to it from any probability vector, with error at most $\\alpha^k \\norm {\\mathbf r_0 - \\mathbf r}_1$."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]] and $T: X \\to X$ with $\\map d {T x, T y} \\le q \\, \\map d {x, y}$, $q < 1$.\nThen $T$ has a unique fixed point $x^*$, and $\\map d {T^k x, x^*} \\le q^k \\map d {x, x^*}$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the metric space": "the probability simplex with the l1 distance",
+        "the contraction T": "one damped random-surfer step"
+      },
+      "derived": {
+        "the fixed point": "the PageRank vector"
+      },
+      "reformulation": "Encode PageRank as the fixed point of the damped random-surfer step, which contracts the l1 distance by the damping factor."
+    },
+    "validity_conditions": [
+      "A column-stochastic matrix does not increase the l1 norm of a vector with zero sum.",
+      "The simplex is closed in R^n, hence complete."
+    ],
+    "proof_plan": [
+      "The simplex $\\Delta$ of probability vectors is closed in $\\R^n$, hence complete under $\\norm \\cdot_1$.",
+      "Let $\\map T {\\mathbf r} = \\alpha \\mathbf P \\mathbf r + \\paren {1 - \\alpha} \\mathbf u$.\nAs $\\mathbf P$ is column-stochastic, $T$ maps $\\Delta$ into $\\Delta$.",
+      "For $\\mathbf r, \\mathbf s \\in \\Delta$, $\\mathbf r - \\mathbf s$ has zero sum, so $\\norm {\\mathbf P \\paren {\\mathbf r - \\mathbf s} }_1 \\le \\norm {\\mathbf r - \\mathbf s}_1$ and:\n:$\\norm {\\map T {\\mathbf r} - \\map T {\\mathbf s} }_1 \\le \\alpha \\norm {\\mathbf r - \\mathbf s}_1$",
+      "By the [[Banach Fixed-Point Theorem]], $T$ has a unique fixed point, the PageRank vector, and the iteration converges with error at most $\\alpha^k \\norm {\\mathbf r_0 - \\mathbf r}_1$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "arden_lemma_from_least_solution",
+  "field": [
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $A, B$ be [[Definition:Formal Language|languages]] over an [[Definition:Alphabet|alphabet]] $\\Sigma$.\nThen the [[Definition:Smallest Element|least]] solution of the equation:\n:$X = A X \\cup B$\nis:\n:$X = A^* B$\nIf $\\epsilon \\notin A$, this solution is [[Definition:Unique|unique]]."
+  },
+  "B_source": {
+    "statement": "Let $F$ be a [[Definition:Increasing Mapping|monotone]] operator on the [[Definition:Power Set|power set]] $\\powerset S$ that preserves unions of increasing chains.\nThen $F$ has a [[Definition:Least Fixed Point|least fixed point]]:\n:$\\displaystyle \\mu F = \\bigcup_{n \\mathop \\ge 0} \\map {F^n} \\O$"
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the monotone operator": "the map sending a language X to the prefix concatenated with X, united with the base",
+        "the iteration from the empty object": "successive approximations accumulating longer prefixes of the star",
+        "the least fixed point": "the star of the prefix concatenated with the base"
+      },
+      "derived": {
+        "the limit of the iteration": "the union over all repetition counts of the prefix applied to the base",
+        "uniqueness of the solution": "guaranteed only when the prefix does not contain the empty word"
+      }
+    },
+    "validity_conditions": [
+      "The operator is monotone in the unknown language, so iterating it from the empty set gives an increasing chain whose union is the least fixed point.",
+      "The nth iterate consists of words formed by at most n copies of the prefix followed by the base, so the union is exactly the star of the prefix times the base.",
+      "If the prefix contains the empty word the equation has many solutions and only the least is given by the formula, so uniqueness requires excluding that case."
+    ],
+    "proof_plan": [
+      "Define $\\map F X = A X \\cup B$ on the [[Definition:Power Set|power set]] $\\powerset {\\Sigma^*}$.\n[[Definition:Concatenation of Languages|Concatenation]] and [[Definition:Set Union|union]] are [[Definition:Increasing Mapping|monotone]], so $F$ is monotone.\nThe equation states that $X$ is a [[Definition:Fixed Point|fixed point]] of $F$.",
+      "Iterate from $\\O$:\n{{begin-eqn}}\n{{eqn | l = \\map F \\O\n| r = B\n}}\n{{eqn | l = \\map {F^2} \\O\n| r = B \\cup A B\n}}\n{{eqn | l = \\map {F^{n + 1} } \\O\n| r = \\bigcup_{k \\mathop = 0}^n A^k B\n| c = by [[Principle of Mathematical Induction|induction]]\n}}\n{{end-eqn}}\nThis is an increasing chain.",
+      "Hence:\n:$\\displaystyle \\mu F = \\bigcup_{k \\mathop \\ge 0} A^k B = A^* B$\nwhich is the [[Definition:Least Fixed Point|least fixed point]] by the source result.",
+      "Suppose $\\epsilon \\notin A$ and $X$ is any solution.\nA word $w \\in X$ of length $m$ unwinds in at most $m$ steps, so $X \\subseteq A^* B$.\nHence the solution is [[Definition:Unique|unique]].\nIf $\\epsilon \\in A$, then $A^* \\paren {B \\cup C}$ is also a solution for every language $C$, so uniqueness fails.\n{{qed}}"
+    ]
+  }
+}

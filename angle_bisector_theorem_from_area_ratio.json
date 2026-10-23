@@ -1,0 +1,36 @@
+{
+  "id": "angle_bisector_theorem_from_area_ratio",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Triangle (Geometry)|triangle]] and let the [[Definition:Angle Bisector|bisector]] of $\\angle A$ meet $BC$ at $D$.\nThen:\n:$\\dfrac {BD} {DC} = \\dfrac {AB} {AC}$"
+  },
+  "B_source": {
+    "statement": "The [[Definition:Area|area]] of a triangle with sides $x$, $y$ enclosing an angle $\\theta$ is:\n:$\\dfrac 1 2 x y \\sin \\theta$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the enclosed angle": "half of angle A, shared by both sub-triangles"
+      },
+      "derived": {
+        "two expressions for the area ratio": "the bisector ratio"
+      },
+      "reformulation": "Compute the ratio of the areas of ABD and ADC in two ways."
+    },
+    "validity_conditions": [
+      "Both sub-triangles have the same height from A, so their areas are proportional to BD and DC.",
+      "The bisector gives both sub-triangles the same angle at A."
+    ],
+    "proof_plan": [
+      "Triangles $ABD$ and $ADC$ have the same height from $A$ to $BC$, so:\n:$\\dfrac {\\sqbrk {ABD} } {\\sqbrk {ADC} } = \\dfrac {BD} {DC}$",
+      "By the source result, with $\\angle BAD = \\angle DAC = \\dfrac A 2$:\n:$\\sqbrk {ABD} = \\dfrac 1 2 AB \\cdot AD \\sin \\dfrac A 2, \\quad \\sqbrk {ADC} = \\dfrac 1 2 AC \\cdot AD \\sin \\dfrac A 2$",
+      "Hence $\\dfrac {\\sqbrk {ABD} } {\\sqbrk {ADC} } = \\dfrac {AB} {AC}$.",
+      "Equating the two expressions gives the [[Angle Bisector Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "row_rank_from_column_rank",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a [[Definition:Matrix|matrix]] over a [[Definition:Field (Abstract Algebra)|field]].\nThen the [[Definition:Row Rank|row rank]] of $\\mathbf A$ equals its [[Definition:Column Rank|column rank]]."
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf A$ be a [[Definition:Matrix|matrix]].\nThen the [[Definition:Column Rank|column rank]] of $\\mathbf A^\\intercal$ is the dimension of the span of the columns of $\\mathbf A^\\intercal$, which are the rows of $\\mathbf A$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "rows of A": "columns of A^T",
+        "row space of A": "column space of A^T",
+        "the transpose operation": "the row/column duality"
+      },
+      "derived": {
+        "row rank of A": "column rank of A^T",
+        "the claim rowrank = colrank": "colrank(A^T) = colrank(A)"
+      },
+      "reformulation": "Transpose the matrix, which turns rows into columns, so 'row rank' becomes 'column rank of the transpose'."
+    },
+    "validity_conditions": [
+      "Row rank of A is by definition the column rank of A^T (rows of A are columns of A^T).",
+      "The nontrivial content - that colrank(A) = colrank(A^T) - is what the proof must establish (e.g. via A = CR factorization or dimension of the image of A and A^T).",
+      "Transposition is an involution, giving the row/column symmetry."
+    ],
+    "proof_plan": [
+      "By definition, the row rank of $\\mathbf A$ is the column rank of $\\mathbf A^\\intercal$.",
+      "The column rank of $\\mathbf A$ equals the largest $r$ such that $\\mathbf A$ has an invertible $r \\times r$ [[Definition:Submatrix|submatrix]].\nAs $\\map \\det {\\mathbf B^\\intercal} = \\map \\det {\\mathbf B}$, this characterization is symmetric in rows and columns, so $\\operatorname {colrank} \\mathbf A = \\operatorname {colrank} \\mathbf A^\\intercal$.",
+      "Combining:\n:$\\operatorname {rowrank} \\mathbf A = \\operatorname {colrank} \\mathbf A^\\intercal = \\operatorname {colrank} \\mathbf A$",
+      "Hence the two ranks coincide.\n{{qed}}"
+    ]
+  }
+}

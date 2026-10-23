@@ -1,0 +1,39 @@
+{
+  "id": "circle_area_from_ellipse_area",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $C$ be a [[Definition:Circle|circle]] of [[Definition:Radius of Circle|radius]] $r$.\nThen the [[Definition:Area|area]] enclosed by $C$ is:\n:$\\AA = \\pi r^2$"
+  },
+  "B_source": {
+    "statement": "Let $E$ be an [[Definition:Ellipse|ellipse]] with [[Definition:Semi-Major Axis|semi-major axis]] $a$ and [[Definition:Semi-Minor Axis|semi-minor axis]] $b$.\nThen the [[Definition:Area|area]] enclosed by $E$ is:\n:$\\AA = \\pi a b$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the semi-axis a": "the radius r",
+        "the semi-axis b": "the same radius r",
+        "the ellipse": "the circle, its equal-axis case"
+      },
+      "derived": {
+        "the product of the semi-axes": "the square of the radius",
+        "the area formula": "pi times r squared"
+      }
+    },
+    "validity_conditions": [
+      "A circle is precisely an ellipse whose two semi-axes are equal, so the specialization is an instantiation requiring no new argument.",
+      "Setting both semi-axes to r turns the product into r squared, giving the familiar formula.",
+      "The ellipse formula itself follows from the circle case by an area-scaling argument, so the two are equivalent rather than independent; the direction taken here is the instantiation."
+    ],
+    "proof_plan": [
+      "From [[Area of Ellipse]]:\n:$\\AA = \\pi a b$",
+      "A [[Definition:Circle|circle]] of radius $r$ is an ellipse with $a = b = r$.",
+      "Hence $a b = r^2$.",
+      "Thus:\n:$\\AA = \\pi r^2$\n{{qed}}"
+    ]
+  }
+}

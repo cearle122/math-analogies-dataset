@@ -1,0 +1,38 @@
+{
+  "id": "dirichlet_approximation_from_pigeonhole",
+  "field": [
+    "number_theory",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\alpha \\in \\R$ and $N \\in \\Z_{\\ge 1}$.\nThen there exist $p, q \\in \\Z$ with $1 \\le q \\le N$ and:\n:$\\size {q \\alpha - p} < \\dfrac 1 N$\nIn particular, if $\\alpha$ is irrational then $\\size {\\alpha - \\dfrac p q} < \\dfrac 1 {q^2}$ for infinitely many fractions."
+  },
+  "B_source": {
+    "statement": "If $n$ objects are placed in $m$ boxes with $n > m$, then some box contains at least two objects."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the objects": "the fractional parts of k alpha for k = 0, ..., N",
+        "the boxes": "the N intervals [j/N, (j+1)/N)"
+      },
+      "derived": {
+        "two objects in one box": "a multiple q alpha within 1/N of an integer"
+      },
+      "reformulation": "Place N + 1 fractional parts into N subintervals of [0, 1)."
+    },
+    "validity_conditions": [
+      "Using N + 1 fractional parts and N boxes is exactly what the pigeonhole principle needs.",
+      "Infinitely many approximations for irrational alpha follow by letting N grow."
+    ],
+    "proof_plan": [
+      "Consider the $N + 1$ fractional parts $\\set {k \\alpha}$ for $k = 0, 1, \\ldots, N$, all in $\\hointr 0 1$.",
+      "Divide $\\hointr 0 1$ into the $N$ intervals $\\hointr {\\dfrac j N} {\\dfrac {j + 1} N}$.",
+      "By the [[Pigeonhole Principle]], two of them, for $k < l$, lie in the same interval, so $\\size {\\set {l \\alpha} - \\set {k \\alpha} } < \\dfrac 1 N$.",
+      "Let $q = l - k \\in \\closedint 1 N$ and $p = \\floor {l \\alpha} - \\floor {k \\alpha}$.\nThen $\\size {q \\alpha - p} < \\dfrac 1 N \\le \\dfrac 1 q$, which is [[Dirichlet's Approximation Theorem]].\n{{qed}}"
+    ]
+  }
+}

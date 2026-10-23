@@ -1,0 +1,42 @@
+{
+  "id": "kkm_from_sperner",
+  "field": [
+    "topology",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\Delta$ be the [[Definition:Simplex|simplex]] with [[Definition:Vertex of Simplex|vertices]] $e_1, \\ldots, e_n$.\nLet $C_1, \\ldots, C_n$ be [[Definition:Closed Set (Topology)|closed sets]] such that for all $S \\subseteq \\set {1, \\ldots, n}$:\n:$\\map {\\operatorname {conv} } {\\set {e_i: i \\in S} } \\subseteq \\displaystyle \\bigcup_{i \\mathop \\in S} C_i$\nThen:\n:$\\displaystyle \\bigcap_{i \\mathop = 1}^n C_i \\ne \\O$"
+  },
+  "B_source": {
+    "statement": "Let $T$ be a [[Definition:Triangulation|triangulation]] of $\\Delta$ with a proper [[Definition:Sperner Labelling|Sperner labelling]].\nThen $T$ contains a cell whose vertices carry all $n$ labels."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the vertex labels": "the index of a closed set containing that vertex",
+        "the rainbow cell": "a small simplex meeting every C_i",
+        "the fixed triangulation": "a sequence of triangulations with mesh tending to zero"
+      },
+      "derived": {
+        "the limit of rainbow cells": "a point lying in every C_i"
+      }
+    },
+    "validity_conditions": [
+      "the sets C_i must be closed for the intersection of limits to remain inside them",
+      "the covering condition on faces is exactly what makes the induced labelling proper",
+      "compactness of the simplex is needed to extract a convergent subsequence"
+    ],
+    "proof_plan": [
+      "Let $T_k$ be a [[Definition:Triangulation|triangulation]] of $\\Delta$ of [[Definition:Mesh of Triangulation|mesh]] at most $\\dfrac 1 k$.",
+      "For a vertex $v$ in the face spanned by $\\set {e_i: i \\in S}$, choose a label $i \\in S$ with $v \\in C_i$.",
+      "By the covering hypothesis such an $i$ exists.\nAs the label is chosen from the support of $v$, the labelling is proper in the sense of [[Sperner's Lemma]].",
+      "By [[Sperner's Lemma]], there is a cell $\\sigma_k$ carrying all $n$ labels, so $\\sigma_k$ meets every $C_i$.",
+      "As $\\Delta$ is [[Definition:Compact Space|compact]], a [[Definition:Subsequence|subsequence]] of the $\\sigma_k$ converges to a point $x$.\nAs the diameters tend to $0$ and each $C_i$ is [[Definition:Closed Set (Topology)|closed]], $x \\in C_i$ for every $i$.\n{{qed}}"
+    ]
+  }
+}

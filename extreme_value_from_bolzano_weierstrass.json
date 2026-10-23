@@ -1,0 +1,37 @@
+{
+  "id": "extreme_value_from_bolzano_weierstrass",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Continuous Real Function|continuous]] on $\\closedint a b$.\nThen $f$ is [[Definition:Bounded Real-Valued Function|bounded]] and there exists $x^* \\in \\closedint a b$ with:\n:$\\map f {x^*} = \\displaystyle \\sup_{x \\mathop \\in \\closedint a b} \\map f x$"
+  },
+  "B_source": {
+    "statement": "Every [[Definition:Bounded Real Sequence|bounded real sequence]] has a [[Definition:Convergent Real Sequence|convergent]] [[Definition:Subsequence|subsequence]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "an arbitrary bounded sequence": "a sequence of points where f is large",
+        "the convergent subsequence": "a subsequence converging to a candidate maximizer"
+      },
+      "derived": {
+        "the limit point": "the point where the supremum is attained"
+      },
+      "reformulation": "Reduce attainment of the supremum to extracting a convergent subsequence from a maximizing sequence."
+    },
+    "validity_conditions": [
+      "The interval must be closed so that the limit of the subsequence stays in the domain.",
+      "Continuity transfers the values along the subsequence to the limit point."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $f$ is unbounded above, and choose $x_n \\in \\closedint a b$ with $\\map f {x_n} > n$.\nBy the [[Bolzano-Weierstrass Theorem]], a subsequence $x_{n_k}$ converges to some $x$, which lies in $\\closedint a b$ as the interval is [[Definition:Closed Real Interval|closed]].",
+      "By continuity $\\map f {x_{n_k} } \\to \\map f x$, contradicting $\\map f {x_{n_k} } > n_k \\to \\infty$.\nHence $f$ is bounded above, and $M = \\sup f$ exists.",
+      "Choose $x_n$ with $\\map f {x_n} > M - \\dfrac 1 n$.\nBy the [[Bolzano-Weierstrass Theorem]] again, a subsequence converges to some $x^* \\in \\closedint a b$.",
+      "By continuity, $\\map f {x^*} = \\lim \\map f {x_{n_k} } \\ge M$, so $\\map f {x^*} = M$.\nApplying this to $-f$ gives boundedness below and attainment of the infimum.\nThis is the [[Extreme Value Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "stirling_second_kind_recurrence_from_pascal_case_split",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\map S {n, k}$ be the number of partitions of an $n$-set into $k$ non-empty blocks.\nThen:\n:$\\map S {n + 1, k} = k \\, \\map S {n, k} + \\map S {n, k - 1}$"
+  },
+  "B_source": {
+    "statement": "[[Pascal's Rule]] $\\dbinom {n + 1} k = \\dbinom n k + \\dbinom n {k - 1}$ holds since the $k$-subsets of $\\set {1, \\ldots, n + 1}$ split according to whether they contain $n + 1$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "subsets": "set partitions",
+        "containing n + 1": "n + 1 forming a block on its own"
+      },
+      "derived": {
+        "the two cases": "the two terms of the recurrence"
+      },
+      "reformulation": "Reuse the case split on the last element from Pascal's rule; the non-singleton case acquires a multiplicity, the choice of block."
+    },
+    "validity_conditions": [
+      "Removing n + 1 from a non-singleton block leaves a partition with the same number of blocks.",
+      "Each partition of {1, ..., n} into k blocks extends in exactly k ways."
+    ],
+    "proof_plan": [
+      "Split the partitions of $\\set {1, \\ldots, n + 1}$ into $k$ blocks according to whether $\\set {n + 1}$ is a block.",
+      "If it is, removing it leaves a partition of $\\set {1, \\ldots, n}$ into $k - 1$ blocks, giving $\\map S {n, k - 1}$ partitions.",
+      "If not, removing $n + 1$ leaves a partition of $\\set {1, \\ldots, n}$ into $k$ blocks.\nConversely each such partition arises from $k$ choices of the block receiving $n + 1$, giving $k \\, \\map S {n, k}$.",
+      "Adding the cases gives the recurrence for [[Definition:Stirling Numbers of the Second Kind|Stirling numbers of the second kind]].\n{{qed}}"
+    ]
+  }
+}

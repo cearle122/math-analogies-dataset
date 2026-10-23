@@ -1,0 +1,41 @@
+{
+  "id": "moment_generating_function_from_laplace_transform",
+  "field": [
+    "probability",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $X$ and $Y$ be [[Definition:Independent Random Variables|independent random variables]].\nThen for all $t$ where both sides are finite:\n:$\\map {M_{X + Y} } t = \\map {M_X} t \\map {M_Y} t$\nwhere $M_X$ is the [[Definition:Moment Generating Function|moment generating function]] of $X$."
+  },
+  "B_source": {
+    "statement": "Let $f, g$ be functions for which the [[Definition:Laplace Transform|Laplace transform]] exists.\nThen:\n:$\\map \\LL {f * g} = \\map \\LL f \\map \\LL g$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the convolution of two functions": "the distribution of a sum of independent random variables",
+        "the Laplace transform of a function": "the moment generating function of a random variable",
+        "pointwise multiplication of transforms": "multiplication of the generating functions"
+      },
+      "derived": {
+        "the convolution theorem": "the product formula for sums of independent variables",
+        "inversion of the transform": "recovery of the distribution, valid when the transform is finite near zero"
+      },
+      "reformulation": "Reinterpret the distribution of a sum as a convolution, so the transform converts it into a product."
+    },
+    "validity_conditions": [
+      "The density of a sum of independent variables is the convolution of the densities, so the convolution theorem applies once the transform is identified with the generating function.",
+      "Independence is essential and is what makes the joint density factor; without it the distribution of the sum is not a convolution.",
+      "The moment generating function may be infinite outside a neighbourhood of zero, so the transfer is valid only where it converges; the characteristic function is the standard remedy since it always exists."
+    ],
+    "proof_plan": [
+      "As $X$ and $Y$ are independent, the [[Definition:Distribution|distribution]] of $X + Y$ is the [[Definition:Convolution of Measures|convolution]] $P_X * P_Y$.",
+      "We have:\n:$\\displaystyle \\map {M_X} t = \\int e^{t x} \\rd \\map {P_X} x$\nwhich is the two-sided [[Definition:Laplace Transform|Laplace transform]] of $P_X$ evaluated at $-t$.",
+      "By the [[Convolution Theorem]] for Laplace transforms:\n:$\\map {M_{X + Y} } t = \\map {M_X} t \\map {M_Y} t$",
+      "The identity holds on the region where all transforms converge.\nOtherwise pass to [[Definition:Characteristic Function of Random Variable|characteristic functions]], which always exist.\n{{qed}}"
+    ]
+  }
+}

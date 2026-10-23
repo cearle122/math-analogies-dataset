@@ -1,0 +1,41 @@
+{
+  "id": "unification_from_idempotent_substitution",
+  "field": [
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $s$ and $t$ be [[Definition:Unifiable|unifiable]] [[Definition:Term (Logic)|terms]].\nThen there is a [[Definition:Most General Unifier|most general unifier]] $\\theta$ of $s$ and $t$ such that:\n:$\\theta \\circ \\theta = \\theta$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {M, \\circ}$ be a [[Definition:Monoid|monoid]].\nAn element $e \\in M$ is [[Definition:Idempotent Element|idempotent]] {{iff}} $e \\circ e = e$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the monoid of transformations": "substitutions under composition",
+        "the idempotent element": "a substitution unchanged by composition with itself",
+        "the idempotence equation": "the condition that the substitution's range shares no variable with its domain"
+      },
+      "derived": {
+        "applying the substitution a second time": "changing nothing further, so the result is fully resolved",
+        "the most general unifier produced by the algorithm": "idempotent, since the algorithm eliminates each solved variable"
+      },
+      "reformulation": "State the requirement that a solution be fully resolved as idempotence under composition."
+    },
+    "validity_conditions": [
+      "Substitutions form a monoid under composition, so idempotence is the fixed point condition for composing an element with itself.",
+      "A substitution is idempotent exactly when no variable in its domain occurs in its range, which is what the occurs check enforces.",
+      "Without the occurs check the algorithm can produce a substitution mapping a variable to a term containing it, which is not idempotent and does not represent a finite solution."
+    ],
+    "proof_plan": [
+      "Substitutions form a [[Definition:Monoid|monoid]] under composition, with the identity substitution as identity.",
+      "The requirement that reapplying $\\theta$ changes nothing is exactly [[Definition:Idempotent Element|idempotence]] $\\theta \\circ \\theta = \\theta$.",
+      "Let $\\map {\\operatorname {dom} } \\theta = \\set {x: \\map \\theta x \\ne x}$ and $\\map {\\operatorname {ran} } \\theta$ the variables occurring in $\\set {\\map \\theta x: x \\in \\map {\\operatorname {dom} } \\theta}$.\nThen $\\theta$ is idempotent {{iff}} $\\map {\\operatorname {dom} } \\theta \\cap \\map {\\operatorname {ran} } \\theta = \\O$.",
+      "The [[Robinson's Unification Algorithm|unification algorithm]] with the occurs check eliminates each solved variable from all other bindings.\nHence its output has domain and range disjoint, and is an idempotent most general unifier.\n{{qed}}"
+    ]
+  }
+}

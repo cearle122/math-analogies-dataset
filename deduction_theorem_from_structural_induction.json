@@ -1,0 +1,38 @@
+{
+  "id": "deduction_theorem_from_structural_induction",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In a [[Definition:Hilbert Proof System|Hilbert system]] for propositional logic with [[Definition:Modus Ponendo Ponens|modus ponens]] and the axiom schemes:\n:$\\phi \\to \\paren {\\psi \\to \\phi}$\n:$\\paren {\\phi \\to \\paren {\\psi \\to \\chi} } \\to \\paren {\\paren {\\phi \\to \\psi} \\to \\paren {\\phi \\to \\chi} }$\nif $\\Gamma \\cup \\set \\phi \\vdash \\psi$ then $\\Gamma \\vdash \\phi \\to \\psi$."
+  },
+  "B_source": {
+    "statement": "Let $\\map P \\phi$ be a property of [[Definition:Well-Formed Formula|formulas]].\nIf $\\map P \\phi$ holds for atomic formulas and is preserved by each formation rule, then $\\map P \\phi$ holds for every formula."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "formulas": "derivations",
+        "formation rules": "inference rules",
+        "atomic formulas": "axioms and hypotheses"
+      },
+      "derived": {
+        "the inductive property": "Gamma proves phi -> psi_i for each line psi_i"
+      },
+      "reformulation": "Reuse the induction-over-construction plan, now over the lines of a derivation, with one case per way a line can be justified."
+    },
+    "validity_conditions": [
+      "The two axiom schemes are exactly what is needed for the hypothesis case and the modus ponens case.",
+      "The derivation is finite, so induction on its length applies."
+    ],
+    "proof_plan": [
+      "Let $\\psi_1, \\ldots, \\psi_n = \\psi$ be a derivation from $\\Gamma \\cup \\set \\phi$.\nShow by induction on $i$ that $\\Gamma \\vdash \\phi \\to \\psi_i$.",
+      "If $\\psi_i$ is an axiom or lies in $\\Gamma$, then from $\\psi_i$ and $\\psi_i \\to \\paren {\\phi \\to \\psi_i}$, modus ponens gives $\\phi \\to \\psi_i$.\nIf $\\psi_i = \\phi$, then $\\vdash \\phi \\to \\phi$ follows from the two schemes.",
+      "If $\\psi_i$ follows by modus ponens from $\\psi_j$ and $\\psi_j \\to \\psi_i$, the induction hypothesis gives $\\Gamma \\vdash \\phi \\to \\psi_j$ and $\\Gamma \\vdash \\phi \\to \\paren {\\psi_j \\to \\psi_i}$.\nThe second scheme and two applications of modus ponens give $\\Gamma \\vdash \\phi \\to \\psi_i$.",
+      "Taking $i = n$ gives $\\Gamma \\vdash \\phi \\to \\psi$, which is the [[Deduction Theorem]].\n{{qed}}"
+    ]
+  }
+}

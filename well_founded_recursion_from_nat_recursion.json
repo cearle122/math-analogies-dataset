@@ -1,0 +1,40 @@
+{
+  "id": "well_founded_recursion_from_nat_recursion",
+  "field": [
+    "logic",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Well-Founded Relation|well-founded relation]] on a set $A$ and $G$ a rule assigning a value to each $a \\in A$ given values on its $R$-predecessors.\nThen there exists a [[Definition:Unique|unique]] $F$ on $A$ such that:\n:$\\forall a \\in A: \\map F a = \\map G {a, F \\restriction_{\\set {b: b \\mathrel R a} } }$"
+  },
+  "B_source": {
+    "statement": "Let $c$ be given and $g$ a function.\nThen there is a [[Definition:Unique|unique]] $f: \\N \\to X$ with $\\map f 0 = c$ and $\\map f {n + 1} = \\map g {\\map f n}$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the predecessor of a natural number": "the set of all R-predecessors of an element",
+        "the induction along the usual order": "induction along the well-founded relation R",
+        "the base case at zero": "the R-minimal elements, which have no predecessors"
+      },
+      "derived": {
+        "existence and uniqueness of the recursive function": "the same conclusion along R",
+        "the argument by induction on n": "the argument by well-founded induction on R"
+      }
+    },
+    "validity_conditions": [
+      "Well-foundedness is exactly the hypothesis that makes the induction step legitimate, since it rules out infinite descending chains.",
+      "The base case needs no separate treatment: R-minimal elements have empty predecessor sets, so the recursion clause determines their values outright.",
+      "Uniqueness is proved by well-founded induction on the set where two candidate solutions could differ, which must be empty since it has no R-minimal element."
+    ],
+    "proof_plan": [
+      "Replace the predecessor $n$ of $n + 1$ by the set $\\set {b: b \\mathrel R a}$ of $R$-predecessors of $a$.",
+      "Call $h$ an approximation if its domain is $R$-downward closed and it satisfies the recursion on its domain.\nBy [[Principle of Well-Founded Induction|well-founded induction]], any two approximations agree on the intersection of their domains.",
+      "Let $F$ be the union of all approximations.\n$F$ is a function, and if some $a$ were outside its domain, an $R$-minimal such $a$ could be added, contradicting maximality.\nHence $F$ is total and satisfies the recursion.",
+      "If $F$ and $F'$ both satisfy the recursion, the set $\\set {a: \\map F a \\ne \\map {F'} a}$ has no $R$-minimal element, so is empty.\nThis is the [[Principle of Well-Founded Recursion|well-founded recursion theorem]].\n{{qed}}"
+    ]
+  }
+}

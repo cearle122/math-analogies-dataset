@@ -1,0 +1,43 @@
+{
+  "id": "perron_frobenius_from_brouwer",
+  "field": [
+    "algebra",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a [[Definition:Square Matrix|square matrix]] with strictly positive entries.\nThen there exist $\\mathbf v$ with all entries positive and $\\lambda > 0$ such that:\n:$\\mathbf A \\mathbf v = \\lambda \\mathbf v$"
+  },
+  "B_source": {
+    "statement": "Let $K \\subseteq \\R^n$ be [[Definition:Compact Space|compact]] and [[Definition:Convex Set (Vector Space)|convex]], and $f: K \\to K$ [[Definition:Continuous Mapping|continuous]].\nThen there exists $x \\in K$ with $\\map f x = x$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the compact convex set K": "the standard simplex of nonnegative vectors summing to one",
+        "the continuous self-map f": "the normalized map x -> Ax / ||Ax||_1",
+        "the fixed point": "the Perron eigenvector"
+      },
+      "derived": {
+        "the fixed-point equation": "the eigenvector equation with lambda = ||Av||_1"
+      },
+      "reformulation": "The eigenvector equation is scale-invariant, so it must be reformulated on the projective quotient represented by the simplex before it becomes a genuine self-map."
+    },
+    "validity_conditions": [
+      "A must have nonnegative entries so the simplex is preserved",
+      "Ax must be nonzero on the simplex for the normalization to be defined, guaranteed by strict positivity",
+      "strict positivity is what upgrades existence to a strictly positive eigenvector and gives uniqueness"
+    ],
+    "proof_plan": [
+      "Let $\\Delta = \\set {\\mathbf x \\in \\R^n_{\\ge 0}: \\sum_i x_i = 1}$ be the [[Definition:Standard Simplex|standard simplex]], which is compact and convex.",
+      "Define:\n:$\\map g {\\mathbf x} = \\dfrac {\\mathbf A \\mathbf x} {\\norm {\\mathbf A \\mathbf x}_1}$",
+      "For $\\mathbf x \\in \\Delta$, $\\mathbf A \\mathbf x$ has non-negative entries and is non-zero, so $\\norm {\\mathbf A \\mathbf x}_1 > 0$.\nHence $g$ is continuous and maps $\\Delta$ into itself.",
+      "By the [[Brouwer Fixed Point Theorem]], there exists $\\mathbf v \\in \\Delta$ with:\n:$\\dfrac {\\mathbf A \\mathbf v} {\\norm {\\mathbf A \\mathbf v}_1} = \\mathbf v$",
+      "Let $\\lambda = \\norm {\\mathbf A \\mathbf v}_1 > 0$.\nThen $\\mathbf A \\mathbf v = \\lambda \\mathbf v$.\nAs $\\mathbf A$ has strictly positive entries and $\\mathbf v \\ne \\mathbf 0$, every entry of $\\mathbf A \\mathbf v$ is positive, so every entry of $\\mathbf v$ is positive.\nThis is the [[Perron-Frobenius Theorem]] for positive matrices.\n{{qed}}"
+    ]
+  }
+}

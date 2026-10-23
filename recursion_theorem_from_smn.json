@@ -1,0 +1,43 @@
+{
+  "id": "recursion_theorem_from_smn",
+  "field": [
+    "logic",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\N \\to \\N$ be a [[Definition:Total Recursive Function|total computable function]].\nThen there exists $e$ such that:\n:$\\phi_e = \\phi_{\\map f e}$"
+  },
+  "B_source": {
+    "statement": "There exists a [[Definition:Total Recursive Function|total computable function]] $s$ such that for all $x, y, z$:\n:$\\map {\\phi_{\\map s {x, y} } } z = \\map {\\phi_x} {y, z}$\nThis is the [[S-m-n Theorem]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the specialization function s": "the map producing programs from parameters",
+        "the diagonal substitution y := y applied to s": "the self-application that creates the fixed point",
+        "the transformation f": "the given effective program transformation"
+      },
+      "derived": {
+        "the index e": "a program equivalent to its own image under f"
+      },
+      "reformulation": "The transformation must be re-expressed as an operation on indices rather than on functions, which is what makes diagonal self-application available."
+    },
+    "validity_conditions": [
+      "f must be total computable so that composition with s stays computable",
+      "s must be total and computable, which is exactly what the source theorem provides",
+      "the conclusion is about extensional equality of the computed functions, not syntactic identity of the programs"
+    ],
+    "proof_plan": [
+      "Define the [[Definition:Partial Recursive Function|partial computable function]]:\n:$\\map \\psi {y, z} = \\map {\\phi_{\\map {\\phi_y} y} } z$",
+      "By the [[S-m-n Theorem]], there is a total computable $d$ with:\n:$\\phi_{\\map d y} = \\phi_{\\map {\\phi_y} y}$ whenever $\\map {\\phi_y} y$ is defined",
+      "$f \\circ d$ is total computable; let $v$ be an index with $\\phi_v = f \\circ d$.",
+      "Let $e = \\map d v$.\nAs $\\map {\\phi_v} v = \\map f {\\map d v}$ is defined:\n:$\\phi_e = \\phi_{\\map d v} = \\phi_{\\map {\\phi_v} v} = \\phi_{\\map f {\\map d v} } = \\phi_{\\map f e}$",
+      "Hence $e$ is a program agreeing with its own transform, which is [[Kleene's Recursion Theorem]].\n{{qed}}"
+    ]
+  }
+}

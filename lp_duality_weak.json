@@ -1,0 +1,39 @@
+{
+  "id": "lp_duality_weak",
+  "field": [
+    "combinatorics",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A \\in \\R^{m \\times n}$, $\\mathbf b \\in \\R^m$ and $\\mathbf c \\in \\R^n$.\nLet $\\mathbf y$ be [[Definition:Feasible Solution|feasible]] for the dual [[Definition:Linear Program|linear program]]:\n:$\\max \\mathbf b^\\intercal \\mathbf y$ subject to $\\mathbf A^\\intercal \\mathbf y \\le \\mathbf c$, $\\mathbf y \\ge \\mathbf 0$\nLet $\\mathbf x$ be feasible for the primal program. Then:\n:$\\mathbf b^\\intercal \\mathbf y \\le \\mathbf c^\\intercal \\mathbf x$"
+  },
+  "B_source": {
+    "statement": "The primal [[Definition:Linear Program|linear program]] is:\n:$\\min \\mathbf c^\\intercal \\mathbf x$ subject to $\\mathbf A \\mathbf x \\ge \\mathbf b$, $\\mathbf x \\ge \\mathbf 0$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "minimize c^T x": "maximize b^T y",
+        "constraint matrix A": "transpose A^T",
+        "primal variable x": "dual variable y"
+      },
+      "derived": {
+        "primal constraints Ax >= b": "dual constraints A^T y <= c",
+        "lower bound on primal optimum": "upper bound from any dual-feasible point"
+      }
+    },
+    "validity_conditions": [
+      "Both x and y are feasible and nonnegative, which is what licenses the chain of inequalities b^T y <= y^T A x <= c^T x.",
+      "The transpose relationship between primal and dual constraint systems is exact, not approximate."
+    ],
+    "proof_plan": [
+      "Let $\\mathbf x$ be primal feasible and $\\mathbf y$ dual feasible.",
+      "As $\\mathbf A \\mathbf x \\ge \\mathbf b$ and $\\mathbf y \\ge \\mathbf 0$:\n:$\\mathbf y^\\intercal \\mathbf A \\mathbf x \\ge \\mathbf y^\\intercal \\mathbf b = \\mathbf b^\\intercal \\mathbf y$",
+      "As $\\mathbf A^\\intercal \\mathbf y \\le \\mathbf c$ and $\\mathbf x \\ge \\mathbf 0$:\n:$\\mathbf y^\\intercal \\mathbf A \\mathbf x = \\paren {\\mathbf A^\\intercal \\mathbf y}^\\intercal \\mathbf x \\le \\mathbf c^\\intercal \\mathbf x$",
+      "Chaining:\n:$\\mathbf b^\\intercal \\mathbf y \\le \\mathbf y^\\intercal \\mathbf A \\mathbf x \\le \\mathbf c^\\intercal \\mathbf x$\nwhich is [[Weak Duality Theorem|weak duality]].\n{{qed}}"
+    ]
+  }
+}

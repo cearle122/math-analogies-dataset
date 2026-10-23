@@ -1,0 +1,40 @@
+{
+  "id": "integration_by_parts_from_product_rule",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $u, v$ be [[Definition:Continuously Differentiable|continuously differentiable]] on $\\closedint a b$.\nThen:\n:$\\displaystyle \\int_a^b u v' \\rd x = \\bigintlimits {u v} a b - \\int_a^b u' v \\rd x$"
+  },
+  "B_source": {
+    "statement": "Let $u, v$ be [[Definition:Differentiable Real Function|differentiable]].\nThen:\n:$\\paren {u v}' = u' v + u v'$\nand by the [[Fundamental Theorem of Calculus]], $\\displaystyle \\int_a^b F' = \\map F b - \\map F a$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the product being differentiated": "the product uv of the two given functions",
+        "the two terms of the product rule": "the two integrands appearing in the final formula",
+        "the antiderivative relation": "the boundary term obtained by evaluating uv at the endpoints"
+      },
+      "derived": {
+        "integrating both sides of the product rule": "the boundary term equals the sum of the two integrals",
+        "rearranging the identity": "the integration by parts formula"
+      },
+      "reformulation": "Recognize the target integrand as one term of a product rule, so integrating the identity yields the formula."
+    },
+    "validity_conditions": [
+      "Both u and v must be continuously differentiable on the interval so that the product rule holds pointwise and both integrands are integrable.",
+      "The fundamental theorem of calculus converts the integral of the derivative of uv into the boundary term, which requires uv to be absolutely continuous.",
+      "Rearrangement is legitimate because both integrals on the right are finite; if either diverges the identity must be interpreted as an improper limit."
+    ],
+    "proof_plan": [
+      "By the [[Product Rule for Derivatives]]:\n:$\\paren {u v}' = u' v + u v'$",
+      "Integrating over $\\closedint a b$:\n:$\\displaystyle \\int_a^b \\paren {u v}' \\rd x = \\int_a^b u' v \\rd x + \\int_a^b u v' \\rd x$",
+      "By the [[Fundamental Theorem of Calculus]]:\n:$\\displaystyle \\int_a^b \\paren {u v}' \\rd x = \\bigintlimits {u v} a b$",
+      "Rearranging:\n:$\\displaystyle \\int_a^b u v' \\rd x = \\bigintlimits {u v} a b - \\int_a^b u' v \\rd x$\n{{qed}}"
+    ]
+  }
+}

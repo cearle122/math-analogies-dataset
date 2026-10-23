@@ -1,0 +1,38 @@
+{
+  "id": "coproduct_from_product",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf C$ be a [[Definition:Metacategory|category]] and $A, B$ objects of $\\mathbf C$.\nA [[Definition:Coproduct|coproduct]] of $A$ and $B$ is an object $A + B$ with morphisms $i_A: A \\to A + B$ and $i_B: B \\to A + B$ such that for all $f: A \\to X$ and $g: B \\to X$ there is a [[Definition:Unique|unique]] $u: A + B \\to X$ with:\n:$u \\circ i_A = f, \\quad u \\circ i_B = g$"
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf C$ be a [[Definition:Metacategory|category]] and $A, B$ objects of $\\mathbf C$.\nA [[Definition:Product (Category Theory)|product]] of $A$ and $B$ is an object $A \\times B$ with morphisms $\\pr_A: A \\times B \\to A$ and $\\pr_B: A \\times B \\to B$ such that for all $f: X \\to A$ and $g: X \\to B$ there is a [[Definition:Unique|unique]] $u: X \\to A \\times B$ with:\n:$\\pr_A \\circ u = f, \\quad \\pr_B \\circ u = g$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "C": "C^op",
+        "projection AxB -> A": "injection A -> A+B"
+      },
+      "derived": {
+        "product in C": "coproduct in C",
+        "terminal/limit": "initial/colimit"
+      },
+      "reformulation": "Pass to the opposite category C^op, reversing every morphism."
+    },
+    "validity_conditions": [
+      "The universal property of the product is stated purely in terms of morphisms, so reversing all arrows yields a well-formed universal property.",
+      "Op is an involution, so the coproduct in C is exactly the product in C^op and vice versa."
+    ],
+    "proof_plan": [
+      "Write the [[Definition:Universal Property|universal property]] of the [[Definition:Product (Category Theory)|product]] using only morphisms and commuting triangles.",
+      "Reverse every morphism, passing to $\\mathbf C^{\\text {op} }$.",
+      "The projections become injections, and the reversed property is the defining universal property of the [[Definition:Coproduct|coproduct]].",
+      "Hence a coproduct in $\\mathbf C$ is a product in $\\mathbf C^{\\text {op} }$.\n{{qed}}"
+    ]
+  }
+}

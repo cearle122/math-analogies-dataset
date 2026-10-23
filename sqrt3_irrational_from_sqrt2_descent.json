@@ -1,0 +1,39 @@
+{
+  "id": "sqrt3_irrational_from_sqrt2_descent",
+  "field": [
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "$\\sqrt 3$ is [[Definition:Irrational Number|irrational]]."
+  },
+  "B_source": {
+    "statement": "$\\sqrt 2$ is [[Definition:Irrational Number|irrational]]: if $\\sqrt 2 = \\dfrac a b$ in lowest terms, then $2 \\divides a$ and $2 \\divides b$, a contradiction."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the prime 2": "the prime 3",
+        "the divisibility step from a^2 even to a even": "the step from 3 dividing a^2 to 3 dividing a",
+        "the reduced fraction a/b": "a reduced fraction with the same coprimality assumption"
+      },
+      "derived": {
+        "both numerator and denominator divisible by the prime": "the same contradiction with the fraction being in lowest terms",
+        "the parity argument": "a divisibility argument justified by Euclid's lemma"
+      }
+    },
+    "validity_conditions": [
+      "The step from p dividing a^2 to p dividing a is Euclid's lemma and requires p prime; for p = 2 it is the familiar parity argument.",
+      "Everything else in the skeleton is unchanged: assume a reduced fraction, clear denominators, and derive a common factor.",
+      "The transfer fails for composite numbers: for 4 the divisibility step is false, and indeed the square root of 4 is rational, so primality is doing real work."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $\\sqrt 3 = \\dfrac a b$ with $a, b \\in \\Z_{>0}$ and $a \\perp b$.",
+      "Then:\n:$a^2 = 3 b^2$\nso $3 \\divides a^2$.",
+      "By [[Euclid's Lemma for Prime Divisors]], $3 \\divides a$.\nLet $a = 3 c$.\nThen $9 c^2 = 3 b^2$, so $b^2 = 3 c^2$ and $3 \\divides b$.",
+      "Thus $3 \\divides a$ and $3 \\divides b$, contradicting $a \\perp b$.\nHence $\\sqrt 3$ is irrational.\n{{qed}}"
+    ]
+  }
+}

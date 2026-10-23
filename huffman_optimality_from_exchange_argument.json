@@ -1,0 +1,38 @@
+{
+  "id": "huffman_optimality_from_exchange_argument",
+  "field": [
+    "algorithms",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let symbols have frequencies $f_1, \\ldots, f_n$.\nThen [[Definition:Huffman Code|Huffman's algorithm]], which repeatedly merges the two least frequent symbols, produces a [[Definition:Prefix Code|prefix code]] minimizing $\\displaystyle \\sum_i f_i \\ell_i$, where $\\ell_i$ is the length of the codeword of symbol $i$."
+  },
+  "B_source": {
+    "statement": "To show that a greedy choice is safe, take an arbitrary optimal solution and exchange parts of it so that it contains the greedy choice, without increasing its cost."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the greedy choice": "making the two least frequent symbols sibling leaves",
+        "the exchange": "swapping leaves of the code tree"
+      },
+      "derived": {
+        "a safe first merge": "optimality by induction on the number of symbols"
+      },
+      "reformulation": "Use an exchange argument to make the two rarest symbols deepest siblings, then reduce to a smaller alphabet."
+    },
+    "validity_conditions": [
+      "Swapping a rarer symbol deeper never increases the cost.",
+      "Merging x and y into z changes every relevant cost by the same amount f_x + f_y."
+    ],
+    "proof_plan": [
+      "Let $x$, $y$ be two least frequent symbols.\nIn an optimal code tree, swap $x$ with a leaf $a$ of maximum depth: the cost changes by $\\paren {f_a - f_x} \\paren {\\ell_x - \\ell_a} \\le 0$.\nSimilarly for $y$, so some optimal tree has $x$, $y$ as sibling leaves of maximum depth.",
+      "Merging $x$ and $y$ into a symbol $z$ with $f_z = f_x + f_y$ gives a bijection between such trees $T$ and trees $T'$ for the reduced alphabet, with:\n:$\\map {\\operatorname {cost} } T = \\map {\\operatorname {cost} } {T'} + f_x + f_y$",
+      "By induction on $n$, Huffman's tree for the reduced alphabet is optimal, so the tree it produces is optimal among trees with $x$, $y$ siblings.",
+      "Such trees include an optimal tree, by the first step, so Huffman's code is optimal.\n{{qed}}"
+    ]
+  }
+}

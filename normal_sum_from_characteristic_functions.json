@@ -1,0 +1,36 @@
+{
+  "id": "normal_sum_from_characteristic_functions",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X \\sim \\map N {\\mu_1, \\sigma_1^2}$ and $Y \\sim \\map N {\\mu_2, \\sigma_2^2}$ be [[Definition:Independent Random Variables|independent]].\nThen:\n:$X + Y \\sim \\map N {\\mu_1 + \\mu_2, \\sigma_1^2 + \\sigma_2^2}$"
+  },
+  "B_source": {
+    "statement": "The [[Definition:Characteristic Function of Random Variable|characteristic function]] $\\map {\\phi_X} t = \\expect {e^{i t X} }$ determines the distribution of $X$, and $\\phi_{X + Y} = \\phi_X \\phi_Y$ for independent $X$, $Y$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the distributions": "their characteristic functions"
+      },
+      "derived": {
+        "the product of Gaussian characteristic functions": "a Gaussian characteristic function"
+      },
+      "reformulation": "Convert the convolution of densities into a product of characteristic functions."
+    },
+    "validity_conditions": [
+      "Independence is needed for the characteristic function of the sum to factor.",
+      "Uniqueness of the distribution with a given characteristic function is the key input."
+    ],
+    "proof_plan": [
+      "For $Z \\sim \\map N {\\mu, \\sigma^2}$, $\\map {\\phi_Z} t = \\map \\exp {i \\mu t - \\dfrac {\\sigma^2 t^2} 2}$.",
+      "By independence:\n:$\\map {\\phi_{X + Y} } t = \\map {\\phi_X} t \\map {\\phi_Y} t = \\map \\exp {i \\paren {\\mu_1 + \\mu_2} t - \\dfrac {\\paren {\\sigma_1^2 + \\sigma_2^2} t^2} 2}$",
+      "This is the characteristic function of $\\map N {\\mu_1 + \\mu_2, \\sigma_1^2 + \\sigma_2^2}$.",
+      "By [[Characteristic Function Determines Distribution|uniqueness]], $X + Y$ has this distribution.\nBy induction, finite sums of independent normal variables are normal.\n{{qed}}"
+    ]
+  }
+}

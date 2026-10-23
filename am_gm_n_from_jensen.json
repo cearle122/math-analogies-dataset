@@ -1,0 +1,40 @@
+{
+  "id": "am_gm_n_from_jensen",
+  "field": [
+    "algebra",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $x_1, x_2, \\ldots, x_n \\in \\R_{>0}$ be [[Definition:Strictly Positive Real Number|strictly positive real numbers]].\nThen:\n:$\\displaystyle \\frac {x_1 + x_2 + \\cdots + x_n} n \\ge \\paren {x_1 x_2 \\cdots x_n}^{1 / n}$"
+  },
+  "B_source": {
+    "statement": "Let $\\phi$ be a [[Definition:Concave Real Function|concave real function]] on an [[Definition:Real Interval|interval]] $I$.\nLet $x_1, \\ldots, x_n \\in I$ and let $w_1, \\ldots, w_n \\ge 0$ with $\\displaystyle \\sum_{i \\mathop = 1}^n w_i = 1$.\nThen:\n:$\\displaystyle \\map \\phi {\\sum_{i \\mathop = 1}^n w_i x_i} \\ge \\sum_{i \\mathop = 1}^n w_i \\map \\phi {x_i}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the concave function phi": "the natural logarithm",
+        "the weights w_i": "the equal weights 1/n",
+        "the points x_i": "the given positive numbers"
+      },
+      "derived": {
+        "the inequality for the average": "the logarithm of the arithmetic mean is at least the average of the logarithms",
+        "exponentiating both sides": "the arithmetic mean is at least the geometric mean"
+      }
+    },
+    "validity_conditions": [
+      "The logarithm is concave on the positive reals, since its second derivative is negative there, so Jensen applies with phi the logarithm.",
+      "The numbers must be strictly positive for the logarithm to be defined, which matches the hypothesis of the arithmetic-geometric mean inequality.",
+      "Exponentiation is increasing, so it preserves the direction of the inequality and converts the average of logarithms into the geometric mean."
+    ],
+    "proof_plan": [
+      "From [[Logarithm is Strictly Concave]], $\\ln$ is [[Definition:Concave Real Function|concave]] on $\\R_{>0}$.\nApply [[Jensen's Inequality (Real Analysis)|Jensen's inequality]] with $\\phi = \\ln$ and $w_i = \\dfrac 1 n$.",
+      "This gives:\n:$\\displaystyle \\map \\ln {\\frac 1 n \\sum_{i \\mathop = 1}^n x_i} \\ge \\frac 1 n \\sum_{i \\mathop = 1}^n \\ln x_i$",
+      "{{begin-eqn}}\n{{eqn | l = \\frac 1 n \\sum_{i \\mathop = 1}^n \\ln x_i\n| r = \\frac 1 n \\map \\ln {\\prod_{i \\mathop = 1}^n x_i}\n| c = [[Sum of Logarithms]]\n}}\n{{eqn | r = \\map \\ln {\\paren {\\prod_{i \\mathop = 1}^n x_i}^{1 / n} }\n| c = [[Logarithm of Power]]\n}}\n{{end-eqn}}",
+      "As $\\exp$ is [[Definition:Strictly Increasing Real Function|strictly increasing]], exponentiating both sides gives:\n:$\\displaystyle \\frac 1 n \\sum_{i \\mathop = 1}^n x_i \\ge \\paren {\\prod_{i \\mathop = 1}^n x_i}^{1 / n}$\n{{qed}}"
+    ]
+  }
+}

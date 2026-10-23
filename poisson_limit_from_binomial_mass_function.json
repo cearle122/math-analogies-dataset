@@ -1,0 +1,36 @@
+{
+  "id": "poisson_limit_from_binomial_mass_function",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X_n \\sim \\Binomial n {p_n}$ with $n p_n \\to \\lambda > 0$.\nThen for each $k \\in \\Z_{\\ge 0}$:\n:$\\map \\Pr {X_n = k} \\to e^{-\\lambda} \\dfrac {\\lambda^k} {k!}$"
+  },
+  "B_source": {
+    "statement": "Let $x_n \\to x$ in $\\R$.\nThen:\n:$\\paren {1 + \\dfrac {x_n} n}^n \\to e^x$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "x_n": "-n p_n"
+      },
+      "derived": {
+        "the factor (1 - p_n)^n": "the limit e^(-lambda)"
+      },
+      "reformulation": "Factor the binomial probability so that each factor has an elementary limit."
+    },
+    "validity_conditions": [
+      "p_n -> 0 follows from n p_n -> lambda, which makes (1 - p_n)^(-k) -> 1.",
+      "k is fixed while n tends to infinity."
+    ],
+    "proof_plan": [
+      "Write:\n:$\\map \\Pr {X_n = k} = \\dfrac {n \\paren {n - 1} \\cdots \\paren {n - k + 1} } {n^k} \\cdot \\dfrac {\\paren {n p_n}^k} {k!} \\cdot \\paren {1 - p_n}^n \\cdot \\paren {1 - p_n}^{-k}$",
+      "As $n \\to \\infty$, the first factor tends to $1$ and $\\paren {n p_n}^k \\to \\lambda^k$.\nAs $p_n \\to 0$, $\\paren {1 - p_n}^{-k} \\to 1$.",
+      "By the source result with $x_n = -n p_n \\to -\\lambda$, $\\paren {1 - p_n}^n \\to e^{-\\lambda}$.",
+      "Hence $\\map \\Pr {X_n = k} \\to e^{-\\lambda} \\dfrac {\\lambda^k} {k!}$, which is the [[Poisson Limit Theorem]].\n{{qed}}"
+    ]
+  }
+}

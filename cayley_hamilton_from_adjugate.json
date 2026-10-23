@@ -1,0 +1,40 @@
+{
+  "id": "cayley_hamilton_from_adjugate",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $A$ be a [[Definition:Square Matrix|square matrix]] of [[Definition:Order of Square Matrix|order]] $n$ over a [[Definition:Commutative Ring with Unity|commutative ring with unity]] $R$.\nLet $\\map {p_A} t = \\map \\det {t \\mathbf I - A}$ be its [[Definition:Characteristic Polynomial of Matrix|characteristic polynomial]].\nThen:\n:$\\map {p_A} A = \\mathbf 0$"
+  },
+  "B_source": {
+    "statement": "Let $M$ be a [[Definition:Square Matrix|square matrix]] over a [[Definition:Commutative Ring with Unity|commutative ring with unity]].\nThen:\n:$M \\map \\adj M = \\map \\det M \\mathbf I$\nwhere $\\map \\adj M$ is the [[Definition:Adjugate Matrix|adjugate]] of $M$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the matrix M": "tI - A over the polynomial ring",
+        "det(M) I": "p_A(t) I",
+        "adj(M)": "adj(tI - A), a matrix polynomial in t"
+      },
+      "derived": {
+        "M adj(M) = det(M) I": "(tI - A) adj(tI - A) = p_A(t) I",
+        "equating coefficients then substituting t = A": "p_A(A) = 0"
+      },
+      "reformulation": "Apply the adjugate identity to the matrix tI - A over the ring of polynomials, then substitute the matrix A for t."
+    },
+    "validity_conditions": [
+      "The adjugate identity holds over any commutative ring, in particular for tI - A over R[t].",
+      "Both sides are matrix polynomials in t; equating coefficients gives matrix relations independent of t.",
+      "Substituting t = A is valid because A commutes with itself (careful coefficient-wise substitution)."
+    ],
+    "proof_plan": [
+      "Apply the source result to $M = t \\mathbf I - A$ over $R \\sqbrk t$.",
+      "This gives:\n:$\\paren {t \\mathbf I - A} \\map \\adj {t \\mathbf I - A} = \\map {p_A} t \\mathbf I$",
+      "Write $\\map \\adj {t \\mathbf I - A} = \\displaystyle \\sum_{k \\mathop = 0}^{n - 1} B_k t^k$ and $\\map {p_A} t = \\displaystyle \\sum_{k \\mathop = 0}^n c_k t^k$.\nEquating coefficients of $t^k$:\n{{begin-eqn}}\n{{eqn | l = -A B_0\n| r = c_0 \\mathbf I\n}}\n{{eqn | l = B_{k - 1} - A B_k\n| r = c_k \\mathbf I\n| c = for $1 \\le k \\le n - 1$\n}}\n{{eqn | l = B_{n - 1}\n| r = c_n \\mathbf I\n}}\n{{end-eqn}}",
+      "Multiply the equation for $t^k$ on the left by $A^k$ and sum.\nThe left hand side [[Definition:Telescoping Series|telescopes]] to $\\mathbf 0$, giving:\n:$\\displaystyle \\sum_{k \\mathop = 0}^n c_k A^k = \\map {p_A} A = \\mathbf 0$\n{{qed}}"
+    ]
+  }
+}

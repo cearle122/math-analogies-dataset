@@ -1,0 +1,43 @@
+{
+  "id": "differential_entropy_from_discrete_entropy",
+  "field": [
+    "probability",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Continuous Random Variable|continuous random variable]] with [[Definition:Probability Density Function|density]] $p$.\nThe [[Definition:Differential Entropy|differential entropy]] of $X$ is:\n:$\\displaystyle \\map h X = -\\int_{-\\infty}^\\infty \\map p x \\log \\map p x \\rd x$"
+  },
+  "B_source": {
+    "statement": "Let $X$ be a [[Definition:Discrete Random Variable|discrete random variable]] taking values $x_i$ with probabilities $p_i$.\nThe [[Definition:Entropy (Information Theory)|Shannon entropy]] of $X$ is:\n:$\\displaystyle \\map H X = -\\sum_i p_i \\log p_i$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "generalization"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the discrete outcome i": "a bin of width Delta on the real line",
+        "the probability mass p_i": "the mass p(x_i) Delta of that bin",
+        "the sum over outcomes": "an integral over the line"
+      },
+      "derived": {
+        "the divergent term log(1/Delta)": "the additive constant that must be discarded"
+      },
+      "reformulation": "Discrete entropy must first be split into a Riemann-sum part and a resolution-dependent part before a limit can be taken at all."
+    },
+    "validity_conditions": [
+      "the density p must be Riemann integrable for the bin sums to converge",
+      "the quantity H(X^Delta) + log Delta must converge, which is why differential entropy is only defined up to the discarded divergence",
+      "unlike discrete entropy, the limit can be negative, so nonnegativity does not transfer"
+    ],
+    "proof_plan": [
+      "Quantize $X$ into bins $\\hointr {i \\Delta} {\\paren {i + 1} \\Delta}$ of width $\\Delta$, and let $X^\\Delta$ be the bin index.",
+      "By the [[Mean Value Theorem for Integrals]], there exists $x_i$ in bin $i$ with:\n:$\\map \\Pr {X^\\Delta = i} = \\map p {x_i} \\Delta$",
+      "{{begin-eqn}}\n{{eqn | l = \\map H {X^\\Delta}\n| r = -\\sum_i \\map p {x_i} \\Delta \\log \\paren {\\map p {x_i} \\Delta}\n}}\n{{eqn | r = -\\sum_i \\map p {x_i} \\log \\map p {x_i} \\Delta + \\log \\frac 1 \\Delta\n| c = as $\\sum_i \\map p {x_i} \\Delta = 1$\n}}\n{{end-eqn}}\nThe first term is a [[Definition:Riemann Sum|Riemann sum]] for $-\\displaystyle \\int p \\log p$.",
+      "Discard the divergent term $\\log \\dfrac 1 \\Delta$ and let $\\Delta \\to 0$:\n:$\\map H {X^\\Delta} + \\log \\Delta \\to \\map h X$",
+      "Properties linear in $p$ survive the limit, but non-negativity does not.\nFor example, if $X$ is [[Definition:Continuous Uniform Distribution|uniform]] on $\\closedint 0 {\\frac 1 2}$ then $\\map h X = -\\log 2 < 0$.\n{{qed}}"
+    ]
+  }
+}

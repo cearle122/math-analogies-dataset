@@ -1,0 +1,39 @@
+{
+  "id": "mean_value_from_rolle",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Continuous on Closed Interval|continuous]] on $\\closedint a b$ and [[Definition:Differentiable on Interval|differentiable]] on $\\openint a b$.\nThen:\n:$\\exists \\xi \\in \\openint a b: \\map {f'} \\xi = \\dfrac {\\map f b - \\map f a} {b - a}$"
+  },
+  "B_source": {
+    "statement": "Let $g$ be continuous on $\\closedint a b$ and differentiable on $\\openint a b$ with $\\map g a = \\map g b$.\nThen:\n:$\\exists \\xi \\in \\openint a b: \\map {g'} \\xi = 0$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the horizontal chord g(a) = g(b)": "the secant through (a, f(a)) and (b, f(b))",
+        "zero slope": "the slope of the secant"
+      },
+      "derived": {
+        "the tilted function g": "f minus the secant line"
+      },
+      "reformulation": "Subtract the secant line so that the endpoint values become equal, reducing to the horizontal case."
+    },
+    "validity_conditions": [
+      "Subtracting an affine function preserves continuity and differentiability.",
+      "The affine correction must be chosen so that g(a) = g(b) exactly."
+    ],
+    "proof_plan": [
+      "Let:\n:$\\map g x = \\map f x - \\dfrac {\\map f b - \\map f a} {b - a} \\paren {x - a}$",
+      "$g$ is continuous on $\\closedint a b$ and differentiable on $\\openint a b$, as a difference of such functions.\nAlso $\\map g a = \\map f a$ and $\\map g b = \\map f b - \\paren {\\map f b - \\map f a} = \\map f a$.",
+      "By [[Rolle's Theorem]], there exists $\\xi \\in \\openint a b$ with $\\map {g'} \\xi = 0$.",
+      "As $\\map {g'} \\xi = \\map {f'} \\xi - \\dfrac {\\map f b - \\map f a} {b - a}$:\n:$\\map {f'} \\xi = \\dfrac {\\map f b - \\map f a} {b - a}$\nwhich is the [[Mean Value Theorem]], with Rolle's Theorem as the case $\\map f a = \\map f b$.\n{{qed}}"
+    ]
+  }
+}

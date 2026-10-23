@@ -1,0 +1,37 @@
+{
+  "id": "w_types_from_natural_numbers",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "Let $A$ be a type and $B$ a family over $A$.\nThe [[Definition:W-Type|W-type]] $\\map W {A, B}$ has constructor $\\mathsf {sup} : \\prod_{a : A} \\paren {\\map B a \\to \\map W {A, B} } \\to \\map W {A, B}$, and induction: to prove $\\map P w$ for all $w$, prove $\\map P {\\map {\\mathsf {sup} } {a, f} }$ assuming $\\map P {\\map f b}$ for all $b : \\map B a$.\nWith $A = \\mathbf 2$, $\\map B 0 = \\mathbf 0$ and $\\map B 1 = \\mathbf 1$, $\\map W {A, B} \\simeq \\N$."
+  },
+  "B_source": {
+    "statement": "$\\N$ has constructors $0$ and $\\mathsf {succ}$, and induction: to prove $\\map P n$ for all $n$, prove $\\map P 0$ and $\\map P n \\to \\map P {\\map {\\mathsf {succ} } n}$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "constructors": "labels a in A",
+        "number of arguments": "the arity type B(a)"
+      },
+      "derived": {
+        "one induction hypothesis per argument": "the W-type induction principle"
+      },
+      "reformulation": "Abstract an inductive type to well-founded trees whose nodes are labelled by A and branch over B(a)."
+    },
+    "validity_conditions": [
+      "The arity type B(a) may be infinite, giving infinitely branching but well-founded trees.",
+      "Lists and binary trees are also W-types, for suitable A and B."
+    ],
+    "proof_plan": [
+      "Let each label $a : A$ name a constructor whose arguments are indexed by $\\map B a$.\n$\\map {\\mathsf {sup} } {a, f}$ is the tree with root label $a$ and subtrees $\\map f b$.",
+      "For $\\N$, take $A = \\mathbf 2 = \\set {\\mathsf {zero}, \\mathsf {succ} }$ with $\\map B {\\mathsf {zero} } = \\mathbf 0$ and $\\map B {\\mathsf {succ} } = \\mathbf 1$.",
+      "The W-induction hypothesis ranges over all $b : \\map B a$: there is none for $\\mathsf {zero}$, and exactly one, $\\map P n$, for $\\mathsf {succ}$.\nThis recovers the induction principle of the source result.",
+      "Binary trees arise with arities $0$ and $2$, and infinitely branching trees with infinite arities, so W-types generalize all of these.\n{{qed}}"
+    ]
+  }
+}

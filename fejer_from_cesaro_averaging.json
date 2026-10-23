@@ -1,0 +1,37 @@
+{
+  "id": "fejer_from_cesaro_averaging",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be a [[Definition:Continuous Real Function|continuous]] $2 \\pi$-[[Definition:Periodic Real Function|periodic]] function.\nLet $\\displaystyle \\sigma_N f = \\frac 1 N \\sum_{n \\mathop = 0}^{N - 1} S_n f$ be the [[Definition:Cesàro Summation|Cesàro means]] of its [[Definition:Fourier Series|Fourier series]].\nThen $\\sigma_N f \\to f$ [[Definition:Uniform Convergence|uniformly]]."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Fejér Kernel|Fejér kernel]] $\\displaystyle F_N = \\frac 1 N \\sum_{n \\mathop = 0}^{N - 1} D_n$ satisfies:\n:$\\map {F_N} x = \\dfrac 1 N \\paren {\\dfrac {\\map \\sin {N x / 2} } {\\map \\sin {x / 2} } }^2 \\ge 0, \\quad \\dfrac 1 {2 \\pi} \\displaystyle \\int_{-\\pi}^\\pi F_N = 1$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the partial sums S_n f": "their averages sigma_N f",
+        "the Dirichlet kernel": "the non-negative Fejér kernel"
+      },
+      "derived": {
+        "an approximate identity": "uniform convergence by splitting near and far from 0"
+      },
+      "reformulation": "Average the partial sums so that the kernel becomes non-negative and concentrates at 0."
+    },
+    "validity_conditions": [
+      "Positivity of the kernel is essential; the Dirichlet kernel has unbounded L1 norm and partial sums can diverge.",
+      "Uniform continuity of f on a period controls the contribution near 0."
+    ],
+    "proof_plan": [
+      "By linearity, $\\sigma_N f = f * F_N$, where convolution is normalized by $\\dfrac 1 {2 \\pi}$.",
+      "By the source result, $F_N \\ge 0$ with mean $1$.\nFor $\\delta \\le \\size x \\le \\pi$:\n:$\\map {F_N} x \\le \\dfrac 1 {N \\map {\\sin^2} {\\delta / 2} } \\to 0$",
+      "Hence:\n:$\\displaystyle \\size {\\map {\\sigma_N f} x - \\map f x} \\le \\frac 1 {2 \\pi} \\int_{-\\pi}^\\pi \\map {F_N} t \\size {\\map f {x - t} - \\map f x} \\rd t$\nSplit the integral into $\\size t < \\delta$ and $\\size t \\ge \\delta$.",
+      "By [[Heine-Cantor Theorem|uniform continuity]], the first part is less than $\\epsilon$ for suitable $\\delta$.\nThe second is at most $2 \\norm f_\\infty \\sup_{\\size t \\ge \\delta} \\map {F_N} t \\to 0$, uniformly in $x$.\nThis is [[Fejér's Theorem]].\n{{qed}}"
+    ]
+  }
+}

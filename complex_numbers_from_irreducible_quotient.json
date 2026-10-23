@@ -1,0 +1,39 @@
+{
+  "id": "complex_numbers_from_irreducible_quotient",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Quotient Ring|quotient ring]] $\\R \\sqbrk x / \\ideal {x^2 + 1}$ is a [[Definition:Field (Abstract Algebra)|field]] isomorphic to $\\C$."
+  },
+  "B_source": {
+    "statement": "Let $K$ be a field and $f \\in K \\sqbrk x$.\nThen $K \\sqbrk x / \\ideal f$ is a field {{iff}} $f$ is [[Definition:Irreducible Polynomial|irreducible]] over $K$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the field K": "R",
+        "the polynomial f": "x^2 + 1"
+      },
+      "derived": {
+        "the class of x": "the imaginary unit i"
+      },
+      "reformulation": "Specialize the irreducible-quotient construction to x^2 + 1 over the reals."
+    },
+    "validity_conditions": [
+      "x^2 + 1 is irreducible over R since it has degree 2 and no real root.",
+      "The division algorithm gives each class a unique representative of degree at most 1."
+    ],
+    "proof_plan": [
+      "$x^2 + 1 > 0$ on $\\R$, so it has no real root.\nBeing of degree $2$, it is [[Definition:Irreducible Polynomial|irreducible]] over $\\R$.",
+      "By the source result, $\\R \\sqbrk x / \\ideal {x^2 + 1}$ is a field.",
+      "By division by $x^2 + 1$, each class has a unique representative $a + b x$, and $x^2 \\equiv -1$.",
+      "The map $a + b x \\mapsto a + b i$ is additive, multiplicative as $x^2 \\mapsto -1 = i^2$, and bijective.\nHence the quotient is isomorphic to $\\C$.\n{{qed}}"
+    ]
+  }
+}

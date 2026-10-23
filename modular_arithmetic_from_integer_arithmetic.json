@@ -1,0 +1,40 @@
+{
+  "id": "modular_arithmetic_from_integer_arithmetic",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $n \\in \\Z_{>1}$.\nThen $\\Z / n \\Z$ is a [[Definition:Commutative Ring with Unity|commutative ring with unity]], and it is a [[Definition:Field (Abstract Algebra)|field]] {{iff}} $n$ is [[Definition:Prime Number|prime]]."
+  },
+  "B_source": {
+    "statement": "$\\struct {\\Z, +, \\times}$ is an [[Definition:Integral Domain|integral domain]]: a commutative ring with unity, cancellation, and no [[Definition:Zero Divisor of Ring|zero divisors]]."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the integers": "the residue classes modulo n",
+        "integer addition and multiplication": "the same operations computed on representatives",
+        "equality of integers": "congruence modulo n"
+      },
+      "derived": {
+        "the ring identities": "transferred unchanged, since congruence is compatible with the operations",
+        "cancellation and absence of zero divisors": "lost for composite n, where nonzero classes can multiply to zero"
+      }
+    },
+    "validity_conditions": [
+      "The operations are well defined on classes because congruence is compatible with addition and multiplication, so every ring identity transfers.",
+      "Cancellation fails for composite n: a proper factorization gives two nonzero classes whose product vanishes, so the ring has zero divisors.",
+      "Order does not transfer at all, since congruence classes have no compatible ordering; inequalities between integers have no modular counterpart."
+    ],
+    "proof_plan": [
+      "Replace each integer $a$ by its [[Definition:Residue Class|residue class]] $\\eqclass a n$.",
+      "If $a \\equiv a'$ and $b \\equiv b' \\pmod n$, then $a + b \\equiv a' + b'$ and $a b \\equiv a' b' \\pmod n$.\nHence addition and multiplication are well-defined on classes, by [[Congruence Modulo Integer is Congruence Relation]].",
+      "The ring axioms hold in $\\Z / n \\Z$, as each is an identity already true in $\\Z$.",
+      "If $n = a b$ with $1 < a, b < n$, then $\\eqclass a n \\eqclass b n = \\eqclass 0 n$, so cancellation fails.\nIf $n$ is prime, $\\eqclass a n \\ne 0$ implies $a \\perp n$, and [[Bézout's Identity]] gives an inverse.\nThe ordering of $\\Z$ does not transfer at all.\n{{qed}}"
+    ]
+  }
+}

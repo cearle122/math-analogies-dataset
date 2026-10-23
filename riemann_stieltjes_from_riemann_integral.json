@@ -1,0 +1,40 @@
+{
+  "id": "riemann_stieltjes_from_riemann_integral",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\closedint a b \\to \\R$ be [[Definition:Continuous Real Function|continuous]] and $g: \\closedint a b \\to \\R$ of [[Definition:Bounded Variation|bounded variation]].\nThen the [[Definition:Riemann-Stieltjes Integral|Riemann-Stieltjes integral]] $\\displaystyle \\int_a^b f \\rd g$ exists, and:\n:$\\displaystyle \\int_a^b f \\rd g = \\bigintlimits {f g} a b - \\int_a^b g \\rd f$\nwhenever the right hand integral exists."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Riemann Integral|Riemann integral]] is:\n:$\\displaystyle \\int_a^b f \\rd x = \\lim_{\\norm P \\mathop \\to 0} \\sum_{i \\mathop = 1}^n \\map f {t_i} \\paren {x_i - x_{i - 1} }$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the subinterval length": "the increment of the integrator across the subinterval",
+        "the identity integrator": "an arbitrary function of bounded variation",
+        "the Riemann sum": "the Riemann-Stieltjes sum"
+      },
+      "derived": {
+        "existence of the limit of the sums": "existence under bounded variation of the integrator",
+        "the identity integrator case": "recovers the ordinary Riemann integral"
+      },
+      "reformulation": "Replace the length of each subinterval by the increment of a general integrator across it."
+    },
+    "validity_conditions": [
+      "Taking the integrator to be the identity makes each increment a subinterval length, recovering the Riemann integral exactly.",
+      "Bounded variation of the integrator bounds the total size of the increments, which is what replaces the automatic control of lengths and makes the sums converge.",
+      "Integrand and integrator must not share a discontinuity from the same side, or the sums depend on the tag placement and the integral fails to exist."
+    ],
+    "proof_plan": [
+      "Replace each length $x_i - x_{i - 1}$ by the increment $\\map g {x_i} - \\map g {x_{i - 1} }$:\n:$\\displaystyle \\map S {P, f, g} = \\sum_{i \\mathop = 1}^n \\map f {t_i} \\paren {\\map g {x_i} - \\map g {x_{i - 1} } }$",
+      "As $g$ has [[Definition:Bounded Variation|bounded variation]] $\\map V g$:\n:$\\displaystyle \\sum_{i \\mathop = 1}^n \\size {\\map g {x_i} - \\map g {x_{i - 1} } } \\le \\map V g$",
+      "$f$ is [[Definition:Uniformly Continuous Real Function|uniformly continuous]], so for two subdivisions of mesh $< \\delta$:\n:$\\size {\\map S {P, f, g} - \\map S {Q, f, g} } \\le 2 \\epsilon \\map V g$\nHence the sums are Cauchy and converge as the mesh tends to $0$.\nSummation by parts on the sums gives the integration by parts formula.",
+      "With $\\map g x = x$, the increments are the lengths, recovering the Riemann integral.\n{{qed}}"
+    ]
+  }
+}

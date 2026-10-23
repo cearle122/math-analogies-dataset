@@ -1,0 +1,40 @@
+{
+  "id": "erdos_ko_rado_from_cyclic_averaging",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $n \\ge 2 k$ and let $\\FF$ be an [[Definition:Intersecting Family|intersecting family]] of $k$-[[Definition:Subset|subsets]] of $\\set {1, \\ldots, n}$.\nThen:\n:$\\card \\FF \\le \\dbinom {n - 1} {k - 1}$"
+  },
+  "B_source": {
+    "statement": "Let $Q$ be a quantity defined for each arrangement $\\sigma$ in a finite set $\\Sigma$ of arrangements.\nIf $\\map Q \\sigma \\le B$ for each $\\sigma$, then counting incidences over all $\\sigma \\in \\Sigma$ and averaging gives a bound on the total."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the family of arrangements averaged over": "all cyclic orderings of the ground set",
+        "the local quantity counted": "the number of family members forming an arc in a given cyclic ordering",
+        "the local bound": "at most k arcs of length k can pairwise intersect in one cyclic ordering"
+      },
+      "derived": {
+        "the average of the local bound": "the global bound on the family size",
+        "the double count over arrangements and sets": "each k-set is an arc in the same number of cyclic orderings"
+      },
+      "reformulation": "Replace a direct count of the family by an average of local counts over all cyclic arrangements."
+    },
+    "validity_conditions": [
+      "In a fixed cyclic ordering, at most k of the arcs of length k can pairwise intersect, and this is where the condition n at least twice k is used.",
+      "Every k-subset is an arc in the same number of cyclic orderings, by symmetry, so the double count is unbiased.",
+      "Averaging the uniform local bound over all cyclic orderings converts it into a bound on the size of the family."
+    ],
+    "proof_plan": [
+      "Consider all $\\paren {n - 1}!$ [[Definition:Cyclic Permutation|cyclic orderings]] $\\sigma$ of $\\set {1, \\ldots, n}$.",
+      "In a fixed $\\sigma$, call a $k$-set an arc if its elements are consecutive in $\\sigma$.\nAs $n \\ge 2 k$ and $\\FF$ is intersecting, at most $k$ members of $\\FF$ are arcs of $\\sigma$.",
+      "Double count the pairs $\\tuple {A, \\sigma}$ with $A \\in \\FF$ an arc of $\\sigma$.\nEach $A$ is an arc in exactly $k! \\paren {n - k}!$ cyclic orderings.\nHence:\n:$\\card \\FF \\cdot k! \\paren {n - k}! \\le k \\paren {n - 1}!$",
+      "Rearranging:\n:$\\card \\FF \\le \\dfrac {k \\paren {n - 1}!} {k! \\paren {n - k}!} = \\dbinom {n - 1} {k - 1}$\n{{qed}}"
+    ]
+  }
+}

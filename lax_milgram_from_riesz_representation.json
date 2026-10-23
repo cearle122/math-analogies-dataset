@@ -1,0 +1,37 @@
+{
+  "id": "lax_milgram_from_riesz_representation",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $H$ be a real [[Definition:Hilbert Space|Hilbert space]] and $a: H \\times H \\to \\R$ a [[Definition:Bilinear Mapping|bilinear form]] with:\n:$\\size {\\map a {u, v} } \\le C \\norm u \\norm v$ and $\\map a {u, u} \\ge \\alpha \\norm u^2$\nfor some $C, \\alpha > 0$.\nThen for every [[Definition:Bounded Linear Functional|bounded linear functional]] $\\phi$ there is a [[Definition:Unique|unique]] $u \\in H$ with $\\map a {u, v} = \\map \\phi v$ for all $v \\in H$."
+  },
+  "B_source": {
+    "statement": "Let $\\phi$ be a bounded linear functional on a Hilbert space $H$.\nThen there is a unique $f \\in H$ with $\\map \\phi v = \\innerprod f v$ for all $v$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the inner product": "a bounded coercive bilinear form a",
+        "representation by an inner product": "representation by a"
+      },
+      "derived": {
+        "the operator A with a(u, v) = <Au, v>": "a bounded invertible operator"
+      },
+      "reformulation": "Replace the inner product by a coercive bilinear form, and recover invertibility from coercivity."
+    },
+    "validity_conditions": [
+      "a need not be symmetric, so it is not itself an inner product.",
+      "Coercivity is what gives injectivity and closed range; boundedness alone is not enough."
+    ],
+    "proof_plan": [
+      "For fixed $u$, $v \\mapsto \\map a {u, v}$ is bounded.\nBy the [[Riesz Representation Theorem (Hilbert Spaces)|Riesz Representation Theorem]], $\\map a {u, v} = \\innerprod {A u} v$ for a bounded linear $A$, and $\\map \\phi v = \\innerprod f v$.",
+      "By coercivity, $\\alpha \\norm u^2 \\le \\innerprod {A u} u \\le \\norm {A u} \\norm u$, so $\\norm {A u} \\ge \\alpha \\norm u$.\nHence $A$ is [[Definition:Injection|injective]] with [[Definition:Closed Set (Metric Space)|closed]] range.",
+      "If $w \\perp \\Img A$, then $\\alpha \\norm w^2 \\le \\innerprod {A w} w = 0$, so $w = 0$.\nHence $\\Img A$ is dense and closed, so $A$ is [[Definition:Surjection|surjective]].",
+      "Let $u = A^{-1} f$, the unique solution of $\\map a {u, v} = \\innerprod f v$ for all $v$.\nWhen $a$ is the inner product, this is the Riesz Representation Theorem; in general it is the [[Lax-Milgram Theorem]].\n{{qed}}"
+    ]
+  }
+}

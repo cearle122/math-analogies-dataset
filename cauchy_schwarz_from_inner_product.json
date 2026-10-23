@@ -1,0 +1,37 @@
+{
+  "id": "cauchy_schwarz_from_inner_product",
+  "field": [
+    "algebra",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $u, v \\in \\R^n$.\nThen:\n:$\\size {u \\cdot v} \\le \\norm u \\norm v$\nwhere $\\cdot$ denotes the [[Definition:Dot Product|dot product]]."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {V, \\innerprod \\cdot \\cdot}$ be a [[Definition:Real Inner Product Space|real inner product space]].\nThen:\n:$\\forall u, v \\in V: \\size {\\innerprod u v} \\le \\norm u \\norm v$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "abstract inner product space V": "R^n with the dot product",
+        "abstract inner product <u,v>": "u . v = sum u_i v_i"
+      },
+      "derived": {
+        "abstract Cauchy-Schwarz": "the R^n dot-product inequality"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "The dot product on R^n is a genuine inner product (bilinear, symmetric, positive-definite), so the abstract theorem applies directly.",
+      "No new argument is needed; this is instantiation, hence specialization."
+    ],
+    "proof_plan": [
+      "From the [[Cauchy-Bunyakovsky-Schwarz Inequality/Inner Product Spaces|Cauchy-Bunyakovsky-Schwarz Inequality]] for [[Definition:Real Inner Product Space|real inner product spaces]]:\n:$\\size {\\innerprod u v} \\le \\norm u \\norm v$",
+      "Let $V = \\R^n$ with $\\innerprod u v = u \\cdot v$.\nBy [[Dot Product is Inner Product]], this is a real inner product space, with $\\norm u = \\sqrt {u \\cdot u}$.",
+      "Hence:\n:$\\size {u \\cdot v} \\le \\norm u \\norm v$\n{{qed}}"
+    ]
+  }
+}

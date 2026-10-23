@@ -1,0 +1,41 @@
+{
+  "id": "church_rosser_from_parallel_reduction",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "[[Definition:Beta Reduction|$\\beta$-reduction]] in the [[Definition:Untyped Lambda Calculus|untyped $\\lambda$-calculus]] is [[Definition:Confluent Relation|confluent]]:\n:$t \\twoheadrightarrow_\\beta u \\land t \\twoheadrightarrow_\\beta v \\implies \\exists w: u \\twoheadrightarrow_\\beta w \\land v \\twoheadrightarrow_\\beta w$"
+  },
+  "B_source": {
+    "statement": "Let $R$ be a [[Definition:Relation|relation]] with the [[Definition:Diamond Property|diamond property]]:\n:$a \\mathrel R b \\land a \\mathrel R c \\implies \\exists d: b \\mathrel R d \\land c \\mathrel R d$\nThen the [[Definition:Transitive Closure of Relation|transitive closure]] $R^+$ is [[Definition:Confluent Relation|confluent]]."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the auxiliary relation with the diamond property": "parallel reduction, contracting several redexes simultaneously",
+        "the transitive closure of the auxiliary relation": "ordinary multi-step beta-reduction",
+        "the one-step diamond": "the confluence of two parallel reduction steps in a single step each"
+      },
+      "derived": {
+        "confluence of the transitive closure": "confluence of beta-reduction",
+        "the tiling of a diagram of steps": "a grid of parallel reduction squares"
+      },
+      "reformulation": "Replace the given relation by an auxiliary one that closes in a single step, then take its transitive closure."
+    },
+    "validity_conditions": [
+      "Ordinary beta-reduction does not itself have the one-step diamond property, since one step can duplicate a redex the other has already contracted; this is exactly what parallel reduction repairs.",
+      "Parallel reduction sits between one-step and multi-step beta-reduction, so its transitive closure is precisely multi-step reduction.",
+      "The diamond property for parallel reduction is proved by induction on the term structure, using a complete development that contracts all residual redexes at once."
+    ],
+    "proof_plan": [
+      "Define [[Definition:Parallel Reduction|parallel reduction]] $\\Rightarrow$, which contracts any set of [[Definition:Redex|redexes]] of a term simultaneously.",
+      "We have:\n:$\\to_\\beta \\subseteq \\Rightarrow \\subseteq \\twoheadrightarrow_\\beta$\nHence the [[Definition:Transitive Closure of Relation|transitive closure]] of $\\Rightarrow$ is $\\twoheadrightarrow_\\beta$.",
+      "By [[Principle of Structural Induction|induction]] on terms, using the complete development $t^*$:\n:$t \\Rightarrow u \\implies u \\Rightarrow t^*$\nHence $\\Rightarrow$ has the [[Definition:Diamond Property|diamond property]].",
+      "Tiling the reduction diagram with diamonds lifts the property to $\\Rightarrow^+ = \\twoheadrightarrow_\\beta$.\nHence $\\beta$-reduction is [[Definition:Confluent Relation|confluent]].\n{{qed}}"
+    ]
+  }
+}

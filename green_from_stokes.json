@@ -1,0 +1,40 @@
+{
+  "id": "green_from_stokes",
+  "field": [
+    "analysis",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $D \\subseteq \\R^2$ be a [[Definition:Bounded Region|bounded region]] with [[Definition:Piecewise Smooth Curve|piecewise smooth]] positively oriented boundary $\\partial D$.\nLet $P, Q$ be [[Definition:Continuously Differentiable|continuously differentiable]] on an open set containing $\\overline D$.\nThen:\n:$\\displaystyle \\iint_D \\paren {\\frac {\\partial Q} {\\partial x} - \\frac {\\partial P} {\\partial y} } \\rd x \\rd y = \\oint_{\\partial D} \\paren {P \\rd x + Q \\rd y}$"
+  },
+  "B_source": {
+    "statement": "Let $M$ be a [[Definition:Compact Manifold|compact]] [[Definition:Oriented Manifold|oriented]] [[Definition:Smooth Manifold|smooth manifold]] with boundary, and $\\omega$ a [[Definition:Differential Form|differential form]].\nThen:\n:$\\displaystyle \\int_M \\d \\omega = \\int_{\\partial M} \\omega$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the manifold M": "a planar region D in R^2",
+        "the form omega": "the 1-form P dx + Q dy",
+        "d(omega)": "(dQ/dx - dP/dy) dx wedge dy"
+      },
+      "derived": {
+        "integral_M d(omega)": "the double integral over D",
+        "integral_{boundary M} omega": "the boundary line integral"
+      }
+    },
+    "validity_conditions": [
+      "D is a compact region in the plane with piecewise-smooth positively-oriented boundary (a 2-manifold with boundary).",
+      "For omega = P dx + Q dy, the exterior derivative is d(omega) = (dQ/dx - dP/dy) dx wedge dy.",
+      "Stokes in dimension 2 with this omega is exactly Green's theorem - a direct specialization."
+    ],
+    "proof_plan": [
+      "Take $M = D$ and $\\omega = P \\rd x + Q \\rd y$.",
+      "{{begin-eqn}}\n{{eqn | l = \\d \\omega\n| r = \\frac {\\partial P} {\\partial y} \\rd y \\wedge \\d x + \\frac {\\partial Q} {\\partial x} \\rd x \\wedge \\d y\n}}\n{{eqn | r = \\paren {\\frac {\\partial Q} {\\partial x} - \\frac {\\partial P} {\\partial y} } \\rd x \\wedge \\d y\n| c = as $\\d y \\wedge \\d x = -\\d x \\wedge \\d y$\n}}\n{{end-eqn}}",
+      "By [[Stokes' Theorem]]:\n:$\\displaystyle \\int_D \\d \\omega = \\int_{\\partial D} \\omega$",
+      "Hence:\n:$\\displaystyle \\iint_D \\paren {\\frac {\\partial Q} {\\partial x} - \\frac {\\partial P} {\\partial y} } \\rd x \\rd y = \\oint_{\\partial D} \\paren {P \\rd x + Q \\rd y}$\nwhich is [[Green's Theorem]].\n{{qed}}"
+    ]
+  }
+}

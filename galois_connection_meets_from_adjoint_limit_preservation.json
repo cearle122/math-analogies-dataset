@@ -1,0 +1,39 @@
+{
+  "id": "galois_connection_meets_from_adjoint_limit_preservation",
+  "field": [
+    "category_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $f: P \\to Q$ and $g: Q \\to P$ be monotone maps between [[Definition:Ordered Set|ordered sets]] with $\\map f x \\le y \\iff x \\le \\map g y$.\nThen $g$ preserves all [[Definition:Infimum of Set|infima]] that exist in $Q$, and $f$ preserves all [[Definition:Supremum of Set|suprema]] that exist in $P$."
+  },
+  "B_source": {
+    "statement": "[[Definition:Right Adjoint|Right adjoints]] preserve all limits, and left adjoints preserve all colimits."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "categories": "ordered sets, with a morphism x -> y exactly when x <= y",
+        "adjunctions": "Galois connections",
+        "limits and colimits": "infima and suprema"
+      },
+      "derived": {
+        "limit preservation": "preservation of meets"
+      },
+      "reformulation": "Regard ordered sets as thin categories, in which adjunctions are Galois connections and limits are meets."
+    },
+    "validity_conditions": [
+      "In a thin category every diagram commutes, so a limit of a family is just its infimum.",
+      "For a mapping, preimage is both a left and a right adjoint, so it preserves unions and intersections, while direct image preserves only unions."
+    ],
+    "proof_plan": [
+      "View $P$ and $Q$ as categories with a unique morphism $x \\to y$ when $x \\le y$; monotone maps are functors.",
+      "The hom-set bijection $\\map {\\operatorname {Hom} } {\\map f x, y} \\cong \\map {\\operatorname {Hom} } {x, \\map g y}$ says exactly $\\map f x \\le y \\iff x \\le \\map g y$, so $f \\dashv g$.",
+      "In such a category, the limit of a family is its infimum and the colimit is its supremum.",
+      "By the source result, $g$ preserves infima and $f$ preserves suprema.\n{{qed}}"
+    ]
+  }
+}

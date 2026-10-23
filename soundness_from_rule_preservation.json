@@ -1,0 +1,36 @@
+{
+  "id": "soundness_from_rule_preservation",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $\\Gamma$ be a set of propositional [[Definition:Well-Formed Formula|formulas]].\nIf $\\Gamma \\vdash \\phi$ in [[Definition:Natural Deduction|natural deduction]], then $\\Gamma \\models \\phi$.\nIn particular $\\nvdash \\bot$."
+  },
+  "B_source": {
+    "statement": "Let $\\map P D$ be a property of derivations.\nIf $\\map P D$ holds for one-line derivations consisting of an assumption, and is preserved by every inference rule, then $\\map P D$ holds for every derivation."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the property P": "every valuation satisfying the open assumptions satisfies the conclusion"
+      },
+      "derived": {
+        "preservation by each rule": "soundness of the whole calculus"
+      },
+      "reformulation": "Induct over derivations, checking that every rule preserves semantic consequence."
+    },
+    "validity_conditions": [
+      "Each rule must be checked against every valuation, including the discharge of assumptions.",
+      "Soundness gives consistency, since no valuation satisfies the falsum."
+    ],
+    "proof_plan": [
+      "Proceed by induction on derivations, using the source result.",
+      "An assumption $\\phi \\in \\Gamma$ is satisfied by every valuation satisfying $\\Gamma$.",
+      "Each rule preserves consequence: for example, if $\\Gamma, \\phi \\models \\psi$ then $\\Gamma \\models \\phi \\to \\psi$; if $\\Gamma, \\phi \\models \\chi$, $\\Gamma, \\psi \\models \\chi$ and $\\Gamma \\models \\phi \\lor \\psi$, then $\\Gamma \\models \\chi$, by cases on the valuation; and if $\\Gamma, \\neg \\phi \\models \\bot$ then $\\Gamma \\models \\phi$.",
+      "Hence $\\Gamma \\vdash \\phi$ implies $\\Gamma \\models \\phi$, which is [[Soundness Theorem for Propositional Logic|soundness]].\nAs no valuation satisfies $\\bot$, $\\nvdash \\bot$.\n{{qed}}"
+    ]
+  }
+}

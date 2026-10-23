@@ -1,0 +1,39 @@
+{
+  "id": "spectral_theorem_from_symmetry",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a real [[Definition:Symmetric Matrix|symmetric matrix]].\nThen there exist an [[Definition:Orthogonal Matrix|orthogonal matrix]] $\\mathbf Q$ and a real [[Definition:Diagonal Matrix|diagonal matrix]] $\\mathbf D$ such that:\n:$\\mathbf A = \\mathbf Q \\mathbf D \\mathbf Q^\\intercal$"
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf A = \\mathbf A^\\intercal$ be real.\nThen the [[Definition:Eigenvalue of Matrix|eigenvalues]] of $\\mathbf A$ are real, and [[Definition:Eigenvector of Matrix|eigenvectors]] for distinct eigenvalues are [[Definition:Orthogonal (Linear Algebra)|orthogonal]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the local facts (real eigenvalues, orthogonal eigenvectors)": "building blocks assembled by induction on dimension",
+        "an eigenvector of A": "the first column of the orthogonal matrix Q, then recurse on its orthogonal complement"
+      },
+      "derived": {
+        "orthogonality of eigenvectors": "columns of Q are orthonormal",
+        "reality of eigenvalues": "D is real diagonal"
+      },
+      "reformulation": "Reduce full diagonalization to repeatedly extracting one real eigenvector and recursing on its (A-invariant) orthogonal complement."
+    },
+    "validity_conditions": [
+      "Symmetry forces real eigenvalues and guarantees at least one real eigenvector exists.",
+      "The orthogonal complement of an eigenvector is invariant under a symmetric A, and the restriction is again symmetric, enabling the recursion.",
+      "Assembling the orthonormal eigenvectors as columns gives an orthogonal Q with Q^T A Q diagonal."
+    ],
+    "proof_plan": [
+      "By the [[Fundamental Theorem of Algebra]], $\\mathbf A$ has a complex eigenvalue, which is real by the source result.\nLet $\\mathbf q_1$ be a corresponding real unit eigenvector.",
+      "Let $W = \\mathbf q_1^\\perp$.\nFor $\\mathbf w \\in W$:\n:$\\innerprod {\\mathbf A \\mathbf w} {\\mathbf q_1} = \\innerprod {\\mathbf w} {\\mathbf A \\mathbf q_1} = \\lambda_1 \\innerprod {\\mathbf w} {\\mathbf q_1} = 0$\nso $W$ is $\\mathbf A$-[[Definition:Invariant Subspace|invariant]], and $\\mathbf A \\restriction_W$ is symmetric.",
+      "Apply the argument to $\\mathbf A \\restriction_W$ on the $\\paren {n - 1}$-dimensional space $W$, by [[Principle of Mathematical Induction|induction]] on $n$.",
+      "Collect the orthonormal eigenvectors into $\\mathbf Q = \\begin {bmatrix} \\mathbf q_1 & \\cdots & \\mathbf q_n \\end {bmatrix}$ and the eigenvalues into $\\mathbf D$.\nThen $\\mathbf A \\mathbf Q = \\mathbf Q \\mathbf D$, so $\\mathbf A = \\mathbf Q \\mathbf D \\mathbf Q^\\intercal$, which is the [[Spectral Theorem for Real Symmetric Matrices|spectral theorem]].\n{{qed}}"
+    ]
+  }
+}

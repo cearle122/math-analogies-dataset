@@ -1,0 +1,37 @@
+{
+  "id": "heron_formula_from_law_of_cosines",
+  "field": [
+    "geometry",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\triangle ABC$ have sides $a$, $b$, $c$ and [[Definition:Semiperimeter|semiperimeter]] $s = \\dfrac {a + b + c} 2$.\nThen its [[Definition:Area|area]] is:\n:$\\AA = \\sqrt {s \\paren {s - a} \\paren {s - b} \\paren {s - c} }$"
+  },
+  "B_source": {
+    "statement": "In $\\triangle ABC$:\n:$c^2 = a^2 + b^2 - 2 a b \\cos C$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "cos C": "an expression in the side lengths"
+      },
+      "derived": {
+        "sin^2 C = 1 - cos^2 C": "a difference of squares that factors completely"
+      },
+      "reformulation": "Eliminate the angle from the area formula using the law of cosines, then factor."
+    },
+    "validity_conditions": [
+      "The area formula A = (1/2) a b sin C holds for every triangle.",
+      "Each factor 2(s - a) etc. is positive by the triangle inequality."
+    ],
+    "proof_plan": [
+      "From $\\AA = \\dfrac 1 2 a b \\sin C$:\n:$16 \\AA^2 = 4 a^2 b^2 - \\paren {2 a b \\cos C}^2$",
+      "By the [[Law of Cosines]], $2 a b \\cos C = a^2 + b^2 - c^2$.",
+      "Factoring the difference of squares twice:\n{{begin-eqn}}\n{{eqn | l = 16 \\AA^2\n| r = \\paren {2 a b - a^2 - b^2 + c^2} \\paren {2 a b + a^2 + b^2 - c^2}\n}}\n{{eqn | r = \\paren {c^2 - \\paren {a - b}^2} \\paren {\\paren {a + b}^2 - c^2}\n}}\n{{eqn | r = \\paren {b + c - a} \\paren {a + c - b} \\paren {a + b - c} \\paren {a + b + c}\n}}\n{{end-eqn}}",
+      "The factors are $2 \\paren {s - a}$, $2 \\paren {s - b}$, $2 \\paren {s - c}$ and $2 s$.\nHence $\\AA^2 = s \\paren {s - a} \\paren {s - b} \\paren {s - c}$, which is [[Heron's Formula]].\n{{qed}}"
+    ]
+  }
+}

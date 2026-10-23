@@ -1,0 +1,40 @@
+{
+  "id": "poincare_disk_from_upper_half_plane",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "In the [[Definition:Poincaré Disk Model|Poincaré disk model]] $\\Bbb D$ of the [[Definition:Hyperbolic Plane|hyperbolic plane]], the [[Definition:Geodesic|geodesics]] are diameters and circular arcs meeting $\\partial \\Bbb D$ at right angles, and the orientation-preserving isometries are the [[Definition:Möbius Transformation|Möbius transformations]] preserving $\\Bbb D$."
+  },
+  "B_source": {
+    "statement": "In the [[Definition:Upper Half-Plane Model|upper half-plane model]] $\\Bbb H$, the [[Definition:Geodesic|geodesics]] are vertical lines and semicircles centred on $\\R$, and the orientation-preserving isometries form $\\map {\\operatorname {PSL} } {2, \\R}$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the upper half-plane": "the unit disk",
+        "the real axis as the boundary": "the unit circle as the boundary",
+        "the half-plane metric": "the disk metric, obtained by pulling back along the Cayley transform"
+      },
+      "derived": {
+        "geodesics orthogonal to the boundary": "the same description, with the boundary now a circle",
+        "the isometry group acting by Mobius transformations": "the subgroup of Mobius transformations preserving the disk"
+      },
+      "reformulation": "Carry the entire model across the Cayley transform, pulling back the metric so the map becomes an isometry."
+    },
+    "validity_conditions": [
+      "The Cayley transform is a Mobius map taking the upper half-plane bijectively to the unit disk and the real axis to the unit circle.",
+      "Mobius transformations are conformal and map circles and lines to circles and lines, so orthogonality to the boundary is preserved and geodesics correspond correctly.",
+      "The metric must be transported by pullback rather than assumed; once it is, the transform is an isometry and every metric statement carries over."
+    ],
+    "proof_plan": [
+      "Apply the [[Definition:Cayley Transform|Cayley transform]]:\n:$\\map C z = \\dfrac {z - i} {z + i}$\nwhich maps $\\Bbb H$ bijectively onto $\\Bbb D$.",
+      "Pull back the hyperbolic metric along $C^{-1}$, giving:\n:$\\d s = \\dfrac {2 \\size {\\d w} } {1 - \\size w^2}$\non $\\Bbb D$, so that $C$ is an [[Definition:Isometry (Metric Spaces)|isometry]].",
+      "$C$ is [[Definition:Conformal Mapping|conformal]] and maps circles and lines to circles and lines.\nHence it sends the geodesics of $\\Bbb H$, which meet $\\R \\cup \\set \\infty$ at right angles, to diameters and arcs meeting $\\partial \\Bbb D$ at right angles.",
+      "Transporting the isometry group gives $C \\circ \\map {\\operatorname {PSL} } {2, \\R} \\circ C^{-1}$, the Möbius transformations preserving $\\Bbb D$.\n{{qed}}"
+    ]
+  }
+}

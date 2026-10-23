@@ -1,0 +1,41 @@
+{
+  "id": "nonstandard_calculus_from_standard_calculus",
+  "field": [
+    "analysis",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let ${}^* \\R$ be a [[Definition:Hyperreal Number|hyperreal]] extension of $\\R$ and $f: \\R \\to \\R$ [[Definition:Differentiable Real Function|differentiable]] at $x$.\nThen for every non-zero [[Definition:Infinitesimal|infinitesimal]] $\\d x$:\n:$\\map {f'} x = \\map {\\operatorname {st} } {\\dfrac {\\map {{}^* f} {x + \\d x} - \\map f x} {\\d x} }$\nwhere $\\operatorname {st}$ is the [[Definition:Standard Part|standard part]]."
+  },
+  "B_source": {
+    "statement": "Let $f: \\R \\to \\R$.\nThen $f$ is [[Definition:Differentiable Real Function|differentiable]] at $x$ with derivative $L$ {{iff}}:\n:$\\forall \\epsilon > 0: \\exists \\delta > 0: 0 < \\size h < \\delta \\implies \\size {\\dfrac {\\map f {x + h} - \\map f x} h - L} < \\epsilon$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the real line": "a nonstandard extension containing infinitesimals and unlimited numbers",
+        "the epsilon-delta quantifier condition": "a condition on infinitesimal increments",
+        "the limit of the difference quotient": "the standard part of the difference quotient"
+      },
+      "derived": {
+        "first-order statements about the reals": "transferred verbatim by the transfer principle",
+        "statements quantifying over subsets": "not transferred automatically, since they are not first order"
+      },
+      "reformulation": "Move to an extended number system where limiting conditions become algebraic conditions on infinitesimals."
+    },
+    "validity_conditions": [
+      "The transfer principle guarantees that a first-order statement holds in the reals exactly when it holds in the nonstandard extension, which is what licenses the whole translation.",
+      "The standard part function is defined only on limited elements, so each use must check the quantity is not unlimited.",
+      "Second-order statements do not transfer: the least upper bound property fails for internal sets in the naive form, so completeness arguments must be reformulated rather than copied."
+    ],
+    "proof_plan": [
+      "Pass to a nonstandard extension ${}^* \\R \\supseteq \\R$ containing non-zero [[Definition:Infinitesimal|infinitesimals]].",
+      "Restate the $\\epsilon$-$\\delta$ definition: $L$ is the derivative {{iff}} the difference quotient is [[Definition:Infinitely Close|infinitely close]] to $L$ for every non-zero infinitesimal $h$.",
+      "By the [[Transfer Principle]], first-order statements about $f$ hold in $\\R$ {{iff}} they hold for ${}^* f$ in ${}^* \\R$.",
+      "The standard part is defined only for [[Definition:Limited Hyperreal|limited]] hyperreals, so check the difference quotient is limited before applying $\\operatorname {st}$.\nSecond-order arguments, such as those quantifying over all subsets of $\\R$, do not transfer and must be reformulated.\n{{qed}}"
+    ]
+  }
+}

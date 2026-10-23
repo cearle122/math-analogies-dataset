@@ -1,0 +1,41 @@
+{
+  "id": "isoperimetric_from_discrete_isoperimetric",
+  "field": [
+    "geometry",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $D \\subseteq \\R^2$ be a [[Definition:Bounded Region|bounded region]] with [[Definition:Rectifiable Curve|rectifiable]] boundary of length $L$ and [[Definition:Area|area]] $A$.\nThen:\n:$L^2 \\ge 4 \\pi A$\nwith equality {{iff}} $D$ is a [[Definition:Disk|disk]]."
+  },
+  "B_source": {
+    "statement": "Let $S$ be a set of $n$ [[Definition:Unit Square|unit cells]] of the [[Definition:Integer Lattice|integer lattice]].\nThen the edge boundary of $S$ is at least that of the most compact (square-like) arrangement of $n$ cells, which is at least $4 \\sqrt n$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the lattice cell": "a square of side h",
+        "the edge boundary count": "the perimeter of the union of cells",
+        "the most compact cell arrangement": "the extremal region in the limit"
+      },
+      "derived": {
+        "the limiting extremal shape": "the disk"
+      },
+      "reformulation": "The discrete extremal configuration is a square, so the analogy supplies only the inequality shape; the constant 4 pi must be obtained by reformulating the problem in terms of symmetrization rather than by taking limits."
+    },
+    "validity_conditions": [
+      "the boundary of the limiting region must be rectifiable so perimeters converge",
+      "the lattice extremal shape is a square rather than a disk, so the analogy transfers the inequality but not the extremal case",
+      "a compactness argument in the space of sets of finite perimeter is needed to guarantee a minimizer exists in the limit"
+    ],
+    "proof_plan": [
+      "Replacing $D$ by its [[Definition:Convex Hull|convex hull]] does not decrease $A$ and does not increase $L$, so we may assume $D$ is [[Definition:Convex Set (Vector Space)|convex]].\nLet $D_h$ be the union of the lattice cells of side $h$ contained in $D$.",
+      "Rescaling by $\\dfrac 1 h$ and applying the discrete bound to the $n_h$ cells of $D_h$:\n:$\\map \\partial {D_h} \\ge 4 \\sqrt {n_h} \\, h$",
+      "As $\\map {\\operatorname {Area} } {D_h} = n_h h^2$, this reads:\n:$\\map {\\operatorname {Per} } {D_h}^2 \\ge 16 \\map {\\operatorname {Area} } {D_h}$",
+      "Let $h \\to 0$.\nThen $\\map {\\operatorname {Area} } {D_h} \\to A$.\nAs $D$ is convex, each row and column of $D_h$ is an interval of cells, so the staircase boundary of $D_h$ is no longer than the $\\ell^1$-length of $\\partial D$, which is at most $\\sqrt 2 L$.\nHence $\\map {\\operatorname {Per} } {D_h} \\le \\sqrt 2 L$, and in the limit:\n:$L^2 \\ge 8 A$",
+      "The constant $8$ obtained from the lattice is not sharp for curved boundaries.\nThe sharp constant $4 \\pi$ and the equality case follow from a separate argument by [[Definition:Steiner Symmetrization|Steiner symmetrization]], which does not increase $L$ and preserves $A$.\n{{qed}}"
+    ]
+  }
+}

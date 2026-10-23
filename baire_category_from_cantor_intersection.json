@@ -1,0 +1,38 @@
+{
+  "id": "baire_category_from_cantor_intersection",
+  "field": [
+    "analysis",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]].\nLet $\\sequence {U_n}$ be a sequence of [[Definition:Open Set (Metric Space)|open]] [[Definition:Everywhere Dense|dense]] subsets of $X$.\nThen $\\displaystyle \\bigcap_{n \\mathop = 1}^\\infty U_n$ is dense in $X$."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {X, d}$ be a complete metric space and $F_1 \\supseteq F_2 \\supseteq \\cdots$ non-empty [[Definition:Closed Set (Metric Space)|closed sets]] with $\\map {\\operatorname {diam} } {F_n} \\to 0$.\nThen $\\displaystyle \\bigcap_n F_n$ is a single point."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the nested closed sets F_n": "closed balls chosen inside W and the successive U_n",
+        "the shrinking diameters": "radii less than 1/n"
+      },
+      "derived": {
+        "the intersection point": "a point of W lying in every U_n"
+      },
+      "reformulation": "Reduce density of the intersection to building a nested sequence of closed balls inside the open dense sets."
+    },
+    "validity_conditions": [
+      "Each U_n must be open and dense, so that it meets every open ball in an open set.",
+      "Completeness is essential; the rationals are a countable union of points."
+    ],
+    "proof_plan": [
+      "Let $W$ be a non-empty open set.\nIt suffices to show $W \\cap \\displaystyle \\bigcap_n U_n \\ne \\O$.",
+      "As $U_1$ is open and dense, $W \\cap U_1$ is non-empty and open.\nChoose a closed ball $\\overline {B_1} \\subseteq W \\cap U_1$ of radius less than $1$.",
+      "Inductively, as $U_{n + 1}$ is open and dense, choose a closed ball $\\overline {B_{n + 1} } \\subseteq B_n \\cap U_{n + 1}$ of radius less than $\\dfrac 1 {n + 1}$.",
+      "By [[Cantor's Intersection Theorem]], $\\displaystyle \\bigcap_n \\overline {B_n} = \\set x$.\nThen $x \\in W$ and $x \\in U_n$ for every $n$.\nThis is the [[Baire Category Theorem]].\n{{qed}}"
+    ]
+  }
+}

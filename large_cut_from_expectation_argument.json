@@ -1,0 +1,38 @@
+{
+  "id": "large_cut_from_expectation_argument",
+  "field": [
+    "combinatorics",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a finite [[Definition:Graph (Graph Theory)|graph]] with $m$ edges.\nThen $G$ has a [[Definition:Bipartite Graph|bipartite]] [[Definition:Subgraph|subgraph]] with at least $\\dfrac m 2$ edges."
+  },
+  "B_source": {
+    "statement": "Let $X$ be a [[Definition:Random Variable|random variable]] on a finite [[Definition:Probability Space|probability space]] with $\\expect X \\ge c$.\nThen $X \\ge c$ for at least one outcome; so to show that an object with $X \\ge c$ exists, it suffices to compute an expectation."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the random object": "a uniformly random vertex subset S",
+        "the random variable X": "the number of edges crossing between S and its complement"
+      },
+      "derived": {
+        "an outcome with X >= m/2": "a cut with at least half the edges"
+      },
+      "reformulation": "Apply the probabilistic method in its expectation form to a random bipartition."
+    },
+    "validity_conditions": [
+      "Linearity of expectation needs no independence between edges.",
+      "The argument derandomizes by the method of conditional expectations."
+    ],
+    "proof_plan": [
+      "Put each vertex into $S$ independently with probability $\\dfrac 1 2$.",
+      "An edge crosses between $S$ and its complement with probability $\\dfrac 1 2$.\nBy [[Expectation is Linear|linearity of expectation]], the number $X$ of crossing edges has $\\expect X = \\dfrac m 2$.",
+      "By the source result, some choice of $S$ has $X \\ge \\dfrac m 2$.",
+      "The crossing edges form a bipartite subgraph with parts $S$ and $V \\setminus S$.\n{{qed}}"
+    ]
+  }
+}

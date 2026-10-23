@@ -1,0 +1,36 @@
+{
+  "id": "borel_cantelli_second_from_exponential_bound",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $A_1, A_2, \\ldots$ be [[Definition:Independent Events|independent events]] with $\\displaystyle \\sum_n \\map \\Pr {A_n} = \\infty$.\nThen:\n:$\\displaystyle \\map \\Pr {\\limsup_{n \\mathop \\to \\infty} A_n} = 1$"
+  },
+  "B_source": {
+    "statement": "For all $x \\in \\R$:\n:$1 - x \\le e^{-x}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "x": "the probabilities P(A_n)"
+      },
+      "derived": {
+        "the product of 1 - P(A_n)": "a quantity bounded by exp of minus a divergent sum"
+      },
+      "reformulation": "Compute the probability that no A_n occurs beyond N as a product, and bound it exponentially."
+    },
+    "validity_conditions": [
+      "Independence of the A_n implies independence of their complements, which turns the intersection into a product.",
+      "Continuity from above is used to pass from finite to infinite intersections."
+    ],
+    "proof_plan": [
+      "The complement of $\\limsup A_n$ is $\\displaystyle \\bigcup_N \\bigcap_{n \\mathop \\ge N} A_n^c$, so it suffices that $\\map \\Pr {\\bigcap_{n \\ge N} A_n^c} = 0$ for each $N$.",
+      "By independence, for $M \\ge N$:\n:$\\displaystyle \\map \\Pr {\\bigcap_{n \\mathop = N}^M A_n^c} = \\prod_{n \\mathop = N}^M \\paren {1 - \\map \\Pr {A_n} }$",
+      "By the source result, this is at most $\\displaystyle \\map \\exp {-\\sum_{n \\mathop = N}^M \\map \\Pr {A_n} } \\to 0$ as $M \\to \\infty$.",
+      "By [[Measure is Continuous from Above|continuity from above]], each $\\map \\Pr {\\bigcap_{n \\ge N} A_n^c} = 0$, and a countable union of null events is null.\nHence $\\map \\Pr {\\limsup A_n} = 1$, which is the second [[Borel-Cantelli Lemma]].\n{{qed}}"
+    ]
+  }
+}

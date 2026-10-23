@@ -1,0 +1,37 @@
+{
+  "id": "exponential_memoryless_from_geometric_memoryless",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X > 0$ be a [[Definition:Random Variable|random variable]] with $\\map \\Pr {X > t} \\in \\openint 0 1$ for some $t$.\nThen $\\map \\Pr {X > s + t \\mid X > s} = \\map \\Pr {X > t}$ for all $s, t \\ge 0$ {{iff}} $X$ has an [[Definition:Exponential Distribution|exponential distribution]]."
+  },
+  "B_source": {
+    "statement": "Let $X$ take values in $\\set {1, 2, \\ldots}$.\nThen $\\map \\Pr {X > m + n \\mid X > m} = \\map \\Pr {X > n}$ for all $m, n$ {{iff}} $X$ is [[Definition:Geometric Distribution|geometric]], with $\\map \\Pr {X > n} = \\map \\Pr {X > 1}^n$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "integer times": "real times",
+        "the geometric survival function": "an exponential survival function"
+      },
+      "derived": {
+        "S(m + n) = S(m) S(n) on integers": "S(s + t) = S(s) S(t) on [0, infinity)"
+      },
+      "reformulation": "Pass from integer to real times: the multiplicative functional equation for the survival function forces an exponential, using monotonicity to fill in irrational times."
+    },
+    "validity_conditions": [
+      "Right-continuity and monotonicity of the survival function replace the discreteness used in the geometric case.",
+      "The non-degeneracy condition excludes S identically 0 or 1."
+    ],
+    "proof_plan": [
+      "Let $\\map S t = \\map \\Pr {X > t}$.\nMemorylessness is equivalent to $\\map S {s + t} = \\map S s \\map S t$.",
+      "As in the source result, induction gives $\\map S n = \\map S 1^n$, and $\\map S {1 / n}^n = \\map S 1$ gives $\\map S q = \\map S 1^q$ for rational $q > 0$.",
+      "By the non-degeneracy assumption, $0 < \\map S 1 < 1$; let $\\lambda = -\\ln \\map S 1 > 0$.\nAs $S$ is decreasing and right-continuous, $\\map S t = e^{-\\lambda t}$ for all real $t \\ge 0$.",
+      "Conversely $e^{-\\lambda \\paren {s + t} } = e^{-\\lambda s} e^{-\\lambda t}$.\nHence the exponential distribution is the continuous analogue of the geometric distribution, and $\\ceiling X$ is geometric.\n{{qed}}"
+    ]
+  }
+}

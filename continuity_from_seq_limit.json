@@ -1,0 +1,38 @@
+{
+  "id": "continuity_from_seq_limit",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\R \\to \\R$ be a [[Definition:Real Function|real function]] and $x_0 \\in \\R$.\nThen $f$ is [[Definition:Continuous Real Function at Point|continuous at $x_0$]] {{iff}}:\n:$\\forall \\epsilon > 0: \\exists \\delta > 0: \\size {x - x_0} < \\delta \\implies \\size {\\map f x - \\map f {x_0} } < \\epsilon$"
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {a_n}$ be a [[Definition:Real Sequence|real sequence]] and $L \\in \\R$.\nThen $a_n \\to L$ {{iff}}:\n:$\\forall \\epsilon > 0: \\exists N \\in \\N: n > N \\implies \\size {a_n - L} < \\epsilon$"
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "index n -> infinity": "input x -> x0",
+        "threshold N": "threshold delta",
+        "tail condition n > N": "proximity condition |x - x0| < delta"
+      },
+      "derived": {
+        "|a_n - L| < eps": "|f(x) - f(x0)| < eps"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "Both definitions share the 'challenge-response' quantifier skeleton (forall eps, exists threshold, implication on the error).",
+      "The transfer is of the proof *template* (given eps, exhibit the threshold, bound the error), not a renaming of a single structure; the threshold is found differently in each case."
+    ],
+    "proof_plan": [
+      "Both definitions share the skeleton: for all $\\epsilon > 0$, exhibit a threshold, then bound the error below $\\epsilon$.",
+      "Map \"choose $N$ such that the tail $n > N$ is close to $L$\" to \"choose $\\delta$ such that the neighborhood $\\size {x - x_0} < \\delta$ is close to $\\map f {x_0}$\".",
+      "Given $\\epsilon > 0$, construct $\\delta$ from $\\epsilon$ as one would construct $N$.\nThen verify $\\size {\\map f x - \\map f {x_0} } < \\epsilon$ whenever $\\size {x - x_0} < \\delta$.",
+      "Hence an [[Definition:Epsilon-Delta Definition|$\\epsilon$-$\\delta$]] continuity proof follows the same plan as an $\\epsilon$-$N$ proof of [[Definition:Limit of Real Sequence|convergence of a sequence]].\n{{qed}}"
+    ]
+  }
+}

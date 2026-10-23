@@ -1,0 +1,41 @@
+{
+  "id": "cokernel_from_kernel",
+  "field": [
+    "algebra",
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $f: A \\to B$ be a [[Definition:Morphism|morphism]] in a [[Definition:Preadditive Category|category with zero morphisms]].\nA [[Definition:Cokernel (Category Theory)|cokernel]] of $f$ is a morphism $c: B \\to C$ with $c \\circ f = 0$ such that every $g: B \\to D$ with $g \\circ f = 0$ factors uniquely as:\n:$g = \\bar g \\circ c$"
+  },
+  "B_source": {
+    "statement": "Let $f: A \\to B$ be a [[Definition:Morphism|morphism]] in a [[Definition:Preadditive Category|category with zero morphisms]].\nA [[Definition:Kernel (Category Theory)|kernel]] of $f$ is a morphism $k: K \\to A$ with $f \\circ k = 0$ such that every $h: D \\to A$ with $f \\circ h = 0$ factors uniquely as:\n:$h = k \\circ \\bar h$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "maps into the source": "maps out of the target",
+        "the composite with the map vanishing on the right": "the composite vanishing on the left",
+        "the universal object receiving such maps": "the universal object emitting them"
+      },
+      "derived": {
+        "the factorization through the kernel": "the factorization through the cokernel",
+        "the kernel as an equalizer with zero": "the cokernel as a coequalizer with zero"
+      },
+      "reformulation": "Reverse the arrows of the defining universal property, exchanging maps in for maps out."
+    },
+    "validity_conditions": [
+      "The two definitions are obtained from one another by reversing every arrow, which is the formal content of duality.",
+      "Existence does not dualize automatically: a category may have all kernels and lack some cokernels, so each must be assumed or constructed separately.",
+      "In an abelian category both exist and the two notions are exchanged by passing to the opposite category, which is what makes the duality usable in practice."
+    ],
+    "proof_plan": [
+      "Write the [[Definition:Kernel (Category Theory)|kernel]] of $f$ by its [[Definition:Universal Property|universal property]] against morphisms $h: D \\to A$ into the source.",
+      "Reverse every arrow, passing to the [[Definition:Dual Category|dual category]].",
+      "The reversed property states that $c: B \\to C$ satisfies $c \\circ f = 0$, and every $g: B \\to D$ with $g \\circ f = 0$ factors uniquely through $c$.",
+      "This is the [[Definition:Cokernel (Category Theory)|cokernel]] of $f$, as the kernel of $f$ in the dual category.\nExistence does not follow by [[Principle of Duality|duality]] and must be checked separately in the given category.\n{{qed}}"
+    ]
+  }
+}

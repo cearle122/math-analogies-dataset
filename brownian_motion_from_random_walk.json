@@ -1,0 +1,42 @@
+{
+  "id": "brownian_motion_from_random_walk",
+  "field": [
+    "probability",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "There exists a [[Definition:Stochastic Process|stochastic process]] $\\sequence {B_t}_{t \\mathop \\ge 0}$ such that:\n:$B_0 = 0$\n:$t \\mapsto B_t$ is [[Definition:Continuous Real Function|continuous]]\n:for $s < t$, $B_t - B_s \\sim \\map N {0, t - s}$ is [[Definition:Independent Random Variables|independent]] of $\\set {B_u: u \\le s}$\nThat is, [[Definition:Brownian Motion|Brownian motion]] exists."
+  },
+  "B_source": {
+    "statement": "Let $X_1, X_2, \\ldots$ be [[Definition:Independent Identically Distributed|i.i.d.]] with $\\map \\Pr {X_i = 1} = \\map \\Pr {X_i = -1} = \\dfrac 1 2$.\nThe [[Definition:Simple Random Walk|simple symmetric random walk]] is:\n:$\\displaystyle S_n = \\sum_{i \\mathop = 1}^n X_i$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "specialization"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the unit time step of the walk": "a time increment of size 1/n",
+        "the unit spatial step +-1": "a spatial increment of size 1/sqrt(n)",
+        "the partial sum S_n": "the rescaled path S_{floor(nt)}/sqrt(n)"
+      },
+      "derived": {
+        "the limit of the rescaled walk paths": "a Brownian path on [0,1]"
+      },
+      "reformulation": "The discrete walk must first be embedded as a continuous-time path by linear interpolation between steps, so that both objects live in the same function space."
+    },
+    "validity_conditions": [
+      "the walk increments must have mean zero and finite variance for the diffusive scaling to be the right one",
+      "tightness of the rescaled paths in the space of continuous functions is required, not just convergence of finite-dimensional marginals"
+    ],
+    "proof_plan": [
+      "Define the rescaled, linearly interpolated walk:\n:$W^{\\paren n}_t = \\dfrac 1 {\\sqrt n} S_{\\floor {n t} } + \\dfrac {n t - \\floor {n t} } {\\sqrt n} X_{\\floor {n t} + 1}$",
+      "For $0 < t_1 < \\cdots < t_k$, the increments of $W^{\\paren n}$ are independent sums of i.i.d. steps.\nBy the [[Central Limit Theorem]], $W^{\\paren n}_t - W^{\\paren n}_s \\to \\map N {0, t - s}$ in [[Definition:Convergence in Distribution|distribution]].",
+      "From moment bounds on increments and [[Prohorov's Theorem]], the laws of $W^{\\paren n}$ on $\\map C {\\closedint 0 1}$ are [[Definition:Tight Family of Measures|tight]].",
+      "Tightness together with convergence of [[Definition:Finite-Dimensional Distribution|finite-dimensional distributions]] gives [[Definition:Weak Convergence of Measures|weak convergence]] to a limit process $B$ with the required increment law.\nThis is [[Donsker's Theorem]].",
+      "As the limit law is supported on $\\map C {\\closedint 0 1}$, $B$ has [[Definition:Continuous Real Function|continuous]] sample paths.\n{{qed}}"
+    ]
+  }
+}

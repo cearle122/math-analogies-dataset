@@ -1,0 +1,41 @@
+{
+  "id": "legendre_transform_from_affine_minorants",
+  "field": [
+    "analysis",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\R^n \\to \\hointl {-\\infty} \\infty$ be [[Definition:Closed Convex Function|closed]] and [[Definition:Convex Real Function|convex]].\nLet:\n:$\\displaystyle \\map {f^*} y = \\sup_x \\paren {\\innerprod y x - \\map f x}$\nbe its [[Definition:Legendre-Fenchel Transform|Legendre-Fenchel transform]].\nThen:\n:$f^{**} = f$"
+  },
+  "B_source": {
+    "statement": "Let $f$ be [[Definition:Closed Convex Function|closed]] and [[Definition:Convex Real Function|convex]].\nThen $f$ is the [[Definition:Supremum of Mapping|supremum]] of the [[Definition:Affine Function|affine functions]] lying below it."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "an affine minorant of the function": "a pair consisting of a slope and an intercept",
+        "the family of all affine minorants": "the transform, recording the least intercept for each slope",
+        "the supremum over minorants": "the double transform, reconstructing the function"
+      },
+      "derived": {
+        "the transform of the function": "the function evaluated on slopes rather than points",
+        "applying the transform twice": "recovery of the original function, so the transform is an involution"
+      },
+      "reformulation": "Record the function by its family of affine minorants, indexing by slope rather than by argument."
+    },
+    "validity_conditions": [
+      "Closedness and convexity are exactly what guarantee the function is the supremum of its affine minorants; without them the double transform gives the closed convex hull instead.",
+      "For each slope the set of admissible intercepts is bounded above, so recording the least one loses nothing and the transform is well defined.",
+      "The transform exchanges the roles of point and slope, which is why it converts a strictly convex function into another and swaps differentiability with strict convexity."
+    ],
+    "proof_plan": [
+      "By the source result:\n:$\\displaystyle \\map f x = \\sup \\set {\\innerprod y x - c: \\innerprod y \\cdot - c \\le f}$",
+      "For each slope $y$, the least intercept $c$ making $\\innerprod y \\cdot - c$ a minorant of $f$ is:\n:$\\displaystyle c = \\sup_x \\paren {\\innerprod y x - \\map f x}$",
+      "This is $\\map {f^*} y$.",
+      "Hence:\n:$\\displaystyle \\map f x = \\sup_y \\paren {\\innerprod y x - \\map {f^*} y} = \\map {f^{**} } x$\nusing closed convexity for the first equality.\n{{qed}}"
+    ]
+  }
+}

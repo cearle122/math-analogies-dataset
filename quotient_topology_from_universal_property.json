@@ -1,0 +1,39 @@
+{
+  "id": "quotient_topology_from_universal_property",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {X, \\tau}$ be a [[Definition:Topological Space|topological space]], $\\sim$ an [[Definition:Equivalence Relation|equivalence relation]] on $X$, and $q: X \\to X / \\sim$ the [[Definition:Quotient Mapping|quotient mapping]].\nThen $f: X / \\sim \\to Y$ is [[Definition:Continuous Mapping (Topology)|continuous]] {{iff}} $f \\circ q$ is continuous."
+  },
+  "B_source": {
+    "statement": "Let $q: X \\to X / \\sim$.\nThe [[Definition:Quotient Topology|quotient topology]] declares $U \\subseteq X / \\sim$ open {{iff}} $\\map {q^{-1} } U$ is open in $X$, the finest topology making $q$ continuous."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the equivalence relation on the underlying set": "the identification ~ on the points of X",
+        "the finest compatible structure": "the quotient topology, in which U is open iff its preimage is open",
+        "a map out of the set-level quotient": "a map f from X/~ to a space Y"
+      },
+      "derived": {
+        "the set-level factorization": "f corresponds to a ~-invariant continuous map on X",
+        "continuity of f in terms of preimages": "openness of f^{-1}(V) is by definition openness of (f . q)^{-1}(V)"
+      }
+    },
+    "validity_conditions": [
+      "The quotient topology is defined so that a set is open in X/~ exactly when its preimage under q is open in X.",
+      "This makes q continuous and is the finest topology doing so, which is what makes the characterization an equivalence rather than one implication.",
+      "The stated criterion is then immediate, since the preimage of V under f and under f composed with q determine each other."
+    ],
+    "proof_plan": [
+      "Take the set-level quotient $X / \\sim$ with projection $q$.",
+      "Declare $U$ open {{iff}} $\\map {q^{-1} } U \\in \\tau$.",
+      "As preimage commutes with unions and intersections, this is a [[Definition:Topology|topology]].\nAny topology making $q$ continuous has every open $U$ satisfying $\\map {q^{-1} } U \\in \\tau$, so this is the finest.",
+      "For $V \\subseteq Y$ open:\n:$\\map {q^{-1} } {\\map {f^{-1} } V} = \\map {\\paren {f \\circ q}^{-1} } V$\nHence $\\map {f^{-1} } V$ is open {{iff}} $\\map {\\paren {f \\circ q}^{-1} } V$ is open, so $f$ is continuous {{iff}} $f \\circ q$ is.\n{{qed}}"
+    ]
+  }
+}

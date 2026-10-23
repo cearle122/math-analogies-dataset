@@ -1,0 +1,38 @@
+{
+  "id": "archimedes_pi_from_inscribed_polygons",
+  "field": [
+    "geometry",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $p_n = 2 n r \\map \\sin {\\pi / n}$ and $P_n = 2 n r \\map \\tan {\\pi / n}$ be the perimeters of the regular $n$-gons inscribed in and circumscribed about a circle of radius $r$.\nThen:\n:$p_n < 2 \\pi r < P_n$\nand $p_n \\to 2 \\pi r$, $P_n \\to 2 \\pi r$ as $n \\to \\infty$."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Length of Curve|length]] of a curve is the supremum of the lengths of the [[Definition:Polygonal Path|polygonal paths]] inscribed in it."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "an arbitrary curve": "a circle",
+        "arbitrary inscribed polygons": "regular inscribed n-gons"
+      },
+      "derived": {
+        "the polygon perimeters": "lower and upper approximations to 2 pi r"
+      },
+      "reformulation": "Approximate the circumference by inscribed and circumscribed regular polygons, whose perimeters are computed by trigonometry."
+    },
+    "validity_conditions": [
+      "The circumscribed bound uses that a convex curve inside a convex polygon is no longer than the polygon.",
+      "Regular polygons suffice because their perimeters already converge to the supremum."
+    ],
+    "proof_plan": [
+      "Each side of the inscribed $n$-gon subtends the central angle $\\dfrac {2 \\pi} n$, so has length $2 r \\map \\sin {\\pi / n}$, giving $p_n$.\nEach side of the circumscribed $n$-gon has length $2 r \\map \\tan {\\pi / n}$, giving $P_n$.",
+      "By the source result, $p_n \\le 2 \\pi r$.\nAs the circle is convex and lies inside the circumscribed polygon, its length is at most $P_n$; both inequalities are strict for $n \\ge 3$.",
+      "As $\\dfrac {\\sin x} x \\to 1$ and $\\dfrac {\\tan x} x \\to 1$ as $x \\to 0$, both $p_n$ and $P_n$ tend to $2 \\pi r$.",
+      "With $n = 96$ this gives Archimedes' bounds $3 \\dfrac {10} {71} < \\pi < 3 \\dfrac 1 7$.\n{{qed}}"
+    ]
+  }
+}

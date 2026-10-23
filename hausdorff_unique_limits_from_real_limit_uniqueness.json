@@ -1,0 +1,36 @@
+{
+  "id": "hausdorff_unique_limits_from_real_limit_uniqueness",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Hausdorff Space|Hausdorff space]].\nThen a [[Definition:Sequence|sequence]] in $X$ has at most one [[Definition:Limit Point of Sequence|limit]]."
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {a_n}$ be a real sequence with $a_n \\to L$ and $a_n \\to M$.\nThen $L = M$: otherwise the intervals of radius $\\dfrac {\\size {L - M} } 2$ about $L$ and $M$ are disjoint, yet both eventually contain $a_n$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "disjoint intervals of radius |L - M|/2": "disjoint open neighbourhoods given by the Hausdorff axiom"
+      },
+      "derived": {
+        "the contradiction": "uniqueness of limits"
+      },
+      "reformulation": "Keep the disjoint-neighbourhood argument, but obtain the neighbourhoods from the Hausdorff axiom instead of from the metric."
+    },
+    "validity_conditions": [
+      "Without the Hausdorff condition limits need not be unique; in an indiscrete space every point is a limit of every sequence.",
+      "The same argument works for nets."
+    ],
+    "proof_plan": [
+      "Suppose $x_n \\to L$ and $x_n \\to M$ with $L \\ne M$.",
+      "By the Hausdorff property, choose disjoint open $U \\ni L$ and $V \\ni M$, in place of the disjoint intervals.",
+      "Eventually $x_n \\in U$, and eventually $x_n \\in V$, so some $x_n \\in U \\cap V = \\O$.",
+      "This is a contradiction, so $L = M$.\n{{qed}}"
+    ]
+  }
+}

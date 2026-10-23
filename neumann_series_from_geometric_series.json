@@ -1,0 +1,38 @@
+{
+  "id": "neumann_series_from_geometric_series",
+  "field": [
+    "analysis",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Banach Space|Banach space]] and $T$ a [[Definition:Bounded Linear Operator|bounded linear operator]] on $X$ with $\\norm T < 1$.\nThen $I - T$ is [[Definition:Invertible Bounded Linear Operator|invertible]], with:\n:$\\displaystyle \\paren {I - T}^{-1} = \\sum_{n \\mathop = 0}^\\infty T^n, \\quad \\norm {\\paren {I - T}^{-1} } \\le \\frac 1 {1 - \\norm T}$"
+  },
+  "B_source": {
+    "statement": "Let $r \\in \\R$ with $\\size r < 1$.\nThen:\n:$\\displaystyle \\sum_{n \\mathop = 0}^\\infty r^n = \\frac 1 {1 - r}$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the real number r": "the operator T",
+        "absolute value": "operator norm"
+      },
+      "derived": {
+        "1/(1 - r)": "the inverse of I - T"
+      },
+      "reformulation": "Replace the scalar ratio by an operator and the absolute value by the operator norm; the telescoping identity survives since all terms are powers of T."
+    },
+    "validity_conditions": [
+      "The space of bounded operators must be complete, which holds as X is a Banach space.",
+      "Commutativity is used only among powers of T, so non-commutativity of operators causes no problem."
+    ],
+    "proof_plan": [
+      "By [[Definition:Submultiplicative Norm|submultiplicativity]], $\\norm {T^n} \\le \\norm T^n$.\nAs $\\displaystyle \\sum \\norm T^n$ converges, $\\displaystyle \\sum T^n$ converges absolutely in the Banach space of bounded operators, to some $S$.",
+      "Let $S_N = \\displaystyle \\sum_{n \\mathop = 0}^N T^n$.\nThen:\n:$\\paren {I - T} S_N = S_N \\paren {I - T} = I - T^{N + 1}$",
+      "As $\\norm {T^{N + 1} } \\to 0$, letting $N \\to \\infty$ gives $\\paren {I - T} S = S \\paren {I - T} = I$.",
+      "Summing norms gives $\\norm S \\le \\displaystyle \\sum \\norm T^n = \\frac 1 {1 - \\norm T}$.\nThis is the [[Neumann Series Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "arzela_ascoli_from_diagonal_argument",
+  "field": [
+    "analysis",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {f_n}$ be a [[Definition:Uniformly Bounded|uniformly bounded]], [[Definition:Equicontinuous|equicontinuous]] sequence in $\\map C {\\closedint a b}$.\nThen $\\sequence {f_n}$ has a [[Definition:Uniform Convergence|uniformly convergent]] [[Definition:Subsequence|subsequence]]."
+  },
+  "B_source": {
+    "statement": "Let $D = \\set {d_1, d_2, \\ldots}$ be [[Definition:Countable Set|countable]] and $\\sequence {f_n}$ a sequence of functions on $D$ with $\\sequence {\\map {f_n} {d_k} }_n$ bounded for each $k$.\nThen, extracting nested subsequences for $d_1, d_2, \\ldots$ in turn and taking the diagonal, some subsequence converges at every point of $D$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the countable set D": "the rational points of [a, b]",
+        "pointwise convergence on D": "convergence on a dense set"
+      },
+      "derived": {
+        "equicontinuity": "the mechanism upgrading convergence on D to uniform convergence"
+      },
+      "reformulation": "Get convergence on a countable dense set by the diagonal argument, then spread it uniformly using equicontinuity and compactness."
+    },
+    "validity_conditions": [
+      "Uniform boundedness gives bounded values at each point, as the diagonal argument requires.",
+      "Equicontinuity and compactness of [a, b] are needed to pass from the dense set to all points uniformly.",
+      "Completeness of C([a, b]) under the supremum norm gives the limit."
+    ],
+    "proof_plan": [
+      "Let $D = \\Q \\cap \\closedint a b$, which is countable and [[Definition:Everywhere Dense|dense]].\nBy the source result, with the [[Bolzano-Weierstrass Theorem]] at each point, some subsequence $\\sequence {g_k}$ converges at every $d \\in D$.",
+      "Let $\\epsilon > 0$.\nBy equicontinuity, choose $\\delta > 0$ with $\\size {x - y} < \\delta \\implies \\size {\\map {f_n} x - \\map {f_n} y} < \\dfrac \\epsilon 3$ for all $n$.",
+      "By compactness, finitely many $d_1, \\ldots, d_m \\in D$ are within $\\delta$ of every point of $\\closedint a b$.\nChoose $K$ such that $\\size {\\map {g_k} {d_j} - \\map {g_l} {d_j} } < \\dfrac \\epsilon 3$ for all $k, l \\ge K$ and $j \\le m$.",
+      "For any $x$, choosing $d_j$ with $\\size {x - d_j} < \\delta$ gives $\\size {\\map {g_k} x - \\map {g_l} x} < \\epsilon$ for $k, l \\ge K$.\nSo $\\sequence {g_k}$ is uniformly Cauchy, and converges uniformly as $\\map C {\\closedint a b}$ is [[Definition:Complete Metric Space|complete]].\nThis is the [[Arzelà-Ascoli Theorem]].\n{{qed}}"
+    ]
+  }
+}

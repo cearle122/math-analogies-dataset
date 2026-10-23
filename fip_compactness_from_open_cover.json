@@ -1,0 +1,39 @@
+{
+  "id": "fip_compactness_from_open_cover",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $T = \\struct {S, \\tau}$ be a [[Definition:Topological Space|topological space]].\nThen $T$ is [[Definition:Compact Space|compact]] {{iff}} every family of [[Definition:Closed Set (Topology)|closed sets]] with the [[Definition:Finite Intersection Property|finite intersection property]] has non-empty intersection."
+  },
+  "B_source": {
+    "statement": "Let $T = \\struct {S, \\tau}$ be a [[Definition:Topological Space|topological space]].\n$T$ is [[Definition:Compact Space|compact]] {{iff}} every [[Definition:Open Cover|open cover]] of $S$ has a [[Definition:Finite Subcover|finite subcover]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the open sets of the cover": "the complements of the closed sets",
+        "the covering condition": "empty total intersection of the closed sets",
+        "the finite subcover": "a finite subfamily with empty intersection"
+      },
+      "derived": {
+        "the contrapositive of the covering property": "the finite intersection property characterization"
+      }
+    },
+    "validity_conditions": [
+      "complementation must be an inclusion-reversing involution on subsets, which it is",
+      "the sets must be closed exactly when their complements are open, which is the definition of the topology",
+      "the equivalence is a contrapositive restatement, so it holds in every topological space with no extra hypotheses"
+    ],
+    "proof_plan": [
+      "Let $\\FF = \\set {F_i: i \\in I}$ be a family of closed sets.\nLet $U_i = S \\setminus F_i$, which are [[Definition:Open Set (Topology)|open]].",
+      "By [[De Morgan's Laws (Set Theory)|De Morgan's laws]]:\n:$\\displaystyle \\bigcap_{i \\mathop \\in I} F_i = \\O \\iff \\bigcup_{i \\mathop \\in I} U_i = S$",
+      "If $T$ is compact and $\\displaystyle \\bigcap \\FF = \\O$, then $\\set {U_i}$ is an [[Definition:Open Cover|open cover]], so has a finite subcover $U_{i_1}, \\ldots, U_{i_k}$.",
+      "Then $F_{i_1} \\cap \\cdots \\cap F_{i_k} = \\O$, so $\\FF$ fails the [[Definition:Finite Intersection Property|finite intersection property]].",
+      "Taking the [[Definition:Contrapositive Statement|contrapositive]]: every family with the finite intersection property has non-empty intersection.\nThe converse follows by the same translation in reverse.\n{{qed}}"
+    ]
+  }
+}

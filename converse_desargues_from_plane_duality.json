@@ -1,0 +1,38 @@
+{
+  "id": "converse_desargues_from_plane_duality",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "In the real [[Definition:Projective Plane|projective plane]], if two triangles are perspective from a line, that is, the three pairs of corresponding sides meet on one line, then they are perspective from a point."
+  },
+  "B_source": {
+    "statement": "In the real projective plane, if two triangles are perspective from a point, that is, the lines joining corresponding vertices are concurrent, then they are perspective from a line.\nThis is [[Desargues' Theorem]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "points": "lines",
+        "joining two points": "meeting of two lines",
+        "concurrent": "collinear"
+      },
+      "derived": {
+        "Desargues for the dual triangles": "the converse statement"
+      },
+      "reformulation": "Dualize the configuration: the dual of 'perspective from a point' is 'perspective from a line'."
+    },
+    "validity_conditions": [
+      "The plane dual, (x : y : z) corresponding to the line ax + by + cz = 0, is again the real projective plane, so Desargues holds there.",
+      "Duality sends triangles, as three non-collinear points with their sides, to triangles."
+    ],
+    "proof_plan": [
+      "Under the [[Definition:Duality (Projective Geometry)|principle of duality]], points correspond to lines and incidence is preserved.",
+      "A triangle with vertices $A_i$ and sides $a_i$ corresponds to a triangle with sides $A_i^*$ and vertices $a_i^*$.",
+      "Two triangles perspective from a line correspond to two triangles perspective from a point, as collinearity of the meets of sides becomes concurrency of the joins of vertices.",
+      "Apply Desargues' Theorem to the dual triangles and dualize the conclusion.\nHence the original triangles are perspective from a point.\n{{qed}}"
+    ]
+  }
+}

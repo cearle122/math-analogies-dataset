@@ -1,0 +1,43 @@
+{
+  "id": "inclusion_exclusion_from_indicators",
+  "field": [
+    "combinatorics",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $A_1, \\ldots, A_n$ be [[Definition:Finite Set|finite sets]].\nThen:\n:$\\displaystyle \\card {\\bigcup_{i \\mathop = 1}^n A_i} = \\sum_{\\O \\mathop \\ne S \\mathop \\subseteq \\set {1, \\ldots, n} } \\paren {-1}^{\\card S + 1} \\card {\\bigcap_{i \\mathop \\in S} A_i}$"
+  },
+  "B_source": {
+    "statement": "Let $A_1, \\ldots, A_n \\subseteq U$.\nThen:\n:$\\displaystyle \\chi_{\\bigcup_i A_i} = 1 - \\prod_{i \\mathop = 1}^n \\paren {1 - \\chi_{A_i} }$\nwhere $\\chi_A$ denotes the [[Definition:Characteristic Function of Set|characteristic function]] of $A$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the set union |union A_i|": "the sum over the ground set of 1_{union A_i}",
+        "membership in A_i": "the indicator 1_{A_i}",
+        "cardinality of an intersection": "sum of a product of indicators"
+      },
+      "derived": {
+        "expanded product prod(1 - 1_{A_i})": "the alternating sum of intersection terms",
+        "summing indicators over the ground set": "the inclusion-exclusion count"
+      },
+      "reformulation": "Replace sets by their indicator functions, prove the pointwise algebraic identity, then sum over all elements."
+    },
+    "validity_conditions": [
+      "1_{union A_i} = 1 - prod(1 - 1_{A_i}) holds pointwise for every element (each side is 0 or 1 and they agree).",
+      "Expanding the product gives an alternating sum of products 1_{A_{i1}}...1_{A_{ik}} = 1_{intersection}.",
+      "Summing over the ground set turns each indicator sum into a cardinality, yielding inclusion-exclusion."
+    ],
+    "proof_plan": [
+      "Encode each $A_i$ by its [[Definition:Characteristic Function of Set|characteristic function]] $\\chi_{A_i}$ on $U = \\displaystyle \\bigcup_i A_i$.",
+      "For $x \\in U$, $\\displaystyle \\prod_i \\paren {1 - \\map {\\chi_{A_i} } x} = 0$ {{iff}} $x \\in A_i$ for some $i$.\nHence:\n:$\\displaystyle \\chi_{\\bigcup_i A_i} = 1 - \\prod_{i \\mathop = 1}^n \\paren {1 - \\chi_{A_i} }$",
+      "Expanding the product, and using $\\chi_A \\chi_B = \\chi_{A \\cap B}$:\n:$\\displaystyle \\chi_{\\bigcup_i A_i} = \\sum_{\\O \\mathop \\ne S} \\paren {-1}^{\\card S + 1} \\chi_{\\bigcap_{i \\mathop \\in S} A_i}$",
+      "Summing over all $x \\in U$, and using $\\displaystyle \\sum_x \\map {\\chi_A} x = \\card A$, gives the [[Inclusion-Exclusion Principle]].\n{{qed}}"
+    ]
+  }
+}

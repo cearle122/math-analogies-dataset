@@ -1,0 +1,41 @@
+{
+  "id": "coordinate_ring_from_vanishing_ideal",
+  "field": [
+    "algebra",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $k$ be a [[Definition:Field (Abstract Algebra)|field]] and $V \\subseteq k^n$ an [[Definition:Affine Variety|affine variety]].\nThen the [[Definition:Ring (Abstract Algebra)|ring]] of [[Definition:Polynomial Function|polynomial functions]] on $V$ is:\n:$\\map k V \\cong k \\sqbrk {x_1, \\ldots, x_n} / \\map I V$\nwhere $\\map I V$ is the [[Definition:Ideal of Ring|ideal]] of polynomials vanishing on $V$."
+  },
+  "B_source": {
+    "statement": "Let $S \\subseteq X$ and let $R$ be a [[Definition:Ring (Abstract Algebra)|ring]] of functions on $X$.\nThen restriction to $S$ is a [[Definition:Ring Homomorphism|ring homomorphism]] whose [[Definition:Kernel of Ring Homomorphism|kernel]] is the ideal of functions vanishing on $S$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ambient ring of functions": "the polynomial ring in n variables",
+        "the functions vanishing on the subset": "the vanishing ideal of the variety",
+        "the ring of functions on the subset": "the coordinate ring of the variety"
+      },
+      "derived": {
+        "restriction is surjective onto functions on the subset": "every polynomial function on V extends to the ambient space by construction",
+        "the collapse by the vanishing ideal": "two polynomials agree on V exactly when their difference lies in the vanishing ideal"
+      },
+      "reformulation": "Present functions on a subvariety as ambient functions collapsed by those that cannot be distinguished on it."
+    },
+    "validity_conditions": [
+      "Restriction of polynomials to V is a ring homomorphism whose image is by definition the polynomial functions on V, so it is surjective onto its target.",
+      "Its kernel is exactly the set of polynomials vanishing at every point of V, which is the vanishing ideal.",
+      "The vanishing ideal is radical, so the coordinate ring is reduced; without that observation the quotient could carry nilpotents not detected by any function value."
+    ],
+    "proof_plan": [
+      "Restriction $\\rho: k \\sqbrk {x_1, \\ldots, x_n} \\to \\map k V$, $\\map \\rho f = f \\restriction_V$, is a [[Definition:Surjection|surjective]] [[Definition:Ring Homomorphism|ring homomorphism]] by definition of $\\map k V$.",
+      "We have:\n:$\\map \\ker \\rho = \\set {f: \\forall p \\in V: \\map f p = 0} = \\map I V$",
+      "By the [[First Isomorphism Theorem for Rings]]:\n:$k \\sqbrk {x_1, \\ldots, x_n} / \\map I V \\cong \\map k V$",
+      "If $f^m \\in \\map I V$ then $f$ vanishes on $V$, so $f \\in \\map I V$.\nHence $\\map I V$ is a [[Definition:Radical Ideal|radical ideal]], and $\\map k V$ is [[Definition:Reduced Ring|reduced]].\n{{qed}}"
+    ]
+  }
+}

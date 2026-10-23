@@ -1,0 +1,41 @@
+{
+  "id": "bezier_curve_from_corner_cutting",
+  "field": [
+    "geometry",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $P_0, P_1, \\ldots, P_n \\in \\R^d$ be [[Definition:Control Point|control points]].\nLet:\n:$\\displaystyle \\map B t = \\sum_{k \\mathop = 0}^n \\binom n k t^k \\paren {1 - t}^{n - k} P_k$\nbe the [[Definition:Bézier Curve|Bézier curve]].\nThen $B$ is the [[Definition:Limit of Sequence|limit]] of repeated [[Definition:Subdivision (Bézier Curve)|subdivision]] of its control polygon, and $\\map B t$ lies in the [[Definition:Convex Hull|convex hull]] of $\\set {P_0, \\ldots, P_n}$."
+  },
+  "B_source": {
+    "statement": "Let $Q$ be a [[Definition:Polygon|polygon]].\n[[Definition:Corner Cutting|Cutting a corner]] at a [[Definition:Vertex of Polygon|vertex]] $V$ replaces $V$ with two points on its adjacent edges, each an [[Definition:Convex Combination|interpolation]] of the endpoints of that edge."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the polygon whose corners are cut": "the control polygon of the curve",
+        "the interpolation parameter at each cut": "the de Casteljau subdivision parameter",
+        "the sequence of refined polygons": "successive subdivisions converging to the curve"
+      },
+      "derived": {
+        "the limit of the refined polygons": "the Bezier curve itself",
+        "each refined polygon lying in the previous convex hull": "the curve lies in the convex hull of the control points"
+      },
+      "reformulation": "Replace the smooth curve by a polygon and refine it by corner cutting, so the curve becomes a limit of finite data."
+    },
+    "validity_conditions": [
+      "Each corner cut replaces a vertex by points on its adjacent edges, so every refined polygon lies inside the convex hull of the previous one.",
+      "The nested convex hulls shrink, and the polygon vertices converge uniformly, so the limit curve exists and lies in the original convex hull.",
+      "The limit is the polynomial curve given by the Bernstein basis, which is checked by verifying the subdivision reproduces the de Casteljau recursion."
+    ],
+    "proof_plan": [
+      "Start from the control polygon $P_0 P_1 \\cdots P_n$.\nCut corners by the [[De Casteljau's Algorithm|de Casteljau]] scheme at parameter $t$:\n:$P_k^{\\paren {j + 1} } = \\paren {1 - t} P_k^{\\paren j} + t P_{k + 1}^{\\paren j}$",
+      "Each new vertex is a [[Definition:Convex Combination|convex combination]] of the previous vertices.\nHence each refined polygon lies in the [[Definition:Convex Hull|convex hull]] of the previous one.",
+      "Iterating the subdivision, the edge lengths of the refined polygons shrink geometrically.\nHence the vertices converge [[Definition:Uniform Convergence|uniformly]] to a limit curve.",
+      "By [[Principle of Mathematical Induction|induction]] on $j$:\n:$\\displaystyle P_0^{\\paren n} = \\sum_{k \\mathop = 0}^n \\binom n k t^k \\paren {1 - t}^{n - k} P_k = \\map B t$\nso the limit curve is the polynomial curve in the [[Definition:Bernstein Polynomial|Bernstein basis]].\n{{qed}}"
+    ]
+  }
+}

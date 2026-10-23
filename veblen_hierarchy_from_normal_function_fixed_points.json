@@ -1,0 +1,41 @@
+{
+  "id": "veblen_hierarchy_from_normal_function_fixed_points",
+  "field": [
+    "set_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $\\phi_0 \\paren \\alpha = \\omega^\\alpha$ and let $\\phi_{\\beta + 1}$ enumerate the [[Definition:Fixed Point|fixed points]] of $\\phi_\\beta$.\nThen each $\\phi_\\beta$ is a [[Definition:Normal Function|normal function]], giving the [[Definition:Veblen Hierarchy|Veblen hierarchy]]."
+  },
+  "B_source": {
+    "statement": "Let $f$ be a [[Definition:Normal Function|normal function]] on the [[Definition:Ordinal|ordinals]].\nThen for every $\\alpha$:\n:$\\displaystyle \\sup_{n \\mathop < \\omega} \\map {f^n} \\alpha$\nis a fixed point of $f$, and $f$ has arbitrarily large fixed points."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the normal function": "the enumerating function at the current level of the hierarchy",
+        "the fixed points obtained by iteration": "the ordinals enumerated at the next level",
+        "the starting point of the iteration": "an arbitrary ordinal, giving fixed points above it"
+      },
+      "derived": {
+        "the class of fixed points": "a closed unbounded class, itself enumerated by a normal function",
+        "iterating the construction": "the levels of the Veblen hierarchy"
+      },
+      "reformulation": "Define each level as the enumeration of the points left unmoved by the previous level."
+    },
+    "validity_conditions": [
+      "A normal function is increasing and continuous at limits, so iterating it from any ordinal and taking the supremum lands on a fixed point.",
+      "The fixed point class is closed and unbounded, so it is itself enumerated by a normal function, which is what allows the construction to be iterated transfinitely.",
+      "Continuity at limits is essential: without it the supremum of the iterates need not be fixed, and the hierarchy would not be well defined."
+    ],
+    "proof_plan": [
+      "$\\phi_0 \\paren \\alpha = \\omega^\\alpha$ is [[Definition:Strictly Increasing Mapping|strictly increasing]] and continuous at limits, so is [[Definition:Normal Function|normal]].",
+      "By the [[Fixed Point Lemma for Normal Functions]], iterating $\\phi_\\beta$ from any $\\alpha$ and taking the supremum gives a fixed point above $\\alpha$.",
+      "The class of fixed points of a normal function is [[Definition:Closed Unbounded Class|closed and unbounded]].\nHence its enumerating function $\\phi_{\\beta + 1}$ is normal.",
+      "Take $\\phi_{\\beta + 1}$ as the next level and repeat.\nAt limit $\\lambda$, let $\\phi_\\lambda$ enumerate the common fixed points of all $\\phi_\\beta$ with $\\beta < \\lambda$, which again form a closed unbounded class.\n{{qed}}"
+    ]
+  }
+}

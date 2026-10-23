@@ -1,0 +1,40 @@
+{
+  "id": "filter_from_ideal",
+  "field": [
+    "logic",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $B$ be a [[Definition:Boolean Algebra|Boolean algebra]].\nA [[Definition:Filter on Boolean Algebra|filter]] $F$ on $B$ is a subset such that:\n:$a \\in F \\land a \\le b \\implies b \\in F$\n:$a, b \\in F \\implies a \\wedge b \\in F$\nand the [[Definition:Ultrafilter|ultrafilters]] are the maximal proper filters."
+  },
+  "B_source": {
+    "statement": "Let $B$ be a [[Definition:Boolean Algebra|Boolean algebra]].\nAn [[Definition:Ideal (Order Theory)|ideal]] $I$ on $B$ is a subset such that:\n:$b \\in I \\land a \\le b \\implies a \\in I$\n:$a, b \\in I \\implies a \\vee b \\in I$\nand the maximal proper ideals are the [[Definition:Prime Ideal (Order Theory)|prime ideals]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "downward closure": "upward closure",
+        "closure under finite joins": "closure under finite meets",
+        "the ideal": "its complement, which is a filter"
+      },
+      "derived": {
+        "maximal proper ideals": "ultrafilters, the maximal proper filters",
+        "the quotient by an ideal": "the quotient by the corresponding filter, giving the same algebra"
+      }
+    },
+    "validity_conditions": [
+      "Complementation in a Boolean algebra is an order-reversing involution, so it carries ideals to filters and back exactly.",
+      "Closure under finite joins becomes closure under finite meets under the involution, and properness is preserved.",
+      "In a general lattice without complements the two notions are order-dual but not related by an explicit involution, so the correspondence is a duality of definitions rather than a bijection."
+    ],
+    "proof_plan": [
+      "Let $I$ be an [[Definition:Ideal (Order Theory)|ideal]] and let $F = \\set {\\neg a: a \\in I}$.",
+      "Complementation is [[Definition:Order-Reversing Mapping|order-reversing]], so downward closure of $I$ becomes upward closure of $F$.",
+      "By [[De Morgan's Laws (Boolean Algebras)|De Morgan's laws]]:\n:$\\neg a \\wedge \\neg b = \\neg \\paren {a \\vee b}$\nso closure under finite joins becomes closure under finite meets.",
+      "The correspondence $I \\mapsto \\neg I$ is an inclusion-preserving [[Definition:Bijection|bijection]] between ideals and filters, preserving properness.\nHence maximal proper ideals correspond to [[Definition:Ultrafilter|ultrafilters]].\n{{qed}}"
+    ]
+  }
+}

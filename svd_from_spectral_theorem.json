@@ -1,0 +1,41 @@
+{
+  "id": "svd_from_spectral_theorem",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a real $m \\times n$ [[Definition:Matrix|matrix]].\nThen there exist [[Definition:Orthogonal Matrix|orthogonal matrices]] $\\mathbf U$, $\\mathbf V$ and a [[Definition:Diagonal Matrix|diagonal]] $\\mathbf \\Sigma$ with non-negative entries such that:\n:$\\mathbf A = \\mathbf U \\mathbf \\Sigma \\mathbf V^\\intercal$"
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf M$ be a real [[Definition:Symmetric Matrix|symmetric matrix]].\nThen $\\mathbf M = \\mathbf Q \\mathbf D \\mathbf Q^\\intercal$ with $\\mathbf Q$ orthogonal and $\\mathbf D$ real diagonal."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the symmetric matrix M": "the symmetric positive-semidefinite A^T A",
+        "eigenvalues of M": "squared singular values (diagonal of S^2)",
+        "eigenvectors of M (columns of Q)": "the right singular vectors (columns of V)"
+      },
+      "derived": {
+        "M = Q D Q^T": "A^T A = V S^2 V^T",
+        "nonnegative eigenvalues of A^T A": "nonnegative singular values in S",
+        "U from A V S^{-1}": "the left singular vectors"
+      },
+      "reformulation": "Apply the spectral theorem to the symmetric positive-semidefinite matrix A^T A, then recover U from the relation A = U S V^T."
+    },
+    "validity_conditions": [
+      "A^T A is symmetric and positive semidefinite, so the spectral theorem gives A^T A = V S^2 V^T with S^2 >= 0.",
+      "Singular values s_i = sqrt(eigenvalue_i) are real and nonnegative.",
+      "For nonzero singular values, u_i = A v_i / s_i are orthonormal and extend to an orthogonal U, giving A = U S V^T."
+    ],
+    "proof_plan": [
+      "Form $\\mathbf A^\\intercal \\mathbf A$, which is symmetric, and [[Definition:Positive Semidefinite Matrix|positive semidefinite]] as $\\mathbf x^\\intercal \\mathbf A^\\intercal \\mathbf A \\mathbf x = \\norm {\\mathbf A \\mathbf x}^2 \\ge 0$.",
+      "By the [[Spectral Theorem for Real Symmetric Matrices|spectral theorem]]:\n:$\\mathbf A^\\intercal \\mathbf A = \\mathbf V \\mathbf \\Sigma^2 \\mathbf V^\\intercal$\nwith orthonormal eigenvectors $\\mathbf v_i$ and eigenvalues $\\sigma_i^2 \\ge 0$.",
+      "Let $\\sigma_i = \\sqrt {\\sigma_i^2}$, and for $\\sigma_i > 0$ let $\\mathbf u_i = \\dfrac {\\mathbf A \\mathbf v_i} {\\sigma_i}$.\nThen $\\innerprod {\\mathbf u_i} {\\mathbf u_j} = \\dfrac {\\mathbf v_i^\\intercal \\mathbf A^\\intercal \\mathbf A \\mathbf v_j} {\\sigma_i \\sigma_j} = \\delta_{i j}$, and extend to an orthonormal basis.",
+      "Then $\\mathbf A \\mathbf v_i = \\sigma_i \\mathbf u_i$ for all $i$, so $\\mathbf A \\mathbf V = \\mathbf U \\mathbf \\Sigma$ and:\n:$\\mathbf A = \\mathbf U \\mathbf \\Sigma \\mathbf V^\\intercal$\nwhich is the [[Singular Value Decomposition]].\n{{qed}}"
+    ]
+  }
+}

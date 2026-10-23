@@ -1,0 +1,37 @@
+{
+  "id": "expected_fixed_points_from_indicator_linearity",
+  "field": [
+    "probability",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\sigma$ be a uniformly random [[Definition:Permutation|permutation]] of $\\set {1, \\ldots, n}$ and $F$ its number of [[Definition:Fixed Point|fixed points]].\nThen $\\expect F = 1$, and $\\var F = 1$ for $n \\ge 2$."
+  },
+  "B_source": {
+    "statement": "Let $X_1, \\ldots, X_n$ be integrable random variables, not necessarily independent.\nThen $\\expect {\\sum_i X_i} = \\sum_i \\expect {X_i}$, and $\\expect {\\chi_A} = \\map \\Pr A$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the random variables X_i": "the indicators of the events sigma(i) = i"
+      },
+      "derived": {
+        "the sum of indicator expectations": "the expected number of fixed points"
+      },
+      "reformulation": "Write the count as a sum of indicators and use linearity, which ignores the dependence between them."
+    },
+    "validity_conditions": [
+      "Linearity of expectation needs no independence, although the indicators are dependent.",
+      "The second moment uses the joint probability that two given points are both fixed."
+    ],
+    "proof_plan": [
+      "Write $F = \\displaystyle \\sum_{i \\mathop = 1}^n \\chi_{\\set {\\map \\sigma i = i} }$.",
+      "For each $i$, $\\map \\Pr {\\map \\sigma i = i} = \\dfrac {\\paren {n - 1}!} {n!} = \\dfrac 1 n$.",
+      "By the source result, $\\expect F = n \\cdot \\dfrac 1 n = 1$.",
+      "Similarly, $\\expect {F^2} = \\displaystyle \\sum_i \\map \\Pr {\\map \\sigma i = i} + \\sum_{i \\mathop \\ne j} \\map \\Pr {\\map \\sigma i = i, \\map \\sigma j = j} = 1 + \\frac {n \\paren {n - 1} } {n \\paren {n - 1} } = 2$.\nHence $\\var F = 2 - 1 = 1$.\n{{qed}}"
+    ]
+  }
+}

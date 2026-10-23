@@ -1,0 +1,37 @@
+{
+  "id": "projective_plane_from_affine_completion",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Adjoining to an [[Definition:Affine Plane|affine plane]] one point at infinity for each [[Definition:Parallel Lines|parallel class]] of lines, and one line at infinity containing exactly these points, gives a [[Definition:Projective Plane|projective plane]]: any two distinct points lie on exactly one line, and any two distinct lines meet in exactly one point."
+  },
+  "B_source": {
+    "statement": "In an affine plane, any two distinct points lie on exactly one line, and through a point not on a line $\\ell$ there is exactly one line parallel to $\\ell$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "parallel classes": "points at infinity",
+        "the set of directions": "the line at infinity"
+      },
+      "derived": {
+        "parallel lines": "lines meeting at infinity"
+      },
+      "reformulation": "Remove the exception for parallel lines by giving each direction a common point."
+    },
+    "validity_conditions": [
+      "Playfair's axiom is what makes the line through an affine point and a point at infinity unique.",
+      "Metric notions such as distance and angle do not extend to the completion."
+    ],
+    "proof_plan": [
+      "For each parallel class $\\sqbrk \\ell$, adjoin a point $P_{\\sqbrk \\ell}$ lying on every line of that class.\nAdjoin a line $\\ell_\\infty$ consisting of all the new points.",
+      "Two distinct affine lines meet in exactly one affine point if not parallel, and in exactly their common point at infinity if parallel.\nAn affine line meets $\\ell_\\infty$ exactly in its own point at infinity.",
+      "Two affine points lie on exactly one line, by the source result.\nAn affine point $P$ and $P_{\\sqbrk \\ell}$ lie on exactly one line, the parallel to $\\ell$ through $P$.\nTwo points at infinity lie only on $\\ell_\\infty$.",
+      "Hence the completion is a projective plane.\nFor $\\R^2$ this is $\\Bbb {RP}^2$ in homogeneous coordinates $\\tuple {x : y : z}$, with $\\ell_\\infty = \\set {z = 0}$.\n{{qed}}"
+    ]
+  }
+}

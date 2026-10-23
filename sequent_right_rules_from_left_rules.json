@@ -1,0 +1,41 @@
+{
+  "id": "sequent_right_rules_from_left_rules",
+  "field": [
+    "logic",
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "In the [[Definition:Sequent Calculus|sequent calculus]] for [[Definition:Classical Logic|classical logic]], the right rules for a connective mirror the left rules for its [[Definition:Dual Connective|dual]]; for example:\n:$\\dfrac {\\Gamma \\vdash \\Delta, A, B} {\\Gamma \\vdash \\Delta, A \\lor B}$ mirrors $\\dfrac {\\Gamma, A, B \\vdash \\Delta} {\\Gamma, A \\land B \\vdash \\Delta}$"
+  },
+  "B_source": {
+    "statement": "In classical [[Definition:Sequent Calculus|sequent calculus]], $\\Gamma, A \\vdash \\Delta$ is derivable {{iff}} $\\Gamma \\vdash \\Delta, \\neg A$ is derivable."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a formula on the left of the turnstile": "its negation on the right",
+        "the left rule for a connective": "the right rule for the dual connective",
+        "conjunction": "disjunction"
+      },
+      "derived": {
+        "the rule set for one connective": "obtained from the other by reflecting the sequent",
+        "the cut rule": "self-dual, since it treats both sides symmetrically"
+      },
+      "reformulation": "Reflect the sequent across the turnstile, so that each rule for a connective becomes a rule for its De Morgan dual."
+    },
+    "validity_conditions": [
+      "A sequent asserts that the conjunction of the left side entails the disjunction of the right, so moving a formula across the turnstile negates it.",
+      "Under this reflection the introduction rules for one connective become those for its De Morgan dual, which is what makes the rule table symmetric.",
+      "Classical logic is required for the symmetry to be exact; in intuitionistic sequent calculus the right side is restricted to one formula and the duality breaks."
+    ],
+    "proof_plan": [
+      "Read $\\Gamma \\vdash \\Delta$ as $\\bigwedge \\Gamma \\implies \\bigvee \\Delta$.",
+      "Reflect a sequent by moving each formula across $\\vdash$ and negating it.",
+      "Apply the reflection to the left rule for $\\land$:\n:$\\dfrac {\\Gamma, A, B \\vdash \\Delta} {\\Gamma, A \\land B \\vdash \\Delta}$\nbecomes:\n:$\\dfrac {\\neg \\Delta \\vdash \\neg \\Gamma, \\neg A, \\neg B} {\\neg \\Delta \\vdash \\neg \\Gamma, \\neg \\paren {A \\land B} }$",
+      "By [[De Morgan's Laws (Logic)|De Morgan's laws]], $\\neg \\paren {A \\land B} \\equiv \\neg A \\lor \\neg B$.\nHence the reflected rule is the right rule for $\\lor$, the dual connective.\n{{qed}}"
+    ]
+  }
+}

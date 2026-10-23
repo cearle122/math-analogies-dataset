@@ -1,0 +1,40 @@
+{
+  "id": "ptolemy_from_cross_ratio",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $ABCD$ be a [[Definition:Cyclic Quadrilateral|cyclic quadrilateral]].\nThen:\n:$AC \\cdot BD = AB \\cdot CD + BC \\cdot AD$"
+  },
+  "B_source": {
+    "statement": "Let $\\iota$ be an [[Definition:Inversion (Geometry)|inversion]] with center $O$ and radius $r$.\nThen a circle through $O$ maps to a line, and for $P' = \\map \\iota P$, $Q' = \\map \\iota Q$:\n:$P'Q' = \\dfrac {r^2 \\cdot PQ} {OP \\cdot OQ}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the four concyclic points": "one chosen as inversion center O, the other three inverted",
+        "the circle through all four": "a straight line through the three images",
+        "distances between original points": "transformed distances among the images"
+      },
+      "derived": {
+        "collinearity of the three images": "the segment-addition relation A'C' = A'B' + B'C'",
+        "the distance-transformation rule": "converts that relation back into Ptolemy's product identity"
+      },
+      "reformulation": "Invert about one vertex; the circle becomes a line, so the three images are collinear, and the additive relation among them translates back to Ptolemy."
+    },
+    "validity_conditions": [
+      "Inversion centered at A sends the circle through A,B,C,D to a line, so B',C',D' are collinear.",
+      "Collinearity gives the additive distance relation B'D' = B'C' + C'D' (with correct ordering).",
+      "The inversion distance formula d(P',Q') = r^2 d(P,Q)/(d(A,P) d(A,Q)) converts this additive relation into Ptolemy's multiplicative one after clearing denominators."
+    ],
+    "proof_plan": [
+      "Invert the figure about $A$ with radius $r$.",
+      "The circle through $A$, $B$, $C$, $D$ maps to a line, so $B'$, $C'$, $D'$ are [[Definition:Collinear Points|collinear]], with $C'$ between $B'$ and $D'$.",
+      "By segment addition:\n:$B'D' = B'C' + C'D'$",
+      "Substituting the inversion distance formula:\n:$\\dfrac {r^2 \\cdot BD} {AB \\cdot AD} = \\dfrac {r^2 \\cdot BC} {AB \\cdot AC} + \\dfrac {r^2 \\cdot CD} {AC \\cdot AD}$\nMultiplying by $\\dfrac {AB \\cdot AC \\cdot AD} {r^2}$:\n:$AC \\cdot BD = AD \\cdot BC + AB \\cdot CD$\nwhich is [[Ptolemy's Theorem]].\n{{qed}}"
+    ]
+  }
+}

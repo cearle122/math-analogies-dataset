@@ -1,0 +1,38 @@
+{
+  "id": "minimax_theorem_from_lp_duality",
+  "field": [
+    "algorithms",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be the $m \\times n$ payoff matrix of a two-player [[Definition:Zero-Sum Game|zero-sum game]].\nThen, over [[Definition:Mixed Strategy|mixed strategies]] $\\mathbf x \\in \\Delta_m$ and $\\mathbf y \\in \\Delta_n$:\n:$\\displaystyle \\max_{\\mathbf x} \\min_{\\mathbf y} \\mathbf x^\\intercal \\mathbf A \\mathbf y = \\min_{\\mathbf y} \\max_{\\mathbf x} \\mathbf x^\\intercal \\mathbf A \\mathbf y$"
+  },
+  "B_source": {
+    "statement": "If a [[Definition:Linear Program|linear program]] and its [[Definition:Dual Linear Program|dual]] are both feasible, then their optimal values are equal."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the primal program": "the row player's guarantee problem",
+        "the dual program": "the column player's guarantee problem"
+      },
+      "derived": {
+        "equality of optima": "equality of max-min and min-max"
+      },
+      "reformulation": "Write each player's best guaranteed payoff as a linear program; the two programs are dual."
+    },
+    "validity_conditions": [
+      "The minimum of a linear function over the simplex is attained at a vertex, so pure replies suffice in the inner optimization.",
+      "Both programs are feasible, since any mixed strategy gives some guarantee."
+    ],
+    "proof_plan": [
+      "For any $\\mathbf x$, $\\mathbf y$, $\\min_{\\mathbf y'} \\mathbf x^\\intercal \\mathbf A \\mathbf y' \\le \\mathbf x^\\intercal \\mathbf A \\mathbf y \\le \\max_{\\mathbf x'} \\mathbf x'^\\intercal \\mathbf A \\mathbf y$, so max-min is at most min-max.",
+      "The row player's problem is: maximize $v$ subject to $\\mathbf A^\\intercal \\mathbf x \\ge v \\mathbf 1$, $\\mathbf 1^\\intercal \\mathbf x = 1$, $\\mathbf x \\ge \\mathbf 0$.\nThe column player's problem is: minimize $u$ subject to $\\mathbf A \\mathbf y \\le u \\mathbf 1$, $\\mathbf 1^\\intercal \\mathbf y = 1$, $\\mathbf y \\ge \\mathbf 0$.",
+      "These two programs are dual to each other, and both are feasible.",
+      "By the source result their optimal values coincide, giving [[Von Neumann's Minimax Theorem]], and the optimal solutions are equilibrium strategies.\n{{qed}}"
+    ]
+  }
+}

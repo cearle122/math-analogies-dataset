@@ -1,0 +1,38 @@
+{
+  "id": "russell_paradox_from_diagonal_argument",
+  "field": [
+    "set_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "There is no set $R$ whose members are exactly the sets which are not members of themselves.\nConsequently naive comprehension is inconsistent, and in the presence of the [[Axiom of Specification]] there is no set of all sets."
+  },
+  "B_source": {
+    "statement": "Let $f: S \\to \\powerset S$.\nThen $D = \\set {x \\in S: x \\notin \\map f x}$ is not in the image of $f$.\nThis is [[Cantor's Theorem]]."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the map f": "x -> x, each set viewed as the collection of its members",
+        "the diagonal set D": "the Russell set R"
+      },
+      "derived": {
+        "D not in the image": "R cannot be a set"
+      },
+      "reformulation": "Run Cantor's diagonal argument with the map sending each set to itself."
+    },
+    "validity_conditions": [
+      "The argument only needs that R would be one of the sets x considered.",
+      "With specification, a universal set V would yield R = {x in V : x not in x}."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $R = \\set {x: x \\notin x}$ is a set.",
+      "Apply the diagonal construction to the map $x \\mapsto x$: the diagonal set is $\\set {x: x \\notin x} = R$.",
+      "Then $R \\in R \\iff R \\notin R$, a contradiction.",
+      "Hence $R$ is not a set, which is [[Russell's Paradox]].\nIf a universal set $V$ existed, specification would give $R = \\set {x \\in V: x \\notin x}$, so there is no universal set.\n{{qed}}"
+    ]
+  }
+}

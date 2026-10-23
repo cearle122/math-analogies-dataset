@@ -1,0 +1,41 @@
+{
+  "id": "poincare_duality_from_intersection_pairing",
+  "field": [
+    "topology",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $M$ be a [[Definition:Closed Manifold|closed]] [[Definition:Oriented Manifold|oriented]] $n$-[[Definition:Topological Manifold|manifold]] and $F$ a [[Definition:Field (Abstract Algebra)|field]].\nThen:\n:$\\map {H_k} {M; F} \\cong \\map {H^{n - k} } {M; F}$"
+  },
+  "B_source": {
+    "statement": "Let $V$ and $W$ be finite-dimensional [[Definition:Vector Space|vector spaces]] over $F$ with a [[Definition:Nondegenerate Bilinear Form|nondegenerate]] [[Definition:Bilinear Mapping|bilinear pairing]] $V \\times W \\to F$.\nThen:\n:$V \\cong W^*$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the nondegenerate pairing": "the intersection pairing of complementary-dimensional cycles",
+        "the first space of the pairing": "homology in degree k",
+        "the second space of the pairing": "homology in degree n minus k"
+      },
+      "derived": {
+        "each space is identified with the dual of the other": "homology in degree k is dual to homology in complementary degree",
+        "the dual space in the manifold setting": "cohomology in the complementary degree"
+      },
+      "reformulation": "Read the geometric intersection of complementary cycles as a nondegenerate pairing, which identifies each side with the other's dual."
+    },
+    "validity_conditions": [
+      "Cycles of complementary dimension meet in finitely many points, and orientation lets those intersections be counted with consistent signs, which makes the pairing well defined.",
+      "Closedness is required so there is no boundary into which cycles can escape, and orientability is required for the signs to be globally consistent.",
+      "The pairing is nondegenerate over a field; over the integers torsion obstructs the naive statement and the correct formulation involves a separate linking pairing."
+    ],
+    "proof_plan": [
+      "Define the [[Definition:Intersection Pairing|intersection pairing]] $\\map {H_k} M \\times \\map {H_{n - k} } M \\to F$ by counting, with signs given by the orientation, the transverse intersection points of cycles of complementary dimension.",
+      "Homologous cycles have intersection counts differing by the boundary of a $1$-chain of intersection points, which is zero.\nAs $M$ is closed and oriented, the pairing is well-defined on homology classes.",
+      "With field coefficients, the pairing is [[Definition:Nondegenerate Bilinear Form|nondegenerate]], as follows from dual cell decompositions of $M$.",
+      "By the source result, $\\map {H_k} M \\cong \\map {H_{n - k} } M^*$.\nBy the [[Universal Coefficient Theorem]] over a field, $\\map {H_{n - k} } M^* \\cong \\map {H^{n - k} } M$.\nThis is [[Poincaré Duality]].\n{{qed}}"
+    ]
+  }
+}

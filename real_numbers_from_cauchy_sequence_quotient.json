@@ -1,0 +1,42 @@
+{
+  "id": "real_numbers_from_cauchy_sequence_quotient",
+  "field": [
+    "analysis",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\CC$ be the [[Definition:Ring (Abstract Algebra)|ring]] of [[Definition:Rational Cauchy Sequence|rational Cauchy sequences]] and $\\NN$ the set of [[Definition:Null Sequence|null sequences]].\nThen:\n:$\\R = \\CC / \\NN$\nis a [[Definition:Complete Ordered Field|complete ordered field]] containing $\\Q$."
+  },
+  "B_source": {
+    "statement": "Let $R$ be a [[Definition:Commutative Ring with Unity|commutative ring with unity]] and $M$ a [[Definition:Maximal Ideal of Ring|maximal ideal]].\nThen $R / M$ is a [[Definition:Field (Abstract Algebra)|field]]."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [
+      "fixed_point_encoding"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ring R": "the ring of rational Cauchy sequences under pointwise operations",
+        "the maximal ideal M": "the ideal of sequences converging to zero",
+        "the quotient field": "the real numbers"
+      },
+      "derived": {
+        "invertibility of nonzero classes": "the fact that a non-null Cauchy sequence is eventually bounded away from zero"
+      }
+    },
+    "validity_conditions": [
+      "Cauchy sequences must be closed under pointwise product, which uses boundedness of Cauchy sequences",
+      "the null sequences must form an ideal, not merely a subgroup, for the quotient to be a ring",
+      "maximality of the null ideal must be checked directly, and is what makes the quotient a field rather than just a ring"
+    ],
+    "proof_plan": [
+      "Form $\\CC$ under pointwise addition and multiplication.\nSums and products of Cauchy sequences are Cauchy, as Cauchy sequences are bounded.",
+      "$\\NN$ is closed under addition, and a bounded sequence times a null sequence is null.\nHence $\\NN$ is an [[Definition:Ideal of Ring|ideal]].",
+      "Let $\\sequence {a_n} \\notin \\NN$.\nThen $\\size {a_n} \\ge \\delta > 0$ for all $n \\ge N$, and $b_n = a_n^{-1}$ for $n \\ge N$ is Cauchy with $a_n b_n - 1$ eventually $0$.\nHence $\\sequence {a_n}$ is invertible modulo $\\NN$, and $\\NN$ is [[Definition:Maximal Ideal of Ring|maximal]].",
+      "By [[Maximal Ideal iff Quotient Ring is Field]], $\\CC / \\NN$ is a [[Definition:Field (Abstract Algebra)|field]].",
+      "Embed $\\Q$ via constant sequences.\nDeclare $\\eqclass {a_n} {} > 0$ if $a_n \\ge \\delta > 0$ eventually; this gives an [[Definition:Ordered Field|ordered field]].\nA diagonal argument shows every Cauchy sequence in $\\CC / \\NN$ converges, so the field is [[Definition:Complete Metric Space|complete]].\n{{qed}}"
+    ]
+  }
+}

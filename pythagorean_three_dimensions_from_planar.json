@@ -1,0 +1,37 @@
+{
+  "id": "pythagorean_three_dimensions_from_planar",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let a [[Definition:Cuboid|rectangular box]] have edges $a$, $b$, $c$.\nThen its space diagonal $d$ satisfies:\n:$d^2 = a^2 + b^2 + c^2$\nand more generally $\\norm {\\mathbf x}^2 = \\displaystyle \\sum_{i \\mathop = 1}^n x_i^2$ in $\\R^n$."
+  },
+  "B_source": {
+    "statement": "Let a [[Definition:Right Triangle|right triangle]] have legs $a$, $b$ and hypotenuse $c$.\nThen $c^2 = a^2 + b^2$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the two legs": "a face diagonal and the edge perpendicular to that face",
+        "the plane": "space of dimension n"
+      },
+      "derived": {
+        "iterating the planar theorem": "the Euclidean distance formula in n dimensions"
+      },
+      "reformulation": "Apply the planar theorem twice, first in a face and then in the plane spanned by the face diagonal and the remaining edge."
+    },
+    "validity_conditions": [
+      "The remaining edge is perpendicular to the whole face, hence to the face diagonal.",
+      "Induction on dimension extends the argument to R^n."
+    ],
+    "proof_plan": [
+      "The diagonal $e$ of the $a \\times b$ face satisfies $e^2 = a^2 + b^2$, by [[Pythagoras's Theorem]].",
+      "The edge of length $c$ is perpendicular to that face, so the space diagonal is the hypotenuse of a right triangle with legs $e$ and $c$.",
+      "Hence $d^2 = e^2 + c^2 = a^2 + b^2 + c^2$.",
+      "By [[Principle of Mathematical Induction|induction]] on the dimension, with the last coordinate axis perpendicular to the span of the others, $\\norm {\\mathbf x}^2 = \\displaystyle \\sum_i x_i^2$ in $\\R^n$.\n{{qed}}"
+    ]
+  }
+}

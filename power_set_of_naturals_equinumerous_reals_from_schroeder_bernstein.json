@@ -1,0 +1,38 @@
+{
+  "id": "power_set_of_naturals_equinumerous_reals_from_schroeder_bernstein",
+  "field": [
+    "set_theory",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "$\\powerset \\N$ is [[Definition:Equinumerous|equinumerous]] with $\\R$; that is, $\\card \\R = 2^{\\aleph_0}$."
+  },
+  "B_source": {
+    "statement": "Let $f: A \\to B$ and $g: B \\to A$ be [[Definition:Injection|injections]].\nThen there is a [[Definition:Bijection|bijection]] $A \\to B$.\nThis is the [[Cantor-Bernstein-Schröder Theorem]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the injection R -> P(N)": "Dedekind cuts in Q",
+        "the injection P(N) -> R": "ternary expansions with digits 0 and 2"
+      },
+      "derived": {
+        "the two injections": "a bijection between P(N) and R"
+      },
+      "reformulation": "Find an injection in each direction and apply Cantor-Bernstein-Schröder."
+    },
+    "validity_conditions": [
+      "Density of Q makes the cut map injective.",
+      "Ternary expansions using only the digits 0 and 2 are unique, which makes the second map injective."
+    ],
+    "proof_plan": [
+      "The map $x \\mapsto \\set {q \\in \\Q: q < x}$ is an injection $\\R \\to \\powerset \\Q$, by density of $\\Q$.\nComposing with a bijection $\\Q \\to \\N$ gives an injection $\\R \\to \\powerset \\N$.",
+      "The map $A \\mapsto \\displaystyle \\sum_{n \\mathop \\in A} 2 \\cdot 3^{-n - 1}$ is an injection $\\powerset \\N \\to \\R$, as ternary expansions with digits $0$ and $2$ are unique.\nIts image is the [[Definition:Cantor Set|Cantor set]].",
+      "By the source result, there is a bijection $\\powerset \\N \\to \\R$.",
+      "Hence $\\card \\R = 2^{\\aleph_0}$, which by [[Cantor's Theorem]] exceeds $\\aleph_0$.\n{{qed}}"
+    ]
+  }
+}

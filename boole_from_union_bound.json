@@ -1,0 +1,37 @@
+{
+  "id": "boole_from_union_bound",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {\\Omega, \\Sigma, \\Pr}$ be a [[Definition:Probability Space|probability space]].\nLet $A_1, \\ldots, A_n \\in \\Sigma$ with $\\map \\Pr {A_i} = 0$ for all $i$.\nThen:\n:$\\displaystyle \\map \\Pr {\\bigcup_{i \\mathop = 1}^n A_i} = 0$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {\\Omega, \\Sigma, \\Pr}$ be a [[Definition:Probability Space|probability space]] and $A_1, \\ldots, A_n \\in \\Sigma$.\nThen:\n:$\\displaystyle \\map \\Pr {\\bigcup_{i \\mathop = 1}^n A_i} \\le \\sum_{i \\mathop = 1}^n \\map \\Pr {A_i}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "P(A_i)": "0"
+      },
+      "derived": {
+        "sum P(A_i)": "0",
+        "P(union A_i) <= sum P(A_i)": "P(union A_i) <= 0, hence = 0"
+      }
+    },
+    "validity_conditions": [
+      "Substituting P(A_i) = 0 makes the right-hand side sum equal 0.",
+      "The union bound gives P(union A_i) <= 0.",
+      "Since probabilities are >= 0, P(union A_i) = 0."
+    ],
+    "proof_plan": [
+      "From [[Boole's Inequality]]:\n:$\\displaystyle \\map \\Pr {\\bigcup_{i \\mathop = 1}^n A_i} \\le \\sum_{i \\mathop = 1}^n \\map \\Pr {A_i}$",
+      "As $\\map \\Pr {A_i} = 0$ for each $i$:\n:$\\displaystyle \\sum_{i \\mathop = 1}^n \\map \\Pr {A_i} = 0$",
+      "Hence:\n:$\\displaystyle \\map \\Pr {\\bigcup_{i \\mathop = 1}^n A_i} \\le 0$",
+      "By [[Definition:Probability Measure|definition]], $\\Pr$ is non-negative.\nHence:\n:$\\displaystyle \\map \\Pr {\\bigcup_{i \\mathop = 1}^n A_i} = 0$\n{{qed}}"
+    ]
+  }
+}

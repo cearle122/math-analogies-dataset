@@ -1,0 +1,37 @@
+{
+  "id": "product_uniqueness_from_terminal_uniqueness",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\tuple {P, p_A, p_B}$ and $\\tuple {P', p'_A, p'_B}$ be [[Definition:Product (Category Theory)|products]] of $A$ and $B$ in a category $\\mathbf C$.\nThen there is a [[Definition:Unique|unique]] [[Definition:Isomorphism (Category Theory)|isomorphism]] $u: P \\to P'$ with $p'_A \\circ u = p_A$ and $p'_B \\circ u = p_B$."
+  },
+  "B_source": {
+    "statement": "Let $T$ and $T'$ be [[Definition:Terminal Object|terminal objects]] of a category.\nThen the unique morphisms $T \\to T'$ and $T' \\to T$ are mutually inverse, so $T$ and $T'$ are isomorphic by a unique isomorphism."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the category": "the category of cones over A and B",
+        "terminal objects": "products"
+      },
+      "derived": {
+        "uniqueness of terminal objects": "uniqueness of products"
+      },
+      "reformulation": "A product is a terminal object in the category of cones over the pair, so uniqueness of terminal objects specializes to uniqueness of products."
+    },
+    "validity_conditions": [
+      "Morphisms of cones must commute with the projections, so an isomorphism of cones is an isomorphism commuting with projections.",
+      "The same argument applies to every limit."
+    ],
+    "proof_plan": [
+      "Let $\\map {\\mathbf {Cone} } {A, B}$ have objects $\\tuple {X, f: X \\to A, g: X \\to B}$ and morphisms the maps commuting with the legs.",
+      "By the universal property, a product of $A$ and $B$ is exactly a terminal object of $\\map {\\mathbf {Cone} } {A, B}$.",
+      "By the source result, $\\tuple {P, p_A, p_B}$ and $\\tuple {P', p'_A, p'_B}$ are isomorphic in $\\map {\\mathbf {Cone} } {A, B}$ by a unique isomorphism.",
+      "Such an isomorphism is an isomorphism $u: P \\to P'$ of $\\mathbf C$ with $p'_A \\circ u = p_A$ and $p'_B \\circ u = p_B$.\n{{qed}}"
+    ]
+  }
+}

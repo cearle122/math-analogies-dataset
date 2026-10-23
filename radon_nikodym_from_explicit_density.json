@@ -1,0 +1,41 @@
+{
+  "id": "radon_nikodym_from_explicit_density",
+  "field": [
+    "analysis",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\mu$ and $\\nu$ be [[Definition:Sigma-Finite Measure|$\\sigma$-finite measures]] on $\\struct {X, \\Sigma}$ with $\\nu \\ll \\mu$.\nThen there exists a [[Definition:Measurable Function|measurable]] $f \\ge 0$ such that:\n:$\\displaystyle \\forall A \\in \\Sigma: \\map \\nu A = \\int_A f \\rd \\mu$"
+  },
+  "B_source": {
+    "statement": "Let $\\mu$ be a [[Definition:Measure (Measure Theory)|measure]] and $f \\ge 0$ measurable.\nThen $A \\mapsto \\displaystyle \\int_A f \\rd \\mu$ is a measure, [[Definition:Absolutely Continuous Measure|absolutely continuous]] with respect to $\\mu$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the given density function": "a density whose existence is to be proved",
+        "the measure built by integration": "an arbitrary absolutely continuous measure",
+        "the easily checked direction": "the converse, which becomes the statement requiring proof"
+      },
+      "derived": {
+        "absolute continuity of the constructed measure": "taken as the hypothesis rather than the conclusion",
+        "the density": "produced as a supremum of densities of measures dominated by the target"
+      },
+      "reformulation": "Turn the construction around: take the property produced by integrating a density as the hypothesis, and produce the density."
+    },
+    "validity_conditions": [
+      "The easy direction shows every integral of a density is absolutely continuous, so the general theorem is the converse and cannot be proved by the same computation.",
+      "Sigma-finiteness of both measures is required; without it the theorem is false, as counting measure against Lebesgue measure shows.",
+      "The density is unique only up to sets of base measure zero, an ambiguity absent when the density is given at the outset."
+    ],
+    "proof_plan": [
+      "By the source result, integrating a density always produces a measure $\\ll \\mu$.",
+      "Conversely, assume $\\nu \\ll \\mu$ and seek $f$.",
+      "Let:\n:$\\displaystyle \\FF = \\set {g \\ge 0: \\forall A: \\int_A g \\rd \\mu \\le \\map \\nu A}$\n$\\FF$ is closed under $\\max$.\nChoose $g_n \\in \\FF$ increasing with $\\displaystyle \\int g_n \\rd \\mu \\to \\sup_{g \\mathop \\in \\FF} \\int g \\rd \\mu$, and let $f = \\lim g_n$.\nBy the [[Monotone Convergence Theorem (Measure Theory)|Monotone Convergence Theorem]], $f \\in \\FF$.",
+      "Suppose $\\map \\nu A > \\displaystyle \\int_A f \\rd \\mu$ for some $A$.\nUsing $\\sigma$-finiteness and a [[Hahn Decomposition Theorem|Hahn decomposition]] of $\\nu - \\int f \\rd \\mu - \\epsilon \\mu$, some $f + \\epsilon \\chi_P \\in \\FF$ has larger integral, a contradiction.\nHence $f$ is the density, which is the [[Radon-Nikodym Theorem]].\n{{qed}}"
+    ]
+  }
+}

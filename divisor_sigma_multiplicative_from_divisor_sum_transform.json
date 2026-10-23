@@ -1,0 +1,36 @@
+{
+  "id": "divisor_sigma_multiplicative_from_divisor_sum_transform",
+  "field": [
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $k \\ge 0$ and $\\displaystyle \\map {\\sigma_k} n = \\sum_{d \\mathop \\divides n} d^k$.\nThen for $m \\perp n$:\n:$\\map {\\sigma_k} {m n} = \\map {\\sigma_k} m \\map {\\sigma_k} n$\nand in particular $\\displaystyle \\map \\sigma n = \\prod_{p^e \\mathop \\parallel n} \\frac {p^{e + 1} - 1} {p - 1}$."
+  },
+  "B_source": {
+    "statement": "Let $f$ be a [[Definition:Multiplicative Arithmetic Function|multiplicative arithmetic function]].\nThen $\\displaystyle \\map F n = \\sum_{d \\mathop \\divides n} \\map f d$ is multiplicative."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the multiplicative function f": "d maps to d^k"
+      },
+      "derived": {
+        "the divisor sum F": "the divisor function sigma_k"
+      },
+      "reformulation": "Recognize sigma_k as the divisor-sum transform of a power function."
+    },
+    "validity_conditions": [
+      "d -> d^k is completely multiplicative, hence multiplicative.",
+      "The prime-power formula uses a finite geometric sum."
+    ],
+    "proof_plan": [
+      "$\\map f d = d^k$ satisfies $\\map f {d e} = \\map f d \\map f e$ for all $d, e$, so is multiplicative.",
+      "By the source result, $\\sigma_k$ is multiplicative.\nConcretely, for $m \\perp n$ the divisors of $m n$ are exactly the products $d_1 d_2$ with $d_1 \\divides m$ and $d_2 \\divides n$, each arising once.",
+      "For a prime power, $\\map {\\sigma_1} {p^e} = 1 + p + \\cdots + p^e = \\dfrac {p^{e + 1} - 1} {p - 1}$.",
+      "Multiplying over the prime powers exactly dividing $n$ gives the formula for $\\map \\sigma n$.\n{{qed}}"
+    ]
+  }
+}

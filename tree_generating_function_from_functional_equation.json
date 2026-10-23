@@ -1,0 +1,41 @@
+{
+  "id": "tree_generating_function_from_functional_equation",
+  "field": [
+    "combinatorics",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $t_n$ be the number of [[Definition:Binary Tree|binary trees]] with $n$ internal nodes, and $\\map T x = \\displaystyle \\sum_{n \\mathop \\ge 0} t_n x^n$.\nThen $\\map T x$ is the [[Definition:Unique|unique]] [[Definition:Formal Power Series|formal power series]] with constant term $1$ satisfying:\n:$\\map T x = 1 + x \\map T x^2$"
+  },
+  "B_source": {
+    "statement": "Let a functional equation $F = \\map \\Phi F$ on [[Definition:Formal Power Series|formal power series]] determine the coefficient of $x^n$ in $\\map \\Phi F$ from the coefficients of $F$ below $n$.\nThen the equation has a [[Definition:Unique|unique]] solution."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the operator on formal power series": "the map sending a series F to 1 + x F squared",
+        "the fixed point of the operator": "the generating function for binary trees",
+        "the determination of coefficients from earlier ones": "the recursive decomposition of a tree into its two subtrees"
+      },
+      "derived": {
+        "the fixed point equation": "the functional equation for the generating function",
+        "iteration converging coefficientwise": "each coefficient stabilizes after finitely many iterations"
+      },
+      "reformulation": "Read the recursive structure of the objects as a fixed point equation on their generating function."
+    },
+    "validity_conditions": [
+      "The factor of x shifts degrees, so the coefficient of x to the n in the image depends only on coefficients below n; this is what makes the operator determine a unique fixed point.",
+      "Convergence is formal rather than analytic: each coefficient stabilizes after finitely many iterations, so no analytic convergence is needed.",
+      "The functional equation encodes the recursive decomposition of a nonempty binary tree into a root and two subtrees, which is why the square appears."
+    ],
+    "proof_plan": [
+      "A binary tree is either a leaf, or a root together with an ordered pair of subtrees.",
+      "Translating into [[Definition:Generating Function|generating functions]], with $x$ marking the root:\n:$\\map T x = 1 + x \\map T x^2$",
+      "Regard this as $T = \\map \\Phi T$ with $\\map \\Phi F = 1 + x F^2$.",
+      "The coefficient of $x^n$ in $x F^2$ is $\\displaystyle \\sum_{i + j = n - 1} f_i f_j$, which involves only coefficients below $n$.\nBy the source result, $\\Phi$ has a unique fixed point, which is $T$.\n{{qed}}"
+    ]
+  }
+}

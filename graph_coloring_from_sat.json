@@ -1,0 +1,40 @@
+{
+  "id": "graph_coloring_from_sat",
+  "field": [
+    "combinatorics",
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $G = \\struct {V, E}$ be a [[Definition:Graph (Graph Theory)|graph]] and $k \\in \\Z_{>0}$.\nThen there exists a [[Definition:Conjunctive Normal Form|CNF]] [[Definition:Boolean Formula|formula]] $\\phi_{G, k}$, computable in polynomial time, such that:\n:$G$ is [[Definition:K-Colorable Graph|$k$-colorable]] $\\iff \\phi_{G, k}$ is [[Definition:Satisfiable|satisfiable]]"
+  },
+  "B_source": {
+    "statement": "The [[Definition:Boolean Satisfiability Problem|satisfiability problem]] asks, for a [[Definition:Boolean Formula|Boolean formula]] $\\phi$, whether there exists a [[Definition:Boolean Interpretation|truth assignment]] $v$ with $\\map v \\phi = \\T$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "vertex v gets color c": "Boolean variable x_{v,c} is true",
+        "the k colors": "for each vertex, a clause forcing at least one color",
+        "edge (u,v)": "clauses forbidding u and v sharing a color"
+      },
+      "derived": {
+        "proper k-coloring of G": "satisfying assignment of phi_{G,k}",
+        "adjacent vertices differ": "no clause (x_{u,c} and x_{v,c}) both true"
+      }
+    },
+    "validity_conditions": [
+      "The formula phi encodes exactly: each vertex gets at least one color, and no edge is monochromatic; its satisfying assignments correspond bijectively to proper k-colorings.",
+      "phi is constructible in polynomial time in the size of G, so the reduction is valid."
+    ],
+    "proof_plan": [
+      "Introduce a Boolean variable $x_{v, c}$ for each $v \\in V$ and color $c \\in \\set {1, \\ldots, k}$.",
+      "Add the clauses:\n:$\\displaystyle \\bigvee_{c \\mathop = 1}^k x_{v, c}$ for each $v \\in V$\n:$\\neg x_{u, c} \\lor \\neg x_{v, c}$ for each $u v \\in E$ and each $c$",
+      "A satisfying assignment gives each vertex at least one color with no edge monochromatic; choosing one such color per vertex is a [[Definition:Proper Vertex Coloring|proper $k$-coloring]].\nConversely, a proper $k$-coloring gives a satisfying assignment.",
+      "Hence $G$ is $k$-colorable {{iff}} $\\phi_{G, k}$ is satisfiable.\n{{qed}}"
+    ]
+  }
+}

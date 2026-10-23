@@ -1,0 +1,40 @@
+{
+  "id": "vandermonde_from_polynomial_roots",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $x_1, \\ldots, x_n$ be elements of a [[Definition:Commutative Ring|commutative ring]].\nThen the [[Definition:Vandermonde Matrix|Vandermonde determinant]] satisfies:\n:$\\map \\det {\\mathbf V} = \\det \\begin {bmatrix} 1 & x_1 & \\cdots & x_1^{n - 1} \\\\ \\vdots & \\vdots & & \\vdots \\\\ 1 & x_n & \\cdots & x_n^{n - 1} \\end {bmatrix} = \\displaystyle \\prod_{1 \\mathop \\le i \\mathop < j \\mathop \\le n} \\paren {x_j - x_i}$"
+  },
+  "B_source": {
+    "statement": "Let $P \\in R \\sqbrk {x_1, \\ldots, x_n}$ vanish whenever $x_i = x_j$.\nThen:\n:$\\paren {x_j - x_i} \\divides P$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the polynomial P": "det V as a polynomial in x_1,...,x_n",
+        "the vanishing condition x_i = x_j": "two equal rows making the determinant 0",
+        "the divisor (x_j - x_i)": "a factor of the determinant"
+      },
+      "derived": {
+        "each (x_j - x_i) divides det V": "prod_{i<j}(x_j - x_i) divides det V",
+        "degree and leading-term count": "the quotient is 1, giving equality"
+      },
+      "reformulation": "View the determinant as a polynomial; equal-argument vanishing forces each difference as a factor, and a degree count pins the constant."
+    },
+    "validity_conditions": [
+      "If x_i = x_j the matrix has two equal rows, so det V = 0; by the factor theorem (x_j - x_i) divides det V.",
+      "The product prod_{i<j}(x_j - x_i) therefore divides det V, and both have the same degree n(n-1)/2.",
+      "Comparing the leading coefficient (both 1) shows the quotient is 1, giving equality."
+    ],
+    "proof_plan": [
+      "Regard $\\map \\det {\\mathbf V}$ as a [[Definition:Polynomial over Ring|polynomial]] in $x_1, \\ldots, x_n$ with integer coefficients.",
+      "If $x_i = x_j$ for $i \\ne j$, rows $i$ and $j$ are equal, so $\\map \\det {\\mathbf V} = 0$.\nBy the [[Factor Theorem]], each $x_j - x_i$ divides $\\map \\det {\\mathbf V}$.",
+      "The factors are pairwise coprime, so their product divides $\\map \\det {\\mathbf V}$.\nBoth have total degree $0 + 1 + \\cdots + \\paren {n - 1} = \\dbinom n 2$.",
+      "The coefficient of $x_2 x_3^2 \\cdots x_n^{n - 1}$ is $1$ on both sides, from the diagonal of $\\mathbf V$ and from choosing $x_j$ in each factor.\nHence:\n:$\\map \\det {\\mathbf V} = \\displaystyle \\prod_{i \\mathop < j} \\paren {x_j - x_i}$\n{{qed}}"
+    ]
+  }
+}

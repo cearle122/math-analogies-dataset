@@ -1,0 +1,37 @@
+{
+  "id": "fast_exponentiation_from_binary_expansion",
+  "field": [
+    "algorithms",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $a$ be an element of a [[Definition:Monoid|monoid]], such as $\\Z / m \\Z$ under multiplication, and $n \\ge 1$.\nThen $a^n$ can be computed using at most $2 \\floor {\\log_2 n}$ multiplications."
+  },
+  "B_source": {
+    "statement": "Every $n \\ge 1$ has a unique [[Definition:Binary Notation|binary expansion]] $n = \\displaystyle \\sum_{k \\mathop = 0}^L b_k 2^k$ with $b_k \\in \\set {0, 1}$, $b_L = 1$ and $L = \\floor {\\log_2 n}$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the binary digits": "which repeated squares to multiply"
+      },
+      "derived": {
+        "the exponent laws": "a^n as a product of selected squares"
+      },
+      "reformulation": "Split the exponent into powers of 2, compute the powers a^(2^k) by squaring, and multiply the selected ones."
+    },
+    "validity_conditions": [
+      "Only associativity is used, so the method works in any monoid.",
+      "Reducing modulo m after each step keeps the numbers small in modular exponentiation."
+    ],
+    "proof_plan": [
+      "Write $n = \\displaystyle \\sum_{k \\mathop = 0}^L b_k 2^k$ by the source result.",
+      "By the exponent laws in a monoid:\n:$\\displaystyle a^n = \\prod_{k: b_k \\mathop = 1} a^{2^k}$",
+      "The powers $a^{2^k}$ for $k \\le L$ are obtained by $L$ successive squarings.\nMultiplying the at most $L + 1$ selected factors uses at most $L$ further multiplications.",
+      "Hence $a^n$ is computed with at most $2 L = 2 \\floor {\\log_2 n}$ multiplications, which is [[Exponentiation by Squaring]].\n{{qed}}"
+    ]
+  }
+}

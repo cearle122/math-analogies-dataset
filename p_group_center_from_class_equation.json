@@ -1,0 +1,38 @@
+{
+  "id": "p_group_center_from_class_equation",
+  "field": [
+    "algebra",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a non-[[Definition:Trivial Group|trivial]] finite [[Definition:P-Group|$p$-group]].\nThen its [[Definition:Center of Group|center]] $\\map Z G$ is non-trivial."
+  },
+  "B_source": {
+    "statement": "Let $G$ be a finite group and $x_1, \\ldots, x_k$ represent the non-central conjugacy classes.\nThen:\n:$\\displaystyle \\order G = \\order {\\map Z G} + \\sum_{i \\mathop = 1}^k \\index G {\\map {C_G} {x_i} }$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the group order": "a power p^n",
+        "the indices": "proper divisors of p^n greater than 1"
+      },
+      "derived": {
+        "divisibility of each term": "p divides the order of the center"
+      },
+      "reformulation": "Read the class equation modulo p."
+    },
+    "validity_conditions": [
+      "Each centralizer of a non-central element is a proper subgroup, so its index is a non-trivial power of p.",
+      "The center always contains the identity, so its order is at least 1."
+    ],
+    "proof_plan": [
+      "Let $\\order G = p^n$ with $n \\ge 1$.",
+      "For each non-central $x_i$, $\\map {C_G} {x_i}$ is a proper subgroup.\nBy [[Lagrange's Theorem (Group Theory)|Lagrange's Theorem]], $\\index G {\\map {C_G} {x_i} }$ divides $p^n$ and exceeds $1$, so $p$ divides it.",
+      "By the [[Class Equation]]:\n:$\\displaystyle \\order {\\map Z G} = p^n - \\sum_{i \\mathop = 1}^k \\index G {\\map {C_G} {x_i} } \\equiv 0 \\pmod p$",
+      "As $e \\in \\map Z G$, $\\order {\\map Z G} \\ge 1$, hence $\\order {\\map Z G} \\ge p$.\n{{qed}}"
+    ]
+  }
+}

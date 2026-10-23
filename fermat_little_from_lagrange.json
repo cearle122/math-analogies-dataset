@@ -1,0 +1,42 @@
+{
+  "id": "fermat_little_from_lagrange",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a [[Definition:Prime Number|prime number]] and $a \\in \\Z$ with $p \\nmid a$.\nThen:\n:$a^{p - 1} \\equiv 1 \\pmod p$"
+  },
+  "B_source": {
+    "statement": "Let $G$ be a [[Definition:Finite Group|finite group]] of [[Definition:Order of Structure|order]] $n$.\nThen:\n:$\\forall g \\in G: g^n = e$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "finite group G": "the multiplicative group (Z/pZ)^* of nonzero residues mod p",
+        "group order n": "p - 1",
+        "element g": "the residue a mod p"
+      },
+      "derived": {
+        "g^n = e": "a^{p-1} = 1 mod p",
+        "|G| = n": "|(Z/pZ)^*| = p-1"
+      }
+    },
+    "validity_conditions": [
+      "For p prime, the nonzero residues mod p form a group under multiplication of order p-1.",
+      "The order-of-element-divides-group-order fact gives g^{|G|} = e for every g.",
+      "Instantiating with G = (Z/pZ)^* and g = a yields Fermat's little theorem."
+    ],
+    "proof_plan": [
+      "The [[Definition:Multiplicative Group of Reduced Residues|multiplicative group]] $\\paren {\\Z / p \\Z}^\\times$ is a [[Definition:Finite Group|finite group]] of order $p - 1$.",
+      "By [[Element to Power of Group Order is Identity]], from [[Lagrange's Theorem (Group Theory)|Lagrange's Theorem]]:\n:$\\forall g \\in \\paren {\\Z / p \\Z}^\\times: g^{p - 1} = \\eqclass 1 p$",
+      "As $p \\nmid a$, $\\eqclass a p \\in \\paren {\\Z / p \\Z}^\\times$.",
+      "Hence:\n:$a^{p - 1} \\equiv 1 \\pmod p$\n{{qed}}"
+    ]
+  }
+}

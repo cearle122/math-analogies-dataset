@@ -1,0 +1,39 @@
+{
+  "id": "bolzano_weierstrass_from_repeated_bisection",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {x_n}$ be a [[Definition:Bounded Real Sequence|bounded real sequence]].\nThen $\\sequence {x_n}$ has a [[Definition:Convergent Real Sequence|convergent]] [[Definition:Subsequence|subsequence]]."
+  },
+  "B_source": {
+    "statement": "Let $I_0 = \\closedint a b$.\nRepeatedly [[Definition:Bisection|bisect]] the current interval, keeping a half $I_{k + 1} \\subseteq I_k$ which retains a given property.\nThen the lengths satisfy $\\size {I_k} = 2^{-k} \\paren {b - a}$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the property retained at each halving": "containing infinitely many terms of the sequence",
+        "the nested intervals produced": "intervals whose lengths halve at each step",
+        "the point common to all intervals": "the limit of the extracted subsequence"
+      },
+      "derived": {
+        "the nested interval intersection": "a single point, since the lengths tend to zero",
+        "the terms chosen inside each interval": "a subsequence converging to that point"
+      }
+    },
+    "validity_conditions": [
+      "At least one half of any interval containing infinitely many terms again contains infinitely many, which is what makes the invariant maintainable.",
+      "The interval lengths halve each time and so tend to zero, so the nested intersection is a single point by completeness of the reals.",
+      "Choosing one term from each interval with strictly increasing index is possible precisely because each interval contains infinitely many terms."
+    ],
+    "proof_plan": [
+      "As $\\sequence {x_n}$ is [[Definition:Bounded Real Sequence|bounded]], there exists $I_0 = \\closedint a b$ containing every $x_n$.\nThus $I_0$ contains $x_n$ for infinitely many $n$.",
+      "Halve $I_k$.\nAt least one half contains $x_n$ for infinitely many $n$; let $I_{k + 1}$ be such a half.",
+      "From the [[Nested Intervals Theorem]], $\\displaystyle \\bigcap_k I_k = \\set l$ for a unique $l$, since $\\size {I_k} \\to 0$.",
+      "Choose $n_1 < n_2 < \\cdots$ with $x_{n_k} \\in I_k$.\nThen $\\size {x_{n_k} - l} \\le 2^{-k} \\paren {b - a} \\to 0$.\nHence $x_{n_k} \\to l$.\n{{qed}}"
+    ]
+  }
+}

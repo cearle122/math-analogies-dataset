@@ -1,0 +1,37 @@
+{
+  "id": "planar_vertex_degree_five_from_euler_formula",
+  "field": [
+    "combinatorics",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Every finite [[Definition:Simple Graph|simple]] [[Definition:Planar Graph|planar graph]] has a vertex of [[Definition:Degree of Vertex|degree]] at most $5$."
+  },
+  "B_source": {
+    "statement": "Let $G$ be a connected [[Definition:Plane Graph|plane graph]] with $V$ vertices, $E$ edges and $F$ faces.\nThen:\n:$V - E + F = 2$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the number of faces": "a quantity bounded by face-edge incidences"
+      },
+      "derived": {
+        "E <= 3V - 6": "an average degree below 6"
+      },
+      "reformulation": "Bound faces by edges using that faces have at least three sides, and substitute into Euler's formula."
+    },
+    "validity_conditions": [
+      "In a simple graph with at least three vertices that is not a tree, every face has at least 3 edges on its boundary; trees have vertices of degree 1 anyway.",
+      "It suffices to treat each connected component."
+    ],
+    "proof_plan": [
+      "It suffices to treat a connected graph with $V \\ge 3$ which is not a [[Definition:Tree (Graph Theory)|tree]], as trees and small graphs have vertices of degree at most $2$.",
+      "Each face is bounded by at least $3$ edges and each edge borders at most $2$ faces, so $3 F \\le 2 E$.",
+      "By the source result, $2 = V - E + F \\le V - E + \\dfrac {2 E} 3$, so $E \\le 3 V - 6$.",
+      "Hence $\\displaystyle \\sum_v \\map \\deg v = 2 E \\le 6 V - 12 < 6 V$, and some vertex has degree at most $5$.\nThis is the key step of the [[Six Color Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "borel_cantelli_first_from_countable_subadditivity",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $A_1, A_2, \\ldots$ be [[Definition:Event|events]] with $\\displaystyle \\sum_n \\map \\Pr {A_n} < \\infty$.\nThen:\n:$\\displaystyle \\map \\Pr {\\limsup_{n \\mathop \\to \\infty} A_n} = 0$\nthat is, [[Definition:Almost Surely|almost surely]] only finitely many $A_n$ occur."
+  },
+  "B_source": {
+    "statement": "Let $\\mu$ be a [[Definition:Measure (Measure Theory)|measure]] and $E_1, E_2, \\ldots$ measurable.\nThen:\n:$\\displaystyle \\map \\mu {\\bigcup_i E_i} \\le \\sum_i \\map \\mu {E_i}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the sets E_i": "the tail events A_n for n >= N"
+      },
+      "derived": {
+        "the tail sum": "a bound tending to 0"
+      },
+      "reformulation": "Bound the limsup event by each tail union, and the tail union by the tail of a convergent series."
+    },
+    "validity_conditions": [
+      "No independence is needed.",
+      "Convergence of the series is what makes the tail sums tend to 0."
+    ],
+    "proof_plan": [
+      "$\\displaystyle \\limsup_n A_n = \\bigcap_N \\bigcup_{n \\mathop \\ge N} A_n \\subseteq \\bigcup_{n \\mathop \\ge N} A_n$ for each $N$.",
+      "By monotonicity and the source result:\n:$\\displaystyle \\map \\Pr {\\limsup_n A_n} \\le \\sum_{n \\mathop \\ge N} \\map \\Pr {A_n}$",
+      "As the series converges, its tails tend to $0$ as $N \\to \\infty$.",
+      "Hence $\\map \\Pr {\\limsup_n A_n} = 0$, which is the first [[Borel-Cantelli Lemma]].\n{{qed}}"
+    ]
+  }
+}

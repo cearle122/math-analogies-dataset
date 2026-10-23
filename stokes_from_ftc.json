@@ -1,0 +1,42 @@
+{
+  "id": "stokes_from_ftc",
+  "field": [
+    "analysis",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $M$ be a [[Definition:Compact Manifold|compact]] [[Definition:Oriented Manifold|oriented]] [[Definition:Smooth Manifold|smooth]] $n$-manifold with boundary, and $\\omega$ a [[Definition:Differential Form|differential $\\paren {n - 1}$-form]] on $M$.\nThen:\n:$\\displaystyle \\int_M \\d \\omega = \\int_{\\partial M} \\omega$"
+  },
+  "B_source": {
+    "statement": "Let $f$ be [[Definition:Continuously Differentiable|continuously differentiable]] on $\\closedint a b$.\nThen:\n:$\\displaystyle \\int_a^b \\map {f'} x \\rd x = \\map f b - \\map f a$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "interval [a,b]": "oriented manifold M",
+        "function f (0-form)": "differential form omega",
+        "derivative f' dx": "exterior derivative d(omega)",
+        "endpoints {a,b} with signs": "oriented boundary of M"
+      },
+      "derived": {
+        "f(b)-f(a) (evaluation on the boundary)": "integral of omega over boundary M",
+        "1-dimensional integral": "integral over M"
+      },
+      "reformulation": "Reinterpret differentiation as the exterior derivative and 'evaluate at endpoints' as 'integrate over the boundary', so FTC becomes the 1-dimensional case of a general boundary law."
+    },
+    "validity_conditions": [
+      "The interval [a,b] is a 1-manifold whose oriented boundary is {b} minus {a}; FTC is exactly Stokes in dimension 1.",
+      "The generalization is genuine new content (exterior calculus, orientation, manifolds), not a renaming - so this is generalization, not transport.",
+      "M must be a compact oriented smooth manifold with boundary and omega a smooth form for the general statement."
+    ],
+    "proof_plan": [
+      "The [[Fundamental Theorem of Calculus]] relates the integral of a derivative to evaluation on the boundary $\\set {a, b}$.",
+      "Abstract the derivative to the [[Definition:Exterior Derivative|exterior derivative]] $\\d$, and the endpoints to the oriented boundary $\\partial M$.",
+      "Posit:\n:$\\displaystyle \\int_M \\d \\omega = \\int_{\\partial M} \\omega$",
+      "For $M = \\closedint a b$ and the $0$-form $\\omega = f$, $\\d \\omega = f' \\rd x$ and $\\partial M = \\set b - \\set a$, so the identity reads $\\displaystyle \\int_a^b f' = \\map f b - \\map f a$.\nHence [[Stokes' Theorem]] generalizes the Fundamental Theorem of Calculus.\n{{qed}}"
+    ]
+  }
+}

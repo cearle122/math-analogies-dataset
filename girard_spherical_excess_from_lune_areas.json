@@ -1,0 +1,36 @@
+{
+  "id": "girard_spherical_excess_from_lune_areas",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $T$ be a [[Definition:Spherical Triangle|spherical triangle]] on the unit sphere with angles $\\alpha$, $\\beta$, $\\gamma$.\nThen its [[Definition:Area|area]] is:\n:$\\alpha + \\beta + \\gamma - \\pi$"
+  },
+  "B_source": {
+    "statement": "A [[Definition:Lune|lune]] on the unit sphere bounded by two great semicircles meeting at angle $\\theta$ has area $2 \\theta$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a single lune": "the three pairs of antipodal lunes cut out by the sides of T"
+      },
+      "derived": {
+        "the covering multiplicities": "an equation for the area of T"
+      },
+      "reformulation": "Cover the sphere by the six lunes determined by the angles of T, and account for the triple overlap on T and its antipode."
+    },
+    "validity_conditions": [
+      "The total area of the unit sphere is 4 pi.",
+      "The antipodal triangle has the same area as T."
+    ],
+    "proof_plan": [
+      "Extending the sides of $T$ to great circles gives, at each vertex, a lune and its antipodal lune, with angles $\\alpha$, $\\beta$, $\\gamma$.",
+      "These six lunes cover the sphere.\n$T$ and its antipode $T'$ are each covered three times, and every other point once.",
+      "By the source result:\n:$2 \\paren {2 \\alpha + 2 \\beta + 2 \\gamma} = 4 \\pi + 2 \\card T + 2 \\card {T'} = 4 \\pi + 4 \\card T$\nwhere $\\card T$ denotes area.",
+      "Hence $\\card T = \\alpha + \\beta + \\gamma - \\pi$, which is [[Girard's Theorem]].\n{{qed}}"
+    ]
+  }
+}

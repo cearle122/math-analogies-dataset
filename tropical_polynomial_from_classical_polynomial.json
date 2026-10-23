@@ -1,0 +1,41 @@
+{
+  "id": "tropical_polynomial_from_classical_polynomial",
+  "field": [
+    "algebra",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "In the [[Definition:Tropical Semiring|tropical semiring]] $\\struct {\\R \\cup \\set \\infty, \\min, +}$, a [[Definition:Tropical Polynomial|tropical polynomial]]:\n:$\\map p x = \\displaystyle \\min_i \\paren {c_i + i x}$\nis a piecewise linear [[Definition:Concave Real Function|concave]] function, and its tropical zero set is the locus where the minimum is attained at least twice."
+  },
+  "B_source": {
+    "statement": "Let $K$ be a [[Definition:Field (Abstract Algebra)|field]].\nA [[Definition:Polynomial over Ring|polynomial]] $\\displaystyle \\sum_i c_i x^i$ over $K$ has [[Definition:Root of Polynomial|zero set]] $\\set {x: \\map p x = 0}$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the field addition": "the minimum operation",
+        "the field multiplication": "ordinary addition",
+        "the multiplicative unit and additive unit": "zero and positive infinity respectively"
+      },
+      "derived": {
+        "a polynomial as a formal combination of monomials": "a minimum of finitely many affine functions",
+        "the zero set of a polynomial": "the locus where the minimum is attained at least twice"
+      },
+      "reformulation": "Reinterpret the two field operations as minimum and addition, keeping the polynomial syntax and rebuilding the notion of a root."
+    },
+    "validity_conditions": [
+      "The tropical semiring satisfies associativity, commutativity, and distributivity, so polynomial syntax transfers verbatim.",
+      "Additive inverses do not exist, so any argument using subtraction fails; this is the main structural difference and it rules out most of linear algebra in the usual form.",
+      "The notion of a root must be redefined, since the additive unit is rarely attained; the standard replacement is the locus where the minimum is achieved by at least two terms."
+    ],
+    "proof_plan": [
+      "Replace addition by $\\min$ and multiplication by $+$.\n$\\struct {\\R \\cup \\set \\infty, \\min, +}$ satisfies the [[Definition:Semiring (Abstract Algebra)|semiring axioms]], with identities $\\infty$ and $0$.",
+      "Reinterpreting $\\displaystyle \\sum_i c_i x^i$ gives:\n:$\\displaystyle \\map p x = \\min_i \\paren {c_i + i x}$\na minimum of affine functions, hence piecewise linear and concave.",
+      "Arguments using only the semiring axioms survive, such as expansion of products.\nArguments using subtraction do not, as $\\min$ has no inverses; for example $\\min \\set {x, x} = x$ cannot be cancelled.",
+      "Redefine the zero set as the non-differentiability locus of $p$, where the minimum is attained by at least two terms.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "eisenstein_from_reduction_mod_p",
+  "field": [
+    "algebra",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\map f x = a_n x^n + \\cdots + a_0 \\in \\Z \\sqbrk x$ and $p$ a [[Definition:Prime Number|prime]] with $p \\nmid a_n$, $p \\divides a_i$ for $i < n$, and $p^2 \\nmid a_0$.\nThen $f$ is [[Definition:Irreducible Polynomial|irreducible]] over $\\Q$."
+  },
+  "B_source": {
+    "statement": "In $\\GF p \\sqbrk x$, factorization into irreducibles is unique.\nIn particular, if $g h = c x^n$ with $c \\ne 0$, then $g = a x^k$ and $h = b x^{n - k}$ for some $a, b \\in \\GF p$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "polynomials over Z": "their reductions over GF(p)",
+        "the hypotheses on the coefficients": "f reduces to a monomial"
+      },
+      "derived": {
+        "monomial factors": "factors whose constant terms are divisible by p"
+      },
+      "reformulation": "Transport a putative factorization to GF(p)[x], where unique factorization pins down both factors."
+    },
+    "validity_conditions": [
+      "By Gauss's lemma, irreducibility over Q reduces to irreducibility over Z.",
+      "The degrees of the factors are preserved by reduction because p does not divide a_n."
+    ],
+    "proof_plan": [
+      "By [[Gauss's Lemma on Polynomials|Gauss's Lemma]], it suffices to rule out $f = g h$ with $g, h \\in \\Z \\sqbrk x$ of positive degree.",
+      "Reducing modulo $p$, $\\bar f = \\bar a_n x^n$, so $\\bar g \\bar h = \\bar a_n x^n$ in $\\GF p \\sqbrk x$.",
+      "By the source result, $\\bar g$ and $\\bar h$ are monomials.\nAs $p$ does not divide the leading coefficients of $g$ and $h$, whose product is $a_n$, the reductions keep their positive degrees.\nHence the constant terms of $\\bar g$ and $\\bar h$ are $0$.",
+      "So $p$ divides the constant terms of $g$ and $h$, and $p^2$ divides their product $a_0$, a contradiction.\nThis is [[Eisenstein's Criterion]].\n{{qed}}"
+    ]
+  }
+}

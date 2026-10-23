@@ -1,0 +1,38 @@
+{
+  "id": "resolution_soundness_from_rule_preservation",
+  "field": [
+    "logic",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $S$ be a set of [[Definition:Clause (Logic)|clauses]].\nIf the empty clause is derivable from $S$ by [[Definition:Resolution Rule|resolution]], then $S$ is [[Definition:Unsatisfiable|unsatisfiable]]."
+  },
+  "B_source": {
+    "statement": "To show that a proof system is sound, show that each inference rule preserves truth under every valuation, and induct over derivations."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the inference rules": "the single resolution rule",
+        "the conclusion": "the empty clause"
+      },
+      "derived": {
+        "truth preservation": "every derived clause holds under any valuation satisfying S"
+      },
+      "reformulation": "Apply the rule-by-rule soundness plan to the resolution calculus, whose only rule is resolution."
+    },
+    "validity_conditions": [
+      "The empty clause is satisfied by no valuation, which gives the contradiction.",
+      "Completeness of resolution for refutation is a separate, harder result."
+    ],
+    "proof_plan": [
+      "Suppose a valuation $v$ satisfies every clause of $S$.",
+      "From $C \\lor p$ and $D \\lor \\neg p$, resolution infers $C \\lor D$.\nIf $\\map v p = 1$ then $v \\models D$, and otherwise $v \\models C$; in either case $v \\models C \\lor D$.",
+      "By induction on the length of the derivation, $v$ satisfies every derived clause.",
+      "The empty clause is satisfied by no valuation, a contradiction.\nHence $S$ is unsatisfiable, which is the soundness of resolution.\n{{qed}}"
+    ]
+  }
+}

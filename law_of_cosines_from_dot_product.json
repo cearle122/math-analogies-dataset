@@ -1,0 +1,41 @@
+{
+  "id": "law_of_cosines_from_dot_product",
+  "field": [
+    "geometry",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Triangle (Geometry)|triangle]] with sides $a, b, c$ and $\\angle C$ [[Definition:Opposite (in Triangle)|opposite]] $c$.\nThen:\n:$c^2 = a^2 + b^2 - 2 a b \\cos C$"
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf u, \\mathbf v$ be [[Definition:Vector (Linear Algebra)|vectors]] in an [[Definition:Inner Product Space|inner product space]].\nThen:\n:$\\norm {\\mathbf u - \\mathbf v}^2 = \\norm {\\mathbf u}^2 + \\norm {\\mathbf v}^2 - 2 \\innerprod {\\mathbf u} {\\mathbf v}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "vectors u, v": "two sides of the triangle from vertex C",
+        "||u|| and ||v||": "side lengths a and b",
+        "||u - v||": "the opposite side length c",
+        "<u,v>": "ab cos C"
+      },
+      "derived": {
+        "||u-v||^2 = ||u||^2+||v||^2-2<u,v>": "c^2 = a^2 + b^2 - 2ab cos C",
+        "the inner product term": "-2ab cos C"
+      }
+    },
+    "validity_conditions": [
+      "Place the triangle so sides a,b emanate from vertex C as vectors u,v; then the opposite side is u - v.",
+      "The inner product satisfies <u,v> = ||u|| ||v|| cos(angle) = ab cos C by definition of the angle between vectors.",
+      "Substituting into the norm-expansion identity gives the law of cosines directly."
+    ],
+    "proof_plan": [
+      "Let $\\mathbf u = \\vec {CB}$ and $\\mathbf v = \\vec {CA}$, so $\\norm {\\mathbf u} = a$ and $\\norm {\\mathbf v} = b$.",
+      "The third side is $\\vec {AB} = \\mathbf u - \\mathbf v$, of length $c$.",
+      "By the source result:\n:$c^2 = \\norm {\\mathbf u - \\mathbf v}^2 = a^2 + b^2 - 2 \\innerprod {\\mathbf u} {\\mathbf v}$",
+      "By [[Cosine Formula for Dot Product]], $\\innerprod {\\mathbf u} {\\mathbf v} = a b \\cos C$.\nHence:\n:$c^2 = a^2 + b^2 - 2 a b \\cos C$\n{{qed}}"
+    ]
+  }
+}

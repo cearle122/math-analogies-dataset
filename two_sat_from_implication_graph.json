@@ -1,0 +1,41 @@
+{
+  "id": "two_sat_from_implication_graph",
+  "field": [
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:2-Satisfiability Problem|2-satisfiability problem]], for a [[Definition:Conjunctive Normal Form|CNF]] formula with two literals per clause, is decidable in time linear in the size of the formula."
+  },
+  "B_source": {
+    "statement": "Let $D$ be a [[Definition:Directed Graph|directed graph]].\nThen the [[Definition:Strongly Connected Component|strongly connected components]] of $D$ can be computed in time $\\map O {\\card V + \\card E}$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the vertices of the digraph": "the literals, each variable and its negation",
+        "the directed edges": "the two implications equivalent to each clause",
+        "a strongly connected component": "a set of literals forced to share a truth value"
+      },
+      "derived": {
+        "a variable and its negation in one component": "a contradiction, so the formula is unsatisfiable",
+        "the reverse topological order of components": "an assignment satisfying the formula when no contradiction occurs"
+      },
+      "reformulation": "Encode each clause as a pair of implications, turning satisfiability into a reachability question on a digraph."
+    },
+    "validity_conditions": [
+      "Each two-literal clause is logically equivalent to a pair of implications, so the graph faithfully encodes the formula with size linear in it.",
+      "Literals in one strongly connected component imply one another and so must share a truth value; a variable together with its negation in one component is therefore a contradiction.",
+      "When no such contradiction occurs, assigning each component by reverse topological order yields a consistent satisfying assignment, since implications never point from true to false."
+    ],
+    "proof_plan": [
+      "Build the [[Definition:Implication Graph|implication graph]] on the literals: for each clause $a \\lor b$, add edges $\\neg a \\to b$ and $\\neg b \\to a$.",
+      "By [[Tarjan's Algorithm]], compute the strongly connected components in linear time.",
+      "If $x$ and $\\neg x$ lie in the same component, then $x \\implies \\neg x$ and $\\neg x \\implies x$ are both forced, so the formula is unsatisfiable.",
+      "Otherwise, process components in reverse [[Definition:Topological Sorting|topological order]], setting each unassigned literal true and its negation false.\nNo implication from a true literal leads to a false one, so this gives a satisfying assignment.\n{{qed}}"
+    ]
+  }
+}

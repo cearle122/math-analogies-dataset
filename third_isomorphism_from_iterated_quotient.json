@@ -1,0 +1,40 @@
+{
+  "id": "third_isomorphism_from_iterated_quotient",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Group|group]] and $N \\subseteq M$ [[Definition:Normal Subgroup|normal subgroups]] of $G$.\nThen:\n:$\\paren {G / N} / \\paren {M / N} \\cong G / M$"
+  },
+  "B_source": {
+    "statement": "Collapsing a set first by an [[Definition:Equivalence Relation|equivalence]] $\\sim_1$ and then by a coarser equivalence $\\sim_2$ has the same effect as collapsing once by $\\sim_2$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the finer congruence": "the smaller normal subgroup N",
+        "the coarser congruence": "the larger normal subgroup M",
+        "the two-stage collapse": "quotienting first by N and then by the image of M"
+      },
+      "derived": {
+        "the composite of the two quotient maps": "the single quotient map onto G modulo M",
+        "the kernel of the composite": "M, so the two-stage quotient is the one-stage quotient"
+      },
+      "reformulation": "Replace two successive collapses by the single collapse their composite induces."
+    },
+    "validity_conditions": [
+      "The image of M in G modulo N is normal there, so the second quotient is defined; this needs M normal in G, not merely in N.",
+      "The composite of the two quotient maps is surjective, being a composite of surjections.",
+      "Its kernel is exactly M, since an element maps to the identity precisely when its class modulo N lies in the image of M."
+    ],
+    "proof_plan": [
+      "Form $G / N$.\nThe image of $M$ there is $M / N$, which is normal in $G / N$.",
+      "Compose the [[Definition:Quotient Epimorphism|quotient maps]]:\n:$G \\to G / N \\to \\paren {G / N} / \\paren {M / N}$\nThe composite $\\phi$ is a [[Definition:Surjection|surjection]].",
+      "We have:\n:$g \\in \\map \\ker \\phi \\iff g N \\in M / N \\iff g \\in M$\nso $\\map \\ker \\phi = M$.",
+      "By the [[First Isomorphism Theorem for Groups]]:\n:$G / M \\cong \\paren {G / N} / \\paren {M / N}$\nwhich is the [[Third Isomorphism Theorem for Groups]].\n{{qed}}"
+    ]
+  }
+}

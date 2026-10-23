@@ -1,0 +1,39 @@
+{
+  "id": "geometric_series_from_fixed_point",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $r \\in \\R$ with $\\size r < 1$.\nThen:\n:$\\displaystyle \\sum_{n \\mathop = 0}^\\infty r^n = \\frac 1 {1 - r}$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]] and $T: X \\to X$ a [[Definition:Contraction Mapping|contraction]].\nThen $T$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]] $x^*$, and:\n:$\\forall x_0 \\in X: \\displaystyle \\lim_{n \\mathop \\to \\infty} \\map {T^n} {x_0} = x^*$"
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "complete metric space X": "the real line R",
+        "contraction T": "the affine map T(s) = 1 + r*s (with |r|<1)"
+      },
+      "derived": {
+        "fixed point x* of T": "the sum S = 1 + r*S",
+        "iterates T^n(0)": "partial sums 1 + r + ... + r^n"
+      },
+      "reformulation": "Encode the series sum S as the fixed point of T(s) = 1 + r s; the partial sums are exactly the iterates T^n(0)."
+    },
+    "validity_conditions": [
+      "|r| < 1 makes T(s) = 1 + r s a contraction on R (Lipschitz constant |r|), and R is complete.",
+      "The iterates T^n(0) equal the partial sums, so their limit is the series sum.",
+      "Solving the fixed-point equation S = 1 + rS gives S = 1/(1-r)."
+    ],
+    "proof_plan": [
+      "Define $\\map T s = 1 + r s$ on $\\R$.\nThen $\\size {\\map T s - \\map T t} = \\size r \\size {s - t}$, so $T$ is a [[Definition:Contraction Mapping|contraction]] as $\\size r < 1$.",
+      "By [[Principle of Mathematical Induction|induction]]:\n:$\\map {T^{n + 1} } 0 = 1 + r + \\cdots + r^n$\nwhich are the partial sums.",
+      "$\\R$ is [[Definition:Complete Metric Space|complete]].\nBy the [[Banach Fixed-Point Theorem]], the partial sums converge to the unique fixed point $S$.",
+      "{{begin-eqn}}\n{{eqn | l = S\n| r = 1 + r S\n}}\n{{eqn | ll= \\leadsto\n| l = S\n| r = \\frac 1 {1 - r}\n}}\n{{end-eqn}}\n{{qed}}"
+    ]
+  }
+}

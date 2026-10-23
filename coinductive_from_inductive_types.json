@@ -1,0 +1,40 @@
+{
+  "id": "coinductive_from_inductive_types",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "A [[Definition:Coinductive Type|coinductive type]] $\\nu F$ is characterized by its destructors $\\mathsf {out}: \\nu F \\to \\map F {\\nu F}$, and two elements are equal whenever they are related by a [[Definition:Bisimulation|bisimulation]]."
+  },
+  "B_source": {
+    "statement": "An [[Definition:Inductive Type|inductive type]] $\\mu F$ is characterized by its constructors $\\mathsf {in}: \\map F {\\mu F} \\to \\mu F$, and properties of its elements are proved by [[Principle of Structural Induction|induction]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the constructors building elements": "the destructors observing elements",
+        "the induction principle": "the coinduction principle",
+        "the least fixed point of the signature": "the greatest fixed point of the signature"
+      },
+      "derived": {
+        "proving a property of all elements by induction": "proving two elements equal by exhibiting a bisimulation",
+        "finiteness of constructed elements": "possible infiniteness of observed elements, such as streams"
+      },
+      "reformulation": "Reverse the direction of the defining maps, exchanging construction for observation and least for greatest fixed point."
+    },
+    "validity_conditions": [
+      "The two notions are related by reversing the arrows in the defining diagrams, exchanging the initial algebra with the terminal coalgebra.",
+      "Elements of an inductive type are finitely generated, whereas a coinductive type admits infinite elements such as streams, so termination arguments do not carry over.",
+      "Equality is the notion that dualizes: induction proves properties of a single element, while coinduction proves indistinguishability of two under all observations."
+    ],
+    "proof_plan": [
+      "The [[Definition:Inductive Type|inductive type]] is the [[Definition:Initial Algebra|initial algebra]] $\\mathsf {in}: \\map F {\\mu F} \\to \\mu F$, the [[Definition:Least Fixed Point|least fixed point]] of the signature $F$.",
+      "Reversing the arrows gives the [[Definition:Final Coalgebra|final coalgebra]] $\\mathsf {out}: \\nu F \\to \\map F {\\nu F}$.\nThis is the [[Definition:Greatest Fixed Point|greatest fixed point]] of $F$, determined by its destructors.",
+      "Initiality gives the [[Principle of Structural Induction|induction principle]] and unique folds out of $\\mu F$.\nFinality gives unique unfolds into $\\nu F$, and hence the [[Definition:Coinduction|coinduction]] principle.",
+      "To prove $x = y$ in $\\nu F$, exhibit a relation $R$ with $\\tuple {x, y} \\in R$ that is a [[Definition:Bisimulation|bisimulation]] for $\\mathsf {out}$.\nBy finality, $R$ is contained in equality.\n{{qed}}"
+    ]
+  }
+}

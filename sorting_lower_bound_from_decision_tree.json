@@ -1,0 +1,41 @@
+{
+  "id": "sorting_lower_bound_from_decision_tree",
+  "field": [
+    "algorithms",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Every comparison-based [[Definition:Sorting Algorithm|sorting algorithm]] on $n$ elements makes $\\map \\Omega {n \\log n}$ comparisons in the worst case."
+  },
+  "B_source": {
+    "statement": "Let $T$ be a [[Definition:Binary Tree|binary tree]] with $L$ [[Definition:Leaf of Tree|leaves]].\nThen the [[Definition:Depth of Tree|depth]] of $T$ is at least $\\log_2 L$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the binary tree": "the decision tree of the algorithm, branching on each comparison outcome",
+        "the leaves of the tree": "the possible output permutations, of which there are n factorial",
+        "the depth of the tree": "the worst-case number of comparisons"
+      },
+      "derived": {
+        "the depth bound": "at least log_2(n!) comparisons in the worst case",
+        "the estimate of the logarithm": "log_2(n!) is on the order of n log n, by Stirling"
+      },
+      "reformulation": "Encode the algorithm's execution as a path in a binary tree, turning a running-time bound into a bound on tree depth."
+    },
+    "validity_conditions": [
+      "A comparison-based algorithm is faithfully modelled by a binary decision tree, since its control flow depends only on comparison outcomes.",
+      "Every permutation must be reachable as a distinct leaf, or two inputs requiring different outputs would be treated identically, so the tree has at least n factorial leaves.",
+      "The bound applies only to comparison-based algorithms; methods using the values directly, such as radix sort, are not modelled by such a tree and are not covered."
+    ],
+    "proof_plan": [
+      "Model the algorithm as a binary [[Definition:Decision Tree|decision tree]], each internal node a comparison and each branch an outcome.",
+      "Each of the $n!$ input orderings requires a different output permutation, so reaches a distinct leaf.\nHence $L \\ge n!$.",
+      "By the source result, the worst-case number of comparisons is at least $\\log_2 \\paren {n!}$.",
+      "By [[Stirling's Formula]]:\n:$\\log_2 \\paren {n!} = n \\log_2 n - n \\log_2 e + \\map O {\\log n} = \\map \\Omega {n \\log n}$\n{{qed}}"
+    ]
+  }
+}

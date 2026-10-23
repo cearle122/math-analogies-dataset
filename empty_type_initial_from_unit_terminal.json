@@ -1,0 +1,39 @@
+{
+  "id": "empty_type_initial_from_unit_terminal",
+  "field": [
+    "type_theory",
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "In [[Definition:Martin-Löf Type Theory|dependent type theory]] with function extensionality, for every type $C$ there is a function $\\mathbf 0 \\to C$, and any two such functions are equal.\nThat is, the [[Definition:Empty Type|empty type]] is an [[Definition:Initial Object|initial object]]."
+  },
+  "B_source": {
+    "statement": "For every type $C$ there is a function $C \\to \\mathbf 1$, namely $\\lambda x. \\star$, and by the $\\eta$-rule for the [[Definition:Unit Type|unit type]] any two such functions are equal.\nThat is, $\\mathbf 1$ is a [[Definition:Terminal Object|terminal object]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "one introduction rule": "no introduction rules",
+        "maps into the type": "maps out of the type",
+        "terminal": "initial"
+      },
+      "derived": {
+        "uniqueness from eta for unit": "uniqueness from the empty eliminator"
+      },
+      "reformulation": "Reverse the arrows: the unit type has a single constructor and trivial elimination, while the empty type has no constructors and an eliminator into every type."
+    },
+    "validity_conditions": [
+      "Uniqueness of maps out of 0 needs function extensionality, since it is proved pointwise by the eliminator.",
+      "Logically, truth is always provable and falsity proves everything."
+    ],
+    "proof_plan": [
+      "$\\mathbf 1$ has one constructor $\\star$, so maps into $\\mathbf 1$ exist, and the $\\eta$-rule makes them unique.",
+      "Dually, $\\mathbf 0$ has no constructors, and its eliminator gives $\\mathsf {ind}_{\\mathbf 0} : \\prod_{x : \\mathbf 0} \\map C x$ for every family $C$.\nIn particular there is a function $\\mathbf 0 \\to C$.",
+      "For $f, g : \\mathbf 0 \\to C$, the eliminator also gives $\\prod_{x : \\mathbf 0} \\paren {\\map f x = \\map g x}$, so $f = g$ by function extensionality.",
+      "Hence $\\mathbf 0$ is initial, dual to $\\mathbf 1$ being terminal; under Curry-Howard this is ex falso quodlibet.\n{{qed}}"
+    ]
+  }
+}

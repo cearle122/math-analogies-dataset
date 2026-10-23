@@ -1,0 +1,40 @@
+{
+  "id": "peano_existence_from_schauder",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Continuous Mapping|continuous]] on a neighborhood of $\\tuple {t_0, y_0}$.\nThen the [[Definition:Initial Value Problem|initial value problem]]:\n:$y' = \\map f {t, y}, \\quad \\map y {t_0} = y_0$\nhas a solution on some interval $\\closedint {t_0 - h} {t_0 + h}$."
+  },
+  "B_source": {
+    "statement": "Let $K$ be a [[Definition:Non-Empty Set|non-empty]] [[Definition:Compact Space|compact]] [[Definition:Convex Set (Vector Space)|convex]] subset of a [[Definition:Banach Space|Banach space]] and $T: K \\to K$ [[Definition:Continuous Mapping|continuous]].\nThen $T$ has a [[Definition:Fixed Point|fixed point]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the compact convex set": "a set of uniformly bounded, equicontinuous functions on a small interval",
+        "the continuous self-map": "the integral operator sending y to the integral of f along y",
+        "a fixed point of the operator": "a solution of the differential equation"
+      },
+      "derived": {
+        "the fixed point equation": "the integral equation equivalent to the initial value problem",
+        "existence without uniqueness": "solutions need not be unique, since continuity alone is assumed"
+      },
+      "reformulation": "Convert the differential equation into an integral equation so that solving it becomes finding a fixed point of an operator."
+    },
+    "validity_conditions": [
+      "The initial value problem is equivalent to an integral equation, whose solutions are exactly the fixed points of the integral operator.",
+      "The operator maps a suitable ball into a set of uniformly bounded equicontinuous functions, which is relatively compact by Arzela-Ascoli; this supplies the compactness Schauder requires.",
+      "Only continuity of f is assumed, so uniqueness fails in general; obtaining uniqueness requires a Lipschitz condition and a contraction argument instead."
+    ],
+    "proof_plan": [
+      "The initial value problem is equivalent to the integral equation:\n:$\\displaystyle \\map y t = y_0 + \\int_{t_0}^t \\map f {s, \\map y s} \\rd s$",
+      "Define on $\\map C {\\closedint {t_0 - h} {t_0 + h} }$:\n:$\\displaystyle \\map {\\paren {T y} } t = y_0 + \\int_{t_0}^t \\map f {s, \\map y s} \\rd s$\nwhose fixed points are the solutions.",
+      "Let $\\size f \\le M$ near $\\tuple {t_0, y_0}$, and let $K$ be the closed convex set of $y$ with $\\size {y - y_0} \\le b$, where $M h \\le b$.\nThen $T$ maps $K$ into itself, and $\\map T K$ is [[Definition:Equicontinuous|equicontinuous]] with Lipschitz constant $M$.\nBy the [[Arzelà-Ascoli Theorem]], $\\map T K$ is relatively compact.",
+      "By the [[Schauder Fixed-Point Theorem]] applied to $T$ on the closed convex hull of $\\map T K$, $T$ has a fixed point, which is a local solution.\nThis is [[Peano Existence Theorem|Peano's Theorem]].\n{{qed}}"
+    ]
+  }
+}

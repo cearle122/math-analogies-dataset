@@ -1,0 +1,39 @@
+{
+  "id": "dirichlet_kernel_from_finite_geometric_sum",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f \\in \\map {L^1} {\\closedint {-\\pi} \\pi}$ and let $S_N f$ be the $N$th partial sum of its [[Definition:Fourier Series|Fourier series]].\nThen:\n:$S_N f = f * D_N$\nwhere $D_N$ is the [[Definition:Dirichlet Kernel|Dirichlet kernel]], and:\n:$\\norm {D_N}_1 \\sim \\dfrac 4 {\\pi^2} \\log N$"
+  },
+  "B_source": {
+    "statement": "Let $x \\notin 2 \\pi \\Z$.\nThen:\n:$\\displaystyle \\sum_{k \\mathop = -N}^N e^{i k x} = \\frac {\\map \\sin {\\paren {N + \\frac 1 2} x} } {\\map \\sin {\\frac x 2} }$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the finite sum of exponentials": "the Dirichlet kernel D_N",
+        "the closed-form ratio of sines": "the oscillatory kernel whose L1 norm is estimated",
+        "the number of terms 2N+1": "the truncation level of the Fourier series"
+      },
+      "derived": {
+        "the growth of the kernel's L1 norm": "the failure of uniform convergence for continuous functions"
+      },
+      "reformulation": "The infinite series must first be truncated so that a finite algebraic identity becomes available; the asymptotics of that identity then control the limit."
+    },
+    "validity_conditions": [
+      "x must avoid multiples of 2 pi for the closed form to be valid, with the value 2N+1 taken by continuity",
+      "f must be integrable for the convolution representation of the partial sum to hold"
+    ],
+    "proof_plan": [
+      "By definition of the [[Definition:Fourier Coefficient|Fourier coefficients]]:\n:$\\displaystyle \\map {S_N f} x = \\frac 1 {2 \\pi} \\int_{-\\pi}^\\pi \\map f t \\sum_{k \\mathop = -N}^N e^{i k \\paren {x - t} } \\rd t$",
+      "From [[Sum of Geometric Sequence]]:\n:$\\map {D_N} x = \\displaystyle \\sum_{k \\mathop = -N}^N e^{i k x} = \\frac {\\map \\sin {\\paren {N + \\frac 1 2} x} } {\\map \\sin {\\frac x 2} }$",
+      "On $\\closedint 0 \\pi$, $\\map \\sin {\\frac x 2} \\approx \\dfrac x 2$.\nSplit $\\closedint 0 \\pi$ into blocks between consecutive zeros of $\\map \\sin {\\paren {N + \\frac 1 2} x}$.\nOn the $k$th block, $\\size {D_N}$ integrates to approximately $\\dfrac 4 {\\pi k}$ times a constant.",
+      "Summing over $k \\le N$ and using the [[Harmonic Series is Divergent|harmonic sum]] $\\displaystyle \\sum_{k \\mathop = 1}^N \\frac 1 k \\sim \\ln N$:\n:$\\norm {D_N}_1 \\sim \\dfrac 4 {\\pi^2} \\ln N$",
+      "The [[Definition:Norm of Linear Operator|operator norm]] of $f \\mapsto f * D_N$ on $\\map C {\\Bbb T}$ equals $\\norm {D_N}_1$.\nHence the partial-sum operators are unbounded in norm.\n{{qed}}"
+    ]
+  }
+}

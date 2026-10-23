@@ -1,0 +1,39 @@
+{
+  "id": "maximum_entropy_uniform_from_gibbs_inequality",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a [[Definition:Probability Distribution|probability distribution]] on a set of $n$ points.\nThen:\n:$\\map H p \\le \\log n$\nwith equality {{iff}} $p$ is [[Definition:Discrete Uniform Distribution|uniform]]."
+  },
+  "B_source": {
+    "statement": "Let $p, q$ be [[Definition:Probability Distribution|probability distributions]] on a finite set.\nThen:\n:$\\map D {p \\parallel q} = \\displaystyle \\sum_i p_i \\log \\frac {p_i} {q_i} \\ge 0$\nwith equality {{iff}} $p = q$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the reference distribution q": "the uniform distribution on the finite set",
+        "the relative entropy between p and q": "the gap between the logarithm of n and the entropy of p",
+        "the equality case of the inequality": "the case where p is uniform"
+      },
+      "derived": {
+        "nonnegativity of relative entropy": "the entropy of p is at most the logarithm of n",
+        "the equality condition": "the maximum is attained exactly at the uniform distribution"
+      }
+    },
+    "validity_conditions": [
+      "Taking the reference distribution to be uniform makes the relative entropy equal the logarithm of n minus the entropy of p, by direct expansion.",
+      "Nonnegativity of relative entropy then gives the bound, and its equality condition gives uniqueness of the maximizer.",
+      "The set must be finite for the uniform distribution to exist; on a countably infinite set there is no uniform distribution and entropy is unbounded."
+    ],
+    "proof_plan": [
+      "Let $q$ be uniform: $q_i = \\dfrac 1 n$.",
+      "{{begin-eqn}}\n{{eqn | l = \\map D {p \\parallel q}\n| r = \\sum_i p_i \\log p_i - \\sum_i p_i \\log \\frac 1 n\n}}\n{{eqn | r = \\sum_i p_i \\log p_i + \\log n\n}}\n{{end-eqn}}",
+      "Hence:\n:$\\map D {p \\parallel q} = \\log n - \\map H p$",
+      "By [[Gibbs' Inequality]], $\\log n - \\map H p \\ge 0$, with equality {{iff}} $p = q$.\nHence $\\map H p \\le \\log n$, with equality {{iff}} $p$ is uniform.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "euler_circuit_from_cycle_extraction",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a finite [[Definition:Connected Graph|connected]] [[Definition:Multigraph|multigraph]] with at least one edge.\nThen $G$ has an [[Definition:Eulerian Circuit|Eulerian circuit]] {{iff}} every vertex has [[Definition:Even Integer|even]] [[Definition:Degree of Vertex|degree]]."
+  },
+  "B_source": {
+    "statement": "Every finite multigraph in which every vertex has degree at least $2$ contains a [[Definition:Cycle (Graph Theory)|cycle]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the graph with minimum degree 2": "the non-isolated part of an even graph"
+      },
+      "derived": {
+        "repeatedly extracted cycles": "pieces spliced into one closed trail"
+      },
+      "reformulation": "Remove a cycle, apply induction to what remains, and splice the resulting circuits into the cycle."
+    },
+    "validity_conditions": [
+      "Removing the edges of a cycle keeps all degrees even.",
+      "Connectedness ensures that every remaining component meets the removed cycle."
+    ],
+    "proof_plan": [
+      "An Eulerian circuit enters and leaves each vertex the same number of times, so every degree is even.",
+      "Conversely, proceed by induction on the number of edges.\nThe non-isolated vertices all have even degree, hence degree at least $2$, so by the source result there is a cycle $C$.",
+      "Removing the edges of $C$ leaves all degrees even.\nBy the induction hypothesis, each component of the remainder with an edge has an Eulerian circuit.",
+      "As $G$ is connected, each such component meets $C$; splicing its circuit into $C$ at a common vertex gives an Eulerian circuit of $G$.\nThis is [[Euler's Theorem for Eulerian Graphs|Euler's theorem]].\n{{qed}}"
+    ]
+  }
+}

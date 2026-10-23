@@ -1,0 +1,40 @@
+{
+  "id": "cotangent_space_from_maximal_ideal_square",
+  "field": [
+    "geometry",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $V$ be an [[Definition:Affine Variety|affine variety]] over a [[Definition:Field (Abstract Algebra)|field]] $k$ and $p \\in V$.\nLet $\\mathfrak m_p$ be the [[Definition:Maximal Ideal of Ring|maximal ideal]] of functions vanishing at $p$.\nThen the [[Definition:Cotangent Space|cotangent space]] of $V$ at $p$ is:\n:$T_p^* V \\cong \\mathfrak m_p / \\mathfrak m_p^2$"
+  },
+  "B_source": {
+    "statement": "Let $I$ be an [[Definition:Ideal of Ring|ideal]] of a [[Definition:Commutative Ring with Unity|commutative ring]] $R$.\nThen $I / I^2$ is an $R / I$-[[Definition:Module|module]] recording $I$ modulo second-order terms."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ideal being collapsed": "the maximal ideal of functions vanishing at the point",
+        "the square of the ideal": "products of two functions each vanishing at the point",
+        "the quotient of the ideal by its square": "the cotangent space at the point"
+      },
+      "derived": {
+        "the surviving first-order information": "the differential of a function at the point",
+        "the vanishing of second-order terms": "products of two vanishing functions have zero differential, by the product rule"
+      }
+    },
+    "validity_conditions": [
+      "Functions in the square of the maximal ideal are sums of products of two functions vanishing at the point, so by the product rule their differentials vanish there.",
+      "Hence the differential map factors through the quotient, and the quotient is exactly the space of first-order behaviours at the point.",
+      "The identification of this quotient with the dual of the tangent space requires the point to be closed with residue field the base field; otherwise the correspondence needs modification."
+    ],
+    "proof_plan": [
+      "Let $\\mathfrak m_p = \\set {f \\in \\map k V: \\map f p = 0}$.",
+      "Define $d_p: \\mathfrak m_p \\to T_p^* V$ by $f \\mapsto \\map {\\d f} p$.\nFor $f, g \\in \\mathfrak m_p$, the [[Product Rule for Derivatives|product rule]] gives:\n:$\\map {\\d \\paren {f g} } p = \\map f p \\map {\\d g} p + \\map g p \\map {\\d f} p = 0$\nSo $d_p$ vanishes on $\\mathfrak m_p^2$.",
+      "Hence $d_p$ factors through the quotient $\\mathfrak m_p / \\mathfrak m_p^2$, which keeps only first-order information.",
+      "$d_p$ is [[Definition:Surjection|surjective]] as the coordinate functions $x_i - p_i$ map to a spanning set, and its kernel is exactly $\\mathfrak m_p^2$ by [[Taylor's Theorem|Taylor expansion]].\nHence:\n:$T_p^* V \\cong \\mathfrak m_p / \\mathfrak m_p^2$\n{{qed}}"
+    ]
+  }
+}

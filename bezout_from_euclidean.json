@@ -1,0 +1,41 @@
+{
+  "id": "bezout_from_euclidean",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $a, b \\in \\Z$ be [[Definition:Integer|integers]], not both zero.\nThen:\n:$\\exists x, y \\in \\Z: a x + b y = \\gcd \\set {a, b}$"
+  },
+  "B_source": {
+    "statement": "Let $a, b \\in \\Z$ with $b \\ne 0$.\nThe [[Euclidean Algorithm]] computes $\\gcd \\set {a, b}$ by repeated application of the [[Division Theorem]]:\n:$a = q b + r, \\quad 0 \\le r < \\size b$\nusing that $\\gcd \\set {a, b} = \\gcd \\set {b, r}$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "proof_plan_transfer"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "each division step a = q b + r": "an expression r = a - q b as an integer combination",
+        "back-substitution up the chain": "accumulating the coefficients x,y"
+      },
+      "derived": {
+        "final nonzero remainder = gcd": "gcd written as a combination of a,b",
+        "the algorithm's steps": "the constructive certificate x,y"
+      }
+    },
+    "validity_conditions": [
+      "Each remainder r_k is expressible as an integer combination of a and b (by induction on the division steps).",
+      "The last nonzero remainder equals gcd(a,b), so unwinding the substitutions yields explicit x,y.",
+      "The reduction is constructive: the Euclidean algorithm's trace IS the proof of existence (extended Euclidean algorithm)."
+    ],
+    "proof_plan": [
+      "Run the [[Euclidean Algorithm]], recording each step:\n{{begin-eqn}}\n{{eqn | l = r_{k - 2}\n| r = q_k r_{k - 1} + r_k\n| c = [[Division Theorem]]\n}}\n{{end-eqn}}\nwhere $r_{-1} = a$ and $r_0 = b$.",
+      "Each step gives:\n:$r_k = r_{k - 2} - q_k r_{k - 1}$\nso by [[Principle of Mathematical Induction|induction]] each $r_k$ is an integer combination of $a$ and $b$.",
+      "Let $r_m$ be the last non-zero remainder.\nFrom [[GCD with Remainder]], $r_m = \\gcd \\set {a, b}$.\nBack-substitute from $r_m$ up the chain of divisions.",
+      "Collecting coefficients gives $x, y \\in \\Z$ with:\n:$a x + b y = \\gcd \\set {a, b}$\n{{qed}}"
+    ]
+  }
+}

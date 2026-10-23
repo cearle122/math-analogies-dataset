@@ -1,0 +1,39 @@
+{
+  "id": "chi_squared_from_gamma_family",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X \\sim \\chi^2_k$ have the [[Definition:Chi-Squared Distribution|chi-squared distribution]] with $k$ [[Definition:Degrees of Freedom|degrees of freedom]].\nThen:\n:$\\expect X = k$\n:$\\var X = 2 k$\nIf $X \\sim \\chi^2_j$ and $Y \\sim \\chi^2_k$ are [[Definition:Independent Random Variables|independent]], then $X + Y \\sim \\chi^2_{j + k}$."
+  },
+  "B_source": {
+    "statement": "Let $X \\sim \\map \\Gamma {\\alpha, \\theta}$ have the [[Definition:Gamma Distribution|gamma distribution]] with shape $\\alpha$ and scale $\\theta$.\nThen:\n:$\\expect X = \\alpha \\theta$\n:$\\var X = \\alpha \\theta^2$\nIf $X \\sim \\map \\Gamma {\\alpha, \\theta}$ and $Y \\sim \\map \\Gamma {\\beta, \\theta}$ are [[Definition:Independent Random Variables|independent]], then $X + Y \\sim \\map \\Gamma {\\alpha + \\beta, \\theta}$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the shape parameter a": "half the degrees of freedom, k/2",
+        "the scale parameter theta": "the fixed value 2",
+        "the additivity of shapes at common scale": "the additivity of degrees of freedom"
+      },
+      "derived": {
+        "the mean a theta": "k, on substituting the parameters",
+        "the variance a theta squared": "2k, on the same substitution"
+      }
+    },
+    "validity_conditions": [
+      "The chi-squared distribution with k degrees of freedom is by definition the gamma distribution with shape k/2 and scale 2, so this is instantiation rather than a new argument.",
+      "The additivity result requires the summands to be independent and to share the common scale 2, which holds automatically within the chi-squared family.",
+      "Substituting the parameters into the gamma moment formulas gives mean k and variance 2k directly."
+    ],
+    "proof_plan": [
+      "Comparing [[Definition:Probability Density Function|density functions]]:\n:$\\chi^2_k = \\map \\Gamma {\\dfrac k 2, 2}$",
+      "Substitute $\\alpha = \\dfrac k 2$ and $\\theta = 2$ in the gamma formulas.",
+      "{{begin-eqn}}\n{{eqn | l = \\expect X\n| r = \\frac k 2 \\cdot 2 = k\n}}\n{{eqn | l = \\var X\n| r = \\frac k 2 \\cdot 2^2 = 2 k\n}}\n{{end-eqn}}",
+      "As the scale $\\theta = 2$ is common, the shapes add:\n:$\\map \\Gamma {\\dfrac j 2, 2} + \\map \\Gamma {\\dfrac k 2, 2} = \\map \\Gamma {\\dfrac {j + k} 2, 2} = \\chi^2_{j + k}$\n{{qed}}"
+    ]
+  }
+}

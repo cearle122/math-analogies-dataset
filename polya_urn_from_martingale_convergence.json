@@ -1,0 +1,36 @@
+{
+  "id": "polya_urn_from_martingale_convergence",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "An urn contains $r$ red and $b$ blue balls.\nAt each step a ball is drawn uniformly at random and returned together with one more ball of the same colour.\nThen the proportion $M_n$ of red balls after $n$ steps is a [[Definition:Martingale|martingale]] and converges [[Definition:Almost Surely|almost surely]]."
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {M_n}$ be a martingale with $\\displaystyle \\sup_n \\expect {\\size {M_n} } < \\infty$.\nThen $M_n$ converges almost surely."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the martingale M_n": "the proportion of red balls"
+      },
+      "derived": {
+        "boundedness in [0, 1]": "the L1 bound required for convergence"
+      },
+      "reformulation": "Check the martingale property by a one-step computation and use that proportions are bounded."
+    },
+    "validity_conditions": [
+      "The proportion lies in [0, 1], so the L1 bound is automatic.",
+      "The limit has a Beta(r, b) distribution, which is computed separately using exchangeability."
+    ],
+    "proof_plan": [
+      "After $n$ steps there are $N = r + b + n$ balls, $R_n$ of them red, and $M_n = \\dfrac {R_n} N$.",
+      "Given the past, the next ball is red with probability $M_n$, so:\n:$\\expect {M_{n + 1} \\mid \\FF_n} = M_n \\dfrac {R_n + 1} {N + 1} + \\paren {1 - M_n} \\dfrac {R_n} {N + 1} = \\dfrac {R_n + M_n} {N + 1} = M_n$",
+      "Hence $\\sequence {M_n}$ is a martingale, with $0 \\le M_n \\le 1$.",
+      "By [[Doob's Martingale Convergence Theorem]], $M_n$ converges almost surely, to a limit with the [[Definition:Beta Distribution|Beta distribution]] with parameters $r$ and $b$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "interval_arithmetic_from_real_arithmetic",
+  "field": [
+    "analysis",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $\\circ \\in \\set {+, -, \\times, \\div}$ and let $X, Y$ be [[Definition:Closed Real Interval|closed real intervals]].\nDefine:\n:$X \\circ Y = \\set {x \\circ y: x \\in X, y \\in Y}$\nThen if $x \\in X$ and $y \\in Y$, $x \\circ y \\in X \\circ Y$, and this enclosure property is preserved under composition of operations."
+  },
+  "B_source": {
+    "statement": "$\\struct {\\R, +, \\times}$ is a [[Definition:Field (Abstract Algebra)|field]], satisfying the [[Definition:Field Axioms|field axioms]] including existence of [[Definition:Additive Inverse|additive]] and [[Definition:Multiplicative Inverse|multiplicative inverses]]."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "a real number": "an interval known to contain it",
+        "a real operation": "the operation applied to the set, taking the image of the pair of intervals",
+        "the exact real result": "an interval guaranteed to enclose it"
+      },
+      "derived": {
+        "the enclosure property": "the computed interval always contains the true result",
+        "the field identities": "only partially transferred, since intervals have no additive inverses"
+      }
+    },
+    "validity_conditions": [
+      "Each operation is defined as the image of the corresponding real operation on the pair of intervals, which makes the enclosure property automatic and preserved under composition.",
+      "Additive inverses fail: subtracting an interval from itself gives an interval containing zero but not equal to it, so cancellation identities do not transfer.",
+      "This is the dependency problem: an expression in which a variable occurs several times is evaluated as though the occurrences were independent, so enclosures are correct but can be far wider than necessary."
+    ],
+    "proof_plan": [
+      "Replace each real quantity $x$ by a [[Definition:Closed Real Interval|closed interval]] $X \\ni x$.",
+      "Define each operation as the [[Definition:Image of Subset under Mapping|image]] of the real operation on $X \\times Y$.\nFor example:\n:$\\closedint a b + \\closedint c d = \\closedint {a + c} {b + d}$\n:$\\closedint a b \\times \\closedint c d = \\closedint {\\min S} {\\max S}$ where $S = \\set {a c, a d, b c, b d}$",
+      "If $x \\in X$ and $y \\in Y$ then $x \\circ y \\in X \\circ Y$ by definition.\nBy [[Principle of Mathematical Induction|induction]] on the expression, any composite of operations encloses the true real result.",
+      "Identities relying on cancellation fail.\nFor example, with $X = \\closedint 0 1$:\n:$X - X = \\closedint {-1} 1 \\ne \\set 0$\nand [[Definition:Distributive Operation|distributivity]] weakens to subdistributivity $X \\paren {Y + Z} \\subseteq X Y + X Z$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "sperner_theorem_from_lym",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\FF$ be an [[Definition:Antichain|antichain]] in $\\powerset {\\set {1, \\ldots, n} }$.\nThen:\n:$\\card \\FF \\le \\dbinom n {\\floor {n / 2} }$\nwith equality for the family of all $\\floor {n / 2}$-subsets."
+  },
+  "B_source": {
+    "statement": "For every antichain $\\FF$ in $\\powerset {\\set {1, \\ldots, n} }$:\n:$\\displaystyle \\sum_{A \\mathop \\in \\FF} \\frac 1 {\\dbinom n {\\card A} } \\le 1$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the varying weights": "their common lower bound 1/C(n, floor(n/2))"
+      },
+      "derived": {
+        "the weighted inequality": "a bound on the number of members"
+      },
+      "reformulation": "Bound every weight below by the smallest one, which belongs to the middle layer."
+    },
+    "validity_conditions": [
+      "The binomial coefficients C(n, k) are maximal at k = floor(n/2).",
+      "The middle layer is itself an antichain, giving equality."
+    ],
+    "proof_plan": [
+      "For all $k$, $\\dbinom n k \\le \\dbinom n {\\floor {n / 2} }$.",
+      "Hence each term of the source sum is at least $\\dfrac 1 {\\dbinom n {\\floor {n / 2} } }$, and:\n:$\\dfrac {\\card \\FF} {\\dbinom n {\\floor {n / 2} } } \\le 1$",
+      "So $\\card \\FF \\le \\dbinom n {\\floor {n / 2} }$.",
+      "Distinct sets of the same size are incomparable, so the $\\floor {n / 2}$-subsets form an antichain attaining the bound.\nThis is [[Sperner's Theorem]].\n{{qed}}"
+    ]
+  }
+}

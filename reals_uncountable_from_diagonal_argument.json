@@ -1,0 +1,38 @@
+{
+  "id": "reals_uncountable_from_diagonal_argument",
+  "field": [
+    "set_theory",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "The interval $\\closedint 0 1$, and hence $\\R$, is [[Definition:Uncountable Set|uncountable]]."
+  },
+  "B_source": {
+    "statement": "Let $\\family {r_i}_{i \\mathop \\in I}$ be mappings $I \\to X$, where $X$ has at least two elements.\nThen $d: I \\to X$ may be chosen with $\\map d i \\ne \\map {r_i} i$ for every $i$, so that $d$ differs from every $r_i$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the mappings r_i": "decimal digit sequences of a putative enumeration",
+        "the set X": "the digits {4, 5}"
+      },
+      "derived": {
+        "the diagonal sequence d": "a real number missing from the enumeration"
+      },
+      "reformulation": "Apply the diagonal construction to decimal expansions, using only the digits 4 and 5 to avoid non-unique expansions."
+    },
+    "validity_conditions": [
+      "Expansions ending in repeating 9s must be excluded to make the expansions canonical.",
+      "Using digits away from 0 and 9 ensures the diagonal number has a unique expansion."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $x_1, x_2, \\ldots$ enumerates $\\closedint 0 1$, with canonical decimal expansions $x_i = 0.d_{i 1} d_{i 2} \\ldots$ not ending in repeating $9$s.",
+      "By the source result with $X = \\set {4, 5}$, let $e_i = 5$ if $d_{i i} \\ne 5$ and $e_i = 4$ if $d_{i i} = 5$.",
+      "Let $y = 0.e_1 e_2 \\ldots \\in \\closedint 0 1$.\nAs it uses only the digits $4$ and $5$, this is its unique expansion.",
+      "$y$ differs from $x_i$ in the $i$th digit, so $y \\ne x_i$ for every $i$, a contradiction.\nThis is [[Cantor's Diagonal Argument]] for the reals.\n{{qed}}"
+    ]
+  }
+}

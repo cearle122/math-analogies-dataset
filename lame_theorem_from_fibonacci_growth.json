@@ -1,0 +1,37 @@
+{
+  "id": "lame_theorem_from_fibonacci_growth",
+  "field": [
+    "algorithms",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "If the [[Euclidean Algorithm]] applied to $a > b \\ge 1$ takes $k$ division steps, then $b \\ge F_{k + 1}$ and $a \\ge F_{k + 2}$.\nHence $k \\le 1 + \\log_\\phi b$, where $\\phi$ is the [[Definition:Golden Mean|golden ratio]]."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Fibonacci Numbers|Fibonacci numbers]] satisfy $F_n \\ge \\phi^{n - 2}$ for all $n \\ge 1$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the sequence of remainders": "a sequence dominating the Fibonacci numbers from the end"
+      },
+      "derived": {
+        "Fibonacci growth": "a logarithmic bound on the number of steps"
+      },
+      "reformulation": "Run the remainder sequence backwards: each remainder is at least the sum of the next two, so the remainders grow at least like Fibonacci numbers."
+    },
+    "validity_conditions": [
+      "Each quotient is at least 1, and the last is at least 2.",
+      "Consecutive Fibonacci numbers are the worst case, so the bound is sharp."
+    ],
+    "proof_plan": [
+      "Let $r_0 = a$, $r_1 = b$ and $r_{i - 1} = q_i r_i + r_{i + 1}$ for $i = 1, \\ldots, k$, with $r_{k + 1} = 0 < r_k$.\nEach $q_i \\ge 1$, and $q_k \\ge 2$ as $r_{k - 1} > r_k$.",
+      "Hence $r_k \\ge 1 = F_2$, $r_{k - 1} \\ge 2 = F_3$, and $r_{i - 1} \\ge r_i + r_{i + 1}$.\nBy induction, $r_{k - j} \\ge F_{j + 2}$.",
+      "Taking $j = k - 1$ and $j = k$ gives $b \\ge F_{k + 1}$ and $a \\ge F_{k + 2}$.",
+      "By the source result, $b \\ge \\phi^{k - 1}$, so $k \\le 1 + \\log_\\phi b$.\nThis is [[Lamé's Theorem]].\n{{qed}}"
+    ]
+  }
+}

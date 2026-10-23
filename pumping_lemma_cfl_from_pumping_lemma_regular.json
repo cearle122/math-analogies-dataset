@@ -1,0 +1,41 @@
+{
+  "id": "pumping_lemma_cfl_from_pumping_lemma_regular",
+  "field": [
+    "algorithms",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $L$ be a [[Definition:Context-Free Language|context-free language]].\nThen there exists $p \\in \\N$ such that every $w \\in L$ with $\\size w \\ge p$ can be written $w = u v x y z$ with $\\size {v y} \\ge 1$, $\\size {v x y} \\le p$ and:\n:$\\forall i \\ge 0: u v^i x y^i z \\in L$"
+  },
+  "B_source": {
+    "statement": "Let $L$ be a [[Definition:Regular Language|regular language]].\nThen there exists $p \\in \\N$ such that every $w \\in L$ with $\\size w \\ge p$ can be written $w = x y z$ with $\\size y \\ge 1$, $\\size {x y} \\le p$ and:\n:$\\forall i \\ge 0: x y^i z \\in L$"
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the accepting path through a finite automaton": "a parse tree of the derivation",
+        "a repeated state on that path": "a repeated nonterminal on a root-to-leaf path of the tree",
+        "the loop between the two occurrences": "the subtree between the two occurrences of the nonterminal"
+      },
+      "derived": {
+        "pumping the loop": "substituting the outer subtree for the inner one, or vice versa, repeatedly",
+        "one pumped segment": "two pumped segments, since the repeated subtree contributes on both sides"
+      },
+      "reformulation": "Replace the linear accepting path by a root-to-leaf path in a parse tree, so the repeated state becomes a repeated nonterminal."
+    },
+    "validity_conditions": [
+      "Both proofs are pigeonhole on a long structure: states along a path in the automaton case, nonterminals along a root-to-leaf path in the grammar case.",
+      "The tree has bounded branching, so a long word forces a long root-to-leaf path and hence a repeated nonterminal.",
+      "The conclusion necessarily has two pumped segments rather than one, because excising or duplicating a subtree affects the material on both sides of it."
+    ],
+    "proof_plan": [
+      "Convert the grammar to [[Definition:Chomsky Normal Form|Chomsky normal form]], so parse trees are binary.",
+      "Let $m$ be the number of nonterminals and $p = 2^m$.\nA parse tree of height $h$ yields at most $2^{h - 1}$ symbols, so $\\size w \\ge p$ forces a root-to-leaf path with more than $m$ nonterminals.",
+      "By the [[Pigeonhole Principle]], some nonterminal $A$ repeats on the lowest $m + 1$ nonterminals of that path.",
+      "Let the upper occurrence of $A$ yield $v x y$ and the lower yield $x$.\nReplacing the lower subtree by the upper, or the upper by the lower, gives parse trees for $u v^i x y^i z$ for all $i \\ge 0$.\nUnlike the regular case, two segments $v$ and $y$ are pumped simultaneously.\n{{qed}}"
+    ]
+  }
+}

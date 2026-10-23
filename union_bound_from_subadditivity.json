@@ -1,0 +1,36 @@
+{
+  "id": "union_bound_from_subadditivity",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {\\Omega, \\Sigma, \\Pr}$ be a [[Definition:Probability Space|probability space]] and $A_1, \\ldots, A_n \\in \\Sigma$.\nThen:\n:$\\displaystyle \\map \\Pr {\\bigcup_{i \\mathop = 1}^n A_i} \\le \\sum_{i \\mathop = 1}^n \\map \\Pr {A_i}$"
+  },
+  "B_source": {
+    "statement": "Let $\\mu$ be a [[Definition:Measure (Measure Theory)|measure]] and $E_1, E_2, \\ldots$ measurable.\nThen:\n:$\\displaystyle \\map \\mu {\\bigcup_i E_i} \\le \\sum_i \\map \\mu {E_i}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "measure mu": "probability measure P",
+        "measurable set E_i": "event A_i"
+      },
+      "derived": {
+        "mu(union E_i) <= sum mu(E_i)": "P(union A_i) <= sum P(A_i)"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "A probability measure is a measure (with total mass 1), so subadditivity applies directly.",
+      "No limit or extra hypothesis is needed; this is a direct instantiation, hence specialization rather than generalization."
+    ],
+    "proof_plan": [
+      "By [[Measure is Countably Subadditive]], every measure is countably subadditive.",
+      "Take $\\mu = \\Pr$, $E_i = A_i$ for $i \\le n$ and $E_i = \\O$ for $i > n$.",
+      "Hence:\n:$\\displaystyle \\map \\Pr {\\bigcup_{i \\mathop = 1}^n A_i} \\le \\sum_{i \\mathop = 1}^n \\map \\Pr {A_i}$\nwhich is [[Boole's Inequality]].\n{{qed}}"
+    ]
+  }
+}

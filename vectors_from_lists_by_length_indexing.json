@@ -1,0 +1,37 @@
+{
+  "id": "vectors_from_lists_by_length_indexing",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Inductive Family|inductive family]] $\\map {\\mathsf {Vec} } {A, n}$ with constructors:\n:$\\mathsf {nil} : \\map {\\mathsf {Vec} } {A, 0}, \\quad \\mathsf {cons} : A \\to \\map {\\mathsf {Vec} } {A, n} \\to \\map {\\mathsf {Vec} } {A, n + 1}$\nsupports a total $\\mathsf {head} : \\map {\\mathsf {Vec} } {A, n + 1} \\to A$ and $\\mathsf {append} : \\map {\\mathsf {Vec} } {A, m} \\to \\map {\\mathsf {Vec} } {A, n} \\to \\map {\\mathsf {Vec} } {A, m + n}$, and $\\sum_{n : \\N} \\map {\\mathsf {Vec} } {A, n} \\simeq \\map {\\mathsf {List} } A$."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Inductive Type|inductive type]] $\\map {\\mathsf {List} } A$ has constructors $\\mathsf {nil}$ and $\\mathsf {cons} : A \\to \\map {\\mathsf {List} } A \\to \\map {\\mathsf {List} } A$, with $\\mathsf {append}$ defined by recursion on the first argument; $\\mathsf {head}$ has no value at $\\mathsf {nil}$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "a single type of lists": "a family indexed by length",
+        "partial head": "head on non-empty vectors"
+      },
+      "derived": {
+        "length in the type": "totality of head and the length law for append"
+      },
+      "reformulation": "Generalize the inductive type to a family indexed by the length, so that the type records an invariant."
+    },
+    "validity_conditions": [
+      "The nil case of head is impossible because 0 and n + 1 are distinct constructors of N.",
+      "The type of append matches because m + n is defined by recursion on m, mirroring append."
+    ],
+    "proof_plan": [
+      "Index lists by their length, so that each constructor states how it changes the length.",
+      "For $\\mathsf {head}$, dependent pattern matching on $\\map {\\mathsf {Vec} } {A, n + 1}$ only needs the $\\mathsf {cons}$ case, as $\\mathsf {nil}$ would require $0 = n + 1$.",
+      "Define $\\mathsf {append}$ by recursion on the first vector, as for lists; the types check because $0 + n \\equiv n$ and $\\paren {m + 1} + n \\equiv \\paren {m + n} + 1$.",
+      "Forgetting the index, $\\tuple {n, v} \\mapsto v$ with the index erased gives $\\sum_n \\map {\\mathsf {Vec} } {A, n} \\simeq \\map {\\mathsf {List} } A$, so vectors refine lists.\n{{qed}}"
+    ]
+  }
+}

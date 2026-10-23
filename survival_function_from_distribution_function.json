@@ -1,0 +1,40 @@
+{
+  "id": "survival_function_from_distribution_function",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Random Variable|random variable]] and $\\map S x = \\map \\Pr {X > x}$ its [[Definition:Survival Function|survival function]].\nThen $S$ is [[Definition:Decreasing Real Function|decreasing]], [[Definition:Right-Continuous|right-continuous]], $\\map S x \\to 1$ as $x \\to -\\infty$ and $\\map S x \\to 0$ as $x \\to \\infty$.\nIf $X \\ge 0$, then:\n:$\\displaystyle \\expect X = \\int_0^\\infty \\map S x \\rd x$"
+  },
+  "B_source": {
+    "statement": "Let $\\map F x = \\map \\Pr {X \\le x}$ be the [[Definition:Cumulative Distribution Function|distribution function]] of $X$.\nThen $F$ is [[Definition:Increasing Real Function|increasing]], right-continuous, $\\map F x \\to 0$ as $x \\to -\\infty$ and $\\map F x \\to 1$ as $x \\to \\infty$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the distribution function": "its complement, the survival function",
+        "the event that the variable is at most x": "the complementary event that it exceeds x",
+        "monotone increase toward one": "monotone decrease toward zero"
+      },
+      "derived": {
+        "the limits at the two ends": "exchanged, so the survival function starts at one and decreases to zero",
+        "the area interpretation": "the integral of the survival function over the positive axis is the mean"
+      },
+      "reformulation": "Replace each event by its complement, reversing every monotonicity statement while preserving continuity."
+    },
+    "validity_conditions": [
+      "Complementation of events is an order-reversing involution on probabilities, so every monotonicity statement about the distribution function reverses.",
+      "Right-continuity is preserved rather than reversed, since the complement of a right-continuous nondecreasing function is right-continuous nonincreasing.",
+      "The mean formula requires the variable to be nonnegative and integrable; for signed variables the integral must be split over the two half-lines."
+    ],
+    "proof_plan": [
+      "Define $\\map S x = 1 - \\map F x$.",
+      "As $F$ is increasing with limits $0$ and $1$, $S$ is decreasing with limits $1$ at $-\\infty$ and $0$ at $\\infty$.",
+      "If $\\map F {x_n} \\to \\map F x$ as $x_n \\downarrow x$, then $\\map S {x_n} \\to \\map S x$.\nHence right-continuity survives the complement unchanged.",
+      "For $X \\ge 0$, by [[Tonelli's Theorem]]:\n:$\\displaystyle \\int_0^\\infty \\map S x \\rd x = \\int_0^\\infty \\expect {\\chi_{\\set {X > x} } } \\rd x = \\expect {\\int_0^X \\rd x} = \\expect X$\n{{qed}}"
+    ]
+  }
+}

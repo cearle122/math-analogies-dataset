@@ -1,0 +1,40 @@
+{
+  "id": "logarithm_additive_from_multiplicative",
+  "field": [
+    "algebra",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Natural Logarithm|natural logarithm]]:\n:$\\ln: \\struct {\\R_{>0}, \\times} \\to \\struct {\\R, +}$\nis an order-preserving [[Definition:Group Isomorphism|group isomorphism]].\nHence theorems about sums of real numbers transfer to theorems about products of positive reals."
+  },
+  "B_source": {
+    "statement": "Statements about the [[Definition:Additive Group of Real Numbers|additive group of real numbers]] $\\struct {\\R, +}$ and its ordering."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the additive group of reals": "the multiplicative group of positive reals",
+        "the sum of two elements": "the product of two elements",
+        "the neutral element zero": "the neutral element one"
+      },
+      "derived": {
+        "an additive statement": "the corresponding multiplicative statement, obtained by exponentiating",
+        "the arithmetic mean inequality": "the geometric mean inequality, its image under the isomorphism"
+      }
+    },
+    "validity_conditions": [
+      "The logarithm is a bijection from the positive reals to the reals carrying products to sums, so it is a group isomorphism and every group-theoretic statement transfers.",
+      "Order is also preserved, so inequalities transfer as well as identities; this is what turns statements about arithmetic means into statements about geometric means.",
+      "Statements involving addition of positive reals do not transfer, since the logarithm does not relate that operation to anything on the additive side."
+    ],
+    "proof_plan": [
+      "By [[Logarithm is Strictly Increasing]], $\\ln$ is an order-preserving [[Definition:Bijection|bijection]] $\\R_{>0} \\to \\R$, with inverse $\\exp$.\nBy [[Sum of Logarithms]]:\n:$\\map \\ln {x y} = \\ln x + \\ln y$",
+      "Restate the additive theorem in terms of the abstract group operation and order on $\\struct {\\R, +, \\le}$.",
+      "Transport along the isomorphism, replacing sums by products and $0$ by $1$ throughout.",
+      "Exponentiate to read the result as a statement about $\\R_{>0}$.\nFor example, [[Cauchy's Mean Theorem|AM-GM]] for $\\ln x_i$ transports from the [[Jensen's Inequality (Real Analysis)|additive Jensen inequality]].\n{{qed}}"
+    ]
+  }
+}

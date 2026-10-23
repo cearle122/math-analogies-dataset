@@ -1,0 +1,36 @@
+{
+  "id": "minimal_polynomial_from_cayley_hamilton",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a [[Definition:Square Matrix|square matrix]] over a [[Definition:Field (Abstract Algebra)|field]] $K$.\nThen its [[Definition:Minimal Polynomial of Matrix|minimal polynomial]] $m_{\\mathbf A}$ divides its [[Definition:Characteristic Polynomial of Matrix|characteristic polynomial]] $p_{\\mathbf A}$, and they have the same roots in $K$."
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf A$ be a square matrix over a commutative ring.\nThen $\\map {p_{\\mathbf A} } {\\mathbf A} = \\mathbf 0$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the annihilating polynomial p_A": "an element of the ideal of polynomials vanishing at A"
+      },
+      "derived": {
+        "the generator of that ideal": "the minimal polynomial"
+      },
+      "reformulation": "Collect all annihilating polynomials into an ideal of the principal ideal domain K[t]."
+    },
+    "validity_conditions": [
+      "K[t] must be a principal ideal domain, which holds as K is a field.",
+      "The converse inclusion of roots uses an eigenvector."
+    ],
+    "proof_plan": [
+      "Let $I = \\set {f \\in K \\sqbrk t: \\map f {\\mathbf A} = \\mathbf 0}$.\nAs $\\map {\\paren {f + g} } {\\mathbf A} = \\map f {\\mathbf A} + \\map g {\\mathbf A}$ and $\\map {\\paren {f g} } {\\mathbf A} = \\map f {\\mathbf A} \\map g {\\mathbf A}$, $I$ is an [[Definition:Ideal of Ring|ideal]].",
+      "As $K \\sqbrk t$ is a [[Definition:Principal Ideal Domain|principal ideal domain]], $I = \\ideal {m_{\\mathbf A} }$ for a unique monic $m_{\\mathbf A}$, the minimal polynomial.",
+      "By the [[Cayley-Hamilton Theorem]], $p_{\\mathbf A} \\in I$, so $m_{\\mathbf A} \\divides p_{\\mathbf A}$.\nHence every root of $m_{\\mathbf A}$ is a root of $p_{\\mathbf A}$.",
+      "Conversely, if $\\mathbf A \\mathbf v = \\lambda \\mathbf v$ with $\\mathbf v \\ne \\mathbf 0$, then $\\mathbf 0 = \\map {m_{\\mathbf A} } {\\mathbf A} \\mathbf v = \\map {m_{\\mathbf A} } \\lambda \\mathbf v$, so $\\map {m_{\\mathbf A} } \\lambda = 0$.\n{{qed}}"
+    ]
+  }
+}

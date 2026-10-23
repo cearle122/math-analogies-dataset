@@ -1,0 +1,37 @@
+{
+  "id": "binary_search_from_bisection_invariant",
+  "field": [
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $a_0 \\le a_1 \\le \\cdots \\le a_{n - 1}$ be a sorted array and $x$ a key.\nThen [[Definition:Binary Search|binary search]] returns an index $i$ with $a_i = x$ if one exists, and otherwise reports that $x$ is absent, after at most $\\floor {\\log_2 n} + 1$ comparisons of $x$ with array entries."
+  },
+  "B_source": {
+    "statement": "To locate a root of a continuous $f$ on $\\closedint a b$, maintain an interval $\\closedint {a_k} {b_k}$ with $\\map f {a_k} < 0 \\le \\map f {b_k}$, halve it at each step keeping the half that preserves this invariant, so that the length is $2^{-k} \\paren {b - a}$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the sign-change invariant": "the invariant that x, if present, has index in [lo, hi]",
+        "convergence of interval lengths": "termination of a shrinking integer interval"
+      },
+      "derived": {
+        "the halving step": "one comparison with the middle entry"
+      },
+      "reformulation": "Keep the bisection skeleton, with an invariant about where the key can be, and replace convergence by termination."
+    },
+    "validity_conditions": [
+      "Sortedness is what makes the discarded half safe to discard.",
+      "Integer interval lengths at least halve, which bounds the number of steps."
+    ],
+    "proof_plan": [
+      "Maintain $lo \\le hi + 1$ with the invariant: if $x$ occurs, it occurs at some index in $\\closedint {lo} {hi}$.\nInitially $lo = 0$ and $hi = n - 1$.",
+      "Let $m = \\floor {\\dfrac {lo + hi} 2}$.\nIf $a_m = x$, return $m$; if $x < a_m$, set $hi = m - 1$; otherwise set $lo = m + 1$.\nBy sortedness, the invariant is preserved.",
+      "Each step replaces an interval of $L$ indices by one of at most $\\floor {L / 2}$ indices, so after at most $\\floor {\\log_2 n} + 1$ steps the interval is empty or $x$ has been found.",
+      "If the interval becomes empty, the invariant shows $x$ is absent.\nHence binary search is correct, with termination replacing the convergence of the continuous bisection method.\n{{qed}}"
+    ]
+  }
+}

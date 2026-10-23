@@ -1,0 +1,41 @@
+{
+  "id": "halting_from_diagonal",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "There is no [[Definition:Total Recursive Function|total computable function]] $H$ such that for all programs $p$ and inputs $x$:\n:$\\map H {p, x} = 1 \\iff p$ [[Definition:Halting|halts]] on input $x$\nThat is, the [[Definition:Halting Problem|halting problem]] is [[Definition:Undecidable|undecidable]]."
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {r_i}_{i \\mathop \\in I}$ be a family of mappings $r_i: I \\to X$, with $X$ having at least two elements.\nThen there exists $d: I \\to X$ such that:\n:$\\forall i \\in I: \\map d i \\ne \\map {r_i} i$"
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "row i": "behavior of program i on input i",
+        "diagonal entry": "whether program i halts on i",
+        "the anti-diagonal object": "a program D that halts iff its input does not halt on itself"
+      },
+      "derived": {
+        "D differs from every program on the diagonal": "D's self-behavior contradicts any supposed decider H",
+        "no candidate equals D": "no total H can exist"
+      }
+    },
+    "validity_conditions": [
+      "Assume a total decider H(p,x). Build D(p): if H(p,p) says 'halts' then loop, else halt.",
+      "Ask whether D halts on its own code: either answer contradicts H's verdict (the diagonal flip).",
+      "The contradiction is exactly the diagonal argument transported to programs and halting."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} a total halting decider $H$ exists.",
+      "Define the program $D$ by:\n:$\\map D p = \\begin {cases} \\text {loop forever} & : \\map H {p, p} = 1 \\\\ \\text {halt} & : \\map H {p, p} = 0 \\end {cases}$\n$D$ is computable as $H$ is.",
+      "Run $D$ on its own code $\\ulcorner D \\urcorner$.",
+      "If $D$ halts on $\\ulcorner D \\urcorner$, then $\\map H {\\ulcorner D \\urcorner, \\ulcorner D \\urcorner} = 1$, so $D$ loops forever.\nIf $D$ does not halt, then $\\map H {\\ulcorner D \\urcorner, \\ulcorner D \\urcorner} = 0$, so $D$ halts.\nBoth cases contradict the definition of $H$.\nHence $H$ cannot exist.\n{{qed}}"
+    ]
+  }
+}

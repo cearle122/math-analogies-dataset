@@ -1,0 +1,41 @@
+{
+  "id": "babylonian_root_from_averaging_iteration",
+  "field": [
+    "analysis",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $a \\in \\R_{>0}$ and $x_0 > 0$.\nLet $\\sequence {x_n}$ be defined by:\n:$x_{n + 1} = \\dfrac 1 2 \\paren {x_n + \\dfrac a {x_n} }$\nThen $x_n \\to \\sqrt a$ [[Definition:Quadratic Convergence|quadratically]]."
+  },
+  "B_source": {
+    "statement": "Let $g: \\R \\to \\R$ be [[Definition:Continuous Real Function|continuous]].\nLet $x_{n + 1} = \\map g {x_n}$ and suppose $x_n \\to L$.\nThen:\n:$\\map g L = L$"
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the update map of the iteration": "the map averaging a number with the quotient of the target by it",
+        "the fixed point of the update map": "the positive square root of the target",
+        "the limit of the iterates": "the value the iteration converges to"
+      },
+      "derived": {
+        "the fixed point equation": "the equation stating a number equals the average of itself and the quotient, which rearranges to the square equation",
+        "the rate of convergence": "the error squares at each step, since the derivative vanishes at the fixed point"
+      },
+      "reformulation": "Read the iteration as repeated application of one map, so its limit is that map's fixed point."
+    },
+    "validity_conditions": [
+      "Solving the fixed point equation gives that the fixed point squares to the target, so the only positive solution is the square root.",
+      "The iterates are bounded below by the root and decreasing after the first step, by the arithmetic-geometric mean comparison, which gives convergence before any fixed point reasoning.",
+      "The derivative of the update map vanishes at the fixed point, which is why the error squares each step rather than merely shrinking by a constant factor."
+    ],
+    "proof_plan": [
+      "Let $\\map g x = \\dfrac 1 2 \\paren {x + \\dfrac a x}$.\nThen $x_{n + 1} = \\map g {x_n}$.",
+      "Any limit $L > 0$ satisfies $\\map g L = L$:\n{{begin-eqn}}\n{{eqn | l = L\n| r = \\frac 1 2 \\paren {L + \\frac a L}\n}}\n{{eqn | ll= \\leadsto\n| l = L^2\n| r = a\n}}\n{{end-eqn}}\nso $L = \\sqrt a$.",
+      "From the [[Cauchy's Mean Theorem|AM-GM inequality]], $x_n \\ge \\sqrt a$ for $n \\ge 1$.\nThen:\n:$x_{n + 1} - x_n = \\dfrac {a - x_n^2} {2 x_n} \\le 0$\nso $\\sequence {x_n}$ is eventually [[Definition:Decreasing Real Sequence|decreasing]] and [[Definition:Bounded Below Real Sequence|bounded below]], hence [[Definition:Convergent Real Sequence|convergent]] by the [[Monotone Convergence Theorem (Real Analysis)|Monotone Convergence Theorem]].",
+      "We have $\\map {g'} {\\sqrt a} = 0$, and:\n:$x_{n + 1} - \\sqrt a = \\dfrac {\\paren {x_n - \\sqrt a}^2} {2 x_n}$\nHence the error is squared at each step, and the convergence is [[Definition:Quadratic Convergence|quadratic]].\n{{qed}}"
+    ]
+  }
+}

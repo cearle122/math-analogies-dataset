@@ -1,0 +1,38 @@
+{
+  "id": "euler_formula_from_real_power_series",
+  "field": [
+    "analysis",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\theta \\in \\R$.\nThen:\n:$e^{i \\theta} = \\cos \\theta + i \\sin \\theta$\nwhere $\\displaystyle e^z = \\sum_{n \\mathop = 0}^\\infty \\frac {z^n} {n!}$ for $z \\in \\C$."
+  },
+  "B_source": {
+    "statement": "For $x \\in \\R$:\n:$\\displaystyle e^x = \\sum_{n \\mathop = 0}^\\infty \\frac {x^n} {n!}, \\quad \\cos x = \\sum_{k \\mathop = 0}^\\infty \\frac {\\paren {-1}^k x^{2 k} } {\\paren {2 k}!}, \\quad \\sin x = \\sum_{k \\mathop = 0}^\\infty \\frac {\\paren {-1}^k x^{2 k + 1} } {\\paren {2 k + 1}!}$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "real argument x": "complex argument z",
+        "absolute value on R": "modulus on C"
+      },
+      "derived": {
+        "the exponential series at i theta": "a combination of the cosine and sine series"
+      },
+      "reformulation": "Transport the real power series to the complex numbers, where absolute convergence still allows rearrangement."
+    },
+    "validity_conditions": [
+      "Absolute convergence holds on C by the same ratio test, so splitting into even and odd terms is legitimate.",
+      "Order-based properties of exp, such as monotonicity, do not transfer: exp is periodic on the imaginary axis."
+    ],
+    "proof_plan": [
+      "The series $\\displaystyle \\sum \\frac {z^n} {n!}$ converges [[Definition:Absolutely Convergent Series|absolutely]] for every $z \\in \\C$, by the [[Ratio Test]] exactly as on $\\R$.",
+      "Substitute $z = i \\theta$ and use $i^{2 k} = \\paren {-1}^k$ and $i^{2 k + 1} = \\paren {-1}^k i$.",
+      "By absolute convergence, the series may be split into its even and odd terms:\n:$\\displaystyle e^{i \\theta} = \\sum_k \\frac {\\paren {-1}^k \\theta^{2 k} } {\\paren {2 k}!} + i \\sum_k \\frac {\\paren {-1}^k \\theta^{2 k + 1} } {\\paren {2 k + 1}!}$",
+      "The two series are those of $\\cos \\theta$ and $\\sin \\theta$.\nHence $e^{i \\theta} = \\cos \\theta + i \\sin \\theta$, which is [[Euler's Formula]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "cantor_from_diagonal",
+  "field": [
+    "set_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $S$ be a [[Definition:Set|set]].\nThen there is no [[Definition:Surjection|surjection]]:\n:$f: S \\to \\powerset S$"
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {r_i}_{i \\mathop \\in I}$ be a family of [[Definition:Mapping|mappings]] $r_i: I \\to X$, where $X$ has at least two elements.\nThen there exists $d: I \\to X$ such that:\n:$\\forall i \\in I: \\map d i \\ne \\map {r_i} i$\nIn particular $d \\ne r_i$ for every $i$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "row i of the table": "the set f(i) subset S",
+        "diagonal entry row_i(i)": "whether i is in f(i)",
+        "the constructed anti-diagonal object": "D = {i in S : i not in f(i)}"
+      },
+      "derived": {
+        "d differs from every row": "D differs from every f(i)",
+        "no row equals d": "no element maps to D, so f is not onto"
+      }
+    },
+    "validity_conditions": [
+      "For any i, D and f(i) disagree on membership of i (by construction of D), so D != f(i).",
+      "Hence D in P(S) is not in the image of f, so f is not surjective.",
+      "The construction is the diagonal argument instantiated with 'row i = f(i)' and 'flip the diagonal'."
+    ],
+    "proof_plan": [
+      "Let $f: S \\to \\powerset S$ be any [[Definition:Mapping|mapping]].\nDefine:\n:$D = \\set {i \\in S: i \\notin \\map f i}$",
+      "For each $i \\in S$:\n:$i \\in D \\iff i \\notin \\map f i$\nHence $D \\ne \\map f i$.",
+      "Thus $D$ is not in the [[Definition:Image of Mapping|image]] of $f$.",
+      "As $f$ was arbitrary, no $f: S \\to \\powerset S$ is a [[Definition:Surjection|surjection]].\n{{qed}}"
+    ]
+  }
+}

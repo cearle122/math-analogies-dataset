@@ -1,0 +1,37 @@
+{
+  "id": "dijkstra_correctness_from_loop_invariant",
+  "field": [
+    "algorithms",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Directed Graph|directed graph]] with non-negative edge weights and source $s$.\nThen [[Dijkstra's Algorithm]] computes the shortest-path distance $\\map \\delta {s, v}$ for every vertex $v$."
+  },
+  "B_source": {
+    "statement": "To prove an iterative algorithm correct, state an invariant, show that it holds initially and is preserved by each iteration, and show that at termination it implies the desired output."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the invariant": "finalized vertices carry true distances, and others carry best distances via finalized vertices"
+      },
+      "derived": {
+        "preservation of the invariant": "the greedy choice of the closest unfinalized vertex is correct"
+      },
+      "reformulation": "Apply the loop-invariant method; the key step uses non-negativity of weights to show the chosen vertex is final."
+    },
+    "validity_conditions": [
+      "Non-negative weights are essential: with negative edges the chosen vertex may later be improved.",
+      "At termination every vertex is finalized, so the invariant gives the result."
+    ],
+    "proof_plan": [
+      "Invariant: for $v$ in the finalized set $S$, $\\map {dist} v = \\map \\delta {s, v}$; for $v \\notin S$, $\\map {dist} v$ is the length of a shortest $s$-$v$ path whose internal vertices lie in $S$.\nInitially $S = \\O$ and $\\map {dist} s = 0$, so it holds.",
+      "Let $u \\notin S$ minimize $\\map {dist} u$.\nAny $s$-$u$ path first leaves $S$ at some $y \\notin S$; its length is at least $\\map {dist} y \\ge \\map {dist} u$, as weights are non-negative.\nHence $\\map {dist} u = \\map \\delta {s, u}$.",
+      "Add $u$ to $S$ and relax the edges leaving $u$; this restores the second part of the invariant.",
+      "When $S = V$, the invariant gives $\\map {dist} v = \\map \\delta {s, v}$ for all $v$.\n{{qed}}"
+    ]
+  }
+}

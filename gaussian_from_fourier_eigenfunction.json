@@ -1,0 +1,40 @@
+{
+  "id": "gaussian_from_fourier_eigenfunction",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\map g x = e^{-\\pi x^2}$.\nThen:\n:$\\hat g = g$\nwhere $\\displaystyle \\map {\\hat g} \\xi = \\int_{-\\infty}^\\infty \\map g x e^{-2 \\pi i x \\xi} \\rd x$ is the [[Definition:Fourier Transform|Fourier transform]]."
+  },
+  "B_source": {
+    "statement": "Let $T$ be a [[Definition:Linear Operator|linear operator]] on a [[Definition:Vector Space|vector space]] $V$.\nA vector $v \\in V$ with:\n:$T v = v$\nis an [[Definition:Eigenvector|eigenvector]] of $T$ with [[Definition:Eigenvalue|eigenvalue]] $1$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the linear operator": "the Fourier transform on square-integrable functions",
+        "the eigenvector with eigenvalue one": "the function unchanged by the transform",
+        "the eigenvalue equation": "the self-reciprocality of the Gaussian"
+      },
+      "derived": {
+        "the fixed function": "the Gaussian with the appropriate normalization",
+        "the other eigenvalues": "the transform has order four, so its eigenvalues are the fourth roots of unity"
+      },
+      "reformulation": "Recast self-reciprocality under the transform as an eigenvector equation with eigenvalue one."
+    },
+    "validity_conditions": [
+      "The Fourier transform is a linear operator on square-integrable functions, so asking which functions it leaves unmoved is an eigenvector question.",
+      "Applying the transform four times returns the original function, so the operator has order four and its eigenvalues are fourth roots of unity, with the Gaussian in the eigenspace for one.",
+      "The normalization of the exponent must match the convention used for the transform; with a different convention the fixed function is a rescaled Gaussian rather than this one."
+    ],
+    "proof_plan": [
+      "Regard $\\FF$ as a [[Definition:Linear Operator|linear operator]] on $\\map {L^2} \\R$.",
+      "We seek functions with $\\FF f = f$, that is, [[Definition:Eigenvector|eigenvectors]] of $\\FF$ with eigenvalue $1$.",
+      "Completing the square:\n{{begin-eqn}}\n{{eqn | l = \\map {\\hat g} \\xi\n| r = \\int_{-\\infty}^\\infty e^{-\\pi \\paren {x + i \\xi}^2} e^{-\\pi \\xi^2} \\rd x\n}}\n{{eqn | r = e^{-\\pi \\xi^2} \\int_{-\\infty}^\\infty e^{-\\pi x^2} \\rd x\n| c = [[Cauchy's Integral Theorem]]\n}}\n{{eqn | r = e^{-\\pi \\xi^2}\n| c = [[Gaussian Integral]]\n}}\n{{end-eqn}}",
+      "From $\\map {\\paren {\\FF^2 f} } x = \\map f {-x}$, we have $\\FF^4 = I$.\nHence the eigenvalues of $\\FF$ lie in $\\set {1, -i, -1, i}$, with the [[Definition:Hermite Function|Hermite functions]] as eigenfunctions and $g$ the first of them.\n{{qed}}"
+    ]
+  }
+}

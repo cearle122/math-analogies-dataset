@@ -1,0 +1,41 @@
+{
+  "id": "winding_number_from_polygonal_angle_sum",
+  "field": [
+    "topology",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\gamma: \\closedint 0 1 \\to \\C \\setminus \\set {z_0}$ be a [[Definition:Closed Curve|closed curve]].\nThen its [[Definition:Winding Number|winding number]] $\\map n {\\gamma, z_0}$ is an [[Definition:Integer|integer]], and is invariant under [[Definition:Homotopy|homotopy]] in $\\C \\setminus \\set {z_0}$."
+  },
+  "B_source": {
+    "statement": "Let $P$ be a closed [[Definition:Polygon|polygon]] not passing through $z_0$.\nThen the signed angles subtended at $z_0$ by its edges sum to a multiple of $2 \\pi$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the vertices of the polygon": "sample points along the curve, with mesh tending to zero",
+        "the signed angle increment at a step": "the change of argument along that piece of the curve",
+        "the total turning of the polygon": "the total change of argument along the curve"
+      },
+      "derived": {
+        "the sum being a whole number of turns": "the winding number is an integer",
+        "stability of the sum under small vertex moves": "invariance of the winding number under deformation"
+      },
+      "reformulation": "Replace the continuous change of argument by a finite sum of angle increments along a fine sampling."
+    },
+    "validity_conditions": [
+      "Each angle increment must be taken in the range between minus and plus half a turn, which is possible once the mesh is fine enough that consecutive samples subtend a small angle at the point.",
+      "The polygonal total is unchanged under further refinement, since splitting a step splits its increment additively, so the value is independent of the sampling.",
+      "The curve must avoid the base point, or the angle is undefined at some sample and no increment can be assigned."
+    ],
+    "proof_plan": [
+      "By [[Definition:Uniform Continuity|uniform continuity]] of $\\gamma$, choose $0 = t_0 < t_1 < \\cdots < t_m = 1$ such that each $\\map \\gamma {\\closedint {t_{k - 1} } {t_k} }$ lies in a disk not containing $z_0$.\nThen consecutive samples subtend a small angle at $z_0$.",
+      "Sum the signed angle increments:\n:$\\displaystyle \\Theta = \\sum_{k \\mathop = 1}^m \\map \\arg {\\frac {\\map \\gamma {t_k} - z_0} {\\map \\gamma {t_{k - 1} } - z_0} }$\nusing the principal argument.",
+      "Inserting a point between $t_{k - 1}$ and $t_k$ splits one increment into two whose sum is unchanged, as both lie in the same disk.\nHence $\\Theta$ does not depend on the subdivision, only on $\\gamma$.",
+      "By the source result, $\\Theta \\in 2 \\pi \\Z$; define $\\map n {\\gamma, z_0} = \\dfrac \\Theta {2 \\pi}$.\nA small deformation of $\\gamma$ changes each increment continuously, so $\\Theta$ changes continuously in $2 \\pi \\Z$ and is constant.\nHence the winding number is homotopy-invariant.\n{{qed}}"
+    ]
+  }
+}

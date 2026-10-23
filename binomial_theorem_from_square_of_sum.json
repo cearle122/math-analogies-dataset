@@ -1,0 +1,41 @@
+{
+  "id": "binomial_theorem_from_square_of_sum",
+  "field": [
+    "algebra",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $a, b$ be elements of a [[Definition:Commutative Ring|commutative ring]] and $n \\in \\Z_{\\ge 0}$.\nThen:\n:$\\displaystyle \\paren {a + b}^n = \\sum_{k \\mathop = 0}^n \\binom n k a^k b^{n - k}$"
+  },
+  "B_source": {
+    "statement": "Let $a, b$ be elements of a [[Definition:Commutative Ring|commutative ring]].\nThen:\n:$\\paren {a + b}^2 = a^2 + 2 a b + b^2$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the exponent 2": "an arbitrary nonnegative integer n",
+        "the coefficient 2 on the cross term": "the binomial coefficient C(n,k)",
+        "the three terms of the expansion": "the n+1 terms indexed by k"
+      },
+      "derived": {
+        "the coefficient counting the ways to choose b once from two factors": "C(n,k) counting the ways to choose b from k of the n factors",
+        "the expansion of the square": "the case n = 2 of the general formula"
+      },
+      "reformulation": "Replace the fixed exponent 2 by a general n, so that the fixed coefficients become a counting function."
+    },
+    "validity_conditions": [
+      "Expanding the product of n copies of (a+b) distributes into one term per choice of a or b from each factor, so the coefficient of a^k b^{n-k} counts subsets of size n-k.",
+      "That count is C(n,k) by definition, which for n = 2 gives the coefficients 1, 2, 1 and recovers the source statement.",
+      "The identity requires a and b to commute, since the terms are collected by exponent rather than by order of the factors."
+    ],
+    "proof_plan": [
+      "Write:\n:$\\paren {a + b}^n = \\underbrace {\\paren {a + b} \\paren {a + b} \\cdots \\paren {a + b} }_{n \\text { factors} }$",
+      "By repeated application of [[Definition:Distributive Operation|distributivity]], the product is the sum of $2^n$ terms, one for each choice of $a$ or $b$ from each factor.",
+      "A choice of $a$ from exactly $k$ factors gives the term $a^k b^{n - k}$.\nThe number of such choices is $\\dbinom n k$.\nHence:\n:$\\displaystyle \\paren {a + b}^n = \\sum_{k \\mathop = 0}^n \\binom n k a^k b^{n - k}$",
+      "For $n = 2$:\n:$\\dbinom 2 0 b^2 + \\dbinom 2 1 a b + \\dbinom 2 2 a^2 = a^2 + 2 a b + b^2$\nwhich is the source result.\n{{qed}}"
+    ]
+  }
+}

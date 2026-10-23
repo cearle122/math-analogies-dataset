@@ -1,0 +1,37 @@
+{
+  "id": "modal_diamond_from_box_by_negation",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In the normal [[Definition:Modal Logic|modal logic]] $\\mathsf K$, with $\\Diamond \\phi$ defined as $\\neg \\Box \\neg \\phi$:\n:$\\vdash \\Diamond \\paren {\\phi \\lor \\psi} \\leftrightarrow \\paren {\\Diamond \\phi \\lor \\Diamond \\psi}$\n:$\\vdash \\Box \\paren {\\phi \\to \\psi} \\to \\paren {\\Diamond \\phi \\to \\Diamond \\psi}$"
+  },
+  "B_source": {
+    "statement": "In $\\mathsf K$, with the axiom $\\Box \\paren {\\phi \\to \\psi} \\to \\paren {\\Box \\phi \\to \\Box \\psi}$ and the rule of [[Definition:Necessitation|necessitation]]:\n:$\\vdash \\Box \\paren {\\phi \\land \\psi} \\leftrightarrow \\paren {\\Box \\phi \\land \\Box \\psi}$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "box": "diamond",
+        "and": "or"
+      },
+      "derived": {
+        "negation on both sides of the modality": "the dual laws for diamond"
+      },
+      "reformulation": "Diamond is the De Morgan dual of box, exactly as the existential quantifier is dual to the universal one."
+    },
+    "validity_conditions": [
+      "Provably equivalent formulas may be replaced under box, by necessitation and the K axiom.",
+      "In Kripke semantics box means 'at all successors' and diamond 'at some successor'."
+    ],
+    "proof_plan": [
+      "$\\Diamond \\paren {\\phi \\lor \\psi} = \\neg \\Box \\neg \\paren {\\phi \\lor \\psi}$, and $\\neg \\paren {\\phi \\lor \\psi} \\leftrightarrow \\paren {\\neg \\phi \\land \\neg \\psi}$ may be replaced under $\\Box$.",
+      "By the source result:\n:$\\neg \\Box \\paren {\\neg \\phi \\land \\neg \\psi} \\leftrightarrow \\neg \\paren {\\Box \\neg \\phi \\land \\Box \\neg \\psi} \\leftrightarrow \\Diamond \\phi \\lor \\Diamond \\psi$",
+      "For the second law, from $\\Box \\paren {\\phi \\to \\psi}$ obtain $\\Box \\paren {\\neg \\psi \\to \\neg \\phi}$, hence $\\Box \\neg \\psi \\to \\Box \\neg \\phi$ by the K axiom.",
+      "Contraposing gives $\\neg \\Box \\neg \\phi \\to \\neg \\Box \\neg \\psi$, that is, $\\Diamond \\phi \\to \\Diamond \\psi$.\n{{qed}}"
+    ]
+  }
+}

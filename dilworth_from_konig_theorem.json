@@ -1,0 +1,37 @@
+{
+  "id": "dilworth_from_konig_theorem",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {P, \\le}$ be a finite [[Definition:Partially Ordered Set|partially ordered set]].\nThen the minimum number of [[Definition:Chain (Order Theory)|chains]] covering $P$ equals the maximum size of an [[Definition:Antichain|antichain]]."
+  },
+  "B_source": {
+    "statement": "In a finite [[Definition:Bipartite Graph|bipartite graph]], the maximum size of a [[Definition:Matching (Graph Theory)|matching]] equals the minimum size of a [[Definition:Vertex Cover|vertex cover]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the bipartite graph": "two copies P' and P'' of P, with x' joined to y'' when x < y",
+        "matching edges": "links between consecutive elements of a chain"
+      },
+      "derived": {
+        "the vertex cover": "the complement of an antichain"
+      },
+      "reformulation": "Encode chain covers as matchings in the comparability bipartite graph."
+    },
+    "validity_conditions": [
+      "A matching of size m corresponds to a cover by |P| - m chains, as each edge merges two chains.",
+      "Uncovered elements in both copies form an antichain, since any comparable pair would give an uncovered edge."
+    ],
+    "proof_plan": [
+      "Let $G$ have parts $P' = \\set {x'}$ and $P'' = \\set {y''}$, with $x' y''$ an edge {{iff}} $x < y$.",
+      "A matching $M$ links each $x$ to at most one successor and each $y$ to at most one predecessor, so it splits $P$ into $\\card P - \\card M$ chains, and conversely.\nHence the minimum number of chains is $\\card P - \\nu$, where $\\nu$ is the maximum matching size.",
+      "By [[König's Theorem (Graph Theory)|König's Theorem]], there is a vertex cover $C$ with $\\card C = \\nu$.\nLet $A = \\set {x \\in P: x' \\notin C, x'' \\notin C}$, so $\\card A \\ge \\card P - \\nu$.\nIf $x < y$ in $A$, the edge $x' y''$ would be uncovered, so $A$ is an antichain.",
+      "An antichain meets each chain at most once, so no antichain exceeds the minimum number of chains.\nHence the two quantities are equal, which is [[Dilworth's Theorem]].\n{{qed}}"
+    ]
+  }
+}

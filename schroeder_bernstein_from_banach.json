@@ -1,0 +1,39 @@
+{
+  "id": "schroeder_bernstein_from_banach",
+  "field": [
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $f: A \\to B$ and $g: B \\to A$ be [[Definition:Injection|injections]].\nThen there exists a [[Definition:Bijection|bijection]] $h: A \\to B$."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {L, \\preceq}$ be a [[Definition:Complete Lattice|complete lattice]] and $F: L \\to L$ [[Definition:Increasing Mapping|increasing]].\nThen $F$ has a [[Definition:Fixed Point|fixed point]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "complete lattice": "the power set P(A) ordered by inclusion",
+        "monotone map F": "F(S) = A minus g(B minus f(S))"
+      },
+      "derived": {
+        "fixed point S = F(S)": "a set on which to splice f and g into a bijection",
+        "the fixed set": "region where the bijection uses f, complement uses g^{-1}"
+      },
+      "reformulation": "Encode the desired splitting of A as a fixed point of the monotone operator F(S) = A - g(B - f(S)) on the power-set lattice."
+    },
+    "validity_conditions": [
+      "P(A) under inclusion is a complete lattice; F(S) = A - g(B - f(S)) is monotone (two complements compose to preserve order).",
+      "Knaster-Tarski gives a fixed set S* with S* = A - g(B - f(S*)).",
+      "On S* use f, on its complement use g^{-1}; injectivity of f,g makes the spliced map a bijection."
+    ],
+    "proof_plan": [
+      "Work in the complete lattice $\\struct {\\powerset A, \\subseteq}$.",
+      "Define:\n:$\\map F S = A \\setminus \\map g {B \\setminus \\map f S}$\nIf $S \\subseteq T$ then $\\map f S \\subseteq \\map f T$, so $B \\setminus \\map f T \\subseteq B \\setminus \\map f S$, and $\\map F S \\subseteq \\map F T$.\nHence $F$ is [[Definition:Increasing Mapping|increasing]].",
+      "By the [[Knaster-Tarski Theorem]], there exists $S^*$ with $\\map F {S^*} = S^*$.\nThen $A \\setminus S^* = \\map g {B \\setminus \\map f {S^*} }$.",
+      "Define:\n:$\\map h x = \\begin {cases} \\map f x & : x \\in S^* \\\\ \\map {g^{-1} } x & : x \\in A \\setminus S^* \\end {cases}$\n$h$ maps $S^*$ bijectively onto $\\map f {S^*}$ and $A \\setminus S^*$ bijectively onto $B \\setminus \\map f {S^*}$.\nHence $h$ is a bijection, which is the [[Cantor-Bernstein-Schröder Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "galois_closure_from_monotone_idempotent",
+  "field": [
+    "logic",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {f, g}$ be a [[Definition:Galois Connection|Galois connection]] between [[Definition:Ordered Set|ordered sets]] $P$ and $Q$.\nThen the [[Definition:Closed Element|closed elements]] of $P$ are exactly:\n:$\\set {x \\in P: \\map g {\\map f x} = x}$"
+  },
+  "B_source": {
+    "statement": "Let $c: P \\to P$ be an [[Definition:Increasing Mapping|increasing]] [[Definition:Idempotent Mapping|idempotent]] mapping on an [[Definition:Ordered Set|ordered set]].\nThen:\n:$\\map {\\operatorname {Fix} } c = \\Img c$"
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the monotone idempotent operator": "the composite of the two maps of the Galois connection",
+        "the fixed points of the operator": "the closed elements",
+        "the image of the operator": "the closures of arbitrary elements"
+      },
+      "derived": {
+        "the fixed point set equals the image": "every closure is closed and every closed element is its own closure",
+        "the order structure on fixed points": "the closed elements inherit a complete lattice structure"
+      },
+      "reformulation": "Recast closedness as invariance under the round trip through the connection."
+    },
+    "validity_conditions": [
+      "The composite of the two order-reversing maps of a Galois connection is monotone, since reversing twice restores the order.",
+      "It is inflationary and idempotent, which are exactly the closure operator axioms and follow from the two defining adjunction inequalities.",
+      "Idempotence is what makes the image coincide with the fixed point set; for a monotone map that is not idempotent the two can differ."
+    ],
+    "proof_plan": [
+      "Let $c = g \\circ f: P \\to P$.",
+      "$c$ is [[Definition:Increasing Mapping|increasing]] as a composite of two order-reversing maps.\nFrom the Galois connection, $x \\le \\map g {\\map f x}$, so $c$ is [[Definition:Inflationary Mapping|inflationary]].\nFrom $f \\circ g \\circ f = f$, $c$ is [[Definition:Idempotent Mapping|idempotent]].",
+      "If $x = \\map c y$ then $\\map c x = \\map c {\\map c y} = \\map c y = x$.\nHence $\\Img c = \\map {\\operatorname {Fix} } c$.",
+      "The closed elements are the elements of the form $\\map g y$, which by $g \\circ f \\circ g = g$ are the elements of $\\Img c$.\nHence the closed elements are exactly the fixed points of $g \\circ f$.\n{{qed}}"
+    ]
+  }
+}

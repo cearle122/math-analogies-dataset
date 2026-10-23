@@ -1,0 +1,37 @@
+{
+  "id": "circle_from_interval_endpoint_quotient",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\sim$ identify $0$ and $1$ in $\\closedint 0 1$.\nThen $\\closedint 0 1 / \\sim$ is [[Definition:Homeomorphic|homeomorphic]] to the circle $\\Bbb S^1$."
+  },
+  "B_source": {
+    "statement": "Let $q: X \\to X / \\sim$ be a [[Definition:Quotient Mapping|quotient mapping]].\nThen continuous mappings $X / \\sim \\to Y$ correspond to continuous mappings $X \\to Y$ which are constant on equivalence classes."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the map constant on classes": "t -> e^(2 pi i t)",
+        "Y": "the circle"
+      },
+      "derived": {
+        "the induced continuous bijection": "a homeomorphism, by compactness"
+      },
+      "reformulation": "Find a continuous surjection whose fibres are exactly the equivalence classes, and let it descend."
+    },
+    "validity_conditions": [
+      "The fibres of the exponential map on [0, 1] are exactly the classes of the relation.",
+      "A continuous bijection from a compact space to a Hausdorff space is a homeomorphism."
+    ],
+    "proof_plan": [
+      "Let $\\map e t = e^{2 \\pi i t}$, a continuous surjection $\\closedint 0 1 \\to \\Bbb S^1$.",
+      "$\\map e s = \\map e t$ {{iff}} $s = t$ or $\\set {s, t} = \\set {0, 1}$, so the fibres of $e$ are exactly the classes of $\\sim$.",
+      "By the source result, $e$ induces a continuous [[Definition:Bijection|bijection]] $\\bar e: \\closedint 0 1 / \\sim \\to \\Bbb S^1$.",
+      "$\\closedint 0 1 / \\sim$ is compact as a continuous image of a compact space, and $\\Bbb S^1$ is Hausdorff.\nBy [[Continuous Bijection from Compact to Hausdorff is Homeomorphism]], $\\bar e$ is a homeomorphism.\n{{qed}}"
+    ]
+  }
+}

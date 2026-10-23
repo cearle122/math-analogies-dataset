@@ -1,0 +1,40 @@
+{
+  "id": "handshake_from_degree_sum",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Finite Graph|finite graph]].\nThen the number of [[Definition:Vertex of Graph|vertices]] of $G$ of [[Definition:Odd Integer|odd]] [[Definition:Degree of Vertex|degree]] is [[Definition:Even Integer|even]]."
+  },
+  "B_source": {
+    "statement": "Let $G = \\struct {V, E}$ be a [[Definition:Finite Graph|finite graph]].\nThen:\n:$\\displaystyle \\sum_{v \\mathop \\in V} \\map \\deg v = 2 \\card E$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the full degree sum sum_v deg(v)": "split into even-degree and odd-degree contributions",
+        "2|E| (even)": "the parity constraint on the total"
+      },
+      "derived": {
+        "sum of odd degrees must be even": "there are an even number of odd terms",
+        "the count of odd-degree vertices": "even"
+      }
+    },
+    "validity_conditions": [
+      "By handshaking, sum_v deg(v) = 2|E| is even.",
+      "Split the sum into even-degree vertices (contributing an even total) and odd-degree vertices.",
+      "For the overall sum to be even, the number of odd terms must be even - so the count of odd-degree vertices is even."
+    ],
+    "proof_plan": [
+      "From the [[Handshake Lemma]]:\n:$\\displaystyle \\sum_{v \\mathop \\in V} \\map \\deg v = 2 \\card E$\nwhich is [[Definition:Even Integer|even]].",
+      "Let $V_0$ and $V_1$ be the sets of vertices of even and odd degree respectively.\nThen:\n:$\\displaystyle \\sum_{v \\mathop \\in V_0} \\map \\deg v + \\sum_{v \\mathop \\in V_1} \\map \\deg v = 2 \\card E$",
+      "The first sum is [[Definition:Even Integer|even]], so $\\displaystyle \\sum_{v \\mathop \\in V_1} \\map \\deg v$ is even.",
+      "A sum of odd integers is even {{iff}} the number of terms is even.\nHence $\\card {V_1}$ is even.\n{{qed}}"
+    ]
+  }
+}

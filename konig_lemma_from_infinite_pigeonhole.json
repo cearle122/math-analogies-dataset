@@ -1,0 +1,40 @@
+{
+  "id": "konig_lemma_from_infinite_pigeonhole",
+  "field": [
+    "combinatorics",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $T$ be an [[Definition:Infinite Set|infinite]] [[Definition:Rooted Tree|rooted tree]] in which every [[Definition:Vertex of Graph|vertex]] has finitely many children.\nThen $T$ has an infinite [[Definition:Path (Graph Theory)|path]] starting at the root."
+  },
+  "B_source": {
+    "statement": "Let $S$ be an [[Definition:Infinite Set|infinite set]] partitioned into finitely many classes $S_1, \\ldots, S_k$.\nThen some $S_i$ is infinite."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the objects being classified": "the nodes lying below a given node",
+        "the finitely many boxes": "the finitely many children of that node",
+        "the infinite box": "the child with infinitely many descendants"
+      },
+      "derived": {
+        "one application selecting an infinite class": "one step of the path, selecting a child with infinitely many descendants",
+        "the conclusion of a single application": "an infinite path, obtained by iterating the selection"
+      }
+    },
+    "validity_conditions": [
+      "Finite branching is what makes the pigeonhole step available, since it supplies finitely many classes at each node.",
+      "The invariant maintained is that the current node has infinitely many descendants, which is exactly what lets the step repeat forever.",
+      "The selection at each stage requires a choice among the children; for arbitrary trees this uses a weak choice principle, though for trees with an ordering on children the choice can be made canonically."
+    ],
+    "proof_plan": [
+      "Let $v_0$ be the root.\nAs $T$ is infinite, $v_0$ has infinitely many descendants.",
+      "Classify the descendants of $v_0$ according to which of its finitely many children they pass through.\nBy the [[Infinite Pigeonhole Principle]], some child $v_1$ has infinitely many descendants.",
+      "Move to $v_1$.\nThe invariant, that the current vertex has infinitely many descendants, is preserved.",
+      "Iterating gives an infinite path $v_0, v_1, v_2, \\ldots$, by the [[Axiom of Dependent Choice|principle of dependent choices]].\nThis is [[König's Lemma]].\n{{qed}}"
+    ]
+  }
+}

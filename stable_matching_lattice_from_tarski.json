@@ -1,0 +1,41 @@
+{
+  "id": "stable_matching_lattice_from_tarski",
+  "field": [
+    "combinatorics",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let an instance of the [[Definition:Stable Marriage Problem|stable marriage problem]] be given.\nThen the set of [[Definition:Stable Matching|stable matchings]], ordered by the proposers' preferences, is a [[Definition:Lattice|lattice]] with a proposer-optimal and a proposer-pessimal element."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {L, \\preceq}$ be a [[Definition:Complete Lattice|complete lattice]] and $T: L \\to L$ [[Definition:Increasing Mapping|increasing]].\nThen the set of [[Definition:Fixed Point|fixed points]] of $T$ is a complete lattice."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the complete lattice": "the lattice of assignments of proposers to candidate partners, ordered by preference",
+        "the monotone map": "the deferred-acceptance operator that proposes and rejects in one round",
+        "the fixed points of the map": "the stable matchings"
+      },
+      "derived": {
+        "the fixed point set is a complete lattice": "the stable matchings form a lattice",
+        "the least and greatest fixed points": "the proposer-optimal and proposer-pessimal stable matchings"
+      },
+      "reformulation": "Recast stability as invariance under one round of proposals, so that stable matchings become fixed points of a monotone operator."
+    },
+    "validity_conditions": [
+      "The set of assignments ordered coordinatewise by preference forms a complete lattice, since preferences are total orders on a finite set.",
+      "The one-round deferred-acceptance operator is monotone for this order, which is the hypothesis Tarski requires.",
+      "The fixed points are exactly the stable matchings, since a fixed point is an assignment in which no proposal is rejected, that is, no blocking pair exists."
+    ],
+    "proof_plan": [
+      "Order assignments of partners to proposers coordinatewise by each proposer's preference.\nThis is a product of finite chains, hence a [[Definition:Complete Lattice|complete lattice]].",
+      "Define $T$ as one round of [[Definition:Deferred Acceptance|deferred acceptance]]: each proposer is sent to the best partner who would accept them given the current assignment of rivals.\nIf the proposers' assignments improve, each receiver's options worsen, so each proposer's best acceptable partner does not decrease; hence $T$ is [[Definition:Increasing Mapping|monotone]].",
+      "A fixed point of $T$ admits no blocking pair, and every stable matching is a fixed point.\nHence the fixed points are exactly the stable matchings.",
+      "By the [[Knaster-Tarski Theorem]], the stable matchings form a complete lattice.\nIts top and bottom elements are the proposer-optimal and proposer-pessimal stable matchings.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "catalan_generating_function_from_quadratic_fixed_point",
+  "field": [
+    "combinatorics",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $C_n$ denote the $n$th [[Definition:Catalan Number|Catalan number]].\nThen:\n:$\\displaystyle \\map C x = \\sum_{n \\mathop = 0}^\\infty C_n x^n = \\frac {1 - \\sqrt {1 - 4 x} } {2 x}$"
+  },
+  "B_source": {
+    "statement": "Let $\\Phi: \\Z \\sqbrk {\\sqbrk x} \\to \\Z \\sqbrk {\\sqbrk x}$ be such that $\\map \\Phi F - \\map \\Phi G$ has [[Definition:Order of Formal Power Series|order]] strictly greater than that of $F - G$.\nThen the equation $F = \\map \\Phi F$ has a [[Definition:Unique|unique]] solution in the [[Definition:Ring of Formal Power Series|ring of formal power series]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the contraction Phi": "the map F -> 1 + x F^2 coming from the recursive decomposition",
+        "the fixed point": "the Catalan generating function C(x)",
+        "the metric": "the x-adic valuation on formal power series"
+      },
+      "derived": {
+        "the closed-form root of the quadratic": "the explicit expression for C(x)"
+      },
+      "reformulation": "The counting problem must first be turned into an algebraic equation for a generating function, at which point the recursive structure becomes an ordinary fixed-point statement."
+    },
+    "validity_conditions": [
+      "the recursive decomposition of the combinatorial objects must be unambiguous, so each object is counted once",
+      "Phi must raise the order of a perturbation for the x-adic contraction argument to apply",
+      "the branch of the square root must be chosen so the series has constant term 1, since the other root has a pole at zero"
+    ],
+    "proof_plan": [
+      "A non-empty [[Definition:Dyck Path|Dyck path]] decomposes uniquely as an up-step, a Dyck path, a down-step returning first to level $0$, and a further Dyck path.",
+      "Translating into [[Definition:Generating Function|generating functions]]:\n:$\\map C x = 1 + x \\map C x^2$",
+      "The operator $\\map \\Phi F = 1 + x F^2$ raises order, since $\\map \\Phi F - \\map \\Phi G = x \\paren {F + G} \\paren {F - G}$.\nHence the equation has a [[Definition:Unique|unique]] formal solution.",
+      "Solving the [[Definition:Quadratic Equation|quadratic]] $x C^2 - C + 1 = 0$ by the [[Quadratic Formula]]:\n:$C = \\dfrac {1 \\pm \\sqrt {1 - 4 x} } {2 x}$\nOnly the minus sign gives a formal power series with constant term $1$.",
+      "From the [[General Binomial Theorem]]:\n:$\\displaystyle \\sqrt {1 - 4 x} = 1 - 2 \\sum_{n \\mathop \\ge 1} \\frac 1 n \\binom {2 n - 2} {n - 1} x^n$\nHence:\n:$C_n = \\dfrac 1 {n + 1} \\dbinom {2 n} n$\n{{qed}}"
+    ]
+  }
+}

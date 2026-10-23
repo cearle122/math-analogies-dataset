@@ -1,0 +1,39 @@
+{
+  "id": "polygon_area_from_triangulation",
+  "field": [
+    "geometry",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $R \\subseteq \\R^2$ be a region with [[Definition:Piecewise Smooth Curve|piecewise smooth]] boundary.\nLet $P_n$ be inscribed [[Definition:Polygon|polygons]] whose vertices on $\\partial R$ have maximum spacing tending to $0$.\nThen:\n:$\\map {\\operatorname {Area} } R = \\displaystyle \\lim_{n \\mathop \\to \\infty} \\map {\\operatorname {Area} } {P_n}$"
+  },
+  "B_source": {
+    "statement": "Let $P$ be a [[Definition:Simple Polygon|simple polygon]] and $\\set {T_i}$ any [[Definition:Triangulation|triangulation]] of $P$.\nThen:\n:$\\displaystyle \\map {\\operatorname {Area} } P = \\sum_i \\map {\\operatorname {Area} } {T_i}$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the polygon P": "a sequence of inscribed polygons with vertices dense in the boundary",
+        "the finite triangulation": "a refining sequence of triangulations",
+        "the additive sum of triangle areas": "the integral of the area element"
+      },
+      "derived": {
+        "the limiting sum of triangle areas": "the area of the curved region"
+      }
+    },
+    "validity_conditions": [
+      "the boundary curve must be rectifiable so that inscribed polygons converge in area",
+      "the region must be simply connected for a single triangulation argument to apply directly"
+    ],
+    "proof_plan": [
+      "Choose points $p_1, \\ldots, p_n$ in order on $\\partial R$ and join them to form the inscribed polygon $P_n$.",
+      "Triangulate $P_n$ and sum the triangle areas.\nFor a triangle with vertices $a, b, c$:\n:$\\map {\\operatorname {Area} } T = \\dfrac 1 2 \\size {\\map \\det {b - a, c - a} }$",
+      "Refine the vertex set so that the maximum edge length tends to $0$.",
+      "If $R$ is [[Definition:Convex Set (Vector Space)|convex]], adding vertices increases $\\map {\\operatorname {Area} } {P_n}$, which is bounded by $\\map {\\operatorname {Area} } R$, so the sequence converges by the [[Monotone Convergence Theorem (Real Analysis)|Monotone Convergence Theorem]].\nIn general, $R \\symdif P_n$ lies within a strip around $\\partial R$ of width $\\to 0$, whose area tends to $0$ by [[Definition:Rectifiable Curve|rectifiability]].",
+      "Hence the limit equals $\\map {\\operatorname {Area} } R$.\n{{qed}}"
+    ]
+  }
+}

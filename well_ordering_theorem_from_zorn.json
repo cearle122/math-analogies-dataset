@@ -1,0 +1,36 @@
+{
+  "id": "well_ordering_theorem_from_zorn",
+  "field": [
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Every [[Definition:Set|set]] $X$ admits a [[Definition:Well-Ordering|well-ordering]]."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {P, \\preceq}$ be a non-empty [[Definition:Ordered Set|ordered set]] in which every [[Definition:Chain (Order Theory)|chain]] has an [[Definition:Upper Bound of Set|upper bound]].\nThen $P$ has a [[Definition:Maximal Element|maximal element]].\nThis is [[Zorn's Lemma]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ordered set P": "well-ordered subsets of X, ordered by end-extension"
+      },
+      "derived": {
+        "a maximal element": "a well-ordering of all of X"
+      },
+      "reformulation": "Apply Zorn's Lemma to partial well-orderings ordered by initial-segment extension."
+    },
+    "validity_conditions": [
+      "The extension order must be by initial segments, so that unions of chains remain well-ordered.",
+      "The well-ordering theorem is equivalent to the Axiom of Choice."
+    ],
+    "proof_plan": [
+      "Let $P$ be the set of pairs $\\tuple {A, \\le_A}$ with $A \\subseteq X$ and $\\le_A$ a well-ordering of $A$, where $\\tuple {A, \\le_A} \\preceq \\tuple {B, \\le_B}$ means that $A$ is an initial segment of $B$ and $\\le_B$ restricts to $\\le_A$.\n$P$ contains $\\tuple {\\O, \\O}$.",
+      "For a chain, the union of the sets with the union of the orders is a linear order in which each member is an initial segment.\nA non-empty subset has a least element found inside any member that it meets, so the union is a well-ordering and an upper bound.",
+      "By [[Zorn's Lemma]], there is a maximal $\\tuple {W, \\le}$.",
+      "If $x \\in X \\setminus W$, placing $x$ above all of $W$ gives a strictly larger element of $P$, contradicting maximality.\nHence $W = X$, which is the [[Well-Ordering Theorem]].\n{{qed}}"
+    ]
+  }
+}

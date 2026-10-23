@@ -1,0 +1,37 @@
+{
+  "id": "distance_bound_from_triangle",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {M, d}$ be a [[Definition:Metric Space|metric space]].\nThen:\n:$\\forall x, y, z \\in M: \\size {\\map d {x, z} - \\map d {y, z} } \\le \\map d {x, y}$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {M, d}$ be a [[Definition:Metric Space|metric space]].\nThen:\n:$\\forall x, y, z \\in M: \\map d {x, z} \\le \\map d {x, y} + \\map d {y, z}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the triple (x,z) via y": "both orderings: d(x,z) via y and d(y,z) via x"
+      },
+      "derived": {
+        "d(x,z) <= d(x,y)+d(y,z)": "d(x,z)-d(y,z) <= d(x,y)",
+        "d(y,z) <= d(y,x)+d(x,z)": "d(y,z)-d(x,z) <= d(x,y)"
+      }
+    },
+    "validity_conditions": [
+      "Applying the triangle inequality to d(x,z) gives d(x,z) - d(y,z) <= d(x,y).",
+      "Applying it to d(y,z) (and symmetry d(x,y)=d(y,x)) gives d(y,z) - d(x,z) <= d(x,y).",
+      "Two bounds -c <= v <= c combine to |v| <= c with v = d(x,z)-d(y,z)."
+    ],
+    "proof_plan": [
+      "From the [[Definition:Metric Space Axioms|triangle inequality]]:\n:$\\map d {x, z} - \\map d {y, z} \\le \\map d {x, y}$",
+      "Exchanging the roles of $x$ and $y$, and using [[Definition:Symmetric Relation|symmetry]] of $d$:\n:$\\map d {y, z} - \\map d {x, z} \\le \\map d {y, x} = \\map d {x, y}$",
+      "Combining:\n:$-\\map d {x, y} \\le \\map d {x, z} - \\map d {y, z} \\le \\map d {x, y}$",
+      "Hence:\n:$\\size {\\map d {x, z} - \\map d {y, z} } \\le \\map d {x, y}$\n{{qed}}"
+    ]
+  }
+}

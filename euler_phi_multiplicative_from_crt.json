@@ -1,0 +1,39 @@
+{
+  "id": "euler_phi_multiplicative_from_crt",
+  "field": [
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $m, n \\in \\Z_{>0}$ with $m \\perp n$.\nThen:\n:$\\map \\phi {m n} = \\map \\phi m \\map \\phi n$\nwhere $\\phi$ is the [[Definition:Euler Phi Function|Euler $\\phi$ function]]."
+  },
+  "B_source": {
+    "statement": "Let $m, n \\in \\Z_{>0}$ with $m \\perp n$.\nThen there is a [[Definition:Ring Isomorphism|ring isomorphism]]:\n:$\\Z / m n \\Z \\cong \\Z / m \\Z \\times \\Z / n \\Z$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the ring isomorphism": "the isomorphism between residues modulo mn and the product ring",
+        "the group of units of a ring": "the residues coprime to the modulus",
+        "the units of a product ring": "pairs of units, one from each factor"
+      },
+      "derived": {
+        "units correspond under a ring isomorphism": "the units modulo mn correspond to pairs of units",
+        "counting on both sides": "phi(mn) = phi(m) phi(n)"
+      }
+    },
+    "validity_conditions": [
+      "A ring isomorphism restricts to a bijection between the groups of units, since it preserves multiplication and the identity.",
+      "The units of a product ring are exactly the pairs whose components are units, so the unit group of the product is the product of the unit groups.",
+      "Coprimality of m and n is required for the Chinese remainder isomorphism to hold, and it is exactly the hypothesis of multiplicativity."
+    ],
+    "proof_plan": [
+      "From the [[Chinese Remainder Theorem]], there is a [[Definition:Ring Isomorphism|ring isomorphism]] $\\theta: \\Z / m n \\Z \\to \\Z / m \\Z \\times \\Z / n \\Z$.",
+      "A ring isomorphism maps [[Definition:Unit of Ring|units]] to units.\nHence $\\theta$ restricts to a [[Definition:Group Isomorphism|group isomorphism]]:\n:$\\paren {\\Z / m n \\Z}^\\times \\cong \\paren {\\Z / m \\Z \\times \\Z / n \\Z}^\\times$",
+      "$\\tuple {a, b}$ is a unit of the product ring {{iff}} $a$ and $b$ are units.\nHence:\n:$\\paren {\\Z / m \\Z \\times \\Z / n \\Z}^\\times = \\paren {\\Z / m \\Z}^\\times \\times \\paren {\\Z / n \\Z}^\\times$",
+      "By [[Reduced Residue System has Euler Phi Elements|counting units]]:\n:$\\map \\phi {m n} = \\map \\phi m \\map \\phi n$\n{{qed}}"
+    ]
+  }
+}

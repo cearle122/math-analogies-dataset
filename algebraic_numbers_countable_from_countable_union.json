@@ -1,0 +1,38 @@
+{
+  "id": "algebraic_numbers_countable_from_countable_union",
+  "field": [
+    "set_theory",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "The set of [[Definition:Algebraic Number|algebraic numbers]] is [[Definition:Countable Set|countable]].\nHence [[Definition:Transcendental Number|transcendental numbers]] exist, and there are uncountably many of them."
+  },
+  "B_source": {
+    "statement": "A countable union of finite sets, each given with an explicit ordering, is countable."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the finite sets": "the root sets of the non-zero integer polynomials",
+        "their orderings": "the lexicographic order on real and imaginary parts"
+      },
+      "derived": {
+        "countability of the union": "countability of the algebraic numbers"
+      },
+      "reformulation": "Write the algebraic numbers as the union, over countably many polynomials, of their finite root sets."
+    },
+    "validity_conditions": [
+      "Ordering roots lexicographically avoids any appeal to the Axiom of Choice.",
+      "The argument is non-constructive about which numbers are transcendental, unlike Liouville's construction."
+    ],
+    "proof_plan": [
+      "$\\Z \\sqbrk x = \\bigcup_n \\Z \\sqbrk x_{\\le n}$, and the polynomials of degree at most $n$ correspond to $\\Z^{n + 1}$, which is countable.\nHence $\\Z \\sqbrk x$ is countable.",
+      "A non-zero polynomial of degree $d$ has at most $d$ complex roots.",
+      "The algebraic numbers form the union over non-zero $p \\in \\Z \\sqbrk x$ of these finite root sets, ordered lexicographically by real and imaginary parts.\nBy the source result, they form a countable set.",
+      "As $\\C$ is [[Definition:Uncountable Set|uncountable]], its complement in $\\C$ is non-empty and uncountable, which is [[Cantor's Theorem on Transcendental Numbers|Cantor's proof]] that transcendental numbers exist.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "noetherian_induction_from_well_founded_induction",
+  "field": [
+    "algebra",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Noetherian Ring|Noetherian ring]].\nLet $\\map P I$ be a [[Definition:Propositional Function|property]] of [[Definition:Ideal of Ring|ideals]] of $R$ such that, for every ideal $I$, if $\\map P J$ holds for every ideal $J \\supsetneq I$, then $\\map P I$ holds.\nThen $\\map P I$ holds for every ideal $I$ of $R$."
+  },
+  "B_source": {
+    "statement": "Let $\\prec$ be a [[Definition:Well-Founded Relation|well-founded relation]] on a set $S$.\nThen every non-empty subset of $S$ has a $\\prec$-[[Definition:Minimal Element|minimal element]], and properties may be proved by considering a minimal counterexample."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [
+      "specialization"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the well-founded relation": "strict reverse inclusion of ideals",
+        "the absence of infinite descending chains": "the ascending chain condition on ideals",
+        "the minimal counterexample": "an ideal maximal among those failing the property"
+      },
+      "derived": {
+        "the induction principle": "Noetherian induction on ideals"
+      }
+    },
+    "validity_conditions": [
+      "the ascending chain condition must hold, which is exactly what makes reverse inclusion well founded",
+      "the set of counterexample ideals must be nonempty for a maximal element to be extracted",
+      "the argument gives a maximal counterexample, not a maximum one, so uniqueness cannot be assumed"
+    ],
+    "proof_plan": [
+      "Suppose a property fails for some ideal, and let $\\SS$ be the set of all ideals for which it fails.",
+      "By the [[Definition:Ascending Chain Condition|ascending chain condition]], the relation $I \\prec J \\iff I \\supsetneq J$ has no infinite descending chains.\nHence $\\prec$ is [[Definition:Well-Founded Relation|well-founded]].",
+      "By the minimal-counterexample principle, $\\SS$ has a $\\prec$-minimal element $I$, which is maximal under inclusion among the failures.",
+      "Every ideal strictly containing $I$ lies outside $\\SS$, so satisfies the property.\nShowing that the property lifts from all strictly larger ideals to $I$ gives a contradiction.",
+      "Hence $\\SS = \\O$, which is [[Principle of Noetherian Induction|Noetherian induction]].\n{{qed}}"
+    ]
+  }
+}

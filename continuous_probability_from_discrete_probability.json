@@ -1,0 +1,39 @@
+{
+  "id": "continuous_probability_from_discrete_probability",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Continuous Random Variable|continuous random variable]] with [[Definition:Probability Density Function|probability density function]] $f_X$.\nThen:\n:$\\displaystyle \\expect X = \\int_{-\\infty}^\\infty x \\map {f_X} x \\rd x$\nand if $\\tuple {X, Y}$ has joint density $f_{X, Y}$, the [[Definition:Marginal Distribution|marginal]] density of $X$ is:\n:$\\displaystyle \\map {f_X} x = \\int_{-\\infty}^\\infty \\map {f_{X, Y} } {x, y} \\rd y$"
+  },
+  "B_source": {
+    "statement": "Let $X$ be a [[Definition:Discrete Random Variable|discrete random variable]] with [[Definition:Probability Mass Function|probability mass function]] $p_X$.\nThen:\n:$\\displaystyle \\expect X = \\sum_x x \\map {p_X} x$\nand the [[Definition:Marginal Distribution|marginal]] mass function of $X$ is:\n:$\\displaystyle \\map {p_X} x = \\sum_y \\map {p_{X, Y} } {x, y}$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the probability mass function": "the probability density function",
+        "summation over outcomes": "integration over the sample space",
+        "the probability of a single outcome": "the density value, which is not itself a probability"
+      },
+      "derived": {
+        "the expectation formula": "the same formula with the sum replaced by an integral",
+        "conditioning on an outcome": "conditioning on a measure-zero event, which needs a limiting definition"
+      }
+    },
+    "validity_conditions": [
+      "Sums and integrals are both integration against a measure, counting measure in one case and Lebesgue measure in the other, so every formula linear in the mass function transfers.",
+      "Individual points have probability zero in the continuous case, so a density value is not a probability and may exceed one; statements about the probability of a single outcome do not transfer.",
+      "Conditioning on the value of a continuous variable conditions on a null event and is not defined by the elementary ratio; it requires conditional densities or the general theory, and naive transfer produces the Borel-Kolmogorov paradox."
+    ],
+    "proof_plan": [
+      "Replace the [[Definition:Probability Mass Function|mass function]] $p_X$ by the [[Definition:Probability Density Function|density]] $f_X$, and summation by [[Definition:Lebesgue Integral|integration]].",
+      "Formulas linear in the mass function transport directly:\n{{begin-eqn}}\n{{eqn | l = \\expect X\n| r = \\int x \\map {f_X} x \\rd x\n}}\n{{eqn | l = \\map {f_X} x\n| r = \\int \\map {f_{X, Y} } {x, y} \\rd y\n}}\n{{end-eqn}}",
+      "Statements about individual outcomes do not transfer.\nFor a continuous random variable, $\\map \\Pr {X = x} = 0$ for all $x$, and $\\map {f_X} x$ is not a probability.",
+      "Conditioning on $\\set {X = x}$ cannot be defined as the elementary ratio $\\dfrac {\\map \\Pr {A \\cap B} } {\\map \\Pr B}$.\nDefine instead the [[Definition:Conditional Probability Density Function|conditional density]]:\n:$\\map {f_{Y \\mid X} } {y \\mid x} = \\dfrac {\\map {f_{X, Y} } {x, y} } {\\map {f_X} x}$\n{{qed}}"
+    ]
+  }
+}

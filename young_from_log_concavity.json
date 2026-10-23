@@ -1,0 +1,38 @@
+{
+  "id": "young_from_log_concavity",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $p, q > 1$ with $\\dfrac 1 p + \\dfrac 1 q = 1$, and $a, b \\ge 0$.\nThen:\n:$a b \\le \\dfrac {a^p} p + \\dfrac {b^q} q$"
+  },
+  "B_source": {
+    "statement": "Let $x, y \\in \\R_{>0}$ and $t \\in \\closedint 0 1$.\nThen, as $\\ln$ is [[Definition:Concave Real Function|concave]]:\n:$\\map \\ln {t x + \\paren {1 - t} y} \\ge t \\ln x + \\paren {1 - t} \\ln y$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "x": "a^p",
+        "y": "b^q",
+        "t": "1/p, so that 1 - t = 1/q"
+      },
+      "derived": {
+        "the concavity inequality": "Young's inequality after exponentiating"
+      },
+      "reformulation": "Take logarithms, so the product ab becomes a weighted average of ln a^p and ln b^q."
+    },
+    "validity_conditions": [
+      "a and b must be strictly positive for the logarithms to exist; the case ab = 0 is trivial.",
+      "The conjugacy 1/p + 1/q = 1 is exactly what makes the weights a convex combination."
+    ],
+    "proof_plan": [
+      "If $a = 0$ or $b = 0$ the result is immediate, so let $a, b > 0$.",
+      "Apply the source result with $x = a^p$, $y = b^q$ and $t = \\dfrac 1 p$, so that $1 - t = \\dfrac 1 q$:\n:$\\map \\ln {\\dfrac {a^p} p + \\dfrac {b^q} q} \\ge \\dfrac 1 p \\map \\ln {a^p} + \\dfrac 1 q \\map \\ln {b^q}$",
+      "By [[Logarithm of Power]] and [[Sum of Logarithms]], the right hand side is:\n:$\\ln a + \\ln b = \\map \\ln {a b}$",
+      "As $\\exp$ is [[Definition:Strictly Increasing Real Function|strictly increasing]]:\n:$a b \\le \\dfrac {a^p} p + \\dfrac {b^q} q$\nwhich is [[Young's Inequality for Products]].\n{{qed}}"
+    ]
+  }
+}

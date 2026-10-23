@@ -1,0 +1,39 @@
+{
+  "id": "cauchy_condensation_from_dyadic_blocking",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {a_n}$ be a [[Definition:Decreasing Real Sequence|decreasing sequence]] of non-negative [[Definition:Real Number|real numbers]].\nThen:\n:$\\displaystyle \\sum_{n \\mathop = 1}^\\infty a_n$ [[Definition:Convergent Series|converges]] {{iff}} $\\displaystyle \\sum_{k \\mathop = 0}^\\infty 2^k a_{2^k}$ converges"
+  },
+  "B_source": {
+    "statement": "Group the terms of $\\displaystyle \\sum_{n \\mathop = 1}^\\infty a_n$ into blocks:\n:$\\displaystyle B_k = \\sum_{n \\mathop = 2^k}^{2^{k + 1} - 1} a_n$\neach containing $2^k$ terms, and bound each block by its endpoint terms."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the blocks of doubling length": "the index ranges from a power of two up to the next",
+        "the bound on a block by its largest term": "the block is at most its length times its first term",
+        "the bound on a block by its smallest term": "the block is at least half its length times its last term"
+      },
+      "derived": {
+        "the upper block estimates summed": "the condensed series dominates the original up to a constant",
+        "the lower block estimates summed": "the original dominates the condensed series up to a constant"
+      }
+    },
+    "validity_conditions": [
+      "Monotonicity is what allows each block to be bounded above by its first term and below by its last, and the result is false without it.",
+      "Each dyadic block has length exactly a power of two, so the two bounds differ only by a factor of two and the comparison is two-sided.",
+      "Nonnegativity ensures partial sums are monotone, so convergence is equivalent to boundedness and the comparison settles it."
+    ],
+    "proof_plan": [
+      "Write:\n:$\\displaystyle \\sum_{n \\mathop = 1}^{2^{K + 1} - 1} a_n = \\sum_{k \\mathop = 0}^K B_k$",
+      "As $\\sequence {a_n}$ is [[Definition:Decreasing Real Sequence|decreasing]]:\n:$B_k \\le 2^k a_{2^k}$",
+      "Similarly:\n:$B_k \\ge 2^k a_{2^{k + 1} } = \\dfrac 1 2 2^{k + 1} a_{2^{k + 1} }$",
+      "Summing:\n:$\\displaystyle \\frac 1 2 \\sum_{k \\mathop = 1}^{K + 1} 2^k a_{2^k} \\le \\sum_{n \\mathop = 1}^{2^{K + 1} - 1} a_n \\le \\sum_{k \\mathop = 0}^K 2^k a_{2^k}$\nAs the terms are non-negative, the partial sums are increasing, and the result follows by the [[Comparison Test]].\n{{qed}}"
+    ]
+  }
+}

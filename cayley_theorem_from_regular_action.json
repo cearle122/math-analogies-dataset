@@ -1,0 +1,37 @@
+{
+  "id": "cayley_theorem_from_regular_action",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Group|group]].\nThen $G$ is [[Definition:Group Isomorphism|isomorphic]] to a [[Definition:Subgroup|subgroup]] of the [[Definition:Symmetric Group|symmetric group]] $\\map {\\operatorname {Sym} } G$."
+  },
+  "B_source": {
+    "statement": "Let $G$ [[Definition:Group Action|act]] on a set $X$.\nThen $g \\mapsto \\paren {x \\mapsto g * x}$ is a [[Definition:Group Homomorphism|homomorphism]] $G \\to \\map {\\operatorname {Sym} } X$, whose [[Definition:Kernel of Group Homomorphism|kernel]] is the set of elements acting trivially."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the set X": "the underlying set of G",
+        "the action": "left multiplication"
+      },
+      "derived": {
+        "the permutation representation": "an embedding of G into Sym(G)"
+      },
+      "reformulation": "Specialize the permutation representation of an action to the action of G on itself, which is faithful."
+    },
+    "validity_conditions": [
+      "Left multiplication satisfies the action axioms by associativity and the identity law.",
+      "The action is faithful because g e = e forces g = e."
+    ],
+    "proof_plan": [
+      "Let $G$ act on itself by $g * x = g x$.",
+      "$e x = x$ and $g \\paren {h x} = \\paren {g h} x$, so this is a [[Definition:Group Action|group action]].",
+      "By the source result, $\\lambda: G \\to \\map {\\operatorname {Sym} } G$, $\\map \\lambda g = \\paren {x \\mapsto g x}$, is a homomorphism.\nIf $g x = x$ for all $x$, then taking $x = e$ gives $g = e$, so $\\lambda$ is [[Definition:Injection|injective]].",
+      "Hence $G \\cong \\Img \\lambda \\le \\map {\\operatorname {Sym} } G$, which is [[Cayley's Theorem (Group Theory)|Cayley's Theorem]].\n{{qed}}"
+    ]
+  }
+}

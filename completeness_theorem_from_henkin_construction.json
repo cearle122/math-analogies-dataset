@@ -1,0 +1,40 @@
+{
+  "id": "completeness_theorem_from_henkin_construction",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $T$ be a [[Definition:Consistent|consistent]] [[Definition:Theory (Logic)|theory]] of [[Definition:First-Order Logic|first-order logic]].\nThen $T$ has a [[Definition:Model (Logic)|model]]."
+  },
+  "B_source": {
+    "statement": "Let $T$ be a [[Definition:Consistent|consistent]] [[Definition:Theory (Logic)|theory]].\nIf $T$ is [[Definition:Complete Theory|complete]] and has [[Definition:Henkin Witness|witnesses]] for all existential sentences, then the [[Definition:Term Model|term model]] of closed terms modulo provable equality is a model of $T$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the syntactic objects used as elements": "closed terms of the extended language, modulo provable equality",
+        "the extension step": "adding a constant witnessing each existential statement",
+        "the maximality step": "extending to a complete consistent theory deciding every sentence"
+      },
+      "derived": {
+        "the structure read off the syntax": "the term model, whose relations are given by provability",
+        "the truth lemma": "a sentence holds in the term model exactly when the extended theory proves it"
+      },
+      "reformulation": "Read the model off the syntax itself, after enriching the theory enough that the syntax names every needed element."
+    },
+    "validity_conditions": [
+      "Adding witness constants preserves consistency, since a proof of contradiction from the extension would translate back into one from the original theory.",
+      "Maximality is obtained by Zorn's lemma or by enumerating sentences, and it makes the term model well defined by deciding every atomic statement.",
+      "Provable equality must be quotiented out, or terms naming the same element would give distinct elements and the equality axioms would fail."
+    ],
+    "proof_plan": [
+      "Add new constants $c_\\phi$ and axioms $\\exists x \\, \\map \\phi x \\to \\map \\phi {c_\\phi}$ for every formula $\\phi$.\nEach extension preserves [[Definition:Consistent|consistency]].",
+      "By [[Lindenbaum's Lemma]], extend to a [[Definition:Complete Theory|complete]] consistent theory $T^*$ deciding every sentence.",
+      "Let $M$ be the set of closed terms modulo:\n:$s \\sim t \\iff T^* \\vdash s = t$\nInterpret function and relation symbols by their action on representatives, which is [[Definition:Well-Defined Mapping|well-defined]] by the equality axioms.",
+      "By [[Principle of Structural Induction|induction]] on formulas, using the witnesses for the existential case:\n:$M \\models \\phi \\iff T^* \\vdash \\phi$\nThis is the [[Definition:Truth Lemma|truth lemma]].\nHence $M \\models T$.\n{{qed}}"
+    ]
+  }
+}

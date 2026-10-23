@@ -1,0 +1,39 @@
+{
+  "id": "cayley_formula_from_prufer_encoding",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "The number of [[Definition:Labeled Tree|labeled trees]] on $n$ [[Definition:Vertex of Graph|vertices]] is:\n:$n^{n - 2}$"
+  },
+  "B_source": {
+    "statement": "Let $S$ and $T$ be [[Definition:Finite Set|finite sets]].\nIf there exists a [[Definition:Bijection|bijection]] $\\phi: S \\to T$, then:\n:$\\card S = \\card T$"
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the set of known size": "sequences of length n minus two over an alphabet of n symbols",
+        "the encoding map": "repeatedly remove the smallest leaf and record its neighbour",
+        "the decoding map": "reconstruct the tree from the sequence by reversing the removals"
+      },
+      "derived": {
+        "the bijection between the two sets": "labelled trees correspond to Prufer sequences",
+        "the cardinality transferred": "n to the power n minus two"
+      }
+    },
+    "validity_conditions": [
+      "The encoding is well defined because every tree with at least two vertices has a leaf, so the removal process runs to completion.",
+      "The decoding is well defined because at each stage the next leaf to be removed is determined by the remaining sequence, which makes the two maps mutually inverse.",
+      "Both directions must be checked; exhibiting only an injection would give an inequality rather than the exact count."
+    ],
+    "proof_plan": [
+      "Given a labeled tree $T$ on $\\set {1, \\ldots, n}$, repeatedly delete the [[Definition:Leaf of Tree|leaf]] with the smallest label and record its unique neighbour, until two vertices remain.\nThis gives the [[Definition:Prüfer Sequence|Prüfer sequence]] of $T$.",
+      "The sequence has length $n - 2$, with entries in $\\set {1, \\ldots, n}$.",
+      "Conversely, from a sequence $\\tuple {a_1, \\ldots, a_{n - 2} }$, reconstruct $T$ by joining at each step the smallest label not yet used and not appearing in the remaining sequence to $a_i$.\nThe encoding and decoding maps are [[Definition:Inverse Mapping|mutually inverse]].",
+      "Hence the Prüfer encoding is a [[Definition:Bijection|bijection]] onto $\\set {1, \\ldots, n}^{n - 2}$, and the number of labeled trees is $n^{n - 2}$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "measure_algebra_from_null_ideal",
+  "field": [
+    "probability",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {X, \\Sigma, \\mu}$ be a [[Definition:Sigma-Finite Measure|$\\sigma$-finite]] [[Definition:Measure Space|measure space]] and $\\NN$ the set of [[Definition:Null Set|null sets]].\nThen $\\Sigma / \\NN$ is a [[Definition:Complete Boolean Algebra|complete Boolean algebra]] on which:\n:$\\map {\\bar \\mu} {\\eqclass A {} } = \\map \\mu A$\nis well-defined and strictly positive on non-zero elements."
+  },
+  "B_source": {
+    "statement": "Let $B$ be a [[Definition:Boolean Algebra|Boolean algebra]] and $I$ an [[Definition:Ideal (Order Theory)|ideal]] of $B$.\nThen $B / I$ is a Boolean algebra in which the elements of $I$ become $0$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the Boolean algebra being collapsed": "the sigma-algebra of measurable sets under union, intersection, complement",
+        "the ideal collapsed to zero": "the sets of measure zero",
+        "the quotient algebra": "the measure algebra of the space"
+      },
+      "derived": {
+        "the operations descend to the quotient": "union and complement are well defined modulo null sets",
+        "the measure descends and becomes strictly positive": "a class has measure zero exactly when it is the zero element"
+      }
+    },
+    "validity_conditions": [
+      "The null sets form a sigma-ideal: they are closed under subsets and countable unions, which is what makes the quotient respect countable operations.",
+      "The measure is constant on classes, since two sets differing by a null set have equal measure, so it descends to the quotient.",
+      "Strict positivity is gained rather than assumed: a nonzero class has positive measure precisely because the null sets have been collapsed to zero."
+    ],
+    "proof_plan": [
+      "$\\Sigma$ is a [[Definition:Boolean Algebra|Boolean algebra]] under $\\cup$, $\\cap$ and complement.",
+      "$\\NN$ is closed under subsets in $\\Sigma$ and countable unions, by [[Definition:Countably Subadditive Function|countable subadditivity]].\nHence $\\NN$ is a [[Definition:Sigma-Ideal|$\\sigma$-ideal]].",
+      "Collapse $\\Sigma$ by $\\NN$, so $A \\sim B \\iff A \\symdif B \\in \\NN$.\nThe operations descend, and $\\map \\mu A = \\map \\mu B$ whenever $A \\sim B$, so $\\bar \\mu$ is well-defined.",
+      "If $\\map {\\bar \\mu} {\\eqclass A {} } = 0$, then $A \\in \\NN$, so $\\eqclass A {} = 0$.\nHence $\\bar \\mu$ is strictly positive on non-zero elements.\nBy $\\sigma$-finiteness, every family has a countable subfamily with the same supremum, so $\\Sigma / \\NN$ is [[Definition:Complete Boolean Algebra|complete]].\n{{qed}}"
+    ]
+  }
+}

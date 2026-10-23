@@ -1,0 +1,41 @@
+{
+  "id": "transcendence_of_e_from_auxiliary_integer",
+  "field": [
+    "number_theory",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "[[Definition:Euler's Number|Euler's number]] $e$ is [[Definition:Transcendental Number|transcendental]].\nThat is, $e$ is not a root of any non-zero [[Definition:Polynomial over Ring|polynomial]] with [[Definition:Rational Number|rational]] coefficients."
+  },
+  "B_source": {
+    "statement": "To show a relation cannot hold, assume it and construct a quantity $N$ which is simultaneously an [[Definition:Integer|integer]] and satisfies:\n:$0 < \\size N < 1$\na contradiction."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the assumed algebraic relation": "a supposed integer polynomial relation satisfied by e",
+        "the auxiliary quantity built from it": "a combination of integrals of a carefully chosen polynomial times the exponential",
+        "the two competing estimates": "an integrality argument and an analytic size bound"
+      },
+      "derived": {
+        "the quantity is a nonzero integer": "divisibility forces it to be a nonzero multiple of a factorial",
+        "the quantity is smaller than one": "the analytic bound decays faster than the factorial grows"
+      },
+      "reformulation": "Convert the algebraic assumption into a single number, then squeeze it between two incompatible estimates."
+    },
+    "validity_conditions": [
+      "The auxiliary polynomial must be chosen so that repeated differentiation produces coefficients divisible by a large factorial, which is what forces integrality.",
+      "The same choice must keep the analytic estimate small, so the polynomial degree is tuned to make the growth of the bound lose to the factorial.",
+      "The contradiction is that no integer lies strictly between zero and one; the entire construction exists only to produce one quantity satisfying both estimates."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} that:\n:$a_0 + a_1 e + \\cdots + a_n e^n = 0$\nwith $a_i \\in \\Z$ and $a_0 \\ne 0$.",
+      "For a prime $p$, let $\\map f x = \\dfrac {x^{p - 1} \\paren {x - 1}^p \\cdots \\paren {x - n}^p} {\\paren {p - 1}!}$ and:\n:$\\displaystyle \\map I t = \\int_0^t e^{t - x} \\map f x \\rd x$\nForm $N = \\displaystyle \\sum_{k \\mathop = 0}^n a_k \\map I k$.",
+      "By repeated [[Integration by Parts]], $\\map I t = e^t \\map F 0 - \\map F t$ with $F = \\displaystyle \\sum_j f^{\\paren j}$.\nUsing the assumed relation, $N = -\\displaystyle \\sum_k a_k \\map F k$.\nEach $\\map {f^{\\paren j} } k$ is an integer divisible by $p$, except $\\map {f^{\\paren {p - 1} } } 0 = \\paren {\\paren {-1}^n n!}^p$.\nFor $p > \\max \\set {n, \\size {a_0} }$, $N$ is a non-zero integer.",
+      "But $\\size {\\map I k} \\le k e^k \\max_{\\closedint 0 n} \\size f \\le C^p / \\paren {p - 1}!$ for a constant $C$.\nHence $\\size N < 1$ for $p$ large, a contradiction.\nThis is the [[Hermite-Lindemann-Weierstrass Theorem|transcendence of $e$]].\n{{qed}}"
+    ]
+  }
+}

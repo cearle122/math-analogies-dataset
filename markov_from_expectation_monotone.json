@@ -1,0 +1,37 @@
+{
+  "id": "markov_from_expectation_monotone",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $Y$ be a non-negative [[Definition:Random Variable|random variable]] and $t > 0$.\nThen:\n:$\\map \\Pr {Y \\ge t} \\le \\dfrac {\\expect Y} t$"
+  },
+  "B_source": {
+    "statement": "Let $U, V$ be [[Definition:Random Variable|random variables]] with $0 \\le U \\le V$.\nThen:\n:$\\expect U \\le \\expect V$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the smaller variable U": "t times the indicator t*1_{Y >= t}",
+        "the larger variable V": "Y itself"
+      },
+      "derived": {
+        "E[U] <= E[V]": "t*P(Y>=t) <= E[Y]",
+        "the pointwise bound U <= V": "t*1_{Y>=t} <= Y"
+      }
+    },
+    "validity_conditions": [
+      "The pointwise inequality t*1_{Y>=t} <= Y holds because Y >= 0 everywhere and Y >= t exactly on the indicator's support.",
+      "Monotonicity of expectation applied to U = t*1_{Y>=t} and V = Y gives t*P(Y>=t) <= E[Y].",
+      "Divide by t > 0."
+    ],
+    "proof_plan": [
+      "As $Y \\ge 0$, pointwise:\n:$t \\cdot \\chi_{\\set {Y \\ge t} } \\le Y$",
+      "By [[Expectation is Monotone|monotonicity of expectation]]:\n:$t \\map \\Pr {Y \\ge t} = \\expect {t \\cdot \\chi_{\\set {Y \\ge t} } } \\le \\expect Y$",
+      "Dividing by $t > 0$:\n:$\\map \\Pr {Y \\ge t} \\le \\dfrac {\\expect Y} t$\nwhich is [[Markov's Inequality]].\n{{qed}}"
+    ]
+  }
+}

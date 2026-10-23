@@ -1,0 +1,36 @@
+{
+  "id": "countable_union_from_pairing_function",
+  "field": [
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Assume the [[Axiom of Countable Choice]].\nThen a [[Definition:Countable Union|countable union]] of [[Definition:Countable Set|countable sets]] is countable."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Cantor Pairing Function|Cantor pairing function]]:\n:$\\map \\pi {m, n} = \\dfrac {\\paren {m + n} \\paren {m + n + 1} } 2 + n$\nis a [[Definition:Bijection|bijection]] $\\N \\times \\N \\to \\N$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "pairs (m, n)": "pairs (index of a set, index within that set)"
+      },
+      "derived": {
+        "a surjection from N x N": "a surjection from N onto the union"
+      },
+      "reformulation": "Enumerate each set, combine the enumerations into one map on N x N, and compose with the pairing bijection."
+    },
+    "validity_conditions": [
+      "Countable choice is needed to choose an enumeration of each set simultaneously.",
+      "Without choice, the real numbers can be a countable union of countable sets."
+    ],
+    "proof_plan": [
+      "Let $A_0, A_1, \\ldots$ be countable, and discard the empty ones.\nBy countable choice, choose surjections $f_i: \\N \\to A_i$.",
+      "Then $\\map F {i, n} = \\map {f_i} n$ defines a surjection $F: \\N \\times \\N \\to \\bigcup_i A_i$.",
+      "By the source result, $F \\circ \\pi^{-1}: \\N \\to \\bigcup_i A_i$ is a surjection.",
+      "Sending each element to its least preimage gives an injection into $\\N$, so $\\bigcup_i A_i$ is countable.\n{{qed}}"
+    ]
+  }
+}

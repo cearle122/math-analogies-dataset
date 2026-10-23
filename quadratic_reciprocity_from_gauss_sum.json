@@ -1,0 +1,40 @@
+{
+  "id": "quadratic_reciprocity_from_gauss_sum",
+  "field": [
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $p$ and $q$ be distinct [[Definition:Odd Prime|odd primes]].\nThen:\n:$\\paren {\\dfrac p q} \\paren {\\dfrac q p} = \\paren {-1}^{\\frac {p - 1} 2 \\frac {q - 1} 2}$\nwhere $\\paren {\\dfrac \\cdot \\cdot}$ is the [[Definition:Legendre Symbol|Legendre symbol]]."
+  },
+  "B_source": {
+    "statement": "Let $\\zeta$ be a primitive $p$th [[Definition:Root of Unity|root of unity]] and:\n:$\\displaystyle g = \\sum_{k \\mathop = 1}^{p - 1} \\paren {\\frac k p} \\zeta^k$\nbe the [[Definition:Quadratic Gauss Sum|quadratic Gauss sum]].\nThen:\n:$g^2 = p^* = \\paren {-1}^{\\frac {p - 1} 2} p$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the Legendre symbol (p/q)": "the action of raising the Gauss sum g to the q-th power mod q",
+        "the prime q": "the exponent/modulus in which g is manipulated",
+        "roots of unity zeta": "elements of a field extension of F_q"
+      },
+      "derived": {
+        "g^q vs g mod q": "the symbol (p/q) via g^{q-1} = (p/q)",
+        "evaluating g^q two ways": "the reciprocity relation between (p/q) and (q/p)"
+      },
+      "reformulation": "Compute g^q modulo q in two ways - by the Gauss-sum square identity and by the Frobenius (q-th power) map - and equate."
+    },
+    "validity_conditions": [
+      "Work in a ring containing p-th roots of unity over F_q; the Gauss sum g satisfies g^2 = p* = (-1)^{(p-1)/2} p.",
+      "Frobenius gives g^q = (q/p) g (raising roots of unity to the q-th power permutes the sum by the symbol), while g^2 = p* gives g^{q-1} = (p*)^{(q-1)/2} = (p*/q).",
+      "Equating the two expressions for g^q yields (q/p) = (p*/q), which unwinds to quadratic reciprocity."
+    ],
+    "proof_plan": [
+      "Form $g$ in an extension of $\\GF q$ containing a primitive $p$th root of unity $\\zeta$.",
+      "By the [[Freshman's Dream|Frobenius map]] in characteristic $q$:\n{{begin-eqn}}\n{{eqn | l = g^q\n| r = \\sum_k \\paren {\\frac k p} \\zeta^{k q}\n}}\n{{eqn | r = \\paren {\\frac q p} \\sum_k \\paren {\\frac {k q} p} \\zeta^{k q}\n| c = as $\\paren {\\frac q p}^2 = 1$\n}}\n{{eqn | r = \\paren {\\frac q p} g\n}}\n{{end-eqn}}",
+      "Also:\n:$g^{q - 1} = \\paren {g^2}^{\\frac {q - 1} 2} = \\paren {p^*}^{\\frac {q - 1} 2} = \\paren {\\dfrac {p^*} q}$\nby [[Euler's Criterion]].",
+      "Equating the two evaluations of $g^q$, and using $g \\ne 0$:\n:$\\paren {\\dfrac q p} = \\paren {\\dfrac {p^*} q} = \\paren {\\dfrac {-1} q}^{\\frac {p - 1} 2} \\paren {\\dfrac p q} = \\paren {-1}^{\\frac {p - 1} 2 \\frac {q - 1} 2} \\paren {\\dfrac p q}$\nwhich is the [[Law of Quadratic Reciprocity]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "boolean_ring_from_boolean_algebra",
+  "field": [
+    "logic",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {R, +, \\cdot}$ be a [[Definition:Ring with Unity|ring with unity]] such that:\n:$\\forall x \\in R: x^2 = x$\nThen $R$ is a [[Definition:Boolean Ring|Boolean ring]], and Boolean rings correspond exactly to [[Definition:Boolean Algebra|Boolean algebras]]."
+  },
+  "B_source": {
+    "statement": "A [[Definition:Commutative Ring with Unity|commutative ring with unity]] is a set $R$ with operations $+$ and $\\cdot$ such that $\\struct {R, +}$ is an [[Definition:Abelian Group|abelian group]], $\\cdot$ is [[Definition:Associative Operation|associative]] and [[Definition:Commutative Operation|commutative]] with [[Definition:Identity Element|identity]] $1$, and $\\cdot$ [[Definition:Distributive Operation|distributes]] over $+$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "ring addition": "symmetric difference, or exclusive disjunction",
+        "ring multiplication": "meet, or conjunction",
+        "the additive inverse": "each element is its own inverse, since the characteristic is two"
+      },
+      "derived": {
+        "ring-theoretic notions such as ideals": "filters and their complements in the algebra",
+        "prime ideals of the ring": "ultrafilters of the algebra, which is the basis of the representation theorem"
+      },
+      "reformulation": "Reinterpret the connectives as ring operations, taking exclusive rather than inclusive disjunction as addition."
+    },
+    "validity_conditions": [
+      "Idempotence of multiplication forces characteristic two, since expanding the square of a sum gives that every element is its own additive inverse.",
+      "The dictionary is a bijection: symmetric difference and meet determine join and complement, and conversely, so the two axiomatizations describe the same objects.",
+      "Ordinary disjunction is not the ring addition, since it is not cancellative; using symmetric difference instead is what makes the transfer work."
+    ],
+    "proof_plan": [
+      "Given a [[Definition:Boolean Algebra|Boolean algebra]] $\\struct {B, \\vee, \\wedge, \\neg}$, define:\n:$x + y = \\paren {x \\wedge \\neg y} \\vee \\paren {\\neg x \\wedge y}$\n:$x \\cdot y = x \\wedge y$\nthat is, [[Definition:Symmetric Difference|symmetric difference]] and [[Definition:Meet (Order Theory)|meet]].",
+      "Verify the [[Definition:Commutative Ring with Unity|commutative ring axioms]], with $0 = \\bot$ and $1 = \\top$.\nIdempotence $x \\cdot x = x \\wedge x = x$ follows from [[Definition:Idempotent Operation|idempotence]] of $\\wedge$.",
+      "{{begin-eqn}}\n{{eqn | l = x + y\n| r = \\paren {x + y}^2\n}}\n{{eqn | r = x^2 + x y + y x + y^2\n}}\n{{eqn | r = x + y + x y + y x\n}}\n{{end-eqn}}\nSo $x y + y x = 0$.\nSetting $y = x$ gives $2 x = 0$, so $R$ has [[Definition:Characteristic of Ring|characteristic]] $2$.",
+      "Under this correspondence, [[Definition:Ideal of Ring|ideals]] of $R$ correspond to [[Definition:Ideal (Order Theory)|order ideals]] of $B$, and [[Definition:Prime Ideal of Ring|prime ideals]] correspond to complements of [[Definition:Ultrafilter on Set|ultrafilters]].\n{{qed}}"
+    ]
+  }
+}

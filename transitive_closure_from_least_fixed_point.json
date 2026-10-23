@@ -1,0 +1,37 @@
+{
+  "id": "transitive_closure_from_least_fixed_point",
+  "field": [
+    "logic",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Relation|relation]] on a set $S$.\nThen $R^+ = \\displaystyle \\bigcup_{n \\mathop \\ge 1} R^n$ is the smallest [[Definition:Transitive Relation|transitive relation]] containing $R$, and is the [[Definition:Least Fixed Point|least fixed point]] of $\\map \\Phi X = R \\cup \\paren {X \\circ R}$."
+  },
+  "B_source": {
+    "statement": "Let $\\Phi$ be an [[Definition:Increasing Mapping|increasing mapping]] on a [[Definition:Power Set|power set]] which preserves unions of increasing chains.\nThen the least fixed point of $\\Phi$ is $\\displaystyle \\bigcup_{n \\mathop \\ge 0} \\map {\\Phi^n} \\O$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the operator Phi": "add one more R-step to every path"
+      },
+      "derived": {
+        "the iterates from the empty relation": "paths of bounded length"
+      },
+      "reformulation": "Encode 'reachable in one or more steps' as the least solution of a recursive equation."
+    },
+    "validity_conditions": [
+      "Phi preserves unions of chains, since a pair in X o R uses only one pair of X.",
+      "Minimality among transitive relations uses that X o R lies in T o T for transitive T containing R."
+    ],
+    "proof_plan": [
+      "$\\Phi$ is increasing on $\\powerset {S \\times S}$ and preserves unions of chains.",
+      "By induction, $\\map {\\Phi^n} \\O = R \\cup R^2 \\cup \\cdots \\cup R^n$.\nBy the source result, the least fixed point is $\\bigcup_{n \\ge 1} R^n = R^+$.",
+      "$R^+$ is transitive, as $R^m \\circ R^n = R^{m + n}$.",
+      "If $T \\supseteq R$ is transitive, then $\\map \\Phi T = R \\cup \\paren {T \\circ R} \\subseteq T$, so the least fixed point is contained in $T$.\nHence $R^+$ is the smallest transitive relation containing $R$.\n{{qed}}"
+    ]
+  }
+}

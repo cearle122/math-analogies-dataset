@@ -1,0 +1,41 @@
+{
+  "id": "preimage_from_image",
+  "field": [
+    "set_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $f: X \\to Y$ be a [[Definition:Mapping|mapping]] and $A, B \\subseteq Y$.\nThen:\n:$\\map {f^{-1} } {A \\cup B} = \\map {f^{-1} } A \\cup \\map {f^{-1} } B$\n:$\\map {f^{-1} } {A \\cap B} = \\map {f^{-1} } A \\cap \\map {f^{-1} } B$\n:$\\map {f^{-1} } {Y \\setminus A} = X \\setminus \\map {f^{-1} } A$"
+  },
+  "B_source": {
+    "statement": "Let $f: X \\to Y$ be a [[Definition:Mapping|mapping]] and $A, B \\subseteq X$.\nThen:\n:$\\map f {A \\cup B} = \\map f A \\cup \\map f B$\n:$\\map f {A \\cap B} \\subseteq \\map f A \\cap \\map f B$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the forward image of a set": "the preimage of a set",
+        "the direction of the map": "the reversed direction, from subsets of the codomain to subsets of the domain",
+        "the containments satisfied by image": "the equalities satisfied by preimage"
+      },
+      "derived": {
+        "union is preserved by both": "the one operation where the two agree",
+        "intersection and complement": "only contained for image, but genuinely equal for preimage"
+      },
+      "reformulation": "Reverse the direction of the set map, replacing forward image by the pointwise membership condition of preimage."
+    },
+    "validity_conditions": [
+      "Preimage is defined pointwise by a membership condition on a single element, so it commutes with every Boolean operation.",
+      "Image is not pointwise in this sense: an element of the image may have several preimages, which is exactly why intersections can shrink and complements fail.",
+      "The two operations are adjoint rather than inverse, which explains the asymmetry: preimage preserves all limits and colimits of subsets, while image preserves only unions."
+    ],
+    "proof_plan": [
+      "By {{Defof|Preimage of Subset under Mapping}}:\n:$x \\in \\map {f^{-1} } A \\iff \\map f x \\in A$\na condition on the image of the single element $x$.",
+      "This condition distributes over every Boolean connective:\n{{begin-eqn}}\n{{eqn | l = x \\in \\map {f^{-1} } {A \\cap B}\n| o = \\iff\n| r = \\map f x \\in A \\land \\map f x \\in B\n}}\n{{eqn | o = \\iff\n| r = x \\in \\map {f^{-1} } A \\cap \\map {f^{-1} } B\n}}\n{{end-eqn}}\nand similarly for $\\cup$ and complement.",
+      "For images, $y \\in \\map f A \\cap \\map f B$ may have $y = \\map f a = \\map f b$ with $a \\in A \\setminus B$ and $b \\in B \\setminus A$.\nHence equality degrades to containment unless $f$ is [[Definition:Injection|injective]].",
+      "The asymmetry reflects that $f^{-1}$ is a [[Definition:Galois Connection|right adjoint]] to the direct image $f$, and right adjoints preserve all [[Definition:Infimum of Set|meets]].\n{{qed}}"
+    ]
+  }
+}

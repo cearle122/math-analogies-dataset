@@ -1,0 +1,41 @@
+{
+  "id": "asymptotic_equipartition_from_type_counting",
+  "field": [
+    "probability",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $X_1, X_2, \\ldots$ be [[Definition:Independent Identically Distributed|i.i.d.]] with [[Definition:Distribution|distribution]] $P$ on a [[Definition:Finite Set|finite]] alphabet $\\XX$ and [[Definition:Entropy (Information Theory)|entropy]] $\\map H P$.\nLet $\\epsilon > 0$.\nThen for sufficiently large $n$ the [[Definition:Typical Set|typical set]] $A_\\epsilon^{\\paren n}$ satisfies:\n:$\\map \\Pr {A_\\epsilon^{\\paren n} } > 1 - \\epsilon$\nand:\n:$\\size {A_\\epsilon^{\\paren n} } \\le 2^{n \\paren {\\map H P + \\epsilon} }$"
+  },
+  "B_source": {
+    "statement": "Let $n = n_1 + n_2 + \\cdots + n_k$.\nThen the number of sequences of length $n$ over an alphabet of $k$ symbols in which symbol $i$ occurs exactly $n_i$ times is the [[Definition:Multinomial Coefficient|multinomial coefficient]]:\n:$\\dbinom n {n_1, n_2, \\ldots, n_k} = \\dfrac {n!} {n_1! \\, n_2! \\cdots n_k!}$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the sequences with prescribed symbol counts": "the sequences whose empirical distribution matches the source",
+        "the multinomial coefficient counting them": "the size of the typical set",
+        "the exponential growth rate of that coefficient": "the entropy of the source distribution"
+      },
+      "derived": {
+        "the Stirling estimate of the multinomial coefficient": "growth at the rate given by the entropy",
+        "the probability of the matching frequency class": "tending to one by the law of large numbers"
+      },
+      "reformulation": "Replace the probabilistic statement by a count of sequences in each empirical frequency class."
+    },
+    "validity_conditions": [
+      "The number of empirical frequency classes grows only polynomially in the sequence length, while each class has exponential size, so one class dominates.",
+      "Stirling's estimate converts the multinomial coefficient into an exponential whose rate is the entropy of the empirical distribution.",
+      "The law of large numbers makes the empirical distribution converge to the source distribution, so the dominant class is the one matching it and carries probability tending to one."
+    ],
+    "proof_plan": [
+      "Partition $\\XX^n$ into [[Definition:Type Class|type classes]] $\\map T Q$ according to the [[Definition:Empirical Distribution|empirical distribution]] $Q$ of each sequence.",
+      "From the source result:\n:$\\size {\\map T Q} = \\dbinom n {n \\map Q {a_1}, \\ldots, n \\map Q {a_k} }$\nApplying [[Stirling's Formula]]:\n:$\\displaystyle \\frac 1 n \\log_2 \\size {\\map T Q} \\to \\map H Q$",
+      "Hence the number of sequences of type $Q$ grows as $2^{n \\map H Q + \\map o n}$.\nAs there are at most $\\paren {n + 1}^{\\size \\XX}$ types, the growth rate is governed by the [[Definition:Entropy (Information Theory)|entropy]].",
+      "By the [[Weak Law of Large Numbers]], the empirical distribution converges in probability to $P$.\nHence the sequences with type close to $P$ carry probability greater than $1 - \\epsilon$, and number at most $2^{n \\paren {\\map H P + \\epsilon} }$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "church_numerals_from_iteration_principle",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "In [[Definition:System F|System F]], let $\\mathsf {Nat} = \\forall \\alpha. \\paren {\\alpha \\to \\alpha} \\to \\alpha \\to \\alpha$ and $\\bar n = \\Lambda \\alpha. \\lambda f. \\lambda x. f^n x$.\nThen $\\mathsf {zero} = \\bar 0$ and $\\mathsf {succ} = \\lambda n. \\Lambda \\alpha. \\lambda f. \\lambda x. f \\paren {n \\, \\alpha \\, f \\, x}$ satisfy $\\mathsf {succ} \\, \\bar n \\twoheadrightarrow_\\beta \\overline {n + 1}$, and iteration $\\mathsf {it}_C \\, z \\, s \\, n = n \\, C \\, s \\, z$ satisfies:\n:$\\mathsf {it}_C \\, z \\, s \\, \\bar 0 \\twoheadrightarrow_\\beta z, \\quad \\mathsf {it}_C \\, z \\, s \\, \\paren {\\mathsf {succ} \\, \\bar n} \\twoheadrightarrow_\\beta s \\paren {\\mathsf {it}_C \\, z \\, s \\, \\bar n}$"
+  },
+  "B_source": {
+    "statement": "For every set $C$, $z \\in C$ and $s: C \\to C$ there is a [[Definition:Unique|unique]] $h: \\N \\to C$ with $\\map h 0 = z$ and $\\map h {n + 1} = \\map s {\\map h n}$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "a natural number n": "its own iterator, the map (s, z) -> s^n(z)",
+        "the arbitrary set C": "the quantified type variable alpha"
+      },
+      "derived": {
+        "the recursion equations": "beta-reductions"
+      },
+      "reformulation": "Represent each number by the iteration it performs, quantifying over all types to play the role of all sets."
+    },
+    "validity_conditions": [
+      "Impredicative quantification lets a numeral be applied at the type Nat itself, which is used for addition and multiplication.",
+      "Only iteration is directly available; predecessor is definable but inefficient, and there is no internal induction principle."
+    ],
+    "proof_plan": [
+      "Represent $n$ by the iterator $\\bar n$, which sends $s$ and $z$ to $s^n z$ at any type $\\alpha$.",
+      "$\\mathsf {succ} \\, \\bar n \\twoheadrightarrow_\\beta \\Lambda \\alpha. \\lambda f. \\lambda x. f \\paren {f^n x} = \\overline {n + 1}$.",
+      "By $\\beta$-reduction, $\\bar 0 \\, C \\, s \\, z \\twoheadrightarrow_\\beta z$ and $\\paren {\\mathsf {succ} \\, \\bar n} \\, C \\, s \\, z \\twoheadrightarrow_\\beta s \\paren {\\bar n \\, C \\, s \\, z}$, which are the equations of the source result.",
+      "Instantiating at $\\alpha = \\mathsf {Nat}$ gives $\\mathsf {plus} \\, m \\, n = m \\, \\mathsf {Nat} \\, \\mathsf {succ} \\, n$ and $\\mathsf {mult} \\, m \\, n = m \\, \\mathsf {Nat} \\, \\paren {\\mathsf {plus} \\, n} \\, \\bar 0$.\nThese are [[Definition:Church Numeral|Church numerals]].\n{{qed}}"
+    ]
+  }
+}

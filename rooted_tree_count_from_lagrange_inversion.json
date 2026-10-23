@@ -1,0 +1,37 @@
+{
+  "id": "rooted_tree_count_from_lagrange_inversion",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "The number of [[Definition:Rooted Tree|rooted]] [[Definition:Labeled Tree|labeled trees]] on $n$ vertices is $n^{n - 1}$.\nHence the number of labeled trees is $n^{n - 2}$."
+  },
+  "B_source": {
+    "statement": "Let $\\Phi$ be a [[Definition:Formal Power Series|formal power series]] with $\\map \\Phi 0 \\ne 0$, and let $T$ be the unique power series with $T = x \\map \\Phi T$ and zero constant term.\nThen:\n:$\\sqbrk {x^n} T = \\dfrac 1 n \\sqbrk {u^{n - 1} } \\map \\Phi u^n$\nThis is the [[Lagrange Inversion Theorem]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the series T": "the exponential generating function of rooted labeled trees",
+        "Phi": "the exponential function"
+      },
+      "derived": {
+        "the coefficient extraction": "the count n^(n - 1)"
+      },
+      "reformulation": "Encode the recursive structure of rooted trees as the fixed point equation T = x e^T and solve it by Lagrange inversion."
+    },
+    "validity_conditions": [
+      "A rooted labeled tree is a root together with an unordered set of rooted subtrees, which is what gives exp(T).",
+      "The fixed point equation has a unique formal solution, as each coefficient is determined by lower ones."
+    ],
+    "proof_plan": [
+      "Let $\\map T x = \\displaystyle \\sum_n t_n \\frac {x^n} {n!}$, where $t_n$ counts rooted labeled trees.\nA rooted tree is a root together with a set of rooted subtrees, so $T = x e^T$.",
+      "This is the fixed point equation $T = x \\map \\Phi T$ with $\\Phi = \\exp$, which has a unique formal solution.",
+      "By the source result:\n:$\\sqbrk {x^n} T = \\dfrac 1 n \\sqbrk {u^{n - 1} } e^{n u} = \\dfrac 1 n \\cdot \\dfrac {n^{n - 1} } {\\paren {n - 1}!} = \\dfrac {n^{n - 1} } {n!}$",
+      "Hence $t_n = n^{n - 1}$.\nForgetting the root, which can be any of the $n$ vertices, gives [[Cayley's Formula]] $n^{n - 2}$.\n{{qed}}"
+    ]
+  }
+}

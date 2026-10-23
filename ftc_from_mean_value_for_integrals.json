@@ -1,0 +1,37 @@
+{
+  "id": "ftc_from_mean_value_for_integrals",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Continuous Real Function|continuous]] on $\\closedint a b$ and let:\n:$\\displaystyle \\map F x = \\int_a^x \\map f t \\rd t$\nThen $F$ is [[Definition:Differentiable Real Function|differentiable]] on $\\openint a b$ with $\\map {F'} x = \\map f x$."
+  },
+  "B_source": {
+    "statement": "Let $f$ be continuous on $\\closedint c d$.\nThen there exists $\\xi \\in \\closedint c d$ such that:\n:$\\displaystyle \\int_c^d \\map f t \\rd t = \\map f \\xi \\paren {d - c}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the interval [c, d]": "the small interval between x and x + h",
+        "the mean value f(xi)": "the difference quotient of F"
+      },
+      "derived": {
+        "the limit of f(xi_h)": "the derivative F'(x)"
+      },
+      "reformulation": "Express the difference quotient of the integral as a value of f at an intermediate point."
+    },
+    "validity_conditions": [
+      "Continuity of f is needed both for the mean value theorem and to pass to the limit.",
+      "Additivity of the integral over subintervals is used to isolate the increment."
+    ],
+    "proof_plan": [
+      "For $x \\in \\openint a b$ and small $h \\ne 0$, by additivity of the integral:\n:$\\displaystyle \\map F {x + h} - \\map F x = \\int_x^{x + h} \\map f t \\rd t$",
+      "By the [[Mean Value Theorem for Integrals]], there is $\\xi_h$ between $x$ and $x + h$ with:\n:$\\displaystyle \\int_x^{x + h} \\map f t \\rd t = \\map f {\\xi_h} h$",
+      "Hence:\n:$\\dfrac {\\map F {x + h} - \\map F x} h = \\map f {\\xi_h}$",
+      "As $h \\to 0$, $\\xi_h \\to x$, and by continuity $\\map f {\\xi_h} \\to \\map f x$.\nHence $\\map {F'} x = \\map f x$, which is the [[Fundamental Theorem of Calculus/First Part|first part of the Fundamental Theorem of Calculus]].\n{{qed}}"
+    ]
+  }
+}

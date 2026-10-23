@@ -1,0 +1,40 @@
+{
+  "id": "bellman_optimality_from_contraction",
+  "field": [
+    "algorithms",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {S, A, P, r, \\gamma}$ be a [[Definition:Markov Decision Process|Markov decision process]] with [[Definition:Finite Set|finite]] state space and discount $\\gamma \\in \\hointr 0 1$.\nThen the [[Definition:Optimal Value Function|optimal value function]] $V^*$ is the [[Definition:Unique|unique]] solution of:\n:$\\displaystyle \\map {V^*} s = \\max_{a \\mathop \\in A} \\paren {\\map r {s, a} + \\gamma \\sum_{s' \\mathop \\in S} \\map P {s' \\mid s, a} \\map {V^*} {s'} }$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]].\nLet $T: X \\to X$ satisfy $\\map d {T x, T y} \\le q \\, \\map d {x, y}$ for some $q < 1$.\nThen $T$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]], and $T^n x \\to x^*$ for all $x \\in X$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the complete metric space": "the space of bounded value functions with the supremum norm",
+        "the contraction T": "the Bellman optimality operator",
+        "the contraction constant q": "the discount factor gamma"
+      },
+      "derived": {
+        "the iteration x_{n+1} = T x_n": "the value iteration algorithm"
+      }
+    },
+    "validity_conditions": [
+      "the discount factor must be strictly less than one for the Bellman operator to contract",
+      "rewards must be bounded so the space of value functions is complete under the supremum norm",
+      "the maximum over actions must be attained, which holds for finite action sets"
+    ],
+    "proof_plan": [
+      "Let $\\map B S$ be the space of [[Definition:Bounded Mapping|bounded]] real functions on $S$ with the [[Definition:Supremum Norm|supremum norm]].\n$\\map B S$ is [[Definition:Complete Metric Space|complete]].",
+      "Define the [[Definition:Bellman Operator|Bellman optimality operator]]:\n:$\\displaystyle \\map {\\paren {\\TT V} } s = \\max_{a \\mathop \\in A} \\paren {\\map r {s, a} + \\gamma \\sum_{s'} \\map P {s' \\mid s, a} \\map V {s'} }$",
+      "Using $\\size {\\max_a f_a - \\max_a g_a} \\le \\max_a \\size {f_a - g_a}$:\n{{begin-eqn}}\n{{eqn | l = \\norm {\\TT V - \\TT W}_\\infty\n| o = \\le\n| r = \\gamma \\max_{s, a} \\sum_{s'} \\map P {s' \\mid s, a} \\size {\\map V {s'} - \\map W {s'} }\n}}\n{{eqn | o = \\le\n| r = \\gamma \\norm {V - W}_\\infty\n}}\n{{end-eqn}}\nSo $\\TT$ is a [[Definition:Contraction Mapping|contraction]] with modulus $\\gamma$.",
+      "By the [[Banach Fixed-Point Theorem]], $\\TT$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]] $V^*$.",
+      "Iterating $\\TT$ is [[Definition:Value Iteration|value iteration]], and:\n:$\\norm {\\TT^n V - V^*}_\\infty \\le \\gamma^n \\norm {V - V^*}_\\infty$\n{{qed}}"
+    ]
+  }
+}

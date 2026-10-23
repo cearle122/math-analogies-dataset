@@ -1,0 +1,43 @@
+{
+  "id": "kleene_fixpoint_from_tarski",
+  "field": [
+    "logic",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {D, \\sqsubseteq}$ be a [[Definition:Complete Partial Order|complete partial order]] with [[Definition:Bottom (Lattice Theory)|bottom]] $\\bot$.\nLet $F: D \\to D$ be [[Definition:Scott-Continuous Mapping|Scott-continuous]].\nThen $F$ has a [[Definition:Least Fixed Point|least fixed point]]:\n:$\\displaystyle \\map {\\operatorname {lfp} } F = \\bigsqcup_{n \\mathop \\ge 0} \\map {F^n} \\bot$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {L, \\preceq}$ be a [[Definition:Complete Lattice|complete lattice]] and $F: L \\to L$ [[Definition:Increasing Mapping|increasing]].\nThen:\n:$\\map {\\operatorname {lfp} } F = \\inf \\set {x \\in L: \\map F x \\preceq x}$\nexists."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "fixed_point_encoding"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "complete lattice": "a pointed directed-complete partial order (cpo)",
+        "monotone map F": "a Scott-continuous (hence monotone) F",
+        "least fixed point as inf of pre-fixed points": "least fixed point as sup of the iterate chain"
+      },
+      "derived": {
+        "existence of lfp (Tarski)": "an explicit construction of lfp",
+        "abstract lfp": "sup_n F^n(bottom)"
+      },
+      "reformulation": "Add the continuity hypothesis to Tarski's monotonicity, which upgrades the abstract existence to the concrete iterative construction."
+    },
+    "validity_conditions": [
+      "F monotone gives an increasing chain bottom <= F(bottom) <= F^2(bottom) <= ...; the cpo guarantees its sup exists.",
+      "Scott-continuity lets F commute with this sup, so the sup is a fixed point, and monotonicity makes it the least one.",
+      "This strengthens Tarski (which needs only monotonicity for existence) with continuity to get the formula - a specialization by added hypothesis."
+    ],
+    "proof_plan": [
+      "By the [[Knaster-Tarski Theorem]], a least fixed point exists when $F$ is monotone on a complete lattice.",
+      "Assume in addition that $F$ is [[Definition:Scott-Continuous Mapping|Scott-continuous]], so $F$ preserves suprema of [[Definition:Chain (Set Theory)|chains]].",
+      "As $\\bot \\sqsubseteq \\map F \\bot$ and $F$ is monotone, by [[Principle of Mathematical Induction|induction]]:\n:$\\bot \\sqsubseteq \\map F \\bot \\sqsubseteq \\map {F^2} \\bot \\sqsubseteq \\cdots$\nThis chain has a supremum $x^* = \\displaystyle \\bigsqcup_n \\map {F^n} \\bot$ in $D$.",
+      "By continuity:\n:$\\displaystyle \\map F {x^*} = \\bigsqcup_n \\map {F^{n + 1} } \\bot = x^*$\nIf $\\map F y = y$, then $\\map {F^n} \\bot \\sqsubseteq y$ for all $n$ by induction, so $x^* \\sqsubseteq y$.\nHence $x^* = \\map {\\operatorname {lfp} } F$, which is the [[Kleene Fixed-Point Theorem]].\n{{qed}}"
+    ]
+  }
+}

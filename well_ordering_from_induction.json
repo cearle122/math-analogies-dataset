@@ -1,0 +1,42 @@
+{
+  "id": "well_ordering_from_induction",
+  "field": [
+    "logic",
+    "set_theory",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Every [[Definition:Non-Empty Set|non-empty]] subset of $\\N$ has a [[Definition:Smallest Element|smallest element]]."
+  },
+  "B_source": {
+    "statement": "Let $\\map P n$ be a [[Definition:Propositional Function|propositional function]] on $\\N$.\nIf $\\map P 0$ holds and $\\forall n: \\map P n \\implies \\map P {n + 1}$, then $\\map P n$ holds for all $n \\in \\N$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [
+      "duality"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the subset S with no least element": "the predicate P(n) = 'no element of S is <= n'"
+      },
+      "derived": {
+        "S has no minimum (assumed for contradiction)": "P(n) holds for all n by induction",
+        "P(n) for all n": "S is empty, contradicting nonemptiness"
+      },
+      "reformulation": "Recast 'S has a least element' as its contrapositive and prove the complement predicate by induction (proof by contradiction)."
+    },
+    "validity_conditions": [
+      "Define P(n): no element of S is <= n. P(0) holds if 0 is not in S (else 0 is the least element); the inductive step assumes no element <= n and, if n+1 were not the least, extends to n+1.",
+      "Induction then forces P(n) for all n, i.e. S has no elements, contradicting nonemptiness.",
+      "The argument is classical (uses contradiction), pairing induction with well-ordering as logically equivalent over the naturals."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} that $S \\subseteq \\N$ is non-empty with no least element.",
+      "Let $\\map P n$ be the statement: no element of $S$ is $\\le n$.",
+      "If $0 \\in S$ it would be least, so $\\map P 0$ holds.\nIf $\\map P n$ holds and $n + 1 \\in S$, then $n + 1$ would be least, so $\\map P {n + 1}$ holds.",
+      "By the [[Principle of Mathematical Induction]], $\\map P n$ holds for all $n$, so $S = \\O$, a contradiction.\nHence $S$ has a least element, which is the [[Well-Ordering Principle]].\n{{qed}}"
+    ]
+  }
+}

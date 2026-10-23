@@ -1,0 +1,41 @@
+{
+  "id": "tangent_space_from_curve_equivalence",
+  "field": [
+    "geometry",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $M$ be a [[Definition:Smooth Manifold|smooth manifold]] and $p \\in M$.\nThen the [[Definition:Tangent Space|tangent space]] at $p$ is:\n:$T_p M = \\set {\\gamma: \\openint {-\\epsilon} \\epsilon \\to M \\text { smooth}, \\map \\gamma 0 = p} / \\sim$\nwhere $\\gamma_1 \\sim \\gamma_2$ {{iff}} they agree to first order at $0$."
+  },
+  "B_source": {
+    "statement": "Let $f: A \\to B$ be a [[Definition:Mapping|mapping]].\nThen:\n:$A / \\map \\ker f \\cong \\Img f$\nwhere $\\map \\ker f$ identifies elements with the same image."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the map whose kernel is collapsed": "the map sending a curve to its derivative in a chart",
+        "the kernel": "curves whose chart derivative vanishes at p",
+        "the quotient": "the tangent space at p"
+      },
+      "derived": {
+        "the image of the map": "the vector space R^n in the chosen chart"
+      },
+      "reformulation": "Curves do not form a group, so the kernel-quotient pattern must be reformulated at the level of equivalence relations induced by a map rather than of normal subgroups."
+    },
+    "validity_conditions": [
+      "the equivalence must be independent of the chart, which follows from the chain rule and invertibility of transition maps",
+      "the curves must be differentiable at the point for the derivative to be defined",
+      "the resulting quotient is a set-level quotient that inherits a vector space structure only via the chart identification"
+    ],
+    "proof_plan": [
+      "Fix a [[Definition:Chart|chart]] $\\phi$ around $p$ and map each curve $\\gamma$ through $p$ to:\n:$\\map {\\paren {\\phi \\circ \\gamma}'} 0 \\in \\R^n$",
+      "Declare $\\gamma_1 \\sim \\gamma_2$ {{iff}} $\\map {\\paren {\\phi \\circ \\gamma_1}'} 0 = \\map {\\paren {\\phi \\circ \\gamma_2}'} 0$.",
+      "For another chart $\\psi$, by the [[Chain Rule for Real-Valued Functions|chain rule]]:\n:$\\map {\\paren {\\psi \\circ \\gamma}'} 0 = \\map D {\\psi \\circ \\phi^{-1} } \\map {\\paren {\\phi \\circ \\gamma}'} 0$\nAs the transition [[Definition:Jacobian Matrix|Jacobian]] is invertible, $\\sim$ does not depend on the chart.",
+      "By the isomorphism-theorem pattern, the quotient by $\\sim$ is in bijection with the image, which is all of $\\R^n$ since $t \\mapsto \\map {\\phi^{-1} } {\\map \\phi p + t v}$ has derivative $v$.",
+      "Transport the [[Definition:Vector Space|vector space]] structure of $\\R^n$ to $T_p M$.\nBy the chart-independence above, this structure does not depend on $\\phi$.\n{{qed}}"
+    ]
+  }
+}

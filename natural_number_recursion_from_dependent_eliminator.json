@@ -1,0 +1,36 @@
+{
+  "id": "natural_number_recursion_from_dependent_eliminator",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "In [[Definition:Martin-Löf Type Theory|dependent type theory]], for every type $C$ there is:\n:$\\mathsf {rec}_\\N : C \\to \\paren {\\N \\to C \\to C} \\to \\N \\to C$\nwith $\\map {\\mathsf {rec}_\\N} {c_0, c_s, 0} \\equiv c_0$ and $\\map {\\mathsf {rec}_\\N} {c_0, c_s, \\map {\\mathsf {succ} } n} \\equiv \\map {c_s} {n, \\map {\\mathsf {rec}_\\N} {c_0, c_s, n} }$."
+  },
+  "B_source": {
+    "statement": "For every family $C : \\N \\to \\mathcal U$ there is:\n:$\\mathsf {ind}_\\N : \\map C 0 \\to \\paren {\\prod_{n : \\N} \\map C n \\to \\map C {\\map {\\mathsf {succ} } n} } \\to \\prod_{n : \\N} \\map C n$\nwith the analogous computation rules."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the dependent family C(n)": "a constant family with value C"
+      },
+      "derived": {
+        "the dependent eliminator": "the ordinary recursor"
+      },
+      "reformulation": "Recursion is induction into a constant family."
+    },
+    "validity_conditions": [
+      "For a constant family the dependent product over N is just the function type N -> C.",
+      "Logically, primitive recursion is the non-dependent shadow of mathematical induction."
+    ],
+    "proof_plan": [
+      "Take the constant family $\\map C n :\\equiv C$.",
+      "Then $\\map C 0 \\equiv C$ and $\\prod_{n : \\N} \\map C n \\to \\map C {\\map {\\mathsf {succ} } n} \\equiv \\N \\to C \\to C$, while $\\prod_{n : \\N} \\map C n \\equiv \\N \\to C$.",
+      "Hence $\\mathsf {ind}_\\N$ at this family has the type of $\\mathsf {rec}_\\N$, and its computation rules specialize to those stated.",
+      "For example, addition is $\\map {\\mathsf {add} } m = \\map {\\mathsf {rec}_\\N} {m, \\lambda n. \\lambda r. \\map {\\mathsf {succ} } r}$.\n{{qed}}"
+    ]
+  }
+}

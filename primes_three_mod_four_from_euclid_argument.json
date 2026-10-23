@@ -1,0 +1,37 @@
+{
+  "id": "primes_three_mod_four_from_euclid_argument",
+  "field": [
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "There are infinitely many [[Definition:Prime Number|primes]] $p$ with $p \\equiv 3 \\pmod 4$."
+  },
+  "B_source": {
+    "statement": "Given primes $p_1, \\ldots, p_k$, the number $N = p_1 p_2 \\cdots p_k + 1$ has a prime factor not among the $p_i$.\nHence there are infinitely many primes."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the auxiliary number N": "4 p_1 ... p_k - 1",
+        "an arbitrary new prime": "a new prime congruent to 3 mod 4"
+      },
+      "derived": {
+        "the residue of N": "a forced prime factor in the target class"
+      },
+      "reformulation": "Keep Euclid's construction, but choose N so that its residue class forces a prime factor in the required class."
+    },
+    "validity_conditions": [
+      "A product of primes congruent to 1 mod 4 is congruent to 1 mod 4, which is what forces a factor congruent to 3.",
+      "The same plan fails for primes congruent to 1 mod 4, which need quadratic residues instead."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $p_1, \\ldots, p_k$ are all the primes congruent to $3$ modulo $4$.\nLet $N = 4 p_1 p_2 \\cdots p_k - 1$.",
+      "$N$ is odd and $N \\equiv 3 \\pmod 4$.\nA product of primes all congruent to $1$ modulo $4$ is congruent to $1$ modulo $4$, so $N$ has a prime factor $q \\equiv 3 \\pmod 4$.",
+      "If $q = p_i$ then $p_i \\divides 4 p_1 \\cdots p_k - N = 1$, which is impossible.",
+      "Hence $q$ is a prime congruent to $3$ modulo $4$ not in the list, a contradiction.\n{{qed}}"
+    ]
+  }
+}

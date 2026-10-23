@@ -1,0 +1,38 @@
+{
+  "id": "determinant_from_multilinear",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $K$ be a [[Definition:Field (Abstract Algebra)|field]].\nThen the [[Definition:Determinant of Matrix|determinant]] $\\det: \\map {\\MM_K} n \\to K$ is the [[Definition:Unique|unique]] [[Definition:Alternating Mapping|alternating]] [[Definition:Multilinear Mapping|multilinear]] function of the [[Definition:Column of Matrix|columns]] such that:\n:$\\map \\det {\\mathbf I_n} = 1$"
+  },
+  "B_source": {
+    "statement": "Let $V$ be a [[Definition:Vector Space|vector space]] of [[Definition:Dimension of Vector Space|dimension]] $n$ over $K$.\nThen the space of [[Definition:Alternating Mapping|alternating]] $n$-[[Definition:Multilinear Mapping|linear forms]] on $V$ has dimension $1$:\n:$\\map \\dim {\\bigwedge^n V^*} = 1$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "abstract n-dimensional space": "R^n (or the column space)",
+        "an alternating n-linear form": "the map (columns) |-> scalar",
+        "normalization on a basis": "value 1 on the identity matrix"
+      },
+      "derived": {
+        "the 1-dimensional space of top forms": "existence and uniqueness of det",
+        "the chosen normalized form": "the determinant"
+      }
+    },
+    "validity_conditions": [
+      "The space of alternating n-linear forms on an n-dimensional space is 1-dimensional, so fixing the value on one basis (det(I)=1) pins down a unique form.",
+      "Instantiating that unique normalized form on matrix columns yields exactly the determinant - a direct specialization, no new argument."
+    ],
+    "proof_plan": [
+      "From the source result, the alternating $n$-linear forms on an $n$-dimensional space form a space of dimension $1$.",
+      "Take $V = K^n$, regarding an $n \\times n$ matrix as the $n$-tuple of its [[Definition:Column of Matrix|columns]].",
+      "Any non-zero alternating form $\\omega$ has $\\map \\omega {e_1, \\ldots, e_n} \\ne 0$.\nRequiring the value $1$ on $\\mathbf I_n$ selects a [[Definition:Unique|unique]] form.",
+      "The [[Definition:Leibniz Formula for Determinants|Leibniz formula]] is alternating, multilinear and takes value $1$ at $\\mathbf I_n$.\nHence this form is the [[Definition:Determinant of Matrix|determinant]].\n{{qed}}"
+    ]
+  }
+}

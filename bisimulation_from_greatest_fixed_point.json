@@ -1,0 +1,43 @@
+{
+  "id": "bisimulation_from_greatest_fixed_point",
+  "field": [
+    "logic",
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {S, \\Lambda, \\to}$ be a [[Definition:Labelled Transition System|labelled transition system]].\nThen [[Definition:Bisimilarity|bisimilarity]] $\\sim$ is the [[Definition:Greatest Element|greatest]] relation $R$ on $S$ such that:\n:$R \\subseteq \\map F R$\nwhere $\\map F R$ is the set of pairs whose transitions can be matched with results related by $R$."
+  },
+  "B_source": {
+    "statement": "Let $\\struct {L, \\preceq}$ be a [[Definition:Complete Lattice|complete lattice]].\nLet $F: L \\to L$ be an [[Definition:Increasing Mapping|increasing mapping]].\nThen $F$ has a [[Definition:Greatest Fixed Point|greatest fixed point]], given by:\n:$\\map {\\operatorname {gfp} } F = \\sup \\set {x \\in L: x \\preceq \\map F x}$"
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [
+      "duality"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the complete lattice": "the powerset of pairs of states ordered by inclusion",
+        "the monotone operator F": "the transition-matching operator on relations",
+        "the greatest fixed point": "the bisimilarity relation"
+      },
+      "derived": {
+        "the post-fixed points of F": "the bisimulations"
+      },
+      "reformulation": "The definition of bisimilarity as 'the largest such relation' must be reformulated as a fixed-point equation before the lattice theorem gives its existence."
+    },
+    "validity_conditions": [
+      "F must be monotone with respect to inclusion, which holds because the matching condition is existentially quantified positively",
+      "the powerset of pairs must be a complete lattice, which it is under arbitrary union",
+      "the greatest rather than least fixed point is required, since the least one is empty"
+    ],
+    "proof_plan": [
+      "Order the relations on $S$ by [[Definition:Subset|inclusion]].\nThe [[Definition:Power Set|power set]] $\\powerset {S \\times S}$ is a [[Definition:Complete Lattice|complete lattice]].",
+      "Define $\\tuple {p, q} \\in \\map F R$ {{iff}}:\n:$\\forall p \\xrightarrow a p': \\exists q \\xrightarrow a q': \\tuple {p', q'} \\in R$\nand symmetrically for the transitions of $q$.",
+      "If $R \\subseteq R'$ then $\\map F R \\subseteq \\map F {R'}$, so $F$ is [[Definition:Increasing Mapping|increasing]].",
+      "By the [[Knaster-Tarski Theorem]], $F$ has a [[Definition:Greatest Fixed Point|greatest fixed point]]:\n:$\\displaystyle \\nu F = \\bigcup \\set {R: R \\subseteq \\map F R}$",
+      "The [[Definition:Post-Fixed Point|post-fixed points]] $R \\subseteq \\map F R$ are exactly the [[Definition:Bisimulation|bisimulations]].\nHence $\\nu F = \\mathord \\sim$.\nIn particular, to show $p \\sim q$ it suffices to exhibit any bisimulation containing $\\tuple {p, q}$, which is the [[Definition:Coinduction|coinduction]] principle.\n{{qed}}"
+    ]
+  }
+}

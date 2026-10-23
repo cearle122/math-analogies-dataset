@@ -1,0 +1,38 @@
+{
+  "id": "torus_from_lattice_quotient",
+  "field": [
+    "topology",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "The quotient group $\\R^2 / \\Z^2$ is [[Definition:Homeomorphic|homeomorphic]] to the torus $\\Bbb S^1 \\times \\Bbb S^1$, and the quotient map $\\R^2 \\to \\R^2 / \\Z^2$ is a [[Definition:Covering Map|covering map]]."
+  },
+  "B_source": {
+    "statement": "Let $\\phi: G \\to H$ be a continuous, [[Definition:Open Mapping|open]], [[Definition:Surjection|surjective]] [[Definition:Group Homomorphism|homomorphism]] of [[Definition:Topological Group|topological groups]].\nThen $G / \\map \\ker \\phi \\cong H$ as topological groups."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the homomorphism phi": "(x, y) -> (e^(2 pi i x), e^(2 pi i y))",
+        "the kernel": "the integer lattice"
+      },
+      "derived": {
+        "the topological isomorphism": "the torus as a quotient of the plane"
+      },
+      "reformulation": "Realize the torus as the image of the exponential homomorphism and identify its kernel."
+    },
+    "validity_conditions": [
+      "phi is open because it restricts to a homeomorphism on small open squares.",
+      "Z^2 acts freely and properly discontinuously, which makes the quotient map a covering."
+    ],
+    "proof_plan": [
+      "Let $\\map \\phi {x, y} = \\tuple {e^{2 \\pi i x}, e^{2 \\pi i y} }$.\n$\\phi$ is a continuous surjective homomorphism $\\struct {\\R^2, +} \\to \\Bbb S^1 \\times \\Bbb S^1$.",
+      "$\\map \\phi {x, y} = \\tuple {1, 1}$ {{iff}} $x, y \\in \\Z$, so $\\map \\ker \\phi = \\Z^2$.",
+      "On each open square of side less than $1$, $\\phi$ is a homeomorphism onto an open set, so $\\phi$ is open.\nBy the source result, $\\R^2 / \\Z^2 \\cong \\Bbb S^1 \\times \\Bbb S^1$.",
+      "Translations by $\\Z^2$ act freely and properly discontinuously, so the quotient map is a covering, and $\\map {\\pi_1} {\\Bbb S^1 \\times \\Bbb S^1} \\cong \\Z^2$ is its deck group.\n{{qed}}"
+    ]
+  }
+}

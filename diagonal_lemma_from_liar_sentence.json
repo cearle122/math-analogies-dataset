@@ -1,0 +1,42 @@
+{
+  "id": "diagonal_lemma_from_liar_sentence",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $T$ be a [[Definition:Theory (Logic)|theory]] extending [[Definition:Robinson Arithmetic|Robinson arithmetic]].\nLet $\\map B x$ be a [[Definition:Well-Formed Formula|formula]] with one free variable.\nThen there exists a [[Definition:Sentence|sentence]] $G$ such that:\n:$T \\vdash G \\leftrightarrow \\map B {\\ulcorner G \\urcorner}$\nwhere $\\ulcorner G \\urcorner$ is the [[Definition:Gödel Number|Gödel number]] of $G$."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Liar Paradox|liar sentence]] $L$ is a [[Definition:Sentence|sentence]] built by self-reference which asserts its own falsity:\n:$L \\leftrightarrow \\neg \\map {\\operatorname {True} } {\\ulcorner L \\urcorner}$"
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [
+      "fixed_point_encoding"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the informal self-reference of the liar": "substitution of a term's own code into a formula",
+        "the predicate 'is false'": "an arbitrary formula B(x)",
+        "the paradoxical sentence": "the fixed-point sentence G"
+      },
+      "derived": {
+        "the sentence refers to itself": "G is provably equivalent to B applied to the code of G",
+        "the informal contradiction": "a theorem rather than a paradox, because truth is replaced by an arbitrary formula"
+      },
+      "reformulation": "Replace informal self-reference by substitution of codes, and replace the truth predicate by an arbitrary formula."
+    },
+    "validity_conditions": [
+      "Self-reference is made rigorous by the substitution function, which is representable in the theory; this replaces the informal 'this sentence'.",
+      "Because B is an arbitrary formula rather than a truth predicate, the construction produces a theorem instead of a contradiction.",
+      "The paradox reappears only if B is taken to be a truth predicate defined inside the theory, which is precisely what Tarski's theorem rules out."
+    ],
+    "proof_plan": [
+      "Let $\\operatorname {sub}$ be the function sending $\\tuple {\\ulcorner \\phi \\urcorner, n}$ to $\\ulcorner \\map \\phi {\\bar n} \\urcorner$.\n$\\operatorname {sub}$ is [[Definition:Primitive Recursive Function|primitive recursive]], hence [[Definition:Representable Function|representable]] in $T$ by a formula $\\map S {x, y, z}$.",
+      "Given $\\map B x$, let:\n:$\\map D x = \\exists z \\paren {\\map S {x, x, z} \\land \\map B z}$\nwhich substitutes a code into itself before applying $B$.",
+      "Let $G = \\map D {\\overline {\\ulcorner D \\urcorner} }$.\nThen $\\map {\\operatorname {sub} } {\\ulcorner D \\urcorner, \\ulcorner D \\urcorner} = \\ulcorner G \\urcorner$.",
+      "By representability, $T \\vdash \\forall z \\paren {\\map S {\\overline {\\ulcorner D \\urcorner}, \\overline {\\ulcorner D \\urcorner}, z} \\leftrightarrow z = \\overline {\\ulcorner G \\urcorner} }$.\nHence:\n:$T \\vdash G \\leftrightarrow \\map B {\\ulcorner G \\urcorner}$\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "differential_forms_on_manifold_from_euclidean_forms",
+  "field": [
+    "geometry",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $M$ be a [[Definition:Smooth Manifold|smooth manifold]].\nThen there are well-defined operations $\\d: \\map {\\Omega^k} M \\to \\map {\\Omega^{k + 1} } M$ and $\\wedge$ on [[Definition:Differential Form|differential forms]] on $M$, with:\n:$\\d \\circ \\d = 0$\nand if $M$ is [[Definition:Oriented Manifold|oriented]] and [[Definition:Compact Manifold|compact]] with boundary:\n:$\\displaystyle \\int_M \\d \\omega = \\int_{\\partial M} \\omega$"
+  },
+  "B_source": {
+    "statement": "Let $U \\subseteq \\R^n$ be [[Definition:Open Set (Real Analysis)|open]].\nA [[Definition:Differential Form|differential $k$-form]] on $U$ is $\\omega = \\displaystyle \\sum_I f_I \\rd x_I$, with [[Definition:Exterior Derivative|exterior derivative]]:\n:$\\displaystyle \\d \\omega = \\sum_I \\sum_{j \\mathop = 1}^n \\frac {\\partial f_I} {\\partial x_j} \\rd x_j \\wedge \\d x_I$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the open subset of Euclidean space": "a chart domain on the manifold",
+        "the coordinate definition of the exterior derivative": "the same definition, applied within each chart",
+        "the identity map between overlapping domains": "the transition map between overlapping charts"
+      },
+      "derived": {
+        "the exterior derivative": "well defined globally, because it commutes with pullback along transitions",
+        "the wedge product": "likewise globally defined, being pointwise and coordinate independent"
+      },
+      "reformulation": "Apply the Euclidean definitions chartwise and check they agree on overlaps, so they glue to a global object."
+    },
+    "validity_conditions": [
+      "The exterior derivative commutes with pullback along smooth maps, which is exactly what makes the coordinate definitions agree on chart overlaps.",
+      "Agreement on overlaps is what upgrades a family of local definitions into a single global one; without it the construction would depend on the atlas.",
+      "Orientability is required for integration of top forms and hence for the global Stokes theorem, even though the exterior derivative itself needs no orientation."
+    ],
+    "proof_plan": [
+      "On each [[Definition:Chart|chart]] $\\tuple {U, \\phi}$ of $M$, define forms, $\\wedge$ and $\\d$ by the Euclidean formulas on $\\map \\phi U$.",
+      "Let $\\tau$ be a [[Definition:Transition Map|transition map]] between overlapping charts.\nThe Euclidean $\\d$ and $\\wedge$ commute with [[Definition:Pullback of Differential Form|pullback]]:\n:$\\map {\\tau^*} {\\d \\omega} = \\d \\paren {\\tau^* \\omega}$\nso the local definitions agree on overlaps.",
+      "Glue the local definitions into global operations on $M$.\nThe identity $\\d \\circ \\d = 0$ holds locally, by [[Symmetry of Second Derivatives|symmetry of second derivatives]], hence globally.",
+      "With an [[Definition:Oriented Manifold|orientation]], define $\\displaystyle \\int_M \\omega$ using a [[Definition:Partition of Unity|partition of unity]] subordinate to an oriented atlas.\nApplying the Euclidean [[Stokes' Theorem]] chart by chart and summing gives the global Stokes' theorem.\n{{qed}}"
+    ]
+  }
+}

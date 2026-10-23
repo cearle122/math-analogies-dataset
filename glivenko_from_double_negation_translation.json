@@ -1,0 +1,37 @@
+{
+  "id": "glivenko_from_double_negation_translation",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $\\phi$ be a propositional formula.\nThen $\\phi$ is provable in [[Definition:Classical Propositional Logic|classical]] propositional logic {{iff}} $\\neg \\neg \\phi$ is provable in [[Definition:Intuitionistic Propositional Logic|intuitionistic]] propositional logic."
+  },
+  "B_source": {
+    "statement": "In intuitionistic propositional logic:\n:$\\vdash \\neg \\neg \\paren {\\phi \\to \\psi} \\leftrightarrow \\paren {\\neg \\neg \\phi \\to \\neg \\neg \\psi}, \\quad \\vdash \\phi \\to \\neg \\neg \\phi, \\quad \\vdash \\neg \\neg \\paren {\\phi \\lor \\neg \\phi}$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "classical theorems": "their double negations",
+        "classical modus ponens": "modus ponens under double negation"
+      },
+      "derived": {
+        "the translated derivation": "an intuitionistic proof of the double negation"
+      },
+      "reformulation": "Transport each step of a classical derivation through the double negation, which commutes with implication intuitionistically."
+    },
+    "validity_conditions": [
+      "The argument is propositional: in predicate logic double negation does not commute with the universal quantifier, and Glivenko's theorem fails.",
+      "The converse uses that classically the double negation of phi implies phi."
+    ],
+    "proof_plan": [
+      "Take a classical Hilbert derivation, whose axioms are the intuitionistic ones together with $\\phi \\lor \\neg \\phi$, and show by induction that each line has intuitionistically provable double negation.",
+      "For an intuitionistic axiom $\\chi$, $\\vdash \\chi \\to \\neg \\neg \\chi$ gives $\\vdash \\neg \\neg \\chi$.\nFor excluded middle, $\\vdash \\neg \\neg \\paren {\\phi \\lor \\neg \\phi}$ by the source result.",
+      "For modus ponens from $\\chi$ and $\\chi \\to \\theta$, the induction hypothesis gives $\\neg \\neg \\chi$ and $\\neg \\neg \\paren {\\chi \\to \\theta}$, hence $\\neg \\neg \\chi \\to \\neg \\neg \\theta$ by the source result, and so $\\neg \\neg \\theta$.",
+      "Conversely, an intuitionistic proof of $\\neg \\neg \\phi$ is classical, and classically $\\neg \\neg \\phi \\to \\phi$.\nThis is [[Glivenko's Theorem]].\n{{qed}}"
+    ]
+  }
+}

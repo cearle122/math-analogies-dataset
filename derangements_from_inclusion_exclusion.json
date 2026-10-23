@@ -1,0 +1,36 @@
+{
+  "id": "derangements_from_inclusion_exclusion",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $D_n$ be the number of [[Definition:Derangement|derangements]] of $\\set {1, \\ldots, n}$.\nThen:\n:$\\displaystyle D_n = n! \\sum_{k \\mathop = 0}^n \\frac {\\paren {-1}^k} {k!}$\nand $\\dfrac {D_n} {n!} \\to \\dfrac 1 e$."
+  },
+  "B_source": {
+    "statement": "Let $A_1, \\ldots, A_n$ be finite sets.\nThen:\n:$\\displaystyle \\card {\\bigcup_{i \\mathop = 1}^n A_i} = \\sum_{\\O \\mathop \\ne S \\mathop \\subseteq \\set {1, \\ldots, n} } \\paren {-1}^{\\card S + 1} \\card {\\bigcap_{i \\mathop \\in S} A_i}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the sets A_i": "the permutations fixing i"
+      },
+      "derived": {
+        "the complement of the union": "the derangements"
+      },
+      "reformulation": "Count permutations with at least one fixed point by inclusion-exclusion and subtract from n!."
+    },
+    "validity_conditions": [
+      "The intersection over S depends only on the size of S, which collapses the sum.",
+      "The limit is the tail of the exponential series at -1."
+    ],
+    "proof_plan": [
+      "Let $A_i$ be the set of permutations fixing $i$.\nThen $D_n = n! - \\card {\\bigcup_i A_i}$.",
+      "For $\\card S = k$, the permutations fixing every element of $S$ number $\\paren {n - k}!$.",
+      "By the source result:\n:$\\displaystyle \\card {\\bigcup_i A_i} = \\sum_{k \\mathop = 1}^n \\paren {-1}^{k + 1} \\binom n k \\paren {n - k}! = \\sum_{k \\mathop = 1}^n \\paren {-1}^{k + 1} \\frac {n!} {k!}$",
+      "Hence $D_n = n! \\displaystyle \\sum_{k \\mathop = 0}^n \\frac {\\paren {-1}^k} {k!}$, and $\\dfrac {D_n} {n!}$ is a partial sum of the series for $e^{-1}$.\n{{qed}}"
+    ]
+  }
+}

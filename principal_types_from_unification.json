@@ -1,0 +1,38 @@
+{
+  "id": "principal_types_from_unification",
+  "field": [
+    "type_theory",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $t$ be a term of the untyped [[Definition:Lambda Calculus|$\\lambda$-calculus]] which is typable in the [[Definition:Simply Typed Lambda Calculus|simply typed $\\lambda$-calculus]] with type variables.\nThen $t$ has a [[Definition:Principal Type|principal type]] $\\sigma$, of which every type of $t$ is a substitution instance, and $\\sigma$ is computable."
+  },
+  "B_source": {
+    "statement": "Let a finite set of equations between first-order terms be solvable.\nThen it has a [[Definition:Most General Unifier|most general unifier]] $\\theta$, computable by [[Robinson's Unification Algorithm]], and every solution factors as $\\psi \\circ \\theta$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "first-order terms": "types built from type variables and arrows",
+        "equations": "typing constraints generated from t"
+      },
+      "derived": {
+        "the most general unifier": "the principal type"
+      },
+      "reformulation": "Reduce type inference to solving the equations that the typing rules impose on fresh type variables."
+    },
+    "validity_conditions": [
+      "Typability of t with type T is equivalent to solvability of the constraints together with tau_t = T.",
+      "The occurs check rules out untypable terms such as self-application."
+    ],
+    "proof_plan": [
+      "Give each variable and subterm of $t$ a fresh type variable.\nFor an application $u \\, v$ add $\\tau_u = \\tau_v \\to \\alpha$ with $\\alpha$ fresh; for an abstraction $\\lambda x. u$ set its type to $\\tau_x \\to \\tau_u$.",
+      "$t$ has type $T$ {{iff}} some substitution solves the constraints and sends $\\tau_t$ to $T$.",
+      "By the source result, the constraints have a most general unifier $\\theta$, and every solution is $\\psi \\circ \\theta$.",
+      "Hence $\\sigma = \\map \\theta {\\tau_t}$ is principal: every type of $t$ is $\\map \\psi \\sigma$.\nFor example $\\lambda x. \\lambda y. x$ has principal type $\\alpha \\to \\beta \\to \\alpha$, and $\\lambda x. x \\, x$ fails the occurs check.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "implicit_function_from_banach",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $F: \\R^n \\times \\R^m \\to \\R^m$ be [[Definition:Continuously Differentiable|continuously differentiable]] with $\\map F {a, b} = 0$ and $\\map {D_y F} {a, b}$ [[Definition:Invertible Matrix|invertible]].\nThen there exist neighborhoods $U \\ni a$, $V \\ni b$ and a [[Definition:Continuously Differentiable|continuously differentiable]] $g: U \\to V$ such that:\n:$\\forall x \\in U: \\map F {x, \\map g x} = 0$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]] and $T: X \\to X$ a [[Definition:Contraction Mapping|contraction]].\nThen $T$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]]."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "complete metric space X": "a closed ball of candidate y-values (continuous functions of x)",
+        "contraction T": "T(y) = y - [D_y F(a,b)]^{-1} F(x,y)"
+      },
+      "derived": {
+        "fixed point y = T(y)": "the solution y(x) with F(x,y(x)) = 0",
+        "contraction constant < 1": "smallness from invertibility and continuity near (a,b)"
+      },
+      "reformulation": "Recast F(x,y)=0 as a fixed-point equation y = T(y) by a Newton-like correction using the inverse y-derivative."
+    },
+    "validity_conditions": [
+      "D_y F(a,b) is invertible, so T(y) = y - [D_y F(a,b)]^{-1} F(x,y) is well-defined and has a fixed point exactly where F(x,y)=0.",
+      "Continuity of DF near (a,b) makes T a contraction on a small closed ball (complete), so Banach applies.",
+      "The unique fixed point depends smoothly on x, giving the implicit function y(x)."
+    ],
+    "proof_plan": [
+      "Let $L = \\map {D_y F} {a, b}$ and define:\n:$\\map {T_x} y = y - L^{-1} \\map F {x, y}$\nThen $\\map {T_x} y = y \\iff \\map F {x, y} = 0$.",
+      "$\\map {D_y T_x} y = I - L^{-1} \\map {D_y F} {x, y}$, which is small near $\\tuple {a, b}$ by [[Definition:Continuous Mapping|continuity]].\nOn a small closed ball $\\overline {\\map {B_r} b}$ and for $x$ near $a$, $T_x$ maps the ball into itself with $\\norm {\\map {D_y T_x} y} \\le \\dfrac 1 2$.\nBy the [[Mean Value Inequality]], $T_x$ is a [[Definition:Contraction Mapping|contraction]].",
+      "The closed ball is [[Definition:Complete Metric Space|complete]].\nBy the [[Banach Fixed-Point Theorem]], $T_x$ has a unique fixed point $\\map g x$ for each $x \\in U$.",
+      "The fixed point depends continuously on $x$, as the contraction constant is uniform.\nDifferentiating $\\map F {x, \\map g x} = 0$ gives:\n:$\\map {D g} x = -\\map {D_y F} {x, \\map g x}^{-1} \\map {D_x F} {x, \\map g x}$\nso $g$ is continuously differentiable, which is the [[Implicit Function Theorem]].\n{{qed}}"
+    ]
+  }
+}

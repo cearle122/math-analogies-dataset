@@ -1,0 +1,39 @@
+{
+  "id": "uniform_boundedness_from_gliding_hump",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Banach Space|Banach space]], $Y$ a [[Definition:Normed Vector Space|normed space]], and $\\family {T_n}$ [[Definition:Bounded Linear Transformation|bounded linear operators]] $X \\to Y$.\nIf $\\displaystyle \\sup_n \\norm {T_n x} < \\infty$ for each $x \\in X$, then:\n:$\\displaystyle \\sup_n \\norm {T_n} < \\infty$"
+  },
+  "B_source": {
+    "statement": "To show a property holds, assume it fails and build a single witness as a sum of contributions, each scaled to defeat one stage in turn."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the stages of the construction": "a subsequence of operators with rapidly growing norms",
+        "the contribution chosen at each stage": "a small vector on which that operator is nearly maximal",
+        "the assembled witness": "the sum of the contributions, a single point of the space"
+      },
+      "derived": {
+        "each stage defeated in turn": "the assembled point has unbounded images under the subsequence",
+        "the contradiction": "pointwise boundedness fails at that point"
+      }
+    },
+    "validity_conditions": [
+      "The contributions must be scaled to be summable so the series converges in the complete space, while remaining large enough to force the norms to blow up.",
+      "The earlier terms must be controlled at each stage, which is why the scaling is chosen recursively rather than all at once.",
+      "Completeness of the domain is essential and is what this argument uses in place of the Baire category argument that gives the same theorem."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $\\displaystyle \\sup_n \\norm {T_n} = \\infty$.\nExtract a subsequence with $\\norm {T_{n_k} } \\ge 4^k \\paren {k + \\text {earlier bounds} }$.",
+      "At stage $k$, pick $x_k$ with $\\norm {x_k} = 1$ and $\\norm {T_{n_k} x_k} \\ge \\dfrac 1 2 \\norm {T_{n_k} }$.",
+      "Let $x = \\displaystyle \\sum_k \\pm 3^{-k} x_k$, with signs chosen successively.\nAs $\\sum 3^{-k} < \\infty$ and $X$ is [[Definition:Complete Metric Space|complete]], the series converges.",
+      "The $k$th term dominates $\\norm {T_{n_k} x}$, the earlier terms are controlled by the choice of signs, and the later ones have total size $\\le 3^{-k} \\norm {T_{n_k} }$.\nHence $\\norm {T_{n_k} x} \\ge c \\paren {\\dfrac 4 3}^k \\to \\infty$, contradicting pointwise boundedness.\nThis is the [[Uniform Boundedness Principle]].\n{{qed}}"
+    ]
+  }
+}

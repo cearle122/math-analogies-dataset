@@ -1,0 +1,41 @@
+{
+  "id": "padic_absolute_value_from_real_absolute_value",
+  "field": [
+    "number_theory",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a [[Definition:Prime Number|prime]].\nThe [[Definition:P-adic Norm|$p$-adic absolute value]] on $\\Q$ satisfies:\n:$\\size {x y}_p = \\size x_p \\size y_p$\n:$\\size {x + y}_p \\le \\max \\set {\\size x_p, \\size y_p}$\nand the [[Definition:Completion of Metric Space|completion]] $\\Q_p$ of $\\Q$ under it is a [[Definition:Complete Metric Space|complete]] [[Definition:Field (Abstract Algebra)|field]]."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Absolute Value|absolute value]] on $\\Q$ satisfies $\\size {x y} = \\size x \\size y$ and $\\size {x + y} \\le \\size x + \\size y$, and the completion of $\\Q$ under it is $\\R$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the real absolute value": "the p-adic absolute value",
+        "the completion of the rationals": "the field of p-adic numbers",
+        "Cauchy sequences for the usual metric": "Cauchy sequences for the p-adic metric"
+      },
+      "derived": {
+        "the completion is a field": "the p-adic numbers form a field, by the same construction",
+        "the triangle inequality": "the ultrametric inequality, which is strictly stronger"
+      },
+      "reformulation": "Swap the absolute value for a different one satisfying the same axioms, then rerun the completion construction unchanged."
+    },
+    "validity_conditions": [
+      "The completion construction uses only the axioms of an absolute value, so it applies verbatim once multiplicativity and the triangle inequality are checked.",
+      "The p-adic inequality is ultrametric, which is stronger than the triangle inequality, so every consequence of the latter still holds and additional facts become available.",
+      "Order-dependent and Archimedean facts do not transfer: the p-adic numbers carry no compatible order and are totally disconnected, so the intermediate value theorem has no analogue."
+    ],
+    "proof_plan": [
+      "Define $\\size x_p = p^{-\\map {\\nu_p} x}$, where $\\map {\\nu_p} x$ is the exponent of $p$ in $x$.\nAs $\\map {\\nu_p} {x y} = \\map {\\nu_p} x + \\map {\\nu_p} y$, $\\size \\cdot_p$ is multiplicative.",
+      "As $\\map {\\nu_p} {x + y} \\ge \\min \\set {\\map {\\nu_p} x, \\map {\\nu_p} y}$, the [[Definition:Ultrametric Inequality|ultrametric inequality]] holds, which implies the [[Triangle Inequality]].",
+      "Form the [[Definition:Cauchy Sequence (Metric Space)|Cauchy sequences]] in $\\Q$ modulo null sequences, exactly as in the construction of $\\R$.\nThe result $\\Q_p$ is a complete field.",
+      "Metric consequences transfer, such as completeness and the [[Definition:Convergent Series|convergence]] of absolutely convergent series.\nOrder-theoretic ones fail: $\\Q_p$ is not an [[Definition:Ordered Field|ordered field]], and a series converges {{iff}} its terms tend to $0$.\n{{qed}}"
+    ]
+  }
+}

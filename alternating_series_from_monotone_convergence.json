@@ -1,0 +1,36 @@
+{
+  "id": "alternating_series_from_monotone_convergence",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {a_n}$ be a [[Definition:Decreasing Real Sequence|decreasing]] sequence with $a_n \\to 0$.\nThen $\\displaystyle \\sum_{n \\mathop = 1}^\\infty \\paren {-1}^{n + 1} a_n$ [[Definition:Convergent Series|converges]] to some $S$, and:\n:$\\size {S - S_N} \\le a_{N + 1}$\nwhere $S_N$ is the $N$th partial sum."
+  },
+  "B_source": {
+    "statement": "Every [[Definition:Increasing Real Sequence|increasing]] real sequence which is [[Definition:Bounded Above Real Sequence|bounded above]] is [[Definition:Convergent Real Sequence|convergent]], and dually for decreasing sequences bounded below."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a monotone bounded sequence": "the even and the odd partial sums separately"
+      },
+      "derived": {
+        "the common limit": "the sum of the alternating series"
+      },
+      "reformulation": "Split the oscillating partial sums into two monotone sequences squeezed against each other."
+    },
+    "validity_conditions": [
+      "The terms must decrease, so that even and odd partial sums are monotone.",
+      "The terms must tend to 0, so that the two monotone limits coincide."
+    ],
+    "proof_plan": [
+      "We have $S_{2 n + 2} - S_{2 n} = a_{2 n + 1} - a_{2 n + 2} \\ge 0$ and $S_{2 n + 3} - S_{2 n + 1} = -a_{2 n + 2} + a_{2 n + 3} \\le 0$.\nSo $\\sequence {S_{2 n} }$ is increasing and $\\sequence {S_{2 n + 1} }$ is decreasing.",
+      "Also $S_{2 n + 1} - S_{2 n} = a_{2 n + 1} \\ge 0$, so:\n:$S_2 \\le S_{2 n} \\le S_{2 n + 1} \\le S_1$",
+      "By the [[Monotone Convergence Theorem (Real Analysis)|Monotone Convergence Theorem]], both subsequences converge.\nAs $S_{2 n + 1} - S_{2 n} = a_{2 n + 1} \\to 0$, they have a common limit $S$, so the series converges.",
+      "$S$ lies between any two consecutive partial sums, so:\n:$\\size {S - S_N} \\le \\size {S_{N + 1} - S_N} = a_{N + 1}$\nThis is the [[Alternating Series Test]].\n{{qed}}"
+    ]
+  }
+}

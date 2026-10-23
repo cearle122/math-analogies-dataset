@@ -1,0 +1,39 @@
+{
+  "id": "correlation_bound_from_cauchy_schwarz",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X$ and $Y$ be [[Definition:Square-Integrable Random Variable|square-integrable]] [[Definition:Random Variable|random variables]] with non-zero [[Definition:Variance|variances]].\nThen:\n:$\\size {\\map \\rho {X, Y} } \\le 1$\nwhere $\\rho$ is the [[Definition:Correlation Coefficient|correlation coefficient]]."
+  },
+  "B_source": {
+    "statement": "Let $f, g \\in \\map {L^2} \\mu$.\nThen:\n:$\\size {\\innerprod f g} \\le \\norm f_2 \\norm g_2$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the inner product of f and g": "the covariance of the centred variables",
+        "the norm of f": "the standard deviation of X",
+        "the norm of g": "the standard deviation of Y"
+      },
+      "derived": {
+        "the Cauchy-Schwarz bound": "the absolute covariance is at most the product of the standard deviations",
+        "dividing by the product of norms": "the correlation coefficient is bounded by one in absolute value"
+      }
+    },
+    "validity_conditions": [
+      "Covariance is a genuine inner product on the space of centred square-integrable random variables, so Cauchy-Schwarz applies directly.",
+      "Both variances must be finite and nonzero for the correlation to be defined, matching the requirement that neither norm vanishes before dividing.",
+      "Equality holds exactly when the centred variables are proportional almost surely, which is the equality case of Cauchy-Schwarz translated into probabilistic terms."
+    ],
+    "proof_plan": [
+      "Let $X_0 = X - \\expect X$ and $Y_0 = Y - \\expect Y$.",
+      "In $\\map {L^2} \\Pr$:\n:$\\cov {X, Y} = \\innerprod {X_0} {Y_0}$\n:$\\sigma_X = \\norm {X_0}_2$, $\\sigma_Y = \\norm {Y_0}_2$",
+      "By the [[Cauchy-Bunyakovsky-Schwarz Inequality]]:\n:$\\size {\\cov {X, Y} } \\le \\sigma_X \\sigma_Y$",
+      "Dividing by $\\sigma_X \\sigma_Y > 0$:\n:$\\size {\\map \\rho {X, Y} } = \\dfrac {\\size {\\cov {X, Y} } } {\\sigma_X \\sigma_Y} \\le 1$\n{{qed}}"
+    ]
+  }
+}

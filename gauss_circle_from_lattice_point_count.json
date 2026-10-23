@@ -1,0 +1,41 @@
+{
+  "id": "gauss_circle_from_lattice_point_count",
+  "field": [
+    "number_theory",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\map N r = \\card {\\set {\\tuple {m, n} \\in \\Z^2: m^2 + n^2 \\le r^2} }$.\nThen:\n:$\\map N r = \\pi r^2 + \\map \\OO r$"
+  },
+  "B_source": {
+    "statement": "To each [[Definition:Lattice Point|lattice point]] $\\tuple {m, n} \\in \\Z^2$ assign the [[Definition:Unit Square|unit square]] $Q_{m, n} = \\closedint {m - \\frac 1 2} {m + \\frac 1 2} \\times \\closedint {n - \\frac 1 2} {n + \\frac 1 2}$ of [[Definition:Area|area]] $1$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the unit square attached to a lattice point": "the cell used to convert a count into an area",
+        "the total area of the attached squares": "the lattice point count",
+        "the discrepancy between the union of squares and the disk": "the error term"
+      },
+      "derived": {
+        "the count as an area": "the number of lattice points equals the area of the union of their squares",
+        "the symmetric difference near the boundary": "confined to an annulus of bounded width, of area of order r"
+      },
+      "reformulation": "Convert a discrete count into an area by attaching a unit cell to each point, then bound the boundary mismatch."
+    },
+    "validity_conditions": [
+      "Attaching a unit square to each lattice point tiles the plane without overlap, so the count equals the total area of the attached squares exactly.",
+      "Every square that is not entirely inside or outside the disk meets the boundary circle, so the symmetric difference lies in an annulus of width bounded by the square diagonal.",
+      "That annulus has area proportional to the radius, which gives the stated error; the true order of the error is smaller and remains an open problem."
+    ],
+    "proof_plan": [
+      "The squares $Q_{m, n}$ tile $\\R^2$.",
+      "Let $U$ be the union of the squares whose centres lie in the disk $D_r$.\nThen:\n:$\\map N r = \\map {\\operatorname {Area} } U$",
+      "Each square has diameter $\\sqrt 2$.\nHence:\n:$D_{r - \\sqrt 2} \\subseteq U \\subseteq D_{r + \\sqrt 2}$\nso $U \\symdif D_r$ lies in the annulus $r - \\sqrt 2 \\le \\size z \\le r + \\sqrt 2$.",
+      "The annulus has area $\\pi \\paren {r + \\sqrt 2}^2 - \\pi \\paren {r - \\sqrt 2}^2 = 4 \\sqrt 2 \\pi r$.\nHence:\n:$\\size {\\map N r - \\pi r^2} \\le 4 \\sqrt 2 \\pi r = \\map \\OO r$\n{{qed}}"
+    ]
+  }
+}

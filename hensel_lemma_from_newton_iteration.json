@@ -1,0 +1,41 @@
+{
+  "id": "hensel_lemma_from_newton_iteration",
+  "field": [
+    "number_theory",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be prime, $f \\in \\Z_p \\sqbrk x$ and $a \\in \\Z_p$ with $\\map f a \\equiv 0 \\pmod p$ and $\\map {f'} a \\not \\equiv 0 \\pmod p$.\nThen there is a [[Definition:Unique|unique]] $\\alpha \\in \\Z_p$ with $\\alpha \\equiv a \\pmod p$ and $\\map f \\alpha = 0$."
+  },
+  "B_source": {
+    "statement": "Let $f$ be twice continuously differentiable near a [[Definition:Simple Root|simple root]] $r$ of $f$.\nThen [[Newton's Method]] $x_{n + 1} = x_n - \\dfrac {\\map f {x_n} } {\\map {f'} {x_n} }$ converges [[Definition:Quadratic Convergence|quadratically]] to $r$ from any $x_0$ close enough to $r$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [
+      "fixed_point_encoding"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the real absolute value": "the p-adic absolute value",
+        "R": "the p-adic integers Z_p",
+        "closeness to the root": "congruence modulo p"
+      },
+      "derived": {
+        "quadratic convergence": "doubling of the p-adic precision at each step"
+      },
+      "reformulation": "Run Newton's iteration in Z_p, where polynomial Taylor expansions are exact and the ultrametric inequality replaces the mean value theorem."
+    },
+    "validity_conditions": [
+      "f'(a) must be a p-adic unit, so that division by f'(a_n) stays in Z_p.",
+      "Z_p is complete, so the Cauchy sequence of iterates converges."
+    ],
+    "proof_plan": [
+      "Let $a_0 = a$ and $a_{n + 1} = a_n - \\dfrac {\\map f {a_n} } {\\map {f'} {a_n} }$.",
+      "For a polynomial, $\\map f {a_n + h} = \\map f {a_n} + \\map {f'} {a_n} h + h^2 c$ with $c \\in \\Z_p$.\nWith $h = -\\dfrac {\\map f {a_n} } {\\map {f'} {a_n} }$, this gives $\\size {\\map f {a_{n + 1} } }_p \\le \\size {\\map f {a_n} }_p^2$ whenever $\\map {f'} {a_n}$ is a unit.",
+      "By induction, $a_n \\equiv a \\pmod p$, so $\\map {f'} {a_n} \\equiv \\map {f'} a$ is a unit, and $\\size {\\map f {a_n} }_p \\le p^{-2^n}$.\nAs $\\size {a_{n + 1} - a_n}_p = \\size {\\map f {a_n} }_p \\to 0$, the sequence is Cauchy and converges in $\\Z_p$ to a root $\\alpha \\equiv a$.",
+      "If $\\beta \\equiv a$ is another root, then $0 = \\map f \\beta - \\map f \\alpha = \\paren {\\beta - \\alpha} \\paren {\\map {f'} \\alpha + \\paren {\\beta - \\alpha} d}$ with $d \\in \\Z_p$.\nThe second factor is a unit, so $\\beta = \\alpha$.\nThis is [[Hensel's Lemma]].\n{{qed}}"
+    ]
+  }
+}

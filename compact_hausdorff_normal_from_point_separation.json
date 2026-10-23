@@ -1,0 +1,37 @@
+{
+  "id": "compact_hausdorff_normal_from_point_separation",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Compact Hausdorff Space|compact Hausdorff space]].\nThen $X$ is [[Definition:Normal Space|normal]]: disjoint [[Definition:Closed Set (Topology)|closed sets]] $E$ and $F$ have disjoint open neighbourhoods."
+  },
+  "B_source": {
+    "statement": "Let $X$ be a [[Definition:Hausdorff Space|Hausdorff space]], $K \\subseteq X$ [[Definition:Compact Subspace|compact]] and $x \\notin K$.\nThen there are disjoint open sets $U \\ni x$ and $V \\supseteq K$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the point x": "the compact set E",
+        "the compact set K": "the compact set F"
+      },
+      "derived": {
+        "finitely many point separations": "a separation of two compact sets"
+      },
+      "reformulation": "Separate each point of E from F, then use compactness of E to keep only finitely many separations."
+    },
+    "validity_conditions": [
+      "Closed subsets of a compact space are compact.",
+      "The intersection of the V's must be finite to remain open."
+    ],
+    "proof_plan": [
+      "As $X$ is compact, the closed sets $E$ and $F$ are compact.",
+      "For each $x \\in E$, the source result gives disjoint open $U_x \\ni x$ and $V_x \\supseteq F$.",
+      "By compactness of $E$, finitely many $U_{x_1}, \\ldots, U_{x_n}$ cover $E$.\nLet $U = \\displaystyle \\bigcup_i U_{x_i}$ and $V = \\displaystyle \\bigcap_i V_{x_i}$.",
+      "$U \\supseteq E$ and $V \\supseteq F$ are open, and disjoint as each $U_{x_i} \\cap V_{x_i} = \\O$.\nHence $X$ is normal.\n{{qed}}"
+    ]
+  }
+}

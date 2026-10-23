@@ -1,0 +1,39 @@
+{
+  "id": "type_preservation_from_substitution_lemma",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\Gamma \\vdash t : T$ in the [[Definition:Simply Typed Lambda Calculus|simply typed $\\lambda$-calculus]], and $t \\to t'$.\nThen:\n:$\\Gamma \\vdash t' : T$"
+  },
+  "B_source": {
+    "statement": "Let $\\Gamma, x : S \\vdash t : T$ and $\\Gamma \\vdash s : S$.\nThen:\n:$\\Gamma \\vdash t \\sqbrk {x := s} : T$"
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the substitution being performed": "the substitution carried out by a beta-reduction step",
+        "the typing of the substituted term": "the typing of the argument in the application",
+        "the induction on the typing derivation": "the case analysis over the reduction rule applied"
+      },
+      "derived": {
+        "the type preserved under substitution": "the type preserved by the beta step",
+        "the congruence cases": "handled directly by the induction hypothesis, with no substitution involved"
+      }
+    },
+    "validity_conditions": [
+      "The induction is on the typing derivation, so each case corresponds to a typing rule and the induction hypothesis is available for subterms.",
+      "Only the beta case actually performs a substitution; the congruence cases follow from the induction hypothesis alone.",
+      "The substitution lemma itself requires a weakening lemma, since the substituted term is typed in a smaller context than the one where it is placed."
+    ],
+    "proof_plan": [
+      "Proceed by [[Principle of Structural Induction|induction]] on the derivation of $\\Gamma \\vdash t : T$.",
+      "In congruence cases, such as $t_1 \\, t_2 \\to t_1' \\, t_2$, apply the induction hypothesis to the reduced subterm and reassemble the typing.",
+      "In the $\\beta$ case, $t = \\paren {\\lambda x : S. \\, t_1} \\, s \\to t_1 \\sqbrk {x := s}$.\nInverting the typing of the application gives $\\Gamma, x : S \\vdash t_1 : T$ and $\\Gamma \\vdash s : S$.",
+      "By the [[Substitution Lemma (Type Theory)|substitution lemma]]:\n:$\\Gamma \\vdash t_1 \\sqbrk {x := s} : T$\nHence types are preserved by reduction.\n{{qed}}"
+    ]
+  }
+}

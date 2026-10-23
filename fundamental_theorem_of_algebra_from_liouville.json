@@ -1,0 +1,37 @@
+{
+  "id": "fundamental_theorem_of_algebra_from_liouville",
+  "field": [
+    "analysis",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $p$ be a non-[[Definition:Constant Mapping|constant]] [[Definition:Polynomial over Complex Numbers|polynomial]] with complex coefficients.\nThen there exists $z \\in \\C$ with $\\map p z = 0$."
+  },
+  "B_source": {
+    "statement": "Every [[Definition:Bounded Mapping|bounded]] [[Definition:Entire Function|entire function]] is [[Definition:Constant Mapping|constant]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the bounded entire function": "the reciprocal 1/p"
+      },
+      "derived": {
+        "constancy of 1/p": "a contradiction with p non-constant"
+      },
+      "reformulation": "Reduce the existence of a root to showing that 1/p would be a bounded entire function."
+    },
+    "validity_conditions": [
+      "1/p is entire only under the assumption that p has no zeros.",
+      "Boundedness uses the growth of the leading term for large |z| and compactness of a disk."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $\\map p z \\ne 0$ for all $z \\in \\C$.\nThen $g = \\dfrac 1 p$ is [[Definition:Entire Function|entire]].",
+      "Let $p$ have degree $n \\ge 1$ and leading coefficient $a_n$.\nFor $\\size z \\ge R$ with $R$ large, $\\size {\\map p z} \\ge \\dfrac {\\size {a_n} } 2 \\size z^n \\ge 1$, so $\\size {\\map g z} \\le 1$.\nOn the compact disk $\\size z \\le R$, $g$ is bounded by continuity.",
+      "By [[Liouville's Theorem (Complex Analysis)|Liouville's Theorem]], $g$ is constant, so $p$ is constant, a contradiction.",
+      "Hence $p$ has a root.\nBy the [[Factor Theorem]] and induction on degree, $p$ splits into linear factors over $\\C$.\nThis is the [[Fundamental Theorem of Algebra]].\n{{qed}}"
+    ]
+  }
+}

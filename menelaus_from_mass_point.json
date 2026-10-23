@@ -1,0 +1,40 @@
+{
+  "id": "menelaus_from_mass_point",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Triangle (Geometry)|triangle]], and let a [[Definition:Transversal (Geometry)|transversal]] meet the lines $BC$, $CA$, $AB$ at $D$, $E$, $F$ respectively.\nThen, with [[Definition:Directed Line Segment|directed segments]]:\n:$\\dfrac {AF} {FB} \\cdot \\dfrac {BD} {DC} \\cdot \\dfrac {CE} {EA} = -1$"
+  },
+  "B_source": {
+    "statement": "Let $F$ lie on line $AB$ and $X$ a point not on $AB$.\nThen:\n:$\\dfrac {AF} {FB} = \\dfrac {\\map {\\operatorname {Area} } {\\triangle A X F} } {\\map {\\operatorname {Area} } {\\triangle F X B} }$\nwith signed areas."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "each side-division ratio": "a ratio of two triangle areas sharing the transversal line",
+        "the transversal line": "a common apex/base for the area comparisons",
+        "the product of three ratios": "a telescoping product of area ratios"
+      },
+      "derived": {
+        "product of the three side ratios": "a chain of area ratios that cancels to -1",
+        "signed lengths": "signed areas"
+      },
+      "reformulation": "Encode each segment ratio as a ratio of triangle areas built on the transversal, so the product telescopes."
+    },
+    "validity_conditions": [
+      "Each directed length ratio along a side equals a ratio of signed areas of triangles with a common apex on the transversal (equal-height triangles).",
+      "Multiplying the three area-ratio expressions, every area cancels in a telescoping chain.",
+      "Signed areas track orientation, producing -1 rather than +1."
+    ],
+    "proof_plan": [
+      "Express each ratio as a ratio of signed areas of triangles with apex on the transversal:\n:$\\dfrac {AF} {FB} = \\dfrac {\\sqbrk {A D E} } {\\sqbrk {B D E} }, \\quad \\dfrac {BD} {DC} = \\dfrac {\\sqbrk {B E F} } {\\sqbrk {C E F} } \\cdots$\nusing that all three points $D$, $E$, $F$ lie on one line.",
+      "Multiply the three expressions.",
+      "Writing each area in terms of the signed distance of $A$, $B$, $C$ from the transversal, the common factors cancel telescopically:\n:$\\dfrac {AF} {FB} \\cdot \\dfrac {BD} {DC} \\cdot \\dfrac {CE} {EA} = \\dfrac {-h_A} {h_B} \\cdot \\dfrac {-h_B} {h_C} \\cdot \\dfrac {-h_C} {h_A}$",
+      "The product reduces to $-1$, which is [[Menelaus's Theorem]].\n{{qed}}"
+    ]
+  }
+}

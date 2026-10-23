@@ -1,0 +1,42 @@
+{
+  "id": "metric_space_from_real_line",
+  "field": [
+    "analysis",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {M, d}$ be a [[Definition:Metric Space|metric space]].\nThen $x_n \\to x$ {{iff}} $\\map d {x_n, x} \\to 0$, a sequence is [[Definition:Cauchy Sequence (Metric Space)|Cauchy]] {{iff}} $\\map d {x_m, x_n} \\to 0$, and $f$ is [[Definition:Continuous Mapping (Metric Spaces)|continuous]] {{iff}} the $\\epsilon$-$\\delta$ condition holds with $d$ in place of $\\size {x - y}$."
+  },
+  "B_source": {
+    "statement": "On $\\R$, $x_n \\to x$ {{iff}} $\\size {x_n - x} \\to 0$, and continuity and Cauchyness are defined using $\\size {x - y}$."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the absolute value |x - y|": "a general distance function d(x,y)",
+        "the ordering of the reals": "no ordering, only the triangle inequality",
+        "completeness of R": "completeness as an extra hypothesis rather than a theorem"
+      },
+      "derived": {
+        "the epsilon-delta definitions": "the same definitions with d in place of absolute value"
+      }
+    },
+    "validity_conditions": [
+      "only the metric axioms may be used, so arguments relying on the order structure of R do not transfer",
+      "completeness must be assumed rather than derived, since general metric spaces are not complete",
+      "results using local compactness, such as Bolzano-Weierstrass, require additional hypotheses"
+    ],
+    "proof_plan": [
+      "The real-line proofs use only the following properties of $\\size {x - y}$: non-negativity, symmetry, the [[Triangle Inequality]], and $\\size {x - y} = 0 \\iff x = y$.",
+      "Adopt exactly these as the [[Definition:Metric Space Axioms|metric space axioms]] for $d$.",
+      "Restate convergence, Cauchyness and continuity with $d$.\nProofs such as [[Limit of Sequence is Unique]] and [[Convergent Sequence is Cauchy Sequence]] go through verbatim.",
+      "Arguments using the order of $\\R$, such as the [[Monotone Convergence Theorem (Real Analysis)|Monotone Convergence Theorem]], or the completeness of $\\R$, do not transfer.",
+      "Reintroduce [[Definition:Complete Metric Space|completeness]] or [[Definition:Compact Metric Space|compactness]] as explicit hypotheses where these arguments are needed.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "uniform_continuity_from_finite_subcover",
+  "field": [
+    "analysis",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {K, d}$ be a [[Definition:Compact Metric Space|compact metric space]] and $f: K \\to \\R$ [[Definition:Continuous Mapping (Metric Spaces)|continuous]].\nThen $f$ is [[Definition:Uniformly Continuous|uniformly continuous]]."
+  },
+  "B_source": {
+    "statement": "To obtain a uniform parameter on a compact set, cover it by local neighbourhoods, extract a [[Definition:Finite Subcover|finite subcover]], and take the minimum of the finitely many local parameters."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the local neighbourhoods of the cover": "balls on which the function varies by less than half the tolerance",
+        "the local parameters attached to each": "the radii supplied by continuity at each point",
+        "the minimum over the finite subcover": "the uniform parameter valid at every point"
+      },
+      "derived": {
+        "finiteness of the subcover": "the minimum of the radii is positive rather than an infimum that could vanish",
+        "the uniform parameter": "one radius working simultaneously at all points"
+      },
+      "reformulation": "Replace a pointwise choice of parameter by a minimum over a finite subcover, which is positive."
+    },
+    "validity_conditions": [
+      "Continuity supplies a radius at each point, but the infimum over all points could be zero, which is exactly the gap that compactness closes.",
+      "Halving the radii before covering is needed so that two points within the uniform distance lie in a common enlarged ball of the subcover.",
+      "Finiteness is essential: only a finite collection of positive radii is guaranteed to have positive minimum."
+    ],
+    "proof_plan": [
+      "Let $\\epsilon > 0$.\nFor each $x \\in K$, by continuity choose $\\delta_x > 0$ with:\n:$\\map d {x, y} < \\delta_x \\implies \\size {\\map f x - \\map f y} < \\dfrac \\epsilon 2$",
+      "The balls $\\map {B_{\\delta_x / 2} } x$ cover $K$.",
+      "By [[Definition:Compact Metric Space|compactness]], finitely many $\\map {B_{\\delta_{x_i} / 2} } {x_i}$ cover $K$.\nLet $\\delta = \\displaystyle \\min_i \\frac {\\delta_{x_i} } 2 > 0$.",
+      "Let $\\map d {y, z} < \\delta$.\nChoose $i$ with $y \\in \\map {B_{\\delta_{x_i} / 2} } {x_i}$; then $\\map d {z, x_i} < \\delta_{x_i}$.\nHence:\n:$\\size {\\map f y - \\map f z} \\le \\size {\\map f y - \\map f {x_i} } + \\size {\\map f {x_i} - \\map f z} < \\epsilon$\nwhich is the [[Heine-Cantor Theorem]].\n{{qed}}"
+    ]
+  }
+}

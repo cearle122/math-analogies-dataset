@@ -1,0 +1,41 @@
+{
+  "id": "dual_cone_from_cone",
+  "field": [
+    "geometry",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $K \\subseteq \\R^n$ be a [[Definition:Convex Cone|convex cone]].\nIts [[Definition:Dual Cone|dual cone]] is:\n:$K^* = \\set {y \\in \\R^n: \\forall x \\in K: \\innerprod y x \\ge 0}$\nThen $K^*$ is a [[Definition:Closed Set (Real Analysis)|closed]] convex cone, and if $K$ is closed:\n:$K^{**} = K$"
+  },
+  "B_source": {
+    "statement": "Let $S \\subseteq \\R^n$ be a [[Definition:Vector Subspace|subspace]].\nThen:\n:$S^\\perp = \\set {y \\in \\R^n: \\forall x \\in S: \\innerprod y x = 0}$\nis a subspace, and if $S$ is [[Definition:Closed Set (Real Analysis)|closed]] then $S^{\\perp \\perp} = S$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the subspace S": "the closed convex cone K",
+        "the orthogonality condition <y,x> = 0": "the inequality <y,x> >= 0",
+        "the double complement identity": "the bipolar identity K** = K"
+      },
+      "derived": {
+        "the separating hyperplane argument": "the proof that K** contains no extra points"
+      },
+      "reformulation": "The equality defining orthogonality must be relaxed to an inequality, which breaks the symmetry of the subspace case and is why closedness and convexity become necessary."
+    },
+    "validity_conditions": [
+      "K must be closed, or the identity holds only for the closure",
+      "K must be convex and a cone, since the dual of any set is automatically a closed convex cone",
+      "the ambient space must carry an inner product for the pairing to be defined"
+    ],
+    "proof_plan": [
+      "Define $K^*$ by replacing the equality $\\innerprod y x = 0$ in the definition of $S^\\perp$ with the inequality $\\innerprod y x \\ge 0$.",
+      "We have:\n:$\\displaystyle K^* = \\bigcap_{x \\mathop \\in K} \\set {y: \\innerprod y x \\ge 0}$\nan [[Definition:Set Intersection|intersection]] of closed [[Definition:Half-Space|half-spaces]] through the origin.\nHence $K^*$ is a closed convex cone.",
+      "For $x \\in K$ and $y \\in K^*$, $\\innerprod x y \\ge 0$.\nHence $K \\subseteq K^{**}$.",
+      "Let $z \\notin K$, with $K$ closed.\nBy the [[Hyperplane Separation Theorem]], there exists $y$ with $\\innerprod y x \\ge 0$ for all $x \\in K$ and $\\innerprod y z < 0$.",
+      "Then $y \\in K^*$, and $\\innerprod y z < 0$ shows $z \\notin K^{**}$.\nHence $K^{**} \\subseteq K$, and $K^{**} = K$.\n{{qed}}"
+    ]
+  }
+}

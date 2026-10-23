@@ -1,0 +1,38 @@
+{
+  "id": "scc_condensation_from_preorder_quotient",
+  "field": [
+    "algorithms",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a finite [[Definition:Directed Graph|directed graph]] and $u \\sim v$ {{iff}} each is reachable from the other.\nThen $\\sim$ is an equivalence relation, whose classes are the [[Definition:Strongly Connected Component|strongly connected components]], and the condensation $G / \\sim$ is a [[Definition:Directed Acyclic Graph|directed acyclic graph]]."
+  },
+  "B_source": {
+    "statement": "Let $\\preceq$ be a [[Definition:Preordering|preorder]] on a set $P$, and $x \\approx y$ {{iff}} $x \\preceq y$ and $y \\preceq x$.\nThen $\\approx$ is an equivalence relation and $\\preceq$ descends to a [[Definition:Partial Ordering|partial order]] on $P / \\approx$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the preorder": "reachability in G",
+        "its symmetric part": "mutual reachability"
+      },
+      "derived": {
+        "antisymmetry of the quotient order": "acyclicity of the condensation"
+      },
+      "reformulation": "Quotient the reachability preorder by its symmetric part; the resulting partial order cannot contain a cycle."
+    },
+    "validity_conditions": [
+      "Reachability is reflexive and transitive, so it is a preorder.",
+      "Strongly connected components can be computed in linear time by Tarjan's algorithm, which then yields a topological order."
+    ],
+    "proof_plan": [
+      "Reachability $\\leadsto$ is reflexive and transitive, hence a preorder, and $\\sim$ is its symmetric part, with classes the strongly connected components.",
+      "By the source result, $\\leadsto$ descends to a partial order on the components.",
+      "Each edge of $G / \\sim$ between distinct components lies in this order.\nA directed cycle through distinct components would make them mutually reachable, hence equal by antisymmetry.",
+      "Hence $G / \\sim$ is acyclic, and its components can be listed in a topological order.\n{{qed}}"
+    ]
+  }
+}

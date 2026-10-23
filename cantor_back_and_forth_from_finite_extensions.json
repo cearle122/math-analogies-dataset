@@ -1,0 +1,37 @@
+{
+  "id": "cantor_back_and_forth_from_finite_extensions",
+  "field": [
+    "logic",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Any two [[Definition:Countable Set|countable]] [[Definition:Dense Linear Order|dense linear orders]] without endpoints are [[Definition:Order Isomorphism|order isomorphic]].\nIn particular each is isomorphic to $\\struct {\\Q, <}$."
+  },
+  "B_source": {
+    "statement": "Let $A$, $B$ be dense linear orders without endpoints and $p$ a finite order-preserving [[Definition:Partial Mapping|partial map]] from $A$ to $B$.\nThen for any $a \\in A$ there is a finite order-preserving extension of $p$ defined at $a$, and for any $b \\in B$ one with $b$ in its range."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a single extension step": "alternate steps adding elements of A and of B"
+      },
+      "derived": {
+        "the union of finite partial isomorphisms": "a total isomorphism"
+      },
+      "reformulation": "Approximate the isomorphism by finite partial isomorphisms, alternately extending the domain and the range."
+    },
+    "validity_conditions": [
+      "Density and the absence of endpoints are what make each finite extension possible.",
+      "Countability allows every element to be handled at some finite stage."
+    ],
+    "proof_plan": [
+      "Enumerate $A = \\set {a_0, a_1, \\ldots}$ and $B = \\set {b_0, b_1, \\ldots}$, and let $p_0 = \\O$.",
+      "At even steps, extend $p_n$ to the first $a_k$ not yet in the domain; at odd steps, extend it to cover the first $b_k$ not yet in the range.\nBoth are possible by the source result.",
+      "$p = \\bigcup_n p_n$ is order-preserving, defined on all of $A$, and maps onto $B$.",
+      "Hence $p$ is an order isomorphism, which is [[Cantor's Back-and-Forth Theorem]].\nSo the theory of dense linear orders without endpoints is $\\aleph_0$-categorical.\n{{qed}}"
+    ]
+  }
+}

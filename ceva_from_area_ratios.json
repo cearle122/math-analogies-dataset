@@ -1,0 +1,37 @@
+{
+  "id": "ceva_from_area_ratios",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\triangle ABC$ be a [[Definition:Triangle (Geometry)|triangle]] and let $AD$, $BE$, $CF$ be [[Definition:Cevian|cevians]] meeting at an interior point $P$, with $D$, $E$, $F$ on $BC$, $CA$, $AB$.\nThen:\n:$\\dfrac {BD} {DC} \\cdot \\dfrac {CE} {EA} \\cdot \\dfrac {AF} {FB} = 1$"
+  },
+  "B_source": {
+    "statement": "For a [[Definition:Transversal (Geometry)|transversal]] meeting $BC$, $CA$, $AB$ at $D$, $E$, $F$, write each ratio $\\dfrac {BD} {DC}$ etc. as a ratio of areas of triangles with a common height.\nMultiplying the three ratios, the areas cancel, which gives [[Menelaus's Theorem]]."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "triangles with apex on the transversal": "triangles with apex at the common point P",
+        "the transversal": "the three concurrent cevians"
+      },
+      "derived": {
+        "cancelling areas": "the product of the three ratios equals 1"
+      },
+      "reformulation": "Reuse the area-ratio plan of Menelaus, but compare areas of the three triangles cut out by P."
+    },
+    "validity_conditions": [
+      "Triangles with the same apex and bases on one line have areas proportional to the bases.",
+      "For an interior point P all areas are positive, so unsigned ratios suffice."
+    ],
+    "proof_plan": [
+      "Triangles $ABD$ and $ADC$ have the same height from $A$, so $\\dfrac {BD} {DC} = \\dfrac {\\sqbrk {ABD} } {\\sqbrk {ADC} }$.\nLikewise $\\dfrac {BD} {DC} = \\dfrac {\\sqbrk {PBD} } {\\sqbrk {PDC} }$.",
+      "If $\\dfrac a b = \\dfrac c d = k$ then $\\dfrac {a - c} {b - d} = k$.\nHence:\n:$\\dfrac {BD} {DC} = \\dfrac {\\sqbrk {ABD} - \\sqbrk {PBD} } {\\sqbrk {ADC} - \\sqbrk {PDC} } = \\dfrac {\\sqbrk {ABP} } {\\sqbrk {APC} }$",
+      "Similarly:\n:$\\dfrac {CE} {EA} = \\dfrac {\\sqbrk {BCP} } {\\sqbrk {BPA} }, \\quad \\dfrac {AF} {FB} = \\dfrac {\\sqbrk {CAP} } {\\sqbrk {CPB} }$",
+      "Multiplying, each of the areas $\\sqbrk {ABP}$, $\\sqbrk {BCP}$, $\\sqbrk {CAP}$ appears once above and once below.\nHence the product is $1$, which is [[Ceva's Theorem]].\n{{qed}}"
+    ]
+  }
+}

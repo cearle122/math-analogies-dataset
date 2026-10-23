@@ -1,0 +1,41 @@
+{
+  "id": "regular_language_from_finite_monoid",
+  "field": [
+    "algorithms",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $L \\subseteq \\Sigma^*$.\nThen $L$ is [[Definition:Regular Language|regular]] {{iff}} there exist a [[Definition:Finite Monoid|finite monoid]] $M$, a [[Definition:Monoid Homomorphism|monoid homomorphism]] $h: \\Sigma^* \\to M$ and $F \\subseteq M$ with:\n:$L = \\map {h^{-1} } F$"
+  },
+  "B_source": {
+    "statement": "[[Definition:Finite Monoid|Finite monoids]] are closed under [[Definition:Direct Product|direct products]], [[Definition:Submonoid|submonoids]] and [[Definition:Quotient Monoid|quotients]]."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the finite monoid": "the transition monoid of an automaton, or the syntactic monoid of the language",
+        "a monoid homomorphism": "the map sending a word to the transformation it induces",
+        "a subset of the monoid": "the set of accepting transformations"
+      },
+      "derived": {
+        "closure under Boolean operations": "the same monoid recognizes the complement and, via products, intersections",
+        "the minimal recognizing monoid": "the syntactic monoid, the analogue of the minimal automaton"
+      },
+      "reformulation": "Regard words as elements of a free monoid, so that recognition becomes a homomorphism into a finite monoid."
+    },
+    "validity_conditions": [
+      "Concatenation of words is associative with the empty word as identity, so words form a free monoid and a language is a subset of it.",
+      "Recognition by a finite monoid is equivalent to recognition by a finite automaton, since the transition monoid is finite and conversely a monoid yields an automaton.",
+      "Properties not expressible in monoid terms do not transfer; the correspondence is with regular languages only, so context-free phenomena fall outside it entirely."
+    ],
+    "proof_plan": [
+      "Regard $\\Sigma^*$ as the [[Definition:Free Monoid|free monoid]] on $\\Sigma$ under concatenation.",
+      "Given a [[Definition:Deterministic Finite Automaton|DFA]] with state set $Q$, map each word $w$ to the transformation $\\delta_w: Q \\to Q$ it induces.\nThe set of such transformations is a finite monoid, the [[Definition:Transition Monoid|transition monoid]], and $w \\mapsto \\delta_w$ is a homomorphism.",
+      "Let $F = \\set {\\delta: \\map \\delta {q_0} \\in Q_F}$.\nThen $L = \\map {h^{-1} } F$.\nConversely, $M$ itself acts as the state set of a DFA recognizing $\\map {h^{-1} } F$.",
+      "If $L_i = \\map {h_i^{-1} } {F_i}$ for $i = 1, 2$, then $L_1 \\cap L_2$ is recognized by $M_1 \\times M_2$.\nComplement is recognized by $M \\setminus F$.\nHence closure properties follow from monoid constructions.\n{{qed}}"
+    ]
+  }
+}

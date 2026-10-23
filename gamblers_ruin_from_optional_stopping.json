@@ -1,0 +1,40 @@
+{
+  "id": "gamblers_ruin_from_optional_stopping",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {S_n}$ be a [[Definition:Simple Random Walk|simple symmetric random walk]] with $S_0 = k$, where $0 \\le k \\le N$.\nLet $\\tau$ be the first time $S_n \\in \\set {0, N}$.\nThen:\n:$\\map \\Pr {S_\\tau = N} = \\dfrac k N$"
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {M_n}$ be a [[Definition:Martingale|martingale]] and $\\tau$ a [[Definition:Stopping Time|stopping time]] with $\\tau < \\infty$ [[Definition:Almost Surely|almost surely]] and $\\sequence {M_{n \\wedge \\tau} }$ [[Definition:Bounded Sequence|bounded]].\nThen:\n:$\\expect {M_\\tau} = \\expect {M_0}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the martingale": "the walker's current position, which is a martingale for a fair walk",
+        "the stopping time": "the first time either barrier is reached",
+        "the expectation identity": "the starting position equals the expected absorbed position"
+      },
+      "derived": {
+        "the expected value at the stopping time": "the upper barrier times the ruin probability",
+        "solving the resulting equation": "the probability is the starting position divided by the barrier separation"
+      },
+      "reformulation": "Encode the hitting probability as the expectation of a martingale at an absorption time."
+    },
+    "validity_conditions": [
+      "The position process is a martingale exactly because the walk is fair, that is, the steps have zero mean.",
+      "The stopping time is almost surely finite and the stopped process is bounded between the two barriers, which is the condition licensing optional stopping.",
+      "At the stopping time the position takes only the two barrier values, so its expectation is a single unknown probability times the upper barrier, which can be solved for."
+    ],
+    "proof_plan": [
+      "The steps of $\\sequence {S_n}$ have mean $0$, so $\\sequence {S_n}$ is a [[Definition:Martingale|martingale]].",
+      "$\\tau$ is a [[Definition:Stopping Time|stopping time]].\nFrom any position, $N$ consecutive steps of the same sign reach a barrier, so $\\map \\Pr {\\tau > m N} \\le \\paren {1 - 2^{-N} }^m$ and $\\tau < \\infty$ [[Definition:Almost Surely|almost surely]].\nThe stopped process satisfies $0 \\le S_{n \\wedge \\tau} \\le N$.",
+      "By the [[Optional Stopping Theorem]]:\n:$\\expect {S_\\tau} = \\expect {S_0} = k$",
+      "Let $p = \\map \\Pr {S_\\tau = N}$.\nThen:\n:$N p + 0 \\paren {1 - p} = k$\nso $p = \\dfrac k N$.\n{{qed}}"
+    ]
+  }
+}

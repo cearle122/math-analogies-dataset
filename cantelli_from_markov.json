@@ -1,0 +1,40 @@
+{
+  "id": "cantelli_from_markov",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Random Variable|random variable]] with finite [[Definition:Variance|variance]] $\\sigma^2$.\nLet $a > 0$.\nThen:\n:$\\map \\Pr {X - \\expect X \\ge a} \\le \\dfrac {\\sigma^2} {\\sigma^2 + a^2}$"
+  },
+  "B_source": {
+    "statement": "Let $Y$ be a non-negative [[Definition:Random Variable|random variable]] and $t > 0$.\nThen:\n:$\\map \\Pr {Y \\ge t} \\le \\dfrac {\\expect Y} t$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "Y": "(Z + u)^2 where Z = X - E[X]",
+        "t": "(a + u)^2"
+      },
+      "derived": {
+        "E[Y]": "Var(X) + u^2",
+        "the bound after optimizing u": "Var(X)/(Var(X)+a^2) at u = Var(X)/a"
+      }
+    },
+    "validity_conditions": [
+      "(Z+u)^2 >= 0, so Markov applies for any real u with a+u > 0.",
+      "For u >= 0, {Z >= a} implies {(Z+u)^2 >= (a+u)^2}, so P(Z >= a) <= E[(Z+u)^2]/(a+u)^2 = (Var(X)+u^2)/(a+u)^2.",
+      "Minimizing the right side over u > 0 gives the optimum u = Var(X)/a, yielding Cantelli's bound."
+    ],
+    "proof_plan": [
+      "Let $Z = X - \\expect X$, and for $u \\ge 0$ let:\n:$Y = \\paren {Z + u}^2 \\ge 0$",
+      "As $Z \\ge a$ implies $\\paren {Z + u}^2 \\ge \\paren {a + u}^2$, [[Markov's Inequality]] gives:\n{{begin-eqn}}\n{{eqn | l = \\map \\Pr {Z \\ge a}\n| o = \\le\n| r = \\frac {\\expect {\\paren {Z + u}^2} } {\\paren {a + u}^2}\n| c = [[Markov's Inequality]]\n}}\n{{eqn | r = \\frac {\\sigma^2 + u^2} {\\paren {a + u}^2}\n| c = as $\\expect Z = 0$\n}}\n{{end-eqn}}",
+      "Minimize the right hand side over $u \\ge 0$.\nSetting the [[Definition:Derivative|derivative]] to zero gives $u = \\dfrac {\\sigma^2} a$.",
+      "Substituting:\n:$\\dfrac {\\sigma^2 + \\sigma^4 / a^2} {\\paren {a + \\sigma^2 / a}^2} = \\dfrac {\\sigma^2} {\\sigma^2 + a^2}$\nHence:\n:$\\map \\Pr {X - \\expect X \\ge a} \\le \\dfrac {\\sigma^2} {\\sigma^2 + a^2}$\n{{qed}}"
+    ]
+  }
+}

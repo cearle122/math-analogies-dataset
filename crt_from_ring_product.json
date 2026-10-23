@@ -1,0 +1,42 @@
+{
+  "id": "crt_from_ring_product",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $m, n \\in \\Z_{>0}$ with $m \\perp n$.\nThen:\n:$\\Z / m n \\Z \\cong \\Z / m \\Z \\times \\Z / n \\Z$"
+  },
+  "B_source": {
+    "statement": "Let $R$ be a [[Definition:Commutative Ring with Unity|commutative ring with unity]].\nLet $I, J$ be [[Definition:Ideal of Ring|ideals]] of $R$ with $I + J = R$.\nThen:\n:$R / \\paren {I \\cap J} \\cong R / I \\times R / J$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "commutative ring R": "the integers Z",
+        "comaximal ideals I,J": "the ideals (m) and (n) with gcd(m,n)=1",
+        "I intersect J": "(mn) since m,n coprime"
+      },
+      "derived": {
+        "R/(I cap J) ~= R/I x R/J": "Z/mnZ ~= Z/mZ x Z/nZ",
+        "I + J = R": "gcd(m,n)=1, i.e. (m)+(n)=Z"
+      }
+    },
+    "validity_conditions": [
+      "In Z, (m)+(n) = Z iff gcd(m,n)=1 (Bezout), so the ideals are comaximal.",
+      "(m) intersect (n) = (lcm(m,n)) = (mn) when coprime.",
+      "The general ring CRT then specializes to Z/mnZ ~= Z/mZ x Z/nZ."
+    ],
+    "proof_plan": [
+      "Take $R = \\Z$, $I = \\ideal m$ and $J = \\ideal n$.",
+      "By [[Bézout's Identity]], $m x + n y = 1$ for some $x, y \\in \\Z$, so $\\ideal m + \\ideal n = \\Z$.\nAs $m \\perp n$, $\\ideal m \\cap \\ideal n = \\ideal {\\lcm \\set {m, n} } = \\ideal {m n}$.",
+      "By the [[Chinese Remainder Theorem (Commutative Algebra)|Chinese Remainder Theorem for rings]]:\n:$\\Z / \\paren {\\ideal m \\cap \\ideal n} \\cong \\Z / \\ideal m \\times \\Z / \\ideal n$",
+      "Hence:\n:$\\Z / m n \\Z \\cong \\Z / m \\Z \\times \\Z / n \\Z$\n{{qed}}"
+    ]
+  }
+}

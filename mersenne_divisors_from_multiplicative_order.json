@@ -1,0 +1,38 @@
+{
+  "id": "mersenne_divisors_from_multiplicative_order",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $p$ and $q$ be [[Definition:Prime Number|primes]] with $q \\divides 2^p - 1$.\nThen:\n:$q \\equiv 1 \\pmod p$"
+  },
+  "B_source": {
+    "statement": "Let $G$ be a [[Definition:Finite Group|finite group]] and $g \\in G$.\nThen the [[Definition:Order of Group Element|order]] of $g$ divides $\\order G$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the group G": "the non-zero residues modulo q",
+        "the element g": "the class of 2"
+      },
+      "derived": {
+        "the order of 2": "exactly p"
+      },
+      "reformulation": "Specialize Lagrange's theorem to the class of 2 modulo q, whose order is forced to be p."
+    },
+    "validity_conditions": [
+      "q is odd as 2^p - 1 is odd, so 2 is invertible modulo q.",
+      "p must be prime, so that the order of 2, which divides p and is not 1, equals p."
+    ],
+    "proof_plan": [
+      "$2^p - 1$ is odd, so $q$ is odd and the class of $2$ lies in $\\paren {\\Z / q \\Z}^\\times$, a group of order $q - 1$.",
+      "As $2^p \\equiv 1 \\pmod q$, the order of $2$ divides $p$.\nIt is not $1$, as $2 \\not \\equiv 1 \\pmod q$, so it equals $p$.",
+      "By the source result, $p \\divides q - 1$.",
+      "Hence every prime divisor of the [[Definition:Mersenne Number|Mersenne number]] $2^p - 1$ satisfies $q \\equiv 1 \\pmod p$.\n{{qed}}"
+    ]
+  }
+}

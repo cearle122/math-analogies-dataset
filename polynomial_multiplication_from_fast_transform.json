@@ -1,0 +1,40 @@
+{
+  "id": "polynomial_multiplication_from_fast_transform",
+  "field": [
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $A, B$ be [[Definition:Polynomial over Ring|polynomials]] of degree at most $n$ over $\\C$.\nThen the coefficients of $A B$ can be computed in $\\map \\OO {n \\log n}$ arithmetic operations."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Discrete Fourier Transform|discrete Fourier transform]] of length $N$, evaluating a polynomial of degree less than $N$ at all $N$th [[Definition:Complex Root of Unity|roots of unity]], can be computed in $\\map \\OO {N \\log N}$ operations by the [[Fast Fourier Transform]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the transform being computed": "evaluation of each polynomial at the roots of unity",
+        "the inverse transform": "interpolation from values back to coefficients",
+        "the pointwise operation between transforms": "multiplication of the evaluation vectors"
+      },
+      "derived": {
+        "the convolution of coefficient sequences": "the coefficients of the product polynomial",
+        "the total cost": "two transforms, a linear pointwise pass, and one inverse transform"
+      },
+      "reformulation": "Move to the evaluation representation, where multiplying polynomials becomes multiplying vectors pointwise."
+    },
+    "validity_conditions": [
+      "The product of two polynomials evaluated at a point is the product of their values, so multiplication becomes pointwise in the evaluation representation.",
+      "The transform length must be at least the degree of the product, so both inputs are padded to avoid wraparound of the cyclic convolution.",
+      "The ground ring must contain suitable roots of unity and an inverse of the transform length; over rings lacking them one works in an extension or uses a number-theoretic transform."
+    ],
+    "proof_plan": [
+      "Pad both coefficient sequences with zeros to length $N$, a power of $2$ with $N > 2 n$.",
+      "Using the [[Fast Fourier Transform]], compute:\n:$\\map A {\\omega^k}, \\map B {\\omega^k}$ for $k = 0, \\ldots, N - 1$\nwhere $\\omega = e^{2 \\pi i / N}$.",
+      "Multiply pointwise in $\\map \\OO N$ operations:\n:$\\map {\\paren {A B} } {\\omega^k} = \\map A {\\omega^k} \\map B {\\omega^k}$",
+      "As $\\map \\deg {A B} < N$, the inverse transform recovers its coefficients in $\\map \\OO {N \\log N}$ operations.\nHence the total cost is $\\map \\OO {n \\log n}$.\n{{qed}}"
+    ]
+  }
+}

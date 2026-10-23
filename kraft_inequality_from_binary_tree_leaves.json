@@ -1,0 +1,38 @@
+{
+  "id": "kraft_inequality_from_binary_tree_leaves",
+  "field": [
+    "probability",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let a [[Definition:Prefix Code|prefix-free]] binary code have codeword lengths $\\ell_1, \\ldots, \\ell_m$.\nThen:\n:$\\displaystyle \\sum_{i \\mathop = 1}^m 2^{-\\ell_i} \\le 1$\nConversely, any lengths satisfying this inequality are the lengths of some prefix-free binary code."
+  },
+  "B_source": {
+    "statement": "In the complete binary tree of depth $L$, a node at depth $\\ell$ has $2^{L - \\ell}$ descendant leaves, and nodes none of which is an ancestor of another have disjoint sets of descendant leaves."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "codewords": "nodes of the binary tree",
+        "prefix-freeness": "no codeword node is an ancestor of another"
+      },
+      "derived": {
+        "disjoint leaf sets": "the Kraft sum is at most 1"
+      },
+      "reformulation": "Represent codewords as nodes of a binary tree and count the leaves below them."
+    },
+    "validity_conditions": [
+      "L is taken as the maximum codeword length.",
+      "For the converse, assigning codewords in order of increasing length keeps a free node available."
+    ],
+    "proof_plan": [
+      "Identify binary words with nodes of the infinite binary tree; a word is a prefix of another {{iff}} its node is an ancestor.\nLet $L = \\max_i \\ell_i$.",
+      "By the source result, the codeword of length $\\ell_i$ has $2^{L - \\ell_i}$ descendant leaves at depth $L$, and these sets are disjoint.",
+      "Hence $\\displaystyle \\sum_i 2^{L - \\ell_i} \\le 2^L$, which is the [[Kraft Inequality]].",
+      "Conversely, sort $\\ell_1 \\le \\cdots \\le \\ell_m$ and give each the leftmost free node of its depth; before step $j$ the used leaves number $\\displaystyle \\sum_{i < j} 2^{L - \\ell_i} < 2^L$, so a free node exists.\n{{qed}}"
+    ]
+  }
+}

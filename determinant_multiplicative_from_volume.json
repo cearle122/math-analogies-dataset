@@ -1,0 +1,41 @@
+{
+  "id": "determinant_multiplicative_from_volume",
+  "field": [
+    "algebra",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ and $\\mathbf B$ be [[Definition:Square Matrix|square matrices]] of [[Definition:Order of Square Matrix|order]] $n$ over $\\R$.\nThen:\n:$\\map \\det {\\mathbf A \\mathbf B} = \\map \\det {\\mathbf A} \\map \\det {\\mathbf B}$"
+  },
+  "B_source": {
+    "statement": "Let $S, T: \\R^n \\to \\R^n$ be [[Definition:Linear Transformation|linear transformations]].\nThen the signed volume-scaling factor of $S \\circ T$ is the product of those of $S$ and $T$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "linear map T": "matrix A",
+        "linear map S": "matrix B",
+        "signed volume scaling factor of a map": "determinant of the matrix"
+      },
+      "derived": {
+        "vol-scale(S o T) = vol-scale(S)*vol-scale(T)": "det(AB) = det(A)det(B)",
+        "composition of maps": "product of matrices"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "The determinant equals the signed factor by which a linear map scales volume (n-dimensional oriented measure).",
+      "Applying two maps in succession multiplies their scaling factors, and composition corresponds to matrix product.",
+      "So the multiplicativity of volume scaling transports directly to determinants."
+    ],
+    "proof_plan": [
+      "From [[Area Scaling by Determinant]], $\\map \\det {\\mathbf M}$ is the signed volume-scaling factor of the linear transformation $x \\mapsto \\mathbf M x$.",
+      "Composing linear transformations multiplies their scaling factors, since $S \\circ T$ first scales by that of $T$, then by that of $S$.",
+      "By [[Matrix Product as Composition of Linear Transformations]], $\\mathbf A \\mathbf B$ represents the composition of the transformations represented by $\\mathbf A$ and $\\mathbf B$.",
+      "Hence:\n:$\\map \\det {\\mathbf A \\mathbf B} = \\map \\det {\\mathbf A} \\map \\det {\\mathbf B}$\n{{qed}}"
+    ]
+  }
+}

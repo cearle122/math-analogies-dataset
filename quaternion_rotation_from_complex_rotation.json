@@ -1,0 +1,41 @@
+{
+  "id": "quaternion_rotation_from_complex_rotation",
+  "field": [
+    "algebra",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $q \\in \\Bbb H$ be a [[Definition:Unit Quaternion|unit quaternion]].\nThen:\n:$\\mathbf v \\mapsto q \\mathbf v q^{-1}$\nis a [[Definition:Rotation (Geometry)|rotation]] of $\\R^3$, identified with the purely imaginary quaternions, and $q$ and $-q$ give the same rotation."
+  },
+  "B_source": {
+    "statement": "Let $z \\in \\C$ with $\\size z = 1$.\nThen $w \\mapsto z w$ is a [[Definition:Rotation (Geometry)|rotation]] of $\\R^2 \\cong \\C$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the unit complex numbers": "the unit quaternions",
+        "rotation by multiplication": "rotation by conjugation",
+        "the plane acted upon": "the purely imaginary quaternions, a three-dimensional space"
+      },
+      "derived": {
+        "the norm being multiplicative": "the same, so conjugation preserves length",
+        "the correspondence being one-to-one": "a two-to-one correspondence, since q and -q act identically"
+      },
+      "reformulation": "Replace multiplication by conjugation so that noncommutativity is absorbed and the imaginary subspace is preserved."
+    },
+    "validity_conditions": [
+      "The quaternion norm is multiplicative, so conjugation by a unit quaternion preserves length and is therefore an orthogonal transformation.",
+      "Multiplication alone does not work because quaternions are noncommutative and left multiplication does not preserve the purely imaginary subspace; conjugation is the correct replacement and does preserve it.",
+      "The map from unit quaternions to rotations is two-to-one rather than injective, since q and -q induce the same conjugation, which is the essential departure from the complex case."
+    ],
+    "proof_plan": [
+      "Identify $\\R^3$ with the purely imaginary quaternions $\\set {x i + y j + z k}$.",
+      "Replace multiplication by conjugation $\\map {R_q} {\\mathbf v} = q \\mathbf v q^{-1}$.\nAs $\\map {\\operatorname {Re} } {q \\mathbf v q^{-1} } = \\map {\\operatorname {Re} } {\\mathbf v} = 0$, conjugation preserves the imaginary subspace.",
+      "By multiplicativity of the [[Definition:Norm of Quaternion|norm]], $\\norm {\\map {R_q} {\\mathbf v} } = \\norm {\\mathbf v}$, so $R_q$ is [[Definition:Orthogonal Transformation|orthogonal]].\nAs the unit quaternions form a [[Definition:Connected Space|connected]] set and $R_1 = I$, $\\map \\det {R_q} = 1$.",
+      "$R_q = I$ {{iff}} $q$ commutes with $i$, $j$, $k$, {{iff}} $q$ is real, that is $q = \\pm 1$.\nHence $q$ and $-q$ give the same rotation, and the correspondence is two-to-one.\n{{qed}}"
+    ]
+  }
+}

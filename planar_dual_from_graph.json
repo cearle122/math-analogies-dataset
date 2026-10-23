@@ -1,0 +1,41 @@
+{
+  "id": "planar_dual_from_graph",
+  "field": [
+    "combinatorics",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Connected Graph|connected]] [[Definition:Plane Graph|plane graph]] with [[Definition:Dual Graph|dual]] $G^*$.\nThen a set of edges $C$ is a [[Definition:Cycle (Graph Theory)|cycle]] of $G$ {{iff}} the corresponding dual edges $C^*$ form a minimal [[Definition:Edge Cut|edge cut]] of $G^*$."
+  },
+  "B_source": {
+    "statement": "Let $G$ be a [[Definition:Connected Graph|connected]] [[Definition:Plane Graph|plane graph]].\nThe [[Definition:Cycle (Graph Theory)|cycles]] of $G$ generate its [[Definition:Cycle Space|cycle space]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "vertex of G": "face of G*",
+        "face of G": "vertex of G*",
+        "edge of G": "crossing dual edge of G*",
+        "cycle in G": "cut in G*"
+      },
+      "derived": {
+        "cycle space of G": "cut space of G*",
+        "bounded faces enclosed": "vertex sets separated"
+      },
+      "reformulation": "Construct the planar dual G* (a vertex per face, an edge crossing each edge of G), swapping the roles of cycles and cuts."
+    },
+    "validity_conditions": [
+      "G must be a connected plane graph (a fixed embedding), so the dual G* is well-defined.",
+      "The bijection edge <-> dual edge carries the cycle space of G onto the cut space of G* exactly; planarity is essential (non-planar graphs have no such dual)."
+    ],
+    "proof_plan": [
+      "Embed $G$ in the plane and build $G^*$ with one vertex per face of $G$, and one dual edge crossing each edge of $G$.",
+      "Map each edge $e$ of $G$ to the dual edge $e^*$ crossing it.",
+      "By the [[Jordan Curve Theorem]], a cycle $C$ of $G$ separates the plane into an inside and an outside.\nThe dual edges $C^*$ are exactly those joining faces inside $C$ to faces outside, so they form a cut; it is minimal as both sides are connected.\nConversely, a minimal cut of $G^*$ separates the faces into two connected regions, whose common boundary is a cycle of $G$.",
+      "Hence cycles and minimal cuts are exchanged by planar duality.\n{{qed}}"
+    ]
+  }
+}

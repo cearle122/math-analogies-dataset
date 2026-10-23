@@ -1,0 +1,40 @@
+{
+  "id": "grothendieck_group_from_monoid_congruence",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {M, +}$ be a [[Definition:Commutative Monoid|commutative]] [[Definition:Cancellable Monoid|cancellative monoid]].\nThen $M$ [[Definition:Monomorphism (Abstract Algebra)|embeds]] in a [[Definition:Group|group]] $\\map K M$, its [[Definition:Grothendieck Group|Grothendieck group]].\nIn particular, this constructs $\\Z$ from $\\N$."
+  },
+  "B_source": {
+    "statement": "Let $\\RR$ be a [[Definition:Congruence Relation|congruence relation]] on an [[Definition:Algebraic Structure|algebraic structure]] $S$.\nThen $S / \\RR$ is the universal structure in which $\\RR$ becomes equality, and $S / \\RR \\cong \\Img f$ for any [[Definition:Homomorphism (Abstract Algebra)|homomorphism]] $f$ whose [[Definition:Kernel of Homomorphism|kernel]] is $\\RR$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the source object": "the set M x M, with (a,b) thought of as a formal difference a - b",
+        "the congruence being collapsed": "(a,b) ~ (c,d) exactly when a + d = b + c",
+        "the quotient object": "the Grothendieck group K(M)"
+      },
+      "derived": {
+        "the operation descends to the quotient": "componentwise addition is well defined on classes",
+        "the canonical map into the quotient": "m |-> [(m,0)], which is injective precisely when M is cancellative"
+      },
+      "reformulation": "Represent formal differences as pairs and collapse the congruence that makes equal differences equal."
+    },
+    "validity_conditions": [
+      "The relation is transitive only because M is cancellative, so cancellativity is what makes it an equivalence relation at all.",
+      "The relation is a congruence for componentwise addition, so addition descends to well-defined operations on classes.",
+      "Cancellativity also gives that [(m,0)] = [(n,0)] forces m = n, which is exactly injectivity of the canonical map."
+    ],
+    "proof_plan": [
+      "Form $M \\times M$, reading $\\tuple {a, b}$ as the formal difference $a - b$.",
+      "Define:\n:$\\tuple {a, b} \\sim \\tuple {c, d} \\iff a + d = b + c$\n[[Definition:Reflexive Relation|Reflexivity]] and [[Definition:Symmetric Relation|symmetry]] are immediate.\nIf $a + d = b + c$ and $c + f = d + e$, then $a + d + f = b + d + e$, and cancelling $d$ gives $a + f = b + e$, so $\\sim$ is [[Definition:Transitive Relation|transitive]].",
+      "$\\sim$ is compatible with componentwise addition.\nHence $\\map K M = \\paren {M \\times M} / \\sim$ is a commutative monoid, and $\\eqclass {\\tuple {b, a} } {}$ is the inverse of $\\eqclass {\\tuple {a, b} } {}$, so it is a [[Definition:Group|group]].",
+      "Define $\\iota: M \\to \\map K M$ by $\\map \\iota m = \\eqclass {\\tuple {m, 0} } {}$.\n$\\iota$ is a monoid homomorphism, and $\\map \\iota m = \\map \\iota n$ implies $m + 0 = n + 0$, so $\\iota$ is [[Definition:Injection|injective]].\n{{qed}}"
+    ]
+  }
+}

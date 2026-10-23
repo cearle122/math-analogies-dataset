@@ -1,0 +1,40 @@
+{
+  "id": "lcm_from_gcd_by_valuation_duality",
+  "field": [
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $a, b \\in \\Z_{>0}$.\nThen:\n:$\\displaystyle \\lcm \\set {a, b} = \\prod_p p^{\\max \\set {\\map {\\nu_p} a, \\map {\\nu_p} b} }$\nand $\\gcd \\set {a, b} \\cdot \\lcm \\set {a, b} = a b$."
+  },
+  "B_source": {
+    "statement": "Let $a, b \\in \\Z_{>0}$.\nThen:\n:$\\displaystyle \\gcd \\set {a, b} = \\prod_p p^{\\min \\set {\\map {\\nu_p} a, \\map {\\nu_p} b} }$\nwhere $\\map {\\nu_p} n$ is the exponent of $p$ in $n$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "min": "max",
+        "greatest common divisor": "least common multiple",
+        "divides": "is divisible by"
+      },
+      "derived": {
+        "min + max = sum": "the product formula gcd times lcm equals ab"
+      },
+      "reformulation": "Under unique factorization, divisibility becomes the componentwise order on exponent vectors, where gcd and lcm are the dual operations meet and join."
+    },
+    "validity_conditions": [
+      "Unique factorization is what identifies divisibility with comparison of exponent vectors.",
+      "Only finitely many exponents are non-zero, so the products are finite."
+    ],
+    "proof_plan": [
+      "By the [[Fundamental Theorem of Arithmetic]], $d \\divides a$ {{iff}} $\\map {\\nu_p} d \\le \\map {\\nu_p} a$ for every prime $p$.",
+      "Hence $\\struct {\\Z_{>0}, \\divides}$ is order-isomorphic to finitely supported exponent vectors under the componentwise order.\nThere $\\gcd$ is the meet, given by componentwise $\\min$, and $\\lcm$ is the join, given by componentwise $\\max$.",
+      "Reversing the order exchanges meets and joins, so dualizing the source result gives the stated formula for $\\lcm \\set {a, b}$.",
+      "As $\\min \\set {x, y} + \\max \\set {x, y} = x + y$, multiplying the two formulas gives:\n:$\\gcd \\set {a, b} \\cdot \\lcm \\set {a, b} = \\displaystyle \\prod_p p^{\\map {\\nu_p} a + \\map {\\nu_p} b} = a b$\n{{qed}}"
+    ]
+  }
+}

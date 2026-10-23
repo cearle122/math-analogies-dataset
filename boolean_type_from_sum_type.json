@@ -1,0 +1,39 @@
+{
+  "id": "boolean_type_from_sum_type",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "In [[Definition:Type Theory|type theory]], the type $\\mathbf 2$ of [[Definition:Boolean|booleans]], with constants $\\mathsf {true}$ and $\\mathsf {false}$ and its case analysis principle, is equivalent to:\n:$\\mathbf 2 \\simeq \\mathbf 1 + \\mathbf 1$\nwith case analysis given by the [[Definition:Eliminator|eliminator]] of the [[Definition:Sum Type|sum type]]."
+  },
+  "B_source": {
+    "statement": "Let $A$ and $B$ be [[Definition:Type|types]].\nThe [[Definition:Sum Type|sum type]] $A + B$ has introduction rules $\\mathsf {inl}: A \\to A + B$ and $\\mathsf {inr}: B \\to A + B$, and eliminator:\n:$\\mathsf {case}: \\paren {A \\to C} \\to \\paren {B \\to C} \\to \\paren {A + B \\to C}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the first summand": "the unit type",
+        "the second summand": "the unit type again",
+        "the two injections": "the two boolean constants"
+      },
+      "derived": {
+        "the case eliminator for the sum": "the boolean conditional expression",
+        "the dependent eliminator": "proof by case analysis on a boolean"
+      }
+    },
+    "validity_conditions": [
+      "The unit type has exactly one element, so a sum of two copies has exactly two, matching the booleans.",
+      "The two injections become the two constants, and the sum eliminator becomes the conditional, since a function out of the unit type is determined by a single value.",
+      "The dependent form of the eliminator is needed to prove properties of an arbitrary boolean; the simple conditional alone does not give the case-analysis principle."
+    ],
+    "proof_plan": [
+      "Instantiate $A = B = \\mathbf 1$, the [[Definition:Unit Type|unit type]].",
+      "Identify:\n:$\\mathsf {true} = \\map {\\mathsf {inl} } \\star$\n:$\\mathsf {false} = \\map {\\mathsf {inr} } \\star$",
+      "A [[Definition:Mapping|function]] $\\mathbf 1 \\to C$ is determined by a single value $c \\in C$.\nHence the eliminator specializes to:\n:$\\mathsf {case}: C \\to C \\to \\paren {\\mathbf 1 + \\mathbf 1 \\to C}$",
+      "This specialized eliminator is the boolean conditional $\\mathsf {if} \\, b \\, \\mathsf {then} \\, c_1 \\, \\mathsf {else} \\, c_2$.\nIts dependent form is [[Definition:Case Analysis|case analysis]] on $\\mathbf 2$.\n{{qed}}"
+    ]
+  }
+}

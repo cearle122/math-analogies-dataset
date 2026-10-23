@@ -1,0 +1,41 @@
+{
+  "id": "gronwall_from_discrete_gronwall",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $u, b: \\closedint 0 T \\to \\R_{\\ge 0}$ be [[Definition:Continuous Real Function|continuous]] and $a \\ge 0$.\nSuppose:\n:$\\displaystyle \\map u t \\le a + \\int_0^t \\map b s \\map u s \\rd s$\nThen:\n:$\\displaystyle \\map u t \\le a \\map \\exp {\\int_0^t \\map b s \\rd s}$"
+  },
+  "B_source": {
+    "statement": "Let $u_n, b_n \\ge 0$ and $a \\ge 0$ satisfy:\n:$\\displaystyle u_n \\le a + \\sum_{k \\mathop < n} b_k u_k$\nThen:\n:$\\displaystyle u_n \\le a \\prod_{k \\mathop < n} \\paren {1 + b_k}$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the index n": "a time point t on a grid of spacing h",
+        "the sum over k < n": "the integral from 0 to t",
+        "the product of (1 + b_k)": "the exponential of the integral of b"
+      },
+      "derived": {
+        "the limit of the discrete bound": "the exponential bound a exp(int b)"
+      }
+    },
+    "validity_conditions": [
+      "u must be nonnegative and continuous so the Riemann sums converge",
+      "b must be nonnegative and integrable for the product bound to converge to the exponential",
+      "the elementary bound 1 + x <= e^x is what makes the product-to-exponential passage one-directional"
+    ],
+    "proof_plan": [
+      "Let $h = \\dfrac T N$ and $t_k = k h$.\nReplace the integral by its left [[Definition:Riemann Sum|Riemann sum]]:\n:$\\displaystyle \\map u {t_n} \\le a + \\sum_{k \\mathop < n} h \\map b {t_k} \\map u {t_k} + \\epsilon_h$",
+      "By the discrete Gronwall inequality with $b_k = h \\map b {t_k}$:\n:$\\displaystyle \\map u {t_n} \\le \\paren {a + \\epsilon_h} \\prod_{k \\mathop < n} \\paren {1 + h \\map b {t_k} }$",
+      "From [[Exponential of x not less than 1+x|$1 + x \\le e^x$]]:\n:$\\displaystyle \\prod_{k \\mathop < n} \\paren {1 + h \\map b {t_k} } \\le \\map \\exp {\\sum_{k \\mathop < n} h \\map b {t_k} }$",
+      "Let $h \\to 0$.\nThen $\\epsilon_h \\to 0$ and the Riemann sum converges to $\\displaystyle \\int_0^t \\map b s \\rd s$.",
+      "Each step used only non-negativity and monotone bounds, so the inequality direction is preserved.\nHence:\n:$\\displaystyle \\map u t \\le a \\map \\exp {\\int_0^t \\map b s \\rd s}$\n{{qed}}"
+    ]
+  }
+}

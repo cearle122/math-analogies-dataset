@@ -1,0 +1,41 @@
+{
+  "id": "ring_iso_from_group_iso",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $f: R \\to S$ be a [[Definition:Ring Homomorphism|ring homomorphism]].\nThen:\n:$R / \\map \\ker f \\cong \\Img f$\nas [[Definition:Ring (Abstract Algebra)|rings]]."
+  },
+  "B_source": {
+    "statement": "Let $f: G \\to H$ be a [[Definition:Group Homomorphism|group homomorphism]].\nThen:\n:$G / \\map \\ker f \\cong \\Img f$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "group G": "ring R",
+        "group hom f": "ring hom f",
+        "normal subgroup": "two-sided ideal"
+      },
+      "derived": {
+        "ker(f) is a normal subgroup": "ker(f) is a two-sided ideal",
+        "G/ker(f)": "R/ker(f)"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "ker(f) of a ring hom is a two-sided ideal, so the quotient ring R/ker(f) is well-defined (the analogue of ker being normal in the group case).",
+      "The well-definedness of the induced map and its bijectivity argument carry over verbatim; only the extra multiplicative structure must additionally be checked to be preserved."
+    ],
+    "proof_plan": [
+      "$\\map \\ker f$ is an additive subgroup, and for $r \\in R$, $k \\in \\map \\ker f$:\n:$\\map f {r k} = \\map f r \\cdot 0 = 0$\nand similarly $\\map f {k r} = 0$.\nHence $\\map \\ker f$ is a two-sided [[Definition:Ideal of Ring|ideal]], the analogue of a normal subgroup.",
+      "Define $\\bar f: R / \\map \\ker f \\to \\Img f$ by $\\map {\\bar f} {r + \\map \\ker f} = \\map f r$.",
+      "By the proof of the [[First Isomorphism Theorem for Groups]] applied to $\\struct {R, +}$, $\\bar f$ is a well-defined [[Definition:Bijection|bijective]] additive homomorphism.",
+      "In addition:\n:$\\map {\\bar f} {\\paren {r + \\map \\ker f} \\paren {s + \\map \\ker f} } = \\map f {r s} = \\map f r \\map f s$\nso $\\bar f$ is multiplicative, and is a [[Definition:Ring Isomorphism|ring isomorphism]].\n{{qed}}"
+    ]
+  }
+}

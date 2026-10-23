@@ -1,0 +1,41 @@
+{
+  "id": "jensen_from_convexity",
+  "field": [
+    "probability",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\phi: \\R \\to \\R$ be [[Definition:Convex Real Function|convex]] and $X$ an [[Definition:Integrable Function|integrable]] [[Definition:Random Variable|random variable]] with $\\map \\phi X$ integrable.\nThen:\n:$\\map \\phi {\\expect X} \\le \\expect {\\map \\phi X}$"
+  },
+  "B_source": {
+    "statement": "Let $\\phi$ be [[Definition:Convex Real Function|convex]] and $a \\in \\R$.\nThen there exists $m \\in \\R$ such that:\n:$\\forall x \\in \\R: \\map \\phi x \\ge \\map \\phi a + m \\paren {x - a}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the tangent point a": "the mean E[X]",
+        "the linear lower bound at a": "L(x) = phi(E[X]) + m(x - E[X])",
+        "the variable x": "the random variable X"
+      },
+      "derived": {
+        "phi(X) >= L(X) pointwise": "E[phi(X)] >= E[L(X)]",
+        "E[L(X)] = phi(E[X])": "because L is affine and E[X - E[X]] = 0"
+      },
+      "reformulation": "Replace the convex function by its supporting line at the mean, reducing the inequality to linearity of expectation."
+    },
+    "validity_conditions": [
+      "phi convex guarantees a supporting line at a = E[X] lying below phi everywhere.",
+      "Taking expectations of phi(X) >= L(X) preserves the inequality (monotonicity).",
+      "E[L(X)] = phi(E[X]) because the affine part has mean-zero argument."
+    ],
+    "proof_plan": [
+      "Let $a = \\expect X$ and let $\\map L x = \\map \\phi a + m \\paren {x - a}$ be a [[Definition:Supporting Line|supporting line]] of $\\phi$ at $a$.",
+      "Then pointwise:\n:$\\map \\phi X \\ge \\map L X$",
+      "By [[Expectation is Monotone|monotonicity of expectation]]:\n:$\\expect {\\map \\phi X} \\ge \\expect {\\map L X}$",
+      "By [[Expectation is Linear|linearity]]:\n:$\\expect {\\map L X} = \\map \\phi a + m \\paren {\\expect X - a} = \\map \\phi {\\expect X}$\nHence:\n:$\\map \\phi {\\expect X} \\le \\expect {\\map \\phi X}$\n{{qed}}"
+    ]
+  }
+}

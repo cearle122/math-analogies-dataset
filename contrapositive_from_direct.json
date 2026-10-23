@@ -1,0 +1,37 @@
+{
+  "id": "contrapositive_from_direct",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $p$ and $q$ be [[Definition:Statement|statements]].\nIf $\\neg q \\implies \\neg p$ is proved, then $p \\implies q$ holds:\n:$\\paren {\\neg q \\implies \\neg p} \\vdash \\paren {p \\implies q}$"
+  },
+  "B_source": {
+    "statement": "Let $p$ and $q$ be [[Definition:Statement|statements]].\nThen:\n:$\\paren {p \\implies q} \\dashv \\vdash \\paren {\\neg q \\implies \\neg p}$\nThat is, a [[Definition:Conditional|conditional]] is equivalent to its [[Definition:Contrapositive Statement|contrapositive]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "hypothesis P": "negated conclusion ~Q",
+        "conclusion Q": "negated hypothesis ~P",
+        "direction P->Q": "reversed-and-negated direction ~Q->~P"
+      },
+      "derived": {
+        "proof of P->Q": "proof of ~Q->~P"
+      }
+    },
+    "validity_conditions": [
+      "Classical logic: P->Q and ~Q->~P have identical truth tables, so proving either establishes the other.",
+      "Requires the law of excluded middle / double-negation; the equivalence is weaker in intuitionistic logic (only one direction is free)."
+    ],
+    "proof_plan": [
+      "From the [[Rule of Transposition]]:\n:$\\paren {p \\implies q} \\dashv \\vdash \\paren {\\neg q \\implies \\neg p}$",
+      "Assume $\\neg q$ as hypothesis and derive $\\neg p$.",
+      "By the [[Rule of Implication]], this establishes $\\neg q \\implies \\neg p$.",
+      "By the [[Rule of Transposition]], $p \\implies q$ follows.\n{{qed}}"
+    ]
+  }
+}

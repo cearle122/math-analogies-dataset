@@ -1,0 +1,40 @@
+{
+  "id": "galois_quotient_from_restriction_kernel",
+  "field": [
+    "algebra",
+    "number_theory"
+  ],
+  "A_target": {
+    "statement": "Let $K / F$ be a [[Definition:Galois Extension|Galois extension]] and $E$ an intermediate field with $E / F$ [[Definition:Normal Extension|normal]].\nThen:\n:$\\Gal {E / F} \\cong \\Gal {K / F} / \\Gal {K / E}$"
+  },
+  "B_source": {
+    "statement": "Let $\\phi: G \\to H$ be a [[Definition:Surjection|surjective]] [[Definition:Group Homomorphism|homomorphism]] with [[Definition:Kernel of Group Homomorphism|kernel]] $N$.\nThen:\n:$H \\cong G / N$"
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the surjective homomorphism": "restriction of automorphisms of K to the intermediate field E",
+        "the kernel of the map": "the automorphisms of K fixing E pointwise",
+        "the target of the map": "the Galois group of E over F"
+      },
+      "derived": {
+        "the target as a collapsed source": "the Galois group of E over F as a quotient of that of K over F",
+        "normality of the kernel": "normality of the intermediate extension"
+      }
+    },
+    "validity_conditions": [
+      "Restriction to E is well defined precisely because E is normal over F, so every automorphism of K maps E to itself.",
+      "Restriction is surjective onto the Galois group of E over F, since every automorphism of E extends to K by the isomorphism extension theorem.",
+      "Its kernel is the automorphisms fixing E pointwise, and normality of that subgroup corresponds exactly to normality of the intermediate extension."
+    ],
+    "proof_plan": [
+      "Define $\\rho: \\Gal {K / F} \\to \\Gal {E / F}$ by restriction: $\\map \\rho \\sigma = \\sigma \\restriction_E$.",
+      "As $E / F$ is [[Definition:Normal Extension|normal]], every $F$-embedding of $E$ into $K$ maps $E$ into itself.\nHence $\\sigma \\restriction_E \\in \\Gal {E / F}$, and $\\rho$ is a [[Definition:Group Homomorphism|homomorphism]].",
+      "Every $\\tau \\in \\Gal {E / F}$ extends to an automorphism of $K$, since $K / F$ is [[Definition:Normal Extension|normal]].\nHence $\\rho$ is [[Definition:Surjection|surjective]].",
+      "We have:\n:$\\map \\ker \\rho = \\set {\\sigma: \\sigma \\restriction_E = \\operatorname {id}_E} = \\Gal {K / E}$\nBy the [[First Isomorphism Theorem for Groups]]:\n:$\\Gal {E / F} \\cong \\Gal {K / F} / \\Gal {K / E}$\n{{qed}}"
+    ]
+  }
+}

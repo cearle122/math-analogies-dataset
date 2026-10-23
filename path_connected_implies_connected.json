@@ -1,0 +1,37 @@
+{
+  "id": "path_connected_implies_connected",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Path-Connected Space|path-connected]] [[Definition:Topological Space|topological space]].\nThen $X$ is [[Definition:Connected Topological Space|connected]]."
+  },
+  "B_source": {
+    "statement": "The interval $\\closedint 0 1$ is connected, and the image of a connected space under a [[Definition:Continuous Mapping (Topology)|continuous mapping]] is connected."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the connected space": "the unit interval",
+        "the continuous mapping": "a path between points of the two parts"
+      },
+      "derived": {
+        "the connected image": "a connected set meeting both parts of a separation"
+      },
+      "reformulation": "Reduce a separation of X to a separation of the image of a path."
+    },
+    "validity_conditions": [
+      "The converse fails, as the topologist's sine curve is connected but not path-connected.",
+      "Openness of the parts relative to the path image follows from openness in X."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} $X = U \\cup V$ with $U$, $V$ disjoint, non-empty and open.\nPick $u \\in U$ and $v \\in V$.",
+      "Let $\\gamma: \\closedint 0 1 \\to X$ be a [[Definition:Path (Topology)|path]] from $u$ to $v$.",
+      "By the source result, $C = \\map \\gamma {\\closedint 0 1}$ is connected.\nBut $C \\cap U$ and $C \\cap V$ are disjoint, non-empty, open in $C$ and cover $C$.",
+      "This is a contradiction, so $X$ is connected.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "ball_volume_from_cavalieri",
+  "field": [
+    "geometry",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Volume|volume]] of a [[Definition:Ball|ball]] of radius $r$ is:\n:$\\dfrac 4 3 \\pi r^3$"
+  },
+  "B_source": {
+    "statement": "If two solids have cross-sections of equal area at every height, then they have equal volume."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the two solids": "a hemisphere, and a cylinder with a cone removed"
+      },
+      "derived": {
+        "equal cross-sections": "the hemisphere volume equals cylinder minus cone"
+      },
+      "reformulation": "Compare a hemisphere with a cylinder from which a cone with apex at the base center has been removed."
+    },
+    "validity_conditions": [
+      "The cone must have its apex at the center of the base, so that its cross-section at height h has radius h.",
+      "The volumes of the cylinder and cone are taken as known."
+    ],
+    "proof_plan": [
+      "The cross-section of a hemisphere of radius $r$ at height $h$ is a disk of area $\\pi \\paren {r^2 - h^2}$.",
+      "Take a cylinder of radius $r$ and height $r$, and remove a cone with apex at the center of its base and base its top face.\nAt height $h$ the cross-section is an annulus of area $\\pi r^2 - \\pi h^2$.",
+      "By [[Cavalieri's Principle]], the hemisphere has volume $\\pi r^3 - \\dfrac 1 3 \\pi r^3 = \\dfrac 2 3 \\pi r^3$.",
+      "Doubling, the ball has volume $\\dfrac 4 3 \\pi r^3$.\n{{qed}}"
+    ]
+  }
+}

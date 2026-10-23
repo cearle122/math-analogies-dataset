@@ -1,0 +1,41 @@
+{
+  "id": "free_probability_from_classical_probability",
+  "field": [
+    "probability",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {\\AA, \\phi}$ be a [[Definition:Noncommutative Probability Space|noncommutative probability space]].\n[[Definition:Free Independence|Freely independent]] variables satisfy $\\map \\phi {a_1 a_2 \\cdots a_n} = 0$ whenever each $a_i$ is centred and consecutive $a_i$ come from different subalgebras, and the [[Definition:R-Transform|$R$-transform]] linearizes [[Definition:Free Convolution|free convolution]]."
+  },
+  "B_source": {
+    "statement": "Let $X$ and $Y$ be [[Definition:Independent Random Variables|independent random variables]].\nThen:\n:$\\expect {\\map f X \\map g Y} = \\expect {\\map f X} \\expect {\\map g Y}$\nand the [[Definition:Cumulant Generating Function|logarithm of the characteristic function]] linearizes [[Definition:Convolution of Measures|convolution]]."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the commutative algebra of random variables": "a noncommutative algebra with a trace state",
+        "the expectation": "the trace functional on that algebra",
+        "independence": "freeness, defined by vanishing of alternating centred products"
+      },
+      "derived": {
+        "factorization of mixed moments": "a different combinatorial rule, indexed by noncrossing rather than all partitions",
+        "the transform linearizing convolution": "the R-transform in place of the logarithm of the transform"
+      },
+      "reformulation": "Move to a noncommutative algebra with a trace, replacing independence by the freeness rule appropriate there."
+    },
+    "validity_conditions": [
+      "Replacing the commutative algebra by a noncommutative one with a trace keeps the formal structure of moments, so moment computations still make sense.",
+      "Freeness is not a generalization of independence but a different rule: for commuting variables the two notions disagree except in trivial cases.",
+      "The combinatorial skeleton changes from all partitions to noncrossing partitions, which is why the central limit under freeness gives the semicircle law rather than the normal law."
+    ],
+    "proof_plan": [
+      "Replace the commutative algebra of random variables by a [[Definition:Noncommutative Algebra|noncommutative]] [[Definition:Unital Algebra|unital algebra]] $\\AA$ with a [[Definition:Trace (Linear Algebra)|tracial]] state $\\phi$.",
+      "Define freeness of subalgebras $\\AA_1, \\ldots, \\AA_k$ by:\n:$\\map \\phi {a_1 \\cdots a_n} = 0$ whenever $\\map \\phi {a_j} = 0$ and $a_j \\in \\AA_{i_j}$ with $i_1 \\ne i_2 \\ne \\cdots \\ne i_n$",
+      "Recomputing mixed moments, the free cumulants are indexed by [[Definition:Noncrossing Partition|noncrossing partitions]] in place of all partitions.\nFor example, $\\map \\phi {a b a b} = \\map \\phi {a^2} \\map \\phi b^2 + \\map \\phi a^2 \\map \\phi {b^2} - \\map \\phi a^2 \\map \\phi b^2$ for free $a, b$.",
+      "The $R$-transform linearizes free convolution: $R_{\\mu \\boxplus \\nu} = R_\\mu + R_\\nu$.\nThe resulting free central limit law is the [[Definition:Semicircle Distribution|semicircle distribution]].\n{{qed}}"
+    ]
+  }
+}

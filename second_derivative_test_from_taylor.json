@@ -1,0 +1,38 @@
+{
+  "id": "second_derivative_test_from_taylor",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Twice Differentiable Real Function|twice differentiable]] at $a$ with $\\map {f'} a = 0$ and $\\map {f''} a > 0$.\nThen $f$ has a [[Definition:Local Minimum|strict local minimum]] at $a$."
+  },
+  "B_source": {
+    "statement": "Let $f$ be twice differentiable at $a$.\nThen:\n:$\\map f {a + h} = \\map f a + \\map {f'} a h + \\dfrac 1 2 \\map {f''} a h^2 + \\map o {h^2}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "f'(a)": "0",
+        "the expansion f(a+h)-f(a)": "(1/2) f''(a) h^2 + o(h^2)"
+      },
+      "derived": {
+        "sign of f(a+h) - f(a)": "sign of (1/2) f''(a) h^2, which is positive",
+        "f''(a) > 0": "f(a+h) > f(a) for small h != 0"
+      }
+    },
+    "validity_conditions": [
+      "Substituting f'(a) = 0 removes the linear term, leaving f(a+h) - f(a) = (1/2) f''(a) h^2 + o(h^2).",
+      "For f''(a) > 0 and small h != 0, the quadratic term dominates the o(h^2) remainder and is positive.",
+      "So f(a+h) > f(a) near a, meaning a is a local minimum."
+    ],
+    "proof_plan": [
+      "By [[Taylor's Theorem]] at $a$:\n:$\\map f {a + h} = \\map f a + \\map {f'} a h + \\dfrac 1 2 \\map {f''} a h^2 + \\map o {h^2}$",
+      "As $\\map {f'} a = 0$:\n:$\\map f {a + h} - \\map f a = \\dfrac 1 2 \\map {f''} a h^2 + \\map o {h^2}$",
+      "For $0 < \\size h$ sufficiently small, $\\size {\\map o {h^2} } < \\dfrac 1 4 \\map {f''} a h^2$.\nSo $\\map f {a + h} - \\map f a$ has the sign of $\\dfrac 1 2 \\map {f''} a h^2$.",
+      "As $\\map {f''} a > 0$, this is positive, so $\\map f {a + h} > \\map f a$ for small $h \\ne 0$.\nHence $a$ is a strict local minimum.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "pancake_theorem_from_borsuk_ulam_circle",
+  "field": [
+    "topology",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $A$ and $B$ be bounded [[Definition:Measurable Set|measurable]] regions in $\\R^2$.\nThen there is a line which divides each of $A$ and $B$ into two parts of equal [[Definition:Area|area]]."
+  },
+  "B_source": {
+    "statement": "Let $g: \\Bbb S^1 \\to \\R$ be [[Definition:Continuous Mapping (Topology)|continuous]] with $\\map g {-u} = -\\map g u$.\nThen $\\map g u = 0$ for some $u \\in \\Bbb S^1$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "points of the circle": "directions of normal vectors to lines",
+        "the odd function g": "the imbalance of B across the line bisecting A"
+      },
+      "derived": {
+        "a zero of g": "a line bisecting both regions"
+      },
+      "reformulation": "For each direction take the line with that normal bisecting A, measure how unevenly it splits B, and observe that this imbalance is odd."
+    },
+    "validity_conditions": [
+      "The bisecting line for A must be chosen to depend continuously and oddly on the direction, for example as the midpoint of the interval of bisecting offsets.",
+      "Areas of half-planes vary continuously with the line, as the regions are bounded."
+    ],
+    "proof_plan": [
+      "For $u \\in \\Bbb S^1$ and $t \\in \\R$ let $H^+_{u, t} = \\set {x: x \\cdot u > t}$.\nLet $\\map t u$ be the midpoint of the interval of $t$ for which $H^+_{u, t}$ contains half the area of $A$.\nThen $t$ is continuous and $\\map t {-u} = -\\map t u$, so the line $L_u = \\set {x \\cdot u = \\map t u}$ bisects $A$ and $L_{-u} = L_u$.",
+      "Let $\\map g u = \\map {\\operatorname {Area} } {B \\cap H^+_{u, \\map t u} } - \\map {\\operatorname {Area} } {B \\setminus \\overline {H^+_{u, \\map t u} } }$, which is continuous.",
+      "Replacing $u$ by $-u$ keeps the line and exchanges its two sides, so $\\map g {-u} = -\\map g u$.",
+      "By the source result, $\\map g {u_0} = 0$ for some $u_0$, so $L_{u_0}$ bisects both $A$ and $B$.\nThis is the two-dimensional [[Ham Sandwich Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "rice_theorem_from_halting_undecidability",
+  "field": [
+    "logic",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $\\PP$ be a set of [[Definition:Partial Recursive Function|partial computable functions]] with $\\PP \\ne \\O$ and $\\PP$ not the set of all of them.\nThen $\\set {e: \\phi_e \\in \\PP}$ is not [[Definition:Decidable Set|decidable]]."
+  },
+  "B_source": {
+    "statement": "The [[Definition:Halting Problem|halting problem]] $\\set {\\tuple {p, x}: p \\text { halts on } x}$ is not decidable."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "halting of p on x": "membership of a constructed program q in the property P"
+      },
+      "derived": {
+        "a decider for P": "a decider for halting"
+      },
+      "reformulation": "Reduce halting to the property by building a program that behaves like a fixed member of P exactly when p halts on x."
+    },
+    "validity_conditions": [
+      "Replacing P by its complement, one may assume the nowhere-defined function is not in P.",
+      "The construction of q from p and x is computable, by the s-m-n theorem."
+    ],
+    "proof_plan": [
+      "Replacing $\\PP$ by its complement if necessary, assume the nowhere-defined function is not in $\\PP$, and fix $e_1$ with $\\phi_{e_1} \\in \\PP$.",
+      "Given $\\tuple {p, x}$, effectively construct a program $q$ which on input $y$ first runs $p$ on $x$ and, if that halts, outputs $\\map {\\phi_{e_1} } y$.",
+      "If $p$ halts on $x$ then $\\phi_q = \\phi_{e_1} \\in \\PP$; otherwise $\\phi_q$ is nowhere defined, so $\\phi_q \\notin \\PP$.",
+      "A decider for $\\set {e: \\phi_e \\in \\PP}$ would therefore decide the halting problem, contradicting the source result.\nThis is [[Rice's Theorem]].\n{{qed}}"
+    ]
+  }
+}

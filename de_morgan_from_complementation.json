@@ -1,0 +1,40 @@
+{
+  "id": "de_morgan_from_complementation",
+  "field": [
+    "logic",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $S$ be a set and $A, B \\subseteq S$.\nThen:\n:$\\relcomp S {A \\cup B} = \\relcomp S A \\cap \\relcomp S B$\n:$\\relcomp S {A \\cap B} = \\relcomp S A \\cup \\relcomp S B$"
+  },
+  "B_source": {
+    "statement": "Let $S$ be a set.\nThen [[Definition:Relative Complement|complementation]] $A \\mapsto \\relcomp S A$ on the [[Definition:Power Set|power set]] $\\powerset S$ satisfies:\n:$A \\subseteq B \\iff \\relcomp S B \\subseteq \\relcomp S A$\n:$\\relcomp S {\\relcomp S A} = A$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the order relation of inclusion": "its reverse",
+        "the join operation union": "the meet operation intersection",
+        "the involution": "set complementation"
+      },
+      "derived": {
+        "the second De Morgan law": "the image of the first under the involution"
+      }
+    },
+    "validity_conditions": [
+      "complementation must be an involution, so applying it twice returns the original set",
+      "it must reverse inclusion, which is what exchanges least upper bounds with greatest lower bounds",
+      "the ambient universe must be fixed, since complement is taken relative to it"
+    ],
+    "proof_plan": [
+      "From [[Set Complement inverts Subsets]], complementation reverses inclusion.\nFrom [[Relative Complement of Relative Complement]], it is an [[Definition:Involution (Mapping)|involution]], hence a [[Definition:Bijection|bijection]].",
+      "An [[Definition:Order-Reversing Mapping|order-reversing]] bijection with order-reversing inverse carries [[Definition:Supremum of Set|suprema]] to [[Definition:Infimum of Set|infima]].",
+      "In $\\struct {\\powerset S, \\subseteq}$, $A \\cup B = \\sup \\set {A, B}$ and $A \\cap B = \\inf \\set {A, B}$.\nHence:\n:$\\relcomp S {A \\cup B} = \\relcomp S A \\cap \\relcomp S B$",
+      "Apply this identity to $\\relcomp S A$ and $\\relcomp S B$, then complement:\n:$\\relcomp S {A \\cap B} = \\relcomp S A \\cup \\relcomp S B$",
+      "The argument used only the [[Definition:Lattice|lattice]] structure and the complement, so it holds in any [[Definition:Boolean Algebra|Boolean algebra]].\n{{qed}}"
+    ]
+  }
+}

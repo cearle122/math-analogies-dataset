@@ -1,0 +1,38 @@
+{
+  "id": "power_mean_markov",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Random Variable|random variable]] and $k, a > 0$.\nThen:\n:$\\map \\Pr {\\size X \\ge a} \\le \\dfrac {\\expect {\\size X^k} } {a^k}$"
+  },
+  "B_source": {
+    "statement": "Let $Y$ be a non-negative [[Definition:Random Variable|random variable]] and $t > 0$.\nThen:\n:$\\map \\Pr {Y \\ge t} \\le \\dfrac {\\expect Y} t$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "Y": "|X|^k",
+        "t": "a^k"
+      },
+      "derived": {
+        "E[Y]": "E[|X|^k]",
+        "{Y >= t}": "{|X| >= a}"
+      }
+    },
+    "validity_conditions": [
+      "|X|^k >= 0, so Markov applies.",
+      "For a > 0 and k > 0, x |-> x^k is increasing on nonnegatives, so {|X| >= a} = {|X|^k >= a^k}.",
+      "a^k > 0, so division is valid. (Chebyshev is the case k = 2 applied to X - E[X].)"
+    ],
+    "proof_plan": [
+      "Let $Y = \\size X^k$.\nThen $Y \\ge 0$.",
+      "As $a, k > 0$ and $x \\mapsto x^k$ is [[Definition:Strictly Increasing Real Function|strictly increasing]] on $\\R_{\\ge 0}$:\n:$\\set {\\size X \\ge a} = \\set {\\size X^k \\ge a^k}$",
+      "By [[Markov's Inequality]] with $t = a^k$:\n:$\\map \\Pr {Y \\ge a^k} \\le \\dfrac {\\expect Y} {a^k}$",
+      "Substituting $\\expect Y = \\expect {\\size X^k}$:\n:$\\map \\Pr {\\size X \\ge a} \\le \\dfrac {\\expect {\\size X^k} } {a^k}$\n{{qed}}"
+    ]
+  }
+}

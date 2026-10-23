@@ -1,0 +1,40 @@
+{
+  "id": "lebesgue_measure_from_interval_length",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "There exists a [[Definition:Countably Additive Function|countably additive]] [[Definition:Measure (Measure Theory)|measure]] $\\lambda$ on the [[Definition:Lebesgue Sigma-Algebra|Lebesgue $\\sigma$-algebra]] $\\mathcal L$ of $\\R$ such that:\n:$\\map \\lambda {\\closedint a b} = b - a$\nfor every [[Definition:Closed Real Interval|closed interval]]."
+  },
+  "B_source": {
+    "statement": "Let $a, b \\in \\R$ with $a \\le b$.\nThe [[Definition:Length of Real Interval|length]] of $\\closedint a b$ is:\n:$\\map \\ell {\\closedint a b} = b - a$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the interval": "an arbitrary measurable set",
+        "the length of an interval": "the outer measure, an infimum over countable interval covers",
+        "finite additivity for adjacent intervals": "countable additivity for disjoint measurable sets"
+      },
+      "derived": {
+        "the covering definition": "outer measure, defined for every subset",
+        "the restriction to well-behaved sets": "the Caratheodory criterion, selecting the measurable sets"
+      },
+      "reformulation": "Extend length from intervals to arbitrary sets by covering, then cut back to the sets where additivity survives."
+    },
+    "validity_conditions": [
+      "Outer measure is defined for every subset by covering with intervals, but it is only countably subadditive in general, not additive.",
+      "Restricting to sets satisfying the Caratheodory splitting criterion yields a sigma-algebra on which the measure is countably additive.",
+      "Some restriction is unavoidable: assuming choice, no countably additive translation-invariant measure assigns a size to every subset of the line."
+    ],
+    "proof_plan": [
+      "Define the [[Definition:Lebesgue Outer Measure|outer measure]]:\n:$\\displaystyle \\map {\\lambda^*} A = \\inf \\set {\\sum_{k \\mathop = 1}^\\infty \\map \\ell {I_k}: A \\subseteq \\bigcup_{k \\mathop = 1}^\\infty I_k}$\nthe infimum over countable covers by intervals.",
+      "Covering $\\closedint a b$ by itself gives $\\map {\\lambda^*} {\\closedint a b} \\le b - a$.\nBy the [[Heine-Borel Theorem]], any cover has a finite subcover whose total length is at least $b - a$.\nHence $\\lambda^*$ agrees with $\\ell$ on intervals.",
+      "Let $\\mathcal L$ be the sets $E$ satisfying the [[Definition:Carathéodory's Criterion|Carathéodory criterion]]:\n:$\\forall A \\subseteq \\R: \\map {\\lambda^*} A = \\map {\\lambda^*} {A \\cap E} + \\map {\\lambda^*} {A \\setminus E}$\nBy [[Carathéodory's Theorem (Measure Theory)|Carathéodory's Theorem]], $\\mathcal L$ is a [[Definition:Sigma-Algebra|$\\sigma$-algebra]] containing the intervals.",
+      "By the same theorem, $\\lambda = \\lambda^* \\restriction_{\\mathcal L}$ is [[Definition:Countably Additive Function|countably additive]] on $\\mathcal L$.\n{{qed}}"
+    ]
+  }
+}

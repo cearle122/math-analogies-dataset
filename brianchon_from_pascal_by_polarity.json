@@ -1,0 +1,39 @@
+{
+  "id": "brianchon_from_pascal_by_polarity",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let a [[Definition:Hexagon|hexagon]] be circumscribed about a [[Definition:Conic Section|conic]].\nThen its three main diagonals are [[Definition:Concurrent Lines|concurrent]]."
+  },
+  "B_source": {
+    "statement": "Let a hexagon be inscribed in a conic.\nThen the three points of intersection of pairs of opposite sides are [[Definition:Collinear Points|collinear]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "points of the conic": "tangent lines of the conic",
+        "sides": "vertices",
+        "intersection points": "joining lines",
+        "collinear": "concurrent"
+      },
+      "derived": {
+        "Pascal's line": "Brianchon's point"
+      },
+      "reformulation": "Apply the polarity with respect to the conic, which exchanges points and lines and preserves incidence."
+    },
+    "validity_conditions": [
+      "Polarity in a non-degenerate conic is an incidence-preserving bijection between points and lines of the projective plane.",
+      "Under polarity, points on the conic correspond to tangent lines."
+    ],
+    "proof_plan": [
+      "Let $\\pi$ be the [[Definition:Polarity|polarity]] determined by the conic.\nIt sends points to lines and lines to points, preserving incidence, and sends each tangent line to its point of contact.",
+      "The six sides of the circumscribed hexagon are tangent lines, so their poles are six points on the conic, forming an inscribed hexagon.\nThe vertices, where consecutive sides meet, correspond to the lines joining consecutive points, that is, to the sides of the inscribed hexagon.",
+      "A main diagonal joins opposite vertices, so its pole is the intersection of the corresponding opposite sides of the inscribed hexagon.",
+      "By [[Pascal's Mystic Hexagram|Pascal's Theorem]], these three poles are collinear.\nDualizing, the three diagonals pass through one point, which is [[Brianchon's Theorem]].\n{{qed}}"
+    ]
+  }
+}

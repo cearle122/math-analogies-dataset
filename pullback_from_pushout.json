@@ -1,0 +1,39 @@
+{
+  "id": "pullback_from_pushout",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $f: A \\to C$ and $g: B \\to C$ be [[Definition:Morphism|morphisms]] in a [[Definition:Metacategory|category]] $\\mathbf C$.\nA [[Definition:Pullback (Category Theory)|pullback]] of $f$ and $g$ is an object $P$ with $p_A: P \\to A$, $p_B: P \\to B$, $f \\circ p_A = g \\circ p_B$, which is [[Definition:Terminal Object|terminal]] among such cones over the cospan $A \\to C \\leftarrow B$."
+  },
+  "B_source": {
+    "statement": "Let $f: C \\to A$ and $g: C \\to B$ be [[Definition:Morphism|morphisms]].\nA [[Definition:Pushout|pushout]] of $f$ and $g$ is an object $Q$ with $q_A: A \\to Q$, $q_B: B \\to Q$, $q_A \\circ f = q_B \\circ g$, which is [[Definition:Initial Object|initial]] among such cocones under the span $A \\leftarrow C \\to B$."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "C": "C^op",
+        "span A <- C -> B": "cospan A -> C <- B",
+        "initial cocone": "terminal cone"
+      },
+      "derived": {
+        "pushout in C": "pullback in C^op",
+        "maps out of A,B": "maps into A,B"
+      },
+      "reformulation": "Pass to the opposite category C^op, reversing every morphism, which turns spans into cospans."
+    },
+    "validity_conditions": [
+      "The pushout's universal property is stated purely via arrows and commuting squares, so reversing all arrows yields a valid universal property.",
+      "Op is an involution, so the pullback in C equals the pushout in C^op."
+    ],
+    "proof_plan": [
+      "Write the [[Definition:Universal Property|universal property]] of the [[Definition:Pushout|pushout]] using only morphisms and commuting squares.",
+      "Reverse every morphism, passing to $\\mathbf C^{\\text {op} }$.\nThe span becomes a cospan, and the cocone becomes a cone.",
+      "Initial becomes terminal, and the reversed property is the definition of the [[Definition:Pullback (Category Theory)|pullback]].",
+      "Hence a pullback in $\\mathbf C$ is a pushout in $\\mathbf C^{\\text {op} }$.\n{{qed}}"
+    ]
+  }
+}

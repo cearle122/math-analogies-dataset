@@ -1,0 +1,38 @@
+{
+  "id": "mono_from_epi",
+  "field": [
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf C$ be a [[Definition:Metacategory|category]].\nA [[Definition:Morphism|morphism]] $m$ is a [[Definition:Monomorphism (Category Theory)|monomorphism]] {{iff}}:\n:$\\forall f, g: m \\circ f = m \\circ g \\implies f = g$"
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf C$ be a [[Definition:Metacategory|category]].\nA [[Definition:Morphism|morphism]] $e$ is an [[Definition:Epimorphism (Category Theory)|epimorphism]] {{iff}}:\n:$\\forall f, g: f \\circ e = g \\circ e \\implies f = g$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "C": "C^op",
+        "right-cancellable e": "left-cancellable m"
+      },
+      "derived": {
+        "epi in C": "mono in C^op",
+        "post-composition f o e": "pre-composition m o f"
+      },
+      "reformulation": "Pass to the opposite category C^op, reversing every morphism."
+    },
+    "validity_conditions": [
+      "The cancellation property is stated purely via composition of arrows, so reversing all arrows turns right-cancellation into left-cancellation.",
+      "Op is an involution, so mono in C is exactly epi in C^op."
+    ],
+    "proof_plan": [
+      "Write the [[Definition:Epimorphism (Category Theory)|epimorphism]] property as right-cancellation, using only composition.",
+      "Pass to $\\mathbf C^{\\text {op} }$, reversing every morphism.\nThis swaps the order of composition: $f \\circ^{\\text {op} } e = e \\circ f$.",
+      "The reversed statement is left-cancellation, that is, the [[Definition:Monomorphism (Category Theory)|monomorphism]] property.",
+      "Hence $m$ is a monomorphism in $\\mathbf C$ {{iff}} $m$ is an epimorphism in $\\mathbf C^{\\text {op} }$.\n{{qed}}"
+    ]
+  }
+}

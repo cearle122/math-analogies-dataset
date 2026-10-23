@@ -1,0 +1,37 @@
+{
+  "id": "polar_decomposition_from_svd",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be a real $n \\times n$ [[Definition:Matrix|matrix]].\nThen $\\mathbf A = \\mathbf Q \\mathbf P$ with $\\mathbf Q$ [[Definition:Orthogonal Matrix|orthogonal]] and $\\mathbf P$ [[Definition:Symmetric Matrix|symmetric]] [[Definition:Positive Semidefinite Matrix|positive semidefinite]], where $\\mathbf P = \\sqrt {\\mathbf A^\\intercal \\mathbf A}$ is unique."
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf A$ be a real matrix.\nThen $\\mathbf A = \\mathbf U \\mathbf \\Sigma \\mathbf V^\\intercal$ with $\\mathbf U$, $\\mathbf V$ orthogonal and $\\mathbf \\Sigma$ diagonal with non-negative entries."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the singular value decomposition": "a regrouping of its three factors"
+      },
+      "derived": {
+        "U V^T": "the orthogonal factor",
+        "V Sigma V^T": "the positive factor"
+      },
+      "reformulation": "Insert V^T V = I into the SVD and regroup into a rotation times a stretch."
+    },
+    "validity_conditions": [
+      "The positive semidefinite square root of a PSD matrix is unique.",
+      "The orthogonal factor is unique when A is invertible."
+    ],
+    "proof_plan": [
+      "By the [[Singular Value Decomposition]], $\\mathbf A = \\mathbf U \\mathbf \\Sigma \\mathbf V^\\intercal = \\paren {\\mathbf U \\mathbf V^\\intercal} \\paren {\\mathbf V \\mathbf \\Sigma \\mathbf V^\\intercal}$.",
+      "$\\mathbf Q = \\mathbf U \\mathbf V^\\intercal$ is orthogonal, as a product of orthogonal matrices.",
+      "$\\mathbf P = \\mathbf V \\mathbf \\Sigma \\mathbf V^\\intercal$ is symmetric, and $\\mathbf x^\\intercal \\mathbf P \\mathbf x = \\paren {\\mathbf V^\\intercal \\mathbf x}^\\intercal \\mathbf \\Sigma \\paren {\\mathbf V^\\intercal \\mathbf x} \\ge 0$.",
+      "Also $\\mathbf P^2 = \\mathbf V \\mathbf \\Sigma^2 \\mathbf V^\\intercal = \\mathbf A^\\intercal \\mathbf A$.\nBy uniqueness of positive semidefinite square roots, $\\mathbf P = \\sqrt {\\mathbf A^\\intercal \\mathbf A}$, giving the [[Polar Decomposition]].\n{{qed}}"
+    ]
+  }
+}

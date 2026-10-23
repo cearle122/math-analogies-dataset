@@ -1,0 +1,39 @@
+{
+  "id": "integral_test_from_monotone_comparison",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\hointr 1 \\infty \\to \\R_{>0}$ be [[Definition:Decreasing Real Function|decreasing]].\nThen:\n:$\\displaystyle \\sum_{n \\mathop = 1}^\\infty \\map f n$ [[Definition:Convergent Series|converges]] {{iff}} $\\displaystyle \\int_1^\\infty \\map f x \\rd x$ converges"
+  },
+  "B_source": {
+    "statement": "Let $f$ be [[Definition:Decreasing Real Function|decreasing]] on $\\closedint n {n + 1}$.\nThen:\n:$\\displaystyle \\map f {n + 1} \\le \\int_n^{n + 1} \\map f x \\rd x \\le \\map f n$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the integral over [n, n+1]": "a term sandwiched between f(n+1) and f(n)",
+        "the total integral": "sum of these unit-interval integrals"
+      },
+      "derived": {
+        "sum of the sandwich bounds": "partial sums bounding the integral above and below",
+        "boundedness of one side": "boundedness of the other, hence joint convergence"
+      },
+      "reformulation": "Approximate the integral by unit-width rectangles under and over the curve, so the series and integral bound each other."
+    },
+    "validity_conditions": [
+      "f positive and decreasing gives f(n+1) <= integral_n^{n+1} f <= f(n) on each unit interval.",
+      "Summing over n, the partial sums of the series and the truncated integrals differ by at most f(1), so one is bounded iff the other is.",
+      "Monotone bounded sequences converge, so the series and integral converge together."
+    ],
+    "proof_plan": [
+      "On $\\closedint n {n + 1}$, by the source result:\n:$\\displaystyle \\map f {n + 1} \\le \\int_n^{n + 1} f \\le \\map f n$",
+      "Summing for $n = 1, \\ldots, N - 1$:\n:$\\displaystyle \\sum_{n \\mathop = 2}^N \\map f n \\le \\int_1^N f \\le \\sum_{n \\mathop = 1}^{N - 1} \\map f n$",
+      "As $f > 0$, the partial sums and $\\displaystyle \\int_1^N f$ are increasing in $N$.\nBy the inequalities, one is bounded {{iff}} the other is.",
+      "By the [[Monotone Convergence Theorem (Real Analysis)|Monotone Convergence Theorem]], the series and the integral converge or diverge together.\nThis is the [[Integral Test]].\n{{qed}}"
+    ]
+  }
+}

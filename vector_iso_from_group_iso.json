@@ -1,0 +1,42 @@
+{
+  "id": "vector_iso_from_group_iso",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $f: V \\to W$ be a [[Definition:Linear Transformation|linear transformation]].\nThen:\n:$V / \\map \\ker f \\cong \\Img f$\nas [[Definition:Vector Space|vector spaces]]."
+  },
+  "B_source": {
+    "statement": "Let $f: G \\to H$ be a [[Definition:Group Homomorphism|group homomorphism]].\nThen:\n:$G / \\map \\ker f \\cong \\Img f$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "group G": "vector space V",
+        "group hom f": "linear map f",
+        "normal subgroup": "subspace"
+      },
+      "derived": {
+        "ker(f) normal subgroup": "ker(f) a subspace",
+        "G/ker(f)": "quotient space V/ker(f)"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "Every subgroup of an abelian group is normal, and a vector space is abelian under addition, so ker(f) automatically yields a well-defined quotient.",
+      "The bijective-homomorphism argument transfers verbatim; the extra obligation is checking the induced map respects scalar multiplication.",
+      "Rank-nullity is the dimensional shadow of this isomorphism (dim V = dim ker + dim im)."
+    ],
+    "proof_plan": [
+      "$\\map \\ker f$ is a [[Definition:Vector Subspace|subspace]], the linear analogue of a [[Definition:Normal Subgroup|normal subgroup]].",
+      "Define $\\bar f: V / \\map \\ker f \\to \\Img f$ by:\n:$\\map {\\bar f} {v + \\map \\ker f} = \\map f v$",
+      "The proof of the [[First Isomorphism Theorem for Groups]] applied to $\\struct {V, +}$ shows $\\bar f$ is well-defined and a [[Definition:Bijection|bijection]].",
+      "In addition:\n:$\\map {\\bar f} {\\lambda \\paren {v + \\map \\ker f} } = \\map f {\\lambda v} = \\lambda \\map f v$\nso $\\bar f$ is linear, and is an isomorphism of vector spaces.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "connected_image_from_two_point_test",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Connected Topological Space|connected]] [[Definition:Topological Space|topological space]] and $f: X \\to Y$ [[Definition:Continuous Mapping (Topology)|continuous]].\nThen $\\map f X$ is connected."
+  },
+  "B_source": {
+    "statement": "A topological space $Z$ is connected {{iff}} every continuous mapping $g: Z \\to \\set {0, 1}$, where $\\set {0, 1}$ is [[Definition:Discrete Topology|discrete]], is [[Definition:Constant Mapping|constant]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the space Z": "the image f(X)",
+        "the test map g": "a two-valued continuous map on f(X)"
+      },
+      "derived": {
+        "composing with f": "a two-valued continuous map on X"
+      },
+      "reformulation": "Test connectedness of the image by composing two-valued maps with f."
+    },
+    "validity_conditions": [
+      "The corestriction of f to its image is continuous.",
+      "Surjectivity onto the image is what transfers constancy back from X."
+    ],
+    "proof_plan": [
+      "Let $g: \\map f X \\to \\set {0, 1}$ be continuous.",
+      "Then $g \\circ f: X \\to \\set {0, 1}$ is continuous, as a composite of continuous mappings.",
+      "As $X$ is connected, $g \\circ f$ is constant by the source result.",
+      "As $f$ maps onto $\\map f X$, $g$ is constant.\nHence $\\map f X$ is connected by the source result; the [[Intermediate Value Theorem]] is the case $X = \\closedint a b$, $Y = \\R$.\n{{qed}}"
+    ]
+  }
+}

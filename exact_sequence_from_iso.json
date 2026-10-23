@@ -1,0 +1,41 @@
+{
+  "id": "exact_sequence_from_iso",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $0 \\to A \\xrightarrow f B \\xrightarrow g C \\to 0$ be a [[Definition:Short Exact Sequence|short exact sequence]] of [[Definition:Module|modules]].\nThen:\n:$\\Img f = \\map \\ker g$, $A \\cong \\Img f$, and $C \\cong B / \\Img f$"
+  },
+  "B_source": {
+    "statement": "Let $g: B \\to C$ be a [[Definition:Module Homomorphism|homomorphism]].\nThen:\n:$B / \\map \\ker g \\cong \\Img g$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the single map f: B -> C": "a chain of maps A -> B -> C",
+        "ker(f)": "image of A -> B",
+        "im(f)": "C when B -> C is surjective"
+      },
+      "derived": {
+        "B/ker(f) ~= im(f)": "B/A ~= C (when the sequence is exact)",
+        "one isomorphism theorem": "a packaging of sub/quotient relationships along a chain"
+      },
+      "reformulation": "Reframe the kernel-image equality of a single homomorphism as an exactness condition (im = ker) at each spot of a chain of maps."
+    },
+    "validity_conditions": [
+      "Exactness at B means im(A->B) = ker(B->C); with injectivity of A->B and surjectivity of B->C this recovers A ~= subobject and C ~= B/A.",
+      "The first iso theorem is the single-map special case; generalizing to chains adds genuine structure (the sequence), so this is generalization, not transport."
+    ],
+    "proof_plan": [
+      "Start from the [[First Isomorphism Theorem for Modules]] for $g$:\n:$B / \\map \\ker g \\cong \\Img g$",
+      "Encode $\\map \\ker g$ as the image of an incoming map $f: A \\to B$, and $\\Img g$ as the codomain of a [[Definition:Surjection|surjection]] $g: B \\to C$.",
+      "[[Definition:Exact Sequence|Exactness]] at $A$ means $f$ is [[Definition:Injection|injective]], at $C$ that $g$ is surjective, and at $B$ that:\n:$\\Img f = \\map \\ker g$",
+      "Hence $A \\cong \\Img f$, a [[Definition:Submodule|submodule]] of $B$, and:\n:$C = \\Img g \\cong B / \\map \\ker g = B / \\Img f$\n{{qed}}"
+    ]
+  }
+}

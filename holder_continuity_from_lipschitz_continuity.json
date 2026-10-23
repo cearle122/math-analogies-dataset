@@ -1,0 +1,40 @@
+{
+  "id": "holder_continuity_from_lipschitz_continuity",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f: \\R \\to \\R$ satisfy:\n:$\\size {\\map f x - \\map f y} \\le C \\size {x - y}^\\alpha$\nwith $0 < \\alpha \\le 1$.\nThen $f$ is [[Definition:Uniformly Continuous Real Function|uniformly continuous]], and on a [[Definition:Bounded Subset of Real Numbers|bounded set]] the [[Definition:Hölder Continuous|Hölder classes]] satisfy $C^{0, \\beta} \\subseteq C^{0, \\alpha}$ for $\\alpha \\le \\beta$."
+  },
+  "B_source": {
+    "statement": "A function $f$ is [[Definition:Lipschitz Continuous|Lipschitz continuous]] if:\n:$\\size {\\map f x - \\map f y} \\le C \\size {x - y}$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the linear modulus of continuity": "a power modulus with exponent between zero and one",
+        "the Lipschitz constant": "the Holder constant with its exponent",
+        "the exponent one": "an arbitrary exponent in the unit interval"
+      },
+      "derived": {
+        "uniform continuity from the bound": "the same conclusion, with the parameter adjusted by a root",
+        "the exponent one case": "recovers Lipschitz continuity exactly"
+      },
+      "reformulation": "Replace the linear modulus of continuity by a power modulus, widening the exponent from one to the unit interval."
+    },
+    "validity_conditions": [
+      "The Lipschitz condition is the case of exponent one, so the generalization is faithful and specializes correctly.",
+      "On a bounded set a larger exponent implies a smaller one, so the classes are nested; on an unbounded set this fails since the comparison of powers reverses for large distances.",
+      "Exponents above one force the function to be constant on an interval, since the difference quotient then tends to zero everywhere, so the range of useful exponents is genuinely the unit interval."
+    ],
+    "proof_plan": [
+      "Replace the linear bound $C \\size {x - y}$ by the power bound $C \\size {x - y}^\\alpha$ with $0 < \\alpha \\le 1$.",
+      "Given $\\epsilon > 0$, let $\\delta = \\paren {\\dfrac \\epsilon C}^{1 / \\alpha}$.\nThen $\\size {x - y} < \\delta \\implies \\size {\\map f x - \\map f y} < \\epsilon$, independently of $x$ and $y$.",
+      "On a set of diameter $D$, for $\\alpha \\le \\beta$:\n:$\\size {x - y}^\\beta = \\size {x - y}^\\alpha \\size {x - y}^{\\beta - \\alpha} \\le D^{\\beta - \\alpha} \\size {x - y}^\\alpha$\nHence $C^{0, \\beta} \\subseteq C^{0, \\alpha}$.",
+      "For $\\alpha = 1$ the condition is [[Definition:Lipschitz Continuous|Lipschitz continuity]].\nFor $\\alpha > 1$, dividing by $\\size {x - y}$ shows $f' = 0$ everywhere, so $f$ is constant.\n{{qed}}"
+    ]
+  }
+}

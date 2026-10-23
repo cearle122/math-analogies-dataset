@@ -1,0 +1,38 @@
+{
+  "id": "konig_theorem_from_max_flow_min_cut",
+  "field": [
+    "combinatorics",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $G = \\struct {L, R, E}$ be a finite [[Definition:Bipartite Graph|bipartite graph]].\nThen the maximum size of a [[Definition:Matching (Graph Theory)|matching]] equals the minimum size of a [[Definition:Vertex Cover|vertex cover]]."
+  },
+  "B_source": {
+    "statement": "In a [[Definition:Flow Network|flow network]] with integer capacities, the maximum value of an $s$-$t$ flow equals the minimum capacity of an $s$-$t$ cut, and an integral maximum flow exists."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the network": "s -> u of capacity 1 for u in L, u -> v of infinite capacity for edges, v -> t of capacity 1 for v in R"
+      },
+      "derived": {
+        "finite cuts": "vertex covers",
+        "integral flows": "matchings"
+      },
+      "reformulation": "Build the matching network with infinite middle capacities, so that finite cuts are exactly vertex covers."
+    },
+    "validity_conditions": [
+      "Infinite capacity on the middle arcs forces every finite cut to cut only source and sink arcs.",
+      "Integrality of the maximum flow is needed to read off a matching."
+    ],
+    "proof_plan": [
+      "Build the network with arcs $s \\to u$ of capacity $1$ for $u \\in L$, $u \\to v$ of capacity $\\infty$ for $u v \\in E$, and $v \\to t$ of capacity $1$ for $v \\in R$.",
+      "An integral flow sends one unit along disjoint paths $s \\to u \\to v \\to t$, so the maximum flow value is the maximum matching size.",
+      "Let $\\tuple {S, T}$ be a finite cut with $s \\in S$.\nNo arc $u \\to v$ goes from $S$ to $T$, so the cut arcs are $s \\to u$ for $u \\in L \\cap T$ and $v \\to t$ for $v \\in R \\cap S$.\nThen $C = \\paren {L \\cap T} \\cup \\paren {R \\cap S}$ is a vertex cover with $\\card C$ equal to the capacity, and every vertex cover arises this way.",
+      "By the [[Max-Flow Min-Cut Theorem]], the maximum matching size equals the minimum vertex cover size.\nThis is [[König's Theorem (Graph Theory)|König's Theorem]].\n{{qed}}"
+    ]
+  }
+}

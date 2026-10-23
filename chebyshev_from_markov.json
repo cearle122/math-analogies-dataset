@@ -1,0 +1,41 @@
+{
+  "id": "chebyshev_from_markov",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a [[Definition:Random Variable|random variable]] with finite [[Definition:Variance|variance]].\nLet $a > 0$.\nThen:\n:$\\map \\Pr {\\size {X - \\expect X} \\ge a} \\le \\dfrac {\\var X} {a^2}$"
+  },
+  "B_source": {
+    "statement": "Let $Y$ be a non-negative [[Definition:Random Variable|random variable]] and $t > 0$.\nThen:\n:$\\map \\Pr {Y \\ge t} \\le \\dfrac {\\expect Y} t$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "Y": "(X - E[X])^2",
+        "t": "a^2"
+      },
+      "derived": {
+        "E[Y]": "Var(X)",
+        "{Y >= t}": "{|X - E[X]| >= a}"
+      },
+      "reformulation": "Recast the deviation event {|X-E[X]| >= a} as a nonnegative-variable event by squaring both sides."
+    },
+    "validity_conditions": [
+      "a > 0 (so that squaring is monotone and the two events coincide).",
+      "(X - E[X])^2 >= 0, so Markov's nonnegativity hypothesis is met.",
+      "E[(X-E[X])^2] = Var(X) by definition of variance."
+    ],
+    "proof_plan": [
+      "Let $Y = \\paren {X - \\expect X}^2$.\nThen $Y \\ge 0$.",
+      "As $a > 0$:\n:$\\set {\\size {X - \\expect X} \\ge a} = \\set {\\paren {X - \\expect X}^2 \\ge a^2}$",
+      "By [[Markov's Inequality]] with $t = a^2$:\n:$\\map \\Pr {Y \\ge a^2} \\le \\dfrac {\\expect Y} {a^2}$",
+      "By {{Defof|Variance}}, $\\expect Y = \\var X$.\nHence:\n:$\\map \\Pr {\\size {X - \\expect X} \\ge a} \\le \\dfrac {\\var X} {a^2}$\n{{qed}}"
+    ]
+  }
+}

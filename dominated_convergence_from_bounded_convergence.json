@@ -1,0 +1,40 @@
+{
+  "id": "dominated_convergence_from_bounded_convergence",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {X, \\Sigma, \\mu}$ be a [[Definition:Measure Space|measure space]].\nLet $\\sequence {f_n}$ be [[Definition:Measurable Function|measurable functions]] with $f_n \\to f$ [[Definition:Pointwise Convergence|pointwise]].\nLet $g$ be [[Definition:Integrable Function|integrable]] with $\\size {f_n} \\le g$ for all $n$.\nThen:\n:$\\displaystyle \\lim_{n \\mathop \\to \\infty} \\int f_n \\rd \\mu = \\int f \\rd \\mu$"
+  },
+  "B_source": {
+    "statement": "Let $\\struct {X, \\Sigma, \\mu}$ be a [[Definition:Finite Measure Space|finite measure space]].\nLet $\\size {f_n} \\le M$ with $f_n \\to f$ [[Definition:Pointwise Convergence|pointwise]].\nThen:\n:$\\displaystyle \\lim_{n \\mathop \\to \\infty} \\int f_n \\rd \\mu = \\int f \\rd \\mu$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the constant bound M": "an integrable dominating function g",
+        "the finite measure space": "an arbitrary measure space",
+        "the uniform bound hypothesis": "pointwise domination by g"
+      },
+      "derived": {
+        "convergence of the integrals": "the same conclusion, now without finiteness of the measure",
+        "the constant M being integrable on a finite measure space": "integrability of g as the correct replacement hypothesis"
+      },
+      "reformulation": "Replace the constant bound on a finite measure space by an integrable envelope, which is what the argument actually requires."
+    },
+    "validity_conditions": [
+      "On a finite measure space a constant is integrable, so the bounded convergence theorem is exactly the special case g = M and the generalization is faithful.",
+      "Integrability of the dominating function, not its boundedness, is what the proof actually uses, via Fatou applied to g + f_n and g - f_n.",
+      "Some dominating hypothesis is necessary: without it pointwise convergence alone does not force convergence of the integrals, as escaping-mass examples show."
+    ],
+    "proof_plan": [
+      "Replace the constant bound $M$ on a finite measure space by the [[Definition:Integrable Function|integrable]] dominating function $g$.",
+      "The functions $g + f_n$ and $g - f_n$ are non-negative.\nBy [[Fatou's Lemma for Integrals|Fatou's Lemma]]:\n{{begin-eqn}}\n{{eqn | l = \\int \\paren {g + f} \\rd \\mu\n| o = \\le\n| r = \\liminf_{n \\mathop \\to \\infty} \\int \\paren {g + f_n} \\rd \\mu\n}}\n{{eqn | l = \\int \\paren {g - f} \\rd \\mu\n| o = \\le\n| r = \\liminf_{n \\mathop \\to \\infty} \\int \\paren {g - f_n} \\rd \\mu\n}}\n{{end-eqn}}",
+      "Subtracting the finite quantity $\\displaystyle \\int g \\rd \\mu$:\n:$\\displaystyle \\limsup_{n \\mathop \\to \\infty} \\int f_n \\rd \\mu \\le \\int f \\rd \\mu \\le \\liminf_{n \\mathop \\to \\infty} \\int f_n \\rd \\mu$",
+      "Hence:\n:$\\displaystyle \\lim_{n \\mathop \\to \\infty} \\int f_n \\rd \\mu = \\int f \\rd \\mu$\n{{qed}}"
+    ]
+  }
+}

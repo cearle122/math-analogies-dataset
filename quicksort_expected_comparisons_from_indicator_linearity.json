@@ -1,0 +1,37 @@
+{
+  "id": "quicksort_expected_comparisons_from_indicator_linearity",
+  "field": [
+    "algorithms",
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Randomized [[Definition:Quicksort|quicksort]], with pivots chosen uniformly at random, sorts $n$ distinct keys using an expected number of comparisons:\n:$2 \\paren {n + 1} H_n - 4 n \\sim 2 n \\ln n$"
+  },
+  "B_source": {
+    "statement": "Let $X_1, \\ldots, X_m$ be indicator random variables, not necessarily independent.\nThen $\\expect {\\sum_k X_k} = \\sum_k \\map \\Pr {X_k = 1}$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the indicators": "whether the i-th and j-th smallest keys are ever compared"
+      },
+      "derived": {
+        "the sum of pair probabilities": "a harmonic sum"
+      },
+      "reformulation": "Count comparisons by pairs of keys, and compute the probability that a pair is compared from the first pivot chosen between them."
+    },
+    "validity_conditions": [
+      "Two keys are compared only if one of them is a pivot while both are in the same subarray.",
+      "Linearity of expectation needs no independence between the pair indicators."
+    ],
+    "proof_plan": [
+      "Let $z_1 < \\cdots < z_n$ be the keys and $X_{i j}$ indicate that $z_i$ and $z_j$ are compared, for $i < j$.\nThe number of comparisons is $C = \\displaystyle \\sum_{i < j} X_{i j}$.",
+      "$z_i$ and $z_j$ stay together until a pivot from $\\set {z_i, \\ldots, z_j}$ is chosen, and are compared {{iff}} that pivot is $z_i$ or $z_j$.\nHence $\\map \\Pr {X_{i j} = 1} = \\dfrac 2 {j - i + 1}$.",
+      "By the source result:\n:$\\displaystyle \\expect C = \\sum_{i < j} \\frac 2 {j - i + 1} = \\sum_{k \\mathop = 2}^n \\frac {2 \\paren {n - k + 1} } k$",
+      "This equals $2 \\paren {n + 1} \\paren {H_n - 1} - 2 \\paren {n - 1} = 2 \\paren {n + 1} H_n - 4 n \\sim 2 n \\ln n$.\n{{qed}}"
+    ]
+  }
+}

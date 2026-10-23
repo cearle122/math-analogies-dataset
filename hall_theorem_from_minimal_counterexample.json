@@ -1,0 +1,39 @@
+{
+  "id": "hall_theorem_from_minimal_counterexample",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Bipartite Graph|bipartite graph]] with parts $X$ and $Y$.\nThen $G$ has a [[Definition:Matching (Graph Theory)|matching]] saturating $X$ {{iff}}:\n:$\\forall S \\subseteq X: \\card {\\map N S} \\ge \\card S$\nwhere $\\map N S$ is the set of [[Definition:Neighborhood (Graph Theory)|neighbours]] of $S$."
+  },
+  "B_source": {
+    "statement": "To prove a statement for all finite instances, suppose there is a counterexample, take one minimal with respect to some measure, and construct from it a strictly smaller counterexample."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the measure being minimized": "the number of vertices on the saturated side",
+        "the case split on the minimal counterexample": "whether some proper nonempty subset has exactly as many neighbours as elements",
+        "the smaller instance produced": "one of the two subgraphs obtained by splitting at that tight set"
+      },
+      "derived": {
+        "the contradiction with minimality": "both smaller pieces satisfy the neighbour condition and so have matchings",
+        "combining the smaller solutions": "the two matchings union to a saturating matching of the original"
+      }
+    },
+    "validity_conditions": [
+      "If no proper nonempty subset is tight, removing any single matched pair leaves the condition intact with slack, giving a smaller instance directly.",
+      "If some proper nonempty subset is tight, splitting at it produces two instances, and the neighbour condition must be verified separately on each, using tightness for the outside part.",
+      "Both pieces are strictly smaller, so minimality of the counterexample is contradicted in either case."
+    ],
+    "proof_plan": [
+      "The condition is clearly necessary.\n{{AimForCont}} the condition holds but $G$ is a counterexample with $\\card X$ minimal.",
+      "Case 1: $\\card {\\map N S} \\ge \\card S + 1$ for every non-empty proper $S \\subsetneq X$.\nCase 2: $\\card {\\map N S} = \\card S$ for some non-empty proper $S \\subsetneq X$.",
+      "In Case 1, match any $x \\in X$ to a neighbour $y$, and delete both; the remaining graph still satisfies the condition and has smaller $X$.\nIn Case 2, the graphs induced on $S \\cup \\map N S$ and on $\\paren {X \\setminus S} \\cup \\paren {Y \\setminus \\map N S}$ both satisfy the condition and have smaller $X$.",
+      "By minimality, each smaller instance has a saturating matching.\nCombining them gives a matching saturating $X$, a contradiction.\nThis proves [[Hall's Marriage Theorem]].\n{{qed}}"
+    ]
+  }
+}

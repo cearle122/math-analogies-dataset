@@ -1,0 +1,42 @@
+{
+  "id": "integral_from_finite_sum",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f, g: \\closedint a b \\to \\R$ be [[Definition:Continuous Real Function|continuous]] and $c \\in \\closedint a b$.\nThen $\\displaystyle \\int_a^b \\map f x \\rd x$ exists, and:\n:$\\displaystyle \\int_a^b \\paren {\\lambda f + \\mu g} = \\lambda \\int_a^b f + \\mu \\int_a^b g$\n:$\\displaystyle \\int_a^b f = \\int_a^c f + \\int_c^b f$"
+  },
+  "B_source": {
+    "statement": "Let $I$ be a [[Definition:Finite Set|finite]] index set partitioned as $I = I_1 \\cup I_2$.\nThen:\n:$\\displaystyle \\sum_{i \\mathop \\in I} \\paren {\\lambda x_i + \\mu y_i} = \\lambda \\sum_{i \\mathop \\in I} x_i + \\mu \\sum_{i \\mathop \\in I} y_i$\n:$\\displaystyle \\sum_{i \\mathop \\in I} x_i = \\sum_{i \\mathop \\in I_1} x_i + \\sum_{i \\mathop \\in I_2} x_i$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [
+      "combinatorial_approximation"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "finite index set I": "continuum [a,b]",
+        "summand a_i": "value f(x)",
+        "finite sum": "Riemann integral (limit of finite sums)"
+      },
+      "derived": {
+        "linearity of sum": "linearity of integral",
+        "splitting the index set": "additivity over subintervals"
+      },
+      "reformulation": "View the integral as a limit of finite Riemann sums, so finite-sum properties pass to the limit."
+    },
+    "validity_conditions": [
+      "f continuous (hence Riemann integrable), so the limit of Riemann sums exists.",
+      "Linearity and additivity hold for each finite Riemann sum and are preserved under the limit.",
+      "This is generalization, not pure transport: the limit step is genuine new content, not a renaming."
+    ],
+    "proof_plan": [
+      "From [[Continuous Real Function is Riemann Integrable]]:\n:$\\displaystyle \\int_a^b f = \\lim_{\\norm P \\mathop \\to 0} \\sum_{i \\mathop = 1}^n \\map f {\\xi_i} \\paren {x_i - x_{i - 1} }$\nthe limit of [[Definition:Riemann Sum|Riemann sums]].",
+      "Each Riemann sum is a finite sum, hence linear in $f$.\nFor a subdivision containing $c$, the index set splits into the parts in $\\closedint a c$ and $\\closedint c b$.",
+      "By [[Combination Theorem for Limits of Functions|linearity of limits]], and taking subdivisions containing $c$, these properties pass through the limit.",
+      "Hence the integral is linear and additive over subintervals.\n{{qed}}"
+    ]
+  }
+}

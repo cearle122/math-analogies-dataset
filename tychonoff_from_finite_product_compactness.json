@@ -1,0 +1,40 @@
+{
+  "id": "tychonoff_from_finite_product_compactness",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $\\family {X_i}_{i \\mathop \\in I}$ be [[Definition:Compact Space|compact]] [[Definition:Topological Space|topological spaces]].\nThen $\\displaystyle \\prod_{i \\mathop \\in I} X_i$ is compact in the [[Definition:Product Topology|product topology]]."
+  },
+  "B_source": {
+    "statement": "Let $X$ and $Y$ be [[Definition:Compact Space|compact spaces]].\nThen $X \\times Y$ is compact."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the finite index set": "an arbitrary index set, possibly uncountable",
+        "the tube lemma argument": "an argument on families of closed sets with the finite intersection property",
+        "compactness of the finite product": "compactness of the arbitrary product"
+      },
+      "derived": {
+        "the finite intersection property criterion": "compactness restated so that no induction on the index set is needed",
+        "the maximal family of closed sets": "a family extended by Zorn's lemma, from which a point is read coordinatewise"
+      },
+      "reformulation": "Restate compactness in a form referring only to finite subfamilies, so no induction on the index set is needed."
+    },
+    "validity_conditions": [
+      "The finite case is proved by induction on the number of factors, which is unavailable for infinite index sets, so the proof must be restructured rather than extended.",
+      "Restating compactness by the finite intersection property removes the induction, since the condition refers only to finite subfamilies regardless of the index set.",
+      "The general case requires the axiom of choice and is in fact equivalent to it, whereas the finite case does not."
+    ],
+    "proof_plan": [
+      "By [[Compact Space satisfies Finite Intersection Axiom]], it suffices to show every family of closed sets with the [[Definition:Finite Intersection Property|finite intersection property]] has non-empty intersection.",
+      "Let $\\FF$ be a family of subsets of the product with the finite intersection property.\nBy [[Zorn's Lemma]], extend $\\FF$ to a maximal such family $\\mathcal M$.",
+      "For each $i$, the projections $\\set {\\map {\\pr_i} M: M \\in \\mathcal M}$ have the finite intersection property in $X_i$.\nBy compactness of $X_i$, choose $x_i \\in \\displaystyle \\bigcap_{M \\mathop \\in \\mathcal M} \\overline {\\map {\\pr_i} M}$.",
+      "Let $x = \\family {x_i}$.\nEvery basic open neighbourhood of $x$ meets every $M \\in \\mathcal M$, so by maximality belongs to $\\mathcal M$.\nHence $x \\in \\overline M$ for all $M \\in \\mathcal M$, and $x$ lies in every closed member of $\\FF$.\nThis is [[Tychonoff's Theorem]].\n{{qed}}"
+    ]
+  }
+}

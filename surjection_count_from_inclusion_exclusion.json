@@ -1,0 +1,36 @@
+{
+  "id": "surjection_count_from_inclusion_exclusion",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "The number of [[Definition:Surjection|surjections]] from an $n$-set onto a $k$-set is:\n:$\\displaystyle \\sum_{j \\mathop = 0}^k \\paren {-1}^j \\binom k j \\paren {k - j}^n = k! \\, \\map S {n, k}$\nwhere $\\map S {n, k}$ is a [[Definition:Stirling Numbers of the Second Kind|Stirling number of the second kind]]."
+  },
+  "B_source": {
+    "statement": "Let $A_1, \\ldots, A_k$ be finite sets.\nThen:\n:$\\displaystyle \\card {\\bigcup_{i \\mathop = 1}^k A_i} = \\sum_{\\O \\mathop \\ne S} \\paren {-1}^{\\card S + 1} \\card {\\bigcap_{i \\mathop \\in S} A_i}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the sets A_i": "the functions missing the value i"
+      },
+      "derived": {
+        "the complement of the union": "the surjections"
+      },
+      "reformulation": "Count non-surjective functions by the values they miss."
+    },
+    "validity_conditions": [
+      "Functions missing every value in S are the functions into the remaining k - |S| values.",
+      "Grouping surjections by their fibres gives the Stirling number interpretation."
+    ],
+    "proof_plan": [
+      "Let $A_i$ be the set of functions $\\set {1, \\ldots, n} \\to \\set {1, \\ldots, k}$ not taking the value $i$.\nThe surjections number $k^n - \\card {\\bigcup_i A_i}$.",
+      "For $\\card S = j$, $\\card {\\bigcap_{i \\in S} A_i} = \\paren {k - j}^n$.",
+      "By the source result, the number of surjections is $\\displaystyle \\sum_{j \\mathop = 0}^k \\paren {-1}^j \\binom k j \\paren {k - j}^n$.",
+      "A surjection is a partition of the domain into $k$ non-empty fibres together with a bijection from the fibres to the codomain.\nHence the count is also $k! \\, \\map S {n, k}$.\n{{qed}}"
+    ]
+  }
+}

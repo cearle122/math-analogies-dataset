@@ -1,0 +1,43 @@
+{
+  "id": "gauss_bonnet_from_angle_excess",
+  "field": [
+    "geometry",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $M$ be a [[Definition:Compact Space|compact]] [[Definition:Oriented Manifold|oriented]] [[Definition:Riemannian Manifold|Riemannian]] $2$-manifold with boundary.\nThen:\n:$\\displaystyle \\int_M K \\rd A + \\int_{\\partial M} k_g \\rd s = 2 \\pi \\map \\chi M$\nwhere $K$ is the [[Definition:Gaussian Curvature|Gaussian curvature]], $k_g$ the [[Definition:Geodesic Curvature|geodesic curvature]] and $\\chi$ the [[Definition:Euler Characteristic|Euler characteristic]]."
+  },
+  "B_source": {
+    "statement": "Let $T$ be a [[Definition:Geodesic Triangle|geodesic triangle]] with interior angles $\\alpha, \\beta, \\gamma$ on a surface.\nThen:\n:$\\displaystyle \\alpha + \\beta + \\gamma - \\pi = \\int_T K \\rd A$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "generalization"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a single geodesic triangle": "one face of a geodesic triangulation of the surface",
+        "angle excess of a triangle": "local curvature contribution",
+        "summing over triangles": "integrating over the whole surface"
+      },
+      "derived": {
+        "sum of per-triangle excesses": "total curvature integral",
+        "the triangle-count / angle bookkeeping": "2 pi chi via V - E + F"
+      },
+      "reformulation": "Triangulate the surface into geodesic triangles, apply the angle-excess formula to each, and sum; the angle and count bookkeeping assembles into 2 pi chi."
+    },
+    "validity_conditions": [
+      "The surface admits a geodesic triangulation, and the local angle-excess formula holds on each triangle.",
+      "Summing the excesses, the interior angles combine to full turns at each vertex, and the alternating count of vertices/edges/faces produces the Euler characteristic.",
+      "Boundary terms accumulate into the geodesic-curvature integral; the passage from finitely many triangles to the whole surface is the approximation step."
+    ],
+    "proof_plan": [
+      "[[Definition:Triangulation|Triangulate]] $M$ by geodesic triangles, with $V$ vertices, $E$ edges and $F$ faces.",
+      "By the source result, for each triangle $T_i$ with angles $\\alpha_i, \\beta_i, \\gamma_i$:\n:$\\displaystyle \\alpha_i + \\beta_i + \\gamma_i - \\pi = \\int_{T_i} K \\rd A$",
+      "Summing over all $F$ triangles, the curvature integrals add to $\\displaystyle \\int_M K \\rd A$.\nThe angles regroup by vertex, each interior vertex contributing $2 \\pi$.",
+      "Using $3 F = 2 E$ for a closed surface:\n:$\\displaystyle \\int_M K \\rd A = 2 \\pi V - \\pi F = 2 \\pi \\paren {V - E + F} = 2 \\pi \\map \\chi M$\nWith boundary, the boundary vertices and edges contribute the term $\\displaystyle \\int_{\\partial M} k_g \\rd s$, giving the [[Gauss-Bonnet Theorem]].\n{{qed}}"
+    ]
+  }
+}

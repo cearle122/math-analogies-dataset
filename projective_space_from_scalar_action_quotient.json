@@ -1,0 +1,39 @@
+{
+  "id": "projective_space_from_scalar_action_quotient",
+  "field": [
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $V$ be a [[Definition:Vector Space|vector space]] over a [[Definition:Field (Abstract Algebra)|field]] $K$ and $\\map {\\Bbb P} V$ its [[Definition:Projective Space|projectivization]].\nThen [[Definition:Mapping|mappings]] $f: \\map {\\Bbb P} V \\to Z$ correspond to mappings $\\tilde f: V \\setminus \\set {\\mathbf 0} \\to Z$ with:\n:$\\forall t \\in K^\\times: \\map {\\tilde f} {t \\mathbf v} = \\map {\\tilde f} {\\mathbf v}$"
+  },
+  "B_source": {
+    "statement": "Let a [[Definition:Group|group]] $G$ [[Definition:Group Action|act]] on a set $X$.\nThen mappings $X / G \\to Z$ correspond to $G$-[[Definition:Invariant Mapping|invariant]] mappings $X \\to Z$."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the object acted upon": "the set of nonzero vectors of the vector space",
+        "the group action": "multiplication by nonzero scalars",
+        "the quotient by the action": "the projective space of lines"
+      },
+      "derived": {
+        "invariant maps out of the object": "maps on nonzero vectors constant on each line",
+        "the induced map on the quotient": "the corresponding map on projective space"
+      }
+    },
+    "validity_conditions": [
+      "The scalar action on nonzero vectors is free, so its orbits are exactly the punctured lines through the origin.",
+      "A map is constant on orbits precisely when it is invariant under rescaling, which is the condition for descending to the quotient.",
+      "The origin must be removed for the action to be free; including it would collapse the whole space to a single extra orbit and destroy the correspondence."
+    ],
+    "proof_plan": [
+      "Remove the origin.\nThen $K^\\times$ acts [[Definition:Free Group Action|freely]] on $V \\setminus \\set {\\mathbf 0}$ by scalar multiplication.",
+      "Form the [[Definition:Orbit Space|orbit space]]:\n:$\\map {\\Bbb P} V = \\paren {V \\setminus \\set {\\mathbf 0} } / K^\\times$\nwhose points are the lines through the origin.",
+      "By the source result, mappings out of the orbit space correspond to $K^\\times$-invariant mappings, that is, rescaling-invariant mappings on $V \\setminus \\set {\\mathbf 0}$.",
+      "Hence the stated classification of mappings out of projective space.\n{{qed}}"
+    ]
+  }
+}

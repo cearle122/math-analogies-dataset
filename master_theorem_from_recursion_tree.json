@@ -1,0 +1,37 @@
+{
+  "id": "master_theorem_from_recursion_tree",
+  "field": [
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $a \\ge 1$, $b > 1$, $c > 0$, $d \\ge 0$ and $\\map T n = a \\map T {n / b} + c n^d$ for $n$ a power of $b$, with $\\map T 1 = \\map \\Theta 1$.\nThen:\n:$\\map T n = \\begin {cases} \\map \\Theta {n^d} & : d > \\log_b a \\\\ \\map \\Theta {n^d \\log n} & : d = \\log_b a \\\\ \\map \\Theta {n^{\\log_b a} } & : d < \\log_b a \\end {cases}$"
+  },
+  "B_source": {
+    "statement": "Let $r > 0$.\nThen $\\displaystyle \\sum_{j \\mathop = 0}^k r^j$ is $\\map \\Theta 1$ if $r < 1$, equal to $k + 1$ if $r = 1$, and $\\map \\Theta {r^k}$ if $r > 1$, as $k \\to \\infty$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ratio r": "a / b^d",
+        "the number of terms": "the depth log_b n of the recursion tree"
+      },
+      "derived": {
+        "the three regimes of the geometric sum": "the three cases of the master theorem"
+      },
+      "reformulation": "Unroll the recurrence into a recursion tree whose level costs form a geometric sequence."
+    },
+    "validity_conditions": [
+      "Restricting to powers of b avoids rounding; monotonicity extends the result.",
+      "The leaves contribute a^(log_b n) = n^(log_b a), which matches the third case."
+    ],
+    "proof_plan": [
+      "At depth $j$ of the recursion tree there are $a^j$ subproblems of size $n / b^j$, costing in total $c \\, a^j \\paren {n / b^j}^d = c n^d r^j$ with $r = \\dfrac a {b^d}$.",
+      "The depth is $\\log_b n$, and the leaves contribute $a^{\\log_b n} \\map T 1 = \\map \\Theta {n^{\\log_b a} }$.",
+      "Hence $\\map T n = c n^d \\displaystyle \\sum_{j \\mathop = 0}^{\\log_b n - 1} r^j + \\map \\Theta {n^{\\log_b a} }$.",
+      "By the source result: if $r < 1$, that is $d > \\log_b a$, the total is $\\map \\Theta {n^d}$; if $r = 1$ it is $\\map \\Theta {n^d \\log n}$; if $r > 1$ it is $\\map \\Theta {n^d r^{\\log_b n} } = \\map \\Theta {n^{\\log_b a} }$.\n{{qed}}"
+    ]
+  }
+}

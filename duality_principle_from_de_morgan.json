@@ -1,0 +1,37 @@
+{
+  "id": "duality_principle_from_de_morgan",
+  "field": [
+    "logic"
+  ],
+  "A_target": {
+    "statement": "For a propositional formula $\\phi$ built from $\\land$, $\\lor$, $\\neg$, $\\top$, $\\bot$, let $\\phi^d$ be obtained by exchanging $\\land$ with $\\lor$ and $\\top$ with $\\bot$.\nIf $\\phi \\equiv \\psi$ then $\\phi^d \\equiv \\psi^d$."
+  },
+  "B_source": {
+    "statement": "[[De Morgan's Laws (Logic)|De Morgan's laws]]:\n:$\\neg \\paren {\\phi \\land \\psi} \\equiv \\neg \\phi \\lor \\neg \\psi, \\quad \\neg \\paren {\\phi \\lor \\psi} \\equiv \\neg \\phi \\land \\neg \\psi, \\quad \\neg \\top \\equiv \\bot$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "and": "or",
+        "top": "bottom"
+      },
+      "derived": {
+        "the dual formula": "the negation of phi with every atom negated"
+      },
+      "reformulation": "Show that dualizing is the same as negating the formula and all its atoms, which visibly preserves equivalence."
+    },
+    "validity_conditions": [
+      "Substituting the negation of each atom for the atom preserves logical equivalence.",
+      "The principle explains why the laws of Boolean algebra come in dual pairs."
+    ],
+    "proof_plan": [
+      "Let $\\phi^*$ be $\\phi$ with each atom $p$ replaced by $\\neg p$.\nClaim: $\\phi^d \\equiv \\neg \\phi^*$, by induction on $\\phi$.",
+      "For an atom, $p^d = p \\equiv \\neg \\neg p$.\nFor a conjunction, $\\paren {\\phi \\land \\psi}^d = \\phi^d \\lor \\psi^d \\equiv \\neg \\phi^* \\lor \\neg \\psi^* \\equiv \\neg \\paren {\\phi^* \\land \\psi^*}$ by the source result; disjunction, negation and constants are similar.",
+      "If $\\phi \\equiv \\psi$, then $\\phi^* \\equiv \\psi^*$, as substitution preserves equivalence, so $\\neg \\phi^* \\equiv \\neg \\psi^*$.",
+      "Hence $\\phi^d \\equiv \\psi^d$.\nFor example, the two distributive laws are duals of each other.\n{{qed}}"
+    ]
+  }
+}

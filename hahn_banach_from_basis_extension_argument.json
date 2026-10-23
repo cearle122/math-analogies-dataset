@@ -1,0 +1,40 @@
+{
+  "id": "hahn_banach_from_basis_extension_argument",
+  "field": [
+    "analysis",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $X$ be a real [[Definition:Vector Space|vector space]] and $p$ a [[Definition:Sublinear Functional|sublinear functional]] on $X$.\nLet $f$ be a [[Definition:Linear Functional|linear functional]] on a [[Definition:Vector Subspace|subspace]] $M$ with $f \\le p$ on $M$.\nThen there is a linear functional $F$ on $X$ extending $f$ with $F \\le p$ on $X$."
+  },
+  "B_source": {
+    "statement": "Every [[Definition:Vector Space|vector space]] has a [[Definition:Basis (Linear Algebra)|basis]]: the [[Definition:Linearly Independent Set|linearly independent]] sets, ordered by inclusion, satisfy the hypotheses of [[Zorn's Lemma]], and a maximal one cannot be extended by any further vector."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "linearly independent sets": "dominated partial extensions (N, g)",
+        "adding one vector": "extending g to N + R x_0"
+      },
+      "derived": {
+        "a maximal independent set": "a dominated extension defined on all of X"
+      },
+      "reformulation": "Reuse the Zorn's Lemma pattern of the basis theorem: show chains have upper bounds and that a non-total element can be extended by one more dimension."
+    },
+    "validity_conditions": [
+      "The one-dimensional extension step must preserve the bound by p, which is the real content of the argument.",
+      "The axiom of choice, through Zorn's Lemma, is required in general."
+    ],
+    "proof_plan": [
+      "Let $\\EE$ be the set of pairs $\\tuple {N, g}$ with $M \\subseteq N$ a subspace, $g$ linear on $N$ extending $f$, and $g \\le p$ on $N$, ordered by extension.",
+      "The union of a chain in $\\EE$ is again in $\\EE$, so every chain has an upper bound.\nBy [[Zorn's Lemma]], $\\EE$ has a maximal element $\\tuple {N, g}$.",
+      "Suppose $N \\ne X$ and pick $x_0 \\notin N$.\nFor $n, n' \\in N$, $\\map g n + \\map g {n'} \\le \\map p {n - x_0} + \\map p {n' + x_0}$, so:\n:$\\displaystyle \\sup_{n \\mathop \\in N} \\paren {\\map g n - \\map p {n - x_0} } \\le \\inf_{n' \\mathop \\in N} \\paren {\\map p {n' + x_0} - \\map g {n'} }$\nSetting $\\map g {x_0} = c$ for any $c$ between these bounds extends $g$ to $N + \\R x_0$ with $g \\le p$, contradicting maximality.",
+      "Hence $N = X$, and $F = g$ is the required extension.\nThis is the [[Hahn-Banach Theorem]].\n{{qed}}"
+    ]
+  }
+}

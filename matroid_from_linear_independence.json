@@ -1,0 +1,41 @@
+{
+  "id": "matroid_from_linear_independence",
+  "field": [
+    "combinatorics",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $M = \\struct {E, \\II}$ be a [[Definition:Matroid|matroid]] and $w: E \\to \\R$ a weighting.\nThen the [[Definition:Greedy Algorithm|greedy algorithm]] computes an [[Definition:Independent Set (Matroid)|independent set]] of maximum weight."
+  },
+  "B_source": {
+    "statement": "Let $V$ be a [[Definition:Vector Space|vector space]].\nIf $I, J \\subseteq V$ are [[Definition:Linearly Independent Set|linearly independent]] with $\\card I < \\card J$, then there exists $x \\in J \\setminus I$ such that $I \\cup \\set x$ is linearly independent."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "linear independence of vectors": "membership in an abstract family of independent sets",
+        "the exchange property for vector spaces": "the exchange axiom taken as a defining condition",
+        "the rank of a set of vectors": "the rank function of the matroid"
+      },
+      "derived": {
+        "all maximal independent subsets having equal size": "all bases of the matroid have the same cardinality",
+        "the greedy construction of a basis": "optimality of greedy for any weight function"
+      },
+      "reformulation": "Take the exchange property as the definition of independence rather than deriving it from vectors."
+    },
+    "validity_conditions": [
+      "Linear independence satisfies the axioms, so vector matroids are instances and the abstraction is faithful.",
+      "The exchange axiom is what forces all maximal independent sets to have the same size, which is what makes greedy well behaved.",
+      "The abstraction is strictly wider: graphic and transversal matroids are not all representable over every field, and some matroids are representable over no field at all."
+    ],
+    "proof_plan": [
+      "Take the exchange property of [[Definition:Linearly Independent Set|linear independence]] as an axiom.",
+      "Define a [[Definition:Matroid|matroid]] by a family $\\II$ of independent sets with $\\O \\in \\II$, closed under subsets, and satisfying the [[Definition:Matroid Augmentation Axiom|exchange axiom]].",
+      "If $B_1, B_2$ are maximal independent with $\\card {B_1} < \\card {B_2}$, exchange gives $x \\in B_2$ with $B_1 \\cup \\set x \\in \\II$, contradicting maximality.\nHence all maximal independent sets have equal size.",
+      "Let the greedy algorithm pick $g_1, g_2, \\ldots$ in decreasing weight, adding each element that keeps the set independent.\nIf some basis $B$ had greater weight, let $k$ be the first index with $\\map w {b_k} > \\map w {g_k}$.\nExchange between $\\set {g_1, \\ldots, g_{k - 1} }$ and $\\set {b_1, \\ldots, b_k}$ gives an element the greedy algorithm would have chosen, a contradiction.\n{{qed}}"
+    ]
+  }
+}

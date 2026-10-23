@@ -1,0 +1,41 @@
+{
+  "id": "nash_equilibrium_refinement_from_kakutani",
+  "field": [
+    "algorithms",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\Gamma$ be a game with finitely many players, each with a [[Definition:Non-Empty Set|non-empty]] [[Definition:Compact Space|compact]] [[Definition:Convex Set (Vector Space)|convex]] strategy set $S_i \\subseteq \\R^{m_i}$.\nLet each payoff $u_i$ be [[Definition:Continuous Mapping|continuous]] and [[Definition:Quasiconcave Function|quasiconcave]] in $s_i$.\nThen $\\Gamma$ has a [[Definition:Nash Equilibrium|Nash equilibrium]]."
+  },
+  "B_source": {
+    "statement": "Let $K \\subseteq \\R^n$ be [[Definition:Non-Empty Set|non-empty]], [[Definition:Compact Space|compact]] and [[Definition:Convex Set (Vector Space)|convex]].\nLet $F: K \\to \\powerset K$ have [[Definition:Closed Graph|closed graph]] and non-empty convex values.\nThen there exists $x \\in \\map F x$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the compact convex domain": "the product of the players' strategy sets",
+        "the set-valued map": "the joint best-response correspondence",
+        "a point contained in its own image": "a strategy profile in which each player best-responds"
+      },
+      "derived": {
+        "the fixed point condition": "no player can improve unilaterally, that is, an equilibrium",
+        "convexity of the values": "quasiconcavity of each payoff in the player's own strategy"
+      },
+      "reformulation": "Recast mutual best response as membership of a profile in its own image under a set-valued map."
+    },
+    "validity_conditions": [
+      "The product of compact convex sets is compact and convex, so Kakutani applies to the joint strategy space.",
+      "The best-response correspondence has nonempty values by continuity of payoffs together with compactness, and convex values precisely because each payoff is quasiconcave in the player's own strategy.",
+      "The graph is closed by continuity of the payoffs, which is the remaining hypothesis; quasiconcavity cannot be dropped, since without it best responses may be nonconvex and no fixed point need exist."
+    ],
+    "proof_plan": [
+      "Let $S = \\displaystyle \\prod_i S_i$, which is compact and convex.",
+      "Define the [[Definition:Best Response Correspondence|best-response correspondence]]:\n:$\\displaystyle \\map B s = \\prod_i \\argmax_{t_i \\mathop \\in S_i} \\map {u_i} {t_i, s_{-i} }$",
+      "$\\map B s$ is non-empty by the [[Extreme Value Theorem]], convex by quasiconcavity, and $B$ has closed graph by [[Berge's Maximum Theorem]].",
+      "By [[Kakutani's Fixed Point Theorem]], there exists $s^* \\in \\map B {s^*}$.\nThen each $s_i^*$ is a best response to $s_{-i}^*$, so $s^*$ is a [[Definition:Nash Equilibrium|Nash equilibrium]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "bernoulli_from_convexity",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $x \\in \\R$ with $x > -1$, and let $r \\ge 1$.\nThen:\n:$\\paren {1 + x}^r \\ge 1 + r x$"
+  },
+  "B_source": {
+    "statement": "Let $f$ be a [[Definition:Convex Real Function|convex]] [[Definition:Differentiable Real Function|differentiable]] function on an [[Definition:Open Real Interval|open interval]] $I$.\nLet $x_0 \\in I$.\nThen:\n:$\\forall x \\in I: \\map f x \\ge \\map f {x_0} + \\map {f'} {x_0} \\paren {x - x_0}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "f(x)": "(1+x)^r",
+        "x0": "0"
+      },
+      "derived": {
+        "f(x0)": "1",
+        "f'(x0)(x - x0)": "rx",
+        "f(x) >= f(x0)+f'(x0)(x-x0)": "(1+x)^r >= 1 + rx"
+      }
+    },
+    "validity_conditions": [
+      "For r >= 1, f(x) = (1+x)^r is convex on x > -1 (f''(x) = r(r-1)(1+x)^{r-2} >= 0).",
+      "The tangent line at x0 = 0 is f(0) + f'(0)x = 1 + rx.",
+      "Convexity puts the graph above this tangent, giving Bernoulli's inequality."
+    ],
+    "proof_plan": [
+      "Let $\\map f x = \\paren {1 + x}^r$ on $\\openint {-1} \\infty$.\nAs $\\map {f''} x = r \\paren {r - 1} \\paren {1 + x}^{r - 2} \\ge 0$ for $r \\ge 1$, $f$ is [[Definition:Convex Real Function|convex]].",
+      "Take $x_0 = 0$ in the tangent line inequality:\n:$\\map f x \\ge \\map f 0 + \\map {f'} 0 x$",
+      "We have:\n:$\\map f 0 = 1$\n:$\\map {f'} 0 = r \\paren {1 + 0}^{r - 1} = r$",
+      "Hence:\n:$\\paren {1 + x}^r \\ge 1 + r x$\n{{qed}}"
+    ]
+  }
+}

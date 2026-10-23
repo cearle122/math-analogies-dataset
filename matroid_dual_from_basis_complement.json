@@ -1,0 +1,40 @@
+{
+  "id": "matroid_dual_from_basis_complement",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $M = \\struct {E, \\BB}$ be a [[Definition:Matroid|matroid]] with [[Definition:Base of Matroid|bases]] $\\BB$.\nThen $\\BB^* = \\set {E \\setminus B: B \\in \\BB}$ is the set of bases of a matroid $M^*$, the [[Definition:Dual Matroid|dual]] of $M$, and:\n:$\\paren {M \\setminus e}^* = M^* / e$"
+  },
+  "B_source": {
+    "statement": "Let $E$ be a [[Definition:Finite Set|finite set]].\nThen $S \\mapsto E \\setminus S$ is an [[Definition:Involution (Mapping)|involution]] on $\\powerset E$ which reverses [[Definition:Subset|inclusion]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the inclusion-reversing involution": "complementation within the ground set",
+        "a basis of the matroid": "the complement of a basis of the dual",
+        "the rank function": "the dual rank, given by the corank formula"
+      },
+      "derived": {
+        "the dual bases forming a matroid": "the exchange axiom transfers under complementation",
+        "deletion of an element": "contraction of that element in the dual"
+      },
+      "reformulation": "Replace each basis by its complement, converting an inclusion-reversing involution on sets into a duality of matroids."
+    },
+    "validity_conditions": [
+      "The complements of the bases satisfy the exchange axiom, which must be checked and is what makes the dual a matroid rather than an arbitrary family.",
+      "Complementation is an involution, so the dual of the dual is the original matroid.",
+      "The correspondence is genuinely useful rather than formal: it exchanges deletion with contraction, so a theorem about one operation yields a theorem about the other for free."
+    ],
+    "proof_plan": [
+      "Let $\\BB^* = \\set {E \\setminus B: B \\in \\BB}$.",
+      "Let $B_1^*, B_2^* \\in \\BB^*$ and $x \\in B_1^* \\setminus B_2^*$.\nComplementing, $x \\in B_2 \\setminus B_1$, and the [[Definition:Base Exchange Property|basis exchange axiom]] for $M$ (in its dual form) gives $y \\in B_1 \\setminus B_2$ with $\\paren {B_1 \\setminus \\set y} \\cup \\set x \\in \\BB$.\nComplementing back, $\\paren {B_1^* \\setminus \\set x} \\cup \\set y \\in \\BB^*$ with $y \\in B_2^* \\setminus B_1^*$.\nHence $\\BB^*$ defines a matroid.",
+      "The [[Definition:Rank Function of Matroid|rank function]] of $M^*$ is:\n:$\\map {r^*} A = \\card A - \\map r E + \\map r {E \\setminus A}$",
+      "The bases of $M \\setminus e$ are the maximal sets $B \\setminus \\set e$, whose complements in $E \\setminus \\set e$ are the bases of $M^* / e$.\nHence deletion in $M$ corresponds to [[Definition:Contraction of Matroid|contraction]] in $M^*$.\n{{qed}}"
+    ]
+  }
+}

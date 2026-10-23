@@ -1,0 +1,41 @@
+{
+  "id": "market_equilibrium_from_intermediate_value",
+  "field": [
+    "analysis",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $Z: \\closedint {p_L} {p_H} \\to \\R$ be the [[Definition:Continuous Real Function|continuous]] [[Definition:Excess Demand|excess demand]] of a single-good market with $\\map Z {p_L} > 0 > \\map Z {p_H}$.\nThen there exists $p^* \\in \\openint {p_L} {p_H}$ such that:\n:$\\map Z {p^*} = 0$"
+  },
+  "B_source": {
+    "statement": "Let $f: \\closedint a b \\to \\R$ be [[Definition:Continuous Real Function|continuous]].\nThen $f$ attains every value between $\\map f a$ and $\\map f b$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the continuous function on an interval": "excess demand as a function of price",
+        "the value being attained": "zero excess demand",
+        "the intermediate point": "the equilibrium price"
+      },
+      "derived": {
+        "the sign change over the interval": "excess supply at high prices and excess demand at low ones",
+        "the point where the function vanishes": "the price at which supply and demand balance"
+      },
+      "reformulation": "Recast balancing supply and demand as a zero of excess demand, that is, a value attained by a continuous function."
+    },
+    "validity_conditions": [
+      "Excess demand must be continuous in price, which requires the underlying demand and supply to vary continuously and rules out discrete goods.",
+      "The sign condition at the two ends is what supplies the two bracketing values the theorem requires.",
+      "Only existence follows, not uniqueness: excess demand may cross zero several times unless it is monotone in price."
+    ],
+    "proof_plan": [
+      "Model excess demand as a [[Definition:Continuous Real Function|continuous function]] $Z$ of price on $\\closedint {p_L} {p_H}$.",
+      "By hypothesis $\\map Z {p_L} > 0$ and $\\map Z {p_H} < 0$.",
+      "By the [[Intermediate Value Theorem]], since $0$ lies between these values, there exists $p^*$ with $\\map Z {p^*} = 0$.",
+      "At $p^*$ demand equals supply, so $p^*$ is an [[Definition:Market Equilibrium|equilibrium price]].\nUniqueness requires in addition that $Z$ be [[Definition:Strictly Decreasing Real Function|strictly decreasing]].\n{{qed}}"
+    ]
+  }
+}

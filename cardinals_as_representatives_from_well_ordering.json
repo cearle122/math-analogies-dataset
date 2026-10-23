@@ -1,0 +1,37 @@
+{
+  "id": "cardinals_as_representatives_from_well_ordering",
+  "field": [
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Assume the [[Axiom of Choice]], and for a set $X$ let $\\card X$ be the least [[Definition:Ordinal|ordinal]] equinumerous with $X$.\nThen $X$ and $Y$ are [[Definition:Equinumerous|equinumerous]] {{iff}} $\\card X = \\card Y$, so the [[Definition:Cardinal|cardinals]] are canonical representatives of the equinumerosity classes, and any two sets are comparable in size."
+  },
+  "B_source": {
+    "statement": "Every set is equinumerous with some ordinal, by the [[Well-Ordering Theorem]] and the fact that every well-ordered set is order isomorphic to a unique ordinal."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the equivalence relation": "equinumerosity",
+        "the classifying map": "X -> the least ordinal equinumerous with X"
+      },
+      "derived": {
+        "the kernel of the classifying map": "equinumerosity itself"
+      },
+      "reformulation": "Replace each proper-class equivalence class by a canonical representative, chosen as the least ordinal in it."
+    },
+    "validity_conditions": [
+      "Ordinals are well-ordered, so the least equinumerous ordinal exists once one exists.",
+      "Without choice, Scott's trick gives set-sized representatives instead."
+    ],
+    "proof_plan": [
+      "Equinumerosity is an equivalence relation, as bijections compose and invert.",
+      "By the source result, some ordinal is equinumerous with $X$; as the ordinals are well-ordered, there is a least one, $\\card X$, and $X \\approx \\card X$.",
+      "If $X \\approx Y$, the same ordinals are equinumerous with both, so $\\card X = \\card Y$; conversely $\\card X = \\card Y$ gives $X \\approx \\card X = \\card Y \\approx Y$.\nSo equinumerosity is the kernel of $X \\mapsto \\card X$.",
+      "The cardinals are ordinals, hence linearly ordered, so any two sets are comparable in size.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "discrete_fourier_from_fourier_series",
+  "field": [
+    "analysis",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $N \\in \\Z_{>0}$ and $\\omega = e^{2 \\pi i / N}$.\nThe [[Definition:Discrete Fourier Transform|discrete Fourier transform]] $\\displaystyle \\hat x_k = \\sum_{n \\mathop = 0}^{N - 1} x_n \\omega^{-k n}$ satisfies:\n:$\\displaystyle \\sum_{n \\mathop = 0}^{N - 1} \\omega^{\\paren {j - k} n} = N \\delta_{j k}$\n:$\\widehat {x \\circledast y} = \\hat x \\cdot \\hat y$\n:$\\displaystyle \\sum_n \\size {x_n}^2 = \\frac 1 N \\sum_k \\size {\\hat x_k}^2$\nwhere $\\circledast$ is [[Definition:Cyclic Convolution|cyclic convolution]]."
+  },
+  "B_source": {
+    "statement": "On the [[Definition:Circle Group|circle group]] $\\Bbb T$, the exponentials $e^{i k t}$ are [[Definition:Orthogonal (Inner Product Space)|orthogonal]], $\\widehat {f * g} = \\hat f \\cdot \\hat g$, and [[Parseval's Theorem]] holds."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the circle group": "the cyclic group of order N",
+        "the characters, exponentials on the circle": "the N-th roots of unity",
+        "the integral against a character": "a finite sum against a root of unity"
+      },
+      "derived": {
+        "orthogonality of characters": "the geometric sum of a nontrivial root of unity vanishing",
+        "the convolution theorem": "cyclic convolution becoming pointwise multiplication"
+      }
+    },
+    "validity_conditions": [
+      "Both settings are harmonic analysis on a compact abelian group, so orthogonality of characters and the convolution theorem follow from the same group-theoretic argument.",
+      "Convolution becomes cyclic rather than ordinary, since the group is the cyclic group; forgetting this is the standard source of wraparound error when the transform is used for ordinary convolution.",
+      "Convergence questions disappear entirely: all sums are finite, so no analytic hypotheses on the function are needed."
+    ],
+    "proof_plan": [
+      "Replace the [[Definition:Circle Group|circle group]] $\\Bbb T$ by the [[Definition:Cyclic Group|cyclic group]] $\\Z / N \\Z$.",
+      "Replace the characters $e^{i k t}$ by $n \\mapsto \\omega^{k n}$, and integration over $\\Bbb T$ by summation over $\\Z / N \\Z$.",
+      "For $j \\ne k$, by [[Sum of Geometric Sequence]]:\n:$\\displaystyle \\sum_{n \\mathop = 0}^{N - 1} \\omega^{\\paren {j - k} n} = \\frac {1 - \\omega^{\\paren {j - k} N} } {1 - \\omega^{j - k} } = 0$\nreplacing the vanishing integral $\\displaystyle \\int_{\\Bbb T} e^{i \\paren {j - k} t} \\rd t = 0$.\nParseval follows from orthogonality.",
+      "{{begin-eqn}}\n{{eqn | l = \\widehat {x \\circledast y}_k\n| r = \\sum_n \\sum_m x_m y_{n - m} \\omega^{-k n}\n}}\n{{eqn | r = \\sum_m x_m \\omega^{-k m} \\sum_n y_{n - m} \\omega^{-k \\paren {n - m} }\n}}\n{{eqn | r = \\hat x_k \\hat y_k\n}}\n{{end-eqn}}\nwhere indices are taken modulo $N$, so the convolution is cyclic.\n{{qed}}"
+    ]
+  }
+}

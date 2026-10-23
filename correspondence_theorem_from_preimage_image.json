@@ -1,0 +1,37 @@
+{
+  "id": "correspondence_theorem_from_preimage_image",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $N$ be a [[Definition:Normal Subgroup|normal subgroup]] of a [[Definition:Group|group]] $G$.\nThen $H \\mapsto H / N$ is an inclusion-preserving [[Definition:Bijection|bijection]] from the subgroups of $G$ containing $N$ to the subgroups of $G / N$, under which normal subgroups correspond."
+  },
+  "B_source": {
+    "statement": "Let $\\phi: G \\to K$ be a [[Definition:Surjection|surjective]] [[Definition:Group Homomorphism|homomorphism]] with [[Definition:Kernel of Group Homomorphism|kernel]] $N$.\nThen images and preimages of subgroups are subgroups, and for $H \\le G$:\n:$\\map {\\phi^{-1} } {\\map \\phi H} = H N$"
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the homomorphism phi": "the quotient map q: G -> G/N",
+        "the kernel": "N"
+      },
+      "derived": {
+        "H N = H for H containing N": "the preimage of the image recovers H"
+      },
+      "reformulation": "Run the correspondence through the quotient map, whose kernel is exactly the subgroup being collapsed."
+    },
+    "validity_conditions": [
+      "Only subgroups containing N are recovered from their images.",
+      "Surjectivity of q gives that the image of a preimage is the original subgroup."
+    ],
+    "proof_plan": [
+      "Apply the source result to the quotient map $q: G \\to G / N$, whose kernel is $N$.",
+      "For $N \\le H \\le G$, $\\map {q^{-1} } {\\map q H} = H N = H$.\nFor $L \\le G / N$, $\\map q {\\map {q^{-1} } L} = L$ by surjectivity, and $\\map {q^{-1} } L \\supseteq N$.",
+      "Both assignments preserve inclusion and are mutually inverse, so they form a bijection.",
+      "As $\\map q {g h g^{-1} } = \\map q g \\map q h \\map q g^{-1}$ and $q$ is surjective, $\\map {q^{-1} } L$ is normal {{iff}} $L$ is.\nThis is the [[Correspondence Theorem (Group Theory)|Correspondence Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "matrix_exponential_from_scalar_exponential",
+  "field": [
+    "algebra",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be an $n \\times n$ [[Definition:Matrix|matrix]] over $\\C$.\nDefine:\n:$\\displaystyle e^{\\mathbf A} = \\sum_{k \\mathop = 0}^\\infty \\frac {\\mathbf A^k} {k!}$\nThen the series converges, and:\n:$\\dfrac \\d {\\d t} e^{t \\mathbf A} = \\mathbf A e^{t \\mathbf A}$"
+  },
+  "B_source": {
+    "statement": "Let $a \\in \\C$.\nThen:\n:$\\displaystyle e^a = \\sum_{k \\mathop = 0}^\\infty \\frac {a^k} {k!}$\nand:\n:$\\dfrac \\d {\\d t} e^{t a} = a e^{t a}$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the scalar a": "a square matrix A",
+        "the absolute value": "a submultiplicative matrix norm",
+        "the product of exponentials": "the product only when the matrices commute"
+      },
+      "derived": {
+        "the solution of the scalar ODE": "the solution of the linear system"
+      }
+    },
+    "validity_conditions": [
+      "the norm must be submultiplicative for the series to converge by comparison with the scalar case",
+      "the identity exp(A+B) = exp(A)exp(B) requires AB = BA and fails in general, so this part of the analogy does not transfer",
+      "term-by-term differentiation requires locally uniform convergence, which the norm bound provides"
+    ],
+    "proof_plan": [
+      "Define $e^{\\mathbf A}$ by the same series, replacing $a^k$ by the matrix power $\\mathbf A^k$.",
+      "By [[Definition:Submultiplicative Norm|submultiplicativity]] of the [[Definition:Operator Norm|operator norm]]:\n:$\\norm {\\dfrac {\\mathbf A^k} {k!} } \\le \\dfrac {\\norm {\\mathbf A}^k} {k!}$\nThe scalar series for $e^{\\norm {\\mathbf A} }$ converges, so the matrix series converges absolutely by the [[Weierstrass M-Test]].",
+      "The series for $e^{t \\mathbf A}$ converges [[Definition:Locally Uniform Convergence|locally uniformly]] in $t$, as does its term-by-term derivative.\nHence:\n:$\\displaystyle \\frac \\d {\\d t} e^{t \\mathbf A} = \\sum_{k \\mathop = 1}^\\infty \\frac {t^{k - 1} \\mathbf A^k} {\\paren {k - 1}!} = \\mathbf A e^{t \\mathbf A}$",
+      "The identity $e^{\\mathbf A} e^{-\\mathbf A} = \\mathbf I$ survives, as $\\mathbf A$ commutes with $-\\mathbf A$.\nThe identity $e^{\\mathbf A + \\mathbf B} = e^{\\mathbf A} e^{\\mathbf B}$ holds only when $\\mathbf A \\mathbf B = \\mathbf B \\mathbf A$.",
+      "Hence $\\map {\\mathbf X} t = e^{t \\mathbf A}$ satisfies $\\mathbf X' = \\mathbf A \\mathbf X$ with $\\map {\\mathbf X} 0 = \\mathbf I$, and is the [[Definition:Fundamental Matrix|fundamental solution]] of the linear system.\n{{qed}}"
+    ]
+  }
+}

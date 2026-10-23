@@ -1,0 +1,37 @@
+{
+  "id": "minkowski_from_holder",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $p \\ge 1$ and $a, b \\in \\R^n$.\nThen:\n:$\\displaystyle \\paren {\\sum_{i \\mathop = 1}^n \\size {a_i + b_i}^p}^{1 / p} \\le \\paren {\\sum_{i \\mathop = 1}^n \\size {a_i}^p}^{1 / p} + \\paren {\\sum_{i \\mathop = 1}^n \\size {b_i}^p}^{1 / p}$"
+  },
+  "B_source": {
+    "statement": "Let $p, q > 1$ with $\\dfrac 1 p + \\dfrac 1 q = 1$.\nThen:\n:$\\displaystyle \\sum_i \\size {x_i y_i} \\le \\paren {\\sum_i \\size {x_i}^p}^{1 / p} \\paren {\\sum_i \\size {y_i}^q}^{1 / q}$"
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "x": "a or b",
+        "y": "the vector with entries |a_i + b_i|^(p - 1)"
+      },
+      "derived": {
+        "Holder applied twice": "the triangle inequality for the p-norm"
+      },
+      "reformulation": "Split |a + b|^p as |a + b|^(p-1) times |a| plus |b|, and bound each piece by Hölder's inequality."
+    },
+    "validity_conditions": [
+      "The case p = 1 is the ordinary triangle inequality and must be treated separately.",
+      "The conjugate exponent satisfies (p - 1) q = p, which makes the Hölder factor a power of the same norm."
+    ],
+    "proof_plan": [
+      "For $p = 1$ the result is the [[Triangle Inequality]] summed over $i$.\nLet $p > 1$ and $q = \\dfrac p {p - 1}$, so $\\paren {p - 1} q = p$.",
+      "Then:\n:$\\displaystyle \\sum_i \\size {a_i + b_i}^p \\le \\sum_i \\size {a_i} \\size {a_i + b_i}^{p - 1} + \\sum_i \\size {b_i} \\size {a_i + b_i}^{p - 1}$",
+      "By [[Hölder's Inequality for Sums]] applied to each sum:\n:$\\displaystyle \\sum_i \\size {a_i + b_i}^p \\le \\paren {\\norm a_p + \\norm b_p} \\paren {\\sum_i \\size {a_i + b_i}^p}^{1 / q}$",
+      "If $\\norm {a + b}_p \\ne 0$, divide by $\\norm {a + b}_p^{p / q}$.\nAs $p - \\dfrac p q = 1$, this gives $\\norm {a + b}_p \\le \\norm a_p + \\norm b_p$, which is [[Minkowski's Inequality for Sums]].\n{{qed}}"
+    ]
+  }
+}

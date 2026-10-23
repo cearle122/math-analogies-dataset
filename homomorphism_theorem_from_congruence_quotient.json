@@ -1,0 +1,41 @@
+{
+  "id": "homomorphism_theorem_from_congruence_quotient",
+  "field": [
+    "algebra",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $h: A \\to B$ be a [[Definition:Homomorphism (Abstract Algebra)|homomorphism]] of [[Definition:Algebraic Structure|algebras]] of any [[Definition:Signature|signature]].\nThen:\n:$A / \\map \\ker h \\cong \\Img h$\nwhere $\\map \\ker h = \\set {\\tuple {a, a'}: \\map h a = \\map h {a'} }$."
+  },
+  "B_source": {
+    "statement": "Let $\\theta$ be a [[Definition:Congruence Relation|congruence]] on an [[Definition:Algebraic Structure|algebra]] $A$.\nThen $A / \\theta$ is an algebra of the same [[Definition:Signature|signature]], with operations defined on representatives."
+  },
+  "C_analogy": {
+    "type": "quotient_kernel_pattern",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the congruence on the algebra": "the relation identifying elements with the same image under h",
+        "the quotient algebra": "the source collapsed by that relation",
+        "the operations of the signature": "the same operations, computed on representatives"
+      },
+      "derived": {
+        "the induced map from the quotient to the image": "a bijective homomorphism, hence an isomorphism of algebras",
+        "the group and ring cases": "recovered by taking the signature to be that of groups or rings"
+      },
+      "reformulation": "State the collapse in terms of a congruence rather than a distinguished kernel class, so that it applies to any signature."
+    },
+    "validity_conditions": [
+      "The relation identifying elements with equal image is a congruence, since homomorphisms commute with all operations of the signature.",
+      "The operations descend to classes because the relation is compatible with them, which is exactly the congruence condition.",
+      "For groups and rings the congruence is determined by a single class, the kernel, but for general algebras such as lattices no single class suffices and the congruence must be carried in full."
+    ],
+    "proof_plan": [
+      "Let $\\theta = \\set {\\tuple {a, a'}: \\map h a = \\map h {a'} }$.",
+      "$\\theta$ is an [[Definition:Equivalence Relation|equivalence relation]].\nFor each $n$-ary operation $\\omega$, if $a_i \\mathrel \\theta a_i'$ then:\n:$\\map h {\\map \\omega {a_1, \\ldots, a_n} } = \\map \\omega {\\map h {a_1}, \\ldots, \\map h {a_n} } = \\map h {\\map \\omega {a_1', \\ldots, a_n'} }$\nHence $\\theta$ is a [[Definition:Congruence Relation|congruence]].",
+      "By the source result, $A / \\theta$ is an algebra with induced operations.",
+      "Define $\\bar h: A / \\theta \\to \\Img h$ by $\\map {\\bar h} {\\eqclass a \\theta} = \\map h a$.\n$\\bar h$ is well-defined and [[Definition:Injection|injective]] by definition of $\\theta$, [[Definition:Surjection|surjective]] onto $\\Img h$, and a homomorphism as the operations are defined on representatives.\n{{qed}}"
+    ]
+  }
+}

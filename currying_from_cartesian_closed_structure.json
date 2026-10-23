@@ -1,0 +1,39 @@
+{
+  "id": "currying_from_cartesian_closed_structure",
+  "field": [
+    "type_theory",
+    "category_theory"
+  ],
+  "A_target": {
+    "statement": "In the [[Definition:Simply Typed Lambda Calculus|simply typed $\\lambda$-calculus]] with products, the terms:\n:$\\mathsf {curry} = \\lambda f. \\lambda a. \\lambda b. f \\tuple {a, b}, \\quad \\mathsf {uncurry} = \\lambda g. \\lambda p. g \\paren {\\pi_1 p} \\paren {\\pi_2 p}$\nare mutually inverse up to $\\beta \\eta$-equality, so $\\paren {A \\times B \\to C} \\cong \\paren {A \\to B \\to C}$."
+  },
+  "B_source": {
+    "statement": "In a [[Definition:Cartesian Closed Category|cartesian closed category]] there is a bijection, natural in $X$:\n:$\\map {\\operatorname {Hom} } {X \\times A, B} \\cong \\map {\\operatorname {Hom} } {X, B^A}$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "objects": "types",
+        "morphisms": "terms in context",
+        "the exponential B^A": "the function type A -> B"
+      },
+      "derived": {
+        "the hom-set bijection": "the curry and uncurry terms"
+      },
+      "reformulation": "Transport the defining adjunction of exponentials into the term calculus, where it becomes beta-eta laws."
+    },
+    "validity_conditions": [
+      "The eta-rules for products and functions are needed for the composites to be identities.",
+      "Naturality in X corresponds to compatibility with substitution of contexts."
+    ],
+    "proof_plan": [
+      "Read types as objects, terms in context as morphisms, $\\times$ as the product and $\\to$ as the exponential.",
+      "$\\map {\\mathsf {uncurry} } {\\map {\\mathsf {curry} } f} \\twoheadrightarrow_\\beta \\lambda p. f \\tuple {\\pi_1 p, \\pi_2 p}$, which is $\\eta$-equal to $f$, using surjective pairing.",
+      "$\\map {\\mathsf {curry} } {\\map {\\mathsf {uncurry} } g} \\twoheadrightarrow_\\beta \\lambda a. \\lambda b. g \\, a \\, b$, which is $\\eta$-equal to $g$.",
+      "The bijection commutes with substitution, which is naturality.\nSo the isomorphism is the type-theoretic form of the source result with $X = A$, the adjunction $- \\times B \\dashv \\paren -^B$.\n{{qed}}"
+    ]
+  }
+}

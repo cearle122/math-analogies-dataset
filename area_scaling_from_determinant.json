@@ -1,0 +1,41 @@
+{
+  "id": "area_scaling_from_determinant",
+  "field": [
+    "geometry",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $T: \\R^n \\to \\R^n$ be a [[Definition:Linear Transformation|linear transformation]].\nLet $S \\subseteq \\R^n$ be a [[Definition:Measurable Set|measurable set]].\nThen:\n:$\\map \\lambda {\\map T S} = \\size {\\det T} \\map \\lambda S$\nwhere $\\lambda$ denotes [[Definition:Lebesgue Measure|Lebesgue measure]]."
+  },
+  "B_source": {
+    "statement": "Let $v_1, \\ldots, v_n \\in \\R^n$.\nThen the [[Definition:Determinant of Matrix|determinant]] $\\det \\begin {bmatrix} v_1 & \\cdots & v_n \\end {bmatrix}$ is the [[Definition:Signed Volume|signed volume]] of the [[Definition:Parallelepiped|parallelepiped]] spanned by $v_1, \\ldots, v_n$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the unit square/cube": "the region spanned by standard basis vectors",
+        "image of the unit region under T": "the parallelepiped spanned by T's columns",
+        "the determinant as spanned volume": "the scaling factor |det T|"
+      },
+      "derived": {
+        "det = volume of the column parallelepiped": "T maps the unit region to a region of volume |det T|",
+        "additivity/invariance of volume": "the factor is the same for every region"
+      },
+      "reformulation": "Reduce 'how does T scale a general region' to 'what volume does T assign to the unit region', which the determinant computes directly."
+    },
+    "validity_conditions": [
+      "T maps the unit cube to the parallelepiped spanned by its columns, whose signed volume is det T.",
+      "Volume scaling is uniform: any region can be approximated by unit-cube copies, each scaled by the same |det T|.",
+      "Absolute value handles orientation (sign of the determinant)."
+    ],
+    "proof_plan": [
+      "Let $C = \\closedint 0 1^n$ be the [[Definition:Unit Cube|unit cube]].\nThen $\\map T C$ is the [[Definition:Parallelepiped|parallelepiped]] spanned by the [[Definition:Column of Matrix|columns]] $T e_1, \\ldots, T e_n$.",
+      "From the source result:\n:$\\map \\lambda {\\map T C} = \\size {\\det T}$",
+      "By [[Definition:Linear Transformation|linearity]], $T$ maps each translated and scaled cube $x + \\epsilon C$ to $T x + \\epsilon \\, \\map T C$, of volume $\\size {\\det T} \\epsilon^n$.\nApproximating $S$ by finite unions of such cubes and using [[Definition:Additive Function (Measure Theory)|additivity]] of $\\lambda$, each piece is magnified by $\\size {\\det T}$.",
+      "Passing to the limit:\n:$\\map \\lambda {\\map T S} = \\size {\\det T} \\map \\lambda S$\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "lower_semicontinuity_from_upper_semicontinuity",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $K$ be a [[Definition:Compact Space|compact space]] and $f: K \\to \\R$ [[Definition:Lower Semicontinuous|lower semicontinuous]].\nThen $f$ attains its [[Definition:Infimum of Mapping|infimum]] on $K$, and for each $a \\in \\R$ the set $\\set {x: \\map f x \\le a}$ is [[Definition:Closed Set (Topology)|closed]]."
+  },
+  "B_source": {
+    "statement": "Let $K$ be a [[Definition:Compact Space|compact space]] and $g: K \\to \\R$ [[Definition:Upper Semicontinuous|upper semicontinuous]].\nThen $g$ attains its [[Definition:Supremum of Mapping|supremum]] on $K$, and for each $a \\in \\R$ the set $\\set {x: \\map g x \\ge a}$ is [[Definition:Closed Set (Topology)|closed]]."
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the function g": "the negated function -f",
+        "the supremum": "the infimum",
+        "the superlevel set where g is at least a": "the sublevel set where f is at most -a"
+      },
+      "derived": {
+        "attainment of the supremum": "attainment of the infimum",
+        "closedness of superlevel sets": "closedness of sublevel sets"
+      },
+      "reformulation": "Reverse the order on the codomain by negating, turning every statement about maxima into one about minima."
+    },
+    "validity_conditions": [
+      "Negation is an order-reversing involution on the extended reals, so it converts every upper bound statement into a lower bound statement.",
+      "Directly from the definitions, f is lower semicontinuous exactly when -f is upper semicontinuous.",
+      "Negation exchanges suprema with infima and superlevel sets with sublevel sets, so the entire upper semicontinuous theory mirrors onto the lower semicontinuous one with no new argument."
+    ],
+    "proof_plan": [
+      "Let $g = -f$.\nAs $f$ is lower semicontinuous, $\\set {x: \\map g x < a} = \\set {x: \\map f x > -a}$ is open for all $a$, so $g$ is [[Definition:Upper Semicontinuous|upper semicontinuous]].",
+      "By the source result, $g$ attains its supremum at some $x^* \\in K$.",
+      "Then:\n:$\\map f {x^*} = -\\map g {x^*} = -\\sup g = \\inf f$\nso $f$ attains its infimum.",
+      "We have:\n:$\\set {x: \\map f x \\le a} = \\set {x: \\map g x \\ge -a}$\nwhich is closed by the source result.\n{{qed}}"
+    ]
+  }
+}

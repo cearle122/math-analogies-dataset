@@ -1,0 +1,38 @@
+{
+  "id": "minimum_survival_from_maximum_distribution_duality",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X_1, \\ldots, X_n$ be [[Definition:Independent Random Variables|independent]] with [[Definition:Survival Function|survival functions]] $S_i$.\nThen:\n:$\\displaystyle \\map \\Pr {\\min_i X_i > x} = \\prod_{i \\mathop = 1}^n \\map {S_i} x$\nIn particular, the minimum of independent exponential variables with rates $\\lambda_i$ is exponential with rate $\\sum_i \\lambda_i$."
+  },
+  "B_source": {
+    "statement": "Let $X_1, \\ldots, X_n$ be independent with [[Definition:Cumulative Distribution Function|distribution functions]] $F_i$.\nThen:\n:$\\displaystyle \\map \\Pr {\\max_i X_i \\le x} = \\prod_{i \\mathop = 1}^n \\map {F_i} x$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "max": "min",
+        "<= x": "> x",
+        "F_i": "S_i = 1 - F_i"
+      },
+      "derived": {
+        "the product formula": "the survival function of the minimum"
+      },
+      "reformulation": "Exchange maximum with minimum and lower with upper events; both become intersections of independent events."
+    },
+    "validity_conditions": [
+      "Independence of the X_i gives independence of the events {X_i > x}.",
+      "The exponential case uses S_i(x) = exp(-lambda_i x)."
+    ],
+    "proof_plan": [
+      "$\\set {\\max_i X_i \\le x} = \\bigcap_i \\set {X_i \\le x}$, and dually $\\set {\\min_i X_i > x} = \\bigcap_i \\set {X_i > x}$.",
+      "The events $\\set {X_i > x}$ are independent, as the $X_i$ are.",
+      "Hence, as in the source result, $\\map \\Pr {\\min_i X_i > x} = \\displaystyle \\prod_i \\map \\Pr {X_i > x} = \\prod_i \\map {S_i} x$.",
+      "For exponentials, $\\displaystyle \\prod_i e^{-\\lambda_i x} = e^{-\\paren {\\sum_i \\lambda_i} x}$, the survival function of an exponential with rate $\\sum_i \\lambda_i$.\n{{qed}}"
+    ]
+  }
+}

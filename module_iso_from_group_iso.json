@@ -1,0 +1,41 @@
+{
+  "id": "module_iso_from_group_iso",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $f: M \\to N$ be an $R$-[[Definition:Module Homomorphism|module homomorphism]].\nThen:\n:$M / \\map \\ker f \\cong \\Img f$\nas $R$-[[Definition:Module|modules]]."
+  },
+  "B_source": {
+    "statement": "Let $f: G \\to H$ be a [[Definition:Group Homomorphism|group homomorphism]].\nThen:\n:$G / \\map \\ker f \\cong \\Img f$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "group G": "R-module M",
+        "group hom f": "module hom f",
+        "normal subgroup": "submodule"
+      },
+      "derived": {
+        "ker(f) normal subgroup": "ker(f) a submodule",
+        "G/ker(f)": "quotient module M/ker(f)"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "The additive group of a module is abelian, so ker(f) is automatically a submodule and the quotient module is well-defined.",
+      "The bijective-homomorphism argument transfers verbatim; the added obligation is checking the induced map respects the R-action."
+    ],
+    "proof_plan": [
+      "$\\map \\ker f$ is a [[Definition:Submodule|submodule]] of $M$, the analogue of a [[Definition:Normal Subgroup|normal subgroup]].",
+      "Define $\\bar f: M / \\map \\ker f \\to \\Img f$ by:\n:$\\map {\\bar f} {m + \\map \\ker f} = \\map f m$",
+      "The proof of the [[First Isomorphism Theorem for Groups]] shows $\\bar f$ is well-defined and a [[Definition:Bijection|bijection]] of additive groups.",
+      "In addition, for $r \\in R$:\n:$\\map {\\bar f} {r \\paren {m + \\map \\ker f} } = \\map f {r m} = r \\map f m$\nso $\\bar f$ is $R$-linear, and is a module [[Definition:Module Isomorphism|isomorphism]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "continuous_convolution_from_discrete_convolution",
+  "field": [
+    "analysis",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $f, g \\in \\map {L^1} \\R$.\nThen $f * g \\in \\map {L^1} \\R$, where:\n:$\\displaystyle \\map {\\paren {f * g} } x = \\int_{-\\infty}^\\infty \\map f y \\map g {x - y} \\rd y$\nand:\n:$\\map \\FF {f * g} = \\map \\FF f \\cdot \\map \\FF g$\nwhere $\\FF$ denotes the [[Definition:Fourier Transform|Fourier transform]]."
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {a_k}$ and $\\sequence {b_k}$ be [[Definition:Finite Support|finitely supported]] sequences.\nLet $\\displaystyle \\paren {a * b}_n = \\sum_k a_k b_{n - k}$.\nThen:\n:$\\displaystyle \\map A z \\map B z = \\sum_n \\paren {a * b}_n z^n$\nwhere $A$ and $B$ are the [[Definition:Generating Function|generating functions]] of $\\sequence {a_k}$ and $\\sequence {b_k}$."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "transport_of_structure"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the sequence index n": "a point of the real line",
+        "the sum over k": "an integral over y",
+        "the generating polynomial A(z)": "the Fourier transform of f"
+      },
+      "derived": {
+        "the polynomial product identity": "the convolution theorem for Fourier transforms"
+      },
+      "reformulation": "The generating variable z must be reformulated as the character e^{-i xi x} before the discrete identity has a continuous counterpart."
+    },
+    "validity_conditions": [
+      "f and g must be integrable so the defining integral converges almost everywhere",
+      "the discrete-to-continuous passage requires the Riemann sums of the convolution integral to converge, which uses continuity or dominated convergence"
+    ],
+    "proof_plan": [
+      "Sample $f$ and $g$ on the grid $h \\Z$: let $a_k = \\map f {k h}$ and $b_k = \\map g {k h}$.\nForm the discrete convolution $\\paren {a * b}_n$.",
+      "We have:\n:$\\displaystyle h \\paren {a * b}_n = \\sum_k h \\map f {k h} \\map g {n h - k h}$\nwhich is a [[Definition:Riemann Sum|Riemann sum]] for $\\map {\\paren {f * g} } {n h}$.",
+      "In the discrete setting:\n:$\\displaystyle \\map A z \\map B z = \\sum_k \\sum_l a_k b_l z^{k + l} = \\sum_n \\paren {\\sum_k a_k b_{n - k} } z^n$\nby rearranging a finite double sum.",
+      "Set $z = e^{-i \\xi h}$ and let $h \\to 0$.\nBy the [[Lebesgue's Dominated Convergence Theorem|Dominated Convergence Theorem]] and [[Fubini's Theorem]], the limit may be passed inside the sums.",
+      "The limiting identity is:\n:$\\displaystyle \\int \\map {\\paren {f * g} } x e^{-i \\xi x} \\rd x = \\int \\map f y e^{-i \\xi y} \\rd y \\int \\map g u e^{-i \\xi u} \\rd u$\nwhich is the [[Convolution Theorem]].\n{{qed}}"
+    ]
+  }
+}

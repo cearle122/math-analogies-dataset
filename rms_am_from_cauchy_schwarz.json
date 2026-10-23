@@ -1,0 +1,39 @@
+{
+  "id": "rms_am_from_cauchy_schwarz",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $a_1, \\ldots, a_n \\in \\R$.\nThen:\n:$\\displaystyle \\frac 1 n \\sum_{i \\mathop = 1}^n a_i \\le \\sqrt {\\frac 1 n \\sum_{i \\mathop = 1}^n a_i^2}$"
+  },
+  "B_source": {
+    "statement": "Let $u_i, v_i \\in \\R$.\nThen:\n:$\\displaystyle \\paren {\\sum_{i \\mathop = 1}^n u_i v_i}^2 \\le \\paren {\\sum_{i \\mathop = 1}^n u_i^2} \\paren {\\sum_{i \\mathop = 1}^n v_i^2}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "u_i": "a_i",
+        "v_i": "1"
+      },
+      "derived": {
+        "sum u_i v_i": "sum a_i",
+        "sum v_i^2": "n",
+        "(sum a_i)^2 <= n sum a_i^2": "the squared RMS-AM inequality"
+      }
+    },
+    "validity_conditions": [
+      "Setting v_i = 1 for all i gives sum v_i^2 = n and sum u_i v_i = sum a_i.",
+      "Cauchy-Schwarz becomes (sum a_i)^2 <= n (sum a_i^2).",
+      "Dividing by n^2 and taking square roots yields RMS-AM."
+    ],
+    "proof_plan": [
+      "Apply the [[Cauchy-Bunyakovsky-Schwarz Inequality]] with $u_i = a_i$ and $v_i = 1$.",
+      "This gives:\n:$\\displaystyle \\paren {\\sum_{i \\mathop = 1}^n a_i}^2 \\le n \\sum_{i \\mathop = 1}^n a_i^2$",
+      "Dividing by $n^2$:\n:$\\displaystyle \\paren {\\frac 1 n \\sum_{i \\mathop = 1}^n a_i}^2 \\le \\frac 1 n \\sum_{i \\mathop = 1}^n a_i^2$",
+      "Taking [[Definition:Square Root|square roots]], and using $x \\le \\size x$:\n:$\\displaystyle \\frac 1 n \\sum_{i \\mathop = 1}^n a_i \\le \\sqrt {\\frac 1 n \\sum_{i \\mathop = 1}^n a_i^2}$\n{{qed}}"
+    ]
+  }
+}

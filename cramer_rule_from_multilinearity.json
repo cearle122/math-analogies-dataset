@@ -1,0 +1,36 @@
+{
+  "id": "cramer_rule_from_multilinearity",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be an invertible $n \\times n$ matrix over a [[Definition:Field (Abstract Algebra)|field]] and $\\mathbf A \\mathbf x = \\mathbf b$.\nLet $\\mathbf A_i$ be $\\mathbf A$ with column $i$ replaced by $\\mathbf b$.\nThen:\n:$x_i = \\dfrac {\\map \\det {\\mathbf A_i} } {\\map \\det {\\mathbf A} }$"
+  },
+  "B_source": {
+    "statement": "The [[Definition:Determinant of Matrix|determinant]] is [[Definition:Multilinear Mapping|multilinear]] and [[Definition:Alternating Mapping|alternating]] in the columns of a matrix."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the column in slot i": "b written as a combination of the columns of A"
+      },
+      "derived": {
+        "vanishing of terms with a repeated column": "only the x_i term survives"
+      },
+      "reformulation": "Expand det(A_i) by linearity in column i, and kill all terms with a repeated column."
+    },
+    "validity_conditions": [
+      "det(A) must be non-zero to divide.",
+      "Alternation is what makes the cross terms vanish."
+    ],
+    "proof_plan": [
+      "Let $\\mathbf a_1, \\ldots, \\mathbf a_n$ be the columns of $\\mathbf A$.\nThen $\\mathbf b = \\displaystyle \\sum_j x_j \\mathbf a_j$.",
+      "By linearity in column $i$:\n:$\\displaystyle \\map \\det {\\mathbf A_i} = \\sum_j x_j \\map \\det {\\mathbf a_1, \\ldots, \\mathbf a_{i - 1}, \\mathbf a_j, \\mathbf a_{i + 1}, \\ldots, \\mathbf a_n}$",
+      "For $j \\ne i$, the matrix has the column $\\mathbf a_j$ twice, so its determinant is $0$ by alternation.\nHence $\\map \\det {\\mathbf A_i} = x_i \\map \\det {\\mathbf A}$.",
+      "As $\\map \\det {\\mathbf A} \\ne 0$, dividing gives [[Cramer's Rule]].\n{{qed}}"
+    ]
+  }
+}

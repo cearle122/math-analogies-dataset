@@ -1,0 +1,40 @@
+{
+  "id": "dependent_sum_from_product_type",
+  "field": [
+    "type_theory"
+  ],
+  "A_target": {
+    "statement": "Let $A$ be a [[Definition:Type|type]] and $B$ a type family over $A$.\nThe [[Definition:Dependent Sum Type|dependent sum type]] $\\displaystyle \\sum_{x : A} \\map B x$ has pairs $\\tuple {a, b}$ with $a : A$ and $b : \\map B a$, and projections:\n:$\\mathsf {fst}: \\displaystyle \\sum_{x : A} \\map B x \\to A$\n:$\\mathsf {snd}: \\map {\\mathsf {snd} } p : \\map B {\\map {\\mathsf {fst} } p}$"
+  },
+  "B_source": {
+    "statement": "Let $A$ and $B$ be [[Definition:Type|types]].\nThe [[Definition:Product Type|product type]] $A \\times B$ has pairs $\\tuple {a, b}$ and projections:\n:$\\mathsf {fst}: A \\times B \\to A$\n:$\\mathsf {snd}: A \\times B \\to B$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the second component's fixed type": "a type family indexed by the first component",
+        "the projection to the second factor": "a projection whose type depends on the first projection",
+        "the ordinary pair": "the dependent pair"
+      },
+      "derived": {
+        "the two projections": "the same two projections, with the second having a dependent type",
+        "the constant family case": "recovers the ordinary product type"
+      },
+      "reformulation": "Let the type of the second component depend on the value of the first, generalizing the fixed second factor."
+    },
+    "validity_conditions": [
+      "The ordinary product is the case where the family is constant, so the generalization is faithful and the notation specializes correctly.",
+      "The second projection can only be typed after the first has been applied, since its type mentions the first component; this ordering is essential and has no counterpart in the nondependent case.",
+      "The eliminator must be stated in the dependent form to prove properties of arbitrary pairs, since the simple projections alone do not give the induction principle."
+    ],
+    "proof_plan": [
+      "Replace the fixed second type $B$ by a type family $\\map B x$ indexed by the first component.",
+      "Form pairs $\\tuple {a, b}$ with $b : \\map B a$.",
+      "Define $\\map {\\mathsf {fst} } {a, b} = a$ as before.\nDefine $\\map {\\mathsf {snd} } {a, b} = b$, with type $\\map B {\\map {\\mathsf {fst} } p}$ depending on the first component.",
+      "For a constant family $\\map B x = B$:\n:$\\displaystyle \\sum_{x : A} B \\simeq A \\times B$\n{{qed}}"
+    ]
+  }
+}

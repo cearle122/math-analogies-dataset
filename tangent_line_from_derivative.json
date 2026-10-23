@@ -1,0 +1,43 @@
+{
+  "id": "tangent_line_from_derivative",
+  "field": [
+    "geometry",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Differentiable Real Function|differentiable]] at $x_0$.\nThen the [[Definition:Tangent Line|tangent line]] to $y = \\map f x$ at $x_0$ is:\n:$y = \\map f {x_0} + \\map {f'} {x_0} \\paren {x - x_0}$"
+  },
+  "B_source": {
+    "statement": "Let $f$ be differentiable at $x_0$.\nThen:\n:$\\map {f'} {x_0} = \\displaystyle \\lim_{h \\mathop \\to 0} \\frac {\\map f {x_0 + h} - \\map f {x_0} } h$\nthe limit of slopes of [[Definition:Secant Line|secant lines]]."
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "fixed_point_encoding"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "a secant line through two nearby points": "a discrete approximation to the tangent",
+        "the second point x0 + h": "a point approaching x0 as h -> 0",
+        "secant slope": "difference quotient"
+      },
+      "derived": {
+        "limit of secant slopes": "the tangent slope f'(x0)",
+        "limiting secant line": "the tangent line"
+      },
+      "reformulation": "Approximate the tangent by secant lines through pairs of points and pass to the limit as the points merge."
+    },
+    "validity_conditions": [
+      "f is differentiable at x0, so the secant slopes converge to a finite limit f'(x0).",
+      "Each secant is an exact line through two points; the tangent is their limit as h -> 0.",
+      "This is a discrete-to-continuous (finite-secant to limiting-tangent) approximation."
+    ],
+    "proof_plan": [
+      "Form the [[Definition:Secant Line|secant]] through $\\tuple {x_0, \\map f {x_0} }$ and $\\tuple {x_0 + h, \\map f {x_0 + h} }$.",
+      "Its slope is:\n:$\\dfrac {\\map f {x_0 + h} - \\map f {x_0} } h$",
+      "Let $h \\to 0$.\nBy differentiability, the slope tends to $\\map {f'} {x_0}$.",
+      "The limiting line through $\\tuple {x_0, \\map f {x_0} }$ with slope $\\map {f'} {x_0}$ is:\n:$y = \\map f {x_0} + \\map {f'} {x_0} \\paren {x - x_0}$\nwhich is the tangent line.\n{{qed}}"
+    ]
+  }
+}

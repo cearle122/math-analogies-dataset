@@ -1,0 +1,37 @@
+{
+  "id": "central_binomial_asymptotic_from_wallis",
+  "field": [
+    "combinatorics",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "As $n \\to \\infty$:\n:$\\dbinom {2 n} n \\sim \\dfrac {4^n} {\\sqrt {\\pi n} }$"
+  },
+  "B_source": {
+    "statement": "[[Wallis's Product]] can be written as:\n:$\\displaystyle \\lim_{n \\mathop \\to \\infty} \\frac 1 {2 n + 1} \\paren {\\frac {2 \\cdot 4 \\cdots \\paren {2 n} } {1 \\cdot 3 \\cdots \\paren {2 n - 1} } }^2 = \\frac \\pi 2$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the ratio of double factorials": "4^n divided by the central binomial coefficient"
+      },
+      "derived": {
+        "the Wallis limit": "the asymptotic size of C(2n, n)"
+      },
+      "reformulation": "Recognize the Wallis ratio of even to odd double factorials as 4^n / C(2n, n)."
+    },
+    "validity_conditions": [
+      "The identification uses 2 . 4 ... (2n) = 2^n n! and 1 . 3 ... (2n - 1) = (2n)! / (2^n n!).",
+      "The result also follows from Stirling's formula and gives the return probability of a random walk."
+    ],
+    "proof_plan": [
+      "We have $2 \\cdot 4 \\cdots \\paren {2 n} = 2^n n!$ and $1 \\cdot 3 \\cdots \\paren {2 n - 1} = \\dfrac {\\paren {2 n}!} {2^n n!}$.\nHence their ratio is $\\dfrac {4^n \\paren {n!}^2} {\\paren {2 n}!} = \\dfrac {4^n} {\\dbinom {2 n} n}$.",
+      "By the source result:\n:$\\dfrac 1 {2 n + 1} \\paren {\\dfrac {4^n} {\\dbinom {2 n} n} }^2 \\to \\dfrac \\pi 2$",
+      "Hence $\\dbinom {2 n} n^2 \\sim \\dfrac {2 \\cdot 4^{2 n} } {\\pi \\paren {2 n + 1} } \\sim \\dfrac {4^{2 n} } {\\pi n}$.",
+      "Taking square roots, $\\dbinom {2 n} n \\sim \\dfrac {4^n} {\\sqrt {\\pi n} }$.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "coset_partition_from_equivalence",
+  "field": [
+    "algebra",
+    "set_theory"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Group|group]] and $H$ a [[Definition:Subgroup|subgroup]] of $G$.\nThen the [[Definition:Left Coset|left cosets]] of $H$ [[Definition:Set Partition|partition]] $G$, and each has [[Definition:Cardinality|cardinality]] $\\order H$."
+  },
+  "B_source": {
+    "statement": "Let $\\RR$ be an [[Definition:Equivalence Relation|equivalence relation]] on a set $S$.\nThen the [[Definition:Equivalence Class|equivalence classes]] of $\\RR$ form a [[Definition:Set Partition|partition]] of $S$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the equivalence relation ~": "a ~ b iff a^{-1}b in H",
+        "equivalence class of a": "the left coset aH"
+      },
+      "derived": {
+        "partition into ~-classes": "partition into cosets",
+        "disjointness of classes": "disjointness of distinct cosets"
+      }
+    },
+    "validity_conditions": [
+      "The relation a ~ b iff a^{-1}b in H is reflexive, symmetric, transitive (using that H is a subgroup).",
+      "Its equivalence classes are exactly the left cosets aH.",
+      "The general 'equivalence relations partition' theorem then yields the coset partition; equal size follows separately from the bijection h |-> ah."
+    ],
+    "proof_plan": [
+      "Define $a \\sim b \\iff a^{-1} b \\in H$.\n$\\sim$ is [[Definition:Reflexive Relation|reflexive]] as $e \\in H$, [[Definition:Symmetric Relation|symmetric]] as $H$ is closed under [[Definition:Inverse Element|inverses]], and [[Definition:Transitive Relation|transitive]] as $H$ is closed under the group operation.",
+      "The [[Definition:Equivalence Class|equivalence class]] of $a$ is:\n:$\\eqclass a \\sim = \\set {b: a^{-1} b \\in H} = a H$",
+      "By [[Relation Partitions Set iff Equivalence]], the equivalence classes partition $G$.",
+      "Hence the cosets $a H$ partition $G$.\nThe mapping $h \\mapsto a h$ is a [[Definition:Bijection|bijection]] $H \\to a H$, so each coset has cardinality $\\order H$.\n{{qed}}"
+    ]
+  }
+}

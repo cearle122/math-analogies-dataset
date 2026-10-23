@@ -1,0 +1,40 @@
+{
+  "id": "ramsey_lower_bound_from_probabilistic_method",
+  "field": [
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $k \\ge 3$.\nThen:\n:$\\map R {k, k} > 2^{k / 2}$"
+  },
+  "B_source": {
+    "statement": "Let $\\Omega$ be a [[Definition:Probability Space|probability space]] of objects.\nIf a random object has a property with positive [[Definition:Probability|probability]], then an object with that property exists."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the random object": "a uniformly random two-colouring of the edges of a complete graph",
+        "the bad event to be avoided": "the existence of a monochromatic clique of the given size",
+        "the positive probability conclusion": "a colouring with no monochromatic clique of that size"
+      },
+      "derived": {
+        "the union bound over bad events": "summing over all candidate cliques",
+        "the resulting inequality on parameters": "the exponential lower bound on the Ramsey number"
+      },
+      "reformulation": "Replace the search for a colouring by an estimate of how often a random colouring fails."
+    },
+    "validity_conditions": [
+      "Each fixed set of k vertices is monochromatic with probability two to the power one minus the number of its edges, computable exactly since the colours are independent.",
+      "The union bound over all candidate vertex sets is what converts these individual probabilities into a bound on the probability of any bad event.",
+      "The argument is purely existential: it shows a good colouring exists without exhibiting one, and no explicit construction of comparable strength is known."
+    ],
+    "proof_plan": [
+      "Color each edge of $K_n$ red or blue independently with probability $\\dfrac 1 2$.",
+      "For a fixed set $S$ of $k$ vertices:\n:$\\map \\Pr {S \\text { monochromatic} } = 2 \\cdot 2^{-\\binom k 2} = 2^{1 - \\binom k 2}$",
+      "By [[Boole's Inequality]]:\n:$\\map \\Pr {\\text {some monochromatic } K_k} \\le \\dbinom n k 2^{1 - \\binom k 2}$",
+      "Let $n = \\floor {2^{k / 2} }$.\nThen $\\dbinom n k 2^{1 - \\binom k 2} < \\dfrac {n^k} {k!} 2^{1 - \\binom k 2} \\le \\dfrac {2^{1 + k / 2} } {k!} < 1$ for $k \\ge 3$.\nHence some coloring of $K_n$ has no monochromatic $K_k$, and $\\map R {k, k} > 2^{k / 2}$.\n{{qed}}"
+    ]
+  }
+}

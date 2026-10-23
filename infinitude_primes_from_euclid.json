@@ -1,0 +1,39 @@
+{
+  "id": "infinitude_primes_from_euclid",
+  "field": [
+    "number_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "The set of [[Definition:Prime Number|prime numbers]] is [[Definition:Infinite Set|infinite]]."
+  },
+  "B_source": {
+    "statement": "Given any finite list of objects, one can construct a new object not on the list."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "a finite list of objects": "a finite list of primes p_1,...,p_k",
+        "the newly constructed object outside the list": "a prime factor of N = p_1*...*p_k + 1"
+      },
+      "derived": {
+        "the new object differs from all listed ones": "the new prime divides N but none of the p_i do",
+        "no finite list is complete": "no finite list of primes is complete"
+      }
+    },
+    "validity_conditions": [
+      "For any finite set of primes, N = product + 1 leaves remainder 1 when divided by each p_i, so no p_i divides N.",
+      "N > 1 has some prime factor, which is therefore not in the list.",
+      "This is the 'construct something outside any finite list' skeleton applied to primes."
+    ],
+    "proof_plan": [
+      "{{AimForCont}} that $p_1, p_2, \\ldots, p_k$ are all the primes.",
+      "Let:\n:$\\displaystyle N = \\paren {\\prod_{i \\mathop = 1}^k p_i} + 1$",
+      "For each $i$, $N \\equiv 1 \\pmod {p_i}$, so $p_i \\nmid N$.\nBut $N > 1$, so by the [[Fundamental Theorem of Arithmetic]] $N$ has a prime factor $p$.",
+      "Then $p \\ne p_i$ for all $i$, contradicting the assumption.\nHence there are infinitely many primes, which is [[Euclid's Theorem]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "binet_formula_from_linear_recurrence",
+  "field": [
+    "combinatorics",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $F_0 = 0$, $F_1 = 1$ and $F_{n + 2} = F_{n + 1} + F_n$.\nThen:\n:$F_n = \\dfrac {\\phi^n - \\psi^n} {\\sqrt 5}, \\quad \\phi = \\dfrac {1 + \\sqrt 5} 2, \\quad \\psi = \\dfrac {1 - \\sqrt 5} 2$"
+  },
+  "B_source": {
+    "statement": "Let $a_{n + 2} = p a_{n + 1} + q a_n$, where $x^2 - p x - q$ has distinct roots $\\alpha$, $\\beta$.\nThen every solution has the form $a_n = A \\alpha^n + B \\beta^n$, with $A$, $B$ determined by $a_0$ and $a_1$."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "p and q": "1 and 1",
+        "alpha and beta": "the golden ratio and its conjugate"
+      },
+      "derived": {
+        "the constants A and B": "1/sqrt(5) and -1/sqrt(5)"
+      },
+      "reformulation": "Specialize the characteristic root method to the Fibonacci recurrence."
+    },
+    "validity_conditions": [
+      "The characteristic polynomial x^2 - x - 1 has distinct roots, so the source result applies.",
+      "As |psi| < 1, F_n is the integer nearest to phi^n / sqrt(5)."
+    ],
+    "proof_plan": [
+      "With $p = q = 1$, the characteristic polynomial $x^2 - x - 1$ has the distinct roots $\\phi$ and $\\psi$.",
+      "By the source result, $F_n = A \\phi^n + B \\psi^n$.",
+      "From $F_0 = 0$ and $F_1 = 1$: $A + B = 0$ and $A \\phi + B \\psi = 1$, so $A = -B = \\dfrac 1 {\\phi - \\psi} = \\dfrac 1 {\\sqrt 5}$.",
+      "Hence $F_n = \\dfrac {\\phi^n - \\psi^n} {\\sqrt 5}$, which is [[Binet's Formula]].\n{{qed}}"
+    ]
+  }
+}

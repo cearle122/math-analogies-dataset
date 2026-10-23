@@ -1,0 +1,40 @@
+{
+  "id": "minimax_from_maximization",
+  "field": [
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "In a two-player [[Definition:Zero-Sum Game|zero-sum game]] with payoff $u$ to player $A$, the minimizing player $B$'s optimal value satisfies:\n:$\\displaystyle \\min_{\\text {moves} } u = -\\max_{\\text {moves} } \\paren {-u}$\nso the game tree is evaluated by the single [[Definition:Negamax|negamax]] recursion."
+  },
+  "B_source": {
+    "statement": "The optimal value at a node where one player moves is:\n:$\\displaystyle \\map V n = \\max_{c \\mathop \\in \\map {\\operatorname {children} } n} \\map V c$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the maximizing player": "the minimizing player",
+        "the payoff function": "its negation",
+        "the maximum over available moves": "the minimum over available moves"
+      },
+      "derived": {
+        "the recursion alternating between players": "a single recursion using negation at each level",
+        "two separate cases in the search": "one uniform case, since negation absorbs the alternation"
+      },
+      "reformulation": "Absorb the alternation between players into a negation, so that both levels become maximization."
+    },
+    "validity_conditions": [
+      "The game is zero sum, so one player's payoff is exactly the negation of the other's, which is what licenses replacing minimization by negated maximization.",
+      "Negation is an order-reversing involution, so applying it twice returns the original value and the alternation is consistent at every depth.",
+      "The reformulation changes only the presentation, not the computed value, so any search optimization valid for one form remains valid for the other."
+    ],
+    "proof_plan": [
+      "The game is zero-sum, so the payoff to $B$ is $-u$.",
+      "Replace minimization over moves by negated maximization:\n:$\\displaystyle \\min_c \\map V c = -\\max_c \\paren {-\\map V c}$",
+      "As negation is an [[Definition:Involution (Mapping)|involution]], alternating levels compose correctly.",
+      "Collapse the two cases into the single recursion:\n:$\\displaystyle \\map {V'} n = \\max_{c \\mathop \\in \\map {\\operatorname {children} } n} \\paren {-\\map {V'} c}$\nwith $\\map {V'} n$ the value to the player to move at $n$.\n{{qed}}"
+    ]
+  }
+}

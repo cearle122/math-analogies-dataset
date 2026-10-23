@@ -1,0 +1,43 @@
+{
+  "id": "sum_type_from_disjunction",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Sum Type|sum type]] $A + B$ has introduction rules $\\mathsf {inl}: A \\to A + B$ and $\\mathsf {inr}: B \\to A + B$, and elimination by case analysis, with:\n:$\\map {\\mathsf {case} } {\\map {\\mathsf {inl} } a, f, g} \\to \\map f a$"
+  },
+  "B_source": {
+    "statement": "[[Definition:Disjunction|Disjunction]] $A \\lor B$ is introduced from a proof of $A$ or of $B$, and eliminated by [[Proof by Cases|proof by cases]]."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [
+      "proof_plan_transfer"
+    ],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "disjunction A or B": "sum type A + B",
+        "or-introduction (from A, or from B)": "injections inl and inr",
+        "or-elimination (case analysis)": "the case/match eliminator"
+      },
+      "derived": {
+        "a proof of A or B": "a term of type A + B",
+        "proof by cases": "pattern matching on the sum"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "The two intro rules of disjunction correspond to the two injections; the elim rule (cases) corresponds to the match eliminator.",
+      "The reduction (beta) rule for the eliminator mirrors the proof-normalization step of or-elimination.",
+      "So the logical rules of 'or' transport verbatim to the term rules of the sum type."
+    ],
+    "proof_plan": [
+      "Map $\\lor$-introduction left and right to $\\mathsf {inl}$ and $\\mathsf {inr}$.",
+      "Map $\\lor$-elimination, [[Proof by Cases|proof by cases]], to the eliminator $\\mathsf {case}$.",
+      "Match normalization: a detour introducing $A \\lor B$ from $A$ and then eliminating it reduces to the left branch, as $\\map {\\mathsf {case} } {\\map {\\mathsf {inl} } a, f, g} \\to \\map f a$.",
+      "Hence the sum type is disjunction under the [[Definition:Curry-Howard Correspondence|Curry-Howard correspondence]].\n{{qed}}"
+    ]
+  }
+}

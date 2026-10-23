@@ -1,0 +1,38 @@
+{
+  "id": "gibbs_inequality_from_jensen",
+  "field": [
+    "probability",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $p$ and $q$ be [[Definition:Probability Distribution|probability distributions]] on a finite set with all $q_i > 0$.\nThen:\n:$\\displaystyle \\map D {p \\parallel q} = \\sum_i p_i \\log \\frac {p_i} {q_i} \\ge 0$\nwith equality {{iff}} $p = q$."
+  },
+  "B_source": {
+    "statement": "Let $\\phi$ be [[Definition:Strictly Convex Real Function|strictly convex]] and $X$ an integrable random variable.\nThen $\\expect {\\map \\phi X} \\ge \\map \\phi {\\expect X}$, with equality {{iff}} $X$ is almost surely constant."
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the convex function": "-log",
+        "the random variable X": "q_i / p_i, taken with probability p_i"
+      },
+      "derived": {
+        "Jensen's inequality": "non-negativity of relative entropy"
+      },
+      "reformulation": "Write relative entropy as the expectation of -log of a likelihood ratio and apply Jensen."
+    },
+    "validity_conditions": [
+      "Terms with p_i = 0 contribute 0 and are omitted, so the sum of q over the support may be less than 1.",
+      "Strict convexity of -log gives the equality case."
+    ],
+    "proof_plan": [
+      "Let $X = \\dfrac {q_i} {p_i}$ with probability $p_i$, for $i$ in the support of $p$.\nThen $\\map D {p \\parallel q} = \\expect {-\\log X}$.",
+      "By the source result, as $-\\log$ is strictly convex:\n:$\\expect {-\\log X} \\ge -\\log \\expect X = -\\log \\displaystyle \\sum_{p_i \\mathop > 0} q_i \\ge -\\log 1 = 0$",
+      "Equality forces $X$ to be constant, say $q_i = c p_i$ on the support, and $\\displaystyle \\sum_{p_i > 0} q_i = 1$, so $c = 1$ and $q$ vanishes off the support.",
+      "Hence equality holds {{iff}} $p = q$, which is [[Gibbs' Inequality]].\n{{qed}}"
+    ]
+  }
+}

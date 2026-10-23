@@ -1,0 +1,41 @@
+{
+  "id": "formal_power_series_calculus_from_real_calculus",
+  "field": [
+    "algebra",
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $R$ be a [[Definition:Commutative Ring with Unity|commutative ring with unity]] and $D$ the [[Definition:Formal Derivative|formal derivative]] on $R \\sqbrk {\\sqbrk x}$.\nThen:\n:$\\map D {f g} = f \\map D g + g \\map D f$\nand if $g$ has zero constant term:\n:$\\map D {f \\circ g} = \\paren {\\map D f \\circ g} \\map D g$"
+  },
+  "B_source": {
+    "statement": "Let $f, g$ be [[Definition:Differentiable Real Function|differentiable real functions]].\nThen:\n:$\\paren {f g}' = f' g + f g'$\n:$\\paren {f \\circ g}' = \\paren {f' \\circ g} g'$"
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the derivative defined by a limit": "the formal derivative defined coefficientwise",
+        "a convergent power series": "a formal power series, with no convergence requirement",
+        "the ring of differentiable functions": "the ring of formal power series"
+      },
+      "derived": {
+        "the product rule": "the same identity, verified by comparing coefficients",
+        "results depending on convergence": "statements that do not transfer, such as the mean value theorem"
+      },
+      "reformulation": "Replace the limit definition of the derivative by a coefficientwise one, keeping the algebraic identities and discarding the analytic ones."
+    },
+    "validity_conditions": [
+      "The formal derivative is a derivation on the ring of formal power series, and the product rule is exactly the derivation axiom, verified by a finite coefficient computation.",
+      "The chain rule transfers provided the inner series has zero constant term, so that substitution is defined; without that the composite is not a formal power series.",
+      "Analytic results genuinely fail to transfer: the mean value theorem and Taylor's theorem with remainder both quantify over points of an interval, which has no formal analogue."
+    ],
+    "proof_plan": [
+      "Define:\n:$\\displaystyle \\map D {\\sum_{n \\mathop \\ge 0} a_n x^n} = \\sum_{n \\mathop \\ge 1} n a_n x^{n - 1}$\ncoefficientwise, with no limit of difference quotients.",
+      "The coefficient of $x^n$ in $f g$ is $\\displaystyle \\sum_{i + j = n} a_i b_j$.\nComparing the coefficients of $x^{n - 1}$ on both sides of the product rule is a finite computation for each $n$.",
+      "If $g$ has zero constant term, the coefficient of each $x^n$ in $f \\circ g$ depends on finitely many terms.\nVerify the chain rule for $f = x^k$ by the product rule and [[Principle of Mathematical Induction|induction]], then extend by linearity.",
+      "Analytic statements such as the [[Mean Value Theorem]] or [[Taylor's Theorem]] with remainder have no formal counterpart, since there is no evaluation or convergence.\n{{qed}}"
+    ]
+  }
+}

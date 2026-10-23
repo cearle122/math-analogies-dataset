@@ -1,0 +1,41 @@
+{
+  "id": "lagrange_from_orbit_stabilizer",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a [[Definition:Finite Group|finite group]] and $H$ a [[Definition:Subgroup|subgroup]] of $G$.\nThen:\n:$\\order G = \\order H \\index G H$\nwhere $\\index G H$ is the [[Definition:Index of Subgroup|index]] of $H$ in $G$."
+  },
+  "B_source": {
+    "statement": "Let $G$ be a [[Definition:Finite Group|finite group]] which [[Definition:Group Action|acts]] on a set $X$, and let $x \\in X$.\nThen:\n:$\\order G = \\card {\\Orb x} \\order {\\Stab x}$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "group action": "action of G on left cosets G/H by left multiplication",
+        "point x": "the coset H"
+      },
+      "derived": {
+        "Stab(H)": "H itself",
+        "Orb(H)": "all cosets of H",
+        "|Orb(x)|": "[G:H]"
+      }
+    },
+    "validity_conditions": [
+      "G acts transitively on G/H by left multiplication, so the orbit of the coset H is all of G/H, of size [G:H].",
+      "The stabilizer of the coset H under this action is exactly H, so |Stab| = |H|.",
+      "Orbit-stabilizer then reads |G| = [G:H] * |H|."
+    ],
+    "proof_plan": [
+      "Let $G$ act on the [[Definition:Left Coset Space|left coset space]] $G / H$ by $g * \\paren {a H} = \\paren {g a} H$.",
+      "The [[Definition:Stabilizer|stabilizer]] of the coset $H$ is:\n:$\\set {g \\in G: g H = H} = H$",
+      "The [[Definition:Orbit (Group Theory)|orbit]] of $H$ is $\\set {g H: g \\in G} = G / H$, of size $\\index G H$.",
+      "By the [[Orbit-Stabilizer Theorem]]:\n:$\\order G = \\card {\\Orb H} \\order {\\Stab H} = \\index G H \\order H$\n{{qed}}"
+    ]
+  }
+}

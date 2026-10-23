@@ -1,0 +1,36 @@
+{
+  "id": "wald_identity_from_optional_stopping",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $X_1, X_2, \\ldots$ be [[Definition:Independent Identically Distributed|i.i.d.]] and integrable with mean $\\mu$, and $S_n = X_1 + \\cdots + X_n$.\nLet $\\tau$ be a [[Definition:Stopping Time|stopping time]] for the natural filtration with $\\expect \\tau < \\infty$.\nThen:\n:$\\expect {S_\\tau} = \\mu \\expect \\tau$"
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {M_n}$ be a [[Definition:Martingale|martingale]] and $\\tau$ a stopping time with $\\expect \\tau < \\infty$ and $\\expect {\\size {M_{n + 1} - M_n} \\mid \\FF_n} \\le c$ for some constant $c$.\nThen $\\expect {M_\\tau} = \\expect {M_0}$."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the martingale M": "the centred sum S_n - n mu"
+      },
+      "derived": {
+        "E[M_tau] = 0": "Wald's identity"
+      },
+      "reformulation": "Centre the random walk to make it a martingale, and check the bounded conditional increments condition."
+    },
+    "validity_conditions": [
+      "Independence makes the conditional increment E|X_(n+1) - mu| a constant.",
+      "E[tau] < infinity cannot be dropped: for the simple symmetric walk stopped at 1, E[S_tau] = 1 but mu = 0."
+    ],
+    "proof_plan": [
+      "Let $M_n = S_n - n \\mu$.\nBy independence, $\\expect {M_{n + 1} - M_n \\mid \\FF_n} = \\expect {X_{n + 1} } - \\mu = 0$, so $\\sequence {M_n}$ is a martingale with $M_0 = 0$.",
+      "Also $\\expect {\\size {M_{n + 1} - M_n} \\mid \\FF_n} = \\expect {\\size {X_1 - \\mu} } \\le \\expect {\\size {X_1} } + \\size \\mu$.",
+      "By the source result, $\\expect {M_\\tau} = 0$.",
+      "Hence $\\expect {S_\\tau} - \\mu \\expect \\tau = 0$, which is [[Wald's Equation]].\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "banach_fixed_point_from_interval_contraction",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $\\struct {X, d}$ be a [[Definition:Complete Metric Space|complete metric space]].\nLet $T: X \\to X$ satisfy:\n:$\\forall x, y \\in X: \\map d {T x, T y} \\le k \\, \\map d {x, y}$\nfor some $k \\in \\hointr 0 1$.\nThen $T$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]], which is the [[Definition:Limit of Sequence|limit]] of $\\sequence {T^n x_0}$ for every $x_0 \\in X$."
+  },
+  "B_source": {
+    "statement": "Let $f: \\closedint a b \\to \\closedint a b$ satisfy:\n:$\\forall x, y \\in \\closedint a b: \\size {\\map f x - \\map f y} \\le k \\size {x - y}$\nfor some $k < 1$.\nThen $f$ has a [[Definition:Unique|unique]] [[Definition:Fixed Point|fixed point]]."
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the closed interval": "an arbitrary complete metric space",
+        "the absolute value of a difference": "the metric d(x,y)",
+        "completeness of the interval": "completeness of the metric space"
+      },
+      "derived": {
+        "convergence of the iterates": "the iterates form a Cauchy sequence and converge by completeness",
+        "uniqueness on the interval": "uniqueness in the metric space, by the same contraction estimate"
+      },
+      "reformulation": "Abstract from the real line to a complete metric space, keeping only the triangle inequality and completeness."
+    },
+    "validity_conditions": [
+      "The interval case is exactly the special case of the real line with the usual metric, so the generalization is faithful.",
+      "The proof uses only the triangle inequality and completeness, never the order or the local compactness of the interval, so it transfers without modification.",
+      "Completeness cannot be dropped: a contraction on a non-complete space may have Cauchy iterates with no limit in the space."
+    ],
+    "proof_plan": [
+      "Replace $\\closedint a b$ by the [[Definition:Complete Metric Space|complete metric space]] $\\struct {X, d}$, and $\\size {x - y}$ by $\\map d {x, y}$.",
+      "Let $x_0 \\in X$ and $x_{n + 1} = T x_n$.\nBy [[Principle of Mathematical Induction|induction]]:\n:$\\map d {x_{n + 1}, x_n} \\le k^n \\map d {x_1, x_0}$",
+      "For $m > n$:\n{{begin-eqn}}\n{{eqn | l = \\map d {x_m, x_n}\n| o = \\le\n| r = \\sum_{j \\mathop = n}^{m - 1} \\map d {x_{j + 1}, x_j}\n| c = [[Triangle Inequality]]\n}}\n{{eqn | o = \\le\n| r = \\frac {k^n} {1 - k} \\map d {x_1, x_0}\n| c = [[Sum of Infinite Geometric Sequence]]\n}}\n{{end-eqn}}\nSo $\\sequence {x_n}$ is a [[Definition:Cauchy Sequence (Metric Space)|Cauchy sequence]], and converges to some $x^* \\in X$ by [[Definition:Complete Metric Space|completeness]].",
+      "$T$ is [[Definition:Continuous Mapping (Metric Spaces)|continuous]], so $T x^* = \\lim T x_n = x^*$.\nIf $T y = y$ also, then $\\map d {x^*, y} \\le k \\, \\map d {x^*, y}$, so $\\map d {x^*, y} = 0$.\n{{qed}}"
+    ]
+  }
+}

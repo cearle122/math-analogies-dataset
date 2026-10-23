@@ -1,0 +1,39 @@
+{
+  "id": "closed_from_open_sets",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $T = \\struct {S, \\tau}$ be a [[Definition:Topological Space|topological space]].\nThen:\n:an arbitrary [[Definition:Set Intersection|intersection]] of [[Definition:Closed Set (Topology)|closed sets]] of $T$ is closed\n:a finite [[Definition:Set Union|union]] of closed sets of $T$ is closed"
+  },
+  "B_source": {
+    "statement": "Let $T = \\struct {S, \\tau}$ be a [[Definition:Topological Space|topological space]].\nThen:\n:an arbitrary [[Definition:Set Union|union]] of [[Definition:Open Set (Topology)|open sets]] of $T$ is open\n:a finite [[Definition:Set Intersection|intersection]] of open sets of $T$ is open"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "open set U": "complement of a closed set",
+        "union": "intersection",
+        "intersection": "union"
+      },
+      "derived": {
+        "arbitrary union of opens is open": "arbitrary intersection of closeds is closed",
+        "finite intersection of opens is open": "finite union of closeds is closed"
+      },
+      "reformulation": "Take complements: a set is closed iff its complement is open, and apply De Morgan's laws to swap unions with intersections."
+    },
+    "validity_conditions": [
+      "Closed is defined as complement-of-open, so the correspondence is exact.",
+      "De Morgan's laws convert unions to intersections and vice versa under complementation, including the arbitrary/finite distinction which is preserved."
+    ],
+    "proof_plan": [
+      "By {{Defof|Closed Set (Topology)}}, $F$ is closed {{iff}} its [[Definition:Relative Complement|complement]] $S \\setminus F$ is open.",
+      "Let $\\set {F_i: i \\in I}$ be closed sets.\nThen each $U_i = S \\setminus F_i$ is [[Definition:Open Set (Topology)|open]].",
+      "By the [[Definition:Topology|open set axioms]], $\\displaystyle \\bigcup_{i \\mathop \\in I} U_i$ is open, and for finite $I$, $\\displaystyle \\bigcap_{i \\mathop \\in I} U_i$ is open.",
+      "By [[De Morgan's Laws (Set Theory)|De Morgan's laws]]:\n{{begin-eqn}}\n{{eqn | l = S \\setminus \\bigcap_{i \\mathop \\in I} F_i\n| r = \\bigcup_{i \\mathop \\in I} U_i\n}}\n{{eqn | l = S \\setminus \\bigcup_{i \\mathop \\in I} F_i\n| r = \\bigcap_{i \\mathop \\in I} U_i\n}}\n{{end-eqn}}\nHence $\\displaystyle \\bigcap_{i \\mathop \\in I} F_i$ is closed, and $\\displaystyle \\bigcup_{i \\mathop \\in I} F_i$ is closed for finite $I$.\n{{qed}}"
+    ]
+  }
+}

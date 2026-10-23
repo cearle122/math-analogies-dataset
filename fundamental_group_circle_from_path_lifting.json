@@ -1,0 +1,37 @@
+{
+  "id": "fundamental_group_circle_from_path_lifting",
+  "field": [
+    "topology",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "The [[Definition:Fundamental Group|fundamental group]] of the circle is:\n:$\\map {\\pi_1} {\\Bbb S^1, 1} \\cong \\Z$\nwith the class of $t \\mapsto e^{2 \\pi i n t}$ corresponding to $n$."
+  },
+  "B_source": {
+    "statement": "Let $p: \\R \\to \\Bbb S^1$, $\\map p s = e^{2 \\pi i s}$.\nThen every [[Definition:Path (Topology)|path]] in $\\Bbb S^1$ has a unique lift to $\\R$ with a given starting point, and homotopies of paths lift uniquely to homotopies."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "loops at 1": "paths in R from 0 to an integer"
+      },
+      "derived": {
+        "the endpoint of the lift": "the degree, an integer"
+      },
+      "reformulation": "Measure a loop by the endpoint of its lift to the covering line."
+    },
+    "validity_conditions": [
+      "The fibre over 1 is the discrete set Z, so lifted homotopies fix the endpoint.",
+      "R is contractible, which gives injectivity."
+    ],
+    "proof_plan": [
+      "For a loop $\\gamma$ at $1$, lift it to $\\tilde \\gamma$ starting at $0$.\nThen $\\map {\\tilde \\gamma} 1 \\in \\map {p^{-1} } 1 = \\Z$; define $\\map {\\deg} {\\sqbrk \\gamma} = \\map {\\tilde \\gamma} 1$.",
+      "A homotopy of loops lifts to a homotopy of paths whose endpoint moves continuously in the discrete set $\\Z$, hence is fixed.\nSo $\\deg$ is well-defined.",
+      "The lift of $\\gamma \\cdot \\delta$ is $\\tilde \\gamma$ followed by $\\map {\\tilde \\gamma} 1 + \\tilde \\delta$, so $\\deg$ is a homomorphism.\nIt is surjective, as $t \\mapsto e^{2 \\pi i n t}$ lifts to $t \\mapsto n t$.",
+      "If $\\map {\\deg} {\\sqbrk \\gamma} = 0$, then $\\tilde \\gamma$ is a loop in $\\R$, contractible by a straight-line homotopy; projecting by $p$ contracts $\\gamma$.\nHence $\\deg$ is an isomorphism.\n{{qed}}"
+    ]
+  }
+}

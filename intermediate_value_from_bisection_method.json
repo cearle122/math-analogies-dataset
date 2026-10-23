@@ -1,0 +1,37 @@
+{
+  "id": "intermediate_value_from_bisection_method",
+  "field": [
+    "analysis"
+  ],
+  "A_target": {
+    "statement": "Let $f$ be [[Definition:Continuous Real Function|continuous]] on $\\closedint a b$ with $\\map f a < 0 < \\map f b$.\nThen:\n:$\\exists c \\in \\openint a b: \\map f c = 0$"
+  },
+  "B_source": {
+    "statement": "Let $\\sequence {x_n}$ be a [[Definition:Bounded Real Sequence|bounded sequence]] in $\\closedint a b$.\nBisect $\\closedint a b$ repeatedly, at each stage keeping a half containing $x_n$ for infinitely many $n$.\nThe nested halves shrink to a single point $l$, and some [[Definition:Subsequence|subsequence]] of $\\sequence {x_n}$ converges to $l$."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the property 'contains infinitely many terms'": "the property 'f changes sign on the interval'",
+        "the subsequence limit l": "the root c"
+      },
+      "derived": {
+        "the shrinking nested intervals": "a bracketing sequence for a root"
+      },
+      "reformulation": "Keep the bisection skeleton of the Bolzano-Weierstrass proof, but retain the half on which f changes sign."
+    },
+    "validity_conditions": [
+      "The retained property must be inherited by at least one half at every step, which holds for a sign change.",
+      "Continuity is needed to pass the sign conditions to the limit point."
+    ],
+    "proof_plan": [
+      "Let $\\closedint {a_0} {b_0} = \\closedint a b$, so $\\map f {a_0} < 0 \\le \\map f {b_0}$.\nGiven $\\closedint {a_k} {b_k}$ with $\\map f {a_k} < 0 \\le \\map f {b_k}$, let $m$ be its midpoint.\nIf $\\map f m < 0$ set $\\closedint {a_{k + 1} } {b_{k + 1} } = \\closedint m {b_k}$, otherwise set it to $\\closedint {a_k} m$.",
+      "In either case the invariant $\\map f {a_{k + 1} } < 0 \\le \\map f {b_{k + 1} }$ is preserved, and:\n:$b_k - a_k = 2^{-k} \\paren {b - a} \\to 0$",
+      "By the [[Nested Intervals Theorem]], $\\displaystyle \\bigcap_k \\closedint {a_k} {b_k} = \\set c$, with $a_k \\to c$ and $b_k \\to c$.",
+      "By [[Definition:Continuous Real Function|continuity]]:\n:$\\map f c = \\lim \\map f {a_k} \\le 0$ and $\\map f c = \\lim \\map f {b_k} \\ge 0$\nHence $\\map f c = 0$, and $c \\ne a, b$ as $\\map f a \\ne 0 \\ne \\map f b$.\nThis is the [[Intermediate Value Theorem]].\n{{qed}}"
+    ]
+  }
+}

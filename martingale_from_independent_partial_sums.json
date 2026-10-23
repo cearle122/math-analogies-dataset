@@ -1,0 +1,40 @@
+{
+  "id": "martingale_from_independent_partial_sums",
+  "field": [
+    "probability"
+  ],
+  "A_target": {
+    "statement": "Let $\\sequence {M_n}$ be a [[Definition:Martingale|martingale]] with respect to a [[Definition:Filtration|filtration]] $\\sequence {\\FF_n}$:\n:$\\expect {M_{n + 1} \\mid \\FF_n} = M_n$\nThen $\\expect {M_n} = \\expect {M_0}$ for all $n$, and if $\\displaystyle \\sup_n \\expect {\\size {M_n} } < \\infty$ then $M_n$ converges [[Definition:Almost Surely|almost surely]]."
+  },
+  "B_source": {
+    "statement": "Let $X_1, X_2, \\ldots$ be [[Definition:Independent Random Variables|independent]] with $\\expect {X_i} = 0$, and $S_n = X_1 + \\cdots + X_n$.\nThen:\n:$\\expect {S_{n + 1} - S_n} = 0$"
+  },
+  "C_analogy": {
+    "type": "generalization",
+    "secondary_types": [],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "independence of the increments": "conditional mean zero given the past",
+        "the natural filtration of the partial sums": "an arbitrary filtration to which the process is adapted",
+        "the sum of independent variables": "an arbitrary adapted process with the conditional mean property"
+      },
+      "derived": {
+        "constancy of the expectation": "the same conclusion, from the tower property",
+        "the convergence theorem": "almost sure convergence under boundedness in the first moment"
+      },
+      "reformulation": "Weaken independence of increments to a conditional mean condition relative to a filtration."
+    },
+    "validity_conditions": [
+      "Independent mean-zero increments satisfy the conditional expectation condition, so partial sums are martingales and the generalization is faithful.",
+      "Only the conditional mean is required, not independence: increments may depend on the past in every way except in their conditional mean, which is a substantially weaker hypothesis.",
+      "Convergence requires boundedness in the first moment; a martingale can fail to converge without it, as a simple symmetric random walk shows."
+    ],
+    "proof_plan": [
+      "Replace independence of the increments by the condition:\n:$\\expect {M_{n + 1} - M_n \\mid \\FF_n} = 0$\nthat each increment has conditional mean zero given the past.",
+      "Fix a [[Definition:Filtration|filtration]] $\\sequence {\\FF_n}$, and require $M_n$ to be $\\FF_n$-[[Definition:Measurable Function|measurable]] and [[Definition:Integrable Function|integrable]].",
+      "By the [[Tower Property of Conditional Expectation|tower property]]:\n:$\\expect {M_{n + 1} } = \\expect {\\expect {M_{n + 1} \\mid \\FF_n} } = \\expect {M_n}$",
+      "By [[Doob's Upcrossing Inequality]], the expected number of upcrossings of any interval $\\closedint a b$ is at most $\\dfrac {\\sup_n \\expect {\\size {M_n} } + \\size a} {b - a} < \\infty$.\nHence $M_n$ converges almost surely, which is [[Doob's Martingale Convergence Theorem]].\n{{qed}}"
+    ]
+  }
+}

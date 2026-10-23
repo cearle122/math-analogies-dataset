@@ -1,0 +1,39 @@
+{
+  "id": "interior_from_closure_by_complement",
+  "field": [
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $T = \\struct {S, \\tau}$ be a [[Definition:Topological Space|topological space]] and $A, B \\subseteq S$.\nThen the [[Definition:Interior (Topology)|interior]] $A^\\circ$ is the largest open subset of $A$, with:\n:$A^\\circ = S \\setminus \\paren {S \\setminus A}^-$\n:$\\paren {A \\cap B}^\\circ = A^\\circ \\cap B^\\circ$"
+  },
+  "B_source": {
+    "statement": "Let $T = \\struct {S, \\tau}$ be a topological space and $A, B \\subseteq S$.\nThen the [[Definition:Closure (Topology)|closure]] $A^-$ is the smallest closed superset of $A$, and:\n:$\\paren {A \\cup B}^- = A^- \\cup B^-$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "closed": "open",
+        "superset": "subset",
+        "union": "intersection",
+        "smallest": "largest"
+      },
+      "derived": {
+        "complementation": "the dictionary between closure and interior"
+      },
+      "reformulation": "Complementation reverses inclusion and exchanges open with closed sets, so every closure statement dualizes to an interior statement."
+    },
+    "validity_conditions": [
+      "Complementation is an inclusion-reversing involution of the power set.",
+      "De Morgan's laws exchange unions and intersections."
+    ],
+    "proof_plan": [
+      "$U \\subseteq A$ is open {{iff}} $S \\setminus U \\supseteq S \\setminus A$ is closed.",
+      "Hence the largest open subset of $A$ is the complement of the smallest closed superset of $S \\setminus A$:\n:$A^\\circ = S \\setminus \\paren {S \\setminus A}^-$",
+      "By [[De Morgan's Laws (Set Theory)|De Morgan's laws]] and the source result:\n:$\\paren {A \\cap B}^\\circ = S \\setminus \\paren {\\paren {S \\setminus A} \\cup \\paren {S \\setminus B} }^- = S \\setminus \\paren {\\paren {S \\setminus A}^- \\cup \\paren {S \\setminus B}^-} = A^\\circ \\cap B^\\circ$",
+      "In the same way the [[Definition:Kuratowski Closure Axioms|Kuratowski closure axioms]] dualize to the interior axioms.\n{{qed}}"
+    ]
+  }
+}

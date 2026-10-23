@@ -1,0 +1,36 @@
+{
+  "id": "diagonalizable_from_eigenvector_independence",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $\\mathbf A$ be an $n \\times n$ [[Definition:Matrix|matrix]] over a [[Definition:Field (Abstract Algebra)|field]] $K$ with $n$ distinct [[Definition:Eigenvalue of Matrix|eigenvalues]] in $K$.\nThen $\\mathbf A$ is [[Definition:Diagonalizable Matrix|diagonalizable]]."
+  },
+  "B_source": {
+    "statement": "Let $\\mathbf v_1, \\ldots, \\mathbf v_k$ be [[Definition:Eigenvector of Matrix|eigenvectors]] of $\\mathbf A$ for pairwise distinct eigenvalues.\nThen $\\mathbf v_1, \\ldots, \\mathbf v_k$ are [[Definition:Linearly Independent Set|linearly independent]]."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the k independent eigenvectors": "n eigenvectors, one for each eigenvalue"
+      },
+      "derived": {
+        "an eigenbasis": "a change of basis making A diagonal"
+      },
+      "reformulation": "Reduce diagonalizability to the existence of a basis of eigenvectors."
+    },
+    "validity_conditions": [
+      "The eigenvalues must lie in K, so that the eigenvectors have entries in K.",
+      "n independent vectors in K^n form a basis."
+    ],
+    "proof_plan": [
+      "Let $\\lambda_1, \\ldots, \\lambda_n$ be the distinct eigenvalues and choose eigenvectors $\\mathbf v_i$ with $\\mathbf A \\mathbf v_i = \\lambda_i \\mathbf v_i$.",
+      "By the source result, $\\mathbf v_1, \\ldots, \\mathbf v_n$ are linearly independent, hence a [[Definition:Basis (Linear Algebra)|basis]] of $K^n$.",
+      "Let $\\mathbf P = \\begin {bmatrix} \\mathbf v_1 & \\cdots & \\mathbf v_n \\end {bmatrix}$, which is invertible.\nThen $\\mathbf A \\mathbf P = \\mathbf P \\mathbf D$ with $\\mathbf D = \\map {\\operatorname {diag} } {\\lambda_1, \\ldots, \\lambda_n}$.",
+      "Hence $\\mathbf P^{-1} \\mathbf A \\mathbf P = \\mathbf D$, and $\\mathbf A$ is diagonalizable.\n{{qed}}"
+    ]
+  }
+}

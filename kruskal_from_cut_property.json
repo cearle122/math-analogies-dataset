@@ -1,0 +1,37 @@
+{
+  "id": "kruskal_from_cut_property",
+  "field": [
+    "algorithms",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $G$ be a connected weighted [[Definition:Graph (Graph Theory)|graph]].\nThen [[Kruskal's Algorithm]], which scans the edges in order of increasing weight and adds each edge not closing a cycle, produces a [[Definition:Minimum Spanning Tree|minimum spanning tree]]."
+  },
+  "B_source": {
+    "statement": "Let $F$ be contained in some minimum spanning tree, and let $\\tuple {S, V \\setminus S}$ be a cut crossed by no edge of $F$.\nIf $e$ is a lightest edge crossing the cut, then $F \\cup \\set e$ is contained in some minimum spanning tree."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the cut": "the component of one endpoint of the edge being added"
+      },
+      "derived": {
+        "repeated safe additions": "a minimum spanning tree"
+      },
+      "reformulation": "Show that every edge Kruskal adds is a lightest edge across a cut respecting the current forest."
+    },
+    "validity_conditions": [
+      "Edges crossing the cut that were considered earlier would have joined different components, so none was rejected.",
+      "Connectedness ensures that the final forest is spanning."
+    ],
+    "proof_plan": [
+      "Invariant: the chosen set $F$ is contained in some minimum spanning tree; it holds for $F = \\O$.",
+      "When Kruskal adds $e = u v$, $u$ and $v$ lie in different components of $F$.\nLet $S$ be the component of $u$; no edge of $F$ crosses $\\tuple {S, V \\setminus S}$.",
+      "An edge crossing the cut and lighter than $e$ was considered earlier, when it joined different components, so it would have been added and would cross $F$; hence there is none, and $e$ is a lightest crossing edge.\nBy the source result, the invariant is preserved.",
+      "At the end $F$ is a spanning tree contained in a minimum spanning tree, hence equal to it.\n{{qed}}"
+    ]
+  }
+}

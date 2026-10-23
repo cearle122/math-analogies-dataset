@@ -1,0 +1,37 @@
+{
+  "id": "polymorphic_identity_from_parametricity",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $t$ be a closed term of type $\\forall \\alpha. \\alpha \\to \\alpha$ in [[Definition:System F|System F]].\nThen for every type $A$ and $a : A$:\n:$t \\, A \\, a = a$\nso $t$ is extensionally the polymorphic identity."
+  },
+  "B_source": {
+    "statement": "Define, by induction on types, when two terms are related, interpreting each type variable by an arbitrary relation and $\\forall$ by quantification over all relations.\nThen prove the fundamental lemma: every closed term is related to itself.\nThis is the [[Reynolds' Abstraction Theorem|abstraction theorem]] of relational parametricity."
+  },
+  "C_analogy": {
+    "type": "proof_plan_transfer",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "the arbitrary relation": "the singleton relation {(a, a)} on A"
+      },
+      "derived": {
+        "the fundamental lemma for t": "a free theorem forcing t A a = a"
+      },
+      "reformulation": "Apply the logical-relations plan and instantiate the relation for the type variable at a singleton."
+    },
+    "validity_conditions": [
+      "The argument uses only the type of t, not its definition.",
+      "The same method gives that every term of type forall alpha. List alpha -> List alpha commutes with map."
+    ],
+    "proof_plan": [
+      "By the abstraction theorem, for all types $A, A'$, every relation $R \\subseteq A \\times A'$ and $\\tuple {a, a'} \\in R$, we have $\\tuple {t \\, A \\, a, t \\, A' \\, a'} \\in R$.",
+      "Fix $A$ and $a : A$, and take $A' = A$ and $R = \\set {\\tuple {a, a} }$.",
+      "As $\\tuple {a, a} \\in R$, we get $\\tuple {t \\, A \\, a, t \\, A \\, a} \\in R$, so $t \\, A \\, a = a$.",
+      "Hence $t$ is extensionally $\\Lambda \\alpha. \\lambda x. x$, a [[Definition:Free Theorem|free theorem]] read off from the type alone.\n{{qed}}"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "continued_fraction_from_mobius_fixed_point",
+  "field": [
+    "number_theory",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $x = \\sqbrk {\\overline {a_0; a_1, \\ldots, a_{k - 1} } }$ be a [[Definition:Periodic Continued Fraction|purely periodic continued fraction]] with $a_i \\in \\Z_{>0}$.\nThen $x$ is a [[Definition:Quadratic Irrational|quadratic irrational]] satisfying an explicit quadratic equation with [[Definition:Integer|integer]] coefficients."
+  },
+  "B_source": {
+    "statement": "Let $\\map M z = \\dfrac {a z + b} {c z + d}$ be a [[Definition:Möbius Transformation|Möbius transformation]].\nThen its [[Definition:Fixed Point|fixed points]] are the roots of:\n:$c z^2 + \\paren {d - a} z - b = 0$"
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the Mobius transformation": "the composite of the k partial-quotient maps z -> a_i + 1/z",
+        "the fixed point of the transformation": "the value of the periodic continued fraction",
+        "the coefficient matrix": "the product of the partial-quotient matrices"
+      },
+      "derived": {
+        "the fixed-point quadratic": "the minimal polynomial of the quadratic irrational"
+      },
+      "reformulation": "The infinite continued fraction must be reformulated as a self-referential finite expression before it can be read as a fixed-point equation."
+    },
+    "validity_conditions": [
+      "the continued fraction must be purely periodic so the composite map returns to the same expression",
+      "the partial quotients must be positive integers so the composite matrix has integer entries and determinant +-1",
+      "the relevant root must be selected by positivity, since the quadratic has two roots and only one is the limit"
+    ],
+    "proof_plan": [
+      "Write one period as a composite of the maps:\n:$\\map {T_i} z = a_i + \\dfrac 1 z$",
+      "Each $T_i$ is represented by the [[Definition:Integer|integer]] [[Definition:Matrix|matrix]] $\\begin {pmatrix} a_i & 1 \\\\ 1 & 0 \\end {pmatrix}$.\nThe product:\n:$\\begin {pmatrix} p_{k - 1} & p_{k - 2} \\\\ q_{k - 1} & q_{k - 2} \\end {pmatrix} = \\displaystyle \\prod_{i \\mathop = 0}^{k - 1} \\begin {pmatrix} a_i & 1 \\\\ 1 & 0 \\end {pmatrix}$\nrepresents $M = T_0 \\circ \\cdots \\circ T_{k - 1}$.",
+      "By periodicity:\n:$x = \\map M x = \\dfrac {p_{k - 1} x + p_{k - 2} } {q_{k - 1} x + q_{k - 2} }$",
+      "Clearing denominators:\n:$q_{k - 1} x^2 + \\paren {q_{k - 2} - p_{k - 1} } x - p_{k - 2} = 0$\nwhich is a quadratic with [[Definition:Integer|integer]] coefficients.",
+      "As all $a_i > 0$, we have $x > 1$.\nThe product of the roots is $-\\dfrac {p_{k - 2} } {q_{k - 1} } < 0$, so exactly one root is positive, and $x$ is that root.\n{{qed}}"
+    ]
+  }
+}

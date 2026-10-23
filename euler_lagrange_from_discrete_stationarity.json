@@ -1,0 +1,43 @@
+{
+  "id": "euler_lagrange_from_discrete_stationarity",
+  "field": [
+    "analysis",
+    "geometry"
+  ],
+  "A_target": {
+    "statement": "Let $\\displaystyle \\map S q = \\int_a^b \\map L {t, \\map q t, \\map {q'} t} \\rd t$ be an [[Definition:Action Functional|action functional]].\nIf $q$ is a [[Definition:Stationary Path|stationary path]] of $S$ with fixed endpoints, then:\n:$\\dfrac \\d {\\d t} \\dfrac {\\partial L} {\\partial q'} = \\dfrac {\\partial L} {\\partial q}$"
+  },
+  "B_source": {
+    "statement": "Let $F: U \\to \\R$ be [[Definition:Differentiable Real Function|differentiable]] on an [[Definition:Open Set (Real Analysis)|open]] $U \\subseteq \\R^n$.\nIf $F$ has a local minimum at $\\mathbf x \\in U$, then:\n:$\\nabla \\map F {\\mathbf x} = \\mathbf 0$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "reduction"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the finitely many variables": "the values of the path at the nodes of a discretized time grid",
+        "the function being minimized": "the discretized action, a finite sum over grid intervals",
+        "the vanishing of each partial derivative": "one stationarity condition at each interior node"
+      },
+      "derived": {
+        "the system of partial derivative equations": "a second-order difference equation at each interior node",
+        "the limit of the difference equations": "the Euler-Lagrange differential equation"
+      },
+      "reformulation": "Discretize the path into finitely many node values so that stationarity of a functional becomes a vanishing gradient."
+    },
+    "validity_conditions": [
+      "Discretizing the path reduces the variational problem to ordinary optimization over finitely many node values, where the vanishing gradient condition applies directly.",
+      "Each node value enters only the two adjacent terms of the sum, so its partial derivative gives a three-point relation, which is a second-order difference equation.",
+      "Passing to the limit requires the difference quotients to converge, so the argument gives the equation for sufficiently smooth stationary paths rather than establishing existence."
+    ],
+    "proof_plan": [
+      "Let $t_k = a + k h$ for $k = 0, \\ldots, N$ with $h = \\dfrac {b - a} N$, and $q_k = \\map q {t_k}$.\nReplace $S$ by:\n:$\\displaystyle S_h = \\sum_{k \\mathop = 0}^{N - 1} \\map L {t_k, q_k, \\frac {q_{k + 1} - q_k} h} h$\na function of the interior values $q_1, \\ldots, q_{N - 1}$.",
+      "By the source result, at a stationary point:\n:$\\dfrac {\\partial S_h} {\\partial q_k} = 0$ for $1 \\le k \\le N - 1$",
+      "Computing:\n:$\\map {\\dfrac {\\partial L} {\\partial q} } {t_k} - \\dfrac 1 h \\paren {\\map {\\dfrac {\\partial L} {\\partial q'} } {t_k} - \\map {\\dfrac {\\partial L} {\\partial q'} } {t_{k - 1} } } = 0$\nwhich is a second-order [[Definition:Difference Equation|difference equation]] relating $q_{k - 1}$, $q_k$ and $q_{k + 1}$.",
+      "Letting $h \\to 0$, the backward difference becomes a derivative:\n:$\\dfrac \\d {\\d t} \\dfrac {\\partial L} {\\partial q'} = \\dfrac {\\partial L} {\\partial q}$\nwhich is the [[Euler-Lagrange Equation]].\n{{qed}}"
+    ]
+  }
+}

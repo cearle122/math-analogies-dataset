@@ -1,0 +1,42 @@
+{
+  "id": "dependent_product_from_forall",
+  "field": [
+    "type_theory",
+    "logic"
+  ],
+  "A_target": {
+    "statement": "Let $A$ be a [[Definition:Type|type]] and $B$ a type family over $A$.\nThe [[Definition:Dependent Product Type|dependent product type]] $\\displaystyle \\prod_{x : A} \\map B x$ has as terms the functions $\\lambda a. \\map b a$ assigning to each $a : A$ a term $\\map b a : \\map B a$."
+  },
+  "B_source": {
+    "statement": "Let $\\map P x$ be a [[Definition:Predicate|predicate]] on $A$.\nA proof of $\\forall x : A: \\map P x$ is a method giving, for each $a : A$, a proof of $\\map P a$."
+  },
+  "C_analogy": {
+    "type": "transport_of_structure",
+    "secondary_types": [],
+    "type_axis": "proof",
+    "object_map": {
+      "substitutions": {
+        "universal quantifier forall x:A. P(x)": "dependent product Pi(x:A). B(x)",
+        "predicate P(x)": "type family B(x)",
+        "a proof method for forall": "a dependent function"
+      },
+      "derived": {
+        "proof of forall x. P(x)": "term of Pi(x:A)B(x)",
+        "instantiation at a": "application to a",
+        "universal-intro (fix arbitrary x)": "lambda abstraction over x"
+      },
+      "reformulation": ""
+    },
+    "validity_conditions": [
+      "forall-introduction (assume arbitrary x, prove P(x)) corresponds to lambda-abstraction building a dependent function.",
+      "forall-elimination (instantiate at a) corresponds to function application at a.",
+      "So universal quantification transports to the Pi-type, generalizing the non-dependent function/implication case."
+    ],
+    "proof_plan": [
+      "Read the [[Definition:Predicate|predicate]] $\\map P x$ as a type family $\\map B x$.",
+      "Map [[Definition:Universal Generalisation|$\\forall$-introduction]] to $\\lambda$-abstraction over $x$, producing a dependent function.",
+      "Map [[Definition:Universal Instantiation|$\\forall$-elimination]] to application at a specific $a$:\n:$f : \\displaystyle \\prod_{x : A} \\map B x, \\, a : A \\vdash f \\, a : \\map B a$",
+      "Hence $\\forall$ corresponds to the [[Definition:Dependent Product Type|dependent product type]].\n{{qed}}"
+    ]
+  }
+}

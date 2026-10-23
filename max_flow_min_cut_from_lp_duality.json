@@ -1,0 +1,42 @@
+{
+  "id": "max_flow_min_cut_from_lp_duality",
+  "field": [
+    "combinatorics",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $N$ be a [[Definition:Flow Network|flow network]] with source $s$ and sink $t$.\nThen:\n:$\\max \\set {\\size f: f \\text { an } s \\text {-} t \\text { flow} } = \\min \\set {\\map c S: S \\text { an } s \\text {-} t \\text { cut} }$"
+  },
+  "B_source": {
+    "statement": "Let a [[Definition:Linear Program|linear program]] and its [[Definition:Dual Linear Program|dual]] both be [[Definition:Feasible Solution|feasible]].\nThen their optimal values are equal."
+  },
+  "C_analogy": {
+    "type": "reduction",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the primal LP": "the max-flow linear program (maximize flow subject to capacity and conservation)",
+        "the dual LP": "an LP whose integral optima are s-t cuts",
+        "primal optimum": "maximum flow value"
+      },
+      "derived": {
+        "dual optimum": "minimum cut capacity",
+        "strong duality (primal = dual)": "max flow = min cut",
+        "integrality of the flow/cut polytopes": "the LP optima are achieved at integer flows and genuine cuts"
+      },
+      "reformulation": "Formulate max-flow as a linear program; its dual encodes cuts, and total unimodularity makes the optima integral."
+    },
+    "validity_conditions": [
+      "Max-flow is a linear program; its dual variables (on edges/vertices) describe s-t cuts.",
+      "Strong LP duality equates the two optimal values.",
+      "The constraint matrix is totally unimodular, so both optima are attained at integer points - an actual flow and an actual cut - giving max flow = min cut."
+    ],
+    "proof_plan": [
+      "Write max-flow as a [[Definition:Linear Program|linear program]]: maximize the net flow out of $s$ subject to $0 \\le f_e \\le c_e$ and [[Definition:Flow Conservation|conservation]] at every vertex other than $s$ and $t$.",
+      "Form the [[Definition:Dual Linear Program|dual]]: minimize $\\displaystyle \\sum_e c_e d_e$ subject to potentials $p$ with $p_s - p_t \\ge 1$ and $d_{u v} \\ge p_u - p_v$, $d \\ge 0$.\nIts integral solutions with $p \\in \\set {0, 1}$ are exactly the indicator vectors of $s$-$t$ cuts.",
+      "By the [[Strong Duality Theorem]], the primal and dual optima are equal.",
+      "The constraint matrix is [[Definition:Totally Unimodular Matrix|totally unimodular]], so the dual has an integral optimal solution, which is a cut.\nHence max flow $=$ min cut.\n{{qed}}"
+    ]
+  }
+}

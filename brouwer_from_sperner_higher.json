@@ -1,0 +1,41 @@
+{
+  "id": "brouwer_from_sperner_higher",
+  "field": [
+    "combinatorics",
+    "topology"
+  ],
+  "A_target": {
+    "statement": "Let $g: \\Bbb D^n \\to \\Bbb D^n$ be a [[Definition:Continuous Mapping (Topology)|continuous mapping]].\nThen there exists $x \\in \\Bbb D^n$ such that $\\map g x = x$."
+  },
+  "B_source": {
+    "statement": "Let $\\Delta^n$ be the [[Definition:Standard Simplex|standard $n$-simplex]] with [[Definition:Vertex of Simplex|vertices]] $e_0, \\ldots, e_n$.\nLet $C_0, \\ldots, C_n$ be [[Definition:Closed Set (Topology)|closed sets]] such that for every $I \\subseteq \\set {0, \\ldots, n}$:\n:$\\map {\\operatorname {conv} } {\\set {e_i: i \\in I} } \\subseteq \\displaystyle \\bigcup_{i \\mathop \\in I} C_i$\nThen:\n:$\\displaystyle \\bigcap_{i \\mathop = 0}^n C_i \\ne \\O$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [
+      "fixed_point_encoding"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "closed KKM sets": "sets C_i = {x : g(x)_i <= x_i}",
+        "common point of the cover": "a point where no coordinate increases, i.e. a fixed point"
+      },
+      "derived": {
+        "KKM intersection nonempty": "the C_i share a point",
+        "that shared point": "fixed point of g"
+      }
+    },
+    "validity_conditions": [
+      "The sets C_i = {x : g(x)_i <= x_i} are closed and form a KKM cover of the simplex (each face is covered by the appropriate sub-family).",
+      "A common point has g(x)_i <= x_i for all i; since coordinates sum to 1 on the simplex, equality holds throughout, so g(x)=x.",
+      "KKM is the combinatorial (Sperner-equivalent) engine; continuity of g gives closedness of the C_i."
+    ],
+    "proof_plan": [
+      "As $\\Bbb D^n$ is [[Definition:Homeomorphic|homeomorphic]] to $\\Delta^n$, we may take $g: \\Delta^n \\to \\Delta^n$.\nDefine:\n:$C_i = \\set {x \\in \\Delta^n: \\map g x_i \\le x_i}$",
+      "Each $C_i$ is [[Definition:Closed Set (Topology)|closed]] as $g$ is [[Definition:Continuous Mapping (Topology)|continuous]].\nIf $x$ lies in the face spanned by $\\set {e_i: i \\in I}$, then $\\displaystyle \\sum_{i \\mathop \\in I} x_i = 1 \\ge \\sum_{i \\mathop \\in I} \\map g x_i$, so $\\map g x_i \\le x_i$ for some $i \\in I$.\nHence the [[KKM Lemma|KKM]] covering condition holds.",
+      "By the [[KKM Lemma]], there exists $x \\in \\displaystyle \\bigcap_{i \\mathop = 0}^n C_i$.",
+      "Then $\\map g x_i \\le x_i$ for all $i$, and:\n:$\\displaystyle \\sum_{i \\mathop = 0}^n \\map g x_i = 1 = \\sum_{i \\mathop = 0}^n x_i$\nHence $\\map g x_i = x_i$ for all $i$, so $\\map g x = x$.\n{{qed}}"
+    ]
+  }
+}

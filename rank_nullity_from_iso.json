@@ -1,0 +1,40 @@
+{
+  "id": "rank_nullity_from_iso",
+  "field": [
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $T: V \\to W$ be a [[Definition:Linear Transformation|linear transformation]] with $V$ [[Definition:Dimension of Vector Space|finite-dimensional]].\nThen:\n:$\\dim V = \\map \\dim {\\map \\ker T} + \\map \\rank T$"
+  },
+  "B_source": {
+    "statement": "Let $T: V \\to W$ be a [[Definition:Linear Transformation|linear transformation]].\nThen:\n:$V / \\map \\ker T \\cong \\Img T$"
+  },
+  "C_analogy": {
+    "type": "specialization",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "relationship",
+    "object_map": {
+      "substitutions": {
+        "the isomorphism V/ker(T) ~= im(T)": "the equality of their dimensions",
+        "dimension of a quotient space": "dim V - dim(ker T)"
+      },
+      "derived": {
+        "dim(V/ker T) = dim(im T)": "dim V - dim(ker T) = rank(T)",
+        "isomorphic spaces": "equal dimension"
+      }
+    },
+    "validity_conditions": [
+      "V finite-dimensional, so all dimensions are finite and dim(V/U) = dim V - dim U holds for a subspace U.",
+      "Isomorphic finite-dimensional spaces have equal dimension, so dim(V/ker T) = dim(im T).",
+      "Substituting dim(V/ker T) = dim V - dim(ker T) yields rank-nullity - a dimension count of the iso theorem."
+    ],
+    "proof_plan": [
+      "By the [[First Isomorphism Theorem for Vector Spaces]]:\n:$V / \\map \\ker T \\cong \\Img T$",
+      "Isomorphic spaces have equal dimension:\n:$\\map \\dim {V / \\map \\ker T} = \\map \\dim {\\Img T} = \\map \\rank T$",
+      "By [[Dimension of Quotient Space]]:\n:$\\map \\dim {V / \\map \\ker T} = \\dim V - \\map \\dim {\\map \\ker T}$",
+      "Rearranging:\n:$\\dim V = \\map \\dim {\\map \\ker T} + \\map \\rank T$\nwhich is the [[Rank-Nullity Theorem]].\n{{qed}}"
+    ]
+  }
+}

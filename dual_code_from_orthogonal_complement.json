@@ -1,0 +1,40 @@
+{
+  "id": "dual_code_from_orthogonal_complement",
+  "field": [
+    "algebra",
+    "algorithms"
+  ],
+  "A_target": {
+    "statement": "Let $C \\subseteq \\GF q^n$ be a [[Definition:Linear Code|linear $\\sqbrk {n, k}$ code]].\nThen its [[Definition:Dual Code|dual code]] $C^\\perp$ satisfies:\n:$\\dim C^\\perp = n - k$\n:$\\paren {C^\\perp}^\\perp = C$"
+  },
+  "B_source": {
+    "statement": "Let $V$ be a [[Definition:Vector Space|vector space]] of [[Definition:Dimension of Vector Space|dimension]] $n$ with a [[Definition:Nondegenerate Bilinear Form|nondegenerate bilinear form]].\nLet $W \\subseteq V$ be a [[Definition:Vector Subspace|subspace]].\nThen:\n:$\\dim W + \\dim W^\\perp = n$\n:$\\paren {W^\\perp}^\\perp = W$"
+  },
+  "C_analogy": {
+    "type": "duality",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the subspace W": "the code C",
+        "the nondegenerate bilinear form": "the standard dot product on n-tuples over the finite field",
+        "the orthogonal complement of W": "the dual code"
+      },
+      "derived": {
+        "the dimension formula": "the dual code has dimension n - k",
+        "recovery under double complement": "dualizing a code twice returns the original code"
+      }
+    },
+    "validity_conditions": [
+      "The standard dot product over a finite field is a nondegenerate bilinear form, so the dimension formula applies verbatim.",
+      "The form is not positive definite in this setting, so a code can meet its dual nontrivially and self-dual codes exist; the dimension count is unaffected but geometric intuition from the real case does not transfer.",
+      "Recovery under double complement requires finite dimension, which holds since the ambient space has n coordinates."
+    ],
+    "proof_plan": [
+      "Regard $C$ as a $k$-dimensional [[Definition:Vector Subspace|subspace]] of $\\GF q^n$.",
+      "The [[Definition:Dot Product|dot product]] $x \\cdot y = \\displaystyle \\sum_i x_i y_i$ is [[Definition:Bilinear Form|bilinear]].\nIt is [[Definition:Nondegenerate Bilinear Form|nondegenerate]], since $x \\cdot e_i = x_i$.",
+      "By the source result:\n:$\\dim C^\\perp = n - \\dim C = n - k$",
+      "By double-complement recovery:\n:$\\paren {C^\\perp}^\\perp = C$\n{{qed}}"
+    ]
+  }
+}

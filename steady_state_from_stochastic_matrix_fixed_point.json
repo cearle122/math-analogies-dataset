@@ -1,0 +1,42 @@
+{
+  "id": "steady_state_from_stochastic_matrix_fixed_point",
+  "field": [
+    "probability",
+    "algebra"
+  ],
+  "A_target": {
+    "statement": "Let $P$ be the [[Definition:Transition Matrix|transition matrix]] of an [[Definition:Irreducible Markov Chain|irreducible]] [[Definition:Aperiodic Markov Chain|aperiodic]] [[Definition:Markov Chain|Markov chain]] on a finite state space.\nThen there is a [[Definition:Unique|unique]] [[Definition:Stationary Distribution|stationary distribution]] $\\pi$ with $\\pi P = \\pi$, and $\\mu P^n \\to \\pi$ for every distribution $\\mu$."
+  },
+  "B_source": {
+    "statement": "Let $K \\subseteq \\R^n$ be [[Definition:Compact Space|compact]] and [[Definition:Convex Set (Vector Space)|convex]], and $f: K \\to K$ [[Definition:Continuous Mapping|continuous]].\nThen there exists $x \\in K$ with $\\map f x = x$."
+  },
+  "C_analogy": {
+    "type": "fixed_point_encoding",
+    "secondary_types": [
+      "quotient_kernel_pattern"
+    ],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the compact convex set K": "the simplex of probability distributions on the state space",
+        "the continuous self-map f": "right multiplication by the transition matrix P",
+        "the fixed point": "the stationary distribution pi"
+      },
+      "derived": {
+        "the fixed-point equation": "the balance equation pi P = pi"
+      }
+    },
+    "validity_conditions": [
+      "P must be stochastic so the simplex is mapped into itself",
+      "existence follows from compactness and convexity alone, but uniqueness requires irreducibility",
+      "convergence of mu P^n requires aperiodicity as well, and does not follow from the fixed point property"
+    ],
+    "proof_plan": [
+      "The [[Definition:Simplex|simplex]] $\\Delta$ of distributions is compact and convex.\nAs $P$ is [[Definition:Stochastic Matrix|stochastic]], $\\mu \\mapsto \\mu P$ is a continuous map $\\Delta \\to \\Delta$.",
+      "By the [[Brouwer Fixed Point Theorem]], there exists $\\pi \\in \\Delta$ with $\\pi P = \\pi$.",
+      "By irreducibility and aperiodicity, $P^m$ has all entries strictly positive for some $m$.\nBy the [[Perron-Frobenius Theorem]], the eigenvalue $1$ of $P^m$ is simple, so $\\pi$ is unique.",
+      "The remaining eigenvalues of $P$ have modulus $< 1$.\nHence:\n:$\\mu P^n \\to \\pi$\nfor every $\\mu \\in \\Delta$.",
+      "By the [[Ergodic Theorem for Markov Chains|ergodic theorem]], $\\pi_i$ is the long-run proportion of time spent in state $i$.\n{{qed}}"
+    ]
+  }
+}

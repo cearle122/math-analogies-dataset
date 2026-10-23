@@ -1,0 +1,41 @@
+{
+  "id": "picks_theorem_from_elementary_triangles",
+  "field": [
+    "geometry",
+    "combinatorics"
+  ],
+  "A_target": {
+    "statement": "Let $P$ be a [[Definition:Simple Polygon|simple polygon]] whose vertices are [[Definition:Lattice Point|lattice points]].\nLet $I$ be the number of lattice points in its interior and $B$ the number on its boundary.\nThen:\n:$\\map {\\operatorname {Area} } P = I + \\dfrac B 2 - 1$"
+  },
+  "B_source": {
+    "statement": "Let $T$ be a lattice [[Definition:Triangle (Geometry)|triangle]] containing no lattice points other than its vertices.\nThen:\n:$\\map {\\operatorname {Area} } T = \\dfrac 1 2$"
+  },
+  "C_analogy": {
+    "type": "combinatorial_approximation",
+    "secondary_types": [],
+    "type_axis": "operation",
+    "object_map": {
+      "substitutions": {
+        "the single elementary triangle": "a triangulation of the polygon into elementary triangles",
+        "the area of one elementary triangle": "the total count of triangles, times one half",
+        "the vertices of the triangle": "the interior and boundary lattice points of the polygon"
+      },
+      "derived": {
+        "the number of elementary triangles": "counted by summing angles at lattice points",
+        "the angle sum computation": "the formula in terms of interior and boundary counts"
+      },
+      "reformulation": "Cut the region into smallest lattice triangles so that a continuous area becomes a count of discrete pieces."
+    },
+    "validity_conditions": [
+      "Every lattice polygon admits a triangulation into elementary triangles using only lattice points as vertices, which is what allows the discrete count to determine the area.",
+      "The total angle around an interior lattice point is a full turn and around a boundary point is a half turn, which converts the triangle count into the interior and boundary counts.",
+      "The polygon must be simple, with no self-intersections and no holes; for a polygon with holes the constant term changes according to the Euler characteristic."
+    ],
+    "proof_plan": [
+      "[[Definition:Triangulation|Triangulate]] $P$ into elementary triangles using all $I + B$ lattice points as vertices.",
+      "By the source result, each triangle has area $\\dfrac 1 2$.\nIf there are $F$ triangles:\n:$\\map {\\operatorname {Area} } P = \\dfrac F 2$",
+      "The angles of all triangles sum to $\\pi F$.\nCounting by vertices, each interior point contributes $2 \\pi$ and the boundary points together contribute $\\paren {B - 2} \\pi$, the angle sum of $P$.\nHence:\n:$\\pi F = 2 \\pi I + \\paren {B - 2} \\pi$",
+      "So $F = 2 I + B - 2$, and:\n:$\\map {\\operatorname {Area} } P = I + \\dfrac B 2 - 1$\nwhich is [[Pick's Theorem]].\n{{qed}}"
+    ]
+  }
+}
